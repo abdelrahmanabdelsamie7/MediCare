@@ -7,6 +7,9 @@
   --second-color: #52515e;
   --arabic-font: "Noto Kufi Arabic", sans-serif;
 }
+body{
+  direction: rtl;
+}
 section {
   padding: 40px 0px;
 }
