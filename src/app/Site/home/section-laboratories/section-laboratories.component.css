@@ -1,0 +1,17 @@
+
+img {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 5px var(--main-color);
+}
+h3,
+p {
+  direction: rtl;
+  font-family: var(--arabic-font);
+  line-height: 45px;
+}
+h3 span {
+  font-weight: 700;
+  color: var(--main-color);
+}

@@ -1,0 +1,11 @@
+nav .navbar-brand {
+  color: var(--main-color);
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+}
+nav .nav-link {
+  color: var(--main-color);
+  font-size: 25px;
+  font-weight: 700;
+}
