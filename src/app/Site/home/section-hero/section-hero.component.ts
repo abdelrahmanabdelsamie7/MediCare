@@ -18,7 +18,7 @@ export class SectionHeroComponent {
     navSpeed: 700,
     navText: [
       '<i class="fa-chevron-left"></i>',
-      '<i class="fa-chevron-right></i>"',
+      '<i class="fa-chevron-right"></i>',
     ],
     responsive: {
       0: {
