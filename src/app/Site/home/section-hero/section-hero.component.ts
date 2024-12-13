@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { Carousel } from 'primeng/carousel';
 @Component({
   selector: 'app-section-hero',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule,Carousel],
   templateUrl: './section-hero.component.html',
   styleUrl: './section-hero.component.css',
 })
@@ -27,4 +28,9 @@ export class SectionHeroComponent {
     },
     nav: true,
   };
+  images: string[] = [
+    'hero1.jpg',
+    'hero1.jpg',
+    'hero1.jpg',
+  ];
 }
