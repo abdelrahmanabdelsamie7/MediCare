@@ -1,20 +1,16 @@
-<!-- Start Hero Section  -->
 <section id="hero">
   <div class="container">
-    <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
-      <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
-      <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
-      <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
-      <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
-    </owl-carousel-o>
-    <p-carousel [value]="images" [numVisible]="3" [numScroll]="1">
-      <ng-template pTemplate="item" let-image>
-        <img [src]="image" alt="Carousel Image" style="width: 100%; height: auto;" />
-      </ng-template>
-      
-    </p-carousel>
+    <div class="card border border-0">
+      <p-carousel [value]="Images" [numVisible]="2" [numScroll]="3" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template let-image pTemplate="item">
+          <div class="border border-1 rounded-border m-2">
+            <div class="relative mx-auto">
+              <img [src]="image.imageUrl" class="w-100 rounded-border d-block mx-auto" />
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
   </div>
-
 </section>
-<!-- End Hero Section -->

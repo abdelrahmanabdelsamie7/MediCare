@@ -3,12 +3,9 @@
 /* Arabic Font Family  */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Qwitcher+Grypen:wght@400;700&display=swap");
 :root {
-  --main-color: #72bafd;
   --second-color: #52515e;
+  --main-color: #72bafd;
   --arabic-font: "Noto Kufi Arabic", sans-serif;
-}
-body{
-  direction: rtl;
 }
 section {
   padding: 40px 0px;
