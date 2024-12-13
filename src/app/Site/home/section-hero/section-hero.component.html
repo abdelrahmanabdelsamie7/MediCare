@@ -8,6 +8,13 @@
       <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
       <ng-template carouselSlide><img src="./hero1.jpg" alt="" class="w-100"></ng-template>
     </owl-carousel-o>
+    <p-carousel [value]="images" [numVisible]="3" [numScroll]="1">
+      <ng-template pTemplate="item" let-image>
+        <img [src]="image" alt="Carousel Image" style="width: 100%; height: auto;" />
+      </ng-template>
+      
+    </p-carousel>
   </div>
+
 </section>
 <!-- End Hero Section -->

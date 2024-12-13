@@ -5,27 +5,91 @@
       <div class="col-md-8">
         <h3 class="text-center mb-4 text-secondary"> مرحبا بك في<span class="text-info"> MediCare</span></h3>
        <h4 class="text-secondary pb-1">سجل <span  class="text-info">الان</span>:</h4>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingInput" placeholder="Name">
-          <label for="floatingInput">الاسم</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-          <label for="floatingEmail">البريد الالكتروني</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">كلمة المرور</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingRepassword" placeholder="RePassword">
-          <label for="floatingRepassword">تأكيد كلمة المرور</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="tel" class="form-control" id="floatingPhone" placeholder="Phone">
-          <label for="floatingPhone">رقم الهاتف</label>
-        </div>
-        <button type="submit" class="btn btn-info text-white w-100">انشاء حساب</button>
+        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+              'is-valid': !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty) ,
+              'is-invalid': registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
+            }" type="text" class="form-control" id="floatingInput" placeholder="Name" formControlName="name">
+        @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)) {
+          <div class="alert alert-danger rounded-4 w-50 mx-auto">
+          @if(registerForm.get('name')?.getError('required')){
+            <p class="m-0">الاسم مطلوب</p>
+          }@else if (registerForm.get('name')?.getError('minlength')) {
+            <p class="m-0">يجب أن يكون الاسم 3 أحرف أو أكثر</p>
+          }@else if (registerForm.get('name')?.getError('maxlength')) {
+            <p class="m-0">يجب أن يكون الاسم 20 حرفًا أو أقل</p>
+          }
+
+          </div>
+        }
+            <label for="floatingInput">الاسم</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+              'is-valid': !registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty) ,
+              'is-invalid': registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)
+            }" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" formControlName="email">
+            @if (registerForm.get('email')?.errors &&(registerForm.get('email')?.touched || registerForm.get('email')?.dirty) ) {
+              <div class="alert alert-danger w-50 mx-auto rounded-4">
+                @if (registerForm.get('email')?.getError('required') ) {
+                  <p class="m-0">البريد الإلكتروني مطلوب</p>
+                }
+                @if (registerForm.get('email')?.getError('email')) {
+                  <p class="m-0"> يرجى إدخال بريد إلكتروني صالح</p>
+                }
+              </div>
+            }
+            <label for="floatingEmail">البريد الإلكتروني</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+              'is-valid': !registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty) ,
+              'is-invalid': registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)
+            }" type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
+            @if (registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)) {
+              <div class="alert alert-danger w-50 mx-auto rounded-4">
+                @if (registerForm.get('password')?.getError('required') ) {
+                  <p class="m-0">كلمة المرور مطلوبه</p>
+                }@else if (registerForm.get('password')?.getError('minlength')) {
+                  <p class="m-0">يجب أن تحتوي علي 5 ارقام أو أكثر</p>
+                }@else if (registerForm.get('password')?.getError('maxlength')) {
+                  <p class="m-0">يجب أن تحتوي علي 10 ارقام أو أقل</p>
+                }
+
+              </div>
+            }
+            <label for="floatingPassword">كلمة المرور</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+              'is-valid': !registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty) ,
+              'is-invalid':registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)
+            }" type="password" class="form-control" id="floatingRepassword" placeholder="RePassword" formControlName="rePassword">
+           @if (registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)) {
+            <p class="m-0 alert alert-danger w-50 mx-auto rounded-4">تأكيد كلمة المرور غير صحيح</p>
+           }
+            <label for="floatingRepassword">تأكيد كلمة المرور</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+              'is-valid': !registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty) ,
+              'is-invalid':registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)
+            }" type="tel" class="form-control" id="floatingPhone" placeholder="Phone"  formControlName="phone">
+            @if (registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty) ) {
+              <div class="alert alert-danger w-50 mx-auto rounded-4">
+                @if (registerForm.get('phone')?.getError('required') ) {
+                  <p class="m-0">الهاتف مطلوب</p>
+                }
+                @if (registerForm.get('phone')?.getError('pattern')) {
+                  <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
+                }
+              </div>
+            }
+            <label for="floatingPhone">رقم الهاتف</label>
+          </div>
+          <button [disabled]="registerForm.invalid" type="submit" class="btn btn-info text-white w-100">انشاء حساب</button>
+        </form>
         <p class="text-center mt-3">هل لديك حساب؟ <a class="text-info">تسجيل الدخول</a></p>
       </div>
       <div class="col-md-4">
