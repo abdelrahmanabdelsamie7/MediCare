@@ -25,7 +25,7 @@ export class SectionHeroComponent {
       imageUrl: './hero2.jpg',
     },
     {
-      imageUrl: './hero2.jpg',
+      imageUrl: './hero3.jpg',
     },
   ];
   constructor() {

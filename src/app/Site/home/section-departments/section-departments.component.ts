@@ -22,27 +22,27 @@ export class SectionDepartmentsComponent {
   responsiveOptions: any[] | undefined;
   Departments = [
     {
-      imageUrl: './lungs.png',
+      imageUrl: './departments/lungs.png',
       title: ' الجهاز التنفسي',
     },
     {
-      imageUrl: './human-brain.png',
+      imageUrl: './departments/human-brain.png',
       title: 'المخ والأعصاب',
     },
     {
-      imageUrl: './teeth.png',
+      imageUrl: './departments/teeth.png',
       title: 'الأسنان واللسة',
     },
     {
-      imageUrl: './human-organ.png',
+      imageUrl: './departments/human-organ.png',
       title: 'القلب والأوعية الدموية',
     },
     {
-      imageUrl: './stomach.png',
+      imageUrl: './departments/stomach.png',
       title: 'الجهاز الهظمي',
     },
     {
-      imageUrl: './intestines.png',
+      imageUrl: './departments/intestines.png',
       title: 'الامعاء',
     },
   ];
