@@ -1,4 +1,3 @@
-
 img {
   width: 100%;
   height: 450px;
@@ -10,6 +9,8 @@ p {
   direction: rtl;
   font-family: var(--arabic-font);
   line-height: 45px;
+  font-size: 22px;
+  color: var(--second-color);
 }
 h3 span {
   font-weight: 700;

@@ -1,0 +1,52 @@
+#docOffers-carousel .p-carousel-indicator-button {
+  display: none !important;
+}
+#docOffers-carousel .p-carousel-next-button,
+.p-carousel-prev-button {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  transition: all 1s;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+#docOffers-carousel .p-carousel-prev-button:hover {
+  background-color: #fff !important;
+  color: var(--main-color) !important;
+}
+#docOffers-carousel .p-carousel-next-button:hover {
+  background-color: #fff !important;
+  color: var(--main-color) !important;
+}
+.title {
+  font-size: 20px;
+  font-family: var(--arabic-font);
+  text-align: center;
+  direction: rtl;
+  padding: 10px 0px;
+  color: var(--second-color);
+}
+#docOffers-carousel .docOffer-item {
+  position: relative;
+  z-index: 0;
+}
+.info {
+  z-index: 10;
+  color: #fff;
+  background-color: rgba(13, 138, 176, 0.3);
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

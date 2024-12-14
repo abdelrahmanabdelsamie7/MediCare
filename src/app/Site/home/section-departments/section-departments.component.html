@@ -1,5 +1,19 @@
 <section id="departments">
   <div class="container text-center">
-    <h3 class="title">الاقسام الطبية</h3>
+    <h3 class="head-title">الأقسام الطبية</h3>
+  </div>
+
+  <div class="container mt-4">
+    <p-carousel id="department-carousel" class="py-5" [value]="Departments" [numVisible]="4" [circular]="true"
+      [responsiveOptions]="responsiveOptions">
+      <ng-template let-department pTemplate="item">
+        <div class="border shadow-sm border-0 rounded-border m-2">
+          <div class="relative mx-auto">
+            <img [src]="department.imageUrl" class=" d-block mx-auto rounded-border" />
+          </div>
+          <h5 class="title">{{ department.title }}</h5>
+        </div>
+      </ng-template>
+    </p-carousel>
   </div>
 </section>

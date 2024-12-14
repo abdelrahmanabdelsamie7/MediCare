@@ -1,57 +1,59 @@
 <section class="pt-3">
   <div class="container">
     <div class="row">
-
       <div class="col-md-8">
         <h3 class="text-center mb-4 text-secondary"> مرحبا بعودتك<span class="text-info"> ...</span></h3>
-       <h4 class="text-secondary pb-1">قم بتسجيل <span  class="text-info">الدخول</span>:</h4>
-
-     <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
-      <div class="form-floating mb-3">
-        <input [ngClass]="{
+        <h4 class="text-secondary pb-1">قم بتسجيل <span class="text-info">الدخول</span>:</h4>
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
           'is-valid': !loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ,
           'is-invalid': loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
-        }" type="email" class="form-control" id="floatingEmaill" placeholder="name@example.com" formControlName="email">
-        @if (loginForm.get('email')?.errors &&(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ) {
-          <div class="alert alert-danger w-50 mx-auto rounded-4">
-            @if (loginForm.get('email')?.getError('required') ) {
+        }" type="email" class="form-control" id="floatingEmaill" placeholder="name@example.com"
+              formControlName="email">
+            @if (loginForm.get('email')?.errors &&(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ) {
+            <div class="alert alert-danger w-50 mx-auto rounded-4">
+              @if (loginForm.get('email')?.getError('required') ) {
               <p class="m-0">البريد الإلكتروني مطلوب</p>
-            }
-            @if (loginForm.get('email')?.getError('email')) {
+              }
+              @if (loginForm.get('email')?.getError('email')) {
               <p class="m-0"> يرجى إدخال بريد إلكتروني صالح</p>
+              }
+            </div>
             }
+            <label for="floatingEmaill">البريد الإلكتروني</label>
           </div>
-        }
-        <label for="floatingEmaill">البريد الإلكتروني</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input [ngClass]="{
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
           'is-valid': !loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty) ,
           'is-invalid': loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
-        }" type="password" class="form-control" id="floatingPasswordd" placeholder="Password" formControlName="password">
-        @if (loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)) {
-          <div class="alert alert-danger w-50 mx-auto rounded-4">
-            @if (loginForm.get('password')?.getError('required') ) {
+        }" type="password" class="form-control" id="floatingPasswordd" placeholder="Password"
+              formControlName="password">
+            @if (loginForm.get('password')?.errors && (loginForm.get('password')?.touched ||
+            loginForm.get('password')?.dirty)) {
+            <div class="alert alert-danger w-50 mx-auto rounded-4">
+              @if (loginForm.get('password')?.getError('required') ) {
               <p class="m-0">كلمة المرور مطلوبه</p>
-            }@else if (loginForm.get('password')?.getError('minlength')) {
+              }@else if (loginForm.get('password')?.getError('minlength')) {
               <p class="m-0">يجب أن تحتوي علي 5 ارقام أو أكثر</p>
-            }@else if (loginForm.get('password')?.getError('maxlength')) {
+              }@else if (loginForm.get('password')?.getError('maxlength')) {
               <p class="m-0">يجب أن تحتوي علي 10 ارقام أو أقل</p>
+              }
+
+            </div>
             }
-
+            <label for="floatingPasswordd">كلمة المرور</label>
           </div>
-        }
-        <label for="floatingPasswordd">كلمة المرور</label>
-      </div>
 
-        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">تسجيل الدخول</button>
-     </form>
+          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">تسجيل
+            الدخول</button>
+        </form>
         <p class="text-center mt-3">لا تمتلك حسابًا؟<a class="text-info"> أنشئ حسابًا الآن</a></p>
       </div>
       <div class="col-md-4">
-<div class="d-flex align-content-center h-100">
-  <img src="registerPhoto.svg" alt="registerSitePhoto" class="img-fluid  ">
-</div>
+        <div class="d-flex align-content-center h-100">
+          <img src="registerPhoto.svg" alt="registerSitePhoto" class="img-fluid  ">
+        </div>
       </div>
     </div>
   </div>

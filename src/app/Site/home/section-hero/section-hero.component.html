@@ -1,16 +1,12 @@
 <section id="hero">
   <div class="container">
-    <div class="card border border-0">
-      <p-carousel [value]="Images" [numVisible]="2" [numScroll]="3" [circular]="false"
-        [responsiveOptions]="responsiveOptions">
-        <ng-template let-image pTemplate="item">
-          <div class="border border-1 rounded-border m-2">
-            <div class="relative mx-auto">
-              <img [src]="image.imageUrl" class="w-100 rounded-border d-block mx-auto" />
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-    </div>
+    <p-carousel class="hero-carsoual" [value]="Images" [numVisible]="1" [numScroll]="3" [circular]="false"
+      [responsiveOptions]="responsiveOptions">
+      <ng-template let-image pTemplate="item">
+        <div class="relative mx-auto">
+          <img [src]="image.imageUrl" class="w-100 h-100 rounded-border d-block mx-auto" />
+        </div>
+      </ng-template>
+    </p-carousel>
   </div>
 </section>

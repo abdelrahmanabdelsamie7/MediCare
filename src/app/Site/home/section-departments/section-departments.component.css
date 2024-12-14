@@ -1,0 +1,38 @@
+#department-carousel .p-carousel-indicator-button {
+  display: none !important;
+}
+#department-carousel .p-carousel-next-button,
+.p-carousel-prev-button {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  transition: all 1s;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+#department-carousel .p-carousel-prev-button:hover {
+  background-color: #fff !important;
+  color: var(--main-color) !important;
+}
+#department-carousel .p-carousel-next-button:hover {
+  background-color: #fff !important;
+  color: var(--main-color) !important;
+}
+#department-carousel {
+  cursor: pointer;
+}
+#department-carousel img {
+  width: 150px;
+}
+.title {
+  font-size: 20px;
+  font-family: var(--arabic-font);
+  text-align: center;
+  direction: rtl;
+  padding: 10px 0px;
+  color: var(--second-color);
+}

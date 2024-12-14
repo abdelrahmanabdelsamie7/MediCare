@@ -2,15 +2,23 @@
 
 /* Arabic Font Family  */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Qwitcher+Grypen:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 :root {
+  --third-color: #6c757d;
   --second-color: #52515e;
-  --main-color: #72bafd;
+  --main-color: #0dcaf0;
   --arabic-font: "Noto Kufi Arabic", sans-serif;
 }
 section {
+
   padding: 40px 0px;
 }
-.title {
+.head-title {
   font-family: var(--arabic-font);
   font-size: 28px;
   font-weight: 700;
@@ -20,7 +28,7 @@ section {
   width: fit-content;
   margin: 0 auto;
 }
-.title::before {
+.head-title::before {
   content: "";
   position: absolute;
   width: 100%;
