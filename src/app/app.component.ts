@@ -7,6 +7,8 @@ import { SectionPharmaciesComponent } from './Site/home/section-pharmacies/secti
 import { SectionLaboratoriesComponent } from './Site/home/section-laboratories/section-laboratories.component';
 import { SiteRegisterComponent } from "./Site/auth/site-register/site-register.component";
 import { SiteLoginComponent } from "./Site/auth/site-login/site-login.component";
+import { SiteFooterComponent } from './Site/shared/site-footer/site-footer.component';
+import { SectionApplicationComponent } from "./Site/home/section-application/section-application.component";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,9 @@ import { SiteLoginComponent } from "./Site/auth/site-login/site-login.component"
     SectionPharmaciesComponent,
     SectionLaboratoriesComponent,
     SiteRegisterComponent,
-    SiteLoginComponent
+    SiteLoginComponent,
+    SiteFooterComponent,
+    SectionApplicationComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
