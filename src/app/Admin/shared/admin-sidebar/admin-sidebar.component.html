@@ -1,1 +1,69 @@
-<p>admin-sidebar works!</p>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link " routerLink="/admin">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <!--Start  Department -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#department-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-layout-text-sidebar"></i><span>Department</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="department-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a routerLink="departments">
+            <i class="bi bi-circle"></i><span>List Departments</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="add_department">
+            <i class="bi bi-circle"></i><span>Add Department</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Start Hospital -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#hospital-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-hospital"></i><span>Hospital</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="hospital-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="forms-elements.html">
+            <i class="bi bi-circle"></i><span>List Hospitals</span>
+          </a>
+        </li>
+        <li>
+          <a href="forms-layouts.html">
+            <i class="bi bi-circle"></i><span>Add Hospital</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Start Care Center -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#carecenter-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-cassette-fill"></i><span>Care Center</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="carecenter-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="forms-elements.html">
+            <i class="bi bi-circle"></i><span>List Care Centers</span>
+          </a>
+        </li>
+        <li>
+          <a href="forms-layouts.html">
+            <i class="bi bi-circle"></i><span>Add Care Center</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</aside><!-- End Sidebar-->

@@ -1,2 +1,1 @@
-export interface IPharmacy {
-}
+export interface IPharmacy {}

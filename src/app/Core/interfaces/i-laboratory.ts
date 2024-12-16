@@ -1,2 +1,1 @@
-export interface ILaboratory {
-}
+export interface ILaboratory {}

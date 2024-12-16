@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin-sidebar',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './admin-sidebar.component.html',
-  styleUrl: './admin-sidebar.component.css'
+  styleUrl: './admin-sidebar.component.css',
 })
-export class AdminSidebarComponent {
-
-}
+export class AdminSidebarComponent {}
