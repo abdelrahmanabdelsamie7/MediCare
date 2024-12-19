@@ -5,3 +5,8 @@
   align-items: center;
   flex-direction: column;
 }
+.main {
+  flex-grow: 1;
+  width: 70%;
+  padding: 0;
+}

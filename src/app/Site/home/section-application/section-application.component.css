@@ -1,8 +1,8 @@
-
 .download-app-section img {
   max-width: 80%;
 }
 .download-app-section h2 {
   font-size: 40px;
   font-weight: bold;
+  direction: rtl;
 }

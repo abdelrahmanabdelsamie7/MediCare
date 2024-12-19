@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDepartment } from '../interfaces/i-department';
 import { environment } from '../../../environments/environment.development';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +17,22 @@ export class SDepartmentService {
     return this._HttpClient.post<IDepartment>(
       `${environment.baseUrl}/Departments`,
       department
+    );
+  }
+  showDepartment(id: string): Observable<IDepartment> {
+    return this._HttpClient.get<IDepartment>(
+      `${environment.baseUrl}/Departments/${id}`
+    );
+  }
+  editDepartment(id: string, department: IDepartment): Observable<IDepartment> {
+    return this._HttpClient.put<IDepartment>(
+      `${environment.baseUrl}/Departments/${id}`,
+      department
+    );
+  }
+  deleteDepartment(id: string): Observable<IDepartment> {
+    return this._HttpClient.delete<IDepartment>(
+      `${environment.baseUrl}/Departments/${id}`
     );
   }
 }

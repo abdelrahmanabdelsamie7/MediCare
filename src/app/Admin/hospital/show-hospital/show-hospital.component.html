@@ -1,0 +1,27 @@
+<!-- Start Hospital Show -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+      <div class="card border border-0 shadow p-5">
+        <img [src]="hospital.image" class="w-100" alt="hospital Iamge">
+      </div>
+    </div>
+    <div class="col-md-8 ">
+      <div class="card border border-0 shadow p-4">
+        <h3 class="fs-4">Title : <span>{{ hospital.title}}</span></h3>
+        <hr>
+        <h5>Service : <span>{{ hospital.service }}</span></h5>
+        <hr>
+        <h5>Phone : {{ hospital.phone }}</h5>
+        <hr>
+        <h5>Address : {{ hospital.address }}</h5>
+        <hr>
+        <h5>Location In Map : <a (click)="showInMap(hospital.locationUrl)"><i
+              class="bi bi-geo-alt text-warning"></i></a></h5>
+      </div>
+      <button (click)="back()" class="btn btn-primary mx-auto d-block px-3"> <i class="bi bi-arrow-left"></i>
+        Back</button>
+    </div>
+  </div>
+</div>
+<!-- End Hospital Show -->
