@@ -1,0 +1,27 @@
+<!-- Start Care Center Show -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+      <div class="card border border-0 shadow p-5">
+        <img [src]="careCenter.image" class="w-100" alt="careCenter Iamge">
+      </div>
+    </div>
+    <div class="col-md-8 ">
+      <div class="card border border-0 shadow p-4">
+        <h3 class="fs-4">Title : <span>{{ careCenter.title}}</span></h3>
+        <hr>
+        <h5>Service : <span>{{ careCenter.service }}</span></h5>
+        <hr>
+        <h5>Phone : {{ careCenter.phone }}</h5>
+        <hr>
+        <h5>Address : {{ careCenter.address }}</h5>
+        <hr>
+        <h5>Location In Map : <a (click)="showInMap(careCenter.locationUrl)"><i
+              class="bi bi-geo-alt text-warning"></i></a></h5>
+      </div>
+      <button (click)="back()" class="btn btn-primary mx-auto d-block px-3"> <i class="bi bi-arrow-left"></i>
+        Back</button>
+    </div>
+  </div>
+</div>
+<!-- End Care Center Show -->

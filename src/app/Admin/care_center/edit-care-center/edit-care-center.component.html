@@ -1,6 +1,6 @@
-<!-- Start Editing Hospital -->
+<!-- Start Editing Care Center -->
 <div class="pagetitle">
-  <h1>Edit Hospital</h1>
+  <h1>Edit Care Center</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
@@ -14,18 +14,18 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editHospitalForm" (ngSubmit)="editHospital(editHospitalForm)">
+          <form class="row" [formGroup]="editCareCenterForm" (ngSubmit)="editCareCenter(editCareCenterForm)">
             <div class="row">
               <div class="col-md-6">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" formControlName="title"
-                  [ngClass]="{'is-invalid':(editHospitalForm.controls.title.touched && editHospitalForm.controls.title.errors) }"
+                  [ngClass]="{'is-invalid':(editCareCenterForm.controls.title.touched && editCareCenterForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
               <div class="col-md-6">
                 <label for="service" class="form-label">Service</label>
                 <input type="text" formControlName="service"
-                  [ngClass]="{'is-invalid':(editHospitalForm.controls.service.touched && editHospitalForm.controls.service.errors) }"
+                  [ngClass]="{'is-invalid':(editCareCenterForm.controls.service.touched && editCareCenterForm.controls.service.errors) }"
                   class="form-control" id="service">
               </div>
             </div>
@@ -33,13 +33,13 @@
               <div class="col-md-6">
                 <label for="image" class="form-label">Image</label>
                 <input type="text" formControlName="image"
-                  [ngClass]="{'is-invalid':(editHospitalForm.controls.image.touched && editHospitalForm.controls.image.errors) }"
+                  [ngClass]="{'is-invalid':(editCareCenterForm.controls.image.touched && editCareCenterForm.controls.image.errors) }"
                   class="form-control" class="form-control" id="image">
               </div>
               <div class="col-md-6">
                 <label for="phone" class="form-label">Phone</label>
                 <input type="tel" formControlName="phone"
-                  [ngClass]="{'is-invalid':(editHospitalForm.controls.phone.touched && editHospitalForm.controls.phone.errors) }"
+                  [ngClass]="{'is-invalid':(editCareCenterForm.controls.phone.touched && editCareCenterForm.controls.phone.errors) }"
                   class="form-control" class="form-control" id="phone">
               </div>
             </div>
@@ -47,18 +47,18 @@
               <div class="col-md-6">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" formControlName="address"
-                  [ngClass]="{'is-invalid':(editHospitalForm.controls.address.touched && editHospitalForm.controls.address.errors) }"
+                  [ngClass]="{'is-invalid':(editCareCenterForm.controls.address.touched && editCareCenterForm.controls.address.errors) }"
                   class="form-control" class="form-control" id="address">
               </div>
               <div class="col-md-6">
                 <label for="locationUrl" class="form-label">Location Url</label>
                 <input type="url" formControlName="locationUrl"
-                  [ngClass]="{'is-invalid':(editHospitalForm.controls.locationUrl.touched && editHospitalForm.controls.locationUrl.errors) }"
+                  [ngClass]="{'is-invalid':(editCareCenterForm.controls.locationUrl.touched && editCareCenterForm.controls.locationUrl.errors) }"
                   class="form-control" class="form-control" id="locationUrl">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editHospitalForm.invalid">Edit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="editCareCenterForm.invalid">Edit</button>
             </div>
           </form>
         </div>
@@ -66,4 +66,4 @@
     </div>
   </div>
 </section>
-<!-- End Editing Hospita -->
+<!-- End Editing Care Center -->

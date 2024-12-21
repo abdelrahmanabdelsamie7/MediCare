@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IHospital } from '../interfaces/ihospital';
 import { environment } from '../../../environments/environment.development';
+import { IDepartmentHospital } from '../interfaces/i-department-hospital';
 @Injectable({
   providedIn: 'root',
 })
@@ -33,6 +34,14 @@ export class SHospitalService {
   deleteHospital(id: string): Observable<IHospital> {
     return this._HttpClient.delete<IHospital>(
       `${environment.baseUrl}/Hospitals/${id}`
+    );
+  }
+  addDepartmentHospital(
+    departmentHospital: IDepartmentHospital
+  ): Observable<IDepartmentHospital> {
+    return this._HttpClient.post<IDepartmentHospital>(
+      `${environment.baseUrl}/Department_Hospital`,
+      departmentHospital
     );
   }
 }

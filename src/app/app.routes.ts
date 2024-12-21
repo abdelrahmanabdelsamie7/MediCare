@@ -11,6 +11,12 @@ import { ListHospitalsComponent } from './Admin/hospital/list-hospitals/list-hos
 import { AddHospitalComponent } from './Admin/hospital/add-hospital/add-hospital.component';
 import { ShowHospitalComponent } from './Admin/hospital/show-hospital/show-hospital.component';
 import { EditHospitalComponent } from './Admin/hospital/edit-hospital/edit-hospital.component';
+import { ListCareCentersComponent } from './Admin/care_center/list-care-centers/list-care-centers.component';
+import { AddCareCenterComponent } from './Admin/care_center/add-care-center/add-care-center.component';
+import { ShowCareCenterComponent } from './Admin/care_center/show-care-center/show-care-center.component';
+import { EditCareCenterComponent } from './Admin/care_center/edit-care-center/edit-care-center.component';
+import { AddDepartmentHospitalComponent } from './Admin/departmentHospital/add-department-hospital/add-department-hospital.component';
+import { EditDepartmentHospitalComponent } from './Admin/departmentHospital/edit-department-hospital/edit-department-hospital.component';
 
 export const routes: Routes = [
   { path: '', component: SiteHomeComponent, title: 'MediCare' },
@@ -73,7 +79,40 @@ export const routes: Routes = [
         component: EditHospitalComponent,
         title: 'Admin Panel | Edit Hospital',
       },
+      {
+        path: 'add_department_hospital',
+        component: AddDepartmentHospitalComponent,
+        title: 'Admin Panel | Add Department Hospital ',
+      },
+      {
+        path: 'edit_department_hospital/:department_id/:hospital_id',
+        component: EditDepartmentHospitalComponent,
+        title: 'Admin Panel | Edit Department Hospital ',
+      },
       // End Admin(Departments) Routing
+
+      // Start Admin(CareCenters) Routing
+      {
+        path: 'care_centers',
+        component: ListCareCentersComponent,
+        title: 'Admin Panel | CareCenters',
+      },
+      {
+        path: 'add_care_center',
+        component: AddCareCenterComponent,
+        title: 'Admin Panel | Add CareCenter',
+      },
+      {
+        path: 'show_care_center/:id',
+        component: ShowCareCenterComponent,
+        title: 'Admin Panel | Show CareCenter',
+      },
+      {
+        path: 'edit_care_center/:id',
+        component: EditCareCenterComponent,
+        title: 'Admin Panel | Edit CareCenter',
+      },
+      // End Admin(CareCenters) Routing
     ],
   },
 ];
