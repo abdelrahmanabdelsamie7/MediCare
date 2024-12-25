@@ -17,7 +17,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './add-department.component.css',
   providers: [MessageService],
 })
-export class AddDepartmentComponent implements OnInit {
+export class AddDepartmentComponent {
   constructor(
     private _SDepartmentService: SDepartmentService,
     private messageService: MessageService
@@ -38,7 +38,6 @@ export class AddDepartmentComponent implements OnInit {
       Validators.maxLength(255),
     ]),
   });
-  ngOnInit() {}
   addDepartment(addDepartmentForm: FormGroup) {
     this._SDepartmentService.addDepartment(addDepartmentForm.value).subscribe({
       next: (data) => {

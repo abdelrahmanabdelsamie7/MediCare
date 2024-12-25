@@ -1,0 +1,32 @@
+<!-- Start ChainLaboratories Show -->
+<div class="container col-md-6 ">
+  <h5 class="text-center fw-bold my-4 head-title">افرع {{ ChainLaboratories.title }}</h5>
+</div>
+<div class="container">
+  <div class="row">
+    @for (item of LaboratoriesOfChain; track $index) {
+    <div class="col-md-4">
+      <div class="card shadow p-3 border border-0">
+        <div class="card-image">
+          <img [src]="item.image" alt="Image Of Pharmacy" class="w-100">
+        </div>
+        <div class="card-body py-3 text-center">
+          <h6>Title : {{ item.title }}</h6>
+          <hr />
+          <h6>Address : {{ item.address }}</h6>
+          <hr />
+          <h6>Phone : {{ item.phone }}</h6>
+          <hr />
+          @if (item.insurence == 1 ) {
+          <h6>Insurence Avaliable</h6>
+          }@else {
+          <h6>Iinsurence Not Avaliable</h6>
+          }
+        </div>
+      </div>
+    </div>
+    }
+
+  </div>
+</div>
+<!-- End ChainLaboratories Show -->

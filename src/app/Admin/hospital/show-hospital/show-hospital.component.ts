@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { IHospital } from '../../../Core/interfaces/ihospital';
 import { SHospitalService } from '../../../Core/services/s-hospital.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 @Component({
   selector: 'app-show-hospital',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './show-hospital.component.html',
   styleUrl: './show-hospital.component.css',
 })
 export class ShowHospitalComponent {
   id: string = '';
   hospital: IHospital = {} as IHospital;
+  departmentsOfHospital: any[] = [];
   constructor(
     private _SHospitalService: SHospitalService,
     private _ActivatedRoute: ActivatedRoute,
@@ -26,8 +27,9 @@ export class ShowHospitalComponent {
     });
     this._SHospitalService.showHospital(this.id).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.hospital = data.data;
+        this.departmentsOfHospital = data.data.departments;
+        console.log("Ali Maher" , this.departmentsOfHospital);
       },
     });
   }

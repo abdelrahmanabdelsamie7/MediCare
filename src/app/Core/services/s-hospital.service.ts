@@ -44,4 +44,14 @@ export class SHospitalService {
       departmentHospital
     );
   }
+  editDepartmentHospital(
+    department_id: string,
+    hospital_id: string,
+    departmentHospital: IDepartmentHospital
+  ): Observable<IDepartmentHospital> {
+    return this._HttpClient.put<IDepartmentHospital>(
+      `${environment.baseUrl}/Department_Hospital/${department_id}/${hospital_id}`,
+      departmentHospital
+    );
+  }
 }

@@ -17,6 +17,14 @@ import { ShowCareCenterComponent } from './Admin/care_center/show-care-center/sh
 import { EditCareCenterComponent } from './Admin/care_center/edit-care-center/edit-care-center.component';
 import { AddDepartmentHospitalComponent } from './Admin/departmentHospital/add-department-hospital/add-department-hospital.component';
 import { EditDepartmentHospitalComponent } from './Admin/departmentHospital/edit-department-hospital/edit-department-hospital.component';
+import { ListChainPharmaciesComponent } from './Admin/chain-pharmacies/list-chain-pharmacies/list-chain-pharmacies.component';
+import { ShowChainPharmaciesComponent } from './Admin/chain-pharmacies/show-chain-pharmacies/show-chain-pharmacies.component';
+import { AddChainPharmaciesComponent } from './Admin/chain-pharmacies/add-chain-pharmacies/add-chain-pharmacies.component';
+import { EditChainPharmaciesComponent } from './Admin/chain-pharmacies/edit-chain-pharmacies/edit-chain-pharmacies.component';
+import { ListChainLaboratoriesComponent } from './Admin/chain-laboratories/list-chain-laboratories/list-chain-laboratories.component';
+import { AddChainLaboratoriesComponent } from './Admin/chain-laboratories/add-chain-laboratories/add-chain-laboratories.component';
+import { ShowChainLaboratoriesComponent } from './Admin/chain-laboratories/show-chain-laboratories/show-chain-laboratories.component';
+import { EditChainLaboratoriesComponent } from './Admin/chain-laboratories/edit-chain-laboratories/edit-chain-laboratories.component';
 
 export const routes: Routes = [
   { path: '', component: SiteHomeComponent, title: 'MediCare' },
@@ -113,6 +121,52 @@ export const routes: Routes = [
         title: 'Admin Panel | Edit CareCenter',
       },
       // End Admin(CareCenters) Routing
+
+      // Start Admin(Chain Pharmacies) Routing
+      {
+        path: 'chain_pharmacies',
+        component: ListChainPharmaciesComponent,
+        title: 'Admin Panel | Chain Pharmacies',
+      },
+      {
+        path: 'add_chain_pharmacies',
+        component: AddChainPharmaciesComponent,
+        title: 'Admin Panel | Add Chain Pharmacies',
+      },
+      {
+        path: 'show_chain_pharmacies/:id',
+        component: ShowChainPharmaciesComponent,
+        title: 'Admin Panel | Show Chain Pharmacies',
+      },
+      {
+        path: 'edit_chain_pharmacies/:id',
+        component: EditChainPharmaciesComponent,
+        title: 'Admin Panel | Edit Chain Pharmacies',
+      },
+      // End Admin(Chain Pharmacies) Routing
+
+      // Start Admin(Chain Laboratories) Routing
+      {
+        path: 'chain_laboratories',
+        component: ListChainLaboratoriesComponent,
+        title: 'Admin Panel | Chain Laboratories',
+      },
+      {
+        path: 'add_chain_laboratories',
+        component: AddChainLaboratoriesComponent,
+        title: 'Admin Panel | Add Chain Laboratories',
+      },
+      {
+        path: 'show_chain_laboratories/:id',
+        component: ShowChainLaboratoriesComponent,
+        title: 'Admin Panel | Show Chain Laboratories',
+      },
+      {
+        path: 'edit_chain_laboratories/:id',
+        component: EditChainLaboratoriesComponent,
+        title: 'Admin Panel | Edit Chain Laboratories',
+      },
+      // End Admin(Chain Laboratories) Routing
     ],
   },
 ];
