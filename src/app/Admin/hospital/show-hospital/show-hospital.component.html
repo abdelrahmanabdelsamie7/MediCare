@@ -3,7 +3,7 @@
   <div class="row my-4">
     <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
       <div class="card border border-0 shadow p-5">
-        <img [src]="hospital.image" class="w-100" alt="hospital Iamge">
+        <img [src]="hospital.image" class="w-100" alt="hospital Image">
       </div>
     </div>
     <div class="col-md-8 ">
@@ -23,7 +23,6 @@
     </div>
   </div>
   <div class="row">
-
     @for (item of departmentsOfHospital; track $index) {
     <div class="col-md-4">
       <div class="card departmentHospital shadow p-3">
@@ -40,7 +39,6 @@
       </div>
     </div>
     }
-
   </div>
   <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
       class="bi bi-arrow-left fs-6"></i>

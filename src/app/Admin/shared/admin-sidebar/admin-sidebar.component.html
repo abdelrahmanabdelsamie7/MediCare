@@ -2,14 +2,12 @@
 <aside id="sidebar" class="sidebar">
 
   <ul class="sidebar-nav" id="sidebar-nav">
-
     <li class="nav-item">
       <a class="nav-link " routerLink="/admin">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
     </li>
-
     <!--Start  Department -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#department-nav" data-bs-toggle="collapse" href="#">
@@ -87,19 +85,19 @@
         </li>
       </ul>
     </li>
-    <!-- Start Pharmacies لسه معملتش دول ! -->
+    <!-- Start Pharmacies -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#pharmacies-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-capsule"></i><span>Pharmacies</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="pharmacies-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
-          <a routerLink="">
+          <a routerLink="pharmacies">
             <i class="bi bi-circle"></i><span>List Of Pharmacies</span>
           </a>
         </li>
         <li>
-          <a routerLink="">
+          <a routerLink="add_pharmacy">
             <i class="bi bi-circle"></i><span>Add Pharmacy</span>
           </a>
         </li>
@@ -119,6 +117,24 @@
         <li>
           <a routerLink="add_chain_laboratories">
             <i class="bi bi-circle"></i><span>Add Chain Laboratories</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Start Laboratories -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#Laboratories-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-droplet-half"></i><span>Laboratories</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="Laboratories-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a routerLink="laboratories">
+            <i class="bi bi-circle"></i><span>List Laboratories</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="add_laboratory">
+            <i class="bi bi-circle"></i><span>Add Laboratory</span>
           </a>
         </li>
       </ul>

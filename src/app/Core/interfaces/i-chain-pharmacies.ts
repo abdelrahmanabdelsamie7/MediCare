@@ -5,3 +5,4 @@ export interface IChainPharmacies {
   title: string;
   pharmacies: IPharmacy[];
 }
+// interface pharmacies {}

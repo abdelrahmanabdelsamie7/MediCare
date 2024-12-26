@@ -9,7 +9,7 @@ import {
 import { SHospitalService } from '../../../Core/services/s-hospital.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
-import { CustomFormsModule, CustomValidators } from 'ng2-validation';
+import { CustomValidators } from 'ng2-validation';
 @Component({
   selector: 'app-add-hospital',
   standalone: true,
@@ -53,8 +53,6 @@ export class AddHospitalComponent {
       CustomValidators.url,
     ]),
   });
-  ngOnInit() {}
-
   addHospital(addHospitalForm: FormGroup) {
     this._SHospitalService.addHospital(addHospitalForm.value).subscribe({
       next: (data) => {},

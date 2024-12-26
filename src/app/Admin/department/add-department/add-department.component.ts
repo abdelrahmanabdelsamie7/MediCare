@@ -41,12 +41,12 @@ export class AddDepartmentComponent {
   addDepartment(addDepartmentForm: FormGroup) {
     this._SDepartmentService.addDepartment(addDepartmentForm.value).subscribe({
       next: (data) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Department Added Successfully',
+        });
       },
-    });
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Department Added Successfully',
     });
   }
 }
