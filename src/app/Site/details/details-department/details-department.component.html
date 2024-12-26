@@ -1,1 +1,187 @@
-<p>details-department works!</p>
+<app-site-navbar></app-site-navbar>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-center align-items-center flex-column">
+        <div class="my-3" role="group" aria-label="Tabs">
+          <button
+            type="button"
+            class="btn text-light me-3"
+            [ngClass]="{
+              'btn-info': activeTab === 'doctors',
+              'btn-secondary': activeTab !== 'doctors'
+            }"
+            (click)="setActiveTab('doctors')"
+          >
+            Doctors
+          </button>
+          <button
+            type="button"
+            class="btn text-light  me-3"
+            [ngClass]="{
+              'btn-info': activeTab === 'hospitals',
+              'btn-secondary': activeTab !== 'hospitals'
+            }"
+            (click)="setActiveTab('hospitals')"
+          >
+            Hospitals
+          </button>
+          <button
+            type="button"
+            class="btn text-light  me-3"
+            [ngClass]="{
+              'btn-info': activeTab === 'carecenters',
+              'btn-secondary': activeTab !== 'carecenters'
+            }"
+            (click)="setActiveTab('carecenters')"
+          >
+            Care Centers
+          </button>
+        </div>
+        @if(activeTab === 'doctors'){
+        <div class="tab-content pt-2 ">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card me-3" style="width: 18rem">
+                <img
+                  src="hero1.jpg"
+                  class="card-img-top"
+                  alt="Doctor Image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Doctor Name</h5>
+                  <p class="card-text">Details about the doctor.</p>
+                  <a href="#" class="btn btn-info text-light">More Info</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card me-3" style="width: 18rem">
+                <img
+                  src="hero1.jpg"
+                  class="card-img-top"
+                  alt="Doctor Image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Doctor Name</h5>
+                  <p class="card-text">Details about the doctor.</p>
+                  <a href="#" class="btn btn-info text-light">More Info</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card me-3" style="width: 18rem">
+                <img
+                  src="hero1.jpg"
+                  class="card-img-top"
+                  alt="Doctor Image"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Doctor Name</h5>
+                  <p class="card-text">Details about the doctor.</p>
+                  <a href="#" class="btn btn-info text-light">More Info</a>
+                </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        } @if (activeTab === 'hospitals') {
+          <div class="tab-content pt-2 ">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card me-3" style="width: 18rem">
+                  <img
+                    src="hero1.jpg"
+                    class="card-img-top"
+                    alt="hospitals Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">hospitals Name</h5>
+                    <p class="card-text">Details about the hospitals.</p>
+                    <a href="#" class="btn btn-info text-light">More Info</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card me-3" style="width: 18rem">
+                  <img
+                    src="hero1.jpg"
+                    class="card-img-top"
+                    alt="hospitals Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">hospitals Name</h5>
+                    <p class="card-text">Details about the hospitals.</p>
+                    <a href="#" class="btn btn-info text-light">More Info</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card me-3" style="width: 18rem">
+                  <img
+                    src="hero1.jpg"
+                    class="card-img-top"
+                    alt="hospitals Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">hospitals Name</h5>
+                    <p class="card-text">Details about the hospitals.</p>
+                    <a href="#" class="btn btn-info text-light">More Info</a>
+                  </div>
+                </div>
+              </div>
+             </div>
+               </div>
+        } @if (activeTab === 'carecenters') {
+          <div class="tab-content pt-2 ">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card me-3" style="width: 18rem">
+                  <img
+                    src="hero1.jpg"
+                    class="card-img-top"
+                    alt="carecenters Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">carecenters Name</h5>
+                    <p class="card-text">Details about the carecenters.</p>
+                    <a href="#" class="btn btn-info text-light">More Info</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card me-3" style="width: 18rem">
+                  <img
+                    src="hero1.jpg"
+                    class="card-img-top"
+                    alt="carecenters Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">carecenters Name</h5>
+                    <p class="card-text">Details about the carecenters.</p>
+                    <a href="#" class="btn btn-info text-light">More Info</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card me-3" style="width: 18rem">
+                  <img
+                    src="hero1.jpg"
+                    class="card-img-top"
+                    alt="Doctor Image"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">carecenters Name</h5>
+                    <p class="card-text">Details about the carecenters.</p>
+                    <a href="#" class="btn btn-info text-light">More Info</a>
+                  </div>
+                </div>
+              </div>
+             </div>
+               </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<app-site-footer>

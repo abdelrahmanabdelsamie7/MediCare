@@ -25,9 +25,11 @@ import { ListChainLaboratoriesComponent } from './Admin/chain-laboratories/list-
 import { AddChainLaboratoriesComponent } from './Admin/chain-laboratories/add-chain-laboratories/add-chain-laboratories.component';
 import { ShowChainLaboratoriesComponent } from './Admin/chain-laboratories/show-chain-laboratories/show-chain-laboratories.component';
 import { EditChainLaboratoriesComponent } from './Admin/chain-laboratories/edit-chain-laboratories/edit-chain-laboratories.component';
+import { DetailsDepartmentComponent } from './Site/details/details-department/details-department.component';
 
 export const routes: Routes = [
-  { path: '', component: SiteHomeComponent, title: 'MediCare' },
+  { path: '', component: SiteHomeComponent, title: 'MediCare'},
+  { path: 'department/detail-department', component: DetailsDepartmentComponent },
   {
     path: 'Login',
     component: SiteLoginComponent,

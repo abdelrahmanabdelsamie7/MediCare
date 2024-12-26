@@ -3,11 +3,11 @@ import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-section-departments',
   standalone: true,
-  imports: [
+  imports: [ RouterLink,
     CarouselModule,
     ButtonModule,
     TagModule,
