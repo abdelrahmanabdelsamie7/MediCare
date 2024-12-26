@@ -25,7 +25,18 @@ import { ListChainLaboratoriesComponent } from './Admin/chain-laboratories/list-
 import { AddChainLaboratoriesComponent } from './Admin/chain-laboratories/add-chain-laboratories/add-chain-laboratories.component';
 import { ShowChainLaboratoriesComponent } from './Admin/chain-laboratories/show-chain-laboratories/show-chain-laboratories.component';
 import { EditChainLaboratoriesComponent } from './Admin/chain-laboratories/edit-chain-laboratories/edit-chain-laboratories.component';
+<<<<<<< HEAD
 import { DetailsDepartmentComponent } from './Site/details/details-department/details-department.component';
+=======
+import { ListPharmaciesComponent } from './Admin/pharmacy/list-pharmacies/list-pharmacies.component';
+import { AddPharmacyComponent } from './Admin/pharmacy/add-pharmacy/add-pharmacy.component';
+import { ShowPharmacyComponent } from './Admin/pharmacy/show-pharmacy/show-pharmacy.component';
+import { EditPharmacyComponent } from './Admin/pharmacy/edit-pharmacy/edit-pharmacy.component';
+import { ListLaboratoriesComponent } from './Admin/laboratory/list-laboratories/list-laboratories.component';
+import { AddLaboratoryComponent } from './Admin/laboratory/add-laboratory/add-laboratory.component';
+import { ShowLaboratoryComponent } from './Admin/laboratory/show-laboratory/show-laboratory.component';
+import { EditLaboratoryComponent } from './Admin/laboratory/edit-laboratory/edit-laboratory.component';
+>>>>>>> dbc1d40bf479eb16dfe5b614688549a8d79dc911
 
 export const routes: Routes = [
   { path: '', component: SiteHomeComponent, title: 'MediCare'},
@@ -99,8 +110,7 @@ export const routes: Routes = [
         component: EditDepartmentHospitalComponent,
         title: 'Admin Panel | Edit Department Hospital ',
       },
-      // End Admin(Departments) Routing
-
+      // End Admin(Hospitals) Routing
       // Start Admin(CareCenters) Routing
       {
         path: 'care_centers',
@@ -146,7 +156,28 @@ export const routes: Routes = [
         title: 'Admin Panel | Edit Chain Pharmacies',
       },
       // End Admin(Chain Pharmacies) Routing
-
+      // Start Admin(Pharmacies) Routing
+      {
+        path: 'pharmacies',
+        component: ListPharmaciesComponent,
+        title: 'Admin Panel | Pharmacies',
+      },
+      {
+        path: 'add_pharmacy',
+        component: AddPharmacyComponent,
+        title: 'Admin Panel | Add Pharmacy',
+      },
+      {
+        path: 'show_pharmacy/:id',
+        component: ShowPharmacyComponent,
+        title: 'Admin Panel | Show Pharmacy',
+      },
+      {
+        path: 'edit_pharmacy/:id',
+        component: EditPharmacyComponent,
+        title: 'Admin Panel | Edit Pharmacy',
+      },
+      // End Admin(Pharmacies) Routing
       // Start Admin(Chain Laboratories) Routing
       {
         path: 'chain_laboratories',
@@ -169,6 +200,28 @@ export const routes: Routes = [
         title: 'Admin Panel | Edit Chain Laboratories',
       },
       // End Admin(Chain Laboratories) Routing
+      // Start Admin(Laboratories) Routing
+      {
+        path: 'laboratories',
+        component: ListLaboratoriesComponent,
+        title: 'Admin Panel | Laboratories',
+      },
+      {
+        path: 'add_laboratory',
+        component: AddLaboratoryComponent,
+        title: 'Admin Panel | Add Laboratory',
+      },
+      {
+        path: 'show_laboratory/:id',
+        component: ShowLaboratoryComponent,
+        title: 'Admin Panel | Show Laboratory',
+      },
+      {
+        path: 'edit_laboratory/:id',
+        component: EditLaboratoryComponent,
+        title: 'Admin Panel | Edit Laboratory',
+      },
+      // End Admin(Pharmacies) Routing
     ],
   },
 ];

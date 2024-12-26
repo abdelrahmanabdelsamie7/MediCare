@@ -10,7 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 @Component({
   selector: 'app-edit-care-center',
@@ -27,7 +27,6 @@ export class EditCareCenterComponent {
     private _SCareCenterService: SCareCenterService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
   ) {}
   editCareCenterForm = new FormGroup({
     title: new FormControl('', [
@@ -95,8 +94,5 @@ export class EditCareCenterComponent {
           });
         },
       });
-  }
-  back() {
-    this._Location.back();
   }
 }

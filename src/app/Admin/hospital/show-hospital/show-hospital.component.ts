@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IHospital } from '../../../Core/interfaces/ihospital';
 import { SHospitalService } from '../../../Core/services/s-hospital.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { CommonModule, Location } from '@angular/common';
   templateUrl: './show-hospital.component.html',
   styleUrl: './show-hospital.component.css',
 })
-export class ShowHospitalComponent {
+export class ShowHospitalComponent implements OnInit {
   id: string = '';
   hospital: IHospital = {} as IHospital;
   departmentsOfHospital: any[] = [];
@@ -29,7 +29,6 @@ export class ShowHospitalComponent {
       next: (data: any) => {
         this.hospital = data.data;
         this.departmentsOfHospital = data.data.departments;
-        console.log("Ali Maher" , this.departmentsOfHospital);
       },
     });
   }
