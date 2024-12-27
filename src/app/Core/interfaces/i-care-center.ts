@@ -1,3 +1,5 @@
+import { IDepartmentCareCenter } from './i-department-care-center';
+
 export interface ICareCenter {
   id: string;
   title: string;
@@ -6,4 +8,5 @@ export interface ICareCenter {
   phone: string;
   address: string;
   locationUrl: string;
+  pivot: IDepartmentCareCenter;
 }

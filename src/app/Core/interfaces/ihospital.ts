@@ -1,3 +1,5 @@
+import { IDepartmentHospital } from './i-department-hospital';
+
 export interface IHospital {
   id: string;
   title: string;
@@ -6,4 +8,5 @@ export interface IHospital {
   phone: string;
   address: string;
   locationUrl: string;
+  pivot: IDepartmentHospital;
 }

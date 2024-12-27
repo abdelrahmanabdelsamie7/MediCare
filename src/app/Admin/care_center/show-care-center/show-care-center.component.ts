@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
 import { ICareCenter } from '../../../Core/interfaces/i-care-center';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 
 @Component({
   selector: 'app-show-care-center',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './show-care-center.component.html',
   styleUrl: './show-care-center.component.css',
 })
 export class ShowCareCenterComponent {
   id: string = '';
   careCenter: ICareCenter = {} as ICareCenter;
+  departmentsOfCareCenter: any[] = [];
   constructor(
     private _SCareCenterService: SCareCenterService,
     private _ActivatedRoute: ActivatedRoute,
@@ -29,6 +30,7 @@ export class ShowCareCenterComponent {
       next: (data: any) => {
         console.log(data);
         this.careCenter = data.data;
+        this.departmentsOfCareCenter = data.data.departments;
       },
     });
   }

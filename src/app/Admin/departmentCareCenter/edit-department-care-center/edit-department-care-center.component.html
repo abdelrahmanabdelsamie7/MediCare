@@ -1,0 +1,49 @@
+<!-- Edit Department CareCenter Info -->
+<div class="pagetitle">
+  <h1>Edit Department Care Center Info </h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
+      <li class="breadcrumb-item">Edit</li>
+    </ol>
+  </nav>
+</div>
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <p-toast />
+      <div class="card p-4">
+        <div class="card-body">
+          <form class="row" [formGroup]="editDepartmentCareCenterForm"
+            (ngSubmit)="editDepartmentCareCenter(editDepartmentCareCenterForm)">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="app_price">Appointment Price</label>
+                <input type="number" id="app_price" name="app_price" formControlName="app_price" class=" form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="start_at">Start At</label>
+                <input type="datetime-local" id="start_at" name="start_at" formControlName="start_at"
+                  class=" form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="end_at">End At</label>
+                <input type="datetime-local" id="end_at" name="end_at" formControlName="end_at" class=" form-control">
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary my-2"
+                [disabled]="editDepartmentCareCenterForm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-inline-block">
+    <button (click)="back()" class="btn btn-outline-primary me-auto d-flex align-items-center"> <i
+        class="bi bi-arrow-left fs-6"></i>
+      Back</button>
+  </div>
+</section>
+<!-- End Edit Department CareCenter Infot -->

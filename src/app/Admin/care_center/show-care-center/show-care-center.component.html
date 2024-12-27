@@ -20,11 +20,31 @@
               class="bi bi-geo-alt text-warning"></i></a></h5>
       </div>
     </div>
-    <div class="d-inline-block">
-      <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
-          class="bi bi-arrow-left fs-6"></i>
-        Back</button>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    @for (item of departmentsOfCareCenter; track $index) {
+    <div class="col-md-4">
+      <div class="card departmentCareCenter shadow p-3">
+        <a class="btn btn-light btn-update"
+          routerLink="/admin/edit_department_care_center/{{ item.pivot.department_id }}/{{ item.pivot.care_center_id }}"><i
+            class="bi bi-pen"></i></a>
+        <h6>Department : {{ item.title }}</h6>
+        <hr>
+        <h6>Appointment Price : {{ item.pivot.app_price }} </h6>
+        <hr>
+        <h6>Start At : {{ item.pivot.start_at | date:'short'}}</h6>
+        <hr>
+        <h6>End At : {{ item.pivot.end_at | date:'short'}}</h6>
+      </div>
     </div>
+    }
+  </div>
+  <div class="d-inline-block">
+    <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
+        class="bi bi-arrow-left fs-6"></i>
+      Back</button>
   </div>
 </div>
 <!-- End Care Center Show -->

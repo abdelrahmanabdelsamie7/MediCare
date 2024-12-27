@@ -1,0 +1,8 @@
+.departmentCareCenter {
+  position: relative;
+}
+.departmentCareCenter .btn-update {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

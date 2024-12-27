@@ -55,12 +55,13 @@ export class AddCareCenterComponent {
   });
   addCareCenter(addCareCenterForm: FormGroup) {
     this._SCareCenterService.addCareCenter(addCareCenterForm.value).subscribe({
-      next: (data) => {},
-    });
-    this.messageService.add({
+      next: (data) => { 
+        this.messageService.add({
       severity: 'success',
       summary: 'Success',
-      detail: 'Hospital Added Successfully',
+      detail: 'Care Center Added Successfully',
+    });},
     });
+   
   }
 }

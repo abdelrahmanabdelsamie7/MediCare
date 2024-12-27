@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { ICareCenter } from '../interfaces/i-care-center';
+import { IDepartmentCareCenter } from '../interfaces/i-department-care-center';
 @Injectable({
   providedIn: 'root',
 })
@@ -33,6 +34,24 @@ export class SCareCenterService {
   deleteCareCenter(id: string): Observable<ICareCenter> {
     return this._HttpClient.delete<ICareCenter>(
       `${environment.baseUrl}/CareCenters/${id}`
+    );
+  }
+  addDepartmentCareCenter(
+    departmentCareCenetr: IDepartmentCareCenter
+  ): Observable<IDepartmentCareCenter> {
+    return this._HttpClient.post<IDepartmentCareCenter>(
+      `${environment.baseUrl}/CareCenter_Department`,
+      departmentCareCenetr
+    );
+  }
+  editDepartmentCareCenter(
+    department_id: string,
+    care_center_id: string,
+    departmentCareCenter: IDepartmentCareCenter
+  ): Observable<IDepartmentCareCenter> {
+    return this._HttpClient.put<IDepartmentCareCenter>(
+      `${environment.baseUrl}/CareCenter_Department/${department_id}/${care_center_id}`,
+      departmentCareCenter
     );
   }
 }

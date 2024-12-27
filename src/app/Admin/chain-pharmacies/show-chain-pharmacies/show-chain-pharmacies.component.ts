@@ -36,7 +36,7 @@ export class ShowChainPharmaciesComponent implements OnDestroy {
           console.log(data);
           this.ChainPharmacies = data.data;
           this.PharmaciesOfChain = this.ChainPharmacies.pharmacies;
-          console.log(this.PharmaciesOfChain);
+          console.log( 'sayed', this.ChainPharmacies);
         },
       });
   }

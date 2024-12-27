@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-section-laboratories',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './section-laboratories.component.html',
-  styleUrl: './section-laboratories.component.css'
+  styleUrl: './section-laboratories.component.css',
 })
-export class SectionLaboratoriesComponent {
-
-}
+export class SectionLaboratoriesComponent {}

@@ -1,3 +1,4 @@
+import { AllPharmaciesComponent } from './Site/components/all-pharmacies/all-pharmacies.component';
 import { Routes } from '@angular/router';
 import { SiteHomeComponent } from './Site/home/site-home/site-home.component';
 import { SiteLoginComponent } from './Site/auth/site-login/site-login.component';
@@ -25,9 +26,7 @@ import { ListChainLaboratoriesComponent } from './Admin/chain-laboratories/list-
 import { AddChainLaboratoriesComponent } from './Admin/chain-laboratories/add-chain-laboratories/add-chain-laboratories.component';
 import { ShowChainLaboratoriesComponent } from './Admin/chain-laboratories/show-chain-laboratories/show-chain-laboratories.component';
 import { EditChainLaboratoriesComponent } from './Admin/chain-laboratories/edit-chain-laboratories/edit-chain-laboratories.component';
-<<<<<<< HEAD
 import { DetailsDepartmentComponent } from './Site/details/details-department/details-department.component';
-=======
 import { ListPharmaciesComponent } from './Admin/pharmacy/list-pharmacies/list-pharmacies.component';
 import { AddPharmacyComponent } from './Admin/pharmacy/add-pharmacy/add-pharmacy.component';
 import { ShowPharmacyComponent } from './Admin/pharmacy/show-pharmacy/show-pharmacy.component';
@@ -36,22 +35,44 @@ import { ListLaboratoriesComponent } from './Admin/laboratory/list-laboratories/
 import { AddLaboratoryComponent } from './Admin/laboratory/add-laboratory/add-laboratory.component';
 import { ShowLaboratoryComponent } from './Admin/laboratory/show-laboratory/show-laboratory.component';
 import { EditLaboratoryComponent } from './Admin/laboratory/edit-laboratory/edit-laboratory.component';
->>>>>>> dbc1d40bf479eb16dfe5b614688549a8d79dc911
+import { AddDepartmentCareCenterComponent } from './Admin/departmentCareCenter/add-department-care-center/add-department-care-center.component';
+import { EditDepartmentCareCenterComponent } from './Admin/departmentCareCenter/edit-department-care-center/edit-department-care-center.component';
+import { AllLaboratoriesComponent } from './Site/components/all-laboratories/all-laboratories.component';
 
 export const routes: Routes = [
-  { path: '', component: SiteHomeComponent, title: 'MediCare'},
-  { path: 'department/detail-department', component: DetailsDepartmentComponent },
-  {
-    path: 'Login',
-    component: SiteLoginComponent,
-    title: 'MediCare | مرحبا بعودتك',
-  },
+  // USer Register
   {
     path: 'Register',
     component: SiteRegisterComponent,
     title: 'MediCare | انضم إالينا',
   },
-  // Path اي كلام بس لل Admin ! ..
+  // User Login
+  {
+    path: 'Login',
+    component: SiteLoginComponent,
+    title: 'MediCare | مرحبا بعودتك',
+  },
+  // Home Page
+  { path: '', component: SiteHomeComponent, title: 'MediCare | Home' },
+  // Department Contains 'Doctors | Hospitals | Care Centers'
+  {
+    path: 'department/:id',
+    component: DetailsDepartmentComponent,
+    title: 'MediCare | Department',
+  },
+  // All Pharmacies
+  {
+    path: 'pharmacies',
+    component: AllPharmaciesComponent,
+    title: 'MediCare | Pharmacies',
+  },
+    // All Laboratories
+  {
+    path: 'laboratories',
+    component: AllLaboratoriesComponent,
+    title: 'MediCare | Laboratories',
+  },
+  //Admin Panel
   {
     path: 'admin',
     component: AdminDashboardComponent,
@@ -131,6 +152,16 @@ export const routes: Routes = [
         path: 'edit_care_center/:id',
         component: EditCareCenterComponent,
         title: 'Admin Panel | Edit CareCenter',
+      },
+      {
+        path: 'add_department_care_center',
+        component: AddDepartmentCareCenterComponent,
+        title: 'Admin Panel | Add Department Care Center ',
+      },
+      {
+        path: 'edit_department_care_center/:department_id/:care_center_id',
+        component: EditDepartmentCareCenterComponent,
+        title: 'Admin Panel | Edit Department Care Center',
       },
       // End Admin(CareCenters) Routing
 
