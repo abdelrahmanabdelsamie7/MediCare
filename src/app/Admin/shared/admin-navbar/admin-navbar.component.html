@@ -8,6 +8,30 @@
   </div>
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
+      <!-- Add Doctor  -->
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" title="Doctor" data-bs-toggle="dropdown">
+          <i class="fas fa-user-md"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow doctors">
+          <li class="doctor-item">
+            <a routerLink="doctors"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">List All
+                Doctors
+              </span></a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="doctor-item">
+            <a routerLink="add_doctor"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">Add New
+                Doctor</span></a>
+          </li>
+
+
+        </ul>
+
+      </li>
+      <!-- Admin Profile -->
       <li class="nav-item dropdown pe-3">
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
           <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
@@ -35,7 +59,6 @@
 
         </ul>
       </li>
-
     </ul>
   </nav>
 </header><!-- End Header -->

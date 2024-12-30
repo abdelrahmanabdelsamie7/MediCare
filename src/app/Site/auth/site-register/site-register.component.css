@@ -1,7 +1,4 @@
-label {
-  color: #0dcaf0;
-  font-weight: 600;
-}
+
 .form-control,
 button {
   border-radius: 25px;
@@ -11,4 +8,15 @@ button {
 }
 section {
   direction: rtl;
+}
+#form-floating {
+  direction: rtl !important;
+  position: relative;
+}
+label {
+  color: #0dcaf0;
+  font-weight: 600;
+  direction: rtl !important;
+  position: absolute ;
+  right: 0;
 }

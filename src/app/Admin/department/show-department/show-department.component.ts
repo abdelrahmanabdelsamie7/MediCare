@@ -3,7 +3,6 @@ import { SDepartmentService } from '../../../Core/services/s-department.service'
 import { ActivatedRoute } from '@angular/router';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Location } from '@angular/common';
-
 @Component({
   selector: 'app-show-department',
   standalone: true,

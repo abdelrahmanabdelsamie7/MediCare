@@ -1,53 +1,55 @@
-import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
-import { IDoctor } from '../../../Core/interfaces/i-doctor';
+import { ISpecialization } from '../../../Core/interfaces/i-specialization';
 import { Subject, takeUntil } from 'rxjs';
-import { SDoctorService } from '../../../Core/services/s-doctor.service';
+import { SSpeicalizationService } from '../../../Core/services/s-speicalization.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { RouterModule } from '@angular/router';
 @Component({
-  selector: 'app-list-doctors',
+  selector: 'app-list-specializations',
   standalone: true,
-  imports: [RouterModule, Toast],
-  templateUrl: './list-doctors.component.html',
-  styleUrl: './list-doctors.component.css',
+  imports: [Toast , RouterModule],
+  templateUrl: './list-specializations.component.html',
+  styleUrl: './list-specializations.component.css',
   providers: [MessageService],
 })
-export class ListDoctorsComponent {
-  Doctors: IDoctor[] = [];
+export class ListSpecializationsComponent {
+  Specializations: ISpecialization[] = [];
   private destroy$ = new Subject<void>();
   constructor(
-    private _SDoctorservice: SDoctorService,
+    private _SSpeicalizationService: SSpeicalizationService,
     private _MessageService: MessageService
   ) {}
   ngOnInit() {
-    this.getDoctors();
+    this.getSpecializations();
   }
-  getDoctors() {
-    this._SDoctorservice
-      .getDoctors()
+  getSpecializations() {
+    this._SSpeicalizationService
+      .getSpecializations()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
           console.log(data);
-          this.Doctors = data.data;
+          this.Specializations = data.data;
         },
         error: (err) => {
           console.error(err);
         },
       });
   }
-  removeDoctor(id: string) {
-    this._SDoctorservice
-      .deleteDoctor(id)
+  deleteSpecialization(id: string) {
+    this._SSpeicalizationService
+      .deleteSpecialization(id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: () => {
-          this.Doctors = this.Doctors.filter((obj: IDoctor) => obj.id !== id);
+          this.Specializations = this.Specializations.filter(
+            (obj: ISpecialization) => obj.id !== id
+          );
           this._MessageService.add({
             severity: 'success',
             summary: 'Success',
-            detail: 'Doctor Removed Successfully',
+            detail: 'Specialization Deleted Successfully',
           });
         },
         error: (err) => {
@@ -55,7 +57,7 @@ export class ListDoctorsComponent {
           this._MessageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Failed to delete Doctor',
+            detail: 'Failed to delete Specialization',
           });
         },
       });

@@ -1,0 +1,20 @@
+.header-nav .doctors {
+  inset: 8px -15px auto auto !important;
+}
+.header-nav .doctors .doctor-item {
+  padding: 15px 10px;
+  transition: 0.3s;
+}
+.header-nav .doctors .doctor-item a {
+  display: flex;
+}
+.header-nav .doctors .doctor-item a span {
+  transition: all 0.4s;
+}
+.header-nav .doctors .doctor-item a span:hover {
+  background-color: #f6f9ff !important;
+  color: var(--main-color) !important;
+}
+.toggle-sidebar-btn {
+  cursor: pointer;
+}

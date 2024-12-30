@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-8">
         <h4 class="text-secondary pb-1">سجل <span class="text-info">الان</span>:</h4>
-        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" dir="rtl">
           <div class="form-floating mb-3">
             <input [ngClass]="{
               'is-valid': !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty) ,
@@ -45,6 +45,62 @@
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
+              'is-valid': !registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty) ,
+              'is-invalid':registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)
+            }" type="tel" class="form-control" id="floatingPhone" placeholder="Phone" formControlName="phone">
+            @if (registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched ||
+            registerForm.get('phone')?.dirty) ) {
+            <div class="alert alert-danger w-50 mx-auto rounded-4">
+              @if (registerForm.get('phone')?.getError('required') ) {
+              <p class="m-0">الهاتف مطلوب</p>
+              }
+              @if (registerForm.get('phone')?.getError('pattern')) {
+              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
+              }
+            </div>
+            }
+            <label for="floatingPhone">رقم الهاتف</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+                          'is-valid': !registerForm.get('address')?.errors && (registerForm.get('address')?.touched || registerForm.get('address')?.dirty) ,
+                          'is-invalid':registerForm.get('address')?.errors && (registerForm.get('address')?.touched || registerForm.get('address')?.dirty)
+                        }" type="text" class="form-control" id="floatingaddress" placeholder="address"
+              formControlName="address">
+            @if (registerForm.get('address')?.errors && (registerForm.get('address')?.touched ||
+            registerForm.get('address')?.dirty) ) {
+            <div class="alert alert-danger w-50 mx-auto rounded-4">
+              @if (registerForm.get('address')?.getError('required') ) {
+              <p class="m-0">الهاتف مطلوب</p>
+              }
+              @if (registerForm.get('address')?.getError('pattern')) {
+              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
+              }
+            </div>
+            }
+            <label for="floatingaddress"> العنوان</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
+                                    'is-valid': !registerForm.get('bithdate')?.errors && (registerForm.get('bithdate')?.touched || registerForm.get('bithdate')?.dirty) ,
+                                    'is-invalid':registerForm.get('bithdate')?.errors && (registerForm.get('bithdate')?.touched || registerForm.get('bithdate')?.dirty)
+                                  }" type="text" class="form-control" id="floatingbithdate" placeholder="bithdate"
+              formControlName="bithdate">
+            @if (registerForm.get('bithdate')?.errors && (registerForm.get('bithdate')?.touched ||
+            registerForm.get('bithdate')?.dirty) ) {
+            <div class="alert alert-danger w-50 mx-auto rounded-4">
+              @if (registerForm.get('bithdate')?.getError('required') ) {
+              <p class="m-0">الهاتف مطلوب</p>
+              }
+              @if (registerForm.get('bithdate')?.getError('pattern')) {
+              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
+              }
+            </div>
+            }
+            <label for="floatingbithdate">تاريخ الميلاد</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
               'is-valid': !registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty) ,
               'is-invalid': registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)
             }" type="password" class="form-control" id="floatingPassword" placeholder="Password"
@@ -76,24 +132,7 @@
             }
             <label for="floatingRepassword">تأكيد كلمة المرور</label>
           </div>
-          <div class="form-floating mb-3">
-            <input [ngClass]="{
-              'is-valid': !registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty) ,
-              'is-invalid':registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)
-            }" type="tel" class="form-control" id="floatingPhone" placeholder="Phone" formControlName="phone">
-            @if (registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched ||
-            registerForm.get('phone')?.dirty) ) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
-              @if (registerForm.get('phone')?.getError('required') ) {
-              <p class="m-0">الهاتف مطلوب</p>
-              }
-              @if (registerForm.get('phone')?.getError('pattern')) {
-              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
-              }
-            </div>
-            }
-            <label for="floatingPhone">رقم الهاتف</label>
-          </div>
+
           <button [disabled]="registerForm.invalid" type="submit" class="btn btn-info text-white w-100">انشاء
             حساب</button>
         </form>

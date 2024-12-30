@@ -38,6 +38,15 @@ import { EditLaboratoryComponent } from './Admin/laboratory/edit-laboratory/edit
 import { AddDepartmentCareCenterComponent } from './Admin/departmentCareCenter/add-department-care-center/add-department-care-center.component';
 import { EditDepartmentCareCenterComponent } from './Admin/departmentCareCenter/edit-department-care-center/edit-department-care-center.component';
 import { AllLaboratoriesComponent } from './Site/components/all-laboratories/all-laboratories.component';
+import { ListDoctorsComponent } from './Admin/doctor/list-doctors/list-doctors.component';
+import { AddDoctorComponent } from './Admin/doctor/add-doctor/add-doctor.component';
+import { ShowDoctorComponent } from './Admin/doctor/show-doctor/show-doctor.component';
+import { EditDoctorComponent } from './Admin/doctor/edit-doctor/edit-doctor.component';
+import { ListSpecializationsComponent } from './Admin/specialization/list-specializations/list-specializations.component';
+import { AddSpecializationComponent } from './Admin/specialization/add-specialization/add-specialization.component';
+import { ShowSpecializationComponent } from './Admin/specialization/show-specialization/show-specialization.component';
+import { EditSpecializationComponent } from './Admin/specialization/edit-specialization/edit-specialization.component';
+import { AddSpecializationDoctorComponent } from './Admin/specialization/add-specialization-doctor/add-specialization-doctor.component';
 
 export const routes: Routes = [
   // USer Register
@@ -66,7 +75,7 @@ export const routes: Routes = [
     component: AllPharmaciesComponent,
     title: 'MediCare | Pharmacies',
   },
-    // All Laboratories
+  // All Laboratories
   {
     path: 'laboratories',
     component: AllLaboratoriesComponent,
@@ -253,6 +262,57 @@ export const routes: Routes = [
         title: 'Admin Panel | Edit Laboratory',
       },
       // End Admin(Pharmacies) Routing
+
+      // Start Admin(Doctors) Routing
+      {
+        path: 'doctors',
+        component: ListDoctorsComponent,
+        title: 'Admin Panel | Doctors',
+      },
+      {
+        path: 'add_doctor',
+        component: AddDoctorComponent,
+        title: 'Admin Panel | Add Doctor',
+      },
+      {
+        path: 'show_doctor/:id',
+        component: ShowDoctorComponent,
+        title: 'Admin Panel | Show Doctor',
+      },
+      {
+        path: 'edit_doctor/:id',
+        component: EditDoctorComponent,
+        title: 'Admin Panel | Edit Doctor',
+      },
+      // End Admin(Doctors) Routing
+
+      // Start Admin(Specializations) Routing
+      {
+        path: 'specializations',
+        component: ListSpecializationsComponent,
+        title: 'Admin Panel | Specializations',
+      },
+      {
+        path: 'add_specialization',
+        component: AddSpecializationComponent,
+        title: 'Admin Panel | Add Specialization',
+      },
+      {
+        path: 'show_specialization/:id',
+        component: ShowSpecializationComponent,
+        title: 'Admin Panel | Show Specialization',
+      },
+      {
+        path: 'edit_specialization/:id',
+        component: EditSpecializationComponent,
+        title: 'Admin Panel | Edit Specialization',
+      },
+      {
+        path: 'add_specialization_doctor',
+        component: AddSpecializationDoctorComponent,
+        title: 'Admin Panel | Add Specialization To Doctor',
+      },
+      // End Admin(specializations) Routing
     ],
   },
 ];

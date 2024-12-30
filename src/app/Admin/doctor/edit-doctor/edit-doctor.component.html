@@ -1,1 +1,139 @@
-<p>edit-doctor works!</p>
+<!-- Satrt Editing Doctor Info -->
+<div class="pagetitle">
+  <h1>Update Doctor Info </h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
+      <li class="breadcrumb-item">Update</li>
+    </ol>
+  </nav>
+</div>
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <p-toast />
+      <div class="card p-4">
+        <div class="card-body">
+          <form class="row" [formGroup]="editDoctorForm" (ngSubmit)="editDoctor(editDoctorForm)">
+            <div class="row">
+              <!-- FirstName -->
+              <div class="col-md-6">
+                <label for="fName" class="form-label">First Name</label>
+                <input type="text" formControlName="fName"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.fName.touched && editDoctorForm.controls.fName.errors) }"
+                  class="form-control" id="fName">
+              </div>
+              <!-- LastName -->
+              <div class="col-md-6">
+                <label for="lName" class="form-label">Last Name</label>
+                <input type="text" formControlName="lName"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.lName.touched && editDoctorForm.controls.lName.errors) }"
+                  class="form-control" id="lName">
+              </div>
+            </div>
+            <div class="row">
+              <!-- Password -->
+              <div class="col-md-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" formControlName="password"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.password.touched && editDoctorForm.controls.password.errors) }"
+                  class="form-control" class="form-control" id="password">
+              </div>
+              <!-- Title -->
+              <div class="col-md-4">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" formControlName="title"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.title.touched && editDoctorForm.controls.title.errors) }"
+                  class="form-control" id="title">
+              </div>
+              <!-- Image -->
+              <div class="col-md-4">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" formControlName="image"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.image.touched && editDoctorForm.controls.image.errors) }"
+                  class="form-control" class="form-control" id="image">
+              </div>
+            </div>
+            <div class="row">
+              <!-- Phone -->
+              <div class="col-md-4">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" formControlName="phone"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.phone.touched && editDoctorForm.controls.phone.errors) }"
+                  class="form-control" class="form-control" id="phone">
+              </div>
+              <!-- App Price -->
+              <div class="col-md-4">
+                <label for="app_price" class="form-label">Appointment Price</label>
+                <input type="number" formControlName="app_price"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.app_price.touched && editDoctorForm.controls.app_price.errors) }"
+                  class="form-control" class="form-control" id="app_price">
+              </div>
+              <!-- Belongs To Department -->
+              <div class="col-md-4">
+                <label for="department_id" class="form-label">Belong To Department</label>
+                <select name="department_id" formControlName="department_id" [ngClass]="{
+                                'is-invalid': (editDoctorForm.controls.department_id.touched &&
+                                editDoctorForm.controls.department_id.errors)
+                              }" id="department_id" class="form-control">
+                  @for (item of Departments; track $index) {
+                  @if (item.id == Doctor.department_id.toString() ) {
+                  <option selected disabled> {{ item.title }}</option>
+                  }@else {
+                  <option [value]="item.id">
+                    {{ item.title }}
+                  </option>
+                  }
+                  }
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="whatsappLink" class="form-label">Whatsapp Link</label>
+                <input type="url" formControlName="whatsappLink"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.whatsappLink.touched && editDoctorForm.controls.whatsappLink.errors) }"
+                  class="form-control" class="form-control" id="whatsappLink">
+              </div>
+              <div class="col-md-4">
+                <label for="facebookLink" class="form-label">Facebook Link</label>
+                <input type="url" formControlName="facebookLink"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.facebookLink.touched && editDoctorForm.controls.facebookLink.errors) }"
+                  class="form-control" class="form-control" id="facebookLink">
+              </div>
+              <div class="col-md-4">
+                <label for="homeOption" class="form-label">Home Visit</label>
+                <select name="homeOption" formControlName="homeOption"
+                  [ngClass]="{'is-invalid':(editDoctorForm.controls.homeOption.touched && editDoctorForm.controls.homeOption.errors) }"
+                  id="homeOption" class="form-control">
+                  <option value="1">Avaliable</option>
+                  <option value="0">Not Avaliable</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <!-- Info About Doctor -->
+              <div class="col-md-12">
+                <label for="infoAboutDoctor" class="form-label">Info About Doctor</label>
+                <textarea name="infoAboutDoctor" formControlName="infoAboutDoctor" [ngClass]="{
+                  'is-invalid': (editDoctorForm.controls.infoAboutDoctor
+                  .touched &&
+                  editDoctorForm.controls.infoAboutDoctor.errors)
+                  }" id="infoAboutDoctor" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary my-2">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-inline-block">
+    <button (click)="back()" class="btn btn-outline-primary me-auto d-flex align-items-center"> <i
+        class="bi bi-arrow-left fs-6"></i>
+      Back</button>
+  </div>
+</section>
+<!-- End Editing Doctor Info -->
