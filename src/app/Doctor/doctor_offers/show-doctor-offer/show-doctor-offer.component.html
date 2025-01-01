@@ -1,0 +1,43 @@
+<!-- Start DoctorOffer Show -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      @for (item of DoctorOfferImages; track $index) {
+      <div class="col-md-2">
+        <div class="card border border-0 shadow p-5">
+          <img [src]="item.image" class="w-100" alt="DoctorOffer Image">
+        </div>
+      </div>
+      }
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class=" border border-0 shadow p-4 d-flex align-items-center justify-content-between">
+          <img [src]="Doctor.image" alt="Doctor Image" class="w-25 rounded-circle">
+          <h6> Dr.<span>{{ Doctor.fName}} {{ Doctor.lName }}</span></h6>
+        </div>
+      </div>
+      <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
+        <div class="card border border-0 shadow p-4">
+          <h3>Title : <span>{{ DoctorOffer.title}}</span></h3>
+          <hr>
+          <h5>Info About Offer : <span>{{ DoctorOffer.info_about_offer }}</span></h5>
+          <hr>
+          <h5>Details : {{ DoctorOffer.details }}</h5>
+          <hr>
+          <h5>From : {{ DoctorOffer.from_day }} To : {{ DoctorOffer.to_day }}</h5>
+          <hr>
+          <h5> <del>{{DoctorOffer.price_before_discount| currency:'EGP'}}</del> {{DoctorOffer.price_before_discount |
+            discount:DoctorOffer.discount | currency:'EGP' }} </h5>
+        </div>
+      </div>
+    </div>
+    <div class="d-inline-block">
+      <button (click)="back()" class="btn btn-outline-primary me-auto d-flex align-items-center"> <i
+          class="bi bi-arrow-left fs-6"></i>
+        Back</button>
+    </div>
+  </div>
+
+</div>
+<!-- End DoctorOffer Show -->

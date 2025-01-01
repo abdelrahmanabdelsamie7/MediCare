@@ -1,1 +1,31 @@
-<p>doctor-sidebar works!</p>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link " routerLink="/doctor">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <!--Start  Doctor Offers -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#doctorOffers-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-brands fa-discourse"></i><span>Doctor Offers</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="doctorOffers-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a routerLink="doctor_offers">
+            <i class="bi bi-circle"></i><span>List Doctor Offers</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="add_doctor_offer">
+            <i class="bi bi-circle"></i><span>Add Doctor Offer</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</aside><!-- End Sidebar-->

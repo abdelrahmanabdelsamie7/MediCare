@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DetailsDepartmentComponent } from './Site/details/details-department/details-department.component';
-import { SiteFooterComponent } from "./Site/shared/site-footer/site-footer.component";
+import { SLoadingService } from './Core/services/s-loading.service';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  constructor(public _SLoadingService: SLoadingService) {}
   title = 'MediCare';
 }

@@ -1,5 +1,5 @@
 import { AllPharmaciesComponent } from './Site/components/all-pharmacies/all-pharmacies.component';
-import { Routes } from '@angular/router';
+import { Routes, ActivatedRoute } from '@angular/router';
 import { SiteHomeComponent } from './Site/home/site-home/site-home.component';
 import { SiteLoginComponent } from './Site/auth/site-login/site-login.component';
 import { SiteRegisterComponent } from './Site/auth/site-register/site-register.component';
@@ -47,6 +47,14 @@ import { AddSpecializationComponent } from './Admin/specialization/add-specializ
 import { ShowSpecializationComponent } from './Admin/specialization/show-specialization/show-specialization.component';
 import { EditSpecializationComponent } from './Admin/specialization/edit-specialization/edit-specialization.component';
 import { AddSpecializationDoctorComponent } from './Admin/specialization/add-specialization-doctor/add-specialization-doctor.component';
+import { DoctorDashboardComponent } from './Doctor/doctor-dashboard/doctor-dashboard.component';
+import { ListDoctorOffersComponent } from './Doctor/doctor_offers/list-doctor-offers/list-doctor-offers.component';
+import { AddDoctorOfferComponent } from './Doctor/doctor_offers/add-doctor-offer/add-doctor-offer.component';
+import { ShowDoctorOfferComponent } from './Doctor/doctor_offers/show-doctor-offer/show-doctor-offer.component';
+import { EditDoctorOfferComponent } from './Doctor/doctor_offers/edit-doctor-offer/edit-doctor-offer.component';
+import { NotFoundComponent } from './Site/shared/not-found/not-found.component';
+import { AdminLoginComponent } from './Admin/shared/admin-login/admin-login.component';
+import { adminGuard } from './Core/guards/admin.guard';
 
 export const routes: Routes = [
   // USer Register
@@ -81,9 +89,17 @@ export const routes: Routes = [
     component: AllLaboratoriesComponent,
     title: 'MediCare | Laboratories',
   },
+
+  // Login Admin
+  {
+    path: 'admin-login',
+    component: AdminLoginComponent,
+    title: 'MediCare | Admin Login',
+  },
   //Admin Panel
   {
-    path: 'admin',
+    path: 'admin-mediCare-1245',
+    canActivate: [adminGuard],
     component: AdminDashboardComponent,
     title: 'Admin Panel',
     children: [
@@ -315,4 +331,36 @@ export const routes: Routes = [
       // End Admin(specializations) Routing
     ],
   },
+  // Doctor Panel
+  {
+    path: 'doctor',
+    component: DoctorDashboardComponent,
+    title: 'Doctor Panel',
+    children: [
+      // Start Doctor (Doctor Offers) Routing
+      {
+        path: 'doctor_offers',
+        component: ListDoctorOffersComponent,
+        title: 'Doctor Panel | Offers',
+      },
+      {
+        path: 'add_doctor_offer',
+        component: AddDoctorOfferComponent,
+        title: 'Doctor Panel | Add Offer',
+      },
+      {
+        path: 'show_doctor_offer/:id',
+        component: ShowDoctorOfferComponent,
+        title: 'Doctor Panel | Show Offer',
+      },
+      {
+        path: 'edit_doctor_offer/:id',
+        component: EditDoctorOfferComponent,
+        title: 'Doctor Panel | Edit Offer',
+      },
+      // End Doctor (Doctor Offers) Routing
+    ],
+  },
+  // Not Found Path
+  { path: '**', component: NotFoundComponent, title: 'MediCare | Not Found' },
 ];

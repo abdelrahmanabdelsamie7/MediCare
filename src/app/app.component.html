@@ -1,4 +1,6 @@
-
+@if (_SLoadingService.isLoading$ | async) {
+<div class="loader">
+  <div class="spinner"></div>
+</div>
+}
 <router-outlet></router-outlet>
-
-

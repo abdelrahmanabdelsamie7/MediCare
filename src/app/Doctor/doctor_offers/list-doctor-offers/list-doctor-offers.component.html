@@ -1,6 +1,6 @@
-<!-- Start List All Laboratories -->
+<!-- Start List All Doctor Offers -->
 <div class="pagetitle">
-  <h1>List Laboratories</h1>
+  <h1>List Doctor Offers</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item">Tables</li>
@@ -20,16 +20,16 @@
             <th colspan="3">Action</th>
           </tr>
         </thead>
-        @for (item of Laboratories; track $index) {
+        @for (item of DoctorOffers; track $index) {
         <tbody>
           <tr>
             <td>{{ $index +1 }}</td>
             <td>{{ item.title }}</td>
-            <td><a routerLink="/admin-mediCare-1245/show_pharmacy/{{ item.id }}" title="Show"><i
+            <td><a routerLink="/doctor/show_doctor_offer/{{ item.id }}" title="Show"><i
                   class="bi bi-eye text-primary"></i></a></td>
-            <td><a routerLink="/admin-mediCare-1245/edit_pharmacy/{{ item.id }}" title="Edit"><i
+            <td><a routerLink="/doctor/edit_doctor_offer/{{ item.id }}" title="Edit"><i
                   class="bi bi-pen text-warning"></i></a></td>
-            <td><a (click)="deleteLaboratory(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a></td>
+            <td><a (click)="deleteDoctorOffer(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a></td>
           </tr>
         </tbody>
         }
@@ -37,4 +37,4 @@
     </div>
   </div>
 </div>
-<!-- End List All Laboratories  -->
+<!-- End List All Doctor Offers  -->
