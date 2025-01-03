@@ -57,6 +57,12 @@ import { AdminLoginComponent } from './Admin/shared/admin-login/admin-login.comp
 import { adminGuard } from './Core/guards/admin.guard';
 import { DoctorLoginComponent } from './Doctor/shared/doctor-login/doctor-login.component';
 import { doctorGuard } from './Core/guards/doctor.guard';
+import { ListDoctorBlogsComponent } from './Doctor/doctor-blogs/list-doctor-blogs/list-doctor-blogs.component';
+import { AddDoctorBlogComponent } from './Doctor/doctor-blogs/add-doctor-blog/add-doctor-blog.component';
+import { EditDoctorBlogComponent } from './Doctor/doctor-blogs/edit-doctor-blog/edit-doctor-blog.component';
+import { AddDoctorOfferImageComponent } from './Doctor/doctor-offer-images/add-doctor-offer-image/add-doctor-offer-image.component';
+import { EditDoctorOfferImageComponent } from './Doctor/doctor-offer-images/edit-doctor-offer-image/edit-doctor-offer-image.component';
+import { SectionAiComponent } from './Site/home/section-ai/section-ai.component';
 
 export const routes: Routes = [
   // USer Register
@@ -72,6 +78,7 @@ export const routes: Routes = [
     title: 'MediCare | مرحبا بعودتك',
   },
   // Home Page
+
   { path: '', component: SiteHomeComponent, title: 'MediCare | Home' },
   // Department Contains 'Doctors | Hospitals | Care Centers'
   {
@@ -91,7 +98,8 @@ export const routes: Routes = [
     component: AllLaboratoriesComponent,
     title: 'MediCare | Laboratories',
   },
-
+  // Ask Ai
+  { path: 'ask-ai', component: SectionAiComponent, title: 'MediCare | Ask AI' },
   // Login Admin
   {
     path: 'admin-login',
@@ -349,26 +357,55 @@ export const routes: Routes = [
     children: [
       // Start Doctor (Doctor Offers) Routing
       {
-        path: 'doctor_offers',
+        path: 'doctor-offers',
         component: ListDoctorOffersComponent,
         title: 'Doctor Panel | Offers',
       },
       {
-        path: 'add_doctor_offer',
+        path: 'add-doctor-offer',
         component: AddDoctorOfferComponent,
         title: 'Doctor Panel | Add Offer',
       },
       {
-        path: 'show_doctor_offer/:id',
+        path: 'show-doctor-offer/:id',
         component: ShowDoctorOfferComponent,
         title: 'Doctor Panel | Show Offer',
       },
       {
-        path: 'edit_doctor_offer/:id',
+        path: 'edit-doctor-offer/:id',
         component: EditDoctorOfferComponent,
         title: 'Doctor Panel | Edit Offer',
       },
+      //Images Offer
+      {
+        path: 'add-doctor-offer-image',
+        component: AddDoctorOfferImageComponent,
+        title: 'Doctor Panel | Add Offer Image',
+      },
+      {
+        path: 'edit-doctor-offer-image/:id',
+        component: EditDoctorOfferImageComponent,
+        title: 'Doctor Panel | Edit Offer Image',
+      },
       // End Doctor (Doctor Offers) Routing
+
+      // Start Doctor (Doctor Blogs) Routing
+      {
+        path: 'doctor-blogs',
+        component: ListDoctorBlogsComponent,
+        title: 'Doctor Panel | Blogs',
+      },
+      {
+        path: 'add-doctor-blog',
+        component: AddDoctorBlogComponent,
+        title: 'Doctor Panel | Add Blog',
+      },
+      {
+        path: 'edit-doctor-blog/:id',
+        component: EditDoctorBlogComponent,
+        title: 'Doctor Panel | Edit Blog',
+      },
+      // End Doctor (Doctor Blogs) Routing
     ],
   },
   // Not Found Path

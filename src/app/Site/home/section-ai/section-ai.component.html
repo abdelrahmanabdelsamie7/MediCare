@@ -1,0 +1,51 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Card: Upload and Analyze -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white text-center">
+          <h5>تحليل صورة المريض والنص</h5>
+        </div>
+        <div class="card-body">
+          <!-- File Input -->
+          <div class="mb-4">
+            <label for="fileInput" class="form-label">اختر ملف (اختياري)</label>
+            <input type="file" class="form-control" id="fileInput" accept="image/*" (change)="onFileSelected($event)" />
+            <div *ngIf="previewUrl" class="mt-3 text-center">
+              <img [src]="previewUrl" class="img-thumbnail" style="max-height: 200px;" alt="معاينة الصورة" />
+            </div>
+          </div>
+          <!-- Symptoms Input -->
+          <div class="mb-4">
+            <label for="symptomsInput" class="form-label">وصف الأعراض</label>
+            <textarea id="symptomsInput" class="form-control" rows="4" [(ngModel)]="symptomsText"
+              placeholder="اكتب الأعراض هنا..."></textarea>
+          </div>
+          <!-- Analyze Button -->
+          <div class="text-center">
+            <button class="btn btn-info w-50" (click)="analyzeContent()" [disabled]="loading">
+              <span *ngIf="!loading">تحليل الصورة والنص</span>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"></span>
+              <span *ngIf="loading">جاري التحليل...</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Analysis Result -->
+      <div class="card mt-4 shadow-sm" *ngIf="apiResponse">
+        <div class="card-header bg-success text-white text-center">
+          <h5>نتيجة التحليل</h5>
+        </div>
+        <div class="card-body">
+          <p> {{ apiResponse.speciality }}</p>
+        </div>
+      </div>
+
+      <!-- Alert: Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger mt-4 text-center">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>

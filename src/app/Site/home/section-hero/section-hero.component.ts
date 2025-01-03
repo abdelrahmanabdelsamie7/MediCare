@@ -22,9 +22,11 @@ export class SectionHeroComponent {
   responsiveOptions: any[] | undefined;
   Images = [
     {
+      id: 1,
       imageUrl: './hero2.jpg',
     },
     {
+      id: 2,
       imageUrl: './hero3.jpg',
     },
   ];

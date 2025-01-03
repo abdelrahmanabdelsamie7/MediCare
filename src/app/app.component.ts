@@ -11,6 +11,8 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  constructor(public _SLoadingService: SLoadingService) {}
+  constructor(public _SLoadingService: SLoadingService) {
+    console.warn("Don't Write Something Here !");
+  }
   title = 'MediCare';
 }

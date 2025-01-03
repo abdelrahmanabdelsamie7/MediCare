@@ -29,7 +29,6 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
         next: (data) => {
           this.doctor = data;
           localStorage.setItem('doctorId', data.id);
-          console.log(data);
         },
       });
   }

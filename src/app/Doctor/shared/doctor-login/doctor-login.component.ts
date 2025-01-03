@@ -43,6 +43,13 @@ export class DoctorLoginComponent {
         });
         this._Router.navigateByUrl('/doctor-mediCare-1245');
       },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'error',
+          detail: `Check You Email Or Password !`,
+        });
+      },
     });
   }
 }

@@ -9,11 +9,12 @@ import {
 import { SAdminService } from '../../../Core/services/s-admin.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, Toast],
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.css',
   providers: [MessageService],
@@ -41,6 +42,13 @@ export class AdminLoginComponent {
           detail: `Welcome Back `,
         });
         this._Router.navigateByUrl('/admin-mediCare-1245');
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'error',
+          detail: `Check Your Email Or Password !`,
+        });
       },
     });
   }

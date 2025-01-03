@@ -1,42 +1,53 @@
 <!-- Start DoctorOffer Show -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      @for (item of DoctorOfferImages; track $index) {
-      <div class="col-md-2">
-        <div class="card border border-0 shadow p-5">
-          <img [src]="item.image" class="w-100" alt="DoctorOffer Image">
+<div class="container mt-4">
+  <p-toast />
+  <!-- Carousel -->
+  <p-carousel class="py-5" [value]="DoctorOfferImages" [numVisible]="3" [circular]="true"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-image pTemplate="item">
+      <div class="border shadow-sm m-2 carousel">
+        <img [src]="image.image" class="d-block mx-auto" />
+        <div class="icons">
+          <a routerLink="/doctor-mediCare-1245/edit-doctor-offer-image/{{ image.id }}" title="Edit"><i
+              class="bi bi-pen text-warning"></i></a>
+          <a (click)="deleteImageOffer(image.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
         </div>
       </div>
-      }
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <div class=" border border-0 shadow p-4 d-flex align-items-center justify-content-between">
-          <img [src]="Doctor.image" alt="Doctor Image" class="w-25 rounded-circle">
-          <h6> Dr.<span>{{ Doctor.fName}} {{ Doctor.lName }}</span></h6>
-        </div>
-      </div>
-      <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
-        <div class="card border border-0 shadow p-4">
-          <h3>Title : <span>{{ DoctorOffer.title}}</span></h3>
-          <hr>
-          <h5>Info About Offer : <span>{{ DoctorOffer.info_about_offer }}</span></h5>
-          <hr>
-          <h5>Details : {{ DoctorOffer.details }}</h5>
-          <hr>
-          <h5>From : {{ DoctorOffer.from_day }} To : {{ DoctorOffer.to_day }}</h5>
-          <hr>
-          <h5> <del>{{DoctorOffer.price_before_discount| currency:'EGP'}}</del> {{DoctorOffer.price_before_discount |
-            discount:DoctorOffer.discount | currency:'EGP' }} </h5>
-        </div>
+    </ng-template>
+  </p-carousel>
+  <a routerLink="/doctor-mediCare-1245/add-doctor-offer-image"
+    class="btn btn-info text-light d-inline-block ms-auto">Add New
+    Image To Offer
+  </a>
+  <!-- Offer Details -->
+  <div class="card border-0 shadow p-4 mt-3">
+    <div class="doctor-info">
+      <img [src]="Doctor.image" alt="Doctor Image" />
+      <div>
+        <h5>د/ {{ Doctor.fName }} {{ Doctor.lName }}</h5>
+        <p class="text-muted m-0">{{ Doctor.phone }}</p>
       </div>
     </div>
-    <div class="d-inline-block">
-      <button (click)="back()" class="btn btn-outline-primary me-auto d-flex align-items-center"> <i
-          class="bi bi-arrow-left fs-6"></i>
-        Back</button>
-    </div>
+    <hr>
+    <h3>العنوان: <span>{{ DoctorOffer.title }}</span></h3>
+    <hr>
+    <h5>معلومات العرض: <span>{{ DoctorOffer.info_about_offer }}</span></h5>
+    <hr>
+    <h5>التفاصيل: {{ DoctorOffer.details }}</h5>
+    <hr>
+    <h5>الفترة: من {{ DoctorOffer.from_day }} إلى {{ DoctorOffer.to_day }}</h5>
+    <hr>
+    <h5>
+      <span class="del-price">{{ DoctorOffer.price_before_discount | currency: 'EGP' }}</span>
+      <span class="discount-price">{{ DoctorOffer.price_before_discount | discount: DoctorOffer.discount | currency:
+        'EGP' }}</span>
+    </h5>
+  </div>
+  <!-- Back Button -->
+  <div class="d-inline-block mt-3">
+    <button (click)="back()" class="btn btn-outline-primary">
+      <i class="bi bi-arrow-left"></i> Back
+    </button>
   </div>
 
 </div>

@@ -1,0 +1,76 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card h3,
+.card h5 {
+  margin-bottom: 10px;
+  color: #343a40;
+}
+.card span {
+  font-weight: bold;
+  color: var(--main-color);
+}
+.del-price {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+.discount-price {
+  color: #28a745;
+  font-weight: bold;
+}
+button.btn-outline-primary {
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 25px;
+}
+button i {
+  margin-right: 5px;
+}
+.carousel img {
+  max-height: 200px;
+  object-fit: cover;
+}
+.carousel .border {
+  border-radius: 10px;
+}
+
+.doctor-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.doctor-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.doctor-info h5 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+hr {
+  margin: 15px 0;
+  border-color: #ddd;
+}
+.icons {
+  margin: 7px;
+  text-align: center;
+}
+.icons a {
+  margin: 5px;
+  padding: 5px;
+  background-color: whitesmoke;
+}

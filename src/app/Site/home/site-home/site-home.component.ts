@@ -7,6 +7,7 @@ import { SectionDocOffersComponent } from '../section-doc-offers/section-doc-off
 import { SectionLaboratoriesComponent } from '../section-laboratories/section-laboratories.component';
 import { SectionPharmaciesComponent } from '../section-pharmacies/section-pharmacies.component';
 import { SectionApplicationComponent } from '../section-application/section-application.component';
+import { SectionAiComponent } from '../section-ai/section-ai.component';
 
 @Component({
   selector: 'app-site-home',
@@ -20,6 +21,7 @@ import { SectionApplicationComponent } from '../section-application/section-appl
     SectionLaboratoriesComponent,
     SectionPharmaciesComponent,
     SectionApplicationComponent,
+    // SectionAiComponent,
   ],
   templateUrl: './site-home.component.html',
   styleUrl: './site-home.component.css',

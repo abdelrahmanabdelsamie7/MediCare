@@ -1,62 +1,61 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IDoctorOffer } from '../../../Core/interfaces/i-doctor-offer';
+import { IDoctorBlog } from '../../../Core/interfaces/i-doctor-blog';
 import { Subject, takeUntil } from 'rxjs';
-import { SDoctorOfferService } from '../../../Core/services/s-doctor-offer.service';
+import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service';
 import { MessageService } from 'primeng/api';
-import { RouterModule } from '@angular/router';
 import { Toast } from 'primeng/toast';
-
+import { RouterModule } from '@angular/router';
 @Component({
-  selector: 'app-list-doctor-offers',
+  selector: 'app-list-doctor-blogs',
   standalone: true,
   imports: [RouterModule, Toast],
-  templateUrl: './list-doctor-offers.component.html',
-  styleUrl: './list-doctor-offers.component.css',
+  templateUrl: './list-doctor-blogs.component.html',
+  styleUrl: './list-doctor-blogs.component.css',
   providers: [MessageService],
 })
-export class ListDoctorOffersComponent implements OnInit, OnDestroy {
-  DoctorOffers: IDoctorOffer[] = [];
+export class ListDoctorBlogsComponent implements OnInit, OnDestroy {
+  DoctorBlogs: IDoctorBlog[] = [];
   private destroy$ = new Subject<void>();
   constructor(
-    private _SDoctorOfferService: SDoctorOfferService,
+    private _SDoctorBlogService: SDoctorBlogService,
     private _MessageService: MessageService
   ) {}
   ngOnInit() {
-    this.getDoctorOffers();
+    this.getDoctorBlogs();
   }
-  getDoctorOffers() {
-    this._SDoctorOfferService
-      .getDoctorOffers()
+  getDoctorBlogs() {
+    this._SDoctorBlogService
+      .getDoctorBlogs()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.DoctorOffers = data.data;
+          this.DoctorBlogs = data.data;
         },
         error: (err) => {
           console.error(err);
         },
       });
   }
-  deleteDoctorOffer(id: string) {
-    this._SDoctorOfferService
-      .deleteDoctorOffer(id)
+  deleteDoctorBlog(id: string) {
+    this._SDoctorBlogService
+      .deleteDoctorBlog(id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: () => {
-          this.DoctorOffers = this.DoctorOffers.filter(
-            (obj: IDoctorOffer) => obj.id !== id
+          this.DoctorBlogs = this.DoctorBlogs.filter(
+            (obj: IDoctorBlog) => obj.id !== id
           );
           this._MessageService.add({
             severity: 'success',
             summary: 'Success',
-            detail: 'Doctor Offer Deleted Successfully',
+            detail: 'Doctor Blog Deleted Successfully',
           });
         },
         error: (err) => {
           this._MessageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Failed to delete Doctor Offer',
+            detail: 'Failed to delete Doctor Blog',
           });
         },
       });

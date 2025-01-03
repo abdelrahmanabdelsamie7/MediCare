@@ -1,0 +1,36 @@
+<!-- Start List All Doctor Blogs -->
+<div class="pagetitle">
+  <h1>List Doctor Blogs</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Tables</li>
+      <li class="breadcrumb-item active">Data</li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <p-toast />
+  @for (item of DoctorBlogs; track $index) {
+  <div class="col-md-6 mb-4">
+    <div class="card border border-0 shadow p-3">
+      <div class="index">
+        <span>{{ $index+1 }}</span>
+      </div>
+      <div class="card-body">
+        <h3 class="fw-bold fs-3">
+          {{ item.title}}
+        </h3>
+        <p class="text-muted">
+          {{ item.content }}
+        </p>
+        <div class="icons">
+          <a routerLink="/doctor-mediCare-1245/edit-doctor-blog/{{ item.id }}" title="Edit"><i
+              class="bi bi-pen text-warning"></i></a>
+          <a (click)="deleteDoctorBlog(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+<!-- End List All Doctor Blogs  -->
