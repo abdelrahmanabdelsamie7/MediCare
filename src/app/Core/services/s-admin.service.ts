@@ -9,7 +9,6 @@ import { IAdmin } from '../interfaces/i-admin';
 })
 export class SAdminService {
   constructor(private _HttpClient: HttpClient) {}
-
   adminLogin(admin: IAdmin): Observable<IAdmin> {
     return this._HttpClient.post<IAdmin>(
       `${environment.baseUrl}/admin/login`,
@@ -19,11 +18,11 @@ export class SAdminService {
   adminAccount(): Observable<IAdmin> {
     return this._HttpClient.get<IAdmin>(
       `${environment.baseUrl}/admin/getaccount`,
-      // {
-      //   headers: {
-      //     Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-      //   },
-      // }
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
 }

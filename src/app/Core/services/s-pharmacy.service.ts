@@ -16,7 +16,12 @@ export class SPharmacyService {
   addPharmacy(pharmacy: IPharmacy): Observable<IPharmacy> {
     return this._HttpClient.post<IPharmacy>(
       `${environment.baseUrl}/Pharmacies`,
-      pharmacy
+      pharmacy,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   showPharmacy(id: string): Observable<IPharmacy> {
@@ -27,12 +32,22 @@ export class SPharmacyService {
   editPharmacy(id: string, pharmacy: IPharmacy): Observable<IPharmacy> {
     return this._HttpClient.put<IPharmacy>(
       `${environment.baseUrl}/Pharmacies/${id}`,
-      pharmacy
+      pharmacy,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   deletePharmacy(id: string): Observable<IPharmacy> {
     return this._HttpClient.delete<IPharmacy>(
-      `${environment.baseUrl}/Pharmacies/${id}`
+      `${environment.baseUrl}/Pharmacies/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
 }

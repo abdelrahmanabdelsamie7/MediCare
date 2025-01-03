@@ -38,37 +38,53 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
   ) {}
   editDoctorForm = new FormGroup({
     fName: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
     lName: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
     title: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
-    infoAboutDoctor: new FormControl('', [Validators.minLength(3)]),
+    infoAboutDoctor: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     image: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(2048),
     ]),
     phone: new FormControl('', [
+      Validators.required,
       Validators.minLength(8),
       Validators.maxLength(15),
     ]),
-    app_price: new FormControl(0, [Validators.maxLength(3)]),
+    app_price: new FormControl(0, [
+      Validators.required,
+      Validators.maxLength(3),
+    ]),
     facebookLink: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       CustomValidators.url,
     ]),
     whatsappLink: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       CustomValidators.url,
     ]),
     homeOption: new FormControl(1, [Validators.required]),
-    password: new FormControl('', [Validators.minLength(8)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
     department_id: new FormControl('', Validators.required),
   });
   ngOnInit() {
@@ -83,7 +99,6 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
   loadDoctorData() {
     this._SDoctorService.showDoctor(this.id).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.Doctor = data.data;
         this.editDoctorForm.patchValue({
           fName: this.Doctor.fName,
@@ -108,7 +123,6 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Departments = data.data;
         },
       });
@@ -116,20 +130,18 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
   editDoctor(editDoctorForm: FormGroup) {
     this._SDoctorService.editDoctor(this.id, editDoctorForm.value).subscribe({
       next: (data) => {
-        console.log(data);
-        console.log('Doctor edited successfully:', data);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: 'Doctor Edited Successfully',
         });
+        editDoctorForm.reset();
       },
       error: (err) => {
-        console.error('Error editing Doctor:', err);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: "Doctor Couldn't Be Edited",
+          detail: "Doctor Couldn't Be Edited" + err.error.message,
         });
       },
     });

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IChainPharmacies } from '../../../Core/interfaces/i-chain-pharmacies';
 import {
   FormControl,
@@ -11,6 +11,7 @@ import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmaci
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { Toast } from 'primeng/toast';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-edit-chain-pharmacies',
   standalone: true,
@@ -19,11 +20,13 @@ import { Toast } from 'primeng/toast';
   styleUrl: './edit-chain-pharmacies.component.css',
   providers: [MessageService],
 })
-export class EditChainPharmaciesComponent {
+export class EditChainPharmaciesComponent implements OnInit, OnDestroy {
   id: string = '';
+  private destroy$ = new Subject<void>();
   chainPharmacies: IChainPharmacies = {} as IChainPharmacies;
   editChainPharmaciesForm = new FormGroup({
     title: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
@@ -38,22 +41,25 @@ export class EditChainPharmaciesComponent {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
-        this.loadChainPharmaciesData();
       },
     });
+    this.loadChainPharmaciesData();
   }
   loadChainPharmaciesData() {
-    this._SChainPharmaciesService.showChainPharmacies(this.id).subscribe({
-      next: (data: any) => {
-        this.chainPharmacies = data.data;
-        this.editChainPharmaciesForm.patchValue({
-          title: this.chainPharmacies.title,
-        });
-      },
-      error: (err) => {
-        console.error('Error loading Chain Phramcies data:', err);
-      },
-    });
+    this._SChainPharmaciesService
+      .showChainPharmacies(this.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.chainPharmacies = data.data;
+          this.editChainPharmaciesForm.patchValue({
+            title: this.chainPharmacies.title,
+          });
+        },
+        error: (err) => {
+          console.error('Error loading Chain Phramcies data:', err);
+        },
+      });
   }
   editChainPharmacies(editChainPharmaciesForm: FormGroup) {
     if (this.editChainPharmaciesForm.invalid) return;
@@ -61,15 +67,14 @@ export class EditChainPharmaciesComponent {
       .editChainPharmacies(this.id, editChainPharmaciesForm.value)
       .subscribe({
         next: (data) => {
-          console.log('Chain Pharmacies edited successfully:', data);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Chain Pharmacies Edited Successfully',
           });
+          editChainPharmaciesForm.reset();
         },
         error: (err) => {
-          console.error('Error editing Chain Pharmacies:', err);
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
@@ -80,5 +85,9 @@ export class EditChainPharmaciesComponent {
   }
   back() {
     this._Location.back();
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

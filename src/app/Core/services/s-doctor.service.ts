@@ -14,7 +14,12 @@ export class SDoctorService {
   addDoctor(doctor: IDoctor): Observable<IDoctor> {
     return this._HttpClient.post<IDoctor>(
       `${environment.baseUrl}/Doctors`,
-      doctor
+      doctor,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   showDoctor(id: string): Observable<IDoctor> {
@@ -25,12 +30,39 @@ export class SDoctorService {
   editDoctor(id: string, doctor: IDoctor): Observable<IDoctor> {
     return this._HttpClient.put<IDoctor>(
       `${environment.baseUrl}/Doctors/${id}`,
-      doctor
+      doctor,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   deleteDoctor(id: string): Observable<IDoctor> {
     return this._HttpClient.delete<IDoctor>(
-      `${environment.baseUrl}/Doctors/${id}`
+      `${environment.baseUrl}/Doctors/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
+    );
+  }
+  // Auth For Doctor
+  doctorLogin(doctor: IDoctor): Observable<IDoctor> {
+    return this._HttpClient.post<IDoctor>(
+      `${environment.baseUrl}/doctor/login`,
+      doctor
+    );
+  }
+  doctorAccount(): Observable<IDoctor> {
+    return this._HttpClient.get<IDoctor>(
+      `${environment.baseUrl}/doctor/getaccount` , 
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+        },
+      }
     );
   }
 }

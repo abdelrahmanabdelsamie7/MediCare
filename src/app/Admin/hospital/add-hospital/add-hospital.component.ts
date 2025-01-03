@@ -55,12 +55,20 @@ export class AddHospitalComponent {
   });
   addHospital(addHospitalForm: FormGroup) {
     this._SHospitalService.addHospital(addHospitalForm.value).subscribe({
-      next: (data) => {},
-    });
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Hospital Added Successfully',
+      next: (data) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Hospital Added Successfully',
+        });
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'error',
+          detail: `${err.error.message}`,
+        });
+      },
     });
   }
 }

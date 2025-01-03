@@ -3,7 +3,6 @@ import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
 import { ICareCenter } from '../../../Core/interfaces/i-care-center';
 import { ActivatedRoute } from '@angular/router';
-import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -37,14 +36,16 @@ export class EditDepartmentCareCenterComponent implements OnInit, OnDestroy {
     private _Location: Location
   ) {}
   editDepartmentCareCenterForm = new FormGroup({
-    app_price: new FormControl('', [Validators.pattern('^[0-9]*$')]),
-    start_at: new FormControl('', []),
-    end_at: new FormControl('', []),
+    app_price: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'),
+    ]),
+    start_at: new FormControl('', [Validators.required]),
+    end_at: new FormControl('', [Validators.required]),
   });
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
       next: (params) => {
-        console.log(params);
         this.department_id = `${params.get('department_id')}`;
         this.care_center_id = `${params.get('care_center_id')}`;
       },
@@ -81,7 +82,6 @@ export class EditDepartmentCareCenterComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (data) => {
-          console.log(data);
           this._MessageService.add({
             severity: 'success',
             summary: 'Success',

@@ -93,7 +93,6 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
   loadPharmacyData() {
     this._SPharmacyService.showPharmacy(this.id).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.Pharmacy = data.data;
         this.editPharmacyForm.patchValue({
           title: this.Pharmacy.title,
@@ -117,7 +116,6 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.ChainsPharmacies = data.data;
         },
       });
@@ -128,15 +126,14 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
       .editPharmacy(this.id, editPharmacyForm.value)
       .subscribe({
         next: (data) => {
-          console.log('Pharmacy edited successfully:', data);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Pharmacy Edited Successfully',
           });
+          editPharmacyForm.reset();
         },
         error: (err) => {
-          console.error('Error editing Pharmacy:', err);
           this.messageService.add({
             severity: 'error',
             summary: 'Error',

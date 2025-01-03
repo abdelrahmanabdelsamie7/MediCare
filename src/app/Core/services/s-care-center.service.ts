@@ -17,7 +17,12 @@ export class SCareCenterService {
   addCareCenter(careCenter: ICareCenter): Observable<ICareCenter> {
     return this._HttpClient.post<ICareCenter>(
       `${environment.baseUrl}/CareCenters`,
-      careCenter
+      careCenter,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   showCareCenter(id: string): Observable<ICareCenter> {
@@ -28,12 +33,22 @@ export class SCareCenterService {
   editCareCenter(id: string, careCenter: ICareCenter): Observable<ICareCenter> {
     return this._HttpClient.put<ICareCenter>(
       `${environment.baseUrl}/CareCenters/${id}`,
-      careCenter
+      careCenter,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   deleteCareCenter(id: string): Observable<ICareCenter> {
     return this._HttpClient.delete<ICareCenter>(
-      `${environment.baseUrl}/CareCenters/${id}`
+      `${environment.baseUrl}/CareCenters/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   addDepartmentCareCenter(
@@ -41,7 +56,12 @@ export class SCareCenterService {
   ): Observable<IDepartmentCareCenter> {
     return this._HttpClient.post<IDepartmentCareCenter>(
       `${environment.baseUrl}/CareCenter_Department`,
-      departmentCareCenetr
+      departmentCareCenetr,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   editDepartmentCareCenter(
@@ -51,7 +71,12 @@ export class SCareCenterService {
   ): Observable<IDepartmentCareCenter> {
     return this._HttpClient.put<IDepartmentCareCenter>(
       `${environment.baseUrl}/CareCenter_Department/${department_id}/${care_center_id}`,
-      departmentCareCenter
+      departmentCareCenter,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
 }

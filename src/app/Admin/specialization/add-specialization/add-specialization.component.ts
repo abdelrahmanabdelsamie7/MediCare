@@ -9,7 +9,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
 @Component({
   selector: 'app-add-specialization',
   standalone: true,
@@ -23,6 +22,7 @@ export class AddSpecializationComponent {
     private _SSpeicalizationService: SSpeicalizationService,
     private messageService: MessageService
   ) {}
+  // Form For Adding Specialization
   addSpecializationForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -34,11 +34,19 @@ export class AddSpecializationComponent {
     this._SSpeicalizationService
       .addSpecialization(addSpecializationForm.value)
       .subscribe({
-        next: (data) => {
+        next: () => {
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Specialization Added Successfully',
+          });
+          addSpecializationForm.reset();
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'error',
+            detail: `${err.error.message}`,
           });
         },
       });

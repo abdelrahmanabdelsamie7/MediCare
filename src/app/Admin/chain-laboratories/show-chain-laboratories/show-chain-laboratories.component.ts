@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ILaboratory } from '../../../Core/interfaces/i-laboratory';
 import { Subject, takeUntil } from 'rxjs';
 import { IChainLaboratories } from '../../../Core/interfaces/i-chain-laboratories';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
 @Component({
   selector: 'app-show-chain-laboratories',
   standalone: true,
@@ -13,7 +12,7 @@ import { Location } from '@angular/common';
   templateUrl: './show-chain-laboratories.component.html',
   styleUrl: './show-chain-laboratories.component.css',
 })
-export class ShowChainLaboratoriesComponent {
+export class ShowChainLaboratoriesComponent implements OnInit, OnDestroy {
   id: string = '';
   LaboratoriesOfChain: ILaboratory[] = [];
   private destroy$ = new Subject<void>();
@@ -29,15 +28,16 @@ export class ShowChainLaboratoriesComponent {
         this.id = `${x.get('id')}`;
       },
     });
+    this.loadChainLaboratories();
+  }
+  loadChainLaboratories() {
     this._SChainLaboratoriesService
       .showChainLaboratories(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.ChainLaboratories = data.data;
           this.LaboratoriesOfChain = this.ChainLaboratories.laboratories;
-          console.log(this.LaboratoriesOfChain);
         },
       });
   }

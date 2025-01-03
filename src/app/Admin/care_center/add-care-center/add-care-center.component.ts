@@ -23,6 +23,7 @@ export class AddCareCenterComponent {
     private _SCareCenterService: SCareCenterService,
     private messageService: MessageService
   ) {}
+  // Form Of Adding Care Center
   addCareCenterForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -53,15 +54,24 @@ export class AddCareCenterComponent {
       CustomValidators.url,
     ]),
   });
+  // Function Of Adding Care Center
   addCareCenter(addCareCenterForm: FormGroup) {
     this._SCareCenterService.addCareCenter(addCareCenterForm.value).subscribe({
-      next: (data) => { 
+      next: (data) => {
         this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Care Center Added Successfully',
-    });},
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Care Center Added Successfully',
+        });
+        addCareCenterForm.reset();
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: `${err.error.message}`,
+        });
+      },
     });
-   
   }
 }

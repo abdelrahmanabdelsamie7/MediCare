@@ -34,12 +34,21 @@ export class AddChainLaboratoriesComponent {
     this._SChainLaboratoriesService
       .addChainLaboratories(addChainLaboratoriesForm.value)
       .subscribe({
-        next: (data) => {},
+        next: (data) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Chain Of Laboratories Added Successfully',
+          });
+          addChainLaboratoriesForm.reset();
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'error',
+            detail: `${err.error.message}`,
+          });
+        },
       });
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Chain Of Laboratories Added Successfully',
-    });
   }
 }

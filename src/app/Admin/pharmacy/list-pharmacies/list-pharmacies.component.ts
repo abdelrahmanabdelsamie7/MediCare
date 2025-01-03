@@ -5,7 +5,6 @@ import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
-
 @Component({
   selector: 'app-list-pharmacies',
   standalone: true,
@@ -30,7 +29,6 @@ export class ListPharmaciesComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Pharmacies = data.data;
         },
         error: (err) => {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { MessageService } from 'primeng/api';
@@ -22,15 +22,25 @@ import {
   styleUrl: './add-department-care-center.component.css',
   providers: [MessageService],
 })
-export class AddDepartmentCareCenterComponent {
+export class AddDepartmentCareCenterComponent implements OnInit, OnDestroy {
+  Departments: IDepartment[] = [];
+  CareCenters: ICareCenter[] = [];
+  private destroy$ = new Subject<void>();
+  addDepartmentCareCenterForm = new FormGroup({
+    department_id: new FormControl('', [Validators.required]),
+    care_center_id: new FormControl('', [Validators.required]),
+    app_price: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'),
+    ]),
+    start_at: new FormControl('', [Validators.required]),
+    end_at: new FormControl('', [Validators.required]),
+  });
   constructor(
     private _SCareCenterService: SCareCenterService,
     private _SDepartmentService: SDepartmentService,
     private messageService: MessageService
   ) {}
-  Departments: IDepartment[] = [];
-  CareCenters: ICareCenter[] = [];
-  private destroy$ = new Subject<void>();
   ngOnInit() {
     this.getDepartments();
     this.getCareCenters();
@@ -41,7 +51,6 @@ export class AddDepartmentCareCenterComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Departments = data.data;
         },
         error: (err) => {
@@ -55,7 +64,6 @@ export class AddDepartmentCareCenterComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.CareCenters = data.data;
         },
         error: (err) => {
@@ -63,16 +71,6 @@ export class AddDepartmentCareCenterComponent {
         },
       });
   }
-  addDepartmentCareCenterForm = new FormGroup({
-    department_id: new FormControl('', [Validators.required]),
-    care_center_id: new FormControl('', [Validators.required]),
-    app_price: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[0-9]*$'),
-    ]),
-    start_at: new FormControl('', [Validators.required]),
-    end_at: new FormControl('', [Validators.required]),
-  });
   addDepartmentCareCenter(addDepartmentCareCenterForm: FormGroup) {
     this._SCareCenterService
       .addDepartmentCareCenter(addDepartmentCareCenterForm.value)
@@ -84,6 +82,7 @@ export class AddDepartmentCareCenterComponent {
             summary: 'Success',
             detail: 'Department Added To Care Center Successfully',
           });
+          addDepartmentCareCenterForm.reset();
         },
         error: (err) => {
           console.log(err);

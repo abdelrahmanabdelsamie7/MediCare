@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ICareCenter } from '../../../Core/interfaces/i-care-center';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
 import { MessageService } from 'primeng/api';
@@ -20,35 +20,46 @@ import { CustomValidators } from 'ng2-validation';
   styleUrl: './edit-care-center.component.css',
   providers: [MessageService],
 })
-export class EditCareCenterComponent {
+export class EditCareCenterComponent implements OnInit {
   id: string = '';
   careCenter: ICareCenter = {} as ICareCenter;
   constructor(
     private _SCareCenterService: SCareCenterService,
     private messageService: MessageService,
-    private _ActivatedRoute: ActivatedRoute,
+    private _ActivatedRoute: ActivatedRoute
   ) {}
+  // Form Of Editing Care Center
   editCareCenterForm = new FormGroup({
     title: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
-    service: new FormControl('', [Validators.minLength(3)]),
+    service: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     image: new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(2048),
     ]),
     phone: new FormControl('', [
+      Validators.required,
       Validators.minLength(8),
       Validators.maxLength(15),
     ]),
-    address: new FormControl('', [Validators.minLength(3)]),
+    address: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     locationUrl: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       CustomValidators.url,
     ]),
   });
   ngOnInit() {
+    // Getting Id Of Care Center
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -72,6 +83,7 @@ export class EditCareCenterComponent {
       },
     });
   }
+  // Function Of Editing Care Center
   editCareCenter(editCareCenterForm: FormGroup) {
     if (this.editCareCenterForm.invalid) return;
     this._SCareCenterService
@@ -84,6 +96,7 @@ export class EditCareCenterComponent {
             summary: 'Success',
             detail: 'Care Center Edited Successfully',
           });
+          editCareCenterForm.reset();
         },
         error: (err) => {
           console.error('Error editing Care Center:', err);

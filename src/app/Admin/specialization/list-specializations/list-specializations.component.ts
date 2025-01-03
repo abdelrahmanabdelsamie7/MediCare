@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ISpecialization } from '../../../Core/interfaces/i-specialization';
 import { Subject, takeUntil } from 'rxjs';
 import { SSpeicalizationService } from '../../../Core/services/s-speicalization.service';
@@ -8,12 +8,12 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-list-specializations',
   standalone: true,
-  imports: [Toast , RouterModule],
+  imports: [Toast, RouterModule],
   templateUrl: './list-specializations.component.html',
   styleUrl: './list-specializations.component.css',
   providers: [MessageService],
 })
-export class ListSpecializationsComponent {
+export class ListSpecializationsComponent implements OnInit, OnDestroy {
   Specializations: ISpecialization[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -29,7 +29,6 @@ export class ListSpecializationsComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Specializations = data.data;
         },
         error: (err) => {

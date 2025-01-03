@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IHospital } from '../../../Core/interfaces/ihospital';
 import { Subject, takeUntil } from 'rxjs';
 import { SHospitalService } from '../../../Core/services/s-hospital.service';
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './list-hospitals.component.css',
   providers: [MessageService],
 })
-export class ListHospitalsComponent {
+export class ListHospitalsComponent implements OnInit, OnDestroy {
   Hospitals: IHospital[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -29,7 +29,6 @@ export class ListHospitalsComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Hospitals = data.data;
         },
         error: (err) => {
@@ -53,11 +52,10 @@ export class ListHospitalsComponent {
           });
         },
         error: (err) => {
-          console.error(err);
           this._MessageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Failed To Delete Hospital',
+            detail: 'Failed To Delete Hospital' + err.error.message,
           });
         },
       });

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ICareCenter } from '../../../Core/interfaces/i-care-center';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-show-care-center',
@@ -11,10 +12,11 @@ import { CommonModule, Location } from '@angular/common';
   templateUrl: './show-care-center.component.html',
   styleUrl: './show-care-center.component.css',
 })
-export class ShowCareCenterComponent {
+export class ShowCareCenterComponent implements OnInit, OnDestroy {
   id: string = '';
   careCenter: ICareCenter = {} as ICareCenter;
   departmentsOfCareCenter: any[] = [];
+  private destroy$ = new Subject<void>();
   constructor(
     private _SCareCenterService: SCareCenterService,
     private _ActivatedRoute: ActivatedRoute,
@@ -26,13 +28,18 @@ export class ShowCareCenterComponent {
         this.id = `${x.get('id')}`;
       },
     });
-    this._SCareCenterService.showCareCenter(this.id).subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.careCenter = data.data;
-        this.departmentsOfCareCenter = data.data.departments;
-      },
-    });
+    this.loadCareCenterData();
+  }
+  loadCareCenterData() {
+    this._SCareCenterService
+      .showCareCenter(this.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.careCenter = data.data;
+          this.departmentsOfCareCenter = data.data.departments;
+        },
+      });
   }
   back() {
     this._Location.back();
@@ -43,5 +50,9 @@ export class ShowCareCenterComponent {
       '_blank',
       'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
     );
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

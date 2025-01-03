@@ -19,7 +19,12 @@ export class SSpeicalizationService {
   ): Observable<ISpecialization> {
     return this._HttpClient.post<ISpecialization>(
       `${environment.baseUrl}/Specializations`,
-      specialization
+      specialization,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   showSpecialization(id: string): Observable<ISpecialization> {
@@ -33,12 +38,22 @@ export class SSpeicalizationService {
   ): Observable<ISpecialization> {
     return this._HttpClient.put<ISpecialization>(
       `${environment.baseUrl}/Specializations/${id}`,
-      specialization
+      specialization,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   deleteSpecialization(id: string): Observable<ISpecialization> {
     return this._HttpClient.delete<ISpecialization>(
-      `${environment.baseUrl}/Specializations/${id}`
+      `${environment.baseUrl}/Specializations/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   addSpecializationDoctor(
@@ -46,7 +61,12 @@ export class SSpeicalizationService {
   ): Observable<any> {
     return this._HttpClient.post(
       `${environment.baseUrl}/Doctor_Specialization`,
-      doctorSpecialization
+      doctorSpecialization,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
 }

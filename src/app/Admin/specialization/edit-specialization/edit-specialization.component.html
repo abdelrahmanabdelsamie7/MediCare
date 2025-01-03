@@ -3,7 +3,7 @@
   <h1>Edit Specialization</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
       <li class="breadcrumb-item">Edit</li>
     </ol>
   </nav>
@@ -14,7 +14,8 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editSpecializationForm" (ngSubmit)="editSpecialization(editSpecializationForm)">
+          <form class="row" [formGroup]="editSpecializationForm"
+            (ngSubmit)="editSpecialization(editSpecializationForm)">
             <div class="col-12">
               <label for="title" class="form-label">Title</label>
               <input type="text" formControlName="title"

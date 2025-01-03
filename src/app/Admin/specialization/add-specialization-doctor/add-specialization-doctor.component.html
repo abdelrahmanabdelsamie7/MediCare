@@ -3,7 +3,7 @@
   <h1>Add Specialization To Doctor</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin">Dashboard</a></li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
       <li class="breadcrumb-item">Add</li>
     </ol>
   </nav>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-6">
               <label for="specialization_id" class="form-label">Select Specialization</label>
-              <select class="form-control mb-2" formControlName="specialization_id"
+              <select class="form-control mb-2" formControlName="specialization_id" multiple
                 [ngClass]="{'is-invalid':(addSpecializationDoctorForm.controls.specialization_id.touched && addSpecializationDoctorForm.controls.specialization_id.errors) }">
                 @for (item of Specializations; track $index) {
                 <option [value]="item.id">{{ item.title }} </option>

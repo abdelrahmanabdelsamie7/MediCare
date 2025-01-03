@@ -30,19 +30,19 @@
 </div>
 <div class="container">
   @if(activeTab === 'doctors'){
-  <div class="tab-content pt-2 ">
-    <div class="row">
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img src="hero1.jpg" class="card-img-top" alt="Doctor Image" />
-          <div class="card-body">
-            <h5 class="card-title">Doctor Name</h5>
-            <p class="card-text">Details about the doctor.</p>
-            <a href="#" class="btn btn-info text-light">More Info</a>
-          </div>
+  <div class="row">
+    @for (item of Doctors; track $index) {
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <img [src]="item.image" class="card-img-top" alt="Doctor Image" />
+        <div class="card-body" style="direction: rtl;">
+          <h5 class="card-title">{{ item.fName }} {{ item.lName }}</h5>
+          <p class="card-text">{{ item.title }}</p>
+          <a routerLink="doctor/{{ item.id }}" class="btn btn-info text-light">More Info</a>
         </div>
       </div>
     </div>
+    }
   </div>
   }
   @if (activeTab === 'hospitals') {
@@ -84,4 +84,4 @@
   </div>
   }
 </div>
-<app-site-footer>
+<app-site-footer></app-site-footer>

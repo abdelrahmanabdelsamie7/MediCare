@@ -29,7 +29,6 @@ export class ListDepartmentsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Departments = data.data;
         },
         error: (err) => {

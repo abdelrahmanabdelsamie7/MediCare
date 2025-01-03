@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ISpecialization } from '../../../Core/interfaces/i-specialization';
 import {
   FormControl,
@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Toast } from 'primeng/toast';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-edit-specialization',
   standalone: true,
@@ -19,11 +20,13 @@ import { Toast } from 'primeng/toast';
   styleUrl: './edit-specialization.component.css',
   providers: [MessageService],
 })
-export class EditSpecializationComponent implements OnInit {
+export class EditSpecializationComponent implements OnInit, OnDestroy {
   id: string = '';
   Specialization: ISpecialization = {} as ISpecialization;
+  private destroy$ = new Subject<void>();
   editSpecializationForm = new FormGroup({
     title: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
@@ -38,22 +41,25 @@ export class EditSpecializationComponent implements OnInit {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
-        this.loadSpecializationData();
       },
     });
+    this.loadSpecializationData();
   }
   loadSpecializationData() {
-    this._SSpeicalizationService.showSpecialization(this.id).subscribe({
-      next: (data: any) => {
-        this.Specialization = data.data;
-        this.editSpecializationForm.patchValue({
-          title: this.Specialization.title,
-        });
-      },
-      error: (err) => {
-        console.error('Error loading Specialization data:', err);
-      },
-    });
+    this._SSpeicalizationService
+      .showSpecialization(this.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.Specialization = data.data;
+          this.editSpecializationForm.patchValue({
+            title: this.Specialization.title,
+          });
+        },
+        error: (err) => {
+          console.error('Error loading Specialization data:', err);
+        },
+      });
   }
   editSpecialization(editSpecializationForm: FormGroup) {
     if (this.editSpecializationForm.invalid) return;
@@ -61,12 +67,12 @@ export class EditSpecializationComponent implements OnInit {
       .editSpecialization(this.id, editSpecializationForm.value)
       .subscribe({
         next: (data) => {
-          console.log('Specialization edited successfully:', data);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Specialization Edited Successfully',
           });
+          editSpecializationForm.reset();
         },
         error: (err) => {
           console.error('Error editing Specialization:', err);
@@ -80,5 +86,9 @@ export class EditSpecializationComponent implements OnInit {
   }
   back() {
     this._Location.back();
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

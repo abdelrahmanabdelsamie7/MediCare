@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { MessageService } from 'primeng/api';
 import {
@@ -11,6 +11,7 @@ import { CommonModule, Location } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { ActivatedRoute } from '@angular/router';
 import { IDepartment } from '../../../Core/interfaces/i-department';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-edit-department',
   standalone: true,
@@ -19,16 +20,22 @@ import { IDepartment } from '../../../Core/interfaces/i-department';
   styleUrl: './edit-department.component.css',
   providers: [MessageService],
 })
-export class EditDepartmentComponent implements OnInit {
+export class EditDepartmentComponent implements OnInit, OnDestroy {
   id: string = '';
   department: IDepartment = {} as IDepartment;
+  private destroy$ = new Subject<void>();
   editDepartmentForm = new FormGroup({
     title: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
-    description: new FormControl('', [Validators.minLength(3)]),
+    description: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     icon: new FormControl('', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
@@ -43,24 +50,27 @@ export class EditDepartmentComponent implements OnInit {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
-        this.loadDepartmentData();
       },
     });
+    this.loadDepartmentData();
   }
   loadDepartmentData() {
-    this._SDepartmentService.showDepartment(this.id).subscribe({
-      next: (data: any) => {
-        this.department = data.data;
-        this.editDepartmentForm.patchValue({
-          title: this.department.title,
-          description: this.department.description,
-          icon: this.department.icon,
-        });
-      },
-      error: (err) => {
-        console.error('Error loading Department data:', err);
-      },
-    });
+    this._SDepartmentService
+      .showDepartment(this.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.department = data.data;
+          this.editDepartmentForm.patchValue({
+            title: this.department.title,
+            description: this.department.description,
+            icon: this.department.icon,
+          });
+        },
+        error: (err) => {
+          console.error('Error loading Department data:', err);
+        },
+      });
   }
   editDepartment(editDepartmentForm: FormGroup) {
     if (this.editDepartmentForm.invalid) return;
@@ -68,15 +78,14 @@ export class EditDepartmentComponent implements OnInit {
       .editDepartment(this.id, editDepartmentForm.value)
       .subscribe({
         next: (data) => {
-          console.log('Department edited successfully:', data);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Department Edited Successfully',
           });
+          editDepartmentForm.reset();
         },
         error: (err) => {
-          console.error('Error editing department:', err);
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
@@ -87,5 +96,9 @@ export class EditDepartmentComponent implements OnInit {
   }
   back() {
     this._Location.back();
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

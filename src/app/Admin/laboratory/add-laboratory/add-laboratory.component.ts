@@ -89,6 +89,7 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
           summary: 'Success',
           detail: 'Laboratory Added Successfully',
         });
+        addLaboratoryForm.reset();
       },
       error: (err) => {
         this.messageService.add({

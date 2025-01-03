@@ -55,6 +55,8 @@ import { EditDoctorOfferComponent } from './Doctor/doctor_offers/edit-doctor-off
 import { NotFoundComponent } from './Site/shared/not-found/not-found.component';
 import { AdminLoginComponent } from './Admin/shared/admin-login/admin-login.component';
 import { adminGuard } from './Core/guards/admin.guard';
+import { DoctorLoginComponent } from './Doctor/shared/doctor-login/doctor-login.component';
+import { doctorGuard } from './Core/guards/doctor.guard';
 
 export const routes: Routes = [
   // USer Register
@@ -331,10 +333,18 @@ export const routes: Routes = [
       // End Admin(specializations) Routing
     ],
   },
+
+  // Login Doctor
+  {
+    path: 'doctor-login',
+    component: DoctorLoginComponent,
+    title: 'MediCare | Doctor Login',
+  },
   // Doctor Panel
   {
-    path: 'doctor',
+    path: 'doctor-mediCare-1245',
     component: DoctorDashboardComponent,
+    canActivate: [doctorGuard],
     title: 'Doctor Panel',
     children: [
       // Start Doctor (Doctor Offers) Routing

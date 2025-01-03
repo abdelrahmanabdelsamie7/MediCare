@@ -90,6 +90,7 @@ export class AddPharmacyComponent implements OnInit, OnDestroy {
           summary: 'Success',
           detail: 'Pharmacy Added Successfully',
         });
+        addPharmacyForm.reset();
       },
       error: (err) => {
         this.messageService.add({

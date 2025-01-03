@@ -6,6 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { IHospital } from '../../../Core/interfaces/ihospital';
 import { ICareCenter } from '../../../Core/interfaces/i-care-center';
+import { IDoctor } from '../../../Core/interfaces/i-doctor';
 
 @Component({
   selector: 'app-details-department',
@@ -25,6 +26,7 @@ export class DetailsDepartmentComponent implements OnInit {
   department: any = {};
   Hospitals: IHospital[] = [];
   CareCenters: ICareCenter[] = [];
+  Doctors: IDoctor[] = [];
   activeTab: string = 'hospitals';
   constructor(
     private _ActivatedRoute: ActivatedRoute,
@@ -45,6 +47,7 @@ export class DetailsDepartmentComponent implements OnInit {
         this.department = data.data;
         this.Hospitals = this.department.hospitals;
         this.CareCenters = this.department.care_centers;
+        this.Doctors = this.department.doctors;
       },
     });
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IHospital } from '../../../Core/interfaces/ihospital';
 import { SHospitalService } from '../../../Core/services/s-hospital.service';
 import { MessageService } from 'primeng/api';
@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { CommonModule, Location } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-edit-hospital',
   standalone: true,
@@ -20,9 +21,10 @@ import { CustomValidators } from 'ng2-validation';
   styleUrl: './edit-hospital.component.css',
   providers: [MessageService],
 })
-export class EditHospitalComponent {
+export class EditHospitalComponent implements OnDestroy, OnInit {
   id: string = '';
   hospital: IHospital = {} as IHospital;
+  private destroy$ = new Subject<void>();
   constructor(
     private _SHospitalService: SHospitalService,
     private messageService: MessageService,
@@ -58,20 +60,22 @@ export class EditHospitalComponent {
     this.loadHospitalData();
   }
   loadHospitalData() {
-    this._SHospitalService.showHospital(this.id).subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.hospital = data.data;
-        this.editHospitalForm.patchValue({
-          title: this.hospital.title,
-          service: this.hospital.service,
-          image: this.hospital.image,
-          phone: this.hospital.phone,
-          address: this.hospital.address,
-          locationUrl: this.hospital.locationUrl,
-        });
-      },
-    });
+    this._SHospitalService
+      .showHospital(this.id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.hospital = data.data;
+          this.editHospitalForm.patchValue({
+            title: this.hospital.title,
+            service: this.hospital.service,
+            image: this.hospital.image,
+            phone: this.hospital.phone,
+            address: this.hospital.address,
+            locationUrl: this.hospital.locationUrl,
+          });
+        },
+      });
   }
   editHospital(editHospitalForm: FormGroup) {
     if (this.editHospitalForm.invalid) return;
@@ -79,24 +83,27 @@ export class EditHospitalComponent {
       .editHospital(this.id, editHospitalForm.value)
       .subscribe({
         next: (data) => {
-          console.log('Hospital edited successfully:', data);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Hospital Edited Successfully',
           });
+          editHospitalForm.reset();
         },
         error: (err) => {
-          console.error('Error editing Hospital:', err);
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: "Hospital Couldn't Be Edited",
+            detail: "Hospital Couldn't Be Edited" + err.error.message,
           });
         },
       });
   }
   back() {
     this._Location.back();
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

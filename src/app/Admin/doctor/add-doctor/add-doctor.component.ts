@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
 import {
@@ -22,7 +22,7 @@ import { Toast } from 'primeng/toast';
   styleUrl: './add-doctor.component.css',
   providers: [MessageService],
 })
-export class AddDoctorComponent {
+export class AddDoctorComponent implements OnInit, OnDestroy {
   Departments: IDepartment[] = [];
   private destroy$ = new Subject<void>();
   addDoctorForm = new FormGroup({
@@ -109,6 +109,7 @@ export class AddDoctorComponent {
           summary: 'Success',
           detail: 'Doctor Added Successfully',
         });
+        addDoctorForm.reset();
       },
       error: (err) => {
         this.messageService.add({

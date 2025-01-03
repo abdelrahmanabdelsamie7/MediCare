@@ -12,7 +12,7 @@
         <hr>
         <h5>Service : <span>{{ hospital.service }}</span></h5>
         <hr>
-        <h5>Phone : {{ hospital.phone }}</h5>
+        <h5>Phone : <a href="tel:{{ hospital.phone }}">{{ hospital.phone }}</a></h5>
         <hr>
         <h5>Address : {{ hospital.address }}</h5>
         <hr>
@@ -27,7 +27,7 @@
     <div class="col-md-4">
       <div class="card departmentHospital shadow p-3">
         <a class="btn btn-light btn-update"
-          routerLink="/admin/edit_department_hospital/{{ item.pivot.department_id }}/{{ item.pivot.hospital_id }}"><i
+          routerLink="/admin-mediCare-1245/edit_department_hospital/{{ item.pivot.department_id }}/{{ item.pivot.hospital_id }}"><i
             class="bi bi-pen"></i></a>
         <h6>Department : {{ item.title }}</h6>
         <hr>

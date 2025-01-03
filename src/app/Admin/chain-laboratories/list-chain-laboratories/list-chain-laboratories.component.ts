@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IChainLaboratories } from '../../../Core/interfaces/i-chain-laboratories';
 import { Subject, takeUntil } from 'rxjs';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './list-chain-laboratories.component.css',
   providers: [MessageService],
 })
-export class ListChainLaboratoriesComponent {
+export class ListChainLaboratoriesComponent implements OnInit, OnDestroy {
   ChainLaboratories: IChainLaboratories[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -30,7 +30,6 @@ export class ListChainLaboratoriesComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.ChainLaboratories = data.data;
         },
         error: (err) => {

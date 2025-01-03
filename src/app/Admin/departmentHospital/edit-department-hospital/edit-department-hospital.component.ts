@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { SHospitalService } from '../../../Core/services/s-hospital.service';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { IHospital } from '../../../Core/interfaces/ihospital';
@@ -29,21 +28,20 @@ export class EditDepartmentHospitalComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   departmentData: IDepartment = {} as IDepartment;
   hospitalData: IHospital = {} as IHospital;
-  constructor(
-    private _ActivatedRoute: ActivatedRoute,
-    private _SDepartmentService: SDepartmentService,
-    private _SHospitalService: SHospitalService,
-    private _MessageService: MessageService
-  ) {}
+
   editDepartmentHospitalForm = new FormGroup({
     app_price: new FormControl('', [Validators.pattern('^[0-9]*$')]),
     start_at: new FormControl('', []),
     end_at: new FormControl('', []),
   });
+  constructor(
+    private _ActivatedRoute: ActivatedRoute,
+    private _SHospitalService: SHospitalService,
+    private _MessageService: MessageService
+  ) {}
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
       next: (params) => {
-        console.log(params);
         this.department_id = `${params.get('department_id')}`;
         this.hospital_id = `${params.get('hospital_id')}`;
       },
@@ -80,12 +78,12 @@ export class EditDepartmentHospitalComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (data) => {
-          console.log(data);
           this._MessageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Info Department To Hospital Edited Successfully',
           });
+          editDepartmentHospitalForm.reset();
         },
         error: (err) => {
           this._MessageService.add({

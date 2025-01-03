@@ -16,7 +16,12 @@ export class SLaboratoryService {
   addLaboratory(laboratory: ILaboratory): Observable<ILaboratory> {
     return this._HttpClient.post<ILaboratory>(
       `${environment.baseUrl}/Laboratories`,
-      laboratory
+      laboratory,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   showLaboratory(id: string): Observable<ILaboratory> {
@@ -27,12 +32,22 @@ export class SLaboratoryService {
   editLaboratory(id: string, laboratory: ILaboratory): Observable<ILaboratory> {
     return this._HttpClient.put<ILaboratory>(
       `${environment.baseUrl}/Laboratories/${id}`,
-      laboratory
+      laboratory,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
   deleteLaboratory(id: string): Observable<ILaboratory> {
     return this._HttpClient.delete<ILaboratory>(
-      `${environment.baseUrl}/Laboratories/${id}`
+      `${environment.baseUrl}/Laboratories/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
     );
   }
 }

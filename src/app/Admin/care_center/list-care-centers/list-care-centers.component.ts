@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ICareCenter } from '../../../Core/interfaces/i-care-center';
 import { Subject, takeUntil } from 'rxjs';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './list-care-centers.component.css',
   providers: [MessageService],
 })
-export class ListCareCentersComponent {
+export class ListCareCentersComponent implements OnInit, OnDestroy {
   careCenters: ICareCenter[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -29,7 +29,6 @@ export class ListCareCentersComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.careCenters = data.data;
         },
         error: (err) => {

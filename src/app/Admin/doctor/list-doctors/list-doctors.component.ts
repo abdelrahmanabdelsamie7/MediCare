@@ -1,5 +1,5 @@
 import { RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
@@ -13,7 +13,7 @@ import { Toast } from 'primeng/toast';
   styleUrl: './list-doctors.component.css',
   providers: [MessageService],
 })
-export class ListDoctorsComponent {
+export class ListDoctorsComponent implements OnInit, OnDestroy {
   Doctors: IDoctor[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -29,7 +29,6 @@ export class ListDoctorsComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Doctors = data.data;
         },
         error: (err) => {
@@ -51,7 +50,6 @@ export class ListDoctorsComponent {
           });
         },
         error: (err) => {
-          console.error(err);
           this._MessageService.add({
             severity: 'error',
             summary: 'Error',

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ILaboratory } from '../../../Core/interfaces/i-laboratory';
 import { Subject, takeUntil } from 'rxjs';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './list-laboratories.component.css',
   providers: [MessageService],
 })
-export class ListLaboratoriesComponent {
+export class ListLaboratoriesComponent implements OnInit, OnDestroy {
   Laboratories: ILaboratory[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -30,7 +30,6 @@ export class ListLaboratoriesComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Laboratories = data.data;
         },
         error: (err) => {
@@ -54,11 +53,10 @@ export class ListLaboratoriesComponent {
           });
         },
         error: (err) => {
-          console.error(err);
           this._MessageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Failed To Delete Laboratory',
+            detail: 'Failed To Delete Laboratory ' + err.error.message,
           });
         },
       });

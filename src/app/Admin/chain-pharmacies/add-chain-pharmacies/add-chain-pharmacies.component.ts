@@ -33,12 +33,21 @@ export class AddChainPharmaciesComponent {
     this._SChainPharmaciesService
       .addChainPharmacies(addChainPharmaciesForm.value)
       .subscribe({
-        next: (data) => {},
+        next: (data) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Chain Of Pharmacies Added Successfully',
+          });
+          addChainPharmaciesForm.reset();
+        },
+        error: (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'error',
+            detail: `${err.error.message}`,
+          });
+        },
       });
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Chain Of Pharmacies Added Successfully',
-    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ISpecialization } from '../../../Core/interfaces/i-specialization';
 import { Subject, takeUntil } from 'rxjs';
 import { SSpeicalizationService } from '../../../Core/services/s-speicalization.service';
@@ -13,7 +13,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
-
 @Component({
   selector: 'app-add-specialization-doctor',
   standalone: true,
@@ -22,7 +21,7 @@ import { SDoctorService } from '../../../Core/services/s-doctor.service';
   styleUrl: './add-specialization-doctor.component.css',
   providers: [MessageService],
 })
-export class AddSpecializationDoctorComponent {
+export class AddSpecializationDoctorComponent implements OnInit, OnDestroy {
   Specializations: ISpecialization[] = [];
   Doctors: IDoctor[] = [];
   private destroy$ = new Subject<void>();
@@ -45,7 +44,6 @@ export class AddSpecializationDoctorComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Specializations = data.data;
         },
         error: (err) => {
@@ -59,7 +57,6 @@ export class AddSpecializationDoctorComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Doctors = data.data;
         },
         error: (err) => {
@@ -78,6 +75,7 @@ export class AddSpecializationDoctorComponent {
             detail:
               'Specialization Added To Doctor Successfully , Check Doctor Info',
           });
+          addSpecializationDoctorForm.reset();
         },
         error: (err) => {
           this._MessageService.add({

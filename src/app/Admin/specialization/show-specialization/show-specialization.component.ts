@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
-
 @Component({
   selector: 'app-show-specialization',
   standalone: true,
@@ -29,6 +28,9 @@ export class ShowSpecializationComponent implements OnInit, OnDestroy {
         this.id = `${x.get('id')}`;
       },
     });
+    this.loadSpecializationData();
+  }
+  loadSpecializationData() {
     this._SSpeicalizationService
       .showSpecialization(this.id)
       .pipe(takeUntil(this.destroy$))
@@ -36,7 +38,7 @@ export class ShowSpecializationComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           console.log(data);
           this.Specialization = data.data;
-          this.doctorsOfSpecialization = this.Specialization.doctors ; 
+          this.doctorsOfSpecialization = this.Specialization.doctors;
         },
       });
   }
