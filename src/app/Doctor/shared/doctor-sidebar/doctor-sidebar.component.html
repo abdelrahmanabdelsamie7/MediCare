@@ -3,12 +3,12 @@
 
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-      <a class="nav-link " routerLink="/doctor">
+      <a class="nav-link " routerLink="/doctor-mediCare-1245">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
     </li>
-    <!--Start  Doctor Offers -->
+    <!--Start Doctor Offers -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#doctorOffers-nav" data-bs-toggle="collapse" href="#">
         <i class="fa-brands fa-discourse"></i><span>Doctor Offers</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -22,6 +22,24 @@
         <li>
           <a routerLink="add_doctor_offer">
             <i class="bi bi-circle"></i><span>Add Doctor Offer</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Start Doctor Blogs -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#doctorBlogs-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-solid fa-blog"></i><span>Doctor Blogs</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="doctorBlogs-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a routerLink="doctor-blogs">
+            <i class="bi bi-circle"></i><span>List Blogs</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="add-blog">
+            <i class="bi bi-circle"></i><span>Add Blog</span>
           </a>
         </li>
       </ul>

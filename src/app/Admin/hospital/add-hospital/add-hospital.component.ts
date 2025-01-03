@@ -61,6 +61,7 @@ export class AddHospitalComponent {
           summary: 'Success',
           detail: 'Hospital Added Successfully',
         });
+        addHospitalForm.reset();
       },
       error: (err) => {
         this.messageService.add({

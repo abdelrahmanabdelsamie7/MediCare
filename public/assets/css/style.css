@@ -276,6 +276,10 @@ h6 {
   color: var(--second-color);
 }
 
+.header-nav .nav-profile img {
+  max-height: 45px;
+}
+
 .header-nav .nav-profile span {
   font-size: 14px;
   font-weight: 600;

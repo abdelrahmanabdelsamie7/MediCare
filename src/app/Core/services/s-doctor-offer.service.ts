@@ -11,18 +11,33 @@ export class SDoctorOfferService {
   constructor(private _HttpClient: HttpClient) {}
   getDoctorOffers(): Observable<IDoctorOffer[]> {
     return this._HttpClient.get<IDoctorOffer[]>(
-      `${environment.baseUrl}/Doctor_Offers`
+      `${environment.baseUrl}/Doctor_Offers`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+        },
+      }
     );
   }
   addDoctorOffer(doctorOffer: IDoctorOffer): Observable<IDoctorOffer> {
     return this._HttpClient.post<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers`,
-      doctorOffer
+      doctorOffer,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+        },
+      }
     );
   }
   showDoctorOffer(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.get<IDoctorOffer>(
-      `${environment.baseUrl}/Doctor_Offers/${id}`
+      `${environment.baseUrl}/Doctor_Offers/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+        },
+      }
     );
   }
   editDoctorOffer(
@@ -31,12 +46,22 @@ export class SDoctorOfferService {
   ): Observable<IDoctorOffer> {
     return this._HttpClient.put<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
-      doctorOffer
+      doctorOffer,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+        },
+      }
     );
   }
   deleteDoctorOffer(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.delete<IDoctorOffer>(
-      `${environment.baseUrl}/Doctor_Offers/${id}`
+      `${environment.baseUrl}/Doctor_Offers/${id}`,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
+        },
+      }
     );
   }
 }
