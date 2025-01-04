@@ -1,6 +1,8 @@
 <section id="hero">
   <div class="container">
-    <p-carousel class="hero-carsoual" [value]="Images" [numVisible]="1" [numScroll]="3" [circular]="false"
+   <div class="row">
+    <div class="col-md-8">
+      <p-carousel class="hero-carsoual" [value]="Images" [numVisible]="1" [numScroll]="3" [circular]="false"
       [responsiveOptions]="responsiveOptions">
       <ng-template let-image pTemplate="item">
         <div class="relative mx-auto">
@@ -8,5 +10,13 @@
         </div>
       </ng-template>
     </p-carousel>
+    </div>
+    <div class="col-md-4">
+  <div>
+    <img src="ai.svg" routerLink="/ask-ai" height="275px" class="w-100" alt="">
+    <img src="blog.svg" height="275px" class="w-100" alt="">
+  </div>
+    </div>
+   </div>
   </div>
 </section>

@@ -4,6 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SectionAiComponent } from '../section-ai/section-ai.component';
+import { ListDoctorBlogsComponent } from "../../../Doctor/doctor-blogs/list-doctor-blogs/list-doctor-blogs.component";
 @Component({
   selector: 'app-section-hero',
   standalone: true,
@@ -13,7 +15,9 @@ import { RouterModule } from '@angular/router';
     TagModule,
     CommonModule,
     RouterModule,
-  ],
+    SectionAiComponent,
+    ListDoctorBlogsComponent
+],
   templateUrl: './section-hero.component.html',
   styleUrl: './section-hero.component.css',
   encapsulation: ViewEncapsulation.None,
