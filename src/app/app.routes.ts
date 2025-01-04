@@ -82,8 +82,8 @@ export const routes: Routes = [
     title: 'MediCare | مرحبا بعودتك',
   },
   // Home Page
-
-  { path: '', component: SiteHomeComponent, title: 'MediCare | Home' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: SiteHomeComponent, title: 'MediCare | Home' },
   // Department Contains 'Doctors | Hospitals | Care Centers'
   {
     path: 'department/:id',
