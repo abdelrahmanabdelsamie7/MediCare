@@ -1,5 +1,5 @@
 import { IDoctor } from './i-doctor';
-import { IDoctorOfferImages } from './i-doctor-offer-images';
+import { IDoctorOfferImage } from './i-doctor-offer-image';
 
 export interface IDoctorOffer {
   id: string;
@@ -13,5 +13,5 @@ export interface IDoctorOffer {
   is_active: boolean;
   doctor_id: string;
   doctor: IDoctor;
-  images: IDoctorOfferImages[];
+  images: IDoctorOfferImage[];
 }

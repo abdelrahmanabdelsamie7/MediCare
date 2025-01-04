@@ -4,18 +4,14 @@ import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SAuthService {
-
-private readonly _HttpClient=inject(HttpClient)
-setRegisterForm(data:object):Observable<any>{
- return this._HttpClient.post(`${environment.baseUrl}/user/register`,data)
-
-}
-setLoginForm(data:object):Observable<any>{
-  return this._HttpClient.post(`${environment.baseUrl}/user/login`,data)
-
- }
-
+  private readonly _HttpClient = inject(HttpClient);
+  setRegisterForm(data: object): Observable<any> {
+    return this._HttpClient.post(`${environment.baseUrl}/user/register`, data);
+  }
+  setLoginForm(data: object): Observable<any> {
+    return this._HttpClient.post(`${environment.baseUrl}/user/login`, data);
+  }
 }

@@ -122,8 +122,8 @@
             <input [ngClass]="{
               'is-valid': !registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty) ,
               'is-invalid':registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty)
-            }" type="password" class="form-control" id="floatingpassword_confirmation" placeholder="password_confirmation"
-              formControlName="password_confirmation">
+            }" type="password" class="form-control" id="floatingpassword_confirmation"
+              placeholder="password_confirmation" formControlName="password_confirmation">
             @if (registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched ||
             registerForm.get('password_confirmation')?.dirty)) {
             <p class="m-0 alert alert-danger w-50 mx-auto rounded-4">تأكيد كلمة المرور غير صحيح</p>
@@ -131,18 +131,19 @@
             <label for="floatingpassword_confirmation">تأكيد كلمة المرور</label>
           </div>
 
-          <button [disabled]="registerForm.invalid || isLoading" type="submit" class="btn btn-info text-white w-100">انشاء
+          <button [disabled]="registerForm.invalid || isLoading" type="submit"
+            class="btn btn-info text-white w-100">انشاء
             حساب
-@if (isLoading) {
-  <span><i class="fas fa-spin fa-spinner"></i></span>
-}
+            @if (isLoading) {
+            <span><i class="fas fa-spin fa-spinner"></i></span>
+            }
           </button>
-            @if(msgErr){
-              <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
-            }
-            @if(msgSuccess){
-              <p class="alert alert-info w-50 m-auto mt-3 ">جاري التسجيل..</p>
-            }
+          @if(msgErr){
+          <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
+          }
+          @if(msgSuccess){
+          <p class="alert alert-info w-50 m-auto mt-3 ">جاري التسجيل..</p>
+          }
         </form>
         <p class="text-center mt-3">هل لديك حساب؟ <a class="text-info">تسجيل الدخول</a></p>
       </div>
