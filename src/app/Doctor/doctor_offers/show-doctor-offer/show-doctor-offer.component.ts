@@ -3,7 +3,6 @@ import { IDoctorOffer } from '../../../Core/interfaces/i-doctor-offer';
 import { SDoctorOfferService } from '../../../Core/services/s-doctor-offer.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
-import { IDoctorOfferImages } from '../../../Core/interfaces/i-doctor-offer-images';
 import { DiscountPipe } from '../../../Core/pipes/discount.pipe';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
@@ -12,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { IDoctorOfferImage } from '../../../Core/interfaces/i-doctor-offer-image';
 @Component({
   selector: 'app-show-doctor-offer',
   standalone: true,
@@ -32,7 +32,7 @@ import { Toast } from 'primeng/toast';
 export class ShowDoctorOfferComponent implements OnInit, OnDestroy {
   id: string = '';
   DoctorOffer: IDoctorOffer = {} as IDoctorOffer;
-  DoctorOfferImages: IDoctorOfferImages[] = [];
+  DoctorOfferImages: IDoctorOfferImage[] = [];
   Doctor: IDoctor = {} as IDoctor;
   responsiveOptions: any[] | undefined;
   private destroy$ = new Subject<void>();
@@ -89,7 +89,7 @@ export class ShowDoctorOfferComponent implements OnInit, OnDestroy {
     this._SDoctorOfferService.deleteDoctorOfferImage(imageId).subscribe({
       next: () => {
         this.DoctorOfferImages = this.DoctorOfferImages.filter(
-          (obj: IDoctorOfferImages) => obj.id !== imageId
+          (obj: IDoctorOfferImage) => obj.id !== imageId
         );
         this._MessageService.add({
           severity: 'success',

@@ -1,1 +1,41 @@
-<p>show-doctor-clinic works!</p>
+<div class="container">
+  <p-carousel class="py-5" [value]="DoctorClinicImages" [numVisible]="3" [circular]="true"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-image pTemplate="item">
+      <div class="border shadow-sm m-2 carousel">
+        <img [src]="image.image" class="d-block mx-auto" />
+        <!-- <div class="icons">
+          <a routerLink="/doctor-mediCare-1245/edit-doctor-offer-image/{{ image.id }}" title="Edit"><i
+              class="bi bi-pen text-warning"></i></a>
+          <a (click)="deleteImageOffer(image.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
+        </div> -->
+      </div>
+    </ng-template>
+  </p-carousel>
+  <a routerLink="/admin-mediCare-1245/add-doctor-clinic-image"
+    class="btn btn-info text-light d-inline-block ms-auto">Add
+    New Image To Clinic
+  </a>
+  <!-- Offer Details -->
+  <div class="card border-0 shadow p-4 mt-3">
+    <h5>Title : {{ DoctorClinic.title }}</h5>
+    <hr>
+    <h5>Description : {{ DoctorClinic.description }}</h5>
+    <hr>
+    <h5>Address : {{ DoctorClinic.address }}</h5>
+    <hr>
+    <h5>Phone : {{ DoctorClinic.phone }}</h5>
+    <hr>
+    <h5>Location In Map : <a (click)="showInMap(DoctorClinic.locationUrl)"><i
+          class="bi bi-geo-alt text-warning"></i></a>
+    </h5>
+    <hr>
+    <h5>Added At : {{ DoctorClinic.created_at | date:'medium' }}</h5>
+  </div>
+  <!-- Back Button -->
+  <div class="d-inline-block mt-3">
+    <button (click)="back()" class="btn btn-outline-primary">
+      <i class="bi bi-arrow-left"></i> Back
+    </button>
+  </div>
+</div>

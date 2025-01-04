@@ -1,1 +1,71 @@
-<p>edit-doctor-clinic works!</p>
+<!-- Start Editing DoctorClinic -->
+<div class="pagetitle">
+  <h1>Edit Doctor Clinic</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
+      <li class="breadcrumb-item">Edit</li>
+    </ol>
+  </nav>
+</div>
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <p-toast />
+      <div class="card p-4">
+        <div class="card-body">
+          <form class="row" [formGroup]="editDoctorClinicForm" (ngSubmit)="editDoctorClinic(editDoctorClinicForm)">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" formControlName="title"
+                  [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.title.touched && editDoctorClinicForm.controls.title.errors) }"
+                  class="form-control" id="title">
+              </div>
+              <div class="col-md-6">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" formControlName="description"
+                  [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.description.touched && editDoctorClinicForm.controls.description.errors) }"
+                  class="form-control" id="description">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" formControlName="phone"
+                  [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.phone.touched && editDoctorClinicForm.controls.phone.errors) }"
+                  class="form-control" class="form-control" id="phone">
+              </div>
+              <div class="col-md-4">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" formControlName="address"
+                  [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.address.touched && editDoctorClinicForm.controls.address.errors) }"
+                  class="form-control" class="form-control" id="address">
+              </div>
+              <div class="col-md-4">
+                <label for="locationUrl" class="form-label">Location Url</label>
+                <input type="url" formControlName="locationUrl"
+                  [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.locationUrl.touched && editDoctorClinicForm.controls.locationUrl.errors) }"
+                  class="form-control" class="form-control" id="locationUrl">
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary my-2" [disabled]="editDoctorClinicForm.invalid">
+                @if (isLoading) {
+                <i class="fas fa-spin fa-spinner"></i>
+                }
+                Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Back Button -->
+  <div class="d-inline-block mt-3">
+    <button (click)="back()" class="btn btn-outline-primary">
+      <i class="bi bi-arrow-left"></i> Back
+    </button>
+  </div>
+</section>
+<!-- End Editing DoctorClinic -->
