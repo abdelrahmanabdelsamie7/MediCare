@@ -15,8 +15,7 @@ import { ListDoctorBlogsComponent } from "../../../Doctor/doctor-blogs/list-doct
     TagModule,
     CommonModule,
     RouterModule,
-    SectionAiComponent,
-    ListDoctorBlogsComponent
+   
 ],
   templateUrl: './section-hero.component.html',
   styleUrl: './section-hero.component.css',
