@@ -8,6 +8,28 @@
   </div>
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
+
+      <!-- Add Clinic To Doctor -->
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" title="Clinic Doctor" data-bs-toggle="dropdown">
+          <i class="fa-solid fa-house-chimney-medical"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow doctors">
+          <li class="doctor-item">
+            <a routerLink="doctor-clinics"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2"> All
+                Clinics
+              </span></a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="doctor-item">
+            <a routerLink="add-doctor-clinic"><span
+                class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">Add
+                Clinic</span></a>
+          </li>
+        </ul>
+      </li>
       <!-- Add Doctor  -->
       <li class="nav-item dropdown">
         <a class="nav-link nav-icon" title="Doctor" data-bs-toggle="dropdown">
@@ -26,10 +48,7 @@
             <a routerLink="add_doctor"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">Add New
                 Doctor</span></a>
           </li>
-
-
         </ul>
-
       </li>
       <!-- Admin Profile -->
       <li class="nav-item dropdown pe-3">

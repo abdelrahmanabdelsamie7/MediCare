@@ -63,6 +63,10 @@ import { EditDoctorBlogComponent } from './Doctor/doctor-blogs/edit-doctor-blog/
 import { AddDoctorOfferImageComponent } from './Doctor/doctor-offer-images/add-doctor-offer-image/add-doctor-offer-image.component';
 import { EditDoctorOfferImageComponent } from './Doctor/doctor-offer-images/edit-doctor-offer-image/edit-doctor-offer-image.component';
 import { SectionAiComponent } from './Site/home/section-ai/section-ai.component';
+import { ListDoctorClinicsComponent } from './Admin/doctor-clinic/list-doctor-clinics/list-doctor-clinics.component';
+import { AddDoctorClinicComponent } from './Admin/doctor-clinic/add-doctor-clinic/add-doctor-clinic.component';
+import { ShowDoctorClinicComponent } from './Admin/doctor-clinic/show-doctor-clinic/show-doctor-clinic.component';
+import { EditDoctorClinicComponent } from './Admin/doctor-clinic/edit-doctor-clinic/edit-doctor-clinic.component';
 
 export const routes: Routes = [
   // USer Register
@@ -311,6 +315,30 @@ export const routes: Routes = [
         title: 'Admin Panel | Edit Doctor',
       },
       // End Admin(Doctors) Routing
+
+      // Start Admin(Doctor Clinics) Routing
+      {
+        path: 'doctor-clinics',
+        component: ListDoctorClinicsComponent,
+        title: 'Admin Panel | Doctor Clinics',
+      },
+      {
+        path: 'add-doctor-clinic',
+        component: AddDoctorClinicComponent,
+        title: 'Admin Panel | Add Doctor Clinic',
+      },
+      {
+        path: 'show-doctor-clinic/:id',
+        component: ShowDoctorClinicComponent,
+        title: 'Admin Panel | Show Doctor Clinic',
+      },
+      {
+        path: 'edit-doctor-clinic/:id',
+        component: EditDoctorClinicComponent,
+        title: 'Admin Panel | Edit Doctor Clinic',
+      },
+
+      // End Admin(specializations) Routing
 
       // Start Admin(Specializations) Routing
       {
