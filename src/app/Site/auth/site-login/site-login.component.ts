@@ -1,6 +1,9 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SAuthService } from '../../../Core/s-auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-site-login',
@@ -10,6 +13,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './site-login.component.css'
 })
 export class SiteLoginComponent {
+    private readonly _SAuthService =inject(SAuthService)
+    private readonly _Router =inject(Router)
+    msgErr:string='';
+    msgSuccess:boolean=false
+    isLoading:boolean=false;
 loginForm:FormGroup = new FormGroup({
   email:new FormControl(null ,[Validators.required ,Validators.email]),
   password:new FormControl(null,[Validators.required,Validators.minLength(5) , Validators.maxLength(10)]),
@@ -17,6 +25,25 @@ loginForm:FormGroup = new FormGroup({
 
 loginSubmit():void{
   if(this.loginForm.valid){
+    this.isLoading=true;
+      this._SAuthService.setLoginForm(this.loginForm.value).subscribe(
+        {
+          next:(res)=>{
+    console.log(res)
+    this.msgSuccess=true;
+    setTimeout(()=>{
+      this._Router.navigate(['/home'])
+    },1000)
+
+    this.isLoading=false;
+          },
+          error:(err:HttpErrorResponse)=>{
+            this.msgErr=err.error
+            console.log(err)
+            this.isLoading=false;
+          }
+        }
+      )
     console.log(this.loginForm.value)
   }
 }

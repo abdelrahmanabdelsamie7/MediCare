@@ -12,3 +12,22 @@ button {
 section {
   direction: rtl;
 }
+#form-floating {
+  direction: rtl !important;
+  position: relative;
+}
+label {
+  color: #0dcaf0;
+  font-weight: 600;
+  position: absolute ;
+  right: 0;
+}
+.form-floating > .form-control-plaintext ~ label, .form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-select ~ label {
+  color:#0dcaf0;
+  font-weight: 600;
+ transform: scale(.85) translateY(-.5rem) translateX(9rem);
+ background-color: transparent;
+}
+.form-floating > .form-control-plaintext ~ label::after, .form-floating > .form-control:focus ~ label::after, .form-floating > .form-control:not(:placeholder-shown) ~ label::after, .form-floating > .form-select ~ label::after {
+  background-color: transparent;
+}

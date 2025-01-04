@@ -63,6 +63,7 @@ import { EditDoctorBlogComponent } from './Doctor/doctor-blogs/edit-doctor-blog/
 import { AddDoctorOfferImageComponent } from './Doctor/doctor-offer-images/add-doctor-offer-image/add-doctor-offer-image.component';
 import { EditDoctorOfferImageComponent } from './Doctor/doctor-offer-images/edit-doctor-offer-image/edit-doctor-offer-image.component';
 import { SectionAiComponent } from './Site/home/section-ai/section-ai.component';
+import path from 'path';
 
 export const routes: Routes = [
   // USer Register
@@ -78,8 +79,8 @@ export const routes: Routes = [
     title: 'MediCare | مرحبا بعودتك',
   },
   // Home Page
-
-  { path: '', component: SiteHomeComponent, title: 'MediCare | Home' },
+  {path:'', redirectTo:'home', pathMatch:'full'},
+  { path: 'home', component: SiteHomeComponent, title: 'MediCare | Home' },
   // Department Contains 'Doctors | Hospitals | Care Centers'
   {
     path: 'department/:id',

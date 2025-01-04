@@ -46,7 +46,16 @@
           </div>
 
           <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">تسجيل
-            الدخول</button>
+            الدخول
+            @if (isLoading) {
+              <span><i class="fas fa-spin fa-spinner"></i></span>
+            }</button>
+            @if(msgErr){
+              <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
+            }
+            @if(msgSuccess){
+              <p class="alert alert-info w-50 m-auto mt-3 ">تم بنجاح..</p>
+            }
         </form>
         <p class="text-center mt-3">لا تمتلك حسابًا؟<a class="text-info"> أنشئ حسابًا الآن</a></p>
       </div>

@@ -71,33 +71,31 @@
             registerForm.get('address')?.dirty) ) {
             <div class="alert alert-danger w-50 mx-auto rounded-4">
               @if (registerForm.get('address')?.getError('required') ) {
-              <p class="m-0">الهاتف مطلوب</p>
+              <p class="m-0">العنوان مطلوب</p>
               }
-              @if (registerForm.get('address')?.getError('pattern')) {
-              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
-              }
+
             </div>
             }
             <label for="floatingaddress"> العنوان</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
-                                    'is-valid': !registerForm.get('bithdate')?.errors && (registerForm.get('bithdate')?.touched || registerForm.get('bithdate')?.dirty) ,
-                                    'is-invalid':registerForm.get('bithdate')?.errors && (registerForm.get('bithdate')?.touched || registerForm.get('bithdate')?.dirty)
-                                  }" type="text" class="form-control" id="floatingbithdate" placeholder="bithdate"
-              formControlName="bithdate">
-            @if (registerForm.get('bithdate')?.errors && (registerForm.get('bithdate')?.touched ||
-            registerForm.get('bithdate')?.dirty) ) {
+                                    'is-valid': !registerForm.get('birth_date')?.errors && (registerForm.get('birth_date')?.touched || registerForm.get('birth_date')?.dirty) ,
+                                    'is-invalid':registerForm.get('birth_date')?.errors && (registerForm.get('birth_date')?.touched || registerForm.get('birth_date')?.dirty)
+                                  }" type="date" class="form-control" id="floatingbirth_date" placeholder="birth_date"
+              formControlName="birth_date">
+            @if (registerForm.get('birth_date')?.errors && (registerForm.get('birth_date')?.touched ||
+            registerForm.get('birth_date')?.dirty) ) {
             <div class="alert alert-danger w-50 mx-auto rounded-4">
-              @if (registerForm.get('bithdate')?.getError('required') ) {
-              <p class="m-0">الهاتف مطلوب</p>
+              @if (registerForm.get('birth_date')?.getError('required') ) {
+              <p class="m-0">تاريخ الميلاد مطلوب</p>
               }
-              @if (registerForm.get('bithdate')?.getError('pattern')) {
-              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
+              @if (registerForm.get('birth_date')?.getError('pattern')) {
+              <p class="m-0"> يرجى إدخال تاريخ ميلادصالح</p>
               }
             </div>
             }
-            <label for="floatingbithdate">تاريخ الميلاد</label>
+            <label for="floatingbirth_date">تاريخ الميلاد</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -111,7 +109,7 @@
               @if (registerForm.get('password')?.getError('required') ) {
               <p class="m-0">كلمة المرور مطلوبه</p>
               }@else if (registerForm.get('password')?.getError('minlength')) {
-              <p class="m-0">يجب أن تحتوي علي 5 ارقام أو أكثر</p>
+              <p class="m-0">يجب أن تحتوي علي 6 ارقام أو أكثر</p>
               }@else if (registerForm.get('password')?.getError('maxlength')) {
               <p class="m-0">يجب أن تحتوي علي 10 ارقام أو أقل</p>
               }
@@ -122,19 +120,29 @@
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
-              'is-valid': !registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty) ,
-              'is-invalid':registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)
-            }" type="password" class="form-control" id="floatingRepassword" placeholder="RePassword"
-              formControlName="rePassword">
-            @if (registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched ||
-            registerForm.get('rePassword')?.dirty)) {
+              'is-valid': !registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty) ,
+              'is-invalid':registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty)
+            }" type="password" class="form-control" id="floatingpassword_confirmation" placeholder="password_confirmation"
+              formControlName="password_confirmation">
+            @if (registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched ||
+            registerForm.get('password_confirmation')?.dirty)) {
             <p class="m-0 alert alert-danger w-50 mx-auto rounded-4">تأكيد كلمة المرور غير صحيح</p>
             }
-            <label for="floatingRepassword">تأكيد كلمة المرور</label>
+            <label for="floatingpassword_confirmation">تأكيد كلمة المرور</label>
           </div>
 
-          <button [disabled]="registerForm.invalid" type="submit" class="btn btn-info text-white w-100">انشاء
-            حساب</button>
+          <button [disabled]="registerForm.invalid || isLoading" type="submit" class="btn btn-info text-white w-100">انشاء
+            حساب
+@if (isLoading) {
+  <span><i class="fas fa-spin fa-spinner"></i></span>
+}
+          </button>
+            @if(msgErr){
+              <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
+            }
+            @if(msgSuccess){
+              <p class="alert alert-info w-50 m-auto mt-3 ">جاري التسجيل..</p>
+            }
         </form>
         <p class="text-center mt-3">هل لديك حساب؟ <a class="text-info">تسجيل الدخول</a></p>
       </div>
