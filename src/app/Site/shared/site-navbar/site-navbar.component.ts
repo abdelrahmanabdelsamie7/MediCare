@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,4 +8,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './site-navbar.component.html',
   styleUrl: './site-navbar.component.css',
 })
-export class SiteNavbarComponent {}
+export class SiteNavbarComponent implements OnInit {
+  isAuth: boolean = false;
+  constructor() {}
+  ngOnInit(): void {
+    if (localStorage.getItem('userToken')) {
+      this.isAuth = true;
+    } else {
+      this.isAuth = false;
+    }
+  }
+}

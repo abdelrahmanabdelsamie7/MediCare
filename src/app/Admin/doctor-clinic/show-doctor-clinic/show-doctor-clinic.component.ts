@@ -91,6 +91,20 @@ export class ShowDoctorClinicComponent implements OnInit, OnDestroy {
       'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
     );
   }
+  deleteClinicImage(imageId: string) {
+    this._SDoctorClinicService.deleteDoctorClinicImage(imageId).subscribe({
+      next: () => {
+        this.DoctorClinicImages = this.DoctorClinicImages.filter(
+          (obj: IDoctorClinicImage) => obj.id !== imageId
+        );
+        this._MessageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Doctor Clinic Image Delelted Successfully',
+        });
+      },
+    });
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

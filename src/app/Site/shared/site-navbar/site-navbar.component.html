@@ -9,6 +9,17 @@
       </button>
       <div class="collapse navbar-collapse" id="siteNavbar">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          @if (isAuth) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/user-profile"><i class="fa-solid fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <h6 class="nav-link">|</h6>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="">مواعيد الحجز</a>
+          </li>
+          }@else {
           <li class="nav-item">
             <a class="nav-link" routerLink="/Register">انضم إلينا</a>
           </li>
@@ -18,6 +29,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/Login">دخول</a>
           </li>
+          }
         </ul>
       </div>
     </div>

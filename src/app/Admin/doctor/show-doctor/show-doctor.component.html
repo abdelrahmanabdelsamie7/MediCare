@@ -29,11 +29,16 @@
           <ul class="nav nav-tabs nav-tabs-bordered">
             <li class="nav-item">
               <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-
             </li>
             <li class="nav-item">
-              <a class="nav-link text-warning" routerLink="/admin-mediCare-1245/edit_doctor/{{ Doctor.id }}">Edit</a>
-
+              <a class="nav-link" style="color:var(--third-color)" routerLinkActive="active"
+                routerLink="/admin-mediCare-1245/add-clinic-to-doctor">Add
+                Clinic To
+                Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" routerLinkActive="active"
+                routerLink="/admin-mediCare-1245/edit_doctor/{{ Doctor.id }}">Edit</a>
             </li>
           </ul>
           <div class="tab-pane fade show active profile-overview" id="profile-overview">

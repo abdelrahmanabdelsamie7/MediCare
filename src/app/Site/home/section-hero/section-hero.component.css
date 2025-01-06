@@ -1,7 +1,8 @@
 .hero-carsoual .relative {
   height: 550px;
 }
-img {
+img,
+.shadow {
   border-radius: 15px;
 }
 .hero-carsoual .p-carousel-indicator-button {
@@ -14,4 +15,9 @@ img {
 .hero-carsoual .p-carousel-prev-button,
 .hero-carsoual .p-carousel-next-button {
   display: none !important;
+}
+#hero .shadow h4,
+#hero .shadow p {
+  direction: rtl;
+  line-height: 38px;
 }

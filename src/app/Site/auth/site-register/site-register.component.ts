@@ -9,12 +9,12 @@ import {
 } from '@angular/forms';
 import { SAuthService } from '../../../Core/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-site-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, RouterModule],
   templateUrl: './site-register.component.html',
   styleUrl: './site-register.component.css',
 })

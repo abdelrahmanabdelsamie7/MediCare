@@ -67,6 +67,10 @@ import { ListDoctorClinicsComponent } from './Admin/doctor-clinic/list-doctor-cl
 import { AddDoctorClinicComponent } from './Admin/doctor-clinic/add-doctor-clinic/add-doctor-clinic.component';
 import { ShowDoctorClinicComponent } from './Admin/doctor-clinic/show-doctor-clinic/show-doctor-clinic.component';
 import { EditDoctorClinicComponent } from './Admin/doctor-clinic/edit-doctor-clinic/edit-doctor-clinic.component';
+import { UserProfileComponent } from './Site/auth/user-profile/user-profile.component';
+import { AddDoctorClinicImageComponent } from './Admin/doctor-clinic-image/add-doctor-clinic-image/add-doctor-clinic-image.component';
+import { EditDoctorClinicImageComponent } from './Admin/doctor-clinic-image/edit-doctor-clinic-image/edit-doctor-clinic-image.component';
+import { AddClinicToDoctorComponent } from './Admin/doctor-clinic/add-clinic-to-doctor/add-clinic-to-doctor.component';
 
 export const routes: Routes = [
   // USer Register
@@ -81,6 +85,12 @@ export const routes: Routes = [
     component: SiteLoginComponent,
     title: 'MediCare | مرحبا بعودتك',
   },
+  // USer Profile
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
+    title: 'MediCare | User Profile',
+  },
   // Home Page
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SiteHomeComponent, title: 'MediCare | Home' },
@@ -90,6 +100,7 @@ export const routes: Routes = [
     component: DetailsDepartmentComponent,
     title: 'MediCare | Department',
   },
+
   // All Pharmacies
   {
     path: 'pharmacies',
@@ -337,7 +348,22 @@ export const routes: Routes = [
         component: EditDoctorClinicComponent,
         title: 'Admin Panel | Edit Doctor Clinic',
       },
-
+      {
+        path: 'add-clinic-to-doctor',
+        component: AddClinicToDoctorComponent,
+        title: 'Admin Panel | Add Clinic To Doctor',
+      },
+      // Images Of Clinics
+      {
+        path: 'add-doctor-clinic-image',
+        component: AddDoctorClinicImageComponent,
+        title: 'Admin Panel | Add Clinic Image',
+      },
+      {
+        path: 'edit-doctor-clinic-image/:id',
+        component: EditDoctorClinicImageComponent,
+        title: 'Admin Panel | Edit Clinic Image',
+      },
       // End Admin(specializations) Routing
 
       // Start Admin(Specializations) Routing

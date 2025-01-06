@@ -1,14 +1,15 @@
 <div class="container">
+  <p-toast />
   <p-carousel class="py-5" [value]="DoctorClinicImages" [numVisible]="3" [circular]="true"
     [responsiveOptions]="responsiveOptions">
     <ng-template let-image pTemplate="item">
       <div class="border shadow-sm m-2 carousel">
-        <img [src]="image.image" class="d-block mx-auto" />
-        <!-- <div class="icons">
-          <a routerLink="/doctor-mediCare-1245/edit-doctor-offer-image/{{ image.id }}" title="Edit"><i
+        <img [src]="image.image" height="280px" class="d-block mx-auto" />
+        <div class="icons">
+          <a routerLink="/admin-mediCare-1245/edit-doctor-clinic-image/{{ image.id }}" title="Edit"><i
               class="bi bi-pen text-warning"></i></a>
-          <a (click)="deleteImageOffer(image.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
-        </div> -->
+          <a (click)="deleteClinicImage(image.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
+        </div>
       </div>
     </ng-template>
   </p-carousel>

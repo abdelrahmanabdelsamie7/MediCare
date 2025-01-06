@@ -1,12 +1,19 @@
+import { SiteNavbarComponent } from './../../shared/site-navbar/site-navbar.component';
 import { Component } from '@angular/core';
 import { SAiService } from '../../../Core/services/s-ai.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 
 @Component({
   selector: 'app-section-ai',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SiteNavbarComponent,
+    SiteFooterComponent,
+  ],
   templateUrl: './section-ai.component.html',
   styleUrl: './section-ai.component.css',
 })

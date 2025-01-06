@@ -1,0 +1,13 @@
+hr {
+  margin: 15px 0;
+  border-color: #ddd;
+}
+.icons {
+  margin: 7px;
+  text-align: center;
+}
+.icons a {
+  margin: 5px;
+  padding: 5px;
+  background-color: whitesmoke;
+}
