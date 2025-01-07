@@ -7,6 +7,25 @@
         <span>Dashboard</span>
       </a>
     </li>
+    <!-- Start Appointments -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#doctorAppointments-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-regular fa-calendar-days"></i><span>Doctor Appointments</span><i
+          class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="doctorAppointments-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a routerLink="doctor-appointments">
+            <i class="bi bi-circle"></i><span>List Appointments</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="add-doctor-appointment">
+            <i class="bi bi-circle"></i><span>Add Appointment</span>
+          </a>
+        </li>
+      </ul>
+    </li>
     <!--Start Doctor Offers -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#doctorOffers-nav" data-bs-toggle="collapse" href="#">

@@ -1,0 +1,59 @@
+<!-- Start DoctorAppointment Show -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Appointment Card -->
+      <div class="card border shadow-lg p-4 mb-4">
+        <h3 class="card-title text-center mb-3">Appointment Details</h3>
+        <div class="card-body">
+          <!-- Day -->
+          <div class="mb-3">
+            <strong>Day:</strong>
+            {{ DoctorAppointment.day }}
+          </div>
+          <hr>
+          <!-- Start Time -->
+          <div class="mb-3">
+            <strong>Start At:</strong>
+            {{ DoctorAppointment.start_at }}
+          </div>
+          <hr>
+          <!-- End Time -->
+          <div class="mb-3">
+            <strong>End At:</strong>
+            {{ DoctorAppointment.end_at }}
+          </div>
+          <hr>
+          <!-- Clinic Information -->
+          <div class="mb-3">
+            <strong>Clinic:</strong>
+            {{ ClinciDoctor.title }}
+          </div>
+          <div class="mb-3">
+            <strong>Description:</strong>
+            {{ ClinciDoctor.description }}
+          </div>
+          <div class="mb-3">
+            <strong>Address:</strong>
+            {{ ClinciDoctor.address }}
+          </div>
+          <div class="mb-3">
+            <strong>Phone:</strong>
+            {{ ClinciDoctor.phone }}
+          </div>
+          <div class="mb-3">
+            <strong>Location:</strong>
+            <a href="{{ClinciDoctor.locationUrl }}" target="_blank">View on Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <!-- Back Button -->
+      <div class="text-center">
+        <button (click)="back()" class="btn btn-outline-primary">
+          <i class="bi bi-arrow-left"></i> Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End DoctorAppointment Show -->

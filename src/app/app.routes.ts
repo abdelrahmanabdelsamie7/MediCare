@@ -71,6 +71,10 @@ import { UserProfileComponent } from './Site/auth/user-profile/user-profile.comp
 import { AddDoctorClinicImageComponent } from './Admin/doctor-clinic-image/add-doctor-clinic-image/add-doctor-clinic-image.component';
 import { EditDoctorClinicImageComponent } from './Admin/doctor-clinic-image/edit-doctor-clinic-image/edit-doctor-clinic-image.component';
 import { AddClinicToDoctorComponent } from './Admin/doctor-clinic/add-clinic-to-doctor/add-clinic-to-doctor.component';
+import { ListDoctorAppointmentsComponent } from './Doctor/doctor-appointments/list-doctor-appointments/list-doctor-appointments.component';
+import { AddDoctorAppointmentComponent } from './Doctor/doctor-appointments/add-doctor-appointment/add-doctor-appointment.component';
+import { ShowDoctorAppointmentComponent } from './Doctor/doctor-appointments/show-doctor-appointment/show-doctor-appointment.component';
+import { EditDoctorAppointmentComponent } from './Doctor/doctor-appointments/edit-doctor-appointment/edit-doctor-appointment.component';
 
 export const routes: Routes = [
   // USer Register
@@ -460,6 +464,29 @@ export const routes: Routes = [
         title: 'Doctor Panel | Edit Blog',
       },
       // End Doctor (Doctor Blogs) Routing
+
+      // Start Doctor (Appointments) Routing
+      {
+        path: 'doctor-appointments',
+        component: ListDoctorAppointmentsComponent,
+        title: 'Doctor Panel | Doctor Appointments',
+      },
+      {
+        path: 'add-doctor-appointment',
+        component: AddDoctorAppointmentComponent,
+        title: 'Doctor Panel | Add Appointment',
+      },
+      {
+        path: 'show-doctor-appointment/:id',
+        component: ShowDoctorAppointmentComponent,
+        title: 'Doctor Panel | Show Appointment',
+      },
+      {
+        path: 'edit-doctor-appointment/:id',
+        component: EditDoctorAppointmentComponent,
+        title: 'Doctor Panel | Edit Appointment',
+      },
+      // End Doctor (Appointments) Routing
     ],
   },
   // Not Found Path

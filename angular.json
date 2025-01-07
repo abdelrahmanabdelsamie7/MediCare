@@ -27,7 +27,7 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "./node_modules/animate.css/animate.css",
+              "./node_modules/animate.css/animate.min.css",
               "./public/assets/css/style.css",
               "src/styles.css"
             ],
