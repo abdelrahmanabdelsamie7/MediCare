@@ -33,6 +33,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data) => {
           this.userData = data;
+          localStorage.setItem('userId', this.userData.id);
           console.log(data);
         },
         error: (err) => {

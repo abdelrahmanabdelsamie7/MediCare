@@ -8,7 +8,7 @@
       [responsiveOptions]="responsiveOptions">
       <ng-template let-department pTemplate="item">
         <div class="border shadow-sm border-0 rounded-border m-2">
-          <div class="relative mx-auto " routerLink="/department/{{ department.id }}">
+          <div class="relative mx-auto " routerLink="/details/department/{{ department.id }}">
             <img [src]="department.icon" class=" d-block mx-auto rounded-border" />
           </div>
           <h5 class="title">{{ department.title }}</h5>

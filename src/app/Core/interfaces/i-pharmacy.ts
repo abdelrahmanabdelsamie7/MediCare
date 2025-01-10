@@ -10,6 +10,7 @@ export interface IPharmacy {
   deliveryOption: number;
   insurence: number;
   start_at: Date;
+  avg_rate: number;
   end_at: Date;
   chain_pharmacy_id: string;
 }

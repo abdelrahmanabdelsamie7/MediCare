@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IPharmacy } from '../interfaces/i-pharmacy';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { IUserPharmacy } from '../interfaces/i-user-pharmacy';
 @Injectable({
   providedIn: 'root',
 })
@@ -48,6 +49,24 @@ export class SPharmacyService {
           Authorization: 'Bearer' + localStorage.getItem('adminToken'),
         },
       }
+    );
+  }
+
+  // Rating Pharmacy
+  ratePharmacy(rateValue: IUserPharmacy): Observable<IUserPharmacy> {
+    return this._HttpClient.post<IUserPharmacy>(
+      `${environment.baseUrl}/User_Pharmacy`,
+      rateValue,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('userToken'),
+        },
+      }
+    );
+  }
+  ratesOfPharmacy(): Observable<IUserPharmacy> {
+    return this._HttpClient.get<IUserPharmacy>(
+      `${environment.baseUrl}/User_Pharmacy`
     );
   }
 }

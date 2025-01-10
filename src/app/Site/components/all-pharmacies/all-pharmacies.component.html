@@ -24,10 +24,9 @@
       <div class="card">
         <img [src]="item.image" class="card-img-top w-100" height="320px" alt="pharmacy Image" />
         <div class="card-body" style="direction: rtl;">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <p class="card-text">{{ item.service }}</p>
-          <a routerLink="pharmacy/{{ item.id }}" class="btn btn-info text-light" style="direction:rtl">اتعرف علي {{
-            item.title }} اكثر</a>
+          <h5 class="card-title fs-4">صيدلية : {{ item.title }}</h5>
+          <p class="card-text fs-5">تقدم خدمات :{{ item.service }}</p>
+          <a routerLink="/details/pharmacy/{{ item.id }}" class="btn btn-info text-light">المزيد من المعلومات</a>
         </div>
       </div>
     </div>
@@ -41,9 +40,9 @@
       <div class="card">
         <img [src]="item.image" class="card-img-top w-100" height="320px" alt="pharmacy Image" />
         <div class="card-body" style="direction: rtl;">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <p class="card-text">{{ item.service }}</p>
-          <a routerLink="pharmacy/{{ item.id }}" class="btn btn-info text-light">More Info</a>
+          <h5 class="card-title fs-4">صيدلية : {{ item.title }}</h5>
+          <p class="card-text fs-5">تقدم خدمات :{{ item.service }}</p>
+          <a routerLink="/details/pharmacy/{{ item.id }}" class="btn btn-info text-light">المزيد من المعلومات</a>
         </div>
       </div>
     </div>
@@ -51,5 +50,4 @@
   </div>
   }
 </div>
-
 <app-site-footer></app-site-footer>

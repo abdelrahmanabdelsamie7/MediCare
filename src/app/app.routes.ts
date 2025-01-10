@@ -1,5 +1,5 @@
 import { AllPharmaciesComponent } from './Site/components/all-pharmacies/all-pharmacies.component';
-import { Routes, ActivatedRoute } from '@angular/router';
+import { Routes } from '@angular/router';
 import { SiteHomeComponent } from './Site/home/site-home/site-home.component';
 import { SiteLoginComponent } from './Site/auth/site-login/site-login.component';
 import { SiteRegisterComponent } from './Site/auth/site-register/site-register.component';
@@ -75,36 +75,33 @@ import { ListDoctorAppointmentsComponent } from './Doctor/doctor-appointments/li
 import { AddDoctorAppointmentComponent } from './Doctor/doctor-appointments/add-doctor-appointment/add-doctor-appointment.component';
 import { ShowDoctorAppointmentComponent } from './Doctor/doctor-appointments/show-doctor-appointment/show-doctor-appointment.component';
 import { EditDoctorAppointmentComponent } from './Doctor/doctor-appointments/edit-doctor-appointment/edit-doctor-appointment.component';
+import { DetailsPharamcyComponent } from './Site/details/details-pharamcy/details-pharamcy.component';
+import { DetailsComponent } from './Site/details/details/details.component';
+import { DetailsLaboratoryComponent } from './Site/details/details-laboratory/details-laboratory.component';
 
 export const routes: Routes = [
-  // USer Register
+  /* ********************************************** Site Routing ************************************************** */
+  // Home Page
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: SiteHomeComponent, title: 'MediCare | Home' },
+  // Register
   {
     path: 'Register',
     component: SiteRegisterComponent,
     title: 'MediCare | انضم إالينا',
   },
-  // User Login
+  // Login
   {
     path: 'Login',
     component: SiteLoginComponent,
     title: 'MediCare | مرحبا بعودتك',
   },
-  // USer Profile
+  // Profile
   {
     path: 'user-profile',
     component: UserProfileComponent,
     title: 'MediCare | User Profile',
   },
-  // Home Page
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: SiteHomeComponent, title: 'MediCare | Home' },
-  // Department Contains 'Doctors | Hospitals | Care Centers'
-  {
-    path: 'department/:id',
-    component: DetailsDepartmentComponent,
-    title: 'MediCare | Department',
-  },
-
   // All Pharmacies
   {
     path: 'pharmacies',
@@ -117,15 +114,40 @@ export const routes: Routes = [
     component: AllLaboratoriesComponent,
     title: 'MediCare | Laboratories',
   },
+  // Details Of Department, Pharmacy, Laboratory
+  {
+    path: 'details',
+    component: DetailsComponent,
+    children: [
+      {
+        path: 'department/:id',
+        component: DetailsDepartmentComponent,
+        title: 'MediCare | Department',
+      },
+      {
+        path: 'pharmacy/:id',
+        component: DetailsPharamcyComponent,
+        title: 'MediCare | Pharmacy',
+      },
+      {
+        path: 'laboratory/:id',
+        component: DetailsLaboratoryComponent,
+        title: 'MediCare | Laboratory',
+      },
+    ],
+  },
+
   // Ask Ai
   { path: 'ask-ai', component: SectionAiComponent, title: 'MediCare | Ask AI' },
-  // Login Admin
+
+  /* ******************************************** Admin Authorization **************************************************** */
+  // Login
   {
     path: 'admin-login',
     component: AdminLoginComponent,
     title: 'MediCare | Admin Login',
   },
-  //Admin Panel
+  // Panel
   {
     path: 'admin-mediCare-1245',
     canActivate: [adminGuard],
@@ -399,14 +421,14 @@ export const routes: Routes = [
       // End Admin(specializations) Routing
     ],
   },
-
-  // Login Doctor
+  /* ******************************************** Doctor Authorization *************************************************** */
+  // Login
   {
     path: 'doctor-login',
     component: DoctorLoginComponent,
     title: 'MediCare | Doctor Login',
   },
-  // Doctor Panel
+  // Panel
   {
     path: 'doctor-mediCare-1245',
     component: DoctorDashboardComponent,
@@ -489,6 +511,7 @@ export const routes: Routes = [
       // End Doctor (Appointments) Routing
     ],
   },
+  /* ******************************************** Not Found **************************************************** */
   // Not Found Path
   { path: '**', component: NotFoundComponent, title: 'MediCare | Not Found' },
 ];
