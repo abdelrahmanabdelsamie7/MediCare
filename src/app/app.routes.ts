@@ -78,6 +78,10 @@ import { EditDoctorAppointmentComponent } from './Doctor/doctor-appointments/edi
 import { DetailsPharamcyComponent } from './Site/details/details-pharamcy/details-pharamcy.component';
 import { DetailsComponent } from './Site/details/details/details.component';
 import { DetailsLaboratoryComponent } from './Site/details/details-laboratory/details-laboratory.component';
+import { DetailsDoctorComponent } from './Site/details/details-doctor/details-doctor.component';
+import { DetailsHospitalComponent } from './Site/details/details-hospital/details-hospital.component';
+import { DetailsCarecenterComponent } from './Site/details/details-carecenter/details-carecenter.component';
+import { BlogsComponent } from './Site/details/blogs/blogs.component';
 
 export const routes: Routes = [
   /* ********************************************** Site Routing ************************************************** */
@@ -114,7 +118,7 @@ export const routes: Routes = [
     component: AllLaboratoriesComponent,
     title: 'MediCare | Laboratories',
   },
-  // Details Of Department, Pharmacy, Laboratory
+  // Details Of Department, Pharmacy, Laboratory , Doctor , Hospital , CareCenter , BlogsOfDoctor
   {
     path: 'details',
     component: DetailsComponent,
@@ -133,6 +137,26 @@ export const routes: Routes = [
         path: 'laboratory/:id',
         component: DetailsLaboratoryComponent,
         title: 'MediCare | Laboratory',
+      },
+      {
+        path: 'doctor/:id',
+        component: DetailsDoctorComponent,
+        title: 'MediCare | Doctor',
+      },
+      {
+        path: 'hospital/:id',
+        component: DetailsHospitalComponent,
+        title: 'MediCare | Hospital',
+      },
+      {
+        path: 'care-center/:id',
+        component: DetailsCarecenterComponent,
+        title: 'MediCare | Care Center',
+      },
+      {
+        path: 'doctor-blogs',
+        component: BlogsComponent,
+        title: 'MediCare | Doctor Blogs',
       },
     ],
   },

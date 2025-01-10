@@ -1,0 +1,42 @@
+.ratings-container {
+  padding-top: 10px;
+  direction: rtl;
+}
+
+.rating-card {
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.rating-card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* عند التمرير على البطاقة تصبح الظل أكبر */
+}
+
+.rating-card .fa-star {
+  font-size: 16px;
+}
+
+.rating-card p {
+  margin-bottom: 10px;
+}
+
+.rating-card h4 {
+  font-size: 1.25rem;
+}
+
+.ratings-container h2 {
+  font-size: 2rem;
+}
+
+img.rounded-circle {
+  border: 3px solid #ddd; /* إضافة حدود للصورة لتعطيها شكل أكثر تميزًا */
+}
+
+.ms-4 {
+  margin-left: 20px;
+}
+
+.text-info {
+  color: #17a2b8;
+}

@@ -58,4 +58,9 @@ export class SDoctorBlogService {
       }
     );
   }
+  getWebBlogs(): Observable<IDoctorBlog[]> {
+    return this._HttpClient.get<IDoctorBlog[]>(
+      `${environment.baseUrl}/Blogs_Web`
+    );
+  }
 }

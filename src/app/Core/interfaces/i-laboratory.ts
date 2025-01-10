@@ -10,5 +10,6 @@ export interface ILaboratory {
   insurence: number;
   start_at: Date;
   end_at: Date;
+  avg_rate: number;
   chain_laboratory_id: string;
 }

@@ -19,7 +19,7 @@ export class DetailsDepartmentComponent implements OnInit {
   Hospitals: IHospital[] = [];
   CareCenters: ICareCenter[] = [];
   Doctors: IDoctor[] = [];
-  activeTab: string = 'hospitals';
+  activeTab: string = 'Doctors';
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private _SDepartmentService: SDepartmentService

@@ -1,0 +1,96 @@
+.container {
+  height: auto;
+  background-color: #f8f9fa;
+}
+.container img {
+  height: 100%;
+  object-fit: cover;
+}
+.container .Laboratory-info {
+  direction: rtl;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.container .Laboratory-info p {
+  padding: 5px 0px;
+  font-size: 1rem;
+  color: var(--second-color);
+}
+.container a {
+  font-size: 25px;
+}
+.container .badge {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.delivery-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.delivery-status strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.delivery-status i {
+  vertical-align: middle;
+}
+.insurence {
+  position: absolute;
+  width: 140px;
+  height: 35px;
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-25deg);
+  left: -20px;
+  top: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 20px;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.bi-bicycle {
+  font-size: 20px;
+}
+.rating-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.fa-star {
+  font-size: 21px;
+  color: lightgray;
+  cursor: pointer;
+}
+.fa-star.filled {
+  color: gold;
+}
+.review-section {
+  max-width: 400px;
+}
+textarea {
+  resize: none;
+}
+.ratings-container {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  direction: rtl;
+}
+.rating-card {
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.rating-card .fa-star {
+  font-size: 16px;
+}
+.rating-card p {
+  margin-bottom: 5px;
+}

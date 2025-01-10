@@ -1,1 +1,81 @@
-<p>details-laboratory works!</p>
+<div class="container py-4"> <p-toast />
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm">
+        <img [src]="Laboratory.image" alt="{{ Laboratory.title }}" class="img-fluid rounded" />
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card Laboratory-info border-0 shadow-sm p-4 h-100">
+        @if(Laboratory.insurence ===1){
+        <span class="insurence">التأمين الصحي : متاح</span>
+        }
+        <h2 class="head-title my-3 fs-3 text-center">
+          {{ Laboratory.title }}
+        </h2>
+        <p><strong>الخدمات:</strong> {{ Laboratory.service }}</p>
+        <p><strong>رقم المحمول:</strong> {{ Laboratory.phone }}</p>
+        <p><strong>العنوان:</strong> {{ Laboratory.address }}</p>
+        <p>
+          <strong>مواعيد العمل:</strong>
+          {{ Laboratory.start_at | date: "short" }} إلي
+          {{ Laboratory.end_at | date: "short" }}
+        </p>
+        <p><strong>التقييم</strong>:
+          <ng-container *ngFor="let star of getStarArray(); let i = index">
+            <i class="fa-solid fa-star text-warning me-1"></i>
+          </ng-container>
+        </p>
+        <div class="d-flex gap-3 my-3">
+          <a (click)="showInMap(Laboratory.locationUrl)" class="text-primary" title="View Location">
+            <i class="fas fa-map-marker-alt fa-lg"></i>
+          </a>
+          <a [href]="Laboratory.whatsappLink" target="_blank" class="text-success" title="Contact on WhatsApp">
+            <i class="fab fa-whatsapp fa-lg"></i>
+          </a>
+          <a href="tel:{{ Laboratory.phone }}" class="text-info" title="Call Now">
+            <i class="fas fa-phone-alt fa-lg"></i>
+          </a>
+        </div>
+        <!-- Start Rating  -->
+        <div class="rating-container d-flex align-items-center gap-3">
+          <div>
+            <i *ngFor="let star of stars; let i = index" class="fa-solid fa-star"
+              [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)" (click)="setRating(i + 1)">
+            </i>
+          </div>
+          <button class="btn btn-info text-light rounded-3 btn-sm" (click)="toggleReviewInput()">إضافة مراجعة</button>
+        </div>
+        <div *ngIf="showReviewInput" class="review-section mt-3">
+          <form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm)">
+            <textarea formControlName="review" class="form-control mb-2" rows="4"
+              placeholder="اكتب مراجعتك هنا..."></textarea>
+            <button type="submit" class="btn btn-info btn-sm">إرسال المراجعة</button>
+          </form>
+        </div>
+        <!-- End Rating -->
+      </div>
+    </div>
+  </div>
+  <!-- عرض التقييمات المعمل -->
+  <div class="ratings-container mt-4">
+    <h5 class="mb-3">تقييمات {{ Laboratory.title }}:</h5>
+    <div *ngFor="let rating of ratesOfLaboratory" class="rating-card p-3 mb-2 border rounded">
+      <div class="d-flex align-items-center mb-2">
+        <i *ngFor="let star of [].constructor(rating.pivot.rating_value); let i = index"
+          class="fa-solid fa-star text-warning me-1"></i>
+        <span *ngIf="rating.pivot.rating_value < 5">
+          <i *ngFor="let star of [].constructor(5 - rating.pivot.rating_value)" class="fa-solid fa-star text-muted"></i>
+        </span>
+      </div>
+      <p class="m-0">
+        <strong>مراجعة:</strong> {{ rating.pivot.review }}
+      </p>
+      <p class="text-muted" style="font-size:14px;"><small>{{ rating.name }}</small></p>
+      <p class="text-muted m-0 small">
+        <i class="fa-solid fa-clock me-1"></i>
+        تم التقييم بتاريخ: {{ rating.pivot.created_at | date: 'short' }}
+      </p>
+    </div>
+  </div>
+</div>

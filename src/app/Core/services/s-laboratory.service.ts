@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ILaboratory } from '../interfaces/i-laboratory';
 import { environment } from '../../../environments/environment.development';
+import { IUserLaboratroy } from '../interfaces/i-user-laboratory';
 @Injectable({
   providedIn: 'root',
 })
@@ -46,6 +47,19 @@ export class SLaboratoryService {
       {
         headers: {
           Authorization: 'Bearer' + localStorage.getItem('adminToken'),
+        },
+      }
+    );
+  }
+
+  // Rating Laboratory
+  rateLaboratory(rateValue: IUserLaboratroy): Observable<IUserLaboratroy> {
+    return this._HttpClient.post<IUserLaboratroy>(
+      `${environment.baseUrl}/User_Laboratory`,
+      rateValue,
+      {
+        headers: {
+          Authorization: 'Bearer' + localStorage.getItem('userToken'),
         },
       }
     );

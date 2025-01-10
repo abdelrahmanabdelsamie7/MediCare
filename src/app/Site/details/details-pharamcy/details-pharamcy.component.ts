@@ -54,19 +54,15 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
   setRating(rating: number): void {
     this.reviewForm.patchValue({ rating_value: rating });
   }
+  getStarArray() {
+    const rating = Math.floor(this.pharmacy.avg_rate);
+    if (isNaN(rating) || rating < 0) {
+      return [];
+    }
+    return new Array(rating);
+  }
   ngOnInit() {
     this.loadPharmacyData();
-    this.loadRatesOfPharmacy();
-  }
-  loadRatesOfPharmacy() {
-    this._SPharmacyService
-      .ratesOfPharmacy()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: any) => {
-          this.ratesOfPharmacy = data.data;
-        },
-      });
   }
   loadPharmacyData() {
     this._SPharmacyService
@@ -75,6 +71,7 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           this.pharmacy = data.data;
+          this.ratesOfPharmacy = data.data.users;
         },
       });
   }
