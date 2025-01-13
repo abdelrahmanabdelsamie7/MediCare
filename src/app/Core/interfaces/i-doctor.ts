@@ -1,3 +1,10 @@
+import { IClinicToDoctor } from './i-clinic-to-dcotor';
+import { IDepartment } from './i-department';
+import { IDoctorAppointment } from './i-doctor-appiontment';
+import { IDoctorClinic } from './i-doctor-clinic';
+import { IDoctorSpecialization } from './i-doctor-specialization';
+import { ISpecialization } from './i-specialization';
+
 export interface IDoctor {
   id: string;
   fName: string;
@@ -16,6 +23,11 @@ export interface IDoctor {
   password: string;
   department_id: number;
   role: string;
+  avg_rate: number;
   status: number;
   created_at: Date;
+  department: IDepartment;
+  clinics: IDoctorClinic[];
+  appiontments: IDoctorAppointment[];
+  specializations: ISpecialization[];
 }

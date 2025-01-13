@@ -1,1 +1,107 @@
-<p>details-doctor works!</p>
+<div class="container my-3">
+  <div class="row my-3">
+    <div class="col-lg-8 col-md-12">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card border border-0 shadow p-4">
+            <div class="d-flex align-items-center mb-4 doctor-info">
+              <img [src]="Doctor.image" alt="Doctor Image" class="rounded-circle img-thumbnail"
+                style="width: 130px; height: 130px; object-fit: cover;">
+              <div class="mx-2">
+                <h5 class="fw-bold mb-0">
+                  @if (Doctor.gender == 'male') { دكتور } @else { دكتورة }
+                  {{ Doctor.fName }} {{ Doctor.lName }}
+                </h5>
+                <p class="mb-1 mt-3 fs-6 fw-bold">{{ Doctor.title }}</p>
+                <p class="my-2 fs-5">
+                  @if (Doctor.gender == 'male') { دكتور } @else { دكتورة } متخصص في
+                  @for (item of Doctor.specializations; track $index) {
+                  <a href="" class="text-info fw-bold">{{ item.title }}</a>
+                  }
+                </p>
+              </div>
+
+            </div>
+            <div class="d-flex justify-content-start gap-3 mt-3">
+              <a (click)="showInMap(Doctor.facebookLink)" class="text-primary" title="Contact on Facebook">
+                <i class="bi bi-facebook fa-lg"></i>
+              </a>
+              <a [href]="Doctor.whatsappLink" target="_blank" class="text-success" title="Contact on WhatsApp">
+                <i class="fab fa-whatsapp fa-lg"></i>
+              </a>
+              <a href="tel:{{ Doctor.phone }}" class="text-info" title="Call Now">
+                <i class="fas fa-phone-alt fa-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="card border border-0 shadow p-4">
+            <h5><i class="fa-solid fa-circle-info text-light bg-info p-2 rounded-5"></i> معلومات عن
+              @if (Doctor.gender == 'male') { الدكتور } @else { الدكتورة }
+            </h5>
+            <p class="my-2 px-4">
+              {{ Doctor.infoAboutDoctor }}
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="card border border-0 shadow p-4">
+            <h5><i class="fa-regular fa-image text-light bg-info p-2 rounded-5"></i> العيادة :</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+      <div class="card border border-0 shadow text-center">
+        <h2 class="appointmentHead">معلومات الحجز</h2>
+        <p class="text-muted mb-0">احجـــز</p>
+        <h5 class="text-secondary">كشف طبي</h5>
+        <hr>
+        <div class="d-flex justify-content-between mt-2 px-5 appPrice">
+          <h5><i class="fa-solid fa-money-bill text-info fs-4"></i> <br> الكشف : {{ Doctor.app_price }}</h5>
+          <h5>
+            @if(Doctor.homeOption ===1){
+            <i class="fa-solid fa-house-user text-info fs-4"></i> <br> يدعم الزيارة المنزلية
+            }@else {
+            <i class="fa-solid fa-house-user text-danger fs-4"></i> <br> لا يدعم الزيارة المنزلية
+            }
+          </h5>
+        </div>
+        <hr>
+        @for (item of Doctor.clinics; track $index) {
+        <h5 class="location">
+          <button (click)="showInMap(item.locationUrl)"><i
+              class="fa-solid fa-location-dot btn fs-6 text-info"></i></button>
+          {{ item.title }} ({{ item.address }})
+        </h5>
+        }
+        <hr>
+        <h5 class="px-3 py-6">اخـتــــــــار ميعاد الــحــجــز</h5>
+        <hr>
+        <div class="d-flex justify-content-between px-2">
+          @for (clinic of Doctor.clinics; track $index) {
+          @for(appointment of Doctor.appiontments; track $index){
+          @if(appointment.clinic_id === clinic.id){
+          <div class="appointment">
+            <h5 class="day">{{ appointment.day }}</h5>
+            <h5 class="clinic"><i class="fa-solid fa-location-dot btn fs-6 text-info"></i>{{ clinic.title }}</h5>
+            <h5 class="time">من <span>{{ appointment.start_at | timeFormat }}</span></h5>
+            <h5 class="time">حتي <span>{{ appointment.end_at | timeFormat }}</span></h5>
+          </div>
+          }
+          }
+          }
+        </div>
+        <hr>
+        <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
+        <hr>
+        <div class="reserve-section">
+          <h2><i class="bi bi-pencil-square"></i></h2>
+          <h5 class="reserveOnline">احجز أونلاين، ادفع في العيادة!<br> الدكتور يشترط الحجز المسبق!</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

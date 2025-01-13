@@ -4,11 +4,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , RouterModule],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.css',
 })

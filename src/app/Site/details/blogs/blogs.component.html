@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="ratings-container mt-4">
+  <div class="blogs-container mt-4">
     <h2 class="my-4 fw-bold text-info">مدونة <span>MediCare</span></h2>
-
     @for (item of DoctorBlogs; track $index) {
-    <div class="rating-card p-4 my-3 border border-0 rounded">
+    <div class="blog-card p-4 my-3 border border-0 rounded">
       <div class="d-flex align-items-center mb-4">
-        <img [src]="item.doctor.image" alt="item.doctor.fName Image" class="rounded-circle"
-          style="width: 80px; height: 80px; object-fit: cover;">
+        <a routerLink="/details/doctor/{{ item.doctor.id }}">
+          <img [src]="item.doctor.image" alt="item.doctor.fName Image" class="rounded-circle"
+            style="width: 80px; height: 80px; object-fit: cover;"></a>
+
         <div class="mx-2">
           <h5 class="fw-bold mb-0"> د . {{ item.doctor.fName }} {{ item.doctor.lName }}</h5>
           <p class="mb-0 text-muted">{{ item.doctor.title }}</p>

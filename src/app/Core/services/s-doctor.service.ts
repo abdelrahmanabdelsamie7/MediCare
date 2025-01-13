@@ -24,12 +24,7 @@ export class SDoctorService {
   }
   showDoctor(id: string): Observable<IDoctor> {
     return this._HttpClient.get<IDoctor>(
-      `${environment.baseUrl}/Doctors/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('doctorToken'),
-        },
-      }
+      `${environment.baseUrl}/Doctors/${id}`
     );
   }
   editDoctor(id: string, doctor: IDoctor): Observable<IDoctor> {

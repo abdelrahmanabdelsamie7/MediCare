@@ -1,0 +1,91 @@
+.container {
+  direction: rtl;
+  padding-top: 10px;
+}
+
+.doctor-info img {
+  border: 3px solid var(--main-color);
+  border: 3px solid #ddd;
+}
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+.card p {
+  margin-bottom: 10px;
+}
+.appointmentHead {
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 12px;
+  padding: 5px;
+}
+.appPrice h5 {
+  font-size: 16px;
+  color: var(--third-color);
+}
+.location {
+  font-size: 14px;
+  color: var(--second-color);
+}
+.location button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.appointment {
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  margin: 15px;
+}
+.appointment .day {
+  font-size: 19px;
+  font-weight: 700;
+  padding: 9px;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  color: #fff;
+}
+.appointment .clinic {
+  font-size: 12px;
+  color: var(--third-color);
+}
+.appointment .time {
+  font-size: 14px;
+  color: var(--main-color);
+}
+.appointment .time span {
+  font-weight: bold;
+  font-size: 20px;
+}
+.appLater {
+  font-size: 14px;
+  color: var(--third-color);
+}
+.reserve-section {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px 0px 10px;
+}
+.reserve-section h2 i {
+  font-size: 30px;
+  margin-left: 14px;
+  color: var(--main-color);
+}
+.reserve-section h5 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 13px;
+  color: rgb(102, 102, 102);
+}

@@ -1,36 +1,36 @@
-.ratings-container {
+.blogs-container {
   padding-top: 10px;
   direction: rtl;
 }
 
-.rating-card {
+.blog-card {
   background-color: #f9f9f9;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
-.rating-card:hover {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* عند التمرير على البطاقة تصبح الظل أكبر */
+.blog-card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-.rating-card .fa-star {
+.blog-card .fa-star {
   font-size: 16px;
 }
 
-.rating-card p {
+.blog-card p {
   margin-bottom: 10px;
 }
 
-.rating-card h4 {
+.blog-card h4 {
   font-size: 1.25rem;
 }
 
-.ratings-container h2 {
+.blogs-container h2 {
   font-size: 2rem;
 }
 
 img.rounded-circle {
-  border: 3px solid #ddd; /* إضافة حدود للصورة لتعطيها شكل أكثر تميزًا */
+  border: 3px solid #ddd;
 }
 
 .ms-4 {
