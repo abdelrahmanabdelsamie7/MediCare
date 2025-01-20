@@ -48,7 +48,7 @@
     })
   }
 
- 
+
   /**
    * Navbar links active state on scroll
    */
