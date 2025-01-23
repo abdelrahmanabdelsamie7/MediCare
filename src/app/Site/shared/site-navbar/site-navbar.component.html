@@ -1,6 +1,6 @@
 <!-- Start Site Navbar  -->
 <div class="container">
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg  border-bottom border-1  border-info">
     <div class="container">
       <a class="navbar-brand" title="MediCare">MediCare</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbar"
@@ -14,20 +14,14 @@
             <a class="nav-link" routerLink="/user-profile"><i class="fa-solid fa-user"></i></a>
           </li>
           <li class="nav-item">
-            <h6 class="nav-link">|</h6>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="">مواعيد الحجز</a>
+            <a class="nav-link bg-info text-light rounded-2  mx-md-3 my-1 text-center" routerLink="">مواعيد الحجز</a>
           </li>
           }@else {
           <li class="nav-item">
-            <a class="nav-link" routerLink="/Register">انضم إلينا</a>
+            <a class="nav-link bg-info text-light rounded-2  mx-md-3 my-1 text-center" routerLink="/Register"  >انضم إلينا</a>
           </li>
           <li class="nav-item">
-            <h6 class="nav-link">|</h6>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Login">دخول</a>
+            <a class="nav-link bg-info text-light rounded-2 text-center my-1" routerLink="/Login">دخول</a>
           </li>
           }
         </ul>
