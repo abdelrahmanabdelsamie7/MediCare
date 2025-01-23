@@ -1,0 +1,24 @@
+<!-- Start Delivery Service Show -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card border border-0 shadow p-5">
+        <a [href]="deliveryService.app_link" target="_blank" class="link-info fw-bolder" >Delivery Service Link</a>
+      </div>
+    </div>
+    <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
+      <div class="card border border-0 shadow p-4">
+        <h3>Name : <span>{{ deliveryService.name}}</span></h3>
+        <hr>
+        <h5>Description : <span>{{ deliveryService.description }}</span></h5>
+      </div>
+    </div>
+    <div class="d-inline-block">
+      <button (click)="back()" class="btn btn-outline-primary me-auto d-flex align-items-center"> <i
+          class="bi bi-arrow-left fs-6"></i>
+        Back</button>
+    </div>
+  </div>
+
+</div>
+<!-- End Delivery Service Show -->

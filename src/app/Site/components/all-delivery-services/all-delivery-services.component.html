@@ -1,0 +1,21 @@
+<app-site-navbar></app-site-navbar>
+<div class="container my-5 py-4">
+  <div class="row py-2 ">
+    @for (item of deliveryServices; track $index) {
+    <div class="col-md-6 col-lg-4">
+      <div class="card border border-1 border-info">
+        <div class=" text-center p-2">
+          <a [href]="item.app_link" class="link-info" target="_blank"><i class="fa-solid fa-car fa-2x "></i></a>
+        </div>
+
+        <div class="card-body " style="direction: rtl;">
+          <h5 class=" card-text fs-5 py-3 "><span class="text-info">خدمة توصيل :</span> {{ item.name }}</h5>
+          <p class="card-text fs-5 h6 py-3"><span class="text-info">وصف:</span>{{ item.description }}</p>
+
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<app-site-footer></app-site-footer>

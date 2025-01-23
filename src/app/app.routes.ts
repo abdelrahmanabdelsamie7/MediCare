@@ -82,6 +82,11 @@ import { DetailsDoctorComponent } from './Site/details/details-doctor/details-do
 import { DetailsHospitalComponent } from './Site/details/details-hospital/details-hospital.component';
 import { DetailsCarecenterComponent } from './Site/details/details-carecenter/details-carecenter.component';
 import { BlogsComponent } from './Site/details/blogs/blogs.component';
+import { ListDeliveryServiceComponent } from './Admin/delivery/list-delivery-service/list-delivery-service.component';
+import { AddDeliveryServiceComponent } from './Admin/delivery/add-delivery-service/add-delivery-service.component';
+import { ShowDeliveryServiceComponent } from './Admin/delivery/show-delivery-service/show-delivery-service.component';
+import { EditDeliveryServiceComponent } from './Admin/delivery/edit-delivery-service/edit-delivery-service.component';
+import { AllDeliveryServicesComponent } from './Site/components/all-delivery-services/all-delivery-services.component';
 
 export const routes: Routes = [
   /* ********************************************** Site Routing ************************************************** */
@@ -117,6 +122,12 @@ export const routes: Routes = [
     path: 'laboratories',
     component: AllLaboratoriesComponent,
     title: 'MediCare | Laboratories',
+  },
+   // All drivers
+  {
+    path: 'deliveryServices',
+    component: AllDeliveryServicesComponent,
+    title: 'MediCare | Delivery Services',
   },
   // Details Of Department, Pharmacy, Laboratory , Doctor , Hospital , CareCenter , BlogsOfDoctor
   {
@@ -353,6 +364,28 @@ export const routes: Routes = [
         title: 'Admin Panel | Edit Laboratory',
       },
       // End Admin(Pharmacies) Routing
+
+ // Start Admin(Drivers) Routing
+ {
+  path: 'DeliveryServices',
+  component: ListDeliveryServiceComponent,
+  title: 'Admin Panel | Delivery Services',
+},
+{
+  path: 'add_DeliveryService',
+  component: AddDeliveryServiceComponent,
+  title: 'Admin Panel | Add Delivery Service',
+},
+{
+  path: 'show_DeliveryService/:id',
+  component: ShowDeliveryServiceComponent,
+  title: 'Admin Panel | Show Delivery Service',
+},
+{
+  path: 'edit_DeliveryService/:id',
+  component: EditDeliveryServiceComponent,
+  title: 'Admin Panel | Edit Delivery Service',
+},
 
       // Start Admin(Doctors) Routing
       {

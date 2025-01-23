@@ -8,6 +8,7 @@ import { SectionLaboratoriesComponent } from '../section-laboratories/section-la
 import { SectionPharmaciesComponent } from '../section-pharmacies/section-pharmacies.component';
 import { SectionApplicationComponent } from '../section-application/section-application.component';
 import { SectionAiComponent } from '../section-ai/section-ai.component';
+import { SectionDeliveryServiceComponent } from "../section-delivery-service/section-delivery-service.component";
 
 @Component({
   selector: 'app-site-home',
@@ -21,8 +22,8 @@ import { SectionAiComponent } from '../section-ai/section-ai.component';
     SectionLaboratoriesComponent,
     SectionPharmaciesComponent,
     SectionApplicationComponent,
-    // SectionAiComponent,
-  ],
+    SectionDeliveryServiceComponent
+],
   templateUrl: './site-home.component.html',
   styleUrl: './site-home.component.css',
 })
