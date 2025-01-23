@@ -7,5 +7,6 @@ export interface IDoctorAppointment {
   end_at: Date;
   doctor_id: string;
   clinic_id: string;
+  duration: number;
   clinic: IDoctorClinic;
 }

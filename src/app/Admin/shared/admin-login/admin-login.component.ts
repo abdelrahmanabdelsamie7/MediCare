@@ -10,7 +10,6 @@ import { SAdminService } from '../../../Core/services/s-admin.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Toast } from 'primeng/toast';
-
 @Component({
   selector: 'app-admin-login',
   standalone: true,
@@ -29,7 +28,7 @@ export class AdminLoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(6),
+      Validators.minLength(8),
     ]),
   });
   adminLogin(adminLoginForm: FormGroup) {

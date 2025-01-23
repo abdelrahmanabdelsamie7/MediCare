@@ -60,7 +60,7 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.department = data.data;
+          this.department = data.data.department;
           this.editDepartmentForm.patchValue({
             title: this.department.title,
             description: this.department.description,

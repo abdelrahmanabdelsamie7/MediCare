@@ -18,12 +18,7 @@ export class SChainPharmaciesService {
   ): Observable<IChainPharmacies> {
     return this._HttpClient.post<IChainPharmacies>(
       `${environment.baseUrl}/Chain_Pharmacies`,
-      chainPharmacies,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      chainPharmacies
     );
   }
   showChainPharmacies(id: string): Observable<IChainPharmacies> {
@@ -37,22 +32,12 @@ export class SChainPharmaciesService {
   ): Observable<IChainPharmacies> {
     return this._HttpClient.put<IChainPharmacies>(
       `${environment.baseUrl}/Chain_Pharmacies/${id}`,
-      chainPharmacies,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      chainPharmacies
     );
   }
   deleteChainPharmacies(id: string): Observable<IChainPharmacies> {
     return this._HttpClient.delete<IChainPharmacies>(
-      `${environment.baseUrl}/Chain_Pharmacies/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      `${environment.baseUrl}/Chain_Pharmacies/${id}`
     );
   }
 }

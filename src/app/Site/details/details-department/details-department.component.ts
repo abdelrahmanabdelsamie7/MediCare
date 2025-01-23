@@ -35,11 +35,11 @@ export class DetailsDepartmentComponent implements OnInit {
   loadDepartment() {
     this._SDepartmentService.showDepartment(this.id).subscribe({
       next: (data: any) => {
-        console.log(data);
-        this.department = data.data;
-        this.Hospitals = this.department.hospitals;
-        this.CareCenters = this.department.care_centers;
-        this.Doctors = this.department.doctors;
+        console.log(data.data.doctors);
+        this.department = data.data.department.data;
+        this.Hospitals = data.data.hospitals.data;
+        this.CareCenters = data.data.care_centers.data;
+        this.Doctors = data.data.doctors.data;
       },
     });
   }

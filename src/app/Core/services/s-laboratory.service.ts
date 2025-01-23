@@ -17,12 +17,7 @@ export class SLaboratoryService {
   addLaboratory(laboratory: ILaboratory): Observable<ILaboratory> {
     return this._HttpClient.post<ILaboratory>(
       `${environment.baseUrl}/Laboratories`,
-      laboratory,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      laboratory
     );
   }
   showLaboratory(id: string): Observable<ILaboratory> {
@@ -33,22 +28,12 @@ export class SLaboratoryService {
   editLaboratory(id: string, laboratory: ILaboratory): Observable<ILaboratory> {
     return this._HttpClient.put<ILaboratory>(
       `${environment.baseUrl}/Laboratories/${id}`,
-      laboratory,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      laboratory
     );
   }
   deleteLaboratory(id: string): Observable<ILaboratory> {
     return this._HttpClient.delete<ILaboratory>(
-      `${environment.baseUrl}/Laboratories/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      `${environment.baseUrl}/Laboratories/${id}`
     );
   }
 
@@ -56,12 +41,7 @@ export class SLaboratoryService {
   rateLaboratory(rateValue: IUserLaboratroy): Observable<IUserLaboratroy> {
     return this._HttpClient.post<IUserLaboratroy>(
       `${environment.baseUrl}/User_Laboratory`,
-      rateValue,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('userToken'),
-        },
-      }
+      rateValue
     );
   }
 }

@@ -1,12 +1,12 @@
 <section id="hero">
   <div class="container">
-    <div class="row">
+    <div class="row g-2">
       <div class="col-md-7">
-        <p-carousel class="hero-carsoual" [value]="Images" [numVisible]="1" [numScroll]="3" [circular]="false"
+        <p-carousel class="hero-carousel" [value]="Images" [numVisible]="1" [numScroll]="1" [circular]="false"
           [responsiveOptions]="responsiveOptions">
-          <ng-template let-image pTemplate="item">
+          <ng-template let-image pTemplate="item" height="800px">
             <div class="relative mx-auto">
-              <img [src]="image.imageUrl" class="w-100 h-100 rounded-border d-block mx-auto" />
+              <img [src]="image.imageUrl" class="w-100 h-100 rounded-border d-block mx-auto" alt="Doctor Image" />
             </div>
           </ng-template>
         </p-carousel>

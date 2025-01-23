@@ -10,52 +10,28 @@ import { IDoctorBlog } from '../interfaces/i-doctor-blog';
 export class SDoctorBlogService {
   constructor(private _HttpClient: HttpClient) {}
   getDoctorBlogs(): Observable<IDoctorBlog[]> {
-    return this._HttpClient.get<IDoctorBlog[]>(`${environment.baseUrl}/Blogs`, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-      },
-    });
+    return this._HttpClient.get<IDoctorBlog[]>(`${environment.baseUrl}/Blogs`);
   }
   addDoctorBlog(doctorBlog: IDoctorBlog): Observable<IDoctorBlog> {
     return this._HttpClient.post<IDoctorBlog>(
       `${environment.baseUrl}/Blogs`,
-      doctorBlog,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      doctorBlog
     );
   }
   showDoctorBlog(id: string): Observable<IDoctorBlog> {
     return this._HttpClient.get<IDoctorBlog>(
-      `${environment.baseUrl}/Blogs/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      `${environment.baseUrl}/Blogs/${id}`
     );
   }
   editDoctorBlog(id: string, doctorBlog: IDoctorBlog): Observable<IDoctorBlog> {
     return this._HttpClient.put<IDoctorBlog>(
       `${environment.baseUrl}/Blogs/${id}`,
-      doctorBlog,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      doctorBlog
     );
   }
   deleteDoctorBlog(id: string): Observable<IDoctorBlog> {
     return this._HttpClient.delete<IDoctorBlog>(
-      `${environment.baseUrl}/Blogs/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      `${environment.baseUrl}/Blogs/${id}`
     );
   }
   getWebBlogs(): Observable<IDoctorBlog[]> {

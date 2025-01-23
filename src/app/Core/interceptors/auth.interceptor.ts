@@ -1,32 +1,48 @@
+import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { catchError, finalize, throwError } from 'rxjs';
+import { SLoadingService } from '../services/s-loading.service';
 
-import {
-  HttpInterceptorFn,
-} from '@angular/common/http';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  // const getTokenForRole = (url: string): string | null => {
-  //   if (url.includes('/admin')) {
-  //     return localStorage.getItem('adminToken');
-  //   } else if (url.includes('/doctor')) {
-  //     return localStorage.getItem('doctorToken');
-  //   } else if (url.includes('/user')) {
-  //     return localStorage.getItem('userToken');
-  //   }
-  //   return null;
-  // };
-  // const token = getTokenForRole(req.url);
-  // const LoadingService = inject(SLoadingService);
-  // LoadingService.setLoading(true);
-  // if (token) {
-  //   req = req.clone({
-  //     setHeaders: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
-  // }
-  // return next(req).pipe(
-  //   finalize(() => {
-  //     LoadingService.setLoading(false);
-  //   })
-  // );
-  return next(req);
+  let modifiedReq = req;
+  const loaderService = inject(SLoadingService);
+
+  loaderService.showLoader();
+
+  if (localStorage.getItem('adminToken')) {
+    const adminToken = localStorage.getItem('adminToken');
+    modifiedReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${adminToken}`,
+      },
+    });
+  }
+  if (localStorage.getItem('doctorToken')) {
+    const doctorToken = localStorage.getItem('doctorToken');
+    modifiedReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${doctorToken}`,
+      },
+    });
+  }
+  if (localStorage.getItem('userToken')) {
+    const userToken = localStorage.getItem('userToken');
+    modifiedReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+  }
+
+  return next(modifiedReq).pipe(
+    catchError((error) => {
+      console.error('Error in request:', error);
+      loaderService.showLoader();
+      return throwError(() => error);
+    }),
+
+    finalize(() => {
+      loaderService.hideLoader();
+    })
+  );
 };

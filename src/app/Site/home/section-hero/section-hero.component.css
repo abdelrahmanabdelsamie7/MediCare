@@ -1,19 +1,19 @@
-.hero-carsoual .relative {
+.hero-carousel .relative {
   height: 550px;
 }
 img,
 .shadow {
   border-radius: 15px;
 }
-.hero-carsoual .p-carousel-indicator-button {
+.hero-carousel .p-carousel-indicator-button {
   width: 13px;
   height: 13px;
   border-radius: 50% !important;
   background-color: var(--main-color) !important;
   box-shadow: 2px 2px 2px 2px #0d8ab080;
 }
-.hero-carsoual .p-carousel-prev-button,
-.hero-carsoual .p-carousel-next-button {
+.hero-carousel .p-carousel-prev-button,
+.hero-carousel .p-carousel-next-button {
   display: none !important;
 }
 #hero .shadow h4,

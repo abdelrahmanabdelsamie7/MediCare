@@ -20,11 +20,7 @@ export class SChainLaboratoriesService {
     return this._HttpClient.post<IChainLaboratories>(
       `${environment.baseUrl}/Chain_Laboratories`,
       chainLaboratories,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+    
     );
   }
   showChainLaboratories(id: string): Observable<IChainLaboratories> {
@@ -39,21 +35,13 @@ export class SChainLaboratoriesService {
     return this._HttpClient.put<IChainLaboratories>(
       `${environment.baseUrl}/Chain_Laboratories/${id}`,
       chainLaboratories,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+    
     );
   }
   deleteChainLaboratories(id: string): Observable<IChainLaboratories> {
     return this._HttpClient.delete<IChainLaboratories>(
       `${environment.baseUrl}/Chain_Laboratories/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+    
     );
   }
 }

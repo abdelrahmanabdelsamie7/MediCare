@@ -34,7 +34,9 @@ export class ShowDepartmentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.department = data.data;
+          console.log(data);
+
+          this.department = data.data.department;
         },
       });
   }

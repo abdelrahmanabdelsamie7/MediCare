@@ -11,12 +11,7 @@ export class SDoctorAppiontmentService {
   constructor(private _HttpClient: HttpClient) {}
   getDoctorAppointments(): Observable<IDoctorAppointment[]> {
     return this._HttpClient.get<IDoctorAppointment[]>(
-      `${environment.baseUrl}/Appointments`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      `${environment.baseUrl}/Appointments`
     );
   }
   addDoctorAppointment(
@@ -24,22 +19,12 @@ export class SDoctorAppiontmentService {
   ): Observable<IDoctorAppointment> {
     return this._HttpClient.post<IDoctorAppointment>(
       `${environment.baseUrl}/Appointments`,
-      doctorAppointment,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      doctorAppointment
     );
   }
   showDoctorAppointment(id: string): Observable<IDoctorAppointment> {
     return this._HttpClient.get<IDoctorAppointment>(
-      `${environment.baseUrl}/Appointments/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      `${environment.baseUrl}/Appointments/${id}`
     );
   }
   editDoctorAppointment(
@@ -48,22 +33,12 @@ export class SDoctorAppiontmentService {
   ): Observable<IDoctorAppointment> {
     return this._HttpClient.put<IDoctorAppointment>(
       `${environment.baseUrl}/Appointments/${id}`,
-      doctorAppointment,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      doctorAppointment
     );
   }
   deleteDoctorAppointment(id: string): Observable<IDoctorAppointment> {
     return this._HttpClient.delete<IDoctorAppointment>(
-      `${environment.baseUrl}/Appointments/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      `${environment.baseUrl}/Appointments/${id}`
     );
   }
 }

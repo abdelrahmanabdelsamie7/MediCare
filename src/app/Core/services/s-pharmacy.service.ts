@@ -17,12 +17,7 @@ export class SPharmacyService {
   addPharmacy(pharmacy: IPharmacy): Observable<IPharmacy> {
     return this._HttpClient.post<IPharmacy>(
       `${environment.baseUrl}/Pharmacies`,
-      pharmacy,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      pharmacy
     );
   }
   showPharmacy(id: string): Observable<IPharmacy> {
@@ -33,22 +28,12 @@ export class SPharmacyService {
   editPharmacy(id: string, pharmacy: IPharmacy): Observable<IPharmacy> {
     return this._HttpClient.put<IPharmacy>(
       `${environment.baseUrl}/Pharmacies/${id}`,
-      pharmacy,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      pharmacy
     );
   }
   deletePharmacy(id: string): Observable<IPharmacy> {
     return this._HttpClient.delete<IPharmacy>(
-      `${environment.baseUrl}/Pharmacies/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      `${environment.baseUrl}/Pharmacies/${id}`
     );
   }
 
@@ -56,12 +41,7 @@ export class SPharmacyService {
   ratePharmacy(rateValue: IUserPharmacy): Observable<IUserPharmacy> {
     return this._HttpClient.post<IUserPharmacy>(
       `${environment.baseUrl}/User_Pharmacy`,
-      rateValue,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('userToken'),
-        },
-      }
+      rateValue
     );
   }
   ratesOfPharmacy(): Observable<IUserPharmacy> {

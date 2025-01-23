@@ -13,32 +13,20 @@ export class SDoctorOfferService {
   getDoctorOffers(): Observable<IDoctorOffer[]> {
     return this._HttpClient.get<IDoctorOffer[]>(
       `${environment.baseUrl}/Doctor_Offers`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   addDoctorOffer(doctorOffer: IDoctorOffer): Observable<IDoctorOffer> {
     return this._HttpClient.post<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers`,
       doctorOffer,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   showDoctorOffer(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.get<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   editDoctorOffer(
@@ -48,21 +36,13 @@ export class SDoctorOfferService {
     return this._HttpClient.put<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
       doctorOffer,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   deleteDoctorOffer(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.delete<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
 
@@ -72,21 +52,13 @@ export class SDoctorOfferService {
     return this._HttpClient.post<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images`,
       doctorOfferImage,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   showDoctorOfferImage(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.get<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   editDoctorOfferImage(
@@ -96,21 +68,13 @@ export class SDoctorOfferService {
     return this._HttpClient.put<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images/${id}`,
       doctorOfferImage,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
   deleteDoctorOfferImage(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.delete<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('doctorToken'),
-        },
-      }
+      
     );
   }
 }

@@ -16,12 +16,7 @@ export class SDepartmentService {
   addDepartment(department: IDepartment): Observable<IDepartment> {
     return this._HttpClient.post<IDepartment>(
       `${environment.baseUrl}/Departments`,
-      department,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      department
     );
   }
   showDepartment(id: string): Observable<IDepartment> {
@@ -32,22 +27,12 @@ export class SDepartmentService {
   editDepartment(id: string, department: IDepartment): Observable<IDepartment> {
     return this._HttpClient.put<IDepartment>(
       `${environment.baseUrl}/Departments/${id}`,
-      department,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      department
     );
   }
   deleteDepartment(id: string): Observable<IDepartment> {
     return this._HttpClient.delete<IDepartment>(
-      `${environment.baseUrl}/Departments/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer' + localStorage.getItem('adminToken'),
-        },
-      }
+      `${environment.baseUrl}/Departments/${id}`
     );
   }
 }

@@ -13,32 +13,20 @@ export class SDoctorClinicService {
   getDoctorClinics(): Observable<IDoctorClinic[]> {
     return this._HttpClient.get<IDoctorClinic[]>(
       `${environment.baseUrl}/Clinics`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   addDoctorClinic(doctorClinic: IDoctorClinic): Observable<IDoctorClinic> {
     return this._HttpClient.post<IDoctorClinic>(
       `${environment.baseUrl}/Clinics`,
       doctorClinic,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   showDoctorClinic(id: string): Observable<IDoctorClinic> {
     return this._HttpClient.get<IDoctorClinic>(
       `${environment.baseUrl}/Clinics/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   editDoctorClinic(
@@ -48,21 +36,13 @@ export class SDoctorClinicService {
     return this._HttpClient.put<IDoctorClinic>(
       `${environment.baseUrl}/Clinics/${id}`,
       doctorClinic,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   deleteDoctorClinic(id: string): Observable<IDoctorClinic> {
     return this._HttpClient.delete<IDoctorClinic>(
       `${environment.baseUrl}/Clinics/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
 
@@ -73,21 +53,13 @@ export class SDoctorClinicService {
     return this._HttpClient.post<IDoctorClinicImage>(
       `${environment.baseUrl}/Clinic_Images`,
       doctorClinicImage,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   showDoctorClinicImage(id: string): Observable<IDoctorClinicImage> {
     return this._HttpClient.get<IDoctorClinicImage>(
       `${environment.baseUrl}/Clinic_Images/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   editDoctorClinicImage(
@@ -97,21 +69,13 @@ export class SDoctorClinicService {
     return this._HttpClient.put<IDoctorClinicImage>(
       `${environment.baseUrl}/Clinic_Images/${id}`,
       doctorClinicImage,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   deleteDoctorClinicImage(id: string): Observable<IDoctorClinicImage> {
     return this._HttpClient.delete<IDoctorClinicImage>(
       `${environment.baseUrl}/Clinic_Images/${id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
 
@@ -122,11 +86,7 @@ export class SDoctorClinicService {
     return this._HttpClient.post<IClinicToDoctor>(
       `${environment.baseUrl}/doctor/${doctorClinic.doctor_id}/clinic/${doctorClinic.clinic_id}`,
       doctorClinic,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
   deleteClinicOfDoctor(
@@ -135,11 +95,7 @@ export class SDoctorClinicService {
   ): Observable<IDoctorClinic> {
     return this._HttpClient.delete<IDoctorClinic>(
       `${environment.baseUrl}/doctor${doctor_id}/clinic/${clinic_id}`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      
     );
   }
 }

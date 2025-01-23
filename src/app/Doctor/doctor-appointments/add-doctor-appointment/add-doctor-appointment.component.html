@@ -19,18 +19,9 @@
             <div class="row">
               <div class="col-md-6">
                 <label for="day">Select a Day:</label>
-                <select name="day" id="day" formControlName="day"
+                <input type="date" formControlName="day"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.day.touched && addDoctorAppointmentForm.controls.day.errors) }"
                   class="form-control" id="day">
-                  <option value="" disabled selected>Select a day</option>
-                  <option value="Saturday">Saturday</option>
-                  <option value="Sunday">Sunday</option>
-                  <option value="Monday">Monday</option>
-                  <option value="Tuesday">Tuesday</option>
-                  <option value="Wednesday">Wednesday</option>
-                  <option value="Thursday">Thursday</option>
-                  <option value="Friday">Friday</option>
-                </select>
               </div>
               <div class="col-md-6">
                 <label for="clinic_id">Select a Clinic:</label>
@@ -44,17 +35,23 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="start_at" class="form-label">start At</label>
                 <input type="time" formControlName="start_at"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.start_at.touched && addDoctorAppointmentForm.controls.start_at.errors) }"
                   class="form-control" id="start_at">
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="end_at" class="form-label">End At</label>
                 <input type="time" formControlName="end_at"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.end_at.touched && addDoctorAppointmentForm.controls.end_at.errors) }"
                   class="form-control" id="end_at">
+              </div>
+              <div class="col-md-4">
+                <label for="duration" class="form-label">Duration</label>
+                <input type="number" formControlName="duration"
+                  [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.duration.touched && addDoctorAppointmentForm.controls.duration.errors) }"
+                  class="form-control" id="duration">
               </div>
             </div>
             <div class="text-center">

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  baseUrl: 'https://medicareapi-production.up.railway.app/api',
+  baseUrl: 'http://localhost:8000/api',
 };

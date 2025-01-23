@@ -27,6 +27,7 @@ export class AddDoctorAppointmentComponent implements OnInit, OnDestroy {
     day: new FormControl('', [Validators.required, Validators.minLength(3)]),
     start_at: new FormControl('', [Validators.required]),
     end_at: new FormControl('', [Validators.required]),
+    duration: new FormControl(0, [Validators.required]),
     clinic_id: new FormControl('', [Validators.required]),
     doctor_id: new FormControl(localStorage.getItem('doctorId'), [
       Validators.required,

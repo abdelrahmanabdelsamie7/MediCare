@@ -17,12 +17,7 @@ export class SAdminService {
   }
   adminAccount(): Observable<IAdmin> {
     return this._HttpClient.get<IAdmin>(
-      `${environment.baseUrl}/admin/getaccount`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('adminToken'),
-        },
-      }
+      `${environment.baseUrl}/admin/getaccount`
     );
   }
 }
