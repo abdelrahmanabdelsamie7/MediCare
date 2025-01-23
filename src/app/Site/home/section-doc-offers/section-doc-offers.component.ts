@@ -22,22 +22,27 @@ export class SectionDocOffersComponent {
   responsiveOptions: any[] | undefined;
   DocOffers = [
     {
+      id :  1 ,
       imageUrl: './offers/eye.jpg',
       title: 'تصحيح النظر',
     },
     {
+      id :  2 ,
       imageUrl: './offers/scan.jpeg',
       title: 'تنظيف البشرة',
     },
     {
+      id :  3 ,
       imageUrl: './offers/teeth2.jpg',
       title: 'تنظيف الأسنان',
     },
     {
+      id :  4 ,
       imageUrl: './offers/scan2.jpg',
       title: 'تقشير الوجه',
     },
     {
+      id :  5 ,
       imageUrl: './offers/teeth3.jpg',
       title: 'تركيب التقويم المعدني',
     },
