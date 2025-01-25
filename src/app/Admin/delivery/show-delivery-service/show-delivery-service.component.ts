@@ -27,9 +27,9 @@ export class ShowDeliveryServiceComponent implements OnInit, OnDestroy {
         this.id = `${x.get('id')}`;
       },
     });
-    this.loadDepartmentData();
+    this. loadDeliveryServiceData() ;
   }
-  loadDepartmentData() {
+  loadDeliveryServiceData() {
     this._SDeliveryService
       .showDeliverService(this.id)
       .pipe(takeUntil(this.destroy$))

@@ -49,16 +49,16 @@ export class EditDeliveryServiceComponent implements OnInit, OnDestroy {
         this.id = `${x.get('id')}`;
       },
     });
-    this.loadDepartmentData();
+    this.loadDeliveryServiceData();
   }
-  loadDepartmentData() {
+  loadDeliveryServiceData() {
     this._SDeliveryService
       .showDeliverService(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
           this.deliveryService = data.data;
-          this.editDeliveryServiceForm .patchValue({
+          this.editDeliveryServiceForm.patchValue({
             name: this.deliveryService.name,
             description: this.deliveryService.description,
             app_link: this.deliveryService.app_link,
