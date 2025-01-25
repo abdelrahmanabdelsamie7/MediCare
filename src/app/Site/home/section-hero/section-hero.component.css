@@ -5,10 +5,13 @@ img,
 .shadow {
   border-radius: 15px;
 }
-.hero-carousel .p-carousel-indicator-button {
+
+ .hero-carousel .p-carousel-indicator button {
   width: 13px;
   height: 13px;
   border-radius: 50% !important;
+}
+.hero-carousel .p-carousel-indicator-active button {
   background-color: var(--main-color) !important;
   box-shadow: 2px 2px 2px 2px #0d8ab080;
 }

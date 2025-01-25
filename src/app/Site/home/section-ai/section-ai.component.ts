@@ -4,6 +4,7 @@ import { SAiService } from '../../../Core/services/s-ai.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
+import { IAi } from '../../../Core/interfaces/i-ai';
 
 @Component({
   selector: 'app-section-ai',
@@ -20,42 +21,87 @@ import { SiteFooterComponent } from '../../shared/site-footer/site-footer.compon
 export class SectionAiComponent {
   selectedFile: File | null = null;
   previewUrl: string | null = null;
-  apiResponse: any | null = null;
+  apiResponse: IAi | null = null;
   loading: boolean = false;
   errorMessage: string | null = null;
   symptomsText: string = '';
-  constructor(private _SAiService: SAiService) {}
+  isUploading: boolean = false;
+  uploadProgress: number = 0;
+  showResult: boolean = false; // Controls when to show the result card
+
+  constructor(private geminiService: SAiService) {}
+
+  // Handles file selection
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0] as File;
-    if (this.selectedFile) {
+    const file = event.target.files[0] as File;
+    if (file) {
+      this.isUploading = true;
+      this.uploadProgress = 0;
+      this.selectedFile = file;
+
+      // Simulate file upload progress
+      const interval = setInterval(() => {
+        if (this.uploadProgress < 100) {
+          this.uploadProgress += 10;
+        } else {
+          clearInterval(interval);
+          this.isUploading = false;
+        }
+      }, 200);
+
+      // Read file for preview
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.previewUrl = e.target.result;
       };
-      reader.readAsDataURL(this.selectedFile);
+      reader.readAsDataURL(file);
     }
   }
+
+  // Clears the selected file and preview
+  clearFile() {
+    this.selectedFile = null;
+    this.previewUrl = null;
+    this.uploadProgress = 0;
+    this.isUploading = false;
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = ''; // Reset the file input
+    }
+  }
+
+  // Handles the analysis process
   analyzeContent() {
+    if (!this.symptomsText && !this.selectedFile) {
+      this.errorMessage = 'يرجى إدخال الأعراض أو تحميل صورة للتحليل.';
+      this.showResult = false; // Hide result card if no input
+      return;
+    }
+
     this.loading = true;
     this.errorMessage = null;
-    this._SAiService
+    this.showResult = false; // Hide result card until API call completes
+
+    this.geminiService
       .analyzeTextAndImage(this.symptomsText, this.selectedFile)
-      .subscribe({
-        next: (data: any) => {
-          this.apiResponse = data;
+      .subscribe(
+        (response: IAi) => {
+          this.apiResponse = response; // Set the API response
           this.loading = false;
+          this.showResult = true; // Show result card after API call
         },
-        error: (error) => {
+        (error: any) => {
           this.loading = false;
           if (error.response) {
-            this.errorMessage = `API request failed, with code: ${error.response.status}. Please try again`;
+            this.errorMessage = `فشل طلب API مع الرمز: ${error.response.status}. يرجى المحاولة مرة أخرى.`;
           } else if (error.request) {
-            this.errorMessage = `API request failed. Could not reach the server`;
+            this.errorMessage = 'فشل طلب API. تعذر الوصول إلى الخادم.';
           } else {
-            this.errorMessage = `API request failed, with error ${error.message}. Please try again`;
+            this.errorMessage = `فشل طلب API مع الخطأ: ${error.message}. يرجى المحاولة مرة أخرى.`;
           }
+          this.showResult = false; // Hide result card on error
           console.error('API Error:', error);
-        },
-      });
+        }
+      );
   }
 }
