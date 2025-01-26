@@ -8,4 +8,8 @@ import { LoaderComponent } from './Site/shared/loader/loader.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor() {
+    console.warn('Do not Write Something Here');
+  }
+}
