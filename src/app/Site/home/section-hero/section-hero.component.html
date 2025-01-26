@@ -2,14 +2,24 @@
   <div class="container">
     <div class="row g-2">
       <div class="col-md-7">
-        <p-carousel class="hero-carousel" [value]="Images" [numVisible]="1" [numScroll]="1" [circular]="false"
-          [responsiveOptions]="responsiveOptions">
-          <ng-template let-image pTemplate="item" height="800px">
+<!-- using defer to prevent dublication of hero carousel in SSR -->
+        @defer(when isBrowser) {
+          <p-carousel class="hero-carousel" [value]="Images" [numVisible]="1" [numScroll]="1" [circular]="false"
+            [responsiveOptions]="responsiveOptions">
+            <ng-template let-image pTemplate="item" height="800px">
+              <div class="relative mx-auto">
+                <img [src]="image.imageUrl" class="w-100 h-100 rounded-border d-block mx-auto" alt="Doctor Image" />
+              </div>
+            </ng-template>
+          </p-carousel>
+        } @placeholder {
+          <!-- SSR-friendly placeholder-->
+          <div class="hero-carousel-placeholder">
             <div class="relative mx-auto">
-              <img [src]="image.imageUrl" class="w-100 h-100 rounded-border d-block mx-auto" alt="Doctor Image" />
+              <div class="w-100 h-800px rounded-border d-block mx-auto bg-light"></div>
             </div>
-          </ng-template>
-        </p-carousel>
+          </div>
+        }
       </div>
       <div class="col-md-5">
         <div>

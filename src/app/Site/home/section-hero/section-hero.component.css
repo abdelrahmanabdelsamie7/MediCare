@@ -24,3 +24,10 @@ img,
   direction: rtl;
   line-height: 38px;
 }
+
+/* .hero-carousel-placeholder {
+  min-height: 550px;
+  background-color: var(--main-color) ;
+  background-size: 200% 100%;
+
+} */

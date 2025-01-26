@@ -1,8 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SectionAiComponent } from '../section-ai/section-ai.component';
 import { ListDoctorBlogsComponent } from '../../../Doctor/doctor-blogs/list-doctor-blogs/list-doctor-blogs.component';
@@ -22,6 +22,7 @@ import { ListDoctorBlogsComponent } from '../../../Doctor/doctor-blogs/list-doct
 })
 export class SectionHeroComponent {
   responsiveOptions: any[] | undefined;
+  isBrowser: boolean = false;
   Images = [
     {
       id: 1,
@@ -40,7 +41,9 @@ export class SectionHeroComponent {
     },
   ];
 
-  constructor() {
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.responsiveOptions = [
       {
         breakpoint: '1400px',
