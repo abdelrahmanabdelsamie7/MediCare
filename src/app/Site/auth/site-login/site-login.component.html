@@ -1,9 +1,9 @@
-<section class="pt-3">
+<section class="pt-3 mt-md-5">
   <div class="container">
     <h3 class="text-center mb-4 text-secondary"> مرحبا بعودتك<span class="text-info"> ...</span></h3>
     <div class="row">
-      <div class="col-md-8">
-        <h4 class="text-secondary pb-1">قم بتسجيل <span class="text-info">الدخول</span>:</h4>
+      <div class="col-md-8 order-2 order-lg-1">
+        <h4 class="text-secondary pb-1">قم بتسجيل <span class="text-info">الدخول</span> : </h4>
         <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -48,18 +48,19 @@
           <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">تسجيل
             الدخول
             @if (isLoading) {
-              <span><i class="fas fa-spin fa-spinner"></i></span>
+            <span><i class="fas fa-spin fa-spinner"></i></span>
             }</button>
-            @if(msgErr){
-              <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
-            }
-            @if(msgSuccess){
-              <p class="alert alert-info w-50 m-auto mt-3 ">تم بنجاح..</p>
-            }
+          @if(msgErr){
+          <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
+          }
+          @if(msgSuccess){
+          <p class="alert alert-info w-50 m-auto mt-3 ">تم بنجاح..</p>
+          }
         </form>
-        <p class="text-center mt-3">لا تمتلك حسابًا؟<a class="text-info" routerLink="/Register"> أنشئ حسابًا الآن</a></p>
+        <p class="text-center mt-3">لا تمتلك حسابًا؟<a class="text-info" routerLink="/Register"> أنشئ حسابًا الآن</a>
+        </p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 my-3 order-1 order-lg-2">
         <div class="d-flex align-content-center h-100">
           <img src="registerPhoto.svg" alt="registerSitePhoto" class="img-fluid  ">
         </div>

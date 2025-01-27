@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { SAuthService } from '../../../Core/s-auth.service';
+import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 

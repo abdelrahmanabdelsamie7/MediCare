@@ -29,7 +29,7 @@ export class DoctorLoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(6),
+      Validators.minLength(8),
     ]),
   });
   doctorLogin(doctorLoginForm: FormGroup) {

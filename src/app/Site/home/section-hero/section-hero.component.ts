@@ -1,11 +1,14 @@
-import {Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Inject,
+  PLATFORM_ID,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SectionAiComponent } from '../section-ai/section-ai.component';
-import { ListDoctorBlogsComponent } from '../../../Doctor/doctor-blogs/list-doctor-blogs/list-doctor-blogs.component';
 @Component({
   selector: 'app-section-hero',
   standalone: true,
@@ -40,8 +43,6 @@ export class SectionHeroComponent {
         'https://img.freepik.com/free-photo/world-doctors-day-happy-doctor-showing-victory-fist-with-stethoscope-medical-coat_140725-162375.jpg?ga=GA1.1.512156974.1692362614&semt=ais_incoming',
     },
   ];
-
-
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.responsiveOptions = [

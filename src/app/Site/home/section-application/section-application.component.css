@@ -6,3 +6,11 @@
   font-weight: bold;
   direction: rtl;
 }
+@media screen and (max-width: 576px) {
+  h2 {
+    font-size: 32px;
+  }
+  button {
+    font-size: 18px !important;
+  }
+}

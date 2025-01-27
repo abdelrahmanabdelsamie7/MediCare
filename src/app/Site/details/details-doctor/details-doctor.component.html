@@ -9,12 +9,12 @@
                 style="width: 130px; height: 130px; object-fit: cover;">
               <div class="mx-2">
                 <h5 class="fw-bold mb-0">
-                  @if (Doctor.gender == 'male') { دكتور } @else { دكتورة }
+                  {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }}
                   {{ Doctor.fName }} {{ Doctor.lName }}
                 </h5>
                 <p class="mb-1 mt-3 fs-6 fw-bold">{{ Doctor.title }}</p>
                 <p class="my-2 fs-5">
-                  @if (Doctor.gender == 'male') { دكتور } @else { دكتورة } متخصص في
+                  {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }} متخصص في
                   @for (item of Doctor.specializations; track $index) {
                   <a href="" class="text-info fw-bold"> <span style="text-decoration: underline;" class="ps-1">{{
                       item.title }}
@@ -40,7 +40,7 @@
         <div class="col-lg-12">
           <div class="card border border-0 shadow p-4">
             <h5><i class="fa-solid fa-circle-info text-light bg-info p-2 rounded-5"></i> معلومات عن
-              @if (Doctor.gender == 'male') { الدكتور } @else { الدكتورة }
+              {{ Doctor.gender == 'male' ? 'الدكتور' : 'الدكتورة' }}
             </h5>
             <p class="my-2 px-4">
               {{ Doctor.infoAboutDoctor }}
@@ -79,22 +79,44 @@
         </h5>
         }
         <hr>
-        <h5 class="px-3 py-6">اخـتــــــــار ميعاد الــحــجــز</h5>
-        <hr>
-        <div class="d-flex justify-content-between px-2">
-          @for (clinic of Doctor.clinics; track $index) {
-          @for(appointment of Doctor.appiontments; track $index){
-          @if(appointment.clinic_id === clinic.id){
-          <div class="appointment">
-            <h5 class="day">{{ appointment.day }}</h5>
-            <h5 class="clinic"><i class="fa-solid fa-location-dot btn fs-6 text-info"></i>{{ clinic.title }}</h5>
-            <h5 class="time">من <span>{{ appointment.start_at | timeFormat }}</span></h5>
-            <h5 class="time">حتي <span>{{ appointment.end_at | timeFormat }}</span></h5>
+        <div class="container py-4">
+          <h5 class="text-center fw-bold mb-4">اخـتــــــــار ميعاد الــحــجــز</h5>
+          <hr>
+
+          <!-- Loop Through Appointments Grouped by Day -->
+          <div *ngFor="let group of groupedAppointments">
+            <!-- Display Day Header -->
+            <div class="day-section mb-4">
+              <h5 class="day-title text-info fw-bold">
+                <i class="fa-solid fa-calendar-day"></i> يوم: {{ group.day }}
+              </h5>
+              <div class="appointments-container row g-3 mt-3">
+                <!-- Loop Through Appointments of the Day -->
+                <div class="col-md-6 col-lg-4" *ngFor="let appointment of group.appointments">
+                  <div class="appointment-card border rounded p-3 shadow-sm">
+                    <h6 class="clinic-title text-secondary mb-2">
+                      <i class="fa-solid fa-location-dot text-primary"></i> العيادة: {{ appointment.clinicName }}
+                    </h6>
+                    <p class="time mb-1">
+                      <i class="fa-solid fa-clock text-success"></i> من:
+                      <span>{{ appointment.start_at }}</span>
+                    </p>
+                    <p class="time">
+                      <i class="fa-solid fa-clock text-danger"></i> حتي:
+                      <span>{{ appointment.end_at }}</span>
+                    </p>
+                    <button class="btn btn-{{ appointment.is_booked ? 'secondary' : 'primary' }} w-100 mt-2"
+                      [disabled]="appointment.is_booked">
+                      {{ appointment.is_booked ? 'محجوز' : 'احجز الآن' }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
           </div>
-          }
-          }
-          }
         </div>
+
         <hr>
         <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
         <hr>

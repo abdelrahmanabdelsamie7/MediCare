@@ -14,11 +14,12 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="addDeliveryServiceForm" (ngSubmit)=" addDeliveryService( addDeliveryServiceForm)">
+          <form class="row" [formGroup]="addDeliveryServiceForm"
+            (ngSubmit)=" addDeliveryService( addDeliveryServiceForm)">
             <div class="col-12">
               <label for="name" class="form-label">Name</label>
               <input type="text" formControlName="name"
-                [ngClass]="{'is-invalid':(addDeliveryServiceForm .controls.name.touched && addDeliveryServiceForm .controls.name) }"
+                [ngClass]="{'is-invalid':(addDeliveryServiceForm.controls.name.touched && addDeliveryServiceForm.controls.name.errors) }"
                 class="form-control" id="name">
             </div>
             <div class="col-12">
@@ -30,11 +31,12 @@
             <div class="col-12">
               <label for="app-link" class="form-label">App Link</label>
               <input type="text" formControlName="app_link"
-              [ngClass]="{'is-invalid':(addDeliveryServiceForm.controls.app_link.touched && addDeliveryServiceForm.controls.app_link.errors) }"
+                [ngClass]="{'is-invalid':(addDeliveryServiceForm.controls.app_link.touched && addDeliveryServiceForm.controls.app_link.errors) }"
                 class="form-control" class="form-control" id="app-link">
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="addDeliveryServiceForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2"
+                [disabled]="addDeliveryServiceForm.invalid">Submit</button>
             </div>
           </form>
         </div>

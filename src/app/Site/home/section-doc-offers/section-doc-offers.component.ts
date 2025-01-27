@@ -1,8 +1,13 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Inject,
+  PLATFORM_ID,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-section-doc-offers',
@@ -20,34 +25,36 @@ import { RouterModule } from '@angular/router';
 })
 export class SectionDocOffersComponent {
   responsiveOptions: any[] | undefined;
+  isBrowser: boolean = false;
   DocOffers = [
     {
-      id :  1 ,
+      id: 1,
       imageUrl: './offers/eye.jpg',
       title: 'تصحيح النظر',
     },
     {
-      id :  2 ,
+      id: 2,
       imageUrl: './offers/scan.jpeg',
       title: 'تنظيف البشرة',
     },
     {
-      id :  3 ,
+      id: 3,
       imageUrl: './offers/teeth2.jpg',
       title: 'تنظيف الأسنان',
     },
     {
-      id :  4 ,
+      id: 4,
       imageUrl: './offers/scan2.jpg',
       title: 'تقشير الوجه',
     },
     {
-      id :  5 ,
+      id: 5,
       imageUrl: './offers/teeth3.jpg',
       title: 'تركيب التقويم المعدني',
     },
   ];
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.responsiveOptions = [
       {
         breakpoint: '1400px',

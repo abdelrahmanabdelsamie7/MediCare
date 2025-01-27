@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDepartment } from '../interfaces/i-department';
@@ -12,6 +12,10 @@ export class SDepartmentService {
     return this._HttpClient.get<IDepartment[]>(
       `${environment.baseUrl}/Departments`
     );
+  }
+  getDepartmentData(id: string, page: number = 1): Observable<any> {
+    const params = new HttpParams().set('page', page.toString());
+    return this._HttpClient.get<any>(`${environment.baseUrl}/Departments/${id}`, { params });
   }
   addDepartment(department: IDepartment): Observable<IDepartment> {
     return this._HttpClient.post<IDepartment>(

@@ -43,6 +43,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
   Doctor: IDoctor = {} as IDoctor;
   clinicImages: any[] = [];
   private destroy$ = new Subject<void>();
+  groupedAppointments: { day: string; appointments: any[] }[] = [];
   reviewForm = new FormGroup({
     rating_value: new FormControl(0, [Validators.required, Validators.min(1)]),
     review: new FormControl('', [Validators.required]),
@@ -84,6 +85,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.loadDoctorData();
+    
   }
   loadDoctorData() {
     this._SDoctorService
@@ -92,10 +94,22 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           console.log(data);
-
           this.Doctor = data.data;
-          // this.clinicImages = data.data.clinics.images;
-          // this.ratesOfDoctor = data.data.users;
+          const grouped = this.Doctor.appiontments.reduce(
+            (acc: any, appointment) => {
+              const day = appointment.day;
+              if (!acc[day]) {
+                acc[day] = [];
+              }
+              acc[day].push(appointment);
+              return acc;
+            },
+            {}
+          );
+          this.groupedAppointments = Object.keys(grouped).map((day) => ({
+            day,
+            appointments: grouped[day],
+          }));
         },
       });
   }
@@ -106,6 +120,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
       'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
     );
   }
+
   // submitReview(reviewForm: FormGroup): void {
   //   this._SDoctorService.rateDoctor(reviewForm.value).subscribe({
   //     next: (data) => {

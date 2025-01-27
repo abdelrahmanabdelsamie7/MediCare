@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { SAuthService } from '../../../Core/s-auth.service';
+import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

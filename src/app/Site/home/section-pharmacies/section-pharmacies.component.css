@@ -1,4 +1,4 @@
-img {
+ img {
   height: 450px;
   border-radius: 10px;
   box-shadow: 3px 3px 3px 5px var(--main-color);
@@ -15,3 +15,17 @@ h3 span {
   font-weight: 700;
   color: var(--main-color);
 }
+@media screen and (max-width: 576px) {
+  h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 35px;
+  }
+  a {
+    font-size: 16px !important;
+  }
+  img {
+    height: 300px;
+  }
+} 
+

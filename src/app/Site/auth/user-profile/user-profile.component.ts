@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { SAuthService } from '../../../Core/s-auth.service';
+import { SAuthService } from '../../../Core/services/s-auth.service';
 import { IUser } from '../../../Core/interfaces/i-user';
 import { RouterModule } from '@angular/router';
 import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';

@@ -4,6 +4,7 @@
   </div>
 
   <div class="container my-4">
+    @defer(when isBrowser) {
     <p-carousel id="docOffers-carousel" class="py-5" [value]="DocOffers" [numVisible]="4"
       [responsiveOptions]="responsiveOptions">
       <ng-template let-docOffer pTemplate="item">
@@ -19,5 +20,13 @@
         </div>
       </ng-template>
     </p-carousel>
+    }
+    @placeholder {
+    <div class="docOffers-carousel-placeholder">
+      <div class="relative mx-auto">
+        <div class="w-100 h-800px rounded-border d-block mx-auto bg-light"></div>
+      </div>
+    </div>
+    }
   </div>
 </section>

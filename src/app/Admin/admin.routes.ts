@@ -47,6 +47,15 @@ import { AddDeliveryServiceComponent } from './delivery/add-delivery-service/add
 import { ShowDeliveryServiceComponent } from './delivery/show-delivery-service/show-delivery-service.component';
 import { EditDeliveryServiceComponent } from './delivery/edit-delivery-service/edit-delivery-service.component';
 import { adminGuard } from '../Core/guards/admin.guard';
+import { ListDoctorClinicsComponent } from './doctor-clinic/list-doctor-clinics/list-doctor-clinics.component';
+import { AddDoctorClinicComponent } from './doctor-clinic/add-doctor-clinic/add-doctor-clinic.component';
+import { ShowDoctorClinicComponent } from './doctor-clinic/show-doctor-clinic/show-doctor-clinic.component';
+import { EditDoctorClinicComponent } from './doctor-clinic/edit-doctor-clinic/edit-doctor-clinic.component';
+import { AddClinicToDoctorComponent } from './doctor-clinic/add-clinic-to-doctor/add-clinic-to-doctor.component';
+import { ListDepartmentTipsComponent } from './departmentTips/list-department-tips/list-department-tips.component';
+import { AddDepartmentTipComponent } from './departmentTips/add-department-tip/add-department-tip.component';
+import { ShowDepartmentTipComponent } from './departmentTips/show-department-tip/show-department-tip.component';
+import { EditDepartmentTipComponent } from './departmentTips/edit-department-tip/edit-department-tip.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -56,69 +65,295 @@ export const ADMIN_ROUTES: Routes = [
     title: 'Admin Panel',
     children: [
       // ======================== Departments ========================
-      { path: 'departments', component: ListDepartmentsComponent, title: 'Admin Panel | Departments' },
-      { path: 'add_department', component: AddDepartmentComponent, title: 'Admin Panel | Add Department' },
-      { path: 'show_department/:id', component: ShowDepartmentComponent, title: 'Admin Panel | Show Department' },
-      { path: 'edit_department/:id', component: EditDepartmentComponent, title: 'Admin Panel | Edit Department' },
+      {
+        path: 'departments',
+        component: ListDepartmentsComponent,
+        title: 'Admin Panel | Departments',
+      },
+      {
+        path: 'add_department',
+        component: AddDepartmentComponent,
+        title: 'Admin Panel | Add Department',
+      },
+      {
+        path: 'show_department/:id',
+        component: ShowDepartmentComponent,
+        title: 'Admin Panel | Show Department',
+      },
+      {
+        path: 'edit_department/:id',
+        component: EditDepartmentComponent,
+        title: 'Admin Panel | Edit Department',
+      },
+      // ======================== Department Tips ========================
+      {
+        path: 'department-tips',
+        component: ListDepartmentTipsComponent,
+        title: 'Admin Panel | Department Tips',
+      },
+      {
+        path: 'add-department-tip',
+        component: AddDepartmentTipComponent,
+        title: 'Admin Panel | Add Department Tip',
+      },
+      {
+        path: 'show-department-tip/:id',
+        component: ShowDepartmentTipComponent,
+        title: 'Admin Panel | Show Department Tip',
+      },
+      {
+        path: 'edit-department-tip/:id',
+        component: EditDepartmentTipComponent,
+        title: 'Admin Panel | Edit Department Tip',
+      },
 
       // ======================== Hospitals ========================
-      { path: 'hospitals', component: ListHospitalsComponent, title: 'Admin Panel | Hospitals' },
-      { path: 'add_hospital', component: AddHospitalComponent, title: 'Admin Panel | Add Hospital' },
-      { path: 'show_hospital/:id', component: ShowHospitalComponent, title: 'Admin Panel | Show Hospital' },
-      { path: 'edit_hospital/:id', component: EditHospitalComponent, title: 'Admin Panel | Edit Hospital' },
-      { path: 'add_department_hospital', component: AddDepartmentHospitalComponent, title: 'Admin Panel | Add Department Hospital' },
-      { path: 'edit_department_hospital/:department_id/:hospital_id', component: EditDepartmentHospitalComponent, title: 'Admin Panel | Edit Department Hospital' },
+      {
+        path: 'hospitals',
+        component: ListHospitalsComponent,
+        title: 'Admin Panel | Hospitals',
+      },
+      {
+        path: 'add_hospital',
+        component: AddHospitalComponent,
+        title: 'Admin Panel | Add Hospital',
+      },
+      {
+        path: 'show_hospital/:id',
+        component: ShowHospitalComponent,
+        title: 'Admin Panel | Show Hospital',
+      },
+      {
+        path: 'edit_hospital/:id',
+        component: EditHospitalComponent,
+        title: 'Admin Panel | Edit Hospital',
+      },
+      {
+        path: 'add_department_hospital',
+        component: AddDepartmentHospitalComponent,
+        title: 'Admin Panel | Add Department Hospital',
+      },
+      {
+        path: 'edit_department_hospital/:department_id/:hospital_id',
+        component: EditDepartmentHospitalComponent,
+        title: 'Admin Panel | Edit Department Hospital',
+      },
 
       // ======================== Care Centers ========================
-      { path: 'care_centers', component: ListCareCentersComponent, title: 'Admin Panel | CareCenters' },
-      { path: 'add_care_center', component: AddCareCenterComponent, title: 'Admin Panel | Add CareCenter' },
-      { path: 'show_care_center/:id', component: ShowCareCenterComponent, title: 'Admin Panel | Show CareCenter' },
-      { path: 'edit_care_center/:id', component: EditCareCenterComponent, title: 'Admin Panel | Edit CareCenter' },
-      { path: 'add_department_care_center', component: AddDepartmentCareCenterComponent, title: 'Admin Panel | Add Department Care Center' },
-      { path: 'edit_department_care_center/:department_id/:care_center_id', component: EditDepartmentCareCenterComponent, title: 'Admin Panel | Edit Department Care Center' },
+      {
+        path: 'care_centers',
+        component: ListCareCentersComponent,
+        title: 'Admin Panel | CareCenters',
+      },
+      {
+        path: 'add_care_center',
+        component: AddCareCenterComponent,
+        title: 'Admin Panel | Add CareCenter',
+      },
+      {
+        path: 'show_care_center/:id',
+        component: ShowCareCenterComponent,
+        title: 'Admin Panel | Show CareCenter',
+      },
+      {
+        path: 'edit_care_center/:id',
+        component: EditCareCenterComponent,
+        title: 'Admin Panel | Edit CareCenter',
+      },
+      {
+        path: 'add_department_care_center',
+        component: AddDepartmentCareCenterComponent,
+        title: 'Admin Panel | Add Department Care Center',
+      },
+      {
+        path: 'edit_department_care_center/:department_id/:care_center_id',
+        component: EditDepartmentCareCenterComponent,
+        title: 'Admin Panel | Edit Department Care Center',
+      },
 
       // ======================== Chain Pharmacies ========================
-      { path: 'chain_pharmacies', component: ListChainPharmaciesComponent, title: 'Admin Panel | Chain Pharmacies' },
-      { path: 'add_chain_pharmacies', component: AddChainPharmaciesComponent, title: 'Admin Panel | Add Chain Pharmacies' },
-      { path: 'show_chain_pharmacies/:id', component: ShowChainPharmaciesComponent, title: 'Admin Panel | Show Chain Pharmacies' },
-      { path: 'edit_chain_pharmacies/:id', component: EditChainPharmaciesComponent, title: 'Admin Panel | Edit Chain Pharmacies' },
+      {
+        path: 'chain_pharmacies',
+        component: ListChainPharmaciesComponent,
+        title: 'Admin Panel | Chain Pharmacies',
+      },
+      {
+        path: 'add_chain_pharmacies',
+        component: AddChainPharmaciesComponent,
+        title: 'Admin Panel | Add Chain Pharmacies',
+      },
+      {
+        path: 'show_chain_pharmacies/:id',
+        component: ShowChainPharmaciesComponent,
+        title: 'Admin Panel | Show Chain Pharmacies',
+      },
+      {
+        path: 'edit_chain_pharmacies/:id',
+        component: EditChainPharmaciesComponent,
+        title: 'Admin Panel | Edit Chain Pharmacies',
+      },
 
       // ======================== Pharmacies ========================
-      { path: 'pharmacies', component: ListPharmaciesComponent, title: 'Admin Panel | Pharmacies' },
-      { path: 'add_pharmacy', component: AddPharmacyComponent, title: 'Admin Panel | Add Pharmacy' },
-      { path: 'show_pharmacy/:id', component: ShowPharmacyComponent, title: 'Admin Panel | Show Pharmacy' },
-      { path: 'edit_pharmacy/:id', component: EditPharmacyComponent, title: 'Admin Panel | Edit Pharmacy' },
+      {
+        path: 'pharmacies',
+        component: ListPharmaciesComponent,
+        title: 'Admin Panel | Pharmacies',
+      },
+      {
+        path: 'add_pharmacy',
+        component: AddPharmacyComponent,
+        title: 'Admin Panel | Add Pharmacy',
+      },
+      {
+        path: 'show_pharmacy/:id',
+        component: ShowPharmacyComponent,
+        title: 'Admin Panel | Show Pharmacy',
+      },
+      {
+        path: 'edit_pharmacy/:id',
+        component: EditPharmacyComponent,
+        title: 'Admin Panel | Edit Pharmacy',
+      },
 
       // ======================== Chain Laboratories ========================
-      { path: 'chain_laboratories', component: ListChainLaboratoriesComponent, title: 'Admin Panel | Chain Laboratories' },
-      { path: 'add_chain_laboratories', component: AddChainLaboratoriesComponent, title: 'Admin Panel | Add Chain Laboratories' },
-      { path: 'show_chain_laboratories/:id', component: ShowChainLaboratoriesComponent, title: 'Admin Panel | Show Chain Laboratories' },
-      { path: 'edit_chain_laboratories/:id', component: EditChainLaboratoriesComponent, title: 'Admin Panel | Edit Chain Laboratories' },
+      {
+        path: 'chain_laboratories',
+        component: ListChainLaboratoriesComponent,
+        title: 'Admin Panel | Chain Laboratories',
+      },
+      {
+        path: 'add_chain_laboratories',
+        component: AddChainLaboratoriesComponent,
+        title: 'Admin Panel | Add Chain Laboratories',
+      },
+      {
+        path: 'show_chain_laboratories/:id',
+        component: ShowChainLaboratoriesComponent,
+        title: 'Admin Panel | Show Chain Laboratories',
+      },
+      {
+        path: 'edit_chain_laboratories/:id',
+        component: EditChainLaboratoriesComponent,
+        title: 'Admin Panel | Edit Chain Laboratories',
+      },
 
       // ======================== Laboratories ========================
-      { path: 'laboratories', component: ListLaboratoriesComponent, title: 'Admin Panel | Laboratories' },
-      { path: 'add_laboratory', component: AddLaboratoryComponent, title: 'Admin Panel | Add Laboratory' },
-      { path: 'show_laboratory/:id', component: ShowLaboratoryComponent, title: 'Admin Panel | Show Laboratory' },
-      { path: 'edit_laboratory/:id', component: EditLaboratoryComponent, title: 'Admin Panel | Edit Laboratory' },
+      {
+        path: 'laboratories',
+        component: ListLaboratoriesComponent,
+        title: 'Admin Panel | Laboratories',
+      },
+      {
+        path: 'add_laboratory',
+        component: AddLaboratoryComponent,
+        title: 'Admin Panel | Add Laboratory',
+      },
+      {
+        path: 'show_laboratory/:id',
+        component: ShowLaboratoryComponent,
+        title: 'Admin Panel | Show Laboratory',
+      },
+      {
+        path: 'edit_laboratory/:id',
+        component: EditLaboratoryComponent,
+        title: 'Admin Panel | Edit Laboratory',
+      },
 
       // ======================== Doctors ========================
-      { path: 'doctors', component: ListDoctorsComponent, title: 'Admin Panel | Doctors' },
-      { path: 'add_doctor', component: AddDoctorComponent, title: 'Admin Panel | Add Doctor' },
-      { path: 'show_doctor/:id', component: ShowDoctorComponent, title: 'Admin Panel | Show Doctor' },
-      { path: 'edit_doctor/:id', component: EditDoctorComponent, title: 'Admin Panel | Edit Doctor' },
-
+      {
+        path: 'doctors',
+        component: ListDoctorsComponent,
+        title: 'Admin Panel | Doctors',
+      },
+      {
+        path: 'add_doctor',
+        component: AddDoctorComponent,
+        title: 'Admin Panel | Add Doctor',
+      },
+      {
+        path: 'show_doctor/:id',
+        component: ShowDoctorComponent,
+        title: 'Admin Panel | Show Doctor',
+      },
+      {
+        path: 'edit_doctor/:id',
+        component: EditDoctorComponent,
+        title: 'Admin Panel | Edit Doctor',
+      },
+      // ======================== Doctors Clinic ========================
+      {
+        path: 'doctor-clinics',
+        component: ListDoctorClinicsComponent,
+        title: 'Admin Panel | Clinics',
+      },
+      {
+        path: 'add-doctor-clinic',
+        component: AddDoctorClinicComponent,
+        title: 'Admin Panel | Add Clinic',
+      },
+      {
+        path: 'show-doctor-clinic/:id',
+        component: ShowDoctorClinicComponent,
+        title: 'Admin Panel | Show Clinic',
+      },
+      {
+        path: 'edit-doctor-clinic/:id',
+        component: EditDoctorClinicComponent,
+        title: 'Admin Panel | Edit Clinic',
+      },
+      {
+        path: 'add-clinic-to-doctor',
+        component: AddClinicToDoctorComponent,
+        title: 'Admin Panel | Add Clinic To Doctor ',
+      },
       // ======================== Specializations ========================
-      { path: 'specializations', component: ListSpecializationsComponent, title: 'Admin Panel | Specializations' },
-      { path: 'add_specialization', component: AddSpecializationComponent, title: 'Admin Panel | Add Specialization' },
-      { path: 'show_specialization/:id', component: ShowSpecializationComponent, title: 'Admin Panel | Show Specialization' },
-      { path: 'edit_specialization/:id', component: EditSpecializationComponent, title: 'Admin Panel | Edit Specialization' },
-      { path: 'add_specialization_doctor', component: AddSpecializationDoctorComponent, title: 'Admin Panel | Add Specialization To Doctor' },
+      {
+        path: 'specializations',
+        component: ListSpecializationsComponent,
+        title: 'Admin Panel | Specializations',
+      },
+      {
+        path: 'add_specialization',
+        component: AddSpecializationComponent,
+        title: 'Admin Panel | Add Specialization',
+      },
+      {
+        path: 'show_specialization/:id',
+        component: ShowSpecializationComponent,
+        title: 'Admin Panel | Show Specialization',
+      },
+      {
+        path: 'edit_specialization/:id',
+        component: EditSpecializationComponent,
+        title: 'Admin Panel | Edit Specialization',
+      },
+      {
+        path: 'add_specialization_doctor',
+        component: AddSpecializationDoctorComponent,
+        title: 'Admin Panel | Add Specialization To Doctor',
+      },
 
       // ======================== Delivery Services ========================
-      { path: 'DeliveryServices', component: ListDeliveryServiceComponent, title: 'Admin Panel | Delivery Services' },
-      { path: 'add_DeliveryService', component: AddDeliveryServiceComponent, title: 'Admin Panel | Add Delivery Service' },
-      { path: 'show_DeliveryService/:id', component: ShowDeliveryServiceComponent, title: 'Admin Panel | Show Delivery Service' },
-      { path: 'edit_DeliveryService/:id', component: EditDeliveryServiceComponent, title: 'Admin Panel | Edit Delivery Service' }
-    ]
-  }
+      {
+        path: 'DeliveryServices',
+        component: ListDeliveryServiceComponent,
+        title: 'Admin Panel | Delivery Services',
+      },
+      {
+        path: 'add_DeliveryService',
+        component: AddDeliveryServiceComponent,
+        title: 'Admin Panel | Add Delivery Service',
+      },
+      {
+        path: 'show_DeliveryService/:id',
+        component: ShowDeliveryServiceComponent,
+        title: 'Admin Panel | Show Delivery Service',
+      },
+      {
+        path: 'edit_DeliveryService/:id',
+        component: EditDeliveryServiceComponent,
+        title: 'Admin Panel | Edit Delivery Service',
+      },
+    ],
+  },
 ];

@@ -5,7 +5,6 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 // Http Client Import
 import {
-  HTTP_INTERCEPTORS,
   provideHttpClient,
   withFetch,
   withInterceptors,

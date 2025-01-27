@@ -27,8 +27,9 @@
     </div>
   </div>
 </div>
+
 <div class="container">
-  @if(activeTab === 'Doctors'){
+  @if(activeTab === 'doctors'){
   <div class="row">
     @for (item of Doctors; track $index) {
     <div class="col-md-6 col-lg-4">
@@ -82,4 +83,36 @@
     }
   </div>
   }
+  <div>
+    <button (click)="prevDoctorPage()" class="btn btn-outline-info" [disabled]="currentDoctorPage === 1">الصفحة
+      السابقة</button>
+    <span>الصفحة {{ currentDoctorPage }} من {{ totalDoctorPages }}</span>
+    <button (click)="nextDoctorPage()" class="btn btn-outline-info"
+      [disabled]="currentDoctorPage === totalDoctorPages">الصفحة
+      التالية</button>
+  </div>
 </div>
+
+
+<!-- tip Section -->
+<section id="tip" class="tip section">
+  <div class="container section-title text-end">
+    <h4>اعرف اكثر عن تخصص {{ department.title }}</h4>
+  </div>
+  <div class="container my-3" style="direction: rtl;">
+    @for (item of Tips; track $index) {
+    <div class="row tip-item">
+      <div class="col-lg-5 d-flex">
+        <i class="bi bi-question-circle"></i>
+        <h4>{{ item.question }}</h4>
+      </div>
+      <div class="col-lg-7">
+        <p>
+          {{ item.answer }}
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+<!-- tip Section -->

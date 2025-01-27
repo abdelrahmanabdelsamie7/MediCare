@@ -1,0 +1,37 @@
+.tip .section-title h4 {
+  background-color: var(--main-color);
+  color: #fff;
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 25px;
+}
+.tip .tip-item {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid color-mix(in srgb, #000, transparent 85%);
+}
+.tip .tip-item i {
+  color: var(--main-color);
+  font-size: 18px;
+  margin: 0px 10px;
+}
+.tip .tip-item h4 {
+  color: var(--second-color);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+.tip .tip-item p {
+  color: var(--third-color);
+  font-size: 15px;
+}
+.tip .tip-item:first-child {
+  padding-top: 0;
+  margin-top: 0;
+}
+.tip .tip-item:last-child {
+  border: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
