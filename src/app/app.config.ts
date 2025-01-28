@@ -8,13 +8,15 @@ import {
   provideHttpClient,
   withFetch,
   withInterceptors,
+  withInterceptorsFromDi
 } from '@angular/common/http';
 // Start Of Import Prime Ng Plugins
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { authInterceptor } from './Core/interceptors/auth.interceptor';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GoogleAuthInterceptor } from './Core/interceptors/google-auth.interceptor';
 // End Of mport Prime Ng Plugins
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: GoogleAuthInterceptor, multi: true },
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

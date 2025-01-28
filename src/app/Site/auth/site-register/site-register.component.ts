@@ -10,11 +10,12 @@ import {
 import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { LoginComponent } from "../google-auth/google-auth.component";
 
 @Component({
   selector: 'app-site-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, RouterModule],
+  imports: [ReactiveFormsModule, NgClass, RouterModule, LoginComponent],
   templateUrl: './site-register.component.html',
   styleUrl: './site-register.component.css',
 })

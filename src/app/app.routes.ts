@@ -10,6 +10,7 @@ import { adminGuard } from './Core/guards/admin.guard';
 import { doctorGuard } from './Core/guards/doctor.guard';
 import { AdminLoginComponent } from './Admin/shared/admin-login/admin-login.component';
 import { DoctorLoginComponent } from './Doctor/shared/doctor-login/doctor-login.component';
+import { LoginComponent } from './Site/auth/google-auth/google-auth.component';
 
 export const routes: Routes = [
   // ======================== Public Routes ========================
@@ -19,7 +20,7 @@ export const routes: Routes = [
   { path: 'Register', component: SiteRegisterComponent, title: 'MediCare | انضم إالينا' },
   { path: 'admin-login', component: AdminLoginComponent, title: 'MediCare | Admin Login' },
   { path: 'doctor-login', component: DoctorLoginComponent, title: 'MediCare | Doctor Login' },
-
+  {path:'google-auth',component:LoginComponent ,title:'MediCare | Google Auth'},
   // ======================== User Profile ========================
   { path: 'user-profile', component: UserProfileComponent, title: 'MediCare | User Profile' },
 
