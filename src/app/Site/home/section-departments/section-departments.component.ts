@@ -26,7 +26,8 @@ export class SectionDepartmentsComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   responsiveOptions: any[] | undefined;
   Departments: IDepartment[] = [];
-  constructor(private _SDepartmentService: SDepartmentService) {
+  constructor(private _SDepartmentService: SDepartmentService) {}
+  ngOnInit() {
     this.responsiveOptions = [
       {
         breakpoint: '1400px',
@@ -49,8 +50,6 @@ export class SectionDepartmentsComponent implements OnInit, OnDestroy {
         numScroll: 1,
       },
     ];
-  }
-  ngOnInit() {
     this.loadDepartments();
   }
   loadDepartments() {
@@ -60,9 +59,11 @@ export class SectionDepartmentsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           this.Departments = data.data;
-          console.log(data);
         },
       });
   }
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

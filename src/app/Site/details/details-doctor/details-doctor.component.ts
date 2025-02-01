@@ -24,10 +24,10 @@ import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    Toast,
+
     SliderModule,
     CarouselModule,
-    TimeFormatPipe,
+
   ],
   templateUrl: './details-doctor.component.html',
   styleUrl: './details-doctor.component.css',
@@ -85,7 +85,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.loadDoctorData();
-    
+
   }
   loadDoctorData() {
     this._SDoctorService

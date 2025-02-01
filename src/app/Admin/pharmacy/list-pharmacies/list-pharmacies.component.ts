@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IPharmacy } from '../../../Core/interfaces/i-pharmacy';
 import { Subject, takeUntil } from 'rxjs';
 import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-list-pharmacies',
   standalone: true,
-  imports: [RouterModule, Toast],
+  imports: [RouterModule, Toast , CommonModule],
   templateUrl: './list-pharmacies.component.html',
   styleUrl: './list-pharmacies.component.css',
   providers: [MessageService],
 })
-export class ListPharmaciesComponent {
+export class ListPharmaciesComponent implements OnInit, OnDestroy {
+  currentPage: number = 1;
+  totalPages: number = 1;
   Pharmacies: IPharmacy[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -21,20 +24,28 @@ export class ListPharmaciesComponent {
     private _MessageService: MessageService
   ) {}
   ngOnInit() {
-    this.getPharmacies();
+    this.getPharmacies(this.currentPage);
   }
-  getPharmacies() {
+  getPharmacies(page: number) {
     this._SPharmacyService
-      .getPharmacies()
+      .getPharmacies(page)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.Pharmacies = data.data;
+          console.log(data);
+          this.Pharmacies = data.data.pharmacies;
+          this.currentPage = data.data.pagination.current_page;
+          this.totalPages = data.data.pagination.num_of_pages;
         },
         error: (err) => {
           console.error(err);
         },
       });
+  }
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.getPharmacies(page);
+    }
   }
   deletePharmacy(id: string) {
     this._SPharmacyService

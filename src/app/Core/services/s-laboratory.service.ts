@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ILaboratory } from '../interfaces/i-laboratory';
 import { environment } from '../../../environments/environment.development';
 import { IUserLaboratroy } from '../interfaces/i-user-laboratory';
@@ -9,9 +9,10 @@ import { IUserLaboratroy } from '../interfaces/i-user-laboratory';
 })
 export class SLaboratoryService {
   constructor(private _HttpClient: HttpClient) {}
-  getLaboratories(): Observable<ILaboratory[]> {
+  public LaboratoryRates = new BehaviorSubject<any[]>([]);
+  getLaboratories(page: number): Observable<ILaboratory[]> {
     return this._HttpClient.get<ILaboratory[]>(
-      `${environment.baseUrl}/Laboratories`
+      `${environment.baseUrl}/Laboratories?page=${page}`
     );
   }
   addLaboratory(laboratory: ILaboratory): Observable<ILaboratory> {

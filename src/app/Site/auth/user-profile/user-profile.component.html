@@ -4,53 +4,57 @@
   <section class="section profile">
     <div class="row">
       <div class="col-md-12">
-        <div class="card">
+        <div class="card shadow">
           <div class="card-body pt-3">
             <ul class="nav nav-tabs nav-tabs-bordered">
               <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab"
-                  data-bs-target="#profile-overview">Overview</button>
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">عرض
+                  البيانات</button>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-warning"
-                  routerLink="/admin-mediCare-1245/edit_userData/{{ userData.id }}">Edit</a>
+                <a class="nav-link text-warning" routerLink="/edit_userData/{{ userData.id }}">تعديل
+                </a>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" (click)="logout()" class="text-danger btn" >تسجيل
+                  الخروج</button>
               </li>
             </ul>
             <div class="tab-pane fade show active profile-overview" id="profile-overview">
-              <h5 class="card-title">Profile Details</h5>
+              <h5 class="card-title">معلومات عن المستخدم</h5>
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Name</div>
+                <div class="col-lg-3 col-md-4 label">الأسم :</div>
                 <div class="col-lg-9 col-md-8">{{ userData.name }}</div>
               </div>
+              <hr />
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Phone</div>
+                <div class="col-lg-3 col-md-4 label">رقم المحمول :</div>
                 <div class="col-lg-9 col-md-8">{{ userData.phone }}</div>
               </div>
+              <hr />
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Address</div>
+                <div class="col-lg-3 col-md-4 label">العنوان : </div>
                 <div class="col-lg-9 col-md-8">{{ userData.address }}</div>
               </div>
+              <hr />
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Birth Date</div>
+                <div class="col-lg-3 col-md-4 label">تاريخ الميلاد : </div>
                 <div class="col-lg-9 col-md-8">{{ userData.birth_date }}</div>
               </div>
+              <hr />
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Email</div>
+                <div class="col-lg-3 col-md-4 label">الإيميل : </div>
                 <div class="col-lg-9 col-md-8">{{ userData.email }}</div>
               </div>
+              <hr />
               <div class="row">
-                <div class="col-lg-3 col-md-4 label">Role</div>
-                <div class="col-lg-9 col-md-8">{{ userData.role }}</div>
-              </div>
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">Added At</div>
+                <div class="col-lg-3 col-md-4 label">تم التسجيل في وقت : </div>
                 <div class="col-lg-9 col-md-8">{{ userData.created_at | date:'short' }}</div>
               </div>
 
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>

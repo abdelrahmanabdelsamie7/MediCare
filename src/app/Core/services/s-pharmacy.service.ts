@@ -9,9 +9,9 @@ import { IUserPharmacy } from '../interfaces/i-user-pharmacy';
 })
 export class SPharmacyService {
   constructor(private _HttpClient: HttpClient) {}
-  getPharmacies(): Observable<IPharmacy[]> {
+  getPharmacies(page: number): Observable<IPharmacy[]> {
     return this._HttpClient.get<IPharmacy[]>(
-      `${environment.baseUrl}/Pharmacies`
+      `${environment.baseUrl}/Pharmacies?page=${page}`
     );
   }
   addPharmacy(pharmacy: IPharmacy): Observable<IPharmacy> {

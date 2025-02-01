@@ -31,7 +31,6 @@ export class SiteLoginComponent {
       Validators.maxLength(10),
     ]),
   });
-
   loginSubmit(): void {
     if (this.loginForm.valid) {
       this.isLoading = true;
@@ -40,18 +39,16 @@ export class SiteLoginComponent {
           localStorage.setItem('userToken', res.access_token);
           this.msgSuccess = true;
           setTimeout(() => {
-            this._Router.navigate(['/home']);
+            this._Router.navigate(['/user-profile']);
           }, 1000);
 
           this.isLoading = false;
         },
         error: (err: HttpErrorResponse) => {
-          this.msgErr = err.error;
-          console.log(err);
+          this.msgErr = 'تاكد من صحة بريدك الالكتروني او كلمة المرور ! ';
           this.isLoading = false;
         },
       });
-      console.log(this.loginForm.value);
     }
   }
 }

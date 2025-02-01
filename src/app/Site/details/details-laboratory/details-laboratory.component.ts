@@ -93,11 +93,18 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
         });
         this.showReviewInput = false;
       },
-      error: (err) => {
+      error: (err: any) => {
+        let messageDetail = '';
+        if (err.error.error === 'Not Authorized') {
+          messageDetail = `${this.Laboratory.title} يرجي تسجيل الدخول لتقييم `;
+        } else {
+          messageDetail = `${this.Laboratory.title} لقد قمت بالفعل بتقييم `;
+        }
         this._MessageService.add({
           severity: 'error',
-          summary: 'error',
-          detail: `لقد قمت بالفعل بتقيم ${this.Laboratory.title} `,
+          summary: 'Error',
+          detail: messageDetail,
+          styleClass: 'rtl-message',
         });
       },
     });

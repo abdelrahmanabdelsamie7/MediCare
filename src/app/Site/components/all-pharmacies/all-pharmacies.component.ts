@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
-import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmacies.service';
 import { Subject, takeUntil } from 'rxjs';
@@ -11,33 +9,44 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-all-pharmacies',
   standalone: true,
-  imports: [SiteNavbarComponent, SiteFooterComponent, RouterModule],
+  imports: [RouterModule],
   templateUrl: './all-pharmacies.component.html',
   styleUrl: './all-pharmacies.component.css',
 })
 export class AllPharmaciesComponent implements OnInit, OnDestroy {
-  activeTab: string = 'Pharmacies';
+  totalPharmaciesPages: number = 0;
+  currentPharmaciesPage: number = 0;
+  private destroy$ = new Subject<void>();
   ChainsPharmacies: IChainPharmacies[] = [];
   Pharmacies: IPharmacy[] = [];
-  private destroy$ = new Subject<void>();
+  activeTab: string = 'Pharmacies';
   constructor(
-    private _SChainPharmaciesService: SChainPharmaciesService,
-    private _SPharmacyService: SPharmacyService
+    private _SPharmacyService: SPharmacyService,
+    private _SChainPharmaciesService: SChainPharmaciesService
   ) {}
-  ngOnInit() {
-    this.loadChainsPharmacies();
-    this.loadPharmacies();
+  ngOnInit(): void {
+    this.getChainOfPharmacies();
+    this.getAllPharamcies();
   }
-  loadChainsPharmacies() {
-    this._SChainPharmaciesService
-      .getChainPharmacies()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: any) => {
-          console.log('Chain Of Pharmacies', data);
-          this.ChainsPharmacies = data.data;
-        },
-      });
+  allPharmacies() {
+    this.getAllPharamcies();
+  }
+  getChainOfPharmacies() {
+    this._SChainPharmaciesService.getChainPharmacies().subscribe({
+      next: (data: any) => {
+        this.ChainsPharmacies = data.data;
+      },
+    });
+  }
+  getAllPharamcies(page = 1) {
+    this._SPharmacyService.getPharmacies(page).subscribe({
+      next: (data: any) => {
+        this.Pharmacies = data.data.pharmacies;
+        this.currentPharmaciesPage = data.data.pagination.current_page;
+        this.totalPharmaciesPages = data.data.pagination.num_of_pages;
+        this.setActiveTab('Pharmacies');
+      },
+    });
   }
   loadPharmaciesByChain(chainId: string) {
     this._SChainPharmaciesService
@@ -45,25 +54,28 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log('Pharmacies of selected chain:', data);
           this.Pharmacies = data.data.pharmacies;
           this.setActiveTab('PharmaciesOfChain');
         },
       });
   }
-  loadPharmacies() {
-    this._SPharmacyService
-      .getPharmacies()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: any) => {
-          console.log(data);
-          this.Pharmacies = data.data;
-        },
-      });
-  }
   setActiveTab(tab: string) {
     this.activeTab = tab;
+  }
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPharmaciesPages) {
+      this.getAllPharamcies(page);
+    }
+  }
+  nextPharmaciesPage(): void {
+    if (this.currentPharmaciesPage < this.totalPharmaciesPages) {
+      this.getAllPharamcies(this.currentPharmaciesPage + 1);
+    }
+  }
+  prevPharmaciesPage(): void {
+    if (this.currentPharmaciesPage > 1) {
+      this.getAllPharamcies(this.currentPharmaciesPage - 1);
+    }
   }
   ngOnDestroy(): void {
     this.destroy$.next();

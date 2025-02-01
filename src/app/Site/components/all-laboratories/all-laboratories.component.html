@@ -1,4 +1,3 @@
-<app-site-navbar></app-site-navbar>
 <div class="container mt-2">
   <div class="dropdown">
     <button class="btn btn-info text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -6,6 +5,13 @@
       Chain Of Laboratories
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <!-- To Get All Pharamices From Dropdown .. -->
+      <li>
+        <button class="dropdown-item" (click)="allLaboratories()">
+          All Laboratories
+        </button>
+      </li>
+      <!-- Loop In Chain Of Pahramcies To Get It's Pharamices -->
       @for (item of ChainsLaboratories; track $index) {
       <li>
         <button class="dropdown-item" (click)="loadLaboratoriesByChain(item.id)">
@@ -16,16 +22,18 @@
     </ul>
   </div>
 </div>
+
 <div class="container my-5">
+  <!-- Get Laboratories Of Chain -->
   @if (activeTab === 'LaboratoriesOfChain') {
   <div class="row">
     @for (item of Laboratories; track $index) {
     <div class="col-md-6 col-lg-4">
       <div class="card">
-        <img [src]="item.image" class="card-img-top w-100" height="320px" alt="Laboratory Image" />
+        <img [src]="item.image" class="card-img-top w-100" height="320px" alt="laboratory Image" />
         <div class="card-body" style="direction: rtl;">
           <h5 class="card-title fs-4">معمل : {{ item.title }}</h5>
-          <p class="card-text fs-5">تقدم خدمات :{{ item.service }}</p>
+          <p class="card-text fs-5">يقدم خدمات :{{ item.service }}</p>
           <a routerLink="/details/laboratory/{{ item.id }}" class="btn btn-info text-light">المزيد من المعلومات</a>
         </div>
       </div>
@@ -33,21 +41,31 @@
     }
   </div>
   }
+  <!-- All Laboratories -->
   @if (activeTab === 'Laboratories') {
   <div class="row">
     @for (item of Laboratories; track $index) {
     <div class="col-md-6 col-lg-4">
       <div class="card">
-        <img [src]="item.image" class="card-img-top w-100" height="320px" alt="Laboratory Image" />
+        <img [src]="item.image" class="card-img-top w-100" height="320px" alt="laboratory Image" />
         <div class="card-body" style="direction: rtl;">
           <h5 class="card-title fs-4">معمل : {{ item.title }}</h5>
-          <p class="card-text fs-5">تقدم خدمات :{{ item.service }}</p>
+          <p class="card-text fs-5">يقدم خدمات :{{ item.service }}</p>
           <a routerLink="/details/laboratory/{{ item.id }}" class="btn btn-info text-light">المزيد من المعلومات</a>
         </div>
       </div>
     </div>
     }
+    <!-- Pagination In All Pharamecies Else ! -->
+    <div class="d-flex justify-content-center align-items-center mb-4 mt-2">
+      <button (click)="prevLaboratoriesPage()" class="btn btn-outline-info" [disabled]="currentLaboratoriesPage === 1">
+        الصفحة السابقة
+      </button>
+      <span class="px-3 fw-bold">الصفحة {{ currentLaboratoriesPage }} من {{ totalLaboratoriesPages }}</span>
+      <button (click)="nextLaboratoriesPage()" class="btn btn-outline-info"
+        [disabled]="currentLaboratoriesPage === totalLaboratoriesPages">الصفحة
+        التالية</button>
+    </div>
   </div>
   }
 </div>
-<app-site-footer></app-site-footer>

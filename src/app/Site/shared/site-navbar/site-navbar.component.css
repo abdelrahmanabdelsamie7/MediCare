@@ -9,3 +9,9 @@ nav .nav-link {
   font-size: 25px;
   font-weight: 700;
 }
+@media screen and (max-width: 576px) {
+  .navbar-nav {
+    margin: 0 auto;
+    text-align: center;
+  }
+}

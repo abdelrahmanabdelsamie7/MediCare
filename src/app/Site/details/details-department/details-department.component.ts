@@ -1,90 +1,124 @@
-import { CommonModule, NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
-import { IHospital } from '../../../Core/interfaces/ihospital';
-import { ICareCenter } from '../../../Core/interfaces/i-care-center';
-import { IDoctor } from '../../../Core/interfaces/i-doctor';
-import { IDepartmentTips } from '../../../Core/interfaces/i-department-tips';
+import { IDepartment } from '../../../Core/interfaces/i-department';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-details-department',
   standalone: true,
-  imports: [NgClass, RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './details-department.component.html',
   styleUrl: './details-department.component.css',
 })
-export class DetailsDepartmentComponent implements OnInit {
+export class DetailsDepartmentComponent implements OnInit, OnDestroy {
   id: string = '';
-  department: any = {};
-  Hospitals: IHospital[] = [];
-  CareCenters: ICareCenter[] = [];
-  Doctors: IDoctor[] = [];
-  Tips: IDepartmentTips[] = [];
+  private destroy$ = new Subject<void>();
   activeTab: string = 'doctors';
-  currentDoctorPage: number = 0;
-  totalDoctorPages: number = 0;
+  Doctors: any[] = [];
+  Hospitals: any[] = [];
+  CareCenters: any[] = [];
+  Tips: any[] = [];
+  Department: IDepartment = {} as IDepartment;
   constructor(
-    private _ActivatedRoute: ActivatedRoute,
-    private _SDepartmentService: SDepartmentService
+    private _SDepartmentService: SDepartmentService,
+    private _ActivatedRoute: ActivatedRoute
   ) {}
-
-  ngOnInit() {
+  ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
-      next: (parmas) => {
-        this.id = `${parmas.get('id')}`;
+      next: (params: any) => {
+        this.id = params.get('id');
       },
     });
-    this.loadDepartment();
+    this.loadDepartmentData();
   }
-  loadDepartment() {
-    this._SDepartmentService.showDepartment(this.id).subscribe({
-      next: (data: any) => {
-        console.log(data);
-        this.department = data.data.department;
-        this.Hospitals = data.data.hospitals.data;
-        this.CareCenters = data.data.care_centers.data;
-        this.Doctors = data.data.doctors.data;
-        console.log(data.data.doctors);
-        this.currentDoctorPage = data.data.doctors.current_page;
-        this.totalDoctorPages = data.data.doctors.num_of_pages;
-        console.log(this.totalDoctorPages);
-
-        this.Tips = data.data.tips.data;
-      },
-    });
-  }
-  setActiveTab(tab: string) {
+  setActiveTab(tab: string): void {
     this.activeTab = tab;
+    this.loadDepartmentData();
   }
-
-  loadDepartmentData(page: number): void {
-    const departmentId = this.id;
-
-    this._SDepartmentService.getDepartmentData(departmentId, page).subscribe(
-      (response) => {
-        this.department = response;
-      }
-    );
-  }
-
-  goToPage(page: number): void {
-    if (page >= 1 && page <= this.totalDoctorPages) {
-      // this.loadDepartmentData(page);
+  loadDepartmentData(): void {
+    let currentPage;
+    if (this.activeTab === 'doctors') {
+      currentPage = this.currentDoctorPage;
+    } else if (this.activeTab === 'hospitals') {
+      currentPage = this.currentHospitalPage;
+    } else if (this.activeTab === 'care_centers') {
+      currentPage = this.currentCareCenterPage;
     }
+    this._SDepartmentService
+      .getDepartmentData(this.id, currentPage, this.activeTab)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.Department = data.data.department;
+          if (this.activeTab === 'doctors') {
+            this.Doctors = data.data.doctors.data;
+            this.currentDoctorPage = data.data.doctors.current_page;
+            this.totalDoctorPages = data.data.doctors.num_of_pages;
+          } else if (this.activeTab === 'hospitals') {
+            this.Hospitals = data.data.hospitals.data;
+            this.currentHospitalPage = data.data.hospitals.current_page;
+            this.totalHospitalPages = data.data.hospitals.num_of_pages;
+          } else if (this.activeTab === 'care_centers') {
+            this.CareCenters = data.data.care_centers.data;
+            this.currentCareCenterPage = data.data.care_centers.current_page;
+            this.totalCareCenterPages = data.data.care_centers.num_of_pages;
+          }
+          this.Tips = data.data.tips;
+        },
+        error: (err) => {
+          console.error('Error Getting department data:', err);
+        },
+      });
   }
-
-  // دالة للانتقال إلى الصفحة التالية
+  // Doctor Pagination
+  currentDoctorPage: number = 1;
+  totalDoctorPages: number = 1;
   nextDoctorPage(): void {
     if (this.currentDoctorPage < this.totalDoctorPages) {
-      // this.loadDepartmentData(this.currentDoctorPage + 1);
+      this.currentDoctorPage++;
+      this.loadDepartmentData();
     }
   }
-
-  // دالة للانتقال إلى الصفحة السابقة
   prevDoctorPage(): void {
     if (this.currentDoctorPage > 1) {
-      // this.loadDepartmentData(this.currentDoctorPage - 1);
+      this.currentDoctorPage--;
+      this.loadDepartmentData();
     }
+  }
+  // Hospital Pagination
+  currentHospitalPage: number = 1;
+  totalHospitalPages: number = 1;
+  nextHospitalPage(): void {
+    if (this.currentHospitalPage < this.totalHospitalPages) {
+      this.currentHospitalPage++;
+      this.loadDepartmentData();
+    }
+  }
+  prevHospitalPage(): void {
+    if (this.currentHospitalPage > 1) {
+      this.currentHospitalPage--;
+      this.loadDepartmentData();
+    }
+  }
+  // CareCenter Pagination
+  currentCareCenterPage: number = 1;
+  totalCareCenterPages: number = 1;
+  nextCareCenterPage(): void {
+    if (this.currentCareCenterPage < this.totalCareCenterPages) {
+      this.currentCareCenterPage++;
+      this.loadDepartmentData();
+    }
+  }
+  prevCareCenterPage(): void {
+    if (this.currentCareCenterPage > 1) {
+      this.currentCareCenterPage--;
+      this.loadDepartmentData();
+    }
+  }
+  ngOnDestroy(): void {
+      this.destroy$.next() ;
+      this.destroy$.complete() ;
   }
 }

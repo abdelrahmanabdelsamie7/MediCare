@@ -84,7 +84,7 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
   }
   submitReview(reviewForm: FormGroup): void {
     this._SPharmacyService.ratePharmacy(reviewForm.value).subscribe({
-      next: (data) => {
+      next: (data: any) => {
         this._MessageService.add({
           severity: 'success',
           summary: 'Success',
@@ -92,11 +92,18 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
         });
         this.showReviewInput = false;
       },
-      error: (err) => {
+      error: (err: any) => {
+        let messageDetail = '';
+        if (err.error.error === 'Not Authorized') {
+          messageDetail = `${this.pharmacy.title} يرجي تسجيل الدخول لتقييم `;
+        } else {
+          messageDetail = `${this.pharmacy.title} لقد قمت بالفعل بتقييم `;
+        }
         this._MessageService.add({
           severity: 'error',
-          summary: 'error',
-          detail: `لقد قمت بالفعل بتقيم ${this.pharmacy.title} `,
+          summary: 'Error',
+          detail: messageDetail,
+          styleClass: 'rtl-message',
         });
       },
     });

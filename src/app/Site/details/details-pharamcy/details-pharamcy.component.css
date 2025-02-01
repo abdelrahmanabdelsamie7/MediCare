@@ -99,3 +99,6 @@ textarea {
 .rating-card p {
   margin-bottom: 5px;
 }
+.rtl-message {
+  direction: rtl !important;
+}

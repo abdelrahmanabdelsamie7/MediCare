@@ -13,9 +13,14 @@ export class SDepartmentService {
       `${environment.baseUrl}/Departments`
     );
   }
-  getDepartmentData(id: string, page: number = 1): Observable<any> {
-    const params = new HttpParams().set('page', page.toString());
-    return this._HttpClient.get<any>(`${environment.baseUrl}/Departments/${id}`, { params });
+  getDepartmentData(
+    id: string,
+    page: number = 1,
+    type: string = 'doctors'
+  ): Observable<any> {
+    return this._HttpClient.get<any>(
+      `${environment.baseUrl}/Departments/${id}?filter=${type}&page=${page}`
+    );
   }
   addDepartment(department: IDepartment): Observable<IDepartment> {
     return this._HttpClient.post<IDepartment>(
