@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { IAi } from '../../../Core/interfaces/i-ai';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-section-ai',
   standalone: true,
@@ -28,8 +28,9 @@ export class SectionAiComponent {
   isUploading: boolean = false;
   uploadProgress: number = 0;
   showResult: boolean = false; // Controls when to show the result card
+  recommendedDepartments: any[] = [];
 
-  constructor(private geminiService: SAiService) {}
+  constructor(private geminiService: SAiService ,private router: Router) {}
 
   // Handles file selection
   onFileSelected(event: any) {
@@ -71,7 +72,7 @@ export class SectionAiComponent {
   }
 
   // Handles the analysis process
-  analyzeContent() {
+    analyzeContent() {
     if (!this.symptomsText && !this.selectedFile) {
       this.errorMessage = 'يرجى إدخال الأعراض أو تحميل صورة للتحليل.';
       this.showResult = false; // Hide result card if no input
@@ -87,8 +88,22 @@ export class SectionAiComponent {
       .subscribe(
         (response: IAi) => {
           this.apiResponse = response; // Set the API response
-          this.loading = false;
-          this.showResult = true; // Show result card after API call
+            this.geminiService
+              .searchDepartments(response.recommendedSpecialization)
+              .subscribe(
+                (departments) => {
+                    this.recommendedDepartments = departments;
+                    console.log('Departments from API:', departments);
+                  this.loading = false;
+                  this.showResult = true;
+                },
+                (error) => {
+                  this.loading = false;
+                  this.errorMessage = `فشل جلب التخصصات المقترحة من الخادم. يرجى المحاولة مرة أخرى.`;
+                   this.showResult = true;
+                  console.error('Department Search Error:', error);
+                }
+             );
         },
         (error: any) => {
           this.loading = false;
@@ -103,5 +118,11 @@ export class SectionAiComponent {
           console.error('API Error:', error);
         }
       );
+  }
+  handleDepartmentSelection(departmentId: string) {
+    // Handle the selection of a department here
+    this.router.navigate(['/details/department', departmentId]);
+     console.log(`Selected department ID: ${departmentId}`);
+
   }
 }

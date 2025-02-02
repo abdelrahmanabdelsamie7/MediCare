@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPharmacy } from '../interfaces/i-pharmacy';
 import { Observable } from 'rxjs';
@@ -9,9 +9,9 @@ import { IUserPharmacy } from '../interfaces/i-user-pharmacy';
 })
 export class SPharmacyService {
   constructor(private _HttpClient: HttpClient) {}
-  getPharmacies(): Observable<IPharmacy[]> {
-    return this._HttpClient.get<IPharmacy[]>(
-      `${environment.baseUrl}/Pharmacies`
+  getPharmacies(params?: HttpParams): Observable<any> {
+    return this._HttpClient.get<any>(
+      `${environment.baseUrl}/Pharmacies`, { params }
     );
   }
   addPharmacy(pharmacy: IPharmacy): Observable<IPharmacy> {

@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { from, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { IAi } from '../interfaces/i-ai';
+import { HttpParams,HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SAiService {
-  private geminiApiUrl: string = 'gemini-2.0-flash-thinking-exp-1219'; // Model name
+  private geminiApiUrl: string = 'gemini-2.0-flash-exp'; // Model name
   private apiKey: string = 'AIzaSyCF_UzyUbnSwkNcEwyYSe_E-X3k1r8LQBE'; // Replace with your actual API key
   private genAI: GoogleGenerativeAI;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.genAI = new GoogleGenerativeAI(this.apiKey);
   }
 
@@ -86,7 +88,12 @@ export class SAiService {
       })
     );
   }
-
+  searchDepartments(searchTerm: string): Observable<any[]> {
+    const params = new HttpParams().set('search', searchTerm);
+    return this.http.get<any>(`${environment.baseUrl}/Departments`, { params }).pipe(
+      map(response => response.data.data)
+    );
+  }
   // Function to convert a file to base64 format
   private async fileToBase64(file: File): Promise<string> {
     return new Promise<string>((resolve, reject) => {

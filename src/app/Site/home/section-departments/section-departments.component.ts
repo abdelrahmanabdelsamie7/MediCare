@@ -59,7 +59,7 @@ export class SectionDepartmentsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.Departments = data.data;
+          this.Departments= data.data.data;
           console.log(data);
         },
       });

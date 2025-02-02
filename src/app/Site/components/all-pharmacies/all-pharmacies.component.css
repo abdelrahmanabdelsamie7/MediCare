@@ -1,3 +1,7 @@
 .card-body{
     direction: rtl;
 }
+.btn-outline-info.active {
+  background-color: #17a2b8 !important; /* Use your color */
+  color: white !important;
+}
