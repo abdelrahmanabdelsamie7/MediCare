@@ -1,8 +1,9 @@
 // src/app/services/google-auth.service.ts
-import { Injectable, inject } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 // Add type for button configuration options
 export interface GoogleButtonConfig {
@@ -35,6 +36,16 @@ declare global {
 
 @Injectable({ providedIn: 'root' })
 export class GoogleAuthService {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  loadGoogleOAuthScript(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    }}
   private http = inject(HttpClient);
   private readonly apiUrl = environment.baseUrl;
   private readonly clientId = environment.googleClientId;
