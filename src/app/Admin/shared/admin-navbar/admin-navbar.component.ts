@@ -23,14 +23,15 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
     this.loadAdminData();
   }
   loadAdminData() {
-    this._SAdminService
-      .adminAccount()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data) => {
-          this.Admin = data;
-        },
-      });
+    this._SAdminService.adminAccount().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.Admin = data;
+      },
+      error: (Err) => {
+        console.log(Err);
+      },
+    });
   }
   logOut() {
     localStorage.removeItem('adminToken');

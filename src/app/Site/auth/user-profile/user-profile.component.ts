@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { SAuthService } from '../../../Core/services/s-auth.service';
 import { IUser } from '../../../Core/interfaces/i-user';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
 import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
 export class UserProfileComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   userData: IUser = {} as IUser;
-  constructor(private _SAuthService: SAuthService) {}
+  constructor(private _SAuthService: SAuthService, private _Router: Router) {}
   ngOnInit(): void {
     this.loadUserData();
   }
@@ -34,12 +34,19 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         next: (data) => {
           this.userData = data;
           localStorage.setItem('userId', this.userData.id);
-          console.log(data);
         },
         error: (err) => {
           console.log(err);
         },
       });
   }
-  ngOnDestroy(): void {}
+  logout() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userToken');
+    this._Router.navigateByUrl('/');
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

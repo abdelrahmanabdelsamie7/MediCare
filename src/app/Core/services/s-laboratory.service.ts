@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ILaboratory } from '../interfaces/i-laboratory';
 import { environment } from '../../../environments/environment.development';
 import { IUserLaboratroy } from '../interfaces/i-user-laboratory';

@@ -1,4 +1,3 @@
-<app-site-navbar></app-site-navbar>
 <div class="container mt-2">
      <form [formGroup]="filterForm" (ngSubmit)="handleSubmit()" class="card p-3">
         <div class="d-flex  align-items-center mb-2 gap-3">
@@ -52,6 +51,7 @@
        </div>
      </form>
 </div>
+
 <div class="container my-5">
     @if (activeTab === 'LaboratoriesOfChain') {
     <div class="row">

@@ -1,7 +1,7 @@
 <section id="hero">
   <div class="container">
-    <div class="row g-2">
-      <div class="col-md-7">
+    <div class="row gx-2">
+      <div class="col-xl-7">
         <!-- using defer to prevent dublication of hero carousel in SSR -->
         @defer(when isBrowser) {
         <p-carousel class="hero-carousel" [value]="Images" [numVisible]="1" [numScroll]="1" [circular]="false"
@@ -21,11 +21,11 @@
         </div>
         }
       </div>
-      <div class="col-md-5">
+      <div class="col-xl-5 d-flex flex-column justify-content-center align-items-center">
         <div>
-          <div class="shadow p-3 my-4">
+          <div class="shadow p-2 my-2">
             <div class="row">
-              <div class="col-md-6 order-2 order-lg-1 offset-md-1 d-flex justify-content-center align-items-center">
+              <div class="col-md-6 order-2 order-lg-1 d-flex justify-content-center align-items-center">
                 <div>
                   <h4 class="text-info fw-bolder ">لديك سؤال طبي؟</h4>
                   <p class="fw-bolder text-muted">احصل علي اجابة في اسرع وقت.</p>
@@ -36,9 +36,9 @@
               </div>
             </div>
           </div>
-          <div class="shadow p-3 my-4">
+          <div class="shadow p-2 my-4">
             <div class="row">
-              <div class="col-md-5 order-2 order-lg-1 offset-md-1 d-flex justify-content-center align-items-center">
+              <div class="col-md-5 order-2 order-lg-1 d-flex justify-content-center align-items-center">
                 <div>
                   <h4 class="text-info fw-bold fs-4">نصيحة من دكتور MediCare</h4>
                   <button class="btn btn-outline-info d-block mx-auto" routerLink="/details/doctor-blogs">ابحث</button>

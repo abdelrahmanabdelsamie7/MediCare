@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
-import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmacies.service';
 import { Subject, takeUntil } from 'rxjs';

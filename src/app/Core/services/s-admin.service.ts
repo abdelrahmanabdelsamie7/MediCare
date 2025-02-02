@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { IAdmin } from '../interfaces/i-admin';
 
@@ -16,8 +16,16 @@ export class SAdminService {
     );
   }
   adminAccount(): Observable<IAdmin> {
-    return this._HttpClient.get<IAdmin>(
-      `${environment.baseUrl}/admin/getaccount`
-    );
+    return this._HttpClient
+      .get<IAdmin>('http://localhost:8000/api/admin/getaccount')
+      .pipe(
+        tap((data) => {
+          console.log('Data received from API:', data); // تحقق من البيانات المستلمة
+        }),
+        catchError((err) => {
+          console.error('Error fetching data:', err); // تحقق من وجود أخطاء
+          return throwError(() => err);
+        })
+      );
   }
 }

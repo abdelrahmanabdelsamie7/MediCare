@@ -5,16 +5,19 @@ import { SLaboratoryService } from '../../../Core/services/s-laboratory.service'
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list-laboratories',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule, CommonModule ],
   templateUrl: './list-laboratories.component.html',
   styleUrl: './list-laboratories.component.css',
   providers: [MessageService],
 })
 export class ListLaboratoriesComponent implements OnInit, OnDestroy {
+  currentPage: number = 1;
+  totalPages: number = 1;
   Laboratories: ILaboratory[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -22,20 +25,28 @@ export class ListLaboratoriesComponent implements OnInit, OnDestroy {
     private _MessageService: MessageService
   ) {}
   ngOnInit() {
-    this.getLaboratories();
+    this.getLaboratories(this.currentPage);
   }
-  getLaboratories() {
+  getLaboratories(page: number) {
     this._SLaboratoryService
-      .getLaboratories()
+      .getLaboratories(page)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.Laboratories = data.data;
+          console.log(data);
+          this.Laboratories = data.data.laboratories;
+          this.currentPage = data.data.pagination.current_page;
+          this.totalPages = data.data.pagination.num_of_pages;
         },
         error: (err) => {
           console.error(err);
         },
       });
+  }
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.getLaboratories(page);
+    }
   }
   deleteLaboratory(id: string) {
     this._SLaboratoryService

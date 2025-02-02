@@ -8,7 +8,7 @@ import {
   provideHttpClient,
   withFetch,
   withInterceptors,
-  withInterceptorsFromDi
+  withInterceptorsFromDi,
 } from '@angular/common/http';
 // Start Of Import Prime Ng Plugins
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -19,6 +19,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GoogleAuthInterceptor } from './Core/interceptors/google-auth.interceptor';
 import { CacheInterceptor } from './Core/interceptors/cache.interceptor';
 // End Of mport Prime Ng Plugins
+// End Of Import Prime Ng Plugins
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -28,6 +30,11 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: GoogleAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GoogleAuthInterceptor,
+      multi: true,
+    },
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
@@ -39,5 +46,6 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+
   ],
 };

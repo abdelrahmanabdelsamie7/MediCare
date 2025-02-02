@@ -1,12 +1,12 @@
 .hero-carousel .relative {
-  height: 550px;
+  height: auto;
 }
 img,
 .shadow {
   border-radius: 15px;
 }
 
- .hero-carousel .p-carousel-indicator button {
+.hero-carousel .p-carousel-indicator button {
   width: 13px;
   height: 13px;
   border-radius: 50% !important;
@@ -24,10 +24,8 @@ img,
   direction: rtl;
   line-height: 38px;
 }
-
-/* .hero-carousel-placeholder {
-  min-height: 550px;
-  background-color: var(--main-color) ;
-  background-size: 200% 100%;
-
-} */
+@media screen and (max-width: 576px) {
+  .hero-carousel .relative {
+    height: auto;
+  }
+}

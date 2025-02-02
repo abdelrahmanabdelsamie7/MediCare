@@ -20,10 +20,9 @@
             <th colspan="3">Action</th>
           </tr>
         </thead>
-        @for (item of Pharmacies; track $index) {
         <tbody>
-          <tr>
-            <td>{{ $index +1 }}</td>
+          <tr *ngFor="let item of Pharmacies; let i = index">
+            <td>{{ (currentPage - 1) * 10 + i + 1 }}</td>
             <td>{{ item.title }}</td>
             <td><a routerLink="/admin-mediCare-1245/show_pharmacy/{{ item.id }}" title="Show"><i
                   class="bi bi-eye text-primary"></i></a></td>
@@ -32,8 +31,21 @@
             <td><a (click)="deletePharmacy(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a></td>
           </tr>
         </tbody>
-        }
       </table>
+      <nav>
+        <ul class="pagination d-flex justify-content-center">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+          </li>
+          <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
+            [class.active]="currentPage === i + 1">
+            <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@ import {
 import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
-import { LoginComponent } from "../google-auth/google-auth.component";
+import { LoginComponent } from '../google-auth/google-auth.component';
 
 @Component({
   selector: 'app-site-register',
@@ -57,8 +57,8 @@ export class SiteRegisterComponent {
     if (this.registerForm.valid) {
       this.isLoading = true;
       this._SAuthService.setRegisterForm(this.registerForm.value).subscribe({
-        next: (res) => {
-          console.log(res);
+        next: (res: any) => {
+          localStorage.setItem('userId', res.user.id);
           this.msgSuccess = true;
           setTimeout(() => {
             this._Router.navigate(['/Login']);
@@ -68,11 +68,9 @@ export class SiteRegisterComponent {
         },
         error: (err: HttpErrorResponse) => {
           this.msgErr = err.error;
-          console.log(err);
           this.isLoading = false;
         },
       });
-      console.log(this.registerForm.value);
     }
   }
   // custom validation function---->g:registerForm

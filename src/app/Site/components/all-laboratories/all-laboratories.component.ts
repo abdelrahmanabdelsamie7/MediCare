@@ -4,8 +4,6 @@ import { ILaboratory } from '../../../Core/interfaces/i-laboratory';
 import { Subject, takeUntil } from 'rxjs';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
-import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
-import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';

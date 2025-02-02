@@ -4,40 +4,26 @@ import { catchError, finalize, throwError } from 'rxjs';
 import { SLoadingService } from '../services/s-loading.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  let modifiedReq = req;
   const loaderService = inject(SLoadingService);
-
+  const tokens = [
+    localStorage.getItem('adminToken'),
+    localStorage.getItem('doctorToken'),
+    localStorage.getItem('userToken'),
+  ];
   loaderService.showLoader();
-
-  if (localStorage.getItem('adminToken')) {
-    const adminToken = localStorage.getItem('adminToken');
+  let modifiedReq = req;
+  const validToken = tokens.find((token) => token);
+  if (validToken) {
     modifiedReq = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${adminToken}`,
+        Authorization: `Bearer ${validToken}`,
       },
     });
   }
-  if (localStorage.getItem('doctorToken')) {
-    const doctorToken = localStorage.getItem('doctorToken');
-    modifiedReq = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${doctorToken}`,
-      },
-    });
-  }
-  if (localStorage.getItem('userToken')) {
-    const userToken = localStorage.getItem('userToken');
-    modifiedReq = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    });
-  }
-
   return next(modifiedReq).pipe(
     catchError((error) => {
       console.error('Error in request:', error);
-      loaderService.showLoader();
+      loaderService.hideLoader();
       return throwError(() => error);
     }),
 

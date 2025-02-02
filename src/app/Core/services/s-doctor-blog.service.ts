@@ -34,9 +34,9 @@ export class SDoctorBlogService {
       `${environment.baseUrl}/Blogs/${id}`
     );
   }
-  getWebBlogs(): Observable<IDoctorBlog[]> {
+  getWebBlogs(page: number): Observable<IDoctorBlog[]> {
     return this._HttpClient.get<IDoctorBlog[]>(
-      `${environment.baseUrl}/Blogs_Web`
+      `${environment.baseUrl}/Blogs_Web?page=${page}`
     );
   }
 }

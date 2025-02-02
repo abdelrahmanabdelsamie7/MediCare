@@ -1,13 +1,13 @@
 <div class="container">
   <div class="blogs-container mt-4">
-    <h2 class="my-4 fw-bold text-info">مدونة <span>MediCare</span></h2>
+    <h2 class="my-4 text-info">مدونة <span class="fw-bold">MediCare</span></h2>
     @for (item of DoctorBlogs; track $index) {
     <div class="blog-card p-4 my-3 border border-0 rounded">
       <div class="d-flex align-items-center mb-4">
         <a routerLink="/details/doctor/{{ item.doctor.id }}">
-          <img [src]="item.doctor.image" alt="item.doctor.fName Image" class="rounded-circle"
-            style="width: 80px; height: 80px; object-fit: cover;"></a>
-
+          <img [src]="item.doctor.image" alt="Doctor Image" class="rounded-circle"
+            style="width: 100px; height: 100px; object-fit: cover;">
+        </a>
         <div class="mx-2">
           <h5 class="fw-bold mb-0"> د . {{ item.doctor.fName }} {{ item.doctor.lName }}</h5>
           <p class="mb-0 text-muted">{{ item.doctor.title }}</p>
@@ -18,5 +18,16 @@
       <p class="text-muted mb-1 text-start">{{ item.created_at | date:'medium' }}</p>
     </div>
     }
+  </div>
+  <div>
+    <div class="d-flex justify-content-center align-items-center mb-4 mt-2">
+      <button (click)="prevDoctorBlogPage()" class="btn btn-outline-info" [disabled]="currentBlogPage === 1">
+        الصفحة السابقة
+      </button>
+      <span class="px-3 fw-bold">الصفحة {{ currentBlogPage }} من {{ totalBlogPages }}</span>
+      <button (click)="nextDoctorBlogPage()" class="btn btn-outline-info"
+        [disabled]="currentBlogPage === totalBlogPages">الصفحة
+        التالية</button>
+    </div>
   </div>
 </div>
