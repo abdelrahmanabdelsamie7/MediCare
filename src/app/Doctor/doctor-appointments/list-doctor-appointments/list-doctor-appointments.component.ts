@@ -30,6 +30,7 @@ export class ListDoctorAppointmentsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          // console.log(data);
           this.DoctorAppointments = data.data;
         },
         error: (err) => {

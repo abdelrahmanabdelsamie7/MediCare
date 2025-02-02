@@ -8,5 +8,6 @@ export interface IDoctorAppointment {
   doctor_id: string;
   clinic_id: string;
   duration: number;
+  is_booked: boolean;
   clinic: IDoctorClinic;
 }

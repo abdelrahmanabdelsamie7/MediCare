@@ -79,45 +79,42 @@
         </h5>
         }
         <hr>
-        <div class="container py-4">
-          <h5 class="text-center fw-bold mb-4">اخـتــــــــار ميعاد الــحــجــز</h5>
-          <hr>
-
-          <!-- Loop Through Appointments Grouped by Day -->
-          <div *ngFor="let group of groupedAppointments">
-            <!-- Display Day Header -->
-            <div class="day-section mb-4">
-              <h5 class="day-title text-info fw-bold">
-                <i class="fa-solid fa-calendar-day"></i> يوم: {{ group.day }}
-              </h5>
-              <div class="appointments-container row g-3 mt-3">
-                <!-- Loop Through Appointments of the Day -->
-                <div class="col-md-6 col-lg-4" *ngFor="let appointment of group.appointments">
-                  <div class="appointment-card border rounded p-3 shadow-sm">
-                    <h6 class="clinic-title text-secondary mb-2">
-                      <i class="fa-solid fa-location-dot text-primary"></i> العيادة: {{ appointment.clinicName }}
-                    </h6>
-                    <p class="time mb-1">
-                      <i class="fa-solid fa-clock text-success"></i> من:
-                      <span>{{ appointment.start_at }}</span>
-                    </p>
-                    <p class="time">
-                      <i class="fa-solid fa-clock text-danger"></i> حتي:
-                      <span>{{ appointment.end_at }}</span>
-                    </p>
-                    <button class="btn btn-{{ appointment.is_booked ? 'secondary' : 'primary' }} w-100 mt-2"
-                      [disabled]="appointment.is_booked">
-                      {{ appointment.is_booked ? 'محجوز' : 'احجز الآن' }}
-                    </button>
-                  </div>
+        <div class="container">
+          <h5 class="text-center fw-bold">اخـتــــــــار ميعاد الــحــجــز</h5>
+        </div>
+        <hr>
+        <!-- Start Appointments -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let date of appointmentDates; let i = index" class="carousel-item" [class.active]="i === 0">
+              <div class="appointment-item mx-auto">
+                <h5>{{ date.date | date: 'yyyy-MM-dd' }}</h5>
+                <div *ngFor="let item of date.appointments">
+                  @for (clinic of DoctorClinics; track $index) {
+                  @if (clinic.id == item.clinic_id ) {
+                  <p>{{ clinic.title}}</p>
+                  }
+                  }
+                  <p>{{ item.start_at }} - {{ item.end_at }}</p>
                 </div>
               </div>
             </div>
-            <hr>
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" class="text-info" aria-hidden="true"></span>
+            <span class="text-info">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="text-info">Next</span>
+          </button>
+
         </div>
 
-        <hr>
+
+        <!-- End Appointments -->
         <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
         <hr>
         <div class="reserve-section">
