@@ -66,6 +66,14 @@
                   {{ apiResponse.recommendedSpecialization || "غير محدد" }}
                 </p>
               </div>
+             <div class="mb-3" *ngIf="recommendedDepartments.length > 0">
+                    <h5 class="fw-bold">التخصصات المقترحة من Medicare:</h5>
+                   <div class="d-flex flex-wrap gap-2">
+                     <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info" (click)="handleDepartmentSelection(department.id)">
+                      {{department.title}}
+                     </button>
+                   </div>
+               </div>
               <div class="mb-3">
                 <h5 class="fw-bold">النصائح:</h5>
                 <p class="mb-0">{{ apiResponse.advice || "لا توجد نصائح" }}</p>

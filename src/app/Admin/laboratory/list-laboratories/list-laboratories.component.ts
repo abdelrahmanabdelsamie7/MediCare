@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-laboratories',
@@ -28,8 +29,10 @@ export class ListLaboratoriesComponent implements OnInit, OnDestroy {
     this.getLaboratories(this.currentPage);
   }
   getLaboratories(page: number) {
+    const params = new HttpParams().set('page', page.toString());
+
     this._SLaboratoryService
-      .getLaboratories(page)
+      .getLaboratories(params) 
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {

@@ -9,11 +9,12 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LoginComponent } from "../google-auth/google-auth.component";
 
 @Component({
   selector: 'app-site-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, RouterLink],
+  imports: [ReactiveFormsModule, NgClass, RouterLink, LoginComponent],
   templateUrl: './site-login.component.html',
   styleUrl: './site-login.component.css',
 })

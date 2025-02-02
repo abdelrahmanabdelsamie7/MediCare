@@ -24,11 +24,7 @@ export class SAuthService {
   getUserAccount(): Observable<IUser> {
     return this._HttpClient.get<IUser>(
       `${environment.baseUrl}/user/getaccount`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('userToken'),
-        },
-      }
+     //no nead for headers here they added in the interceptor 
     );
   }
 }
