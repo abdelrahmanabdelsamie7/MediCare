@@ -15,7 +15,7 @@
         </h2>
         <p><strong>الخدمات:</strong> {{ Laboratory.service }}</p>
         <p><strong>رقم المحمول:</strong> {{ Laboratory.phone }}</p>
-        <p><strong>العنوان:</strong> {{ Laboratory.address }}</p>
+        <p><strong>العنوان:</strong> {{ Laboratory.area }} - {{ Laboratory.city }}</p>
         <p>
           <strong>مواعيد العمل:</strong>
           {{ Laboratory.start_at | date: "short" }} إلي
