@@ -20,7 +20,7 @@ import { GoogleAuthInterceptor } from './Core/interceptors/google-auth.intercept
 import { CacheInterceptor } from './Core/interceptors/cache.interceptor';
 // End Of mport Prime Ng Plugins
 // End Of Import Prime Ng Plugins
-import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
+// import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),

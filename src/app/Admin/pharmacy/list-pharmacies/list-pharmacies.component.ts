@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-list-pharmacies',
   standalone: true,
@@ -27,9 +28,10 @@ export class ListPharmaciesComponent implements OnInit, OnDestroy {
     this.getPharmacies(this.currentPage);
   }
   getPharmacies(page: number) {
+    const params = new HttpParams().set('page', page.toString()); 
+
     this._SPharmacyService
-      .getPharmacies(page)
-      .pipe(takeUntil(this.destroy$))
+      .getPharmacies(params)
       .subscribe({
         next: (data: any) => {
           console.log(data);
@@ -42,6 +44,7 @@ export class ListPharmaciesComponent implements OnInit, OnDestroy {
         },
       });
   }
+
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.getPharmacies(page);

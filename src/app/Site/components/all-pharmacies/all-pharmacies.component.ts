@@ -7,11 +7,13 @@ import { IPharmacy } from '../../../Core/interfaces/i-pharmacy';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
+import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
+import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 
 @Component({
     selector: 'app-all-pharmacies',
     standalone: true,
-    imports: [SiteNavbarComponent, SiteFooterComponent, RouterModule, FormsModule],
+    imports: [RouterModule, FormsModule],
     templateUrl: './all-pharmacies.component.html',
     styleUrl: './all-pharmacies.component.css',
 })
