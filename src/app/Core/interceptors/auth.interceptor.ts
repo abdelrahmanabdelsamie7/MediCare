@@ -1,15 +1,22 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { catchError, finalize, throwError } from 'rxjs';
 import { SLoadingService } from '../services/s-loading.service';
+import { isPlatformBrowser } from '@angular/common';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const loaderService = inject(SLoadingService);
-  const tokens = [
-    localStorage.getItem('adminToken'),
-    localStorage.getItem('doctorToken'),
-    localStorage.getItem('userToken'),
-  ];
+  const platformId = inject(PLATFORM_ID);
+
+  // Only access localStorage if the app is running on the browser
+  let tokens: string[] = [];
+  if (isPlatformBrowser(platformId)) {
+    tokens = [
+      localStorage.getItem('adminToken') || '',
+      localStorage.getItem('doctorToken') || '',
+      localStorage.getItem('userToken') || '',
+    ];
+  }
   loaderService.showLoader();
   let modifiedReq = req;
   const validToken = tokens.find((token) => token);
