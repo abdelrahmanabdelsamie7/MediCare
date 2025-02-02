@@ -71,7 +71,7 @@ export class GoogleAuthService {
     ).subscribe({
       next: (res) => {
         localStorage.setItem('userToken', res.access_token);
-        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('userId', JSON.stringify(res.user.id));
         this.router.navigate(['/home']);
       },
       error: (err) => console.error('Authentication failed:', err)

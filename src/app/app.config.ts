@@ -27,11 +27,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideHttpClient(withInterceptorsFromDi()),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: GoogleAuthInterceptor,
-      multi: true,
-    },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
