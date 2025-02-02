@@ -4,7 +4,8 @@ export interface IPharmacy {
   service: string;
   image: string;
   phone: string;
-  address: string;
+  city: string;
+  area: string;
   locationUrl: string;
   whatsappLink: string;
   deliveryOption: number;

@@ -25,7 +25,7 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
   loadAdminData() {
     this._SAdminService.adminAccount().subscribe({
       next: (data) => {
-        console.log(data);
+        // console.log(data);
         this.Admin = data;
       },
       error: (Err) => {

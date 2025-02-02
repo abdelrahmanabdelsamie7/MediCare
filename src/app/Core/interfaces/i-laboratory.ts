@@ -4,7 +4,8 @@ export interface ILaboratory {
   service: string;
   image: string;
   phone: string;
-  address: string;
+  area: string;
+  city: string;
   locationUrl: string;
   whatsappLink: string;
   insurence: number;

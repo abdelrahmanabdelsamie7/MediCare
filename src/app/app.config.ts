@@ -18,9 +18,8 @@ import { authInterceptor } from './Core/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GoogleAuthInterceptor } from './Core/interceptors/google-auth.interceptor';
 import { CacheInterceptor } from './Core/interceptors/cache.interceptor';
-// End Of mport Prime Ng Plugins
+
 // End Of Import Prime Ng Plugins
-// import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -28,7 +27,11 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideHttpClient(withInterceptorsFromDi()),
-    { provide: HTTP_INTERCEPTORS, useClass: GoogleAuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GoogleAuthInterceptor,
+      multi: true,
+    },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
@@ -46,6 +49,5 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
-
   ],
 };

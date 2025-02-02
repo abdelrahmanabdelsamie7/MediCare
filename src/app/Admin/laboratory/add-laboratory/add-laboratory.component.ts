@@ -44,10 +44,8 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
       Validators.minLength(8),
       Validators.maxLength(15),
     ]),
-    address: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
+    city: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    area: new FormControl('', [Validators.required, Validators.minLength(3)]),
     locationUrl: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -77,6 +75,7 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          console.log(this.ChainsLaboratories);
           this.ChainsLaboratories = data.data;
         },
       });

@@ -55,10 +55,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
       Validators.minLength(8),
       Validators.maxLength(15),
     ]),
-    address: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
+    city: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    area: new FormControl('', [Validators.required, Validators.minLength(3)]),
     locationUrl: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -99,7 +97,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
           service: this.Pharmacy.service,
           image: this.Pharmacy.image,
           phone: this.Pharmacy.phone,
-          address: this.Pharmacy.address,
+          area: this.Pharmacy.area,
+          city: this.Pharmacy.city,
           locationUrl: this.Pharmacy.locationUrl,
           whatsappLink: this.Pharmacy.whatsappLink,
           deliveryOption: this.Pharmacy.deliveryOption,

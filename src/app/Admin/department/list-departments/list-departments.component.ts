@@ -14,6 +14,8 @@ import { Subject, takeUntil } from 'rxjs';
   providers: [MessageService],
 })
 export class ListDepartmentsComponent implements OnInit, OnDestroy {
+  currentPage: number = 1;
+  lastPage: number = 1;
   Departments: IDepartment[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -23,13 +25,15 @@ export class ListDepartmentsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getDepartments();
   }
-  getDepartments() {
+  getDepartments(page: number = 1) {
     this._SDepartmentService
-      .getDepartments()
+      .getDepartments(page)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.Departments = data.data;
+          this.Departments = data.data.data;
+          this.currentPage = data.data.current_page;
+          this.lastPage = data.data.last_page;
         },
         error: (err) => {
           console.error(err);

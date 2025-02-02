@@ -20,10 +20,10 @@
             <th colspan="3">Action</th>
           </tr>
         </thead>
-        @for (item of Departments; track $index) {
         <tbody>
+          @for (item of Departments; track $index) {
           <tr>
-            <td>{{ $index +1 }}</td>
+            <td>{{ $index + 1 }}</td>
             <td>{{ item.title }}</td>
             <td><a routerLink="/admin-mediCare-1245/show_department/{{ item.id }}" title="Show"><i
                   class="bi bi-eye text-primary"></i></a></td>
@@ -31,9 +31,22 @@
                   class="bi bi-pen text-warning"></i></a></td>
             <td><a (click)="deleteDepartment(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a></td>
           </tr>
+          }
         </tbody>
-        }
       </table>
+      <div class="pagination-container d-flex justify-content-center align-items-center my-2">
+        <button [disabled]="currentPage === 1" class="btn btn-outline-info" (click)="getDepartments(currentPage - 1)">
+          &laquo; Previous
+        </button>
+
+        <span class="px-3 fw-bold">Page {{ currentPage }} of {{ lastPage }}</span>
+
+        <button [disabled]="currentPage === lastPage" class="btn btn-outline-info"
+          (click)="getDepartments(currentPage + 1)">
+          Next &raquo;
+        </button>
+      </div>
+
     </div>
   </div>
 </div>

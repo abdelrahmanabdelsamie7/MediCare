@@ -21,8 +21,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of Pharmacies; let i = index">
-            <td>{{ (currentPage - 1) * 10 + i + 1 }}</td>
+          @for (item of Pharmacies; track $index) {
+          <tr>
+            <td>{{ $index + 1 }}</td>
             <td>{{ item.title }}</td>
             <td><a routerLink="/admin-mediCare-1245/show_pharmacy/{{ item.id }}" title="Show"><i
                   class="bi bi-eye text-primary"></i></a></td>
@@ -30,22 +31,21 @@
                   class="bi bi-pen text-warning"></i></a></td>
             <td><a (click)="deletePharmacy(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a></td>
           </tr>
+          }
         </tbody>
       </table>
-      <nav>
-        <ul class="pagination d-flex justify-content-center">
-          <li class="page-item" [class.disabled]="currentPage === 1">
-            <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
-          </li>
-          <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index"
-            [class.active]="currentPage === i + 1">
-            <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
-          </li>
-          <li class="page-item" [class.disabled]="currentPage === totalPages">
-            <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="pagination-container d-flex justify-content-center align-items-center my-2">
+        <button [disabled]="currentPage === 1" class="btn btn-outline-info" (click)="getPharmacies(currentPage - 1)">
+          &laquo; Previous
+        </button>
+
+        <span class="px-3 fw-bold">Page {{ currentPage }} of {{ lastPage }}</span>
+
+        <button [disabled]="currentPage === lastPage" class="btn btn-outline-info"
+          (click)="getPharmacies(currentPage + 1)">
+          Next &raquo;
+        </button>
+      </div>
     </div>
   </div>
 </div>

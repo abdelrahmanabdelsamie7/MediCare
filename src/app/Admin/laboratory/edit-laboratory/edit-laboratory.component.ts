@@ -56,10 +56,8 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
       Validators.minLength(8),
       Validators.maxLength(15),
     ]),
-    address: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
+    city: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    area: new FormControl('', [Validators.required, Validators.minLength(3)]),
     locationUrl: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
@@ -99,7 +97,8 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
           service: this.Laboratory.service,
           image: this.Laboratory.image,
           phone: this.Laboratory.phone,
-          address: this.Laboratory.address,
+          city: this.Laboratory.city,
+          area: this.Laboratory.area,
           locationUrl: this.Laboratory.locationUrl,
           whatsappLink: this.Laboratory.whatsappLink,
           insurence: this.Laboratory.insurence,
@@ -125,7 +124,6 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
       .editLaboratory(this.id, editLaboratoryForm.value)
       .subscribe({
         next: (data) => {
-
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
@@ -137,7 +135,7 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: "Laboratory Couldn't Be Edited "+ err.error.message,
+            detail: "Laboratory Couldn't Be Edited " + err.error.message,
           });
         },
       });

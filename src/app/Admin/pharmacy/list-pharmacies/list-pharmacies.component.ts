@@ -10,14 +10,14 @@ import { HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-list-pharmacies',
   standalone: true,
-  imports: [RouterModule, Toast , CommonModule],
+  imports: [RouterModule, Toast, CommonModule],
   templateUrl: './list-pharmacies.component.html',
   styleUrl: './list-pharmacies.component.css',
   providers: [MessageService],
 })
 export class ListPharmaciesComponent implements OnInit, OnDestroy {
   currentPage: number = 1;
-  totalPages: number = 1;
+  lastPage: number = 1;
   Pharmacies: IPharmacy[] = [];
   private destroy$ = new Subject<void>();
   constructor(
@@ -28,16 +28,16 @@ export class ListPharmaciesComponent implements OnInit, OnDestroy {
     this.getPharmacies(this.currentPage);
   }
   getPharmacies(page: number) {
-    const params = new HttpParams().set('page', page.toString()); 
-
+    const params = new HttpParams().set('page', page.toString());
     this._SPharmacyService
       .getPharmacies(params)
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
           console.log(data);
-          this.Pharmacies = data.data.pharmacies;
-          this.currentPage = data.data.pagination.current_page;
-          this.totalPages = data.data.pagination.num_of_pages;
+          this.Pharmacies = data.data.data;
+          this.currentPage = data.data.current_page;
+          this.lastPage = data.data.last_page;
         },
         error: (err) => {
           console.error(err);
@@ -45,11 +45,6 @@ export class ListPharmaciesComponent implements OnInit, OnDestroy {
       });
   }
 
-  changePage(page: number) {
-    if (page >= 1 && page <= this.totalPages) {
-      this.getPharmacies(page);
-    }
-  }
   deletePharmacy(id: string) {
     this._SPharmacyService
       .deletePharmacy(id)

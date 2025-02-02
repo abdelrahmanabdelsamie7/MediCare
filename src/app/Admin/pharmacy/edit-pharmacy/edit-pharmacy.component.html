@@ -43,10 +43,10 @@
                   class="form-control" class="form-control" id="phone">
               </div>
               <div class="col-md-4">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" formControlName="address"
-                  [ngClass]="{'is-invalid':(editPharmacyForm.controls.address.touched && editPharmacyForm.controls.address.errors) }"
-                  class="form-control" class="form-control" id="address">
+                <label for="city" class="form-label">city</label>
+                <input type="text" formControlName="city"
+                  [ngClass]="{'is-invalid':(editPharmacyForm.controls.city.touched && editPharmacyForm.controls.city.errors) }"
+                  class="form-control" class="form-control" id="city">
               </div>
             </div>
             <div class="row">
@@ -96,7 +96,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
+                <label for="area" class="form-label">area</label>
+                <input type="text" formControlName="area"
+                  [ngClass]="{'is-invalid':(editPharmacyForm.controls.area.touched && editPharmacyForm.controls.area.errors) }"
+                  class="form-control" class="form-control" id="area">
+              </div>
+              <div class="col-md-6">
                 <label for="chain_pharmacy_id" class="form-label">Belong To Chain Of Pharmacies</label>
                 <select name="chain_pharmacy_id" formControlName="chain_pharmacy_id" [ngClass]="{
                   'is-invalid': (editPharmacyForm.controls.chain_pharmacy_id.touched &&

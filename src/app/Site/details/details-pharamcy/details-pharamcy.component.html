@@ -16,7 +16,7 @@
         </h2>
         <p><strong>الخدمات:</strong> {{ pharmacy.service }}</p>
         <p><strong>رقم المحمول:</strong> {{ pharmacy.phone }}</p>
-        <p><strong>العنوان:</strong> {{ pharmacy.address }}</p>
+        <p><strong>العنوان:</strong> {{ pharmacy.area }} - {{ pharmacy.city }} </p>
         <p>
           <strong>مواعيد العمل:</strong>
           {{ pharmacy.start_at | date : "short" }} إلي
