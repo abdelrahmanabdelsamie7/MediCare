@@ -42,6 +42,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     this._SPharmacyService.getPharmacies(page).subscribe({
       next: (data: any) => {
         this.Pharmacies = data.data.pharmacies;
+        console.log(this.Pharmacies);
         this.currentPharmaciesPage = data.data.pagination.current_page;
         this.totalPharmaciesPages = data.data.pagination.num_of_pages;
         this.setActiveTab('Pharmacies');
@@ -55,6 +56,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           this.Pharmacies = data.data.pharmacies;
+          console.log(this.Pharmacies);
           this.setActiveTab('PharmaciesOfChain');
         },
       });
