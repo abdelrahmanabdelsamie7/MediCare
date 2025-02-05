@@ -1,3 +1,4 @@
+<p-toast />
 <div class="container my-3">
   <div class="row my-3">
     <div class="col-lg-8 col-md-12">
@@ -88,32 +89,69 @@
           <div class="carousel-inner">
             <div *ngFor="let date of appointmentDates; let i = index" class="carousel-item" [class.active]="i === 0">
               <div class="appointment-item mx-auto">
-                <h5>{{ date.date | date: 'yyyy-MM-dd' }}</h5>
+                <h5 class="appointment-day">{{ date.date | date: 'EEEE , d MMM' }}</h5>
                 <div *ngFor="let item of date.appointments">
-                  @for (clinic of DoctorClinics; track $index) {
-                  @if (clinic.id == item.clinic_id ) {
-                  <p>{{ clinic.title}}</p>
-                  }
-                  }
-                  <p>{{ item.start_at }} - {{ item.end_at }}</p>
+                  <h5 class="appointment-time" title="احجز {{ item.start_at | timeFormat}}"
+                    [ngClass]="item.is_booked ? 'in-valid-appointment' : 'valid-appointment'" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" (click)="openModal(item)">
+                    {{ item.start_at
+                    |timeFormat }} - {{
+                    item.end_at | timeFormat
+                    }}
+                  </h5>
+
                 </div>
               </div>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" class="text-info" aria-hidden="true"></span>
-            <span class="text-info">Previous</span>
+            <span class="carousel-control-prev-icon"></span>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="text-info">Next</span>
+            <span class="carousel-control-next-icon"></span>
           </button>
-
         </div>
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">احجز الآن مع د. {{ Doctor.fName }} {{ Doctor.lName }}
+                </h5>
+              </div>
+              <div class="modal-body">
+                <h5 class="title">معلومات الحجز : </h5>
+                <div class="info-user">
+                  <h6>اسم المستخدم : {{ userData.name }} </h6>
+                  <h6>رقم محمول :{{ userData.phone }} </h6>
+                  <h6> العنوان : {{ userData.address }}</h6>
+                </div>
+                <div class="info-appointment">
+                  <h6> يبدأ الكشف في ميعاد : {{ appointmentReserveInfo.start_at | timeFormat}}</h6>
+                  <h6>
+                    @for (item of Doctor.clinics; track $index) {
+                    @if (item.id === appointmentReserveInfo.clinic_id) {
 
+                    <h6 (click)="showInMap(item.locationUrl)" class="clinicLocation"> العيادة : {{ item.title }}
+                      <i class="fa-solid fa-location-dot text-info"></i>
+                    </h6>
+                    }
+                    }
+                  </h6>
+                  <h6></h6>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info text-light fs-6" (click)="reserveAppointment(appointmentReserveInfo)">احجز</button>
+                <button type="button" class="btn btn-secondary fs-6" data-bs-dismiss="modal">إلغاء</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
         <!-- End Appointments -->
         <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
         <hr>
