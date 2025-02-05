@@ -70,10 +70,7 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.pharmacy = data.data;
-          console.log(this.pharmacy.area);
-
           this.ratesOfPharmacy = data.data.users;
         },
       });

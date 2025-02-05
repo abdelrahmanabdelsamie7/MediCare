@@ -41,35 +41,99 @@
 }
 /* Start Appointment Item */
 .appointment-item {
-  border-bottom: #ddd;
+  border-top: 5px solid var(--main-color);
+  border-bottom: 5px solid var(--main-color);
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
-  width: 300px;
-  height: 200px;
+  border-radius: 5px;
+  max-width: 300px;
+  height: 150px;
+  padding: 3px 0px;
   overflow-x: auto;
-  gap: 15px;
-  scroll-snap-type: x mandatory;
+  white-space: nowrap;
 }
-.appointment-item .day {
-  font-size: 19px;
-  font-weight: 700;
-  padding: 9px;
-  border-radius: 10px;
-  background-color: var(--main-color);
-  color: #fff;
+.appointment-item::-webkit-scrollbar {
+  height: 1px;
 }
-.appointment-item .clinic {
-  font-size: 12px;
-  color: var(--third-color);
+.appointment-item::-webkit-scrollbar-track {
+  border-radius: 2px;
 }
-.appointment-item .time {
-  font-size: 14px;
+.appointment-item::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+.appointment-item::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.44);
+}
+.appointment-item .appointment-day {
+  position: relative;
   color: var(--main-color);
-}
-.appointment-item .time span {
-  font-weight: bold;
   font-size: 20px;
+  padding: 2px 0px;
+  font-weight: 750;
+  width: fit-content;
+  margin: 1px auto 7px auto;
+}
+.appointment-time {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 6px auto;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.appointment-item .appointment-day::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  top: 100%;
+  background-color: var(--third-color);
+}
+.valid-appointment {
+  color: var(--second-color);
+  font-weight: 700;
+}
+.in-valid-appointment {
+  text-decoration: line-through;
+  color: var(--third-color);
+  border: none;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--main-color) !important;
+  border-radius: 7px;
 }
 /* End Appointment Item */
+/* Start Modal Reservation */
+.modal-title {
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 22px;
+}
+.modal-body {
+  text-align: start;
+}
+.modal-body .title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--second-color);
+}
+.modal-body .info-user,
+.info-appointment {
+  padding: 5px 25px 5px 25px; /* t r  b l */
+  color: var(--second-color);
+}
+.modal-body .info-appointment .clinicLocation {
+  color: var(--second-color);
+  cursor: pointer;
+}
+.modal-footer {
+  display: flex;
+  justify-content: start;
+}
+
+/* End Modal Reservation  */
 
 .appLater {
   font-size: 14px;

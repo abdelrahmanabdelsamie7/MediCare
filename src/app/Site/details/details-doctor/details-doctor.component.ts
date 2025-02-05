@@ -1,3 +1,4 @@
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
@@ -5,22 +6,37 @@ import { SDoctorService } from '../../../Core/services/s-doctor.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
+import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
+import { SAuthService } from '../../../Core/services/s-auth.service';
+import { IUser } from '../../../Core/interfaces/i-user';
+import { IDoctorAppointment } from '../../../Core/interfaces/i-doctor-appiontment';
+import { SReservationService } from '../../../Core/services/s-reservation.service';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
+import { IReservation } from '../../../Core/interfaces/i-reservation';
+
 @Component({
   selector: 'app-details-doctor',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TimeFormatPipe, Toast, ReactiveFormsModule],
   templateUrl: './details-doctor.component.html',
   styleUrl: './details-doctor.component.css',
+  providers: [MessageService],
 })
 export class DetailsDoctorComponent implements OnInit, OnDestroy {
   id: string = '';
+  userData: IUser = {} as IUser;
   appointmentDates: any[] = [];
   DoctorClinics: IDoctorClinic[] = [];
   Doctor: IDoctor = {} as IDoctor;
+  appointmentReserveInfo: IDoctorAppointment = {} as IDoctorAppointment;
   private destroy$ = new Subject<void>();
   constructor(
     private _SDoctorService: SDoctorService,
-    private _ActivatedRoute: ActivatedRoute
+    private _ActivatedRoute: ActivatedRoute,
+    private _SAuthService: SAuthService,
+    private _MessageService: MessageService,
+    private _SReservationService: SReservationService
   ) {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -30,8 +46,15 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.loadDoctorData();
+    this.getUserData();
   }
-
+  getUserData() {
+    this._SAuthService.getUserAccount().subscribe({
+      next: (data) => {
+        this.userData = data;
+      },
+    });
+  }
   loadDoctorData() {
     this._SDoctorService
       .showDoctor(this.id)
@@ -54,6 +77,32 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
           }
         },
       });
+  }
+  openModal(appointment: IDoctorAppointment) {
+    this.appointmentReserveInfo = appointment;
+  }
+
+  reserveAppointment(reservInfo: IDoctorAppointment) {
+    let reservationInfo = {
+      user_id: `${localStorage.getItem('userId')}`,
+      doctor_id: reservInfo.doctor_id,
+      appointment_id: reservInfo.id,
+      clinic_id: reservInfo.clinic_id,
+      status: 'pending',
+    };
+    this._SReservationService.userReserveDoctor(reservationInfo).subscribe({
+      next: (data) => {
+        console.log(data);
+        this._MessageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'تم الحجز بنجاح ! ',
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
   showInMap(url: string) {
     window.open(
