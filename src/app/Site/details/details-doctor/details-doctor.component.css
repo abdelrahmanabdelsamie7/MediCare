@@ -96,6 +96,7 @@
 .in-valid-appointment {
   text-decoration: line-through;
   color: var(--third-color);
+  border: none;
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

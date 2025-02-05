@@ -91,14 +91,14 @@
               <div class="appointment-item mx-auto">
                 <h5 class="appointment-day">{{ date.date | date: 'EEEE , d MMM' }}</h5>
                 <div *ngFor="let item of date.appointments">
-                  <h5 class="appointment-time" title="احجز {{ item.start_at | timeFormat}}"
+                  <button class="appointment-time btn" title="احجز {{ item.start_at | timeFormat}}"
                     [ngClass]="item.is_booked ? 'in-valid-appointment' : 'valid-appointment'" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" (click)="openModal(item)">
+                    data-bs-target="#exampleModal" (click)="openModal(item)" [disabled]="item.is_booked">
                     {{ item.start_at
                     |timeFormat }} - {{
                     item.end_at | timeFormat
                     }}
-                  </h5>
+                  </button>
 
                 </div>
               </div>
@@ -145,7 +145,8 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-info text-light fs-6" (click)="reserveAppointment(appointmentReserveInfo)">احجز</button>
+                <button type="button" class="btn btn-info text-light fs-6"
+                  (click)="reserveAppointment(appointmentReserveInfo)">احجز</button>
                 <button type="button" class="btn btn-secondary fs-6" data-bs-dismiss="modal">إلغاء</button>
               </div>
             </div>
