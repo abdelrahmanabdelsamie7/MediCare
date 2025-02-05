@@ -7,6 +7,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { Subject, takeUntil } from 'rxjs';
 import { IDepartment } from '../../../Core/interfaces/i-department';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-section-departments',
   standalone: true,
@@ -17,6 +18,7 @@ import { IDepartment } from '../../../Core/interfaces/i-department';
     TagModule,
     CommonModule,
     RouterModule,
+    TranslateModule
   ],
   templateUrl: './section-departments.component.html',
   styleUrl: './section-departments.component.css',

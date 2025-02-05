@@ -1,10 +1,11 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 // Routes
 import { routes } from './app.routes';
 // Http Client Import
 import {
+  HttpClient,
   provideHttpClient,
   withFetch,
   withInterceptors,
@@ -18,6 +19,11 @@ import { authInterceptor } from './Core/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GoogleAuthInterceptor } from './Core/interceptors/google-auth.interceptor';
 import { CacheInterceptor } from './Core/interceptors/cache.interceptor';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
+  new TranslateHttpLoader(http, './i18n/', '.json');
 
 // End Of Import Prime Ng Plugins
 export const appConfig: ApplicationConfig = {
@@ -33,6 +39,13 @@ export const appConfig: ApplicationConfig = {
       useClass: GoogleAuthInterceptor,
       multi: true,
     },
+    importProvidersFrom([TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient],
+      },
+    })]),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

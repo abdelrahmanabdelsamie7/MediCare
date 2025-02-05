@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "register": "Register",
+    "login": "Login",
+    "lang": "Lang",
+    "booking":"Booking Appointments"
+  },
+  "departments": {
+    "medicalDepartments": "Medical Departments"
+  },
+  "Pharmacies": {
+   "contentPharm": ", we offer an innovative solution that brings together all the pharmacies in Sohag governorate on one platform. Now you can reach the nearest pharmacy and learn about its services quickly and easily, because your health is always our priority",
+    "Pharmacies": "Pharmacies",
+    "explorePharmacies": "Explore Pharmacies"
+  },
+  "laboratories": {
+    "contentLabor": ", we have provided you with a comprehensive guide to all medical laboratories in Sohag governorate. Now you can know the nearest lab, its service details, and working hours easily. Your health deserves the best, and we are here to make it easier for you",
+    "laboratories": "Laboratories",
+    "exploreLaboratories": "Explore Laboratories"
+  },
+  "deliveryServices": {
+    "contentDeli": " patient transport services are provided where our professional drivers transport patients to and from medical facilities with comfort and safety. Whether you need to visit the doctor or undergo tests, we are here to meet your needs in the best possible way",
+    "delivery": "Delivery",
+    "deliveryServices": "Delivery Services"
+  },
+  "application": {
+    "medicareApp": "Download MediCare App",
+    "downloadAPP": "Download Now",
+    "contentApp": "Enjoy our medical services easily and comfortably through the app."
+  },
+  "footer": {
+    "medicareApp": "The Best Medical Care App",
+    "information": "Information",
+    "whoAre": "Who We Are",
+    "ourService": "Our Services",
+    "contactMed": "Contact Us",
+    "contactUs": "Get in Touch",
+    "copyright": "All rights reserved © 2025 MediCare"
+  },
+  "ai": {
+    "quesAi": "Got a medical question",
+    "contentAi": "Get an answer quickly",
+    "search": "Search"
+  },
+  "adviceSec":{
+    "contentAdv":"Advice from a doctor",
+   "search":"Search"
+  }
+}

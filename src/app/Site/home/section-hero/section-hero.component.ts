@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-section-hero',
   standalone: true,
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     TagModule,
     CommonModule,
     RouterModule,
+    TranslateModule
   ],
   templateUrl: './section-hero.component.html',
   styleUrl: './section-hero.component.css',
