@@ -1,0 +1,19 @@
+.head-title::before {
+  background-color: var(--main-color);
+}
+.container {
+  direction: rtl;
+}
+.disabled-card {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.disabled-card .card-body {
+  background-color: #f8f9fa;
+}
+
+.disabled-card .alert {
+  display: block;
+  margin-top: 10px;
+}

@@ -3,13 +3,13 @@
     "register": "Register",
     "login": "Login",
     "lang": "Lang",
-    "booking":"Booking Appointments"
+    "booking": "Booking Appointments"
   },
   "departments": {
     "medicalDepartments": "Medical Departments"
   },
   "Pharmacies": {
-   "contentPharm": ", we offer an innovative solution that brings together all the pharmacies in Sohag governorate on one platform. Now you can reach the nearest pharmacy and learn about its services quickly and easily, because your health is always our priority",
+    "contentPharm": ", we offer an innovative solution that brings together all the pharmacies in Sohag governorate on one platform. Now you can reach the nearest pharmacy and learn about its services quickly and easily, because your health is always our priority",
     "Pharmacies": "Pharmacies",
     "explorePharmacies": "Explore Pharmacies"
   },
@@ -42,8 +42,32 @@
     "contentAi": "Get an answer quickly",
     "search": "Search"
   },
-  "adviceSec":{
-    "contentAdv":"Advice from a doctor",
-   "search":"Search"
+  "adviceSec": {
+    "contentAdv": "Advice from a doctor",
+    "search": "Search"
+  },
+
+  "appointmentDays": {
+    "Saturday": "Saturday",
+    "Sunday": "Sunday",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday"
+  },
+  "appointmentMonths": {
+    "Jan": "January",
+    "Feb": "February",
+    "Mar": "March",
+    "Apr": "April",
+    "May": "May",
+    "Jun": "June",
+    "Jul": "July",
+    "Aug": "August",
+    "Sep": "September",
+    "Oct": "October",
+    "Nov": "November",
+    "Dec": "December"
   }
 }

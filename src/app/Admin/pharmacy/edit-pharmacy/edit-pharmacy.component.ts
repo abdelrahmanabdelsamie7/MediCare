@@ -69,14 +69,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
     ]),
     deliveryOption: new FormControl(1, [Validators.required]),
     insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl(this.Pharmacy.start_at, [
-      Validators.required,
-      CustomValidators.date,
-    ]),
-    end_at: new FormControl(this.Pharmacy.end_at, [
-      Validators.required,
-      CustomValidators.date,
-    ]),
+    start_at: new FormControl(this.Pharmacy.start_at, [CustomValidators.date]),
+    end_at: new FormControl(this.Pharmacy.end_at, [CustomValidators.date]),
     chain_pharmacy_id: new FormControl('', []),
   });
   ngOnInit() {

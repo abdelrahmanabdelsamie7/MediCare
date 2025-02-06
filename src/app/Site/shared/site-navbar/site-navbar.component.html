@@ -8,35 +8,38 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="siteNavbar">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           @if (isAuth) {
           <li class="nav-item">
             <a class="nav-link" routerLink="/user-profile"><i class="fa-solid fa-user"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link bg-info text-light rounded-2  mx-md-3 my-1 text-center" routerLink="">{{"navbar.booking"|translate}}</a>
+            <a class="nav-link bg-info text-light rounded-2  mx-md-3 my-1 text-center"
+              routerLink="/all/user-reservations">{{"navbar.booking"|translate}}</a>
           </li>
           }@else {
           <li class="nav-item">
-            <a class="nav-link bg-info text-light rounded-2  mx-md-3 my-1 text-center" routerLink="/Register">{{"navbar.register" | translate}}</a>
+            <a class="nav-link bg-info text-light rounded-2  mx-md-3 my-1 text-center"
+              routerLink="/Register">{{"navbar.register" | translate}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link bg-info text-light rounded-2 text-center my-1" routerLink="/Login">{{"navbar.login" | translate}}</a>
+            <a class="nav-link bg-info text-light rounded-2 text-center my-1" routerLink="/Login">{{"navbar.login" |
+              translate}}</a>
           </li>
           }
         </ul>
-<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      {{"navbar.lang" | translate}}
-    </a>
-    <ul class="dropdown-menu">
-      <li (click)="change('en')"><a class="dropdown-item" >EN</a></li>
-      <li (click)="change('ar')"><a class="dropdown-item" > AR</a></li>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{"navbar.lang" | translate}}
+            </a>
+            <ul class="dropdown-menu">
+              <li (click)="change('en')"><a class="dropdown-item">EN</a></li>
+              <li (click)="change('ar')"><a class="dropdown-item"> AR</a></li>
 
-    </ul>
-  </li>
-</ul>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

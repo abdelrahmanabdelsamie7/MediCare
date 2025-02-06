@@ -15,9 +15,26 @@ export class SReservationService {
       reserve
     );
   }
+  confirmReservation(reservationId: string): Observable<any> {
+    return this._HttpClient.put(
+      `${environment.baseUrl}/reservations/${reservationId}/confirm`,
+      reservationId
+    );
+  }
+  cancelReservation(reservationId: string): Observable<any> {
+    return this._HttpClient.put(
+      `${environment.baseUrl}/reservations/${reservationId}/cancel`,
+      reservationId
+    );
+  }
   getUserReservations(): Observable<any> {
     return this._HttpClient.get<any>(
       `${environment.baseUrl}/user/reservations`
+    );
+  }
+  getDoctorReservations(): Observable<any> {
+    return this._HttpClient.get<any>(
+      `${environment.baseUrl}/doctor/reservations`
     );
   }
 }

@@ -15,6 +15,7 @@ import { AddDoctorAppointmentComponent } from './doctor-appointments/add-doctor-
 import { ShowDoctorAppointmentComponent } from './doctor-appointments/show-doctor-appointment/show-doctor-appointment.component';
 import { EditDoctorAppointmentComponent } from './doctor-appointments/edit-doctor-appointment/edit-doctor-appointment.component';
 import { doctorGuard } from '../Core/guards/doctor.guard';
+import { UserDoctorReservationsComponent } from './user-doctor-reservations/user-doctor-reservations.component';
 
 export const DOCTOR_ROUTES: Routes = [
   {
@@ -24,25 +25,83 @@ export const DOCTOR_ROUTES: Routes = [
     title: 'Doctor Panel',
     children: [
       // ======================== Doctor Offers ========================
-      { path: 'doctor-offers', component: ListDoctorOffersComponent, title: 'Doctor Panel | Offers' },
-      { path: 'add-doctor-offer', component: AddDoctorOfferComponent, title: 'Doctor Panel | Add Offer' },
-      { path: 'show-doctor-offer/:id', component: ShowDoctorOfferComponent, title: 'Doctor Panel | Show Offer' },
-      { path: 'edit-doctor-offer/:id', component: EditDoctorOfferComponent, title: 'Doctor Panel | Edit Offer' },
+      {
+        path: 'doctor-offers',
+        component: ListDoctorOffersComponent,
+        title: 'Doctor Panel | Offers',
+      },
+      {
+        path: 'add-doctor-offer',
+        component: AddDoctorOfferComponent,
+        title: 'Doctor Panel | Add Offer',
+      },
+      {
+        path: 'show-doctor-offer/:id',
+        component: ShowDoctorOfferComponent,
+        title: 'Doctor Panel | Show Offer',
+      },
+      {
+        path: 'edit-doctor-offer/:id',
+        component: EditDoctorOfferComponent,
+        title: 'Doctor Panel | Edit Offer',
+      },
 
       // ======================== Doctor Offer Images ========================
-      { path: 'add-doctor-offer-image', component: AddDoctorOfferImageComponent, title: 'Doctor Panel | Add Offer Image' },
-      { path: 'edit-doctor-offer-image/:id', component: EditDoctorOfferImageComponent, title: 'Doctor Panel | Edit Offer Image' },
+      {
+        path: 'add-doctor-offer-image',
+        component: AddDoctorOfferImageComponent,
+        title: 'Doctor Panel | Add Offer Image',
+      },
+      {
+        path: 'edit-doctor-offer-image/:id',
+        component: EditDoctorOfferImageComponent,
+        title: 'Doctor Panel | Edit Offer Image',
+      },
 
       // ======================== Doctor Blogs ========================
-      { path: 'doctor-blogs', component: ListDoctorBlogsComponent, title: 'Doctor Panel | Blogs' },
-      { path: 'add-doctor-blog', component: AddDoctorBlogComponent, title: 'Doctor Panel | Add Blog' },
-      { path: 'edit-doctor-blog/:id', component: EditDoctorBlogComponent, title: 'Doctor Panel | Edit Blog' },
+      {
+        path: 'doctor-blogs',
+        component: ListDoctorBlogsComponent,
+        title: 'Doctor Panel | Blogs',
+      },
+      {
+        path: 'add-doctor-blog',
+        component: AddDoctorBlogComponent,
+        title: 'Doctor Panel | Add Blog',
+      },
+      {
+        path: 'edit-doctor-blog/:id',
+        component: EditDoctorBlogComponent,
+        title: 'Doctor Panel | Edit Blog',
+      },
 
       // ======================== Doctor Appointments ========================
-      { path: 'doctor-appointments', component: ListDoctorAppointmentsComponent, title: 'Doctor Panel | Appointments' },
-      { path: 'add-doctor-appointment', component: AddDoctorAppointmentComponent, title: 'Doctor Panel | Add Appointment' },
-      { path: 'show-doctor-appointment/:id', component: ShowDoctorAppointmentComponent, title: 'Doctor Panel | Show Appointment' },
-      { path: 'edit-doctor-appointment/:id', component: EditDoctorAppointmentComponent, title: 'Doctor Panel | Edit Appointment' }
-    ]
-  }
+      {
+        path: 'doctor-appointments',
+        component: ListDoctorAppointmentsComponent,
+        title: 'Doctor Panel | Appointments',
+      },
+      {
+        path: 'add-doctor-appointment',
+        component: AddDoctorAppointmentComponent,
+        title: 'Doctor Panel | Add Appointment',
+      },
+      {
+        path: 'show-doctor-appointment/:id',
+        component: ShowDoctorAppointmentComponent,
+        title: 'Doctor Panel | Show Appointment',
+      },
+      {
+        path: 'edit-doctor-appointment/:id',
+        component: EditDoctorAppointmentComponent,
+        title: 'Doctor Panel | Edit Appointment',
+      },
+      // ======================== User Whose Reserve Doctor ========================
+      {
+        path: 'user-doctor-reservations',
+        component: UserDoctorReservationsComponent,
+        title: 'Doctor Panel | Users Reservations',
+      },
+    ],
+  },
 ];
