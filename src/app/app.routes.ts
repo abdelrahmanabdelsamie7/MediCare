@@ -12,9 +12,12 @@ import { AdminLoginComponent } from './Admin/shared/admin-login/admin-login.comp
 import { DoctorLoginComponent } from './Doctor/shared/doctor-login/doctor-login.component';
 import { LoginComponent } from './Site/auth/google-auth/google-auth.component';
 import { AllItemsComponent } from './Site/components/all-items/all-items.component';
-
+import { PaymentComponent } from './Site/components/payment/payment.component';
 export const routes: Routes = [
   // ======================== Public Routes ========================
+  {
+    path:'payment',component:PaymentComponent,title:'MediCare | Payment'
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SiteHomeComponent, title: 'MediCare | Home' },
   {

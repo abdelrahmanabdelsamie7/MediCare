@@ -30,4 +30,10 @@ export class SAuthService {
       { context }
     );
   }
+  // Notifications Of Reservations
+  getUserNotifications(userId: string): Observable<any> {
+    return this._HttpClient.get<any>(
+      `${environment.baseUrl}/User_Notifications/${userId}`
+    );
+  }
 }

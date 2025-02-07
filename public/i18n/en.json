@@ -3,13 +3,13 @@
     "register": "Register",
     "login": "Login",
     "lang": "Lang",
-    "booking":"Booking Appointments"
+    "booking": "Booking Appointments"
   },
   "departments": {
     "medicalDepartments": "Medical Departments"
   },
   "Pharmacies": {
-   "contentPharm": ", we offer an innovative solution that brings together all the pharmacies in Sohag governorate on one platform. Now you can reach the nearest pharmacy and learn about its services quickly and easily, because your health is always our priority",
+    "contentPharm": ", we offer an innovative solution that brings together all the pharmacies in Sohag governorate on one platform. Now you can reach the nearest pharmacy and learn about its services quickly and easily, because your health is always our priority",
     "Pharmacies": "Pharmacies",
     "explorePharmacies": "Explore Pharmacies"
   },
@@ -40,7 +40,12 @@
   "ai": {
     "quesAi": "Got a medical question",
     "contentAi": "Get an answer quickly",
-    "search": "Search"
+    "search": "Search",
+    "titleOfSection": "Upload the image and describe the symptoms to get a detailed analysis",
+    "chooseFile": "Choose a file (optional)",
+    "describeSymptoms": "Describe the symptoms",
+    "enterSymptoms": "Enter the symptoms here ..",
+    "imageAnalysis": "Image and symptom analysis"
   },
   "adviceSec":{
     "contentAdv":"Advice from a doctor",

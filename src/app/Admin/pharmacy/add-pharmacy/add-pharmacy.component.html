@@ -16,25 +16,17 @@
         <div class="card-body">
           <form class="row" [formGroup]="addPharmacyForm" (ngSubmit)="addPharmacy(addPharmacyForm)">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(addPharmacyForm.controls.title.touched && addPharmacyForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="service" class="form-label">Service</label>
                 <input type="text" formControlName="service"
                   [ngClass]="{'is-invalid':(addPharmacyForm.controls.service.touched && addPharmacyForm.controls.service.errors) }"
                   class="form-control" id="service">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" formControlName="image"
-                  [ngClass]="{'is-invalid':(addPharmacyForm.controls.image.touched && addPharmacyForm.controls.image.errors) }"
-                  class="form-control" class="form-control" id="image">
               </div>
               <div class="col-md-4">
                 <label for="phone" class="form-label">Phone</label>
@@ -42,20 +34,28 @@
                   [ngClass]="{'is-invalid':(addPharmacyForm.controls.phone.touched && addPharmacyForm.controls.phone.errors) }"
                   class="form-control" class="form-control" id="phone">
               </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="area" class="form-label">area</label>
+                <input type="text" formControlName="area"
+                  [ngClass]="{'is-invalid':(addPharmacyForm.controls.area.touched && addPharmacyForm.controls.area.errors) }"
+                  class="form-control" class="form-control" id="area">
+              </div>
               <div class="col-md-4">
                 <label for="city" class="form-label">city</label>
                 <input type="text" formControlName="city"
                   [ngClass]="{'is-invalid':(addPharmacyForm.controls.city.touched && addPharmacyForm.controls.city.errors) }"
                   class="form-control" class="form-control" id="city">
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-4">
                 <label for="locationUrl" class="form-label">Location Url</label>
                 <input type="url" formControlName="locationUrl"
                   [ngClass]="{'is-invalid':(addPharmacyForm.controls.locationUrl.touched && addPharmacyForm.controls.locationUrl.errors) }"
                   class="form-control" class="form-control" id="locationUrl">
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-4">
                 <label for="whatsappLink" class="form-label">whatsapp Link</label>
                 <input type="url" formControlName="whatsappLink"
@@ -71,8 +71,6 @@
                   <option value="0">Not Avaliable</option>
                 </select>
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-4">
                 <label for="insurence" class="form-label">Insurence Option</label>
                 <select name="insurence" formControlName="insurence"
@@ -81,6 +79,14 @@
                   <option value="1">Avaliable</option>
                   <option value="0">Not Avaliable</option>
                 </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" formControlName="image"
+                  [ngClass]="{'is-invalid':(addPharmacyForm.controls.image.touched && addPharmacyForm.controls.image.errors) }"
+                  class="form-control" class="form-control" id="image">
               </div>
               <div class="col-md-4">
                 <label for="start_at" class="form-label">Start At</label>
@@ -96,24 +102,17 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4">
-                <label for="area" class="form-label">area</label>
-                <input type="text" formControlName="area"
-                  [ngClass]="{'is-invalid':(addPharmacyForm.controls.area.touched && addPharmacyForm.controls.area.errors) }"
-                  class="form-control" class="form-control" id="area">
-              </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <label for="chain_pharmacy_id" class="form-label">Belong To Chain Of Pharmacies</label>
-              <select name="chain_pharmacy_id" formControlName="chain_pharmacy_id" [ngClass]="{
+                <select name="chain_pharmacy_id" formControlName="chain_pharmacy_id" [ngClass]="{
                   'is-invalid': (addPharmacyForm.controls.chain_pharmacy_id.touched &&
                   addPharmacyForm.controls.chain_pharmacy_id.errors)
                 }" id="chain_pharmacy_id" class="form-control">
-                <option value="">Not Belong To Chain</option>
-                <option *ngFor="let item of ChainsPharmacies" [value]="item.id">
-                  {{ item.title }}
-                </option>
-              </select>
-
+                  <option value="">Not Belong To Chain</option>
+                  <option *ngFor="let item of ChainsPharmacies" [value]="item.id">
+                    {{ item.title }}
+                  </option>
+                </select>
               </div>
             </div>
             <div class="text-center">

@@ -45,4 +45,15 @@ export class SDoctorService {
       `${environment.baseUrl}/doctor/getaccount`
     );
   }
+  getDoctorNotifications(doctorId: string): Observable<any> {
+    return this._HttpClient.get<any>(
+      `${environment.baseUrl}/Doctor_Notifications/${doctorId}`
+    );
+  }
+  markNotificationAsRead(notificationId: string): Observable<any> {
+    return this._HttpClient.patch<any>(
+      `${environment.baseUrl}/notifications/${notificationId}/read`,
+      {}
+    );
+  }
 }

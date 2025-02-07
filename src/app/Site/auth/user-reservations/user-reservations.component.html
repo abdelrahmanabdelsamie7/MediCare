@@ -1,1 +1,56 @@
-<h1>Data In Console نكمل بكره ان شاء الله ! </h1>
+<div class="container my-5">
+  <h2 class="head-title my-4 text-info text-center">مواعيدك المحجوزة</h2>
+  <p-toast />
+  <div class="row">
+    <div class="col-12 mb-4" *ngFor="let reservation of reservations">
+      <div class="d-flex flex-column flex-md-row shadow-sm rounded-3 border p-3 mb-3"
+        [ngClass]="{'disabled-card': reservation.status === 'confirmed'}">
+        <!-- صورة الطبيب -->
+        <div class="col-md-4 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
+          <img src="{{reservation.doctor.image}}" class="img-fluid rounded-5" alt="Doctor Image">
+        </div>
+
+        <!-- تفاصيل الحجز -->
+        <div class="col-md-8">
+          <div class="card-body px-md-5">
+            <h5 class="card-title mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
+              {{reservation.doctor.lName}}</h5>
+            <p class="card-text mb-2"><strong>العيادة:</strong> {{reservation.clinic.title}} -
+              {{reservation.clinic.address}}</p>
+            <p class="card-text mb-2"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day)}}،
+              <strong>من الساعة</strong> {{reservation.appointment.start_at | timeFormat}} <strong>إلى</strong>
+              {{reservation.appointment.end_at | timeFormat}}
+            </p>
+            <p class="card-text mb-2"><strong>السعر:</strong> {{reservation.doctor.app_price | currency:'EGP'}}</p>
+            <p class="card-text mb-2"><strong>الحالة:</strong>
+              <span [ngClass]="{
+            'badge bg-warning': reservation.status !== 'confirmed',
+            'badge bg-success': reservation.status === 'confirmed'
+          }">
+                {{reservation.status}}
+              </span>
+            </p>
+            <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3"
+              role="alert">
+              تم تأكيد الحجز بنجاح.
+            </div>
+
+            <!-- أزرار التواصل والتأكيد -->
+            <div *ngIf="reservation.status !== 'confirmed'">
+              <!-- أزرار التواصل والتأكيد -->
+              <div class="d-flex flex-column flex-md-row mt-3">
+                <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
+                  (click)="confirmReservation(reservation.id)">تأكيد
+                  الحجز</button>
+                <button class="btn btn-danger mb-2 mb-md-0" (click)="cancelReservation(reservation.id)">إلغاء
+                  الحجز</button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

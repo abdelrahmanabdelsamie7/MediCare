@@ -58,8 +58,8 @@ export class AddPharmacyComponent implements OnInit, OnDestroy {
     ]),
     deliveryOption: new FormControl(1, [Validators.required]),
     insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl('', [Validators.required, CustomValidators.date]),
-    end_at: new FormControl('', [Validators.required, CustomValidators.date]),
+    start_at: new FormControl('', [ CustomValidators.date]),
+    end_at: new FormControl('', [ CustomValidators.date]),
     chain_pharmacy_id: new FormControl('', []),
   });
   constructor(

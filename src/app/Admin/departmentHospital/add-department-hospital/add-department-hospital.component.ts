@@ -51,7 +51,7 @@ export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.Departments = data.data;
+          this.Departments = data.data.data;
         },
         error: (err) => {
           console.error(err);
@@ -88,7 +88,7 @@ export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
             severity: 'error',
             summary: 'error',
             detail:
-              "You Can't Added This Department To Hospital Check Data May Already Exits"
+              "You Can't Added This Department To Hospital Check Data May Already Exits",
           });
         },
       });

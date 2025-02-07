@@ -1,0 +1,11 @@
+<p-toast></p-toast> <!-- Add this to your template to display toast messages -->
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+    <div class="card-body text-center">
+      <h2 class="card-title mb-3">Payment</h2>
+      <div id="card-element" class="form-control p-3"></div>
+      <button class="btn btn-outline-info w-100 mt-3" (click)="handlePayment(1000)">Pay $10</button>
+    </div>
+  </div>
+</div>

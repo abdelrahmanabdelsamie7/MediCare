@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { IAi } from '../../../Core/interfaces/i-ai';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-section-ai',
   standalone: true,
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
     FormsModule,
     SiteNavbarComponent,
     SiteFooterComponent,
+    TranslateModule
   ],
   templateUrl: './section-ai.component.html',
   styleUrl: './section-ai.component.css',
