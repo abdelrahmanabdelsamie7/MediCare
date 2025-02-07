@@ -53,7 +53,6 @@ export class AddDoctorAppointmentComponent implements OnInit, OnDestroy {
         },
       });
   }
-
   addDoctorAppointment(addDoctorAppointmentForm: FormGroup) {
     this._SDoctorAppiontmentService
       .addDoctorAppointment(addDoctorAppointmentForm.value)

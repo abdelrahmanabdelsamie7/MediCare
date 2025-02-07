@@ -40,11 +40,19 @@
   "ai": {
     "quesAi": "Got a medical question",
     "contentAi": "Get an answer quickly",
-    "search": "Search"
+    "search": "Search",
+    "titleOfSection": "Upload the image and describe the symptoms to get a detailed analysis",
+    "chooseFile": "Choose a file (optional)",
+    "describeSymptoms": "Describe the symptoms",
+    "enterSymptoms": "Enter the symptoms here ..",
+    "imageAnalysis": "Image and symptom analysis"
   },
   "adviceSec": {
     "contentAdv": "Advice from a doctor",
-    "search": "Search"
+    "search": "Search",
+    "blog": "MediCare Blogs",
+    "nextPage": "Next Page",
+    "lastPage": "Last Page"
   },
 
   "appointmentDays": {

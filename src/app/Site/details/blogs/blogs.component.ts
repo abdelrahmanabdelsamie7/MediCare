@@ -5,11 +5,11 @@ import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.css',
 })

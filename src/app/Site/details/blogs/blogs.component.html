@@ -1,6 +1,6 @@
 <div class="container">
   <div class="blogs-container mt-4">
-    <h2 class="my-4 text-info">مدونة <span class="fw-bold">MediCare</span></h2>
+    <h2 class="my-4 text-info fw-bold">{{ 'adviceSec.blog' | translate }}</h2>
     @for (item of DoctorBlogs; track $index) {
     <div class="blog-card p-4 my-3 border border-0 rounded">
       <div class="d-flex align-items-center mb-4">
@@ -15,19 +15,18 @@
       </div>
       <h4 class="fw-bold mb-2 text-info">{{ item.title }}</h4>
       <p class="fs-5" style="color: var(--third-color);">{{ item.content }}</p>
-      <p class="text-muted mb-1 text-start">{{ item.created_at | date:'medium' }}</p>
+      <p class="text-muted mb-1 text-start">{{ item.created_at | date:'d MMMM YYYY' }}</p>
     </div>
     }
   </div>
   <div>
     <div class="d-flex justify-content-center align-items-center mb-4 mt-2">
-      <button (click)="prevDoctorBlogPage()" class="btn btn-outline-info" [disabled]="currentBlogPage === 1">
-        الصفحة السابقة
+      <button (click)="prevDoctorBlogPage()" class="btn btn-outline-info mx-2" [disabled]="currentBlogPage === 1">
+        {{ 'adviceSec.lastPage' | translate }}
       </button>
-      <span class="px-3 fw-bold">الصفحة {{ currentBlogPage }} من {{ totalBlogPages }}</span>
+      <!-- <span class="px-3 fw-bold">الصفحة {{ currentBlogPage }} من {{ totalBlogPages }}</span> -->
       <button (click)="nextDoctorBlogPage()" class="btn btn-outline-info"
-        [disabled]="currentBlogPage === totalBlogPages">الصفحة
-        التالية</button>
+        [disabled]="currentBlogPage === totalBlogPages"> {{ 'adviceSec.nextPage' | translate }} </button>
     </div>
   </div>
 </div>

@@ -7,12 +7,12 @@
       <!-- Card: Upload and Analyze -->
       <div class="card shadow-sm">
         <div class="card-header bg-info text-white text-center">
-          <h5>قم بتحميل الصورة ووصف الأعراض للحصول على تحليل مفصل</h5>
+          <h5>{{ 'ai.titleOfSection' | translate }}</h5>
         </div>
         <div class="card-body">
           <!-- File Input -->
           <div class="mb-4">
-            <label for="fileInput" class="form-label ">اختر ملف (اختياري)</label>
+            <label for="fileInput" class="form-label ">{{ 'ai.chooseFile' | translate }}</label>
             <input type="file" class="form-control " id="fileInput" accept="image/*"
               (change)="onFileSelected($event)" />
             <div *ngIf="previewUrl" class="mt-3 text-center">
@@ -30,14 +30,14 @@
           </div>
           <!-- Symptoms Input -->
           <div class="mb-4">
-            <label for="symptomsInput" class="form-label">وصف الأعراض</label>
+            <label for="symptomsInput" class="form-label">{{ 'ai.describeSymptoms' | translate}}</label>
             <textarea id="symptomsInput" class="form-control" rows="4" [(ngModel)]="symptomsText"
-              placeholder="اكتب الأعراض هنا..."></textarea>
+              placeholder="{{ 'ai.enterSymptoms' |translate }}"></textarea>
           </div>
           <!-- Analyze Button -->
           <div class="text-center">
             <button class="btn btn-info w-50 text-light" (click)="analyzeContent()" [disabled]="loading">
-              <span *ngIf="!loading">تحليل الصورة والاعراض</span>
+              <span *ngIf="!loading">{{ 'ai.imageAnalysis' | translate }}</span>
               <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"></span>
               <span *ngIf="loading">جاري التحليل...</span>
             </button>
@@ -66,14 +66,15 @@
                   {{ apiResponse.recommendedSpecialization || "غير محدد" }}
                 </p>
               </div>
-             <div class="mb-3" *ngIf="recommendedDepartments.length > 0">
-                    <h5 class="fw-bold">التخصصات المقترحة من Medicare:</h5>
-                   <div class="d-flex flex-wrap gap-2">
-                     <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info" (click)="handleDepartmentSelection(department.id)">
-                      {{department.title}}
-                     </button>
-                   </div>
-               </div>
+              <div class="mb-3" *ngIf="recommendedDepartments.length > 0">
+                <h5 class="fw-bold">التخصصات المقترحة من Medicare:</h5>
+                <div class="d-flex flex-wrap gap-2">
+                  <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info"
+                    (click)="handleDepartmentSelection(department.id)">
+                    {{department.title}}
+                  </button>
+                </div>
+              </div>
               <div class="mb-3">
                 <h5 class="fw-bold">النصائح:</h5>
                 <p class="mb-0">{{ apiResponse.advice || "لا توجد نصائح" }}</p>

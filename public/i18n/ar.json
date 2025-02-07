@@ -40,11 +40,19 @@
   "ai": {
     "quesAi": "لديك سؤال طبي؟",
     "contentAi": "احصل علي اجابة في اسرع وقت.",
-    "search": "ابحث"
+    "search": "ابحث",
+    "titleOfSection": "قم بتحميل الصورة ووصف الأعراض للحصول على تحليل مفصل",
+    "chooseFile": "اختر ملف (اختياري)",
+    "describeSymptoms": "وصف الأعراض",
+    "enterSymptoms": "اكتب الأعراض هنا... ",
+    "imageAnalysis": "تحليل الصورة والأعراض"
   },
   "adviceSec": {
     "contentAdv": "نصيحة من دكتور",
-    "search": "ابحث"
+    "search": "ابحث",
+    "blog": "مدونة MediCare",
+    "nextPage": "الصفحة التالية",
+    "lastPage": "الصفحة السابقة"
   },
   "appointmentDays": {
     "Saturday": "السبت",
