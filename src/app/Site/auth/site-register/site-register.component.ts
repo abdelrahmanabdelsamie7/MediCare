@@ -1,4 +1,5 @@
-import { NgClass } from '@angular/common';
+import { STranslateService } from './../../../Core/services/s-translate.service';
+import { NgClass, NgStyle } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
@@ -11,18 +12,21 @@ import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { LoginComponent } from '../google-auth/google-auth.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-site-register',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, RouterModule, LoginComponent],
+  imports: [ReactiveFormsModule,NgStyle, NgClass, RouterModule, LoginComponent, TranslateModule],
   templateUrl: './site-register.component.html',
   styleUrl: './site-register.component.css',
 })
-export class SiteRegisterComponent {
+export class SiteRegisterComponent  {
   private readonly _SAuthService = inject(SAuthService);
   private readonly _Router = inject(Router);
+  public _translateService= inject(STranslateService)
   msgErr: string = '';
+  isRtl: boolean = false;
   msgSuccess: boolean = false;
   isLoading: boolean = false;
   registerForm: FormGroup = new FormGroup(
@@ -82,5 +86,11 @@ export class SiteRegisterComponent {
         mismatch: true,
       };
     }
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this.isRtl = localStorage.getItem('lang') === 'ar';
   }
 }

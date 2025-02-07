@@ -1,28 +1,28 @@
 <section class="pt-3">
   <div class="container">
-    <h3 class="text-center mb-4 text-secondary"> مرحبا بك في<span class="text-info"> MediCare</span></h3>
+    <h3 class="text-center my-4 text-secondary fw-bolder"> {{"register.welcome" |translate}}<span class="text-info fw-bolder"> MediCare</span></h3>
     <div class="row">
       <div class="col-md-8">
-        <h4 class="text-secondary pb-1">سجل <span class="text-info">الان</span>:</h4>
-        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" dir="rtl">
-          <div class="form-floating mb-3">
-            <input [ngClass]="{
+        <h4 class="text-secondary pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">{{"register.register"|translate}} <span class="text-info">{{"register.now"|translate}}</span></h4>
+        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <div class="form-floating mb-3" >
+            <input [ngClass] ="{
               'is-valid': !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty) ,
               'is-invalid': registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
             }" type="text" class="form-control" id="floatingInput" placeholder="Name" formControlName="name">
             @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||
             registerForm.get('name')?.dirty)) {
-            <div class="alert alert-danger rounded-4 w-50 mx-auto">
+            <div class="alert alert-danger text-center rounded-4 w-50 mx-auto">
               @if(registerForm.get('name')?.getError('required')){
-              <p class="m-0">الاسم مطلوب</p>
+              <p class="m-0">{{"register.nameErrorReq"|translate}}</p>
               }@else if (registerForm.get('name')?.getError('minlength')) {
-              <p class="m-0">يجب أن يكون الاسم 3 أحرف أو أكثر</p>
+              <p class="m-0">{{"register.nameErrorMor"|translate}}</p>
               }@else if (registerForm.get('name')?.getError('maxlength')) {
-              <p class="m-0">يجب أن يكون الاسم 20 حرفًا أو أقل</p>
+              <p class="m-0">{{"register.nameErrorLes"|translate}}</p>
               }
             </div>
             }
-            <label for="floatingInput">الاسم</label>
+            <label for="floatingInput">{{"register.name"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -32,16 +32,16 @@
               formControlName="email">
             @if (registerForm.get('email')?.errors &&(registerForm.get('email')?.touched ||
             registerForm.get('email')?.dirty) ) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger w-50 text-center mx-auto rounded-4">
               @if (registerForm.get('email')?.getError('required') ) {
-              <p class="m-0">البريد الإلكتروني مطلوب</p>
+              <p class="m-0">{{"register.emailErrorReq"|translate}}</p>
               }
               @if (registerForm.get('email')?.getError('email')) {
-              <p class="m-0"> يرجى إدخال بريد إلكتروني صالح</p>
+              <p class="m-0">{{"register.emailErrorVal"|translate}}</p>
               }
             </div>
             }
-            <label for="floatingEmail">البريد الإلكتروني</label>
+            <label  for="floatingEmail">{{"register.email"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -50,16 +50,16 @@
             }" type="tel" class="form-control" id="floatingPhone" placeholder="Phone" formControlName="phone">
             @if (registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched ||
             registerForm.get('phone')?.dirty) ) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger w-50 mx-auto text-center rounded-4">
               @if (registerForm.get('phone')?.getError('required') ) {
-              <p class="m-0">الهاتف مطلوب</p>
+              <p class="m-0">{{"register.phoneErrorReq"|translate}}</p>
               }
               @if (registerForm.get('phone')?.getError('pattern')) {
-              <p class="m-0"> يرجى إدخال رقم هاتف صالح</p>
+              <p class="m-0"> {{"register.phoneErrorVal"|translate}}</p>
               }
             </div>
             }
-            <label for="floatingPhone">رقم الهاتف</label>
+            <label for="floatingPhone">{{"register.phone"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -69,14 +69,14 @@
               formControlName="address">
             @if (registerForm.get('address')?.errors && (registerForm.get('address')?.touched ||
             registerForm.get('address')?.dirty) ) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (registerForm.get('address')?.getError('required') ) {
-              <p class="m-0">العنوان مطلوب</p>
+              <p class="m-0">{{"register.addressErrorReq"|translate}}</p>
               }
 
             </div>
             }
-            <label for="floatingaddress"> العنوان</label>
+            <label  for="floatingaddress"> {{"register.address"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -86,16 +86,16 @@
               formControlName="birth_date">
             @if (registerForm.get('birth_date')?.errors && (registerForm.get('birth_date')?.touched ||
             registerForm.get('birth_date')?.dirty) ) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (registerForm.get('birth_date')?.getError('required') ) {
-              <p class="m-0">تاريخ الميلاد مطلوب</p>
+              <p class="m-0">{{"register.birthErrorReq"|translate}}</p>
               }
               @if (registerForm.get('birth_date')?.getError('pattern')) {
-              <p class="m-0"> يرجى إدخال تاريخ ميلادصالح</p>
+              <p class="m-0"> {{"register.birthErrorVal"|translate}}</p>
               }
             </div>
             }
-            <label for="floatingbirth_date">تاريخ الميلاد</label>
+            <label for="floatingbirth_date">{{"register.birthday"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -105,18 +105,18 @@
               formControlName="password">
             @if (registerForm.get('password')?.errors && (registerForm.get('password')?.touched ||
             registerForm.get('password')?.dirty)) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (registerForm.get('password')?.getError('required') ) {
-              <p class="m-0">كلمة المرور مطلوبه</p>
+              <p class="m-0">{{"register.passwordErrorReq"|translate}}</p>
               }@else if (registerForm.get('password')?.getError('minlength')) {
-              <p class="m-0">يجب أن تحتوي علي 6 ارقام أو أكثر</p>
+              <p class="m-0">{{"register.passwordErrorMor"|translate}}</p>
               }@else if (registerForm.get('password')?.getError('maxlength')) {
-              <p class="m-0">يجب أن تحتوي علي 10 ارقام أو أقل</p>
+              <p class="m-0">{{"register.passwordErrorLes"|translate}}</p>
               }
 
             </div>
             }
-            <label for="floatingPassword">كلمة المرور</label>
+            <label for="floatingPassword">{{"register.password"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -126,14 +126,13 @@
               placeholder="password_confirmation" formControlName="password_confirmation">
             @if (registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched ||
             registerForm.get('password_confirmation')?.dirty)) {
-            <p class="m-0 alert alert-danger w-50 mx-auto rounded-4">تأكيد كلمة المرور غير صحيح</p>
+            <p class="m-0 alert alert-danger text-center w-50 mx-auto rounded-4">{{"register.confirmPassError"|translate}}</p>
             }
-            <label for="floatingpassword_confirmation">تأكيد كلمة المرور</label>
+            <label for="floatingpassword_confirmation">{{"register.confirmPass"|translate}}</label>
           </div>
 
           <button [disabled]="registerForm.invalid || isLoading" type="submit"
-            class="btn btn-info text-white w-100">انشاء
-            حساب
+            class="btn btn-info text-white w-100">{{"register.account"|translate}}
             @if (isLoading) {
             <span><i class="fas fa-spin fa-spinner"></i></span>
             }
@@ -142,16 +141,16 @@
           <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
           }
           @if(msgSuccess){
-          <p class="alert alert-info w-50 m-auto mt-3 ">جاري التسجيل..</p>
+          <p class="alert alert-info text-center w-50 m-auto mt-3 ">{{"register.RegistrationPro"|translate}}</p>
           }
         </form>
-        <p class="text-center mt-3">هل لديك حساب؟ <a class="text-info" routerLink="/Login">تسجيل الدخول</a></p>
+        <p class="text-center mt-3">{{"register.doAccount" | translate}}<a class="text-info" routerLink="/Login">{{"register.login"|translate}}</a></p>
 
           <div class="d-flex justify-content-center">
             <app-login></app-login>
           </div>
         </div>
-     
+
       <div class="col-md-4">
         <div class="d-flex align-content-center h-100">
           <img src="registerPhoto.svg" alt="registerSitePhoto" class="img-fluid  ">
@@ -159,5 +158,4 @@
       </div>
     </div>
   </div>
-
 </section>

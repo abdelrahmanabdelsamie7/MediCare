@@ -1,5 +1,5 @@
-import { NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { NgClass, NgStyle } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,18 +10,22 @@ import { Router, RouterLink } from '@angular/router';
 import { SAuthService } from '../../../Core/services/s-auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginComponent } from "../google-auth/google-auth.component";
+import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-site-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, RouterLink, LoginComponent],
+  imports: [ReactiveFormsModule, NgClass, RouterLink, LoginComponent,NgStyle ,TranslateModule],
   templateUrl: './site-login.component.html',
   styleUrl: './site-login.component.css',
 })
 export class SiteLoginComponent {
   private readonly _SAuthService = inject(SAuthService);
   private readonly _Router = inject(Router);
+  public _translateService= inject(STranslateService);
   msgErr: string = '';
+  isRtl: boolean = false;
   msgSuccess: boolean = false;
   isLoading: boolean = false;
   loginForm: FormGroup = new FormGroup({
@@ -51,5 +55,11 @@ export class SiteLoginComponent {
         },
       });
     }
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this.isRtl = localStorage.getItem('lang') === 'ar';
   }
 }

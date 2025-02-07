@@ -1,10 +1,10 @@
 <section class="pt-3 mt-md-5">
   <div class="container">
-    <h3 class="text-center mb-4 text-secondary"> مرحبا بعودتك<span class="text-info"> ...</span></h3>
+    <h3 class="text-center mb-4 text-secondary fw-bolder">{{"login.WelcomeBack"|translate}}</h3>
     <div class="row">
       <div class="col-md-8 order-2 order-lg-1">
-        <h4 class="text-secondary pb-1">قم بتسجيل <span class="text-info">الدخول</span> : </h4>
-        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+        <h4 class="text-info pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">{{"login.login"|translate}} </h4>
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
           <div class="form-floating mb-3">
             <input [ngClass]="{
           'is-valid': !loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ,
@@ -12,16 +12,16 @@
         }" type="email" class="form-control" id="floatingEmaill" placeholder="name@example.com"
               formControlName="email">
             @if (loginForm.get('email')?.errors &&(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (loginForm.get('email')?.getError('required') ) {
-              <p class="m-0">البريد الإلكتروني مطلوب</p>
+                <p class="m-0">{{"login.emailErrorReq"|translate}}</p>
               }
               @if (loginForm.get('email')?.getError('email')) {
-              <p class="m-0"> يرجى إدخال بريد إلكتروني صالح</p>
+                <p class="m-0">{{"login.emailErrorVal"|translate}}</p>
               }
             </div>
             }
-            <label for="floatingEmaill">البريد الإلكتروني</label>
+            <label for="floatingEmaill">{{"login.email"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -31,22 +31,21 @@
               formControlName="password">
             @if (loginForm.get('password')?.errors && (loginForm.get('password')?.touched ||
             loginForm.get('password')?.dirty)) {
-            <div class="alert alert-danger w-50 mx-auto rounded-4">
+            <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (loginForm.get('password')?.getError('required') ) {
-              <p class="m-0">كلمة المرور مطلوبه</p>
+                <p class="m-0">{{"login.passwordErrorReq"|translate}}</p>
               }@else if (loginForm.get('password')?.getError('minlength')) {
-              <p class="m-0">يجب أن تحتوي علي 5 ارقام أو أكثر</p>
+                <p class="m-0">{{"login.passwordErrorMor"|translate}}</p>
               }@else if (loginForm.get('password')?.getError('maxlength')) {
-              <p class="m-0">يجب أن تحتوي علي 10 ارقام أو أقل</p>
+                <p class="m-0">{{"login.passwordErrorLes"|translate}}</p>
               }
 
             </div>
             }
-            <label for="floatingPasswordd">كلمة المرور</label>
+            <label for="floatingPasswordd">{{"login.password"|translate}}</label>
           </div>
 
-          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">تسجيل
-            الدخول
+          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">{{"login.loginBtn"|translate}}
             @if (isLoading) {
             <span><i class="fas fa-spin fa-spinner"></i></span>
             }</button>
@@ -54,10 +53,10 @@
           <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
           }
           @if(msgSuccess){
-          <p class="alert alert-info w-50 m-auto mt-3 ">تم بنجاح..</p>
+          <p class="alert alert-info text-center w-50 m-auto mt-3 ">{{"login.done"|translate}}</p>
           }
         </form>
-        <p class="text-center mt-3">لا تمتلك حسابًا؟<a class="text-info" routerLink="/Register"> أنشئ حسابًا الآن</a>
+        <p class="text-center mt-3">{{"login.donAccount"|translate}}<a class="text-info" routerLink="/Register"> {{"login.CreateAccNow"|translate}}</a>
         </p>
         <div class="d-flex justify-content-center">
           <app-login></app-login>

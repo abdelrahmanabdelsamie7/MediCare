@@ -24,7 +24,7 @@ label {
 .form-floating > .form-select ~ label {
   color: #0dcaf0;
   font-weight: 600;
-  transform: scale(0.85) translateY(-0.5rem) translateX(9rem);
+  transform: scale(1) translateY(-0.6rem) translateX(-0.4rem);
 }
 .form-floating > .form-control-plaintext ~ label::after,
 .form-floating > .form-control:focus ~ label::after,
@@ -36,4 +36,14 @@ label {
   img {
     display: none;
   }
+}
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+.direction{
+  direction: rtl;
 }

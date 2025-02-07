@@ -25,18 +25,27 @@
           </li>
           }
         </ul>
-<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      {{"navbar.lang" | translate}}
-    </a>
-    <ul class="dropdown-menu">
-      <li (click)="change('en')"><a class="dropdown-item" >EN</a></li>
-      <li (click)="change('ar')"><a class="dropdown-item" > AR</a></li>
-
-    </ul>
-  </li>
-</ul>
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown text-center">
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 fw-bold" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="text-secondary" [class]="selectedIcon"></i>
+              <span>{{ selectedLang }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3">
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 lang-item" (click)="change('en')">
+                  <i class="fas fa-flag-usa"></i> <span>English</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center gap-2 lang-item" (click)="change('ar')">
+                  <i class="fas fa-flag"></i> <span>العربية</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
