@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { IDoctorBlog } from '../../../Core/interfaces/i-doctor-blog';
 import { Subject, takeUntil } from 'rxjs';
 import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service';
@@ -6,6 +6,7 @@ import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-blogs',
   standalone: true,
@@ -19,6 +20,7 @@ export class BlogsComponent implements OnInit, OnDestroy {
   DoctorBlogs: IDoctorBlog[] = [];
   Doctor: IDoctor = {} as IDoctor;
   private destroy$ = new Subject<void>();
+  public _STranslateService =inject(STranslateService)
   constructor(private _SDoctorBlogService: SDoctorBlogService) {}
   ngOnInit() {
     this.getDoctorBlogs();

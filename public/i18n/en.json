@@ -49,7 +49,10 @@
   },
   "adviceSec":{
     "contentAdv":"Advice from a doctor",
-   "search":"Search"
+   "search":"Search",
+   "blog": " Blogs",
+    "nextPage": "Next Page",
+    "lastPage": "Last Page"
   },
   "register":{
     "welcome":"Welcome to",
@@ -95,5 +98,28 @@
     "donAccount":"Don't have an account?",
     "CreateAccNow":"Create an account now",
     "done":"...Done successfully"
-  }
+  },
+  "appointmentDays": {
+    "Saturday": "Saturday",
+    "Sunday": "Sunday",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday"
+  },
+  "appointmentMonths": {
+    "Jan": "January",
+    "Feb": "February",
+    "Mar": "March",
+    "Apr": "April",
+    "May": "May",
+    "Jun": "June",
+    "Jul": "July",
+    "Aug": "August",
+    "Sep": "September",
+    "Oct": "October",
+    "Nov": "November",
+    "Dec": "December"
+}
 }
