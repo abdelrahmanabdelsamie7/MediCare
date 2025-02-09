@@ -5,12 +5,12 @@
     <div class="col-12 mb-4" *ngFor="let reservation of reservations">
       <div class="d-flex flex-column flex-md-row shadow-sm rounded-3 border p-3 mb-3"
         [ngClass]="{'disabled-card': reservation.status === 'confirmed'}">
-        <!-- صورة الطبيب -->
+
         <div class="col-md-4 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
           <img src="{{reservation.doctor.image}}" class="img-fluid rounded-5" alt="Doctor Image">
         </div>
 
-        <!-- تفاصيل الحجز -->
+
         <div class="col-md-8">
           <div class="card-body px-md-5">
             <h5 class="card-title mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
@@ -35,9 +35,9 @@
               تم تأكيد الحجز بنجاح.
             </div>
 
-            <!-- أزرار التواصل والتأكيد -->
+
             <div *ngIf="reservation.status !== 'confirmed'">
-              <!-- أزرار التواصل والتأكيد -->
+
               <div class="d-flex flex-column flex-md-row mt-3">
                 <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
                   (click)="confirmReservation(reservation.id)">تأكيد
