@@ -121,13 +121,15 @@
     "Oct": "October",
     "Nov": "November",
     "Dec": "December"
-},
-"adminPanel": {
+  },
+  "adminPanel": {
     "medicare_admin": "MediCare Admin",
     "dashboard": "Dashboard",
     "departments": "Departments",
     "departments_today": "Departments | Today",
     "doctors": "Doctors",
+    "doctor_edit": "Update Doctor Info",
+    "doctors_list": "List Of Doctors",
     "doctors_today": "Doctors | Today",
     "hospitals": "Hospitals",
     "hospitals_today": "Hospitals | Today",
@@ -229,18 +231,43 @@
     "insurenceOption": "Insurence Option",
     "appLink": "App Link",
     "addNewImageToClinic": "Add New Image To Clinic",
-    "addedAt": "Added At"
+    "show_doctor_info": "Show Doctor Info",
+    "profile": "Profile",
+    "doctor_image": "Doctor Image",
+    "overview": "Overview",
+    "add_clinic_to_doctor": "Add Clinic To Doctor",
+    "profile_details": "Profile Details",
+    "full_name": "Full Name",
+    "age": "Age",
+    "addedAt": "Added At",
+    "view_location": "View Location",
+    "appointments": "Appointments",
+    "booked": "Booked",
+    "belongToDepartment": "Belong To Department",
+    "professionalTitle": "Professional Title",
+    "available": "Available",
+    "notAvailable": "Not Available",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "homeOption": "Home Option",
+    "infoAboutDoctor": "Info About Doctor",
+    "birthdate": "Birthdate",
+    "password": "Password",
+    "email": "Email"
   },
-"doctor":{
-"doctors":"Doctors",
- "hospitals":"Hospitals",
- "careCenters":"Care Centers"
-},
-"depDetails":{
-  "BtnInfo":"More Info",
-  "nextPage": "Next Page",
+  "doctor": {
+    "doctors": "Doctors",
+    "hospitals": "Hospitals",
+    "careCenters": "Care Centers"
+  },
+  "depDetails": {
+    "BtnInfo": "More Info",
+    "nextPage": "Next Page",
     "lastPage": "Last Page",
-     "page":"Page",
-   "of":"of"
-}
+    "page": "Page",
+    "of": "of"
+  }
 }
