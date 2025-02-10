@@ -8,37 +8,37 @@
     </div>
     <div class="col-md-8 ">
       <div class="card border border-0 shadow p-4">
-        <h3 class="fs-4">Title : <span>{{ pharmacy.title}}</span></h3>
+        <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ pharmacy.title}}</span></h3>
         <hr>
-        <h5>Service : <span>{{ pharmacy.service }}</span></h5>
+        <h5>{{ 'adminPanel.service' | translate }} : <span>{{ pharmacy.service }}</span></h5>
         <hr>
-        <h5>Phone : {{ pharmacy.phone }}</h5>
+        <h5>{{ 'adminPanel.phone' | translate }} : {{ pharmacy.phone }}</h5>
         <hr>
-        <h5>Address : {{ pharmacy.area }} - {{ pharmacy.city }}</h5>
+        <h5>{{ 'adminPanel.address' | translate }} : {{ pharmacy.area }} - {{ pharmacy.city }}</h5>
         <hr>
-        <h5>Location In Map : <a (click)="showInMap(pharmacy.locationUrl)"><i
+        <h5>{{ 'adminPanel.locationInMap' | translate }} : <a (click)="showInMap(pharmacy.locationUrl)"><i
               class="bi bi-geo-alt text-warning"></i></a></h5>
         <hr>
         @if (pharmacy.deliveryOption == 1 ) {
-        <h5>Delivery Option : Avaliable</h5>
+        <h5>{{ 'adminPanel.deliveryOption' | translate }} : {{ 'adminPanel.deliveryOptionAvailable' | translate }}</h5>
         }@else {
-        <h5>Delivery Option : Not Avaliable</h5>
+        <h5>{{ 'adminPanel.deliveryOption' | translate }} : {{ 'adminPanel.deliveryOptionNotAvailable' | translate }}</h5>
         }
         <hr />
         @if (pharmacy.insurence == 1 ) {
-        <h5>Insurence : Avaliable</h5>
+        <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceAvailable' | translate }}</h5>
         }@else {
-        <h5>Insurence : Not Avaliable</h5>
+        <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceNotAvailable' | translate }}</h5>
         }
         <hr>
-        <h5>Start At {{ pharmacy.start_at | date:'short' }}</h5>
+        <h5>{{ 'adminPanel.startAt' | translate }} {{ pharmacy.start_at | timeFormat}}</h5>
         <hr>
-        <h5>End At {{ pharmacy.end_at | date:'short' }}</h5>
+        <h5>{{ 'adminPanel.endAt' | translate }} {{ pharmacy.end_at | timeFormat}}</h5>
       </div>
     </div>
   </div>
   <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
       class="bi bi-arrow-left fs-6"></i>
-    Back</button>
+    {{ 'adminPanel.back' | translate }}</button>
 </div>
 <!-- End pharmacy Show -->

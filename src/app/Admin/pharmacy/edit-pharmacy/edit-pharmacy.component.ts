@@ -15,10 +15,11 @@ import { CustomValidators } from 'ng2-validation';
 import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmacies.service';
 import { Subject, takeUntil } from 'rxjs';
 import { IChainPharmacies } from '../../../Core/interfaces/i-chain-pharmacies';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-pharmacy',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-pharmacy.component.html',
   styleUrl: './edit-pharmacy.component.css',
   providers: [MessageService],

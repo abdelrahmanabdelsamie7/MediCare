@@ -13,10 +13,11 @@ import { SDepartmentService } from '../../../Core/services/s-department.service'
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
 import { IHospital } from '../../../Core/interfaces/ihospital';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-department-hospital',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-department-hospital.component.html',
   styleUrl: './add-department-hospital.component.css',
   providers: [MessageService],

@@ -13,10 +13,11 @@ import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmacies.service';
 import { IChainPharmacies } from '../../../Core/interfaces/i-chain-pharmacies';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-pharmacy',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-pharmacy.component.html',
   styleUrl: './add-pharmacy.component.css',
   providers: [MessageService],
@@ -35,7 +36,6 @@ export class AddPharmacyComponent implements OnInit, OnDestroy {
       Validators.minLength(3),
     ]),
     image: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(2048),
     ]),
@@ -58,8 +58,8 @@ export class AddPharmacyComponent implements OnInit, OnDestroy {
     ]),
     deliveryOption: new FormControl(1, [Validators.required]),
     insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl('', [ CustomValidators.date]),
-    end_at: new FormControl('', [ CustomValidators.date]),
+    start_at: new FormControl('', [CustomValidators.date]),
+    end_at: new FormControl('', [CustomValidators.date]),
     chain_pharmacy_id: new FormControl('', []),
   });
   constructor(

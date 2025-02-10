@@ -15,11 +15,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-laboratory',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-laboratory.component.html',
   styleUrl: './edit-laboratory.component.css',
   providers: [MessageService],
@@ -47,7 +48,6 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
       Validators.minLength(3),
     ]),
     image: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(2048),
     ]),
@@ -70,13 +70,9 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
     ]),
     insurence: new FormControl(1, [Validators.required]),
     start_at: new FormControl(this.Laboratory.start_at, [
-      Validators.required,
       CustomValidators.date,
     ]),
-    end_at: new FormControl(this.Laboratory.end_at, [
-      Validators.required,
-      CustomValidators.date,
-    ]),
+    end_at: new FormControl(this.Laboratory.end_at, [CustomValidators.date]),
     chain_laboratory_id: new FormControl('', []),
   });
   ngOnInit() {

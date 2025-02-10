@@ -19,13 +19,14 @@ export class SAdminService {
     return this._HttpClient
       .get<IAdmin>('http://localhost:8000/api/admin/getaccount')
       .pipe(
-        tap((data) => {
-          console.log('Data received from API:', data); // تحقق من البيانات المستلمة
-        }),
+        tap((data) => {}),
         catchError((err) => {
           console.error('Error fetching data:', err); // تحقق من وجود أخطاء
           return throwError(() => err);
         })
       );
+  }
+  getStatisticsInfo(): Observable<any> {
+    return this._HttpClient.get<any>(`${environment.baseUrl}/statistics`);
   }
 }

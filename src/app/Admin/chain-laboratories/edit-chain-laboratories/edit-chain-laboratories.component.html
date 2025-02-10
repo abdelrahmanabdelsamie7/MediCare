@@ -1,10 +1,10 @@
 <!-- Start Of Editing Chain Laboratories -->
 <div class="pagetitle">
-  <h1>Edit Chain Laboratories</h1>
+  <h1>{{ 'adminPanel.chain_laboratories_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.edit' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,7 +17,7 @@
           <form class="row" [formGroup]="editChainLaboratoriesForm"
             (ngSubmit)="editChainLaboratories(editChainLaboratoriesForm)">
             <div class="col-12">
-              <label for="title" class="form-label">Title</label>
+              <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="title" [ngClass]="{
                   'is-invalid': editChainLaboratoriesForm.controls.title.touched &&
                     editChainLaboratoriesForm.controls.title.errors
@@ -26,7 +26,7 @@
 
             <div class="text-center">
               <button type="submit" class="btn btn-primary my-2" [disabled]="editChainLaboratoriesForm.invalid">
-                Submit
+                {{ 'adminPanel.submit' | translate }}
               </button>
             </div>
           </form>
@@ -35,7 +35,7 @@
       </div>
       <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
           class="bi bi-arrow-left fs-6"></i>
-        Back</button>
+        {{ 'adminPanel.back' | translate }}</button>
     </div>
   </div>
 </section>

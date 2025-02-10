@@ -10,10 +10,11 @@ import { SHospitalService } from '../../../Core/services/s-hospital.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { CustomValidators } from 'ng2-validation';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-hospital',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-hospital.component.html',
   styleUrl: './add-hospital.component.css',
   providers: [MessageService],

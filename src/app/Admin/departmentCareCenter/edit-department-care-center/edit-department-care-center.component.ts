@@ -13,10 +13,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule, Location } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-department-care-center',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-department-care-center.component.html',
   styleUrl: './edit-department-care-center.component.css',
   providers: [MessageService],

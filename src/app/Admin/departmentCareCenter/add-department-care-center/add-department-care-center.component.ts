@@ -13,11 +13,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-department-care-center',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-department-care-center.component.html',
   styleUrl: './add-department-care-center.component.css',
   providers: [MessageService],

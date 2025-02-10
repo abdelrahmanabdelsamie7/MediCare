@@ -1,27 +1,27 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
-
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
       <a class="nav-link " routerLink="/admin-mediCare-1245">
         <i class="bi bi-grid"></i>
-        <span>Dashboard</span>
+        <span>{{ 'adminPanel.dashboard' | translate }}</span>
       </a>
     </li>
     <!--Start Department -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#department-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-layout-text-sidebar"></i><span>Department</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-layout-text-sidebar"></i><span>{{ 'adminPanel.departments' | translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="department-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="departments">
-            <i class="bi bi-circle"></i><span>List Departments</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.department_list' | translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_department">
-            <i class="bi bi-circle"></i><span>Add Department</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.department_add' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -29,17 +29,18 @@
     <!--Start Department Tips -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#departmentTips-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-pencil-square"></i><span>Department Tips</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-pencil-square"></i><span>{{ 'adminPanel.department_tips' | translate}}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="departmentTips-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="department-tips">
-            <i class="bi bi-circle"></i><span>List Department Tips</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.department_tips_list' | translate}}</span>
           </a>
         </li>
         <li>
           <a routerLink="add-department-tip">
-            <i class="bi bi-circle"></i><span>Add Department Tip</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.department_tips_add' | translate}}</span>
           </a>
         </li>
       </ul>
@@ -47,22 +48,23 @@
     <!-- Start Hospital -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#hospital-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-hospital"></i><span>Hospital</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-hospital"></i><span>{{ 'adminPanel.hospitals' | translate}}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="hospital-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="hospitals">
-            <i class="bi bi-circle"></i><span>List Hospitals</span>
+            <i class="bi bi-circle"></i><span> {{ 'adminPanel.hospital_list' | translate}}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_hospital">
-            <i class="bi bi-circle"></i><span>Add Hospital</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.hospital_add' | translate}} </span>
           </a>
         </li>
         <li>
           <a routerLink="add_department_hospital">
-            <i class="bi bi-circle"></i><span>Add Department To Hospital</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.addDepartmentToHospital' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -70,22 +72,23 @@
     <!-- Start Care Center -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#carecenter-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-cassette-fill"></i><span>Care Center</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-cassette-fill"></i><span>{{ 'adminPanel.care_centers' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="carecenter-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="care_centers">
-            <i class="bi bi-circle"></i><span>List Care Centers</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.care_center_list' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_care_center">
-            <i class="bi bi-circle"></i><span>Add Care Center</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.care_center_add' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_department_care_center">
-            <i class="bi bi-circle"></i><span>Add Department To Care Center</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.addDepartmentToCareCenter' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -93,17 +96,18 @@
     <!-- Start Chain Of Pharmacies -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#chainPharmacies-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-collection"></i><span>Chain Of Pharmacies</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-collection"></i><span>{{ 'adminPanel.chain_pharmacies' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="chainPharmacies-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="chain_pharmacies">
-            <i class="bi bi-circle"></i><span>List Chain Pharmacies</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.chain_pharmacies_list' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_chain_pharmacies">
-            <i class="bi bi-circle"></i><span>Add Chain Pharmacies</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.chain_pharmacies_add' |translate }}</span>
           </a>
         </li>
       </ul>
@@ -111,17 +115,18 @@
     <!-- Start Pharmacies -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#pharmacies-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-capsule"></i><span>Pharmacies</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-collection"></i><span>{{ 'adminPanel.pharmacies' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="pharmacies-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="pharmacies">
-            <i class="bi bi-circle"></i><span>List Of Pharmacies</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.pharmacies_list' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_pharmacy">
-            <i class="bi bi-circle"></i><span>Add Pharmacy</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.pharmacies_add' |translate }}</span>
           </a>
         </li>
       </ul>
@@ -129,17 +134,18 @@
     <!-- Start Chain Of Laboratories -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#chainLaboratories-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-collection"></i><span>Chain Of Laboratories</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-collection"></i><span>{{ 'adminPanel.chain_laboratories' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="chainLaboratories-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="chain_laboratories">
-            <i class="bi bi-circle"></i><span>List Chain Laboratories</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.chain_laboratories_list' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_chain_laboratories">
-            <i class="bi bi-circle"></i><span>Add Chain Laboratories</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.chain_laboratories_add' |translate }}</span>
           </a>
         </li>
       </ul>
@@ -147,17 +153,18 @@
     <!-- Start Laboratories -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#Laboratories-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-droplet-half"></i><span>Laboratories</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-droplet-half"></i><span>{{ 'adminPanel.laboratories' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="Laboratories-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="laboratories">
-            <i class="bi bi-circle"></i><span>List Laboratories</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.laboratories_list' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_laboratory">
-            <i class="bi bi-circle"></i><span>Add Laboratory</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.laboratories_add' |translate }}</span>
           </a>
         </li>
       </ul>
@@ -165,22 +172,23 @@
     <!-- Start Specializations -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#specializations-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-stethoscope"></i><span>Specializations</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-solid fa-stethoscope"></i><span>{{ 'adminPanel.specializations' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="specializations-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="specializations">
-            <i class="bi bi-circle"></i><span>List Specializations</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.specializations_list' |translate }} </span>
           </a>
         </li>
         <li>
           <a routerLink="add_specialization">
-            <i class="bi bi-circle"></i><span>Add Specialization</span>
+            <i class="bi bi-circle"></i><span> {{ 'adminPanel.specializations_add' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_specialization_doctor">
-            <i class="bi bi-circle"></i><span>Add Specialization To Doctor</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.addSpecializationToDoctor' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -188,17 +196,18 @@
     <!-- Start Delivery Services -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#DeliveryServices-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-car"></i><span>Delivery Services</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-solid fa-car"></i><span>{{ 'adminPanel.delivery_services' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="DeliveryServices-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="DeliveryServices">
-            <i class="bi bi-circle"></i><span>List Delivery Services</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.delivery_services_list' |translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add_DeliveryService">
-            <i class="bi bi-circle"></i><span>Add Delivery Service</span>
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.delivery_services_add' |translate }}</span>
           </a>
         </li>
       </ul>

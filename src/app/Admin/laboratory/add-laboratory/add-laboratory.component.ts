@@ -13,10 +13,11 @@ import { CustomValidators } from 'ng2-validation';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-laboratory',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-laboratory.component.html',
   styleUrl: './add-laboratory.component.css',
   providers: [MessageService],
@@ -35,7 +36,6 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
       Validators.minLength(3),
     ]),
     image: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(2048),
     ]),
@@ -57,8 +57,8 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
       CustomValidators.url,
     ]),
     insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl('', [Validators.required, CustomValidators.date]),
-    end_at: new FormControl('', [Validators.required, CustomValidators.date]),
+    start_at: new FormControl('', [ CustomValidators.date]),
+    end_at: new FormControl('', [ CustomValidators.date]),
     chain_laboratory_id: new FormControl('', []),
   });
   constructor(

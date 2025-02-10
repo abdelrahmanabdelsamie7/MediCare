@@ -5,11 +5,12 @@ import { SChainLaboratoriesService } from '../../../Core/services/s-chain-labora
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list-chain-laboratories',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule, TranslateModule],
   templateUrl: './list-chain-laboratories.component.html',
   styleUrl: './list-chain-laboratories.component.css',
   providers: [MessageService],

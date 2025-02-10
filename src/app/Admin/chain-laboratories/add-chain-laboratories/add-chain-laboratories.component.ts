@@ -9,11 +9,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-chain-laboratories',
   standalone: true,
-  imports: [ReactiveFormsModule, Toast, CommonModule],
+  imports: [ReactiveFormsModule, Toast, CommonModule, TranslateModule],
   templateUrl: './add-chain-laboratories.component.html',
   styleUrl: './add-chain-laboratories.component.css',
   providers: [MessageService],

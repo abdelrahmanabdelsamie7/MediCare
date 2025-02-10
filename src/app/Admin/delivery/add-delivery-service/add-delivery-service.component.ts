@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { MessageService } from 'primeng/api';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Toast } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-delivery-service',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-delivery-service.component.html',
   styleUrl: './add-delivery-service.component.css',
   providers: [MessageService],
 })
 export class AddDeliveryServiceComponent {
- constructor(
+  constructor(
     private _SDeliveryService: SDeliveryService,
     private messageService: MessageService
   ) {}
@@ -34,24 +40,26 @@ export class AddDeliveryServiceComponent {
       Validators.maxLength(255),
     ]),
   });
-  addDeliveryService( addDeliveryServiceForm : FormGroup) {
-    this._SDeliveryService.addDeliveryService( addDeliveryServiceForm .value).subscribe({
-      next: (data) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: ' add Delivery Service Added Successfully',
-        });
-        addDeliveryServiceForm .reset();
-      },
-      error: (err) => {
-        console.log(err);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'error',
-          detail: `${err.error.message}`,
-        });
-      },
-    });
+  addDeliveryService(addDeliveryServiceForm: FormGroup) {
+    this._SDeliveryService
+      .addDeliveryService(addDeliveryServiceForm.value)
+      .subscribe({
+        next: (data) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: ' add Delivery Service Added Successfully',
+          });
+          addDeliveryServiceForm.reset();
+        },
+        error: (err) => {
+          console.log(err);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'error',
+            detail: `${err.error.message}`,
+          });
+        },
+      });
   }
 }

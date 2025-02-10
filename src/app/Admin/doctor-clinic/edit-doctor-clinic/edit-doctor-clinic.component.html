@@ -1,10 +1,10 @@
 <!-- Start Editing DoctorClinic -->
 <div class="pagetitle">
-  <h1>Edit Doctor Clinic</h1>
+  <h1>{{ 'adminPanel.clinic_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.edit' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,13 +17,13 @@
           <form class="row" [formGroup]="editDoctorClinicForm" (ngSubmit)="editDoctorClinic(editDoctorClinicForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.title.touched && editDoctorClinicForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
               <div class="col-md-6">
-                <label for="description" class="form-label">Description</label>
+                <label for="description" class="form-label">{{ 'adminPanel.description' | translate }}</label>
                 <input type="text" formControlName="description"
                   [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.description.touched && editDoctorClinicForm.controls.description.errors) }"
                   class="form-control" id="description">
@@ -31,19 +31,19 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">{{ 'adminPanel.phone' | translate }}</label>
                 <input type="tel" formControlName="phone"
                   [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.phone.touched && editDoctorClinicForm.controls.phone.errors) }"
                   class="form-control" class="form-control" id="phone">
               </div>
               <div class="col-md-4">
-                <label for="address" class="form-label">Address</label>
+                <label for="address" class="form-label">{{ 'adminPanel.address' | translate }}</label>
                 <input type="text" formControlName="address"
                   [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.address.touched && editDoctorClinicForm.controls.address.errors) }"
                   class="form-control" class="form-control" id="address">
               </div>
               <div class="col-md-4">
-                <label for="locationUrl" class="form-label">Location Url</label>
+                <label for="locationUrl" class="form-label">{{ 'adminPanel.locationUrl' | translate }}</label>
                 <input type="url" formControlName="locationUrl"
                   [ngClass]="{'is-invalid':(editDoctorClinicForm.controls.locationUrl.touched && editDoctorClinicForm.controls.locationUrl.errors) }"
                   class="form-control" class="form-control" id="locationUrl">
@@ -54,7 +54,7 @@
                 @if (isLoading) {
                 <i class="fas fa-spin fa-spinner"></i>
                 }
-                Submit</button>
+                {{ 'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>
@@ -64,7 +64,7 @@
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
     <button (click)="back()" class="btn btn-outline-primary">
-      <i class="bi bi-arrow-left"></i> Back
+      <i class="bi bi-arrow-left"></i> {{ 'adminPanel.back' | translate }}
     </button>
   </div>
 </section>

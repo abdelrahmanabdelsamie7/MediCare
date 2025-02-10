@@ -5,10 +5,11 @@ import { SCareCenterService } from '../../../Core/services/s-care-center.service
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-care-centers',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule,TranslateModule],
   templateUrl: './list-care-centers.component.html',
   styleUrl: './list-care-centers.component.css',
   providers: [MessageService],

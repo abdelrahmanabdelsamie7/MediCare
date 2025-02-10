@@ -4,10 +4,12 @@ import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
+import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 @Component({
   selector: 'app-show-pharmacy',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, TimeFormatPipe],
   templateUrl: './show-pharmacy.component.html',
   styleUrl: './show-pharmacy.component.css',
 })

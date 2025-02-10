@@ -12,10 +12,11 @@ import {
 } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-department-hospital',
   standalone: true,
-  imports: [ReactiveFormsModule, Toast],
+  imports: [ReactiveFormsModule, Toast, TranslateModule],
   templateUrl: './edit-department-hospital.component.html',
   styleUrl: './edit-department-hospital.component.css',
   providers: [MessageService],

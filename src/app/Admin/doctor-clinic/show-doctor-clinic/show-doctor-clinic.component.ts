@@ -10,6 +10,8 @@ import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
+import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 @Component({
   selector: 'app-show-doctor-clinic',
   standalone: true,
@@ -20,6 +22,8 @@ import { MessageService } from 'primeng/api';
     TagModule,
     ButtonModule,
     CarouselModule,
+    TranslateModule,
+    TimeFormatPipe,
   ],
   templateUrl: './show-doctor-clinic.component.html',
   styleUrl: './show-doctor-clinic.component.css',

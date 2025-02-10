@@ -4,11 +4,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 
 @Component({
   selector: 'app-show-laboratory',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, TimeFormatPipe],
   templateUrl: './show-laboratory.component.html',
   styleUrl: './show-laboratory.component.css',
 })

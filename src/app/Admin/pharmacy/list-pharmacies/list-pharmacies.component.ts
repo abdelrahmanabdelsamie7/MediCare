@@ -7,10 +7,11 @@ import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpParams } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-pharmacies',
   standalone: true,
-  imports: [RouterModule, Toast, CommonModule],
+  imports: [RouterModule, Toast, CommonModule, TranslateModule],
   templateUrl: './list-pharmacies.component.html',
   styleUrl: './list-pharmacies.component.css',
   providers: [MessageService],
@@ -44,7 +45,6 @@ export class ListPharmaciesComponent implements OnInit, OnDestroy {
         },
       });
   }
-
   deletePharmacy(id: string) {
     this._SPharmacyService
       .deletePharmacy(id)

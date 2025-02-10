@@ -1,10 +1,11 @@
 <!-- Start Add New Hospital -->
 <div class="pagetitle">
-  <h1>Add Hospital</h1>
+  <h1>{{ 'adminPanel.hospital_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a>
+      </li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,13 +18,13 @@
           <form class="row" [formGroup]="addHospitalForm" (ngSubmit)="addHospital(addHospitalForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(addHospitalForm.controls.title.touched && addHospitalForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
               <div class="col-md-6">
-                <label for="service" class="form-label">Service</label>
+                <label for="service" class="form-label">{{ 'adminPanel.service' | translate }}</label>
                 <input type="text" formControlName="service"
                   [ngClass]="{'is-invalid':(addHospitalForm.controls.service.touched && addHospitalForm.controls.service.errors) }"
                   class="form-control" id="service">
@@ -31,13 +32,13 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">{{ 'adminPanel.image' | translate }}</label>
                 <input type="text" formControlName="image"
                   [ngClass]="{'is-invalid':(addHospitalForm.controls.image.touched && addHospitalForm.controls.image.errors) }"
                   class="form-control" class="form-control" id="image">
               </div>
               <div class="col-md-6">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">{{ 'adminPanel.phone' | translate }}</label>
                 <input type="tel" formControlName="phone"
                   [ngClass]="{'is-invalid':(addHospitalForm.controls.phone.touched && addHospitalForm.controls.phone.errors) }"
                   class="form-control" class="form-control" id="phone">
@@ -45,20 +46,21 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="address" class="form-label">Address</label>
+                <label for="address" class="form-label">{{ 'adminPanel.address' | translate }}</label>
                 <input type="text" formControlName="address"
                   [ngClass]="{'is-invalid':(addHospitalForm.controls.address.touched && addHospitalForm.controls.address.errors) }"
                   class="form-control" class="form-control" id="address">
               </div>
               <div class="col-md-6">
-                <label for="locationUrl" class="form-label">Location Url</label>
+                <label for="locationUrl" class="form-label">{{ 'adminPanel.locationUrl' | translate }} </label>
                 <input type="url" formControlName="locationUrl"
                   [ngClass]="{'is-invalid':(addHospitalForm.controls.locationUrl.touched && addHospitalForm.controls.locationUrl.errors) }"
                   class="form-control" class="form-control" id="locationUrl">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="addHospitalForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addHospitalForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

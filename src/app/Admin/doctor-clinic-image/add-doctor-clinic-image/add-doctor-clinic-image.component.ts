@@ -11,11 +11,12 @@ import { CommonModule, Location } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { SDoctorClinicService } from '../../../Core/services/s-doctor-clinic.service';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-doctor-clinic-image',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-doctor-clinic-image.component.html',
   styleUrl: './add-doctor-clinic-image.component.css',
   providers: [MessageService],

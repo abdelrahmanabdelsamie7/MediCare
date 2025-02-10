@@ -1,10 +1,11 @@
 import { Component, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-admin-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslateModule],
   templateUrl: './admin-sidebar.component.html',
   styleUrl: './admin-sidebar.component.css',
 })

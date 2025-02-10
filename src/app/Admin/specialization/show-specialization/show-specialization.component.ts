@@ -5,10 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-show-specialization',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './show-specialization.component.html',
   styleUrl: './show-specialization.component.css',
 })

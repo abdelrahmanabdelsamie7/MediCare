@@ -12,10 +12,11 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-care-center',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-care-center.component.html',
   styleUrl: './edit-care-center.component.css',
   providers: [MessageService],

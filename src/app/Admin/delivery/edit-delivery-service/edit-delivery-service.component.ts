@@ -1,17 +1,23 @@
-import { CommonModule , Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { IDelivery } from '../../../Core/interfaces/i-delivery';
 import { Subject, takeUntil } from 'rxjs';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-delivery-service',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-delivery-service.component.html',
   styleUrl: './edit-delivery-service.component.css',
   providers: [MessageService],
@@ -69,8 +75,8 @@ export class EditDeliveryServiceComponent implements OnInit, OnDestroy {
         },
       });
   }
-  editDeliveryService(editDeliveryServiceForm : FormGroup) {
-    if (this.editDeliveryServiceForm .invalid) return;
+  editDeliveryService(editDeliveryServiceForm: FormGroup) {
+    if (this.editDeliveryServiceForm.invalid) return;
     this._SDeliveryService
       .editDeliverService(this.id, editDeliveryServiceForm.value)
       .subscribe({

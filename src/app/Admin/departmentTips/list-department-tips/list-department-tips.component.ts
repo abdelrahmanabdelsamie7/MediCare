@@ -5,10 +5,11 @@ import { Toast } from 'primeng/toast';
 import { IDepartmentTips } from '../../../Core/interfaces/i-department-tips';
 import { SDepartmentTipsService } from '../../../Core/services/s-department-tips.service';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-department-tips',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule, TranslateModule],
   templateUrl: './list-department-tips.component.html',
   styleUrl: './list-department-tips.component.css',
   providers: [MessageService],

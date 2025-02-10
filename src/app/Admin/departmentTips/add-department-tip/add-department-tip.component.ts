@@ -13,11 +13,18 @@ import { Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { SDepartmentTipsService } from '../../../Core/services/s-department-tips.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-department-tip',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, Toast],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    Toast,
+    TranslateModule,
+  ],
   templateUrl: './add-department-tip.component.html',
   styleUrl: './add-department-tip.component.css',
   providers: [MessageService],

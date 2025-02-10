@@ -1,10 +1,10 @@
 <!-- Start Add New Laboratory -->
 <div class="pagetitle">
-  <h1>Add Laboratory</h1>
+  <h1>{{ 'adminPanel.laboratories_add' | translate }}y</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -16,90 +16,88 @@
         <div class="card-body">
           <form class="row" [formGroup]="addLaboratoryForm" (ngSubmit)="addLaboratory(addLaboratoryForm)">
             <div class="row">
-              <div class="col-md-6">
-                <label for="title" class="form-label">Title</label>
+              <div class="col-md-4">
+                <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.title.touched && addLaboratoryForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
-              <div class="col-md-6">
-                <label for="service" class="form-label">Service</label>
+              <div class="col-md-4">
+                <label for="service" class="form-label">{{ 'adminPanel.service' | translate }}</label>
                 <input type="text" formControlName="service"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.service.touched && addLaboratoryForm.controls.service.errors) }"
                   class="form-control" id="service">
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-4">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" formControlName="image"
-                  [ngClass]="{'is-invalid':(addLaboratoryForm.controls.image.touched && addLaboratoryForm.controls.image.errors) }"
-                  class="form-control" class="form-control" id="image">
-              </div>
-              <div class="col-md-4">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">{{ 'adminPanel.phone' | translate }}</label>
                 <input type="tel" formControlName="phone"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.phone.touched && addLaboratoryForm.controls.phone.errors) }"
                   class="form-control" class="form-control" id="phone">
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-4">
-                <label for="city" class="form-label">city</label>
+                <label for="area" class="form-label">{{ 'adminPanel.area' | translate }}</label>
+                <input type="text" formControlName="area"
+                  [ngClass]="{'is-invalid':(addLaboratoryForm.controls.area.touched && addLaboratoryForm.controls.area.errors) }"
+                  class="form-control" class="form-control" id="area">
+              </div>
+              <div class="col-md-4">
+                <label for="city" class="form-label">{{ 'adminPanel.city' | translate }}</label>
                 <input type="text" formControlName="city"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.city.touched && addLaboratoryForm.controls.city.errors) }"
                   class="form-control" class="form-control" id="city">
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label for="locationUrl" class="form-label">Location Url</label>
+              <div class="col-md-4">
+                <label for="locationUrl" class="form-label">{{ 'adminPanel.locationUrl' | translate }}</label>
                 <input type="url" formControlName="locationUrl"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.locationUrl.touched && addLaboratoryForm.controls.locationUrl.errors) }"
                   class="form-control" class="form-control" id="locationUrl">
               </div>
-              <div class="col-md-6">
-                <label for="whatsappLink" class="form-label">whatsapp Link</label>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="whatsappLink" class="form-label">{{ 'adminPanel.whatsappLink' | translate }}</label>
                 <input type="url" formControlName="whatsappLink"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.whatsappLink.touched && addLaboratoryForm.controls.whatsappLink.errors) }"
                   class="form-control" class="form-control" id="whatsappLink">
               </div>
-
-            </div>
-            <div class="row">
               <div class="col-md-4">
-                <label for="insurence" class="form-label">Insurence Option</label>
+                <label for="insurence" class="form-label">{{ 'adminPanel.insurenceOption' | translate }}</label>
                 <select name="insurence" formControlName="insurence"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.insurence.touched && addLaboratoryForm.controls.insurence.errors) }"
                   id="insurence" class="form-control">
-                  <option value="1">Avaliable</option>
-                  <option value="0">Not Avaliable</option>
+                  <option value="1">{{ 'adminPanel.insuranceAvailable' | translate }}</option>
+                  <option value="0">{{ 'adminPanel.insuranceNotAvailable' | translate }}</option>
                 </select>
               </div>
               <div class="col-md-4">
-                <label for="start_at" class="form-label">Start At</label>
+                <label for="image" class="form-label">{{ 'adminPanel.image' | translate }}</label>
+                <input type="text" formControlName="image"
+                  [ngClass]="{'is-invalid':(addLaboratoryForm.controls.image.touched && addLaboratoryForm.controls.image.errors) }"
+                  class="form-control" class="form-control" id="image">
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-4">
+                <label for="start_at" class="form-label">{{ 'adminPanel.startAt' | translate }}</label>
                 <input type="datetime-local" formControlName="start_at"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.start_at.touched && addLaboratoryForm.controls.start_at.errors) }"
                   class="form-control" class="form-control" id="start_at">
               </div>
               <div class="col-md-4">
-                <label for="end_at" class="form-label">Enda At</label>
+                <label for="end_at" class="form-label">{{ 'adminPanel.endAt' | translate }}</label>
                 <input type="datetime-local" formControlName="end_at"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.end_at.touched && addLaboratoryForm.controls.end_at.errors) }"
                   class="form-control" class="form-control" id="end_at">
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label for="area" class="form-label">area</label>
-                <input type="text" formControlName="area"
-                  [ngClass]="{'is-invalid':(addLaboratoryForm.controls.area.touched && addLaboratoryForm.controls.area.errors) }"
-                  class="form-control" class="form-control" id="area">
-              </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <label for="chain_laboratory_id" class="form-label">Belong To Chain Of Pharmacies</label>
                 <select name="chain_laboratory_id" formControlName="chain_laboratory_id" [ngClass]="{
-                  'is-invalid': (addLaboratoryForm.controls.chain_laboratory_id.touched &&
-                  addLaboratoryForm.controls.chain_laboratory_id.errors)
-                }" id="chain_laboratory_id" class="form-control">
+                                            'is-invalid': (addLaboratoryForm.controls.chain_laboratory_id.touched &&
+                                            addLaboratoryForm.controls.chain_laboratory_id.errors)
+                                          }" id="chain_laboratory_id" class="form-control">
                   <option value="">Not Belong To Chain</option>
                   <option *ngFor="let item of ChainsLaboratories" [value]="item.id">
                     {{ item.title }}
@@ -109,7 +107,8 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="addLaboratoryForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addLaboratoryForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

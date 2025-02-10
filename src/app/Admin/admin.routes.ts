@@ -56,6 +56,9 @@ import { ListDepartmentTipsComponent } from './departmentTips/list-department-ti
 import { AddDepartmentTipComponent } from './departmentTips/add-department-tip/add-department-tip.component';
 import { ShowDepartmentTipComponent } from './departmentTips/show-department-tip/show-department-tip.component';
 import { EditDepartmentTipComponent } from './departmentTips/edit-department-tip/edit-department-tip.component';
+import { AdminStatisticsComponent } from './admin-statistics/admin-statistics.component';
+import { AddDoctorClinicImageComponent } from './doctor-clinic-image/add-doctor-clinic-image/add-doctor-clinic-image.component';
+import { EditDoctorClinicImageComponent } from './doctor-clinic-image/edit-doctor-clinic-image/edit-doctor-clinic-image.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -64,6 +67,15 @@ export const ADMIN_ROUTES: Routes = [
     canActivate: [adminGuard],
     title: 'Admin Panel',
     children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        component: AdminStatisticsComponent,
+      },
       // ======================== Departments ========================
       {
         path: 'departments',
@@ -305,6 +317,16 @@ export const ADMIN_ROUTES: Routes = [
         path: 'add-clinic-to-doctor',
         component: AddClinicToDoctorComponent,
         title: 'Admin Panel | Add Clinic To Doctor ',
+      },
+      {
+        path: 'add-doctor-clinic-image',
+        component: AddDoctorClinicImageComponent,
+        title: 'Admin Panel | Add Iamge To Clinic ',
+      },
+      {
+        path: 'edit-doctor-clinic-image/:id',
+        component: EditDoctorClinicImageComponent,
+        title: 'Admin Panel | Edit Iamge Of Clinic ',
       },
       // ======================== Specializations ========================
       {

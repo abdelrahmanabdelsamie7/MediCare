@@ -9,10 +9,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-specialization',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-specialization.component.html',
   styleUrl: './add-specialization.component.css',
   providers: [MessageService],

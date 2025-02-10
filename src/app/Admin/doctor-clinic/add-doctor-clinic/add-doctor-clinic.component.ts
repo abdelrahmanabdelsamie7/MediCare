@@ -10,11 +10,12 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-doctor-clinic',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-doctor-clinic.component.html',
   styleUrl: './add-doctor-clinic.component.css',
   providers: [MessageService],

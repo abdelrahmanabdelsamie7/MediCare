@@ -13,30 +13,29 @@
       </div>
     </ng-template>
   </p-carousel>
-  <a routerLink="/admin-mediCare-1245/add-doctor-clinic-image"
-    class="btn btn-info text-light d-inline-block ms-auto">Add
-    New Image To Clinic
+  <a routerLink="/admin-mediCare-1245/add-doctor-clinic-image" class="btn btn-info text-light d-inline-block ms-auto">
+    {{'adminPanel.addNewImageToClinic' | translate }}
   </a>
   <!-- Offer Details -->
-  <div class="card border-0 shadow p-4 mt-3">
-    <h5>Title : {{ DoctorClinic.title }}</h5>
+  <div class="card border-0 shadow p-4 mt-3" style="direction:rtl">
+    <h5>{{ 'adminPanel.title' | translate }} : {{ DoctorClinic.title }}</h5>
     <hr>
-    <h5>Description : {{ DoctorClinic.description }}</h5>
+    <h5>{{ 'adminPanel.description' | translate }} : {{ DoctorClinic.description }}</h5>
     <hr>
-    <h5>Address : {{ DoctorClinic.address }}</h5>
+    <h5>{{ 'adminPanel.address' | translate }} : {{ DoctorClinic.address }}</h5>
     <hr>
-    <h5>Phone : {{ DoctorClinic.phone }}</h5>
+    <h5>{{ 'adminPanel.phone' | translate }} : {{ DoctorClinic.phone }}</h5>
     <hr>
-    <h5>Location In Map : <a (click)="showInMap(DoctorClinic.locationUrl)"><i
+    <h5>{{ 'adminPanel.locationInMap' | translate }} : <a (click)="showInMap(DoctorClinic.locationUrl)"><i
           class="bi bi-geo-alt text-warning"></i></a>
     </h5>
     <hr>
-    <h5>Added At : {{ DoctorClinic.created_at | date:'medium' }}</h5>
+    <h5>{{ 'adminPanel.addedAt' | translate }} : {{ DoctorClinic.created_at |timeFormat }}</h5>
   </div>
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
     <button (click)="back()" class="btn btn-outline-primary">
-      <i class="bi bi-arrow-left"></i> Back
+      <i class="bi bi-arrow-left"></i> {{ 'adminPanel.back' | translate }}
     </button>
   </div>
 </div>

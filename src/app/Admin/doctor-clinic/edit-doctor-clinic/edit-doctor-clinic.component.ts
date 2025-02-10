@@ -13,11 +13,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-doctor-clinic',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-doctor-clinic.component.html',
   styleUrl: './edit-doctor-clinic.component.css',
   providers: [MessageService],

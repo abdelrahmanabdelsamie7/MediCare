@@ -10,10 +10,11 @@ import {
 import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { Toast } from 'primeng/toast';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-care-center',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-care-center.component.html',
   styleUrl: './add-care-center.component.css',
   providers: [MessageService],
@@ -35,7 +36,6 @@ export class AddCareCenterComponent {
       Validators.minLength(3),
     ]),
     image: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(2048),
     ]),

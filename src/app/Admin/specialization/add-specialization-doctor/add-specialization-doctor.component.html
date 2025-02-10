@@ -1,10 +1,11 @@
 <!-- Start Add Specialization To Doctor -->
 <div class="pagetitle">
-  <h1>Add Specialization To Doctor</h1>
+  <h1>{{ 'adminPanel.addSpecializationToDoctor' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a>
+      </li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,7 +18,7 @@
           <form class="row" [formGroup]="addSpecializationDoctorForm"
             (ngSubmit)="addSpecializationDoctor(addSpecializationDoctorForm)">
             <div class="col-md-6">
-              <label for="doctor_id" class="form-label">Select Doctor</label>
+              <label for="doctor_id" class="form-label">{{ 'adminPanel.selectDoctor' | translate }}</label>
               <select class="form-control mb-2" formControlName="doctor_id"
                 [ngClass]="{'is-invalid':(addSpecializationDoctorForm.controls.doctor_id.touched && addSpecializationDoctorForm.controls.doctor_id.errors) }">
                 @for (item of Doctors; track $index) {
@@ -26,7 +27,8 @@
               </select>
             </div>
             <div class="col-md-6">
-              <label for="specialization_id" class="form-label">Select Specialization</label>
+              <label for="specialization_id" class="form-label">{{ 'adminPanel.selectSpecialization' | translate
+                }}</label>
               <select class="form-control mb-2" formControlName="specialization_id" multiple
                 [ngClass]="{'is-invalid':(addSpecializationDoctorForm.controls.specialization_id.touched && addSpecializationDoctorForm.controls.specialization_id.errors) }">
                 @for (item of Specializations; track $index) {
@@ -34,10 +36,9 @@
                 }
               </select>
             </div>
-
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addSpecializationDoctorForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addSpecializationDoctorForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

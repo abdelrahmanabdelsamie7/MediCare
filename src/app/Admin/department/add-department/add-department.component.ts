@@ -9,10 +9,11 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-department',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-department.component.html',
   styleUrl: './add-department.component.css',
   providers: [MessageService],

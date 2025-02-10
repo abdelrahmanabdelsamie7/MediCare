@@ -12,10 +12,11 @@ import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { Toast } from 'primeng/toast';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-chain-pharmacies',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-chain-pharmacies.component.html',
   styleUrl: './edit-chain-pharmacies.component.css',
   providers: [MessageService],

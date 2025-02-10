@@ -1,10 +1,10 @@
 <!-- Start Editing Care Center -->
 <div class="pagetitle">
-  <h1>Edit Care Center</h1>
+  <h1>{{ 'adminPanel.care_center_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.edit' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,13 +17,13 @@
           <form class="row" [formGroup]="editCareCenterForm" (ngSubmit)="editCareCenter(editCareCenterForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(editCareCenterForm.controls.title.touched && editCareCenterForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
               <div class="col-md-6">
-                <label for="service" class="form-label">Service</label>
+                <label for="service" class="form-label">{{ 'adminPanel.service' | translate }}</label>
                 <input type="text" formControlName="service"
                   [ngClass]="{'is-invalid':(editCareCenterForm.controls.service.touched && editCareCenterForm.controls.service.errors) }"
                   class="form-control" id="service">
@@ -31,13 +31,13 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">{{ 'adminPanel.image' | translate }}</label>
                 <input type="text" formControlName="image"
                   [ngClass]="{'is-invalid':(editCareCenterForm.controls.image.touched && editCareCenterForm.controls.image.errors) }"
                   class="form-control" class="form-control" id="image">
               </div>
               <div class="col-md-6">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">{{ 'adminPanel.phone' | translate }}</label>
                 <input type="tel" formControlName="phone"
                   [ngClass]="{'is-invalid':(editCareCenterForm.controls.phone.touched && editCareCenterForm.controls.phone.errors) }"
                   class="form-control" class="form-control" id="phone">
@@ -45,20 +45,21 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="address" class="form-label">Address</label>
+                <label for="address" class="form-label">{{ 'adminPanel.address' | translate }}</label>
                 <input type="text" formControlName="address"
                   [ngClass]="{'is-invalid':(editCareCenterForm.controls.address.touched && editCareCenterForm.controls.address.errors) }"
                   class="form-control" class="form-control" id="address">
               </div>
               <div class="col-md-6">
-                <label for="locationUrl" class="form-label">Location Url</label>
+                <label for="locationUrl" class="form-label">{{ 'adminPanel.locationUrl' | translate }}</label>
                 <input type="url" formControlName="locationUrl"
                   [ngClass]="{'is-invalid':(editCareCenterForm.controls.locationUrl.touched && editCareCenterForm.controls.locationUrl.errors) }"
                   class="form-control" class="form-control" id="locationUrl">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editCareCenterForm.invalid">Edit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="editCareCenterForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

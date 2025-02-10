@@ -12,10 +12,11 @@ import { Toast } from 'primeng/toast';
 import { ActivatedRoute } from '@angular/router';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-department',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-department.component.html',
   styleUrl: './edit-department.component.css',
   providers: [MessageService],

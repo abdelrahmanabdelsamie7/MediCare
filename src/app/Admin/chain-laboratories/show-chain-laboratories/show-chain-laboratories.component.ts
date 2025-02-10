@@ -5,10 +5,11 @@ import { IChainLaboratories } from '../../../Core/interfaces/i-chain-laboratorie
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-show-chain-laboratories',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './show-chain-laboratories.component.html',
   styleUrl: './show-chain-laboratories.component.css',
 })

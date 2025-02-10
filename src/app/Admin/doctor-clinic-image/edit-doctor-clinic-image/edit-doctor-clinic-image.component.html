@@ -1,10 +1,12 @@
 <!-- Start Edit DoctorClinicImage -->
 <div class="pagetitle">
-  <h1>Edit Clinic Image</h1>
+  <h1>{{ 'adminPanel.edit_clinic_image' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">
+          <]{{ 'adminPanel.dashboard' | translate }} </a>
+      </li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -18,13 +20,13 @@
             (ngSubmit)="editDoctorClinicImage(editDoctorClinicImageForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="image" class="form-label">image</label>
+                <label for="image" class="form-label">{{ 'adminPanel.image' | translate }}</label>
                 <input type="text" formControlName="image"
                   [ngClass]="{'is-invalid':(editDoctorClinicImageForm.controls.image.touched && editDoctorClinicImageForm.controls.image.errors) }"
                   class="form-control" id="image">
               </div>
               <div class="col-md-6">
-                <label for="clinic_id" class="form-label">Select Clinic</label>
+                <label for="clinic_id" class="form-label">{{ 'adminPanel.selectClinic' | translate }}</label>
                 <select formControlName="clinic_id"
                   [ngClass]="{'is-invalid':(editDoctorClinicImageForm.controls.clinic_id.touched && editDoctorClinicImageForm.controls.clinic_id.errors) }"
                   class="form-control" id="clinic_id">
@@ -43,7 +45,7 @@
                 @if(isLoading){
                 <i class="fas fa-spin fa-spinner"></i>
                 }
-                Submit</button>
+                {{ 'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>
@@ -53,7 +55,7 @@
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
     <button (click)="back()" class="btn btn-outline-primary">
-      <i class="bi bi-arrow-left"></i> Back
+      <i class="bi bi-arrow-left"></i> {{ 'adminPanel.back' | translate }}
     </button>
   </div>
 

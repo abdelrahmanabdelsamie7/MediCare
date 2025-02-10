@@ -5,10 +5,11 @@ import { SHospitalService } from '../../../Core/services/s-hospital.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-hospitals',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule, TranslateModule],
   templateUrl: './list-hospitals.component.html',
   styleUrl: './list-hospitals.component.css',
   providers: [MessageService],

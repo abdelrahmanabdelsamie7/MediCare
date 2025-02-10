@@ -13,10 +13,11 @@ import {
 import { CommonModule } from '@angular/common';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-specialization-doctor',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-specialization-doctor.component.html',
   styleUrl: './add-specialization-doctor.component.css',
   providers: [MessageService],

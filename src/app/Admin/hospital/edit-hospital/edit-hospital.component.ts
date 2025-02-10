@@ -13,10 +13,11 @@ import {
 import { CommonModule, Location } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-hospital',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-hospital.component.html',
   styleUrl: './edit-hospital.component.css',
   providers: [MessageService],

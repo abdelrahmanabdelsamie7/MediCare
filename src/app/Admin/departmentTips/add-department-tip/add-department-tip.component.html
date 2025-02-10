@@ -1,10 +1,10 @@
 <!-- Start Add New Department Tip -->
 <div class="pagetitle">
-  <h1>Add Department Tip</h1>
+  <h1>{{ 'adminPanel.department_tips_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -16,31 +16,30 @@
         <div class="card-body">
           <form class="row" [formGroup]="addDepartmentTipForm" (ngSubmit)="addDepartmentTip(addDepartmentTipForm)">
             <div class="col-12">
-              <label for="question" class="form-label">Question</label>
+              <label for="question" class="form-label">{{ 'adminPanel.question' | translate }}</label>
               <input type="text" formControlName="question"
                 [ngClass]="{'is-invalid':(addDepartmentTipForm.controls.question.touched && addDepartmentTipForm.controls.question.errors) }"
                 class="form-control" id="question">
             </div>
             <div class="col-12">
-              <label for="answer" class="form-label">Answer</label>
+              <label for="answer" class="form-label">{{ 'adminPanel.answer' | translate }}</label>
               <input type="text" formControlName="answer"
                 [ngClass]="{'is-invalid':(addDepartmentTipForm.controls.answer.touched && addDepartmentTipForm.controls.answer.errors) }"
                 class="form-control" id="answer">
             </div>
             <div class="col-12">
-              <label for="department_id" class="form-label">Select Department</label>
+              <label for="department_id" class="form-label">{{ 'adminPanel.selectDepartment' | translate }}</label>
               <select formControlName="department_id"
                 [ngClass]="{'is-invalid':(addDepartmentTipForm.controls.department_id.touched && addDepartmentTipForm.controls.department_id.errors) }"
                 class="form-control" class="form-control" id="department_id">
-                <option selected disabled>Select Department To Added Tip</option>
                 @for (item of Departments; track $index) {
                 <option [value]="item.id">{{ item.title }}</option>
                 }
               </select>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addDepartmentTipForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addDepartmentTipForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

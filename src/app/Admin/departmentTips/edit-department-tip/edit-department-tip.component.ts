@@ -14,11 +14,12 @@ import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { IDepartment } from '../../../Core/interfaces/i-department';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-department-tip',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-department-tip.component.html',
   styleUrl: './edit-department-tip.component.css',
   providers: [MessageService],
@@ -70,14 +71,13 @@ export class EditDepartmentTipComponent implements OnInit, OnDestroy {
         },
       });
   }
-
   loadDepartmentsData() {
     this._SDepartmentService
       .getDepartments()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.Departments = data.data;
+          this.Departments = data.data.data;
         },
         error: (err) => {},
       });

@@ -5,11 +5,12 @@ import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmaci
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list-chain-pharmacies',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule , TranslateModule],
   templateUrl: './list-chain-pharmacies.component.html',
   styleUrl: './list-chain-pharmacies.component.css',
   providers: [MessageService],

@@ -8,15 +8,15 @@
     </div>
     <div class="col-md-8 ">
       <div class="card border border-0 shadow p-4">
-        <h3 class="fs-4">Title : <span>{{ hospital.title}}</span></h3>
+        <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ hospital.title}}</span></h3>
         <hr>
-        <h5>Service : <span>{{ hospital.service }}</span></h5>
+        <h5>{{ 'adminPanel.service' | translate }} : <span>{{ hospital.service }}</span></h5>
         <hr>
-        <h5>Phone : <a href="tel:{{ hospital.phone }}">{{ hospital.phone }}</a></h5>
+        <h5>{{ 'adminPanel.phone' | translate }} : <a href="tel:{{ hospital.phone }}">{{ hospital.phone }}</a></h5>
         <hr>
-        <h5>Address : {{ hospital.address }}</h5>
+        <h5>{{ 'adminPanel.address' | translate }} : {{ hospital.address }}</h5>
         <hr>
-        <h5>Location In Map : <a (click)="showInMap(hospital.locationUrl)"><i
+        <h5>{{ 'adminPanel.locationInMap' | translate }} : <a (click)="showInMap(hospital.locationUrl)"><i
               class="bi bi-geo-alt text-warning"></i></a></h5>
       </div>
 
@@ -29,19 +29,19 @@
         <a class="btn btn-light btn-update"
           routerLink="/admin-mediCare-1245/edit_department_hospital/{{ item.pivot.department_id }}/{{ item.pivot.hospital_id }}"><i
             class="bi bi-pen"></i></a>
-        <h6>Department : {{ item.title }}</h6>
+        <h6>{{ 'adminPanel.department' | translate }} : {{ item.title }}</h6>
         <hr>
-        <h6>Appointment Price : {{ item.pivot.app_price }} </h6>
+        <h6>{{ 'adminPanel.appointmentPrice' | translate }} : {{ item.pivot.app_price }} </h6>
         <hr>
-        <h6>Start At : {{ item.pivot.start_at | date:'short'}}</h6>
+        <h6>{{ 'adminPanel.startAt' | translate }} : {{ item.pivot.start_at | timeFormat}}</h6>
         <hr>
-        <h6>End At : {{ item.pivot.end_at | date:'short'}}</h6>
+        <h6>{{ 'adminPanel.endAt' | translate }} : {{ item.pivot.end_at | timeFormat}}</h6>
       </div>
     </div>
     }
   </div>
   <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
       class="bi bi-arrow-left fs-6"></i>
-    Back</button>
+    {{ 'adminPanel.back' | translate }}</button>
 </div>
 <!-- End Hospital Show -->

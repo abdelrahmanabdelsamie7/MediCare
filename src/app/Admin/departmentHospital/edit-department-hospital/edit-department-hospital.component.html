@@ -1,10 +1,12 @@
 <!-- Edit Department Hospital Info -->
 <div class="pagetitle">
-  <h1>Edit Department Hospital Info </h1>
+  <h1>{{ 'adminPanel.editDepartmentHospitalInfo' | translate }} </h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' |
+          translate }}</a>
+      </li>
+      <li class="breadcrumb-item">{{ 'adminPanel.edit' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -18,22 +20,22 @@
             (ngSubmit)="editDepartmentHospital(editDepartmentHospitalForm)">
             <div class="row">
               <div class="col-md-4">
-                <label for="app_price">Appointment Price</label>
+                <label for="app_price">{{ 'adminPanel.appointmentPrice' | translate }}</label>
                 <input type="number" id="app_price" name="app_price" formControlName="app_price" class=" form-control">
               </div>
               <div class="col-md-4">
-                <label for="start_at">Start At</label>
+                <label for="start_at">{{ 'adminPanel.startAt' | translate }}</label>
                 <input type="datetime-local" id="start_at" name="start_at" formControlName="start_at"
                   class=" form-control">
               </div>
               <div class="col-md-4">
-                <label for="end_at">End At</label>
+                <label for="end_at">{{ 'adminPanel.endAt' | translate }}</label>
                 <input type="datetime-local" id="end_at" name="end_at" formControlName="end_at" class=" form-control">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="editDepartmentHospitalForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="editDepartmentHospitalForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

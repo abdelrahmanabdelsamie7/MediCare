@@ -1,10 +1,10 @@
 <!-- Start Add New Department To CareCenter -->
 <div class="pagetitle">
-  <h1>Add Department To Care Center </h1>
+  <h1>{{ 'adminPanel.addDepartmentToCareCenter' | translate }} </h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -18,7 +18,7 @@
             (ngSubmit)="addDepartmentCareCenter(addDepartmentCareCenterForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="department">Select Department</label>
+                <label for="department">{{ 'adminPanel.selectDepartment' | translate }}</label>
                 <select name="department" formControlName="department_id" id="department" class="form-control mb-2">
                   @for (item of Departments; track $index) {
                   <option value="{{ item.id }}">{{ item.title }}</option>
@@ -26,7 +26,7 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <label for="CareCenter">Select CareCenter</label>
+                <label for="CareCenter">{{ 'adminPanel.selectCareCenter' | translate }}</label>
                 <select name="CareCenter" formControlName="care_center_id" id="CareCenter" class="form-control mb-2">
                   @for (item of CareCenters; track $index) {
                   <option value="{{ item.id }}">{{ item.title }}</option>
@@ -36,22 +36,22 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <label for="app_price">Appointment Price</label>
+                <label for="app_price">{{ 'adminPanel.appointmentPrice' | translate }}</label>
                 <input type="number" id="app_price" name="app_price" formControlName="app_price" class=" form-control">
               </div>
               <div class="col-md-4">
-                <label for="start_at">Start At</label>
+                <label for="start_at">{{ 'adminPanel.startAt' | translate }}</label>
                 <input type="datetime-local" id="start_at" name="start_at" formControlName="start_at"
                   class=" form-control">
               </div>
               <div class="col-md-4">
-                <label for="end_at">End At</label>
+                <label for="end_at">{{ 'adminPanel.endAt' | translate }}</label>
                 <input type="datetime-local" id="end_at" name="end_at" formControlName="end_at" class=" form-control">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addDepartmentCareCenterForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addDepartmentCareCenterForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

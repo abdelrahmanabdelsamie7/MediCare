@@ -1,10 +1,10 @@
 <!-- Start Add New delivery service -->
 <div class="pagetitle">
-  <h1>Add Delivery Service</h1>
+  <h1>{{ 'adminPanel.delivery_services_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,26 +17,26 @@
           <form class="row" [formGroup]="addDeliveryServiceForm"
             (ngSubmit)=" addDeliveryService( addDeliveryServiceForm)">
             <div class="col-12">
-              <label for="name" class="form-label">Name</label>
+              <label for="name" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="name"
                 [ngClass]="{'is-invalid':(addDeliveryServiceForm.controls.name.touched && addDeliveryServiceForm.controls.name.errors) }"
                 class="form-control" id="name">
             </div>
             <div class="col-12">
-              <label for="description" class="form-label">Description</label>
+              <label for="description" class="form-label">{{ 'adminPanel.description' | translate }}</label>
               <input type="text" formControlName="description"
                 [ngClass]="{'is-invalid':(addDeliveryServiceForm.controls.description.touched && addDeliveryServiceForm.controls.description.errors) }"
                 class="form-control" id="description">
             </div>
             <div class="col-12">
-              <label for="app-link" class="form-label">App Link</label>
+              <label for="app-link" class="form-label">{{ 'adminPanel.appLink' | translate }}</label>
               <input type="text" formControlName="app_link"
                 [ngClass]="{'is-invalid':(addDeliveryServiceForm.controls.app_link.touched && addDeliveryServiceForm.controls.app_link.errors) }"
                 class="form-control" class="form-control" id="app-link">
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addDeliveryServiceForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addDeliveryServiceForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

@@ -5,10 +5,11 @@ import { SSpeicalizationService } from '../../../Core/services/s-speicalization.
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-specializations',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule, TranslateModule],
   templateUrl: './list-specializations.component.html',
   styleUrl: './list-specializations.component.css',
   providers: [MessageService],

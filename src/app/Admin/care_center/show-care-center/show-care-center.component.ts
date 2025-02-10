@@ -4,11 +4,13 @@ import { SCareCenterService } from '../../../Core/services/s-care-center.service
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
+import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 
 @Component({
   selector: 'app-show-care-center',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule, TimeFormatPipe],
   templateUrl: './show-care-center.component.html',
   styleUrl: './show-care-center.component.css',
 })

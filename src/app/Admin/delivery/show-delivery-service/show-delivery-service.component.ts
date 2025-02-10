@@ -3,14 +3,15 @@ import { Subject, takeUntil } from 'rxjs';
 import { IDelivery } from '../../../Core/interfaces/i-delivery';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import {Location } from '@angular/common';
+import { Location } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-show-delivery-service',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './show-delivery-service.component.html',
-  styleUrl: './show-delivery-service.component.css'
+  styleUrl: './show-delivery-service.component.css',
 })
 export class ShowDeliveryServiceComponent implements OnInit, OnDestroy {
   id: string = '';
@@ -27,7 +28,7 @@ export class ShowDeliveryServiceComponent implements OnInit, OnDestroy {
         this.id = `${x.get('id')}`;
       },
     });
-    this. loadDeliveryServiceData() ;
+    this.loadDeliveryServiceData();
   }
   loadDeliveryServiceData() {
     this._SDeliveryService

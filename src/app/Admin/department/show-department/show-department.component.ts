@@ -4,10 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-show-department',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './show-department.component.html',
   styleUrl: './show-department.component.css',
 })

@@ -7,11 +7,12 @@ import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpParams } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list-laboratories',
   standalone: true,
-  imports: [Toast, RouterModule, CommonModule],
+  imports: [Toast, RouterModule, CommonModule,TranslateModule],
   templateUrl: './list-laboratories.component.html',
   styleUrl: './list-laboratories.component.css',
   providers: [MessageService],

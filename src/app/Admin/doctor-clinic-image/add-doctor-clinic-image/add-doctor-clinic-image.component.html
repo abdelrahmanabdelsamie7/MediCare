@@ -1,10 +1,10 @@
 <!-- Start Add New DoctorClinicImage -->
 <div class="pagetitle">
-  <h1>Add Doctor Clinic Image</h1>
+  <h1>{{ 'adminPanel.add_clinic_image' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -18,13 +18,13 @@
             (ngSubmit)="addDoctorClinicImage(addDoctorClinicImageForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="image" class="form-label">image</label>
+                <label for="image" class="form-label">{{ 'adminPanel.image' | translate }}</label>
                 <input type="text" formControlName="image"
                   [ngClass]="{'is-invalid':(addDoctorClinicImageForm.controls.image.touched && addDoctorClinicImageForm.controls.image.errors) }"
                   class="form-control" id="image">
               </div>
               <div class="col-md-6">
-                <label for="clinic_id" class="form-label">Select Clinic</label>
+                <label for="clinic_id" class="form-label">{{ 'adminPanel.selectClinic' | translate }}</label>
                 <select formControlName="clinic_id"
                   [ngClass]="{'is-invalid':(addDoctorClinicImageForm.controls.clinic_id.touched && addDoctorClinicImageForm.controls.clinic_id.errors) }"
                   class="form-control" id="clinic_id">
@@ -40,7 +40,7 @@
                 @if(isLoading){
                 <i class="fas fa-spin fa-spinner"></i>
                 }
-                Submit</button>
+                {{ 'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>
@@ -50,7 +50,7 @@
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
     <button (click)="back()" class="btn btn-outline-primary">
-      <i class="bi bi-arrow-left"></i> Back
+      <i class="bi bi-arrow-left"></i> {{ 'adminPanel.back' | translate }}
     </button>
   </div>
 

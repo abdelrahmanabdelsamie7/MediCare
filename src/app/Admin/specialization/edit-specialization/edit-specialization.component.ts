@@ -12,10 +12,11 @@ import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Toast } from 'primeng/toast';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-edit-specialization',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-specialization.component.html',
   styleUrl: './edit-specialization.component.css',
   providers: [MessageService],

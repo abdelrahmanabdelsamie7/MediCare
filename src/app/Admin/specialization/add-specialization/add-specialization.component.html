@@ -1,10 +1,10 @@
 <!-- Start Add New Specialization -->
 <div class="pagetitle">
-  <h1>Add Specialization</h1>
+  <h1>{{ 'adminPanel.specializations_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -16,7 +16,7 @@
         <div class="card-body">
           <form class="row" [formGroup]="addSpecializationForm" (ngSubmit)="addSpecialization(addSpecializationForm)">
             <div class="col-12">
-              <label for="title" class="form-label">Title</label>
+              <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="title"
                 [ngClass]="{'is-invalid':(addSpecializationForm.controls.title.touched && addSpecializationForm.controls.title.errors) }"
                 class="form-control" id="title">
@@ -24,7 +24,7 @@
 
             <div class="text-center">
               <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addSpecializationForm.invalid">Submit</button>
+                [disabled]="addSpecializationForm.invalid">{{ 'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

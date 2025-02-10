@@ -1,10 +1,10 @@
 <!-- Start Add New Chain Pharmacies -->
 <div class="pagetitle">
-  <h1>Add Chain Pharmacies</h1>
+  <h1>{{ 'adminPanel.chain_pharamcies_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,14 +17,14 @@
           <form class="row" [formGroup]="addChainPharmaciesForm"
             (ngSubmit)="addChainPharmacies(addChainPharmaciesForm)">
             <div class="col-12">
-              <label for="title" class="form-label">Title</label>
+              <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="title"
                 [ngClass]="{'is-invalid':(addChainPharmaciesForm.controls.title.touched && addChainPharmaciesForm.controls.title.errors) }"
                 class="form-control" id="title">
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addChainPharmaciesForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addChainPharmaciesForm.invalid">{{
+                'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

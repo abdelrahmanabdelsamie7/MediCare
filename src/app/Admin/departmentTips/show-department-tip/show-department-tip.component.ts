@@ -5,11 +5,12 @@ import { SDepartmentTipsService } from '../../../Core/services/s-department-tips
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { IDepartment } from '../../../Core/interfaces/i-department';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-show-department-tip',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './show-department-tip.component.html',
   styleUrl: './show-department-tip.component.css',
 })

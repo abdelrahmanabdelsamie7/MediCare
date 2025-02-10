@@ -12,11 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-chain-laboratories',
   standalone: true,
-  imports: [ReactiveFormsModule, Toast, CommonModule],
+  imports: [ReactiveFormsModule, Toast, CommonModule, TranslateModule],
   templateUrl: './edit-chain-laboratories.component.html',
   styleUrl: './edit-chain-laboratories.component.css',
   providers: [MessageService],

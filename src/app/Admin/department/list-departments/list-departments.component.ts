@@ -5,10 +5,11 @@ import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-departments',
   standalone: true,
-  imports: [RouterModule, Toast],
+  imports: [RouterModule, Toast, TranslateModule],
   templateUrl: './list-departments.component.html',
   styleUrls: ['./list-departments.component.css'],
   providers: [MessageService],

@@ -5,10 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { IPharmacy } from '../../../Core/interfaces/i-pharmacy';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-show-chain-pharmacies',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './show-chain-pharmacies.component.html',
   styleUrl: './show-chain-pharmacies.component.css',
 })

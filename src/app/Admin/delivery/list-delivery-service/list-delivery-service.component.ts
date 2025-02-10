@@ -5,15 +5,15 @@ import { MessageService } from 'primeng/api';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list-delivery-service',
   standalone: true,
-  imports: [Toast,RouterModule],
+  imports: [Toast, RouterModule, TranslateModule],
   templateUrl: './list-delivery-service.component.html',
   styleUrl: './list-delivery-service.component.css',
-   providers: [MessageService],
-
+  providers: [MessageService],
 })
 export class ListDeliveryServiceComponent implements OnInit, OnDestroy {
   DeliveryServices: IDelivery[] = [];
@@ -26,7 +26,8 @@ export class ListDeliveryServiceComponent implements OnInit, OnDestroy {
     this.getDeliveryServices();
   }
   getDeliveryServices() {
-    this._SDeliveryService.getDeliveryServices()
+    this._SDeliveryService
+      .getDeliveryServices()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
@@ -67,4 +68,3 @@ export class ListDeliveryServiceComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 }
-
