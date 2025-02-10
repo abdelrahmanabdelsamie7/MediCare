@@ -35,3 +35,21 @@
   padding-bottom: 0;
   margin-bottom: 0;
 }
+.card {
+  background: linear-gradient(155deg, #0dcaf0, #f1f1f1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
