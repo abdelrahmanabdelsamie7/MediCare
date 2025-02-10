@@ -121,5 +121,17 @@
     "Oct": "October",
     "Nov": "November",
     "Dec": "December"
+},
+"doctor":{
+"doctors":"Doctors",
+ "hospitals":"Hospitals",
+ "careCenters":"Care Centers"
+},
+"depDetails":{
+  "BtnInfo":"More Info",
+  "nextPage": "Next Page",
+    "lastPage": "Last Page",
+     "page":"Page",
+   "of":"of"
 }
 }

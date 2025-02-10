@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details-department',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule ,TranslateModule],
   templateUrl: './details-department.component.html',
   styleUrl: './details-department.component.css',
 })
@@ -71,6 +72,13 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
           console.error('Error Getting department data:', err);
         },
       });
+  }
+  showInMap(url: string) {
+    window.open(
+      url,
+      '_blank',
+      'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
+    );
   }
   // Doctor Pagination
   currentDoctorPage: number = 1;

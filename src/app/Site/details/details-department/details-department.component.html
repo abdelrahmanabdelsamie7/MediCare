@@ -3,23 +3,38 @@
     <div class="col-md-12">
       <div class="d-flex justify-content-start align-items-start flex-column">
         <div class="my-3" role="group" aria-label="Tabs">
-          <button type="button" class="btn text-light me-3" [ngClass]="{
-                'btn-info': activeTab === 'doctors',
-                'btn-secondary': activeTab !== 'doctors'
-              }" (click)="setActiveTab('doctors')">
-            Doctors
+          <button
+            type="button"
+            class="btn text-light me-3"
+            [ngClass]="{
+              'btn-info': activeTab === 'doctors',
+              'btn-secondary': activeTab !== 'doctors'
+            }"
+            (click)="setActiveTab('doctors')"
+          >
+            {{ "doctor.doctors" | translate }}
           </button>
-          <button type="button" class="btn text-light me-3" [ngClass]="{
-                'btn-info': activeTab === 'hospitals',
-                'btn-secondary': activeTab !== 'hospitals'
-              }" (click)="setActiveTab('hospitals')">
-            Hospitals
+          <button
+            type="button"
+            class="btn text-light me-3"
+            [ngClass]="{
+              'btn-info': activeTab === 'hospitals',
+              'btn-secondary': activeTab !== 'hospitals'
+            }"
+            (click)="setActiveTab('hospitals')"
+          >
+            {{ "doctor.hospitals" | translate }}
           </button>
-          <button type="button" class="btn text-light me-3" [ngClass]="{
-                'btn-info': activeTab === 'care_centers',
-                'btn-secondary': activeTab !== 'care_centers'
-              }" (click)="setActiveTab('care_centers')">
-            Care Centers
+          <button
+            type="button"
+            class="btn text-light me-3"
+            [ngClass]="{
+              'btn-info': activeTab === 'care_centers',
+              'btn-secondary': activeTab !== 'care_centers'
+            }"
+            (click)="setActiveTab('care_centers')"
+          >
+            {{ "doctor.careCenters" | translate }}
           </button>
         </div>
       </div>
@@ -32,25 +47,58 @@
     <div class="row">
       @for (item of Doctors; track $index) {
       <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img [src]="item.image" class="card-img-top" alt="Doctor Image" />
-          <div class="card-body" style="direction: rtl;">
-            <h5 class="card-title">{{ item.fName }} {{ item.lName }}</h5>
-            <p class="card-text">{{ item.title }}</p>
-            <a routerLink="/details/doctor/{{ item.id }}" class="btn btn-info text-light">More Info</a>
+        <div
+          class="card text-center p-4 shadow-sm"
+          style="width: 350px; border-radius: 15px"
+        >
+          <div class="row">
+            <div class="card-body col-6">
+              <h3 class="fs-5 text-light card-title fw-bold">
+                {{ item.fName }} {{ item.lName }}
+                <span>({{ item.title }})</span>
+              </h3>
+              <p class="card-text text-secondary fw-b">
+                <i class="fa-solid fa-phone"></i> {{ item.phone }}
+              </p>
+            </div>
+            <div class="col-6">
+              <img
+                [src]="item.image"
+                class="rounded-circle card-img-top img-fluid border border-3 border-light"
+                style="width: 100px; height: 100px"
+                alt="Doctor Image"
+              />
+            </div>
           </div>
+          <a
+            routerLink="/details/doctor/{{ item.id }}"
+            class="btn btn-outline-secondary rounded-5 fw-bold text-info"
+            >{{ "depDetails.BtnInfo" | translate }}</a
+          >
         </div>
       </div>
       }
-
     </div>
     <!-- Pagination for doctors -->
     <div class="d-flex justify-content-center align-items-center">
-      <button (click)="prevDoctorPage()" class="btn btn-outline-info" [disabled]="currentDoctorPage === 1">الصفحة
-        السابقة</button>
-      <span class="px-3">الصفحة {{ currentDoctorPage }} من {{ totalDoctorPages }}</span>
-      <button (click)="nextDoctorPage()" class="btn btn-outline-info"
-        [disabled]="currentDoctorPage === totalDoctorPages">الصفحة التالية</button>
+      <button
+        (click)="prevDoctorPage()"
+        class="btn btn-outline-info"
+        [disabled]="currentDoctorPage === 1"
+      >
+        {{ "depDetails.lastPage" | translate }}
+      </button>
+      <span class="px-3"
+        >{{ "depDetails.page" | translate }} {{ currentDoctorPage }}
+        {{ "depDetails.of" | translate }} {{ totalDoctorPages }}</span
+      >
+      <button
+        (click)="nextDoctorPage()"
+        class="btn btn-outline-info"
+        [disabled]="currentDoctorPage === totalDoctorPages"
+      >
+        {{ "depDetails.nextPage" | translate }}
+      </button>
     </div>
   </div>
 
@@ -58,27 +106,66 @@
     <div class="row">
       @for (item of Hospitals; track $index) {
       <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img [src]="item.image" class="card-img-top" alt="Hospital Image" />
-          <div class="card-body" style="direction: rtl;">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.service }}</p>
-            <p class="card-text">سعر الكشف : {{ item.pivot.app_price }}</p>
-            <p class="card-text">يبدأ : {{ item.pivot.start_at | date:'short' }}</p>
-            <p class="card-text">ينتهي : {{ item.pivot.end_at | date:'short' }}</p>
-            <a routerLink="hospital/{{ item.id }}" class="btn btn-info text-light">More Info</a>
+        <div
+          class="card text-center p-4 shadow-sm"
+          style="width: 350px; border-radius: 15px"
+        >
+          <div class="row">
+            <div class="col-8">
+              <div class="card-body">
+                <h3 class="card-title p-0 fs-5 text-light fw-bold">
+                  {{ item.title }}
+                </h3>
+                <p class="card-text text-secondary">{{ item.service }}</p>
+                <p class="card-text text-secondary fw-bold">
+                  سعر الكشف :
+                  <span class="text-light">{{ item.pivot.app_price }}</span>
+                </p>
+                <!-- <p class="card-text  text-secondary ">يبدأ : {{ item.pivot.start_at | date:'short' }}</p>
+              <p class="card-text  text-secondary">ينتهي : {{ item.pivot.end_at | date:'short' }}</p> -->
+                <p class="card-text text-secondary fw-b">
+                  <i class="fa-solid fa-phone"></i> {{ item.phone }}
+                </p>
+              </div>
+            </div>
+            <div class="col-4">
+              <img
+                [src]="item.image"
+                class="rounded-circle card-img-top img-fluid border border-3 border-light"
+                style="width: 100px; height: 100px"
+                alt="Hospital Image"
+              />
+            </div>
           </div>
+          <a
+            routerLink="hospital/{{ item.id }}"
+            class="btn btn-outline-secondary rounded-5 fw-bold text-info"
+            >{{ "depDetails.BtnInfo" | translate }}</a
+          >
         </div>
       </div>
       }
     </div>
     <!-- Pagination for hospitals -->
     <div class="d-flex justify-content-center align-items-center">
-      <button (click)="prevHospitalPage()" class="btn btn-outline-info" [disabled]="currentHospitalPage === 1">الصفحة
-        السابقة</button>
-      <span class="px-3">الصفحة {{ currentHospitalPage }} من {{ totalHospitalPages }}</span>
-      <button (click)="nextHospitalPage()" class="btn btn-outline-info"
-        [disabled]="currentHospitalPage === totalHospitalPages">الصفحة التالية</button>
+      <button
+        (click)="prevHospitalPage()"
+        class="btn btn-outline-info"
+        [disabled]="currentHospitalPage === 1"
+      >
+        {{ "depDetails.lastPage" | translate }}
+      </button>
+      <span class="px-3"
+        >{{ "depDetails.page" | translate }} {{ currentHospitalPage }}
+        {{ "depDetails.of" | translate }} {{ totalHospitalPages }}</span
+      >
+      <button
+        (click)="nextHospitalPage()"
+        class="btn btn-outline-info"
+        [disabled]="currentHospitalPage === totalHospitalPages"
+      >
+        {{ "depDetails.nextPage" | translate }}
+      </button>
     </div>
   </div>
 
@@ -86,31 +173,81 @@
     <div class="row">
       @for (item of CareCenters; track $index) {
       <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img [src]="item.image" class="card-img-top" alt="Care Center Image" />
-          <div class="card-body" style="direction: rtl;">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.service }}</p>
-            <p class="card-text">سعر الكشف : {{ item.pivot.app_price }}</p>
-            <p class="card-text">يبدأ : {{ item.pivot.start_at | date:'short' }}</p>
-            <p class="card-text">ينتهي : {{ item.pivot.end_at | date:'short' }}</p>
-            <a routerLink="care_center/{{ item.id }}" class="btn btn-info text-light">More Info</a>
+        <div
+          class="card text-center p-4 shadow-sm"
+          style="width: 350px; border-radius: 15px"
+        >
+          <div class="row">
+            <div class="col-8">
+              <div class="card-body">
+                <h5 class="card-title p-0 fs-5 text-light fw-bold">
+                  {{ item.title }}
+                </h5>
+                <p class="card-text text-secondary">{{ item.service }}</p>
+                <p
+                  class="card-text text-secondary fw-bold m-0"
+                  style="direction: rtl"
+                >
+                  العنوان : <span class="text-light">{{ item.address }}</span>
+                </p>
+                <p class="card-text text-secondary fw-bold m-0">
+                  سعر الكشف :
+                  <span class="text-light"> {{ item.pivot.app_price }}</span>
+                </p>
+                <!-- <p class="card-text text-secondary fw-b"><i class="fa-solid fa-phone"></i> {{ item.phone }} </p> -->
+                <!-- <p class="card-text">يبدأ : {{ item.pivot.start_at | date:'short' }}</p>
+                <p class="card-text">ينتهي : {{ item.pivot.end_at | date:'short' }}</p> -->
+              </div>
+            </div>
+            <div class="col-4">
+              <img
+                [src]="item.image"
+                class="rounded-circle card-img-top img-fluid border border-3 border-light"
+                style="width: 100px; height: 100px"
+                alt="Care Center Image"
+              />
+              <div class="px-3">
+                <a
+                  href="tel:{{ item.phone }}"
+                  class="text-info"
+                  title="Call Now"
+                >
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+                <a (click)="showInMap(item.locationUrl)" title="Location">
+                  <i class="bi bi-geo-alt text-warning"></i>
+                </a>
+              </div>
+            </div>
           </div>
+
+          <!-- <a routerLink="care_center/{{ item.id }}" class="btn btn-outline-secondary rounded-5 fw-bold text-info">{{"depDetails.BtnInfo"|translate}}</a> -->
         </div>
       </div>
       }
     </div>
     <!-- Pagination for care_centers -->
     <div class="d-flex justify-content-center align-items-center">
-      <button (click)="prevCareCenterPage()" class="btn btn-outline-info"
-        [disabled]="currentCareCenterPage === 1">الصفحة
-        السابقة</button>
-      <span class="px-3">الصفحة {{ currentCareCenterPage }} من {{ totalCareCenterPages }}</span>
-      <button (click)="nextCareCenterPage()" class="btn btn-outline-info"
-        [disabled]="currentCareCenterPage === totalCareCenterPages">الصفحة التالية</button>
+      <button
+        (click)="prevCareCenterPage()"
+        class="btn btn-outline-info"
+        [disabled]="currentCareCenterPage === 1"
+      >
+        {{ "depDetails.lastPage" | translate }}
+      </button>
+      <span class="px-3"
+        >{{ "depDetails.page" | translate }} {{ currentCareCenterPage }}
+        {{ "depDetails.of" | translate }} {{ totalCareCenterPages }}</span
+      >
+      <button
+        (click)="nextCareCenterPage()"
+        class="btn btn-outline-info"
+        [disabled]="currentCareCenterPage === totalCareCenterPages"
+      >
+        {{ "depDetails.nextPage" | translate }}
+      </button>
     </div>
   </div>
-
 </div>
 
 <!-- Section for Tips -->
@@ -118,7 +255,7 @@
   <div class="container section-title text-end">
     <h4>اعرف اكثر عن تخصص {{ Department.title }}</h4>
   </div>
-  <div class="container my-3" style="direction: rtl;">
+  <div class="container my-3" style="direction: rtl">
     <div *ngFor="let item of Tips" class="row tip-item">
       <div class="col-lg-5 d-flex">
         <i class="bi bi-question-circle"></i>
