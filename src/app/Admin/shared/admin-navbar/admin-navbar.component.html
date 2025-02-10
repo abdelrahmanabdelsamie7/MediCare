@@ -12,18 +12,18 @@
       <li class="nav-item dropdown text-center mx-2">
         <a class="nav-link dropdown-toggle d-flex align-items-center gap-1 fw-bold text-info" role="button"
           data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="text-info" [class]="selectedIcon"></i>
+          <img src="{{ selectedIcon }}" width="20px" height="20px">
           <span>{{ selectedLang }}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3">
           <li>
             <a class="dropdown-item d-flex align-items-center gap-1 lang-item" (click)="change('en')">
-              <i class="fas fa-flag-usa text-info"></i> <span>English</span>
+              <img src="./americanFlag.png" alt="" width="20px" height="20px"> <span>English</span>
             </a>
           </li>
           <li>
             <a class="dropdown-item d-flex align-items-center gap-1 lang-item" (click)="change('ar')">
-              <i class="fas fa-flag text-info"></i> <span>العربية</span>
+              <img src="./egyptFlag.png" alt="" width="20px" height="20px"> <span>العربية</span>
             </a>
           </li>
         </ul>

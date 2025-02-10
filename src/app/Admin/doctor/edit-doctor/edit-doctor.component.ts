@@ -15,11 +15,12 @@ import { CommonModule, Location } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { ActivatedRoute } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-doctor',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-doctor.component.html',
   styleUrl: './edit-doctor.component.css',
   providers: [MessageService],

@@ -13,11 +13,12 @@ import { SDepartmentService } from '../../../Core/services/s-department.service'
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { Toast } from 'primeng/toast';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-doctor',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-doctor.component.html',
   styleUrl: './add-doctor.component.css',
   providers: [MessageService],

@@ -1,8 +1,7 @@
-import { IClinicToDoctor } from './i-clinic-to-dcotor';
+
 import { IDepartment } from './i-department';
 import { IDoctorAppointment } from './i-doctor-appiontment';
 import { IDoctorClinic } from './i-doctor-clinic';
-import { IDoctorSpecialization } from './i-doctor-specialization';
 import { ISpecialization } from './i-specialization';
 
 export interface IDoctor {

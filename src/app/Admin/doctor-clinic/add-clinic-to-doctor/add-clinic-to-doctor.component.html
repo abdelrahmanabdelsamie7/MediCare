@@ -1,10 +1,10 @@
 <!-- Start Add New ClinicToDoctor -->
 <div class="pagetitle">
-  <h1>Add Clinic To Doctor</h1>
+  <h1>{{ 'adminPanel.add_clinic_dcotor' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{ 'adminPanel.dashboard' | translate }}</a></li>
+      <li class="breadcrumb-item">{{ 'adminPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,7 +17,7 @@
           <form class="row" [formGroup]="addClinicToDoctorForm" (ngSubmit)="addClinicToDoctor(addClinicToDoctorForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="doctor_id" class="form-label">Select Doctor</label>
+                <label for="doctor_id" class="form-label">{{ 'adminPanel.selectDoctor' | translate }}</label>
                 <select formControlName="doctor_id"
                   [ngClass]="{'is-invalid':(addClinicToDoctorForm.controls.doctor_id.touched && addClinicToDoctorForm.controls.doctor_id.errors) }"
                   class="form-control" id="doctor_id">
@@ -27,7 +27,7 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <label for="clinic_id" class="form-label">Select Clinic</label>
+                <label for="clinic_id" class="form-label">{{ 'adminPanel.selectClinic' | translate }}</label>
                 <select formControlName="clinic_id"
                   [ngClass]="{'is-invalid':(addClinicToDoctorForm.controls.clinic_id.touched && addClinicToDoctorForm.controls.clinic_id.errors) }"
                   class="form-control" id="clinic_id">
@@ -43,7 +43,7 @@
                 @if(isLoading){
                 <i class="fas fa-spin fa-spinner"></i>
                 }
-                Submit</button>
+                {{ 'adminPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>
@@ -53,7 +53,7 @@
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
     <button (click)="back()" class="btn btn-outline-primary">
-      <i class="bi bi-arrow-left"></i> Back
+      <i class="bi bi-arrow-left"></i> {{ 'adminPanel.back' | translate }}
     </button>
   </div>
 

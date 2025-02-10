@@ -23,7 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class AdminNavbarComponent implements OnInit, OnDestroy {
   selectedLang: string = 'English';
-  selectedIcon: string = 'fas fa-flag-usa';
+  selectedIcon: string = 'americanFlag.png';
   Admin: IAdmin = {} as IAdmin;
   private destroy$ = new Subject<void>();
   private readonly _STranslateService = inject(STranslateService);
@@ -92,10 +92,10 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
   private updateLanguage(lang: string) {
     if (lang === 'en') {
       this.selectedLang = 'English';
-      this.selectedIcon = 'fas fa-flag-usa';
+      this.selectedIcon = 'americanFlag.png';
     } else if (lang === 'ar') {
       this.selectedLang = 'العربية';
-      this.selectedIcon = 'fas fa-flag';
+      this.selectedIcon = 'egyptFlag.png';
     }
   }
 

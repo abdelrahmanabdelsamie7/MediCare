@@ -13,11 +13,12 @@ import { CommonModule, Location } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-clinic-to-doctor',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-clinic-to-doctor.component.html',
   styleUrl: './add-clinic-to-doctor.component.css',
   providers: [MessageService],

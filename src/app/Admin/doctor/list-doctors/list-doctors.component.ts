@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
@@ -8,7 +9,7 @@ import { Toast } from 'primeng/toast';
 @Component({
   selector: 'app-list-doctors',
   standalone: true,
-  imports: [RouterModule, Toast],
+  imports: [RouterModule, Toast, TranslateModule],
   templateUrl: './list-doctors.component.html',
   styleUrl: './list-doctors.component.css',
   providers: [MessageService],

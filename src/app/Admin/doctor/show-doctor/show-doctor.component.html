@@ -1,104 +1,150 @@
 <!-- Start Doctor Show -->
 <div class="pagetitle">
-  <h1>Show Doctor Info</h1>
+  <h1>{{ 'adminPanel.show_doctor_info' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">Doctors</li>
-      <li class="breadcrumb-item active">Profile</li>
+      <li class="breadcrumb-item">{{ 'adminPanel.doctors' | translate }}</li>
+      <li class="breadcrumb-item active">{{ 'adminPanel.profile' | translate }}</li>
     </ol>
   </nav>
 </div>
+
 <section class="section profile">
   <div class="row">
+    <!-- Left Column: Profile Card -->
     <div class="col-xl-4">
       <div class="card">
         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-          <img [src]="Doctor.image" alt="Doctor Image" class="rounded-circle">
+          <img [src]="Doctor.image" alt="{{ 'adminPanel.doctor_image' | translate }}" class="rounded-circle">
           <h2>{{ Doctor.fName }} {{ Doctor.lName }}</h2>
           <h3>{{ Doctor.title }}</h3>
           <div class="social-links mt-2">
-            <a [href]="Doctor.whatsappLink" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
-            <a [href]="Doctor.facebookLink" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a [href]="Doctor.whatsappLink" target="_blank" class="whatsapp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a [href]="Doctor.facebookLink" target="_blank" class="facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Right Column: Profile Details -->
     <div class="col-xl-8">
       <div class="card">
         <div class="card-body pt-3">
+          <!-- Tabs -->
           <ul class="nav nav-tabs nav-tabs-bordered">
             <li class="nav-item">
-              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">
+                {{ 'adminPanel.overview' | translate }}
+              </button>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="color:var(--third-color)" routerLinkActive="active"
-                routerLink="/admin-mediCare-1245/add-clinic-to-doctor">Add
-                Clinic To
-                Doctor</a>
+                routerLink="/admin-mediCare-1245/add-clinic-to-doctor">
+                {{ 'adminPanel.add_clinic_to_doctor' | translate }}
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-warning" routerLinkActive="active"
-                routerLink="/admin-mediCare-1245/edit_doctor/{{ Doctor.id }}">Edit</a>
+                [routerLink]="['/admin-mediCare-1245/edit_doctor', Doctor.id]">
+                {{ 'adminPanel.edit' | translate }}
+              </a>
             </li>
           </ul>
+
+          <!-- Tab Content -->
           <div class="tab-pane fade show active profile-overview" id="profile-overview">
-            <h5 class="card-title">Info About Doctor</h5>
+            <!-- Doctor Info -->
+            <h5 class="card-title">{{ 'adminPanel.infoAboutDoctor' | translate }}</h5>
             <p class="small fst-italic">{{ Doctor.infoAboutDoctor }}</p>
 
-            <h5 class="card-title">Profile Details</h5>
-
+            <!-- Profile Details -->
+            <h5 class="card-title">{{ 'adminPanel.profile_details' | translate }}</h5>
             <div class="row">
-              <div class="col-lg-3 col-md-4 label ">Full Name</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.full_name' | translate }}</div>
               <div class="col-lg-9 col-md-8">{{ Doctor.fName }} {{ Doctor.lName }}</div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Gender</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.gender' | translate }}</div>
               <div class="col-lg-9 col-md-8">{{ Doctor.gender }}</div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Age</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.age' | translate }}</div>
               <div class="col-lg-9 col-md-8">{{ Doctor.birthDate | age }}</div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Title</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.title' | translate }}</div>
               <div class="col-lg-9 col-md-8">{{ Doctor.title }}</div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Home Visit</div>
-              @if (Doctor.homeOption == 1) {
-              <div class="col-lg-9 col-md-8">Available</div>
-              }@else {
-              <div class="col-lg-9 col-md-8">Not Available</div>
-              }
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.homeOption' | translate }}</div>
+              <div class="col-lg-9 col-md-8">
+                @if (Doctor.homeOption == 1) {
+                {{ 'adminPanel.available' | translate }}
+                } @else {
+                {{ 'adminPanel.notAvailable' | translate }}
+                }
+              </div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Phone</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.phone' | translate }}</div>
               <div class="col-lg-9 col-md-8">{{ Doctor.phone }}</div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Email</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.email' | translate }}</div>
               <div class="col-lg-9 col-md-8">{{ Doctor.email }}</div>
             </div>
-
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Role</div>
-              <div class="col-lg-9 col-md-8">{{ Doctor.role }}</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.addedAt' | translate }}</div>
+              <div class="col-lg-9 col-md-8">{{ Doctor.created_at | date:'short' }}</div>
             </div>
 
+            <!-- Department Info -->
+            <h5 class="card-title mt-4">{{ 'adminPanel.department' | translate }}</h5>
             <div class="row">
-              <div class="col-lg-3 col-md-4 label">Added At</div>
-              <div class="col-lg-9 col-md-8">{{ Doctor.created_at | date:'short' }}</div>
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.department' | translate }}</div>
+              <div class="col-lg-9 col-md-8">{{ departmentOfDoctor.title }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">{{ 'adminPanel.description' | translate }}</div>
+              <div class="col-lg-9 col-md-8">{{ departmentOfDoctor.description }}</div>
+            </div>
+
+            <!-- Specializations -->
+            <h5 class="card-title mt-4">{{ 'adminPanel.specializations' | translate }}</h5>
+            <div class="row">
+              <div class="col-12">
+                @for (specialization of Doctor.specializations; track specialization.id) {
+                <span class="badge bg-secondary me-1">{{ specialization.title }}</span>
+                }
+              </div>
+            </div>
+
+            <!-- Clinics -->
+            <h5 class="card-title mt-4">{{ 'adminPanel.clinics' | translate }}</h5>
+            <div class="row">
+              @for (clinic of Doctor.clinics; track clinic.id) {
+              <div class="col-md-6 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">{{ clinic.title }}</h6>
+                    <p class="card-text">{{ clinic.description }}</p>
+                    <p class="card-text"><strong>{{ 'adminPanel.address' | translate }}:</strong> {{ clinic.address }}
+                    </p>
+                    <p class="card-text"><strong>{{ 'adminPanel.phone' | translate }}:</strong> {{ clinic.phone }}</p>
+                    <a [href]="clinic.locationUrl" target="_blank" class="card-link">{{ 'adminPanel.view_location' |
+                      translate }}</a>
+                  </div>
+                </div>
+              </div>
+              }
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
