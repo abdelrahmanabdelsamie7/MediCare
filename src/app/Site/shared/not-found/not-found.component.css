@@ -1,8 +1,12 @@
-:host
+/* :host
 {
   display: flex;
-  min-height: 100vh;
+  min-height: 50vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+} */
+h2,
+button {
+  font-family: var(--arabic-font);
 }

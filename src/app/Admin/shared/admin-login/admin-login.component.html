@@ -7,16 +7,17 @@
           <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
             <div class="d-flex justify-content-center py-4">
               <a class="logo d-flex align-items-center w-auto">
-                <span class="d-none d-lg-block">MediCare</span>
+                <!-- <span class="d-none d-lg-block">MediCare</span> -->
               </a>
             </div>
-            <div class="card mb-3">
+            <div class="card mb-0">
               <div class="card-body">
-                <div class="pt-4 pb-2">
+                <div class="p-0">
                   <h5 class="card-title text-center pb-0 fs-4">Welcome Back Admin</h5>
                   <p class="text-center small">Enter your Email & password to login</p>
+                  <img src="./U1.png" height="120px" class="img-fluid">
                 </div>
-                <form class="row g-3 needs-validation" [formGroup]="adminLoginForm"
+                <form class="row gy-2 gx-3 needs-validation" [formGroup]="adminLoginForm"
                   (ngSubmit)="adminLogin(adminLoginForm)">
                   <div class="col-12">
                     <label for="email" class="form-label">email</label>

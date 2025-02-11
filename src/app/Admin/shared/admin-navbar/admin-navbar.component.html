@@ -73,6 +73,7 @@
       <li class="nav-item dropdown pe-3">
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
           <span class="d-none d-md-block dropdown-toggle ps-2">{{ Admin.name }}</span>
+          <i class="fa fa-user fs-5 d-md-none"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
@@ -83,7 +84,8 @@
             <hr class="dropdown-divider">
           </li>
           <li>
-            <button class="dropdown-item d-flex align-items-center" (click)="logOut()">
+            <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
               <i class="bi bi-box-arrow-right"></i>
               <span>{{ 'adminPanel.logout' | translate }}</span>
             </button>
@@ -94,3 +96,17 @@
     </ul>
   </nav>
 </header><!-- End Header -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3 class="head-title" style="direction:rtl">انت علي وشك المغادرة ..</h3>
+        <img src="./sad.png" alt="" class="img-fluid">
+      </div>
+      <div class="modal-footer border border-0 d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">سأبقي</button>
+        <button type="button" class="btn btn-info text-light" (click)="logOut()">تسجيل الخروج</button>
+      </div>
+    </div>
+  </div>
+</div>

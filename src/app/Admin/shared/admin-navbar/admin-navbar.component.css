@@ -18,3 +18,8 @@
 .toggle-sidebar-btn {
   cursor: pointer;
 }
+@media screen and (min-width:576px) {
+  .nav-profile{
+    display : block ;
+  }
+}

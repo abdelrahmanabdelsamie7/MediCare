@@ -21,8 +21,9 @@ img,
 }
 #hero .shadow h4,
 #hero .shadow p {
+  font-family: var(--arabic-font);
   direction: rtl;
-  line-height: 38px;
+  line-height: 33px;
 }
 @media screen and (max-width: 576px) {
   .hero-carousel .relative {
