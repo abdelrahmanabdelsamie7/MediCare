@@ -5,11 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class AgePipe implements PipeTransform {
-  transform(birthdate: string): number {
-    const birthDate = new Date(birthdate);
+  transform(birthdate: string | Date): number {
+    const birthDate = new Date(birthdate); 
     const currentDate = new Date();
     let age = currentDate.getFullYear() - birthDate.getFullYear();
     const monthDiff = currentDate.getMonth() - birthDate.getMonth();
+
     if (
       monthDiff < 0 ||
       (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())

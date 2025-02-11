@@ -1,10 +1,11 @@
 import { Component, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-doctor-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslateModule],
   templateUrl: './doctor-sidebar.component.html',
   styleUrl: './doctor-sidebar.component.css',
 })

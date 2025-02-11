@@ -3,54 +3,62 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <!-- Appointment Card -->
-      <div class="card border shadow-lg p-4 mb-4">
-        <h3 class="card-title text-center mb-3">Appointment Details</h3>
+      <div class="card border shadow-lg p-4 mb-4" style="direction: rtl;"
+        [ngClass]="{'card-muted': DoctorAppointment.is_booked}">
+        <h3 class="card-title text-center mb-3">{{ 'doctorPanel.appointmentDetails' | translate }}</h3>
         <div class="card-body">
           <!-- Day -->
           <div class="mb-3">
-            <strong>Day:</strong>
+            <strong>{{ 'doctorPanel.day' | translate }}:</strong>
             {{ DoctorAppointment.day }}
           </div>
           <hr>
           <!-- Start Time -->
           <div class="mb-3">
-            <strong>Start At:</strong>
+            <strong>{{ 'doctorPanel.startAt' | translate }}:</strong>
             {{ DoctorAppointment.start_at }}
           </div>
           <hr>
           <!-- End Time -->
           <div class="mb-3">
-            <strong>End At:</strong>
+            <strong>{{ 'doctorPanel.endAt' | translate }}:</strong>
             {{ DoctorAppointment.end_at }}
           </div>
           <hr>
           <!-- Clinic Information -->
           <div class="mb-3">
-            <strong>Clinic:</strong>
+            <strong>{{ 'doctorPanel.clinic' | translate }}:</strong>
             {{ ClinciDoctor.title }}
           </div>
           <div class="mb-3">
-            <strong>Description:</strong>
+            <strong>{{ 'doctorPanel.description' | translate }}:</strong>
             {{ ClinciDoctor.description }}
           </div>
           <div class="mb-3">
-            <strong>Address:</strong>
+            <strong>{{ 'doctorPanel.address' | translate }}:</strong>
             {{ ClinciDoctor.address }}
           </div>
           <div class="mb-3">
-            <strong>Phone:</strong>
+            <strong>{{ 'doctorPanel.phone' | translate }}:</strong>
             {{ ClinciDoctor.phone }}
           </div>
           <div class="mb-3">
-            <strong>Location:</strong>
-            <a href="{{ClinciDoctor.locationUrl }}" target="_blank">View on Google Maps</a>
+            <strong>{{ 'doctorPanel.location' | translate }}:</strong>
+            <a href="{{ClinciDoctor.locationUrl }}" target="_blank">
+              {{ 'doctorPanel.location' | translate }}
+            </a>
           </div>
+          @if(DoctorAppointment.is_booked){
+          <div class="mb-3">
+            <div class="alert alert-info text-center fw-bold">تم حجز الموعد</div>
+          </div>
+          }
         </div>
       </div>
       <!-- Back Button -->
       <div class="text-center">
         <button (click)="back()" class="btn btn-outline-primary">
-          <i class="bi bi-arrow-left"></i> Back
+          <i class="bi bi-arrow-left"></i> {{ 'doctorPanel.back' | translate }}
         </button>
       </div>
     </div>

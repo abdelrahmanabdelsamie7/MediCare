@@ -3,13 +3,14 @@ import { IDoctorAppointment } from '../../../Core/interfaces/i-doctor-appiontmen
 import { SDoctorAppiontmentService } from '../../../Core/services/s-doctor-appiontment.service';
 import { Subject, takeUntil } from 'rxjs';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-show-doctor-appointment',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, TranslateModule , CommonModule],
   templateUrl: './show-doctor-appointment.component.html',
   styleUrl: './show-doctor-appointment.component.css',
 })
@@ -37,7 +38,6 @@ export class ShowDoctorAppointmentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.DoctorAppointment = data.data;
           this.ClinciDoctor = this.DoctorAppointment.clinic;
         },

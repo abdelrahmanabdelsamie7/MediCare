@@ -7,17 +7,18 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-site-navbar',
   standalone: true,
-  imports: [RouterModule ,TranslateModule],
+  imports: [RouterModule, TranslateModule],
   templateUrl: './site-navbar.component.html',
   styleUrl: './site-navbar.component.css',
 })
 export class SiteNavbarComponent implements OnInit {
   selectedLang: string = 'English';
-  selectedIcon: string = 'fas fa-flag-usa';
+  selectedIcon: string = './americanFlag.png';
   isAuth: boolean = false;
-  private readonly _STranslateService =inject(STranslateService)
+  private readonly _STranslateService = inject(STranslateService);
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.loadLanguage();}
+    this.loadLanguage();
+  }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('userToken')) {
@@ -35,10 +36,10 @@ export class SiteNavbarComponent implements OnInit {
   private updateLanguage(lang: string) {
     if (lang === 'en') {
       this.selectedLang = 'English';
-      this.selectedIcon = 'fas fa-flag-usa';
+      this.selectedIcon = './americanFlag.png';
     } else if (lang === 'ar') {
       this.selectedLang = 'العربية';
-      this.selectedIcon = 'fas fa-flag';
+      this.selectedIcon = './egyptFlag.png';
     }
   }
 

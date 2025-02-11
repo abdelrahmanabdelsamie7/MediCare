@@ -7,8 +7,26 @@
   </div>
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
-    
-
+      <!-- Select Language -->
+      <li class="nav-item dropdown text-center mx-2">
+        <a class="nav-link dropdown-toggle d-flex align-items-center gap-1 fw-bold text-info" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{{ selectedIcon }}" width="20px" height="20px">
+          <span>{{ selectedLang }}</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3">
+          <li>
+            <a class="dropdown-item d-flex align-items-center gap-1 lang-item" (click)="change('en')">
+              <img src="./americanFlag.png" alt="" width="20px" height="20px"> <span>English</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center gap-1 lang-item" (click)="change('ar')">
+              <img src="./egyptFlag.png" alt="" width="20px" height="20px"> <span>العربية</span>
+            </a>
+          </li>
+        </ul>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
           <i class="bi bi-bell"></i>
@@ -23,7 +41,8 @@
           </li>
 
           <li *ngFor="let notification of notifications">
-            <a class="dropdown-item d-flex align-items-center" (click)="showModal(notification)"
+            <a class="dropdown-item d-flex align-items-center"
+              routerLink="/doctor-mediCare-1245/user-reservation/{{  notification.data.reservation_id }}"
               [ngClass]="{'disabled': notification.read_at}">
               <div class="me-3">
                 <i class="bi bi-calendar-check text-success"></i>
@@ -44,11 +63,9 @@
           </li>
         </ul>
       </li>
-
-
       <li class="nav-item dropdown pe-3">
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img [src]="doctor.image" alt="Profile" class="rounded-circle">
+          <img [src]="doctor.image" width="50px" height="50px" alt="Profile" class="rounded-circle">
           <span class="d-none d-md-block dropdown-toggle ps-2">Dr . {{ doctor.fName }} {{ doctor.lName }}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -76,26 +93,3 @@
     </ul>
   </nav>
 </header>
-
-
-<div *ngIf="isModalOpen" class="modal fade show" tabindex="-1" aria-labelledby="notificationModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="notificationModalLabel">تفاصيل الإشعار</h5>
-        <button type="button" class="btn-close" (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>الرسالة:</strong> {{ selectedNotification?.data.message }}</p>
-        <p><strong>المريض:</strong> {{ selectedNotification?.data.user_name }}</p>
-        <p><strong>الهاتف:</strong> {{ selectedNotification?.data.user_phone }}</p>
-        <p><strong>العنوان:</strong> {{ selectedNotification?.data.user_address }}</p>
-        <p><strong>اليوم:</strong> {{ selectedNotification?.data.appointment_day }}</p>
-        <p><strong>الموعد:</strong> {{ selectedNotification?.data.start_appointment | timeFormat }} - {{
-          selectedNotification?.data.end_appointment | timeFormat}}</p>
-        <p><strong>مدة الموعد:</strong> {{ selectedNotification?.data.duration_appointment }} دقيقة</p>
-      </div>
-    </div>
-  </div>
-</div>

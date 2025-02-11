@@ -5,11 +5,12 @@ import { SDoctorOfferService } from '../../../Core/services/s-doctor-offer.servi
 import { MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 import { Toast } from 'primeng/toast';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list-doctor-offers',
   standalone: true,
-  imports: [RouterModule, Toast],
+  imports: [RouterModule, Toast, TranslateModule],
   templateUrl: './list-doctor-offers.component.html',
   styleUrl: './list-doctor-offers.component.css',
   providers: [MessageService],

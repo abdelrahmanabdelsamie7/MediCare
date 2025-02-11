@@ -1,10 +1,10 @@
 <!-- Start List All Doctor Offers -->
 <div class="pagetitle">
-  <h1>List Doctor Offers</h1>
+  <h1>{{ 'doctorPanel.listDoctorOffers' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">Tables</li>
-      <li class="breadcrumb-item active">Data</li>
+      <li class="breadcrumb-item">{{ 'doctorPanel.tables' | translate }}</li>
+      <li class="breadcrumb-item active">{{ 'doctorPanel.data' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -16,8 +16,8 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Title</th>
-            <th colspan="3">Action</th>
+            <th>{{ 'doctorPanel.title' | translate }}</th>
+            <th colspan="3">{{ 'doctorPanel.actions' | translate }}</th>
           </tr>
         </thead>
         @for (item of DoctorOffers; track $index) {

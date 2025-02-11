@@ -1,10 +1,11 @@
 <!-- Start Add New Doctor Appointment -->
 <div class="pagetitle">
-  <h1>Add New Appointment</h1>
+  <h1>{{ 'doctorPanel.addNewAppointment' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Add</li>
+      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">{{ 'doctorPanel.dashboard' | translate }}</a>
+      </li>
+      <li class="breadcrumb-item">{{ 'doctorPanel.add' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -18,13 +19,13 @@
             (ngSubmit)="addDoctorAppointment(addDoctorAppointmentForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="day">Select a Day:</label>
+                <label for="day">{{ 'doctorPanel.selectDay' | translate }}:</label>
                 <input type="date" formControlName="day"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.day.touched && addDoctorAppointmentForm.controls.day.errors) }"
                   class="form-control" id="day">
               </div>
               <div class="col-md-6">
-                <label for="clinic_id">Select a Clinic:</label>
+                <label for="clinic_id">{{ 'doctorPanel.selectClinic' | translate }}:</label>
                 <select name="clinic_id" id="clinic_id" formControlName="clinic_id"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.clinic_id.touched && addDoctorAppointmentForm.controls.clinic_id.errors) }"
                   class="form-control" id="clinic_id">
@@ -36,27 +37,27 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <label for="start_at" class="form-label">start At</label>
+                <label for="start_at" class="form-label">{{ 'doctorPanel.startAt' | translate }}</label>
                 <input type="time" formControlName="start_at"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.start_at.touched && addDoctorAppointmentForm.controls.start_at.errors) }"
                   class="form-control" id="start_at">
               </div>
               <div class="col-md-4">
-                <label for="end_at" class="form-label">End At</label>
+                <label for="end_at" class="form-label">{{ 'doctorPanel.endAt' | translate }}</label>
                 <input type="time" formControlName="end_at"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.end_at.touched && addDoctorAppointmentForm.controls.end_at.errors) }"
                   class="form-control" id="end_at">
               </div>
               <div class="col-md-4">
-                <label for="duration" class="form-label">Duration</label>
+                <label for="duration" class="form-label">{{ 'doctorPanel.duration' | translate }}</label>
                 <input type="number" formControlName="duration"
                   [ngClass]="{'is-invalid':(addDoctorAppointmentForm.controls.duration.touched && addDoctorAppointmentForm.controls.duration.errors) }"
                   class="form-control" id="duration">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="addDoctorAppointmentForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="addDoctorAppointmentForm.invalid">{{
+                'doctorPanel.submit' | translate }}</button>
             </div>
           </form>
         </div>

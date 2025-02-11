@@ -5,11 +5,12 @@ import { SDoctorAppiontmentService } from '../../../Core/services/s-doctor-appio
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list-doctor-appointments',
   standalone: true,
-  imports: [Toast, RouterModule],
+  imports: [Toast, RouterModule, TranslateModule],
   templateUrl: './list-doctor-appointments.component.html',
   styleUrl: './list-doctor-appointments.component.css',
   providers: [MessageService],

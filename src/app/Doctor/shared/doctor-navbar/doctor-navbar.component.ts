@@ -1,39 +1,48 @@
 import {
   Component,
+  inject,
+  Inject,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   Renderer2,
   TemplateRef,
 } from '@angular/core';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-doctor-navbar',
   standalone: true,
-  imports: [CommonModule, TimeFormatPipe],
+  imports: [CommonModule, TimeFormatPipe, RouterModule],
   templateUrl: './doctor-navbar.component.html',
   styleUrls: ['./doctor-navbar.component.css'],
 })
 export class DoctorNavbarComponent implements OnInit, OnDestroy {
+  selectedLang: string = 'English';
+  selectedIcon: string = 'americanFlag.png';
   doctor: IDoctor = {} as IDoctor;
   notifications: any[] = [];
   unreadCount: number = 0;
   audio = new Audio('assets/notification.wav');
   interval: any;
-  selectedNotification: any = null; // لتمرير الإشعار المحدد
-  isModalOpen: boolean = false; // لفتح وإغلاق الـ Modal
+  selectedNotification: any = null;
+  isModalOpen: boolean = false;
   private destroy$ = new Subject<void>();
-
+  private readonly _STranslateService = inject(STranslateService);
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private _Router: Router,
     private _SDoctorService: SDoctorService,
     private renderer: Renderer2
-  ) {}
+  ) {
+    this.loadLanguage();
+  }
 
   ngOnInit() {
     this.loadDoctorData();
@@ -57,7 +66,7 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
     if (doctorId) {
       this._SDoctorService.getDoctorNotifications(doctorId).subscribe({
         next: (data) => {
-          console.log(data);
+          console.log(data.data);
           if (data.success) {
             const newNotifications = data.data.filter((n: any) => !n.read_at);
             if (newNotifications.length > this.unreadCount) {
@@ -84,13 +93,10 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
       },
     });
   }
-  showModal(notification: any) {
-    this.selectedNotification = notification;
-    this.isModalOpen = true;
+  showModal(id: string) {
+    console.log(id);
   }
-  closeModal() {
-    this.isModalOpen = false;
-  }
+
   ngAfterViewInit(): void {
     this.attachToggleEvent();
   }
@@ -122,6 +128,25 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
     localStorage.removeItem('doctorToken');
     localStorage.removeItem('doctorId');
     this._Router.navigateByUrl('/doctor-login');
+  }
+  change(lang: string) {
+    this._STranslateService.changeLang(lang);
+    this.updateLanguage(lang);
+  }
+
+  private updateLanguage(lang: string) {
+    if (lang === 'en') {
+      this.selectedLang = 'English';
+      this.selectedIcon = 'americanFlag.png';
+    } else if (lang === 'ar') {
+      this.selectedLang = 'العربية';
+      this.selectedIcon = 'egyptFlag.png';
+    }
+  }
+
+  private loadLanguage() {
+    const lang = localStorage.getItem('lang') || 'ar';
+    this.updateLanguage(lang);
   }
   ngOnDestroy(): void {
     this.destroy$.next();

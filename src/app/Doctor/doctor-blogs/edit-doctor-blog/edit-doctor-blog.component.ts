@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDoctorBlog } from '../../../Core/interfaces/i-doctor-blog';
 import { Subject, takeUntil } from 'rxjs';
@@ -16,7 +17,7 @@ import { Toast } from 'primeng/toast';
 @Component({
   selector: 'app-edit-doctor-blog',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './edit-doctor-blog.component.html',
   styleUrl: './edit-doctor-blog.component.css',
   providers: [MessageService],

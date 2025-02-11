@@ -1,0 +1,34 @@
+.table-container {
+  margin: 30px auto;
+  max-width: 90%;
+}
+.table th {
+  background-color: var(--third-color);
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+.bg-success {
+  background-color: rgb(46, 97, 46);
+}
+.bg-warning {
+  background-color: rgb(199, 199, 46);
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 15px;
+}
+.table-responsive::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--third-color);
+  border-radius: 4px;
+}
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: rgba(179, 178, 178, 0.44);
+}

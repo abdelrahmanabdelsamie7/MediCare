@@ -13,9 +13,9 @@ import { EditDoctorOfferImageComponent } from './doctor-offer-images/edit-doctor
 import { ListDoctorAppointmentsComponent } from './doctor-appointments/list-doctor-appointments/list-doctor-appointments.component';
 import { AddDoctorAppointmentComponent } from './doctor-appointments/add-doctor-appointment/add-doctor-appointment.component';
 import { ShowDoctorAppointmentComponent } from './doctor-appointments/show-doctor-appointment/show-doctor-appointment.component';
-import { EditDoctorAppointmentComponent } from './doctor-appointments/edit-doctor-appointment/edit-doctor-appointment.component';
 import { doctorGuard } from '../Core/guards/doctor.guard';
-import { UserDoctorReservationsComponent } from './user-doctor-reservations/user-doctor-reservations.component';
+import { UserReservationComponent } from './users-reservations/user-reservation/user-reservation.component';
+import { AllReservationsComponent } from './users-reservations/all-reservations/all-reservations.component';
 
 export const DOCTOR_ROUTES: Routes = [
   {
@@ -91,16 +91,16 @@ export const DOCTOR_ROUTES: Routes = [
         component: ShowDoctorAppointmentComponent,
         title: 'Doctor Panel | Show Appointment',
       },
-      {
-        path: 'edit-doctor-appointment/:id',
-        component: EditDoctorAppointmentComponent,
-        title: 'Doctor Panel | Edit Appointment',
-      },
       // ======================== User Whose Reserve Doctor ========================
       {
-        path: 'user-doctor-reservations',
-        component: UserDoctorReservationsComponent,
-        title: 'Doctor Panel | Users Reservations',
+        path: 'all-users-reservations',
+        component: AllReservationsComponent,
+        title: 'Doctor Panel | All Reservations',
+      },
+      {
+        path: 'user-reservation/:id',
+        component: UserReservationComponent,
+        title: 'Doctor Panel | User Reservations',
       },
     ],
   },

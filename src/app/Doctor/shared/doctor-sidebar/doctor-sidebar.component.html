@@ -4,24 +4,24 @@
     <li class="nav-item">
       <a class="nav-link " routerLink="/doctor-mediCare-1245">
         <i class="bi bi-grid"></i>
-        <span>Dashboard</span>
+        <span>{{ 'doctorPanel.dashboard' | translate }}</span>
       </a>
     </li>
     <!-- Start Appointments -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#doctorAppointments-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-regular fa-calendar-days"></i><span>Doctor Appointments</span><i
+        <i class="fa-regular fa-calendar-days"></i><span>{{ 'doctorPanel.doctorAppointments' | translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="doctorAppointments-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="doctor-appointments">
-            <i class="bi bi-circle"></i><span>List Appointments</span>
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.listAppointments' | translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add-doctor-appointment">
-            <i class="bi bi-circle"></i><span>Add Appointment</span>
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.addAppointment' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -29,17 +29,18 @@
     <!--Start Doctor Offers -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#doctorOffers-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-brands fa-discourse"></i><span>Doctor Offers</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-brands fa-discourse"></i><span>{{ 'doctorPanel.doctorOffers' | translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="doctorOffers-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="doctor-offers">
-            <i class="bi bi-circle"></i><span>List Doctor Offers</span>
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.listDoctorOffers' | translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add-doctor-offer">
-            <i class="bi bi-circle"></i><span>Add Doctor Offer</span>
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.addDoctorOffer' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -47,17 +48,18 @@
     <!-- Start Doctor Blogs -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#doctorBlogs-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-blog"></i><span>Doctor Blogs</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-solid fa-blog"></i><span>{{ 'doctorPanel.blogs' | translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="doctorBlogs-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
           <a routerLink="doctor-blogs">
-            <i class="bi bi-circle"></i><span>List Blogs</span>
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.listBlogs' | translate }}</span>
           </a>
         </li>
         <li>
           <a routerLink="add-doctor-blog">
-            <i class="bi bi-circle"></i><span>Add Blog</span>
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.addBlog' | translate }}</span>
           </a>
         </li>
       </ul>
@@ -65,12 +67,13 @@
     <!-- Start User Reservations -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#user-reservations-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-regular fa-clock"></i><span>Users Reservations</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-regular fa-clock"></i><span>{{ 'doctorPanel.usersReservation' | translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="user-reservations-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
         <li>
-          <a routerLink="user-doctor-reservations">
-            <i class="bi bi-circle"></i><span>List Reservations</span>
+          <a routerLink="all-users-reservations">
+            <i class="bi bi-circle"></i><span>{{ 'doctorPanel.listReservations' | translate }}</span>
           </a>
         </li>
       </ul>

@@ -9,11 +9,12 @@ import {
 import { Toast } from 'primeng/toast';
 import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-doctor-blog',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-doctor-blog.component.html',
   styleUrl: './add-doctor-blog.component.css',
   providers: [MessageService],

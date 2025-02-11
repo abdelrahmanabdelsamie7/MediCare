@@ -1,10 +1,10 @@
 <!-- Start Edit Doctor Blog -->
 <div class="pagetitle">
-  <h1>Edit Blog</h1>
+  <h1>{{ 'doctorPanel.editBlog' | translate}}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">{{ 'doctorPanel.dashboard' | translate}}</a></li>
+      <li class="breadcrumb-item">{{ 'doctorPanel.edit' | translate}}</li>
     </ol>
   </nav>
 </div>
@@ -17,20 +17,21 @@
           <form class="row" [formGroup]="editDoctorBlogForm" (ngSubmit)="editDoctorBlog(editDoctorBlogForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">{{ 'doctorPanel.title' | translate}}</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(editDoctorBlogForm.controls.title.touched && editDoctorBlogForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
               <div class="col-md-6">
-                <label for="content" class="form-label">Content</label>
+                <label for="content" class="form-label">{{ 'doctorPanel.content' | translate}}</label>
                 <input type="text" formControlName="content"
                   [ngClass]="{'is-invalid':(editDoctorBlogForm.controls.content.touched && editDoctorBlogForm.controls.content.errors) }"
                   class="form-control" id="content">
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editDoctorBlogForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="editDoctorBlogForm.invalid">{{
+                'doctorPanel.submit' | translate}}</button>
             </div>
           </form>
         </div>

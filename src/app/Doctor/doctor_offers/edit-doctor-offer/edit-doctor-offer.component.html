@@ -1,10 +1,11 @@
 <!-- Start Edit Doctor Offer -->
 <div class="pagetitle">
-  <h1>Edit Offer</h1>
+  <h1>{{ 'doctorPanel.editDoctorOffer' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">{{ 'doctorPanel.dashboard' | translate }}</a>
+      </li>
+      <li class="breadcrumb-item">{{ 'doctorPanel.edit' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -17,13 +18,13 @@
           <form class="row" [formGroup]="editDoctorOfferForm" (ngSubmit)="editDoctorOffer(editDoctorOfferForm)">
             <div class="row">
               <div class="col-md-6">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">{{ 'doctorPanel.title' | translate }}</label>
                 <input type="text" formControlName="title"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.title.touched && editDoctorOfferForm.controls.title.errors) }"
                   class="form-control" id="title">
               </div>
               <div class="col-md-6">
-                <label for="info_about_offer" class="form-label">Info About Offer</label>
+                <label for="info_about_offer" class="form-label">{{ 'doctorPanel.infoAboutOffer' | translate }}</label>
                 <input type="text" formControlName="info_about_offer"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.info_about_offer.touched && editDoctorOfferForm.controls.info_about_offer.errors) }"
                   class="form-control" id="info_about_offer">
@@ -31,43 +32,45 @@
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="price_before_discount" class="form-label">Price Before Discount</label>
+                <label for="price_before_discount" class="form-label">{{ 'doctorPanel.priceBeforeDiscount' | translate
+                  }}</label>
                 <input type="number" formControlName="price_before_discount"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.price_before_discount.touched && editDoctorOfferForm.controls.price_before_discount.errors) }"
-                  class="form-control" class="form-control" id="price_before_discount">
+                  class="form-control" id="price_before_discount">
               </div>
               <div class="col-md-6">
-                <label for="discount" class="form-label">Discount</label>
+                <label for="discount" class="form-label">{{ 'doctorPanel.discount' | translate }}</label>
                 <input type="number" formControlName="discount"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.discount.touched && editDoctorOfferForm.controls.discount.errors) }"
-                  class="form-control" class="form-control" id="discount">
+                  class="form-control" id="discount">
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label for="from_day" class="form-label">From Day</label>
+                <label for="from_day" class="form-label">{{ 'doctorPanel.fromDay' | translate }}</label>
                 <input type="date" formControlName="from_day"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.from_day.touched && editDoctorOfferForm.controls.from_day.errors) }"
-                  class="form-control" class="form-control" id="from_day">
+                  class="form-control" id="from_day">
               </div>
               <div class="col-md-6">
-                <label for="to_day" class="form-label">To Day</label>
+                <label for="to_day" class="form-label">{{ 'doctorPanel.toDay' | translate }}</label>
                 <input type="date" formControlName="to_day"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.to_day.touched && editDoctorOfferForm.controls.to_day.errors) }"
-                  class="form-control" class="form-control" id="to_day">
+                  class="form-control" id="to_day">
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                <label for="details" class="form-label">Details</label>
+                <label for="details" class="form-label">{{ 'doctorPanel.details' | translate }}</label>
                 <textarea type="text" formControlName="details"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.details.touched && editDoctorOfferForm.controls.details.errors) }"
-                  class="form-control" class="form-control" id="details"></textarea>
+                  class="form-control" id="details"></textarea>
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
-                [disabled]="editDoctorOfferForm.invalid">Submit</button>
+              <button type="submit" class="btn btn-primary my-2" [disabled]="editDoctorOfferForm.invalid">{{
+                'doctorPanel.submit' |
+                translate }}</button>
             </div>
           </form>
         </div>

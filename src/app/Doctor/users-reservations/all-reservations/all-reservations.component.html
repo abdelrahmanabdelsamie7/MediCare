@@ -1,0 +1,42 @@
+<div class="container table-container">
+  <h2 class="text-center mb-4 head-title fs-4">📋 قائمة الحجوزات</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover table-secondary">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>اسم المريض</th>
+          <th>البريد الإلكتروني</th>
+          <th>رقم الهاتف</th>
+          <th>العنوان</th>
+          <th>حالة الحجز</th>
+          <th>تاريخ الموعد</th>
+          <th>الوقت</th>
+          <th>اسم العيادة</th>
+          <th>التحكم</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of allReservations; track $index) {
+        <tr>
+          <td>{{ item.id }}</td>
+          <td>{{ item.user.name }}</td>
+          <td>{{ item.user.email }}</td>
+          <td>{{ item.user.phone }}</td>
+          <td>{{ item.user.address }}</td>
+          <td><span class="badge"
+              [ngStyle]="{ 'background-color': item.status == 'confirmed' ? 'rgb(46, 97, 46)' : 'rgb(199, 199, 46)' }">{{
+              item.status }}</span></td>
+          <td>{{ item.appointment.day }}</td>
+          <td>{{ item.appointment.start_at | timeFormat }} - {{ item.appointment.end_at | timeFormat }}</td>
+          <td>عيادة الدكتور عبدالرحمن</td>
+          <td>
+            <button class="btn btn-success btn-sm btn-custom" [disabled]="item.status == 'confirmed'">✔ تأكيد</button>
+            <button class="btn btn-danger btn-sm btn-custom" [disabled]="item.status == 'confirmed'">❌ إلغاء</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

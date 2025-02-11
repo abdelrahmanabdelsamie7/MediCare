@@ -28,22 +28,22 @@
           </li>
           }
         </ul>
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mt-lg-3 language">
           <li class="nav-item dropdown text-center">
-            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 fw-bold" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="text-secondary" [class]="selectedIcon"></i>
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-1 fs-6" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="selectedIcon" width="20px" height="25px">
               <span>{{ selectedLang }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3">
               <li>
                 <a class="dropdown-item d-flex align-items-center gap-2 lang-item" (click)="change('en')">
-                  <i class="fas fa-flag-usa"></i> <span>English</span>
+                  <img src="./americanFlag.png" width="20px" height="20px"> <span>English</span>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item d-flex align-items-center gap-2 lang-item" (click)="change('ar')">
-                  <i class="fas fa-flag"></i> <span>العربية</span>
+                  <img src="./egyptFlag.png" width="20px" height="20px"> <span>العربية</span>
                 </a>
               </li>
 

@@ -12,11 +12,12 @@ import { Toast } from 'primeng/toast';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
 import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-doctor-appointment',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast , TranslateModule],
   templateUrl: './add-doctor-appointment.component.html',
   styleUrl: './add-doctor-appointment.component.css',
   providers: [MessageService],

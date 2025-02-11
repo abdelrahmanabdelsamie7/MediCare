@@ -37,4 +37,9 @@ export class SReservationService {
       `${environment.baseUrl}/doctor/reservations`
     );
   }
+  getDoctorReservationById(id: string): Observable<any> {
+    return this._HttpClient.get<any>(
+      `${environment.baseUrl}/doctor/reservations/${id}`
+    );
+  }
 }

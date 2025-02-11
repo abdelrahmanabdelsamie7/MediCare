@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold head-title">تفاصيل الحجز</h2>
+  <div class="card mb-3 shadow-md">
+    <div class="card-header bg-info text-white">
+      <h5><i class="fas fa-calendar-check"></i> بيانات الحجز</h5>
+    </div>
+    <div class="card-body">
+      <p><strong>رقم الحجز:</strong> {{ id }}</p>
+      <p><strong>حالة الحجز:</strong> <span class="badge bg-info text-dark">{{ statusInfo }}</span></p>
+      <p><strong>تاريخ الإنشاء:</strong> {{ appointment.day }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h5><i class="fas fa-user"></i> بيانات المستخدم</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>الاسم:</strong>{{ user.name }}</p>
+          <p><strong>البريد الإلكتروني:</strong> {{ user.email }}</p>
+          <p><strong>الهاتف:</strong> {{ user.phone }}</p>
+          <p><strong>العنوان:</strong> {{ user.address }}</p>
+          <p><strong>العمر:</strong> {{ user.birth_date| age }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h5><i class="fas fa-clinic-medical"></i>بيانات العيادة</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>اسم العيادة:</strong>{{ clinic.title }}</p>
+          <p><strong>وصف العيادة:</strong> {{ clinic.description }}</p>
+          <p><strong>العنوان:</strong> {{ clinic.address }}</p>
+          <p><strong>الهاتف:</strong> {{ clinic.phone }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3 shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h5><i class="fas fa-clock"></i>بيانات الموعد</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>التاريخ:</strong> {{ appointment.day }}</p>
+          <p><strong>وقت البداية:</strong> {{ appointment.start_at | timeFormat }}</p>
+          <p><strong>وقت النهاية:</strong> {{ appointment.end_at | timeFormat }}</p>
+          <p><strong>المدة:</strong>{{ appointment.duration}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

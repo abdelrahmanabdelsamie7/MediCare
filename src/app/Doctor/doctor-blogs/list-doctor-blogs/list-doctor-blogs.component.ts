@@ -5,10 +5,11 @@ import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-list-doctor-blogs',
   standalone: true,
-  imports: [RouterModule, Toast],
+  imports: [RouterModule, Toast, TranslateModule],
   templateUrl: './list-doctor-blogs.component.html',
   styleUrl: './list-doctor-blogs.component.css',
   providers: [MessageService],
