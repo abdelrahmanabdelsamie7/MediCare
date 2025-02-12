@@ -7,11 +7,13 @@ import { IPharmacy } from '../../../Core/interfaces/i-pharmacy';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-all-pharmacies',
   standalone: true,
-  imports: [RouterModule, FormsModule],
+  imports: [RouterModule, FormsModule ,TranslateModule],
   templateUrl: './all-pharmacies.component.html',
   styleUrl: './all-pharmacies.component.css',
 })
@@ -99,7 +101,13 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
         },
       });
   }
-
+  showInMap(url: string) {
+    window.open(
+      url,
+      '_blank',
+      'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
+    );
+  }
   loadPharmaciesByChain(chainId: string) {
     this.selectedChainId = chainId;
     this.currentPage = 1;

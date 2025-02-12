@@ -46,37 +46,37 @@
   <div *ngIf="activeTab === 'doctors'">
     <div class="row">
       @for (item of Doctors; track $index) {
-      <div class="col-md-6 col-lg-4">
-        <div
-          class="card text-center p-4 shadow-sm"
-          style="width: 350px; border-radius: 15px"
-        >
-          <div class="row">
-            <div class="card-body col-6">
-              <h3 class="fs-5 text-light card-title fw-bold">
-                {{ item.fName }} {{ item.lName }}
-                <span>({{ item.title }})</span>
-              </h3>
-              <p class="card-text text-secondary fw-b">
-                <i class="fa-solid fa-phone"></i> {{ item.phone }}
-              </p>
+        <div class="col-md-6 col-lg-4">
+          <div class="card text-center shadow-lg border-0 overflow-hidden" >
+
+            <!-- الجزء العلوي -->
+            <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
+              <i class="fas fa-user-md fa-3x"></i>
+              <h4 class="fw-bold mt-2">{{ item.fName }} {{ item.lName }}</h4>
+              <p class="mb-2">{{ item.title }}</p>
             </div>
-            <div class="col-6">
-              <img
-                [src]="item.image"
-                class="rounded-circle card-img-top img-fluid border border-3 border-light"
-                style="width: 100px; height: 100px"
-                alt="Doctor Image"
-              />
+
+            <!-- الصورة -->
+            <div class="position-relative p-3 text-center">
+              <img [src]="item.image"
+                   class="rounded-circle border border-4 border-light shadow"
+                   style="width: 100px; height: 100px; margin-top: -50px;"
+                   alt="Doctor Image" />
+            </div>
+
+            <!-- التفاصيل -->
+            <div class="card-body text-start px-4">
+             <div class="d-flex justify-content-between align-content-center">
+              <p class="fw-bold"><i class="fa-solid fa-phone text-info"></i> {{ item.phone }}</p>
+              <p class="fw-bold"><i class="fa-solid fa-money-bill text-info"></i> {{ item.app_price }} EGP</p>
+             </div>
+              <a routerLink="/details/doctor/{{ item.id }}"
+                 class="btn btn-info text-white fw-bold w-100 rounded-pill shadow-sm mt-3">
+                {{ "depDetails.BtnInfo" | translate }}
+              </a>
             </div>
           </div>
-          <a
-            routerLink="/details/doctor/{{ item.id }}"
-            class="btn btn-outline-secondary rounded-5 fw-bold text-info"
-            >{{ "depDetails.BtnInfo" | translate }}</a
-          >
         </div>
-      </div>
       }
     </div>
     <!-- Pagination for doctors -->
@@ -105,45 +105,37 @@
   <div *ngIf="activeTab === 'hospitals'">
     <div class="row">
       @for (item of Hospitals; track $index) {
-      <div class="col-md-6 col-lg-4">
-        <div
-          class="card text-center p-4 shadow-sm"
-          style="width: 350px; border-radius: 15px"
-        >
-          <div class="row">
-            <div class="col-8">
-              <div class="card-body">
-                <h3 class="card-title p-0 fs-5 text-light fw-bold">
-                  {{ item.title }}
-                </h3>
-                <p class="card-text text-secondary">{{ item.service }}</p>
-                <p class="card-text text-secondary fw-bold">
-                  سعر الكشف :
-                  <span class="text-light">{{ item.pivot.app_price }}</span>
-                </p>
-                <!-- <p class="card-text  text-secondary ">يبدأ : {{ item.pivot.start_at | date:'short' }}</p>
-              <p class="card-text  text-secondary">ينتهي : {{ item.pivot.end_at | date:'short' }}</p> -->
-                <p class="card-text text-secondary fw-b">
-                  <i class="fa-solid fa-phone"></i> {{ item.phone }}
-                </p>
-              </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card text-center shadow-lg border-0 overflow-hidden">
+
+            <!-- الجزء العلوي -->
+            <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
+              <i class="fas fa-hospital fa-3x"></i>
+              <h4 class="fw-bold mt-2">{{ item.title }}</h4>
+              <p class="mb-2">{{ item.service }}</p>
             </div>
-            <div class="col-4">
-              <img
-                [src]="item.image"
-                class="rounded-circle card-img-top img-fluid border border-3 border-light"
-                style="width: 100px; height: 100px"
-                alt="Hospital Image"
-              />
+
+            <!-- الصورة -->
+            <div class="position-relative p-3 text-center">
+              <img [src]="item.image"
+                   class="rounded-circle border border-4 border-light shadow"
+                   style="width: 100px; height: 100px; margin-top: -50px;"
+                   alt="Hospital Image" />
+            </div>
+
+            <!-- التفاصيل -->
+            <div class="card-body text-start px-4">
+             <div class="d-flex justify-content-between align-content-center">
+              <p class="fw-bold"><i class="fa-solid fa-phone text-info"></i> {{ item.phone }}</p>
+              <p class="fw-bold"><i class="fa-solid fa-money-bill text-info"></i> {{item.pivot.app_price }} EGP</p>
+             </div>
+             <p class="fw-bold text-center"><i class="fa-regular fa-hospital text-info"></i> {{item.address }} </p>
+             <a (click)="showInMap(item.locationUrl)" class="btn btn-info text-white fw-bold w-100 rounded-pill " title="Location">
+              <i class="bi bi-geo-alt text-light"></i>
+            </a>
             </div>
           </div>
-          <a
-            routerLink="hospital/{{ item.id }}"
-            class="btn btn-outline-secondary rounded-5 fw-bold text-info"
-            >{{ "depDetails.BtnInfo" | translate }}</a
-          >
         </div>
-      </div>
       }
     </div>
     <!-- Pagination for hospitals -->
@@ -172,58 +164,39 @@
   <div *ngIf="activeTab === 'care_centers'">
     <div class="row">
       @for (item of CareCenters; track $index) {
-      <div class="col-md-6 col-lg-4">
-        <div
-          class="card text-center p-4 shadow-sm"
-          style="width: 350px; border-radius: 15px"
-        >
-          <div class="row">
-            <div class="col-8">
-              <div class="card-body">
-                <h5 class="card-title p-0 fs-5 text-light fw-bold">
-                  {{ item.title }}
-                </h5>
-                <p class="card-text text-secondary">{{ item.service }}</p>
-                <p
-                  class="card-text text-secondary fw-bold m-0"
-                  style="direction: rtl"
-                >
-                  العنوان : <span class="text-light">{{ item.address }}</span>
-                </p>
-                <p class="card-text text-secondary fw-bold m-0">
-                  سعر الكشف :
-                  <span class="text-light"> {{ item.pivot.app_price }}</span>
-                </p>
-                <!-- <p class="card-text text-secondary fw-b"><i class="fa-solid fa-phone"></i> {{ item.phone }} </p> -->
-                <!-- <p class="card-text">يبدأ : {{ item.pivot.start_at | date:'short' }}</p>
-                <p class="card-text">ينتهي : {{ item.pivot.end_at | date:'short' }}</p> -->
-              </div>
-            </div>
-            <div class="col-4">
-              <img
-                [src]="item.image"
-                class="rounded-circle card-img-top img-fluid border border-3 border-light"
-                style="width: 100px; height: 100px"
-                alt="Care Center Image"
-              />
-              <div class="px-3">
-                <a
-                  href="tel:{{ item.phone }}"
-                  class="text-info"
-                  title="Call Now"
-                >
-                  <i class="fa-solid fa-phone"></i>
-                </a>
-                <a (click)="showInMap(item.locationUrl)" title="Location">
-                  <i class="bi bi-geo-alt text-warning"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card text-center shadow-lg border-0 overflow-hidden">
 
-          <!-- <a routerLink="care_center/{{ item.id }}" class="btn btn-outline-secondary rounded-5 fw-bold text-info">{{"depDetails.BtnInfo"|translate}}</a> -->
+            <!-- الجزء العلوي -->
+            <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
+              <i class="fas fa-clinic-medical fa-3x"></i>
+              <h4 class="fw-bold mt-2">{{ item.title }}</h4>
+              <p class="mb-2">{{ item.service }}</p>
+            </div>
+
+            <!-- الصورة -->
+            <div class="position-relative p-3 text-center">
+              <img [src]="item.image"
+                   class="rounded-circle border border-4 border-light shadow"
+                   style="width: 100px; height: 100px; margin-top: -50px;"
+                   alt="Center Image" />
+            </div>
+
+            <!-- التفاصيل -->
+            <div class="card-body text-start px-4">
+              <div class="d-flex justify-content-between align-content-center">
+                <p class="fw-bold"><i class="fa-solid fa-phone text-info"></i> {{ item.phone }}</p>
+                <p class="fw-bold"><i class="fa-solid fa-money-bill text-info"></i> {{ item.pivot.app_price }} EGP</p>
+              </div>
+              <p class="fw-bold text-center"><i class="fa-solid fa-house-chimney-medical text-info"></i> {{ item.address }} </p>
+              <a (click)="showInMap(item.locationUrl)" class="btn btn-info text-white fw-bold w-100 rounded-pill " title="Location">
+                <i class="bi bi-geo-alt text-light"></i>
+              </a>
+            </div>
+
+          </div>
         </div>
-      </div>
+
       }
     </div>
     <!-- Pagination for care_centers -->

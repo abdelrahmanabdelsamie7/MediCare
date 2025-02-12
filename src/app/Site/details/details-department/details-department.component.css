@@ -36,7 +36,9 @@
   margin-bottom: 0;
 }
 .card {
-  background: linear-gradient(155deg, #0dcaf0, #f1f1f1);
+  background-color:#f8f9fa ;
+  border-radius: 15px;
+  max-width: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }

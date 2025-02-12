@@ -1,16 +1,21 @@
 <div class="container my-5 py-4">
-  <div class="row py-2 ">
+  <div class="row py-2">
     @for (item of deliveryServices; track $index) {
     <div class="col-md-6 col-lg-4">
-      <div class="card border border-1 border-info">
-        <div class=" text-center p-2">
-          <a [href]="item.app_link" class="link-info" target="_blank"><i class="fa-solid fa-car fa-2x "></i></a>
+      <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-header bg-info text-white text-center py-4" style="border-bottom-right-radius: 50px;">
+          <i class="fa-solid fa-truck-fast fa-3x car-icon"></i>
+          <h5 class="fw-bold mt-2">{{ item.name }}</h5>
         </div>
-
-        <div class="card-body " style="direction: rtl;">
-          <h5 class=" card-text fs-5 py-3 "><span class="text-info">خدمة توصيل :</span> {{ item.name }}</h5>
-          <p class="card-text fs-5 h6 py-3"><span class="text-info">وصف:</span>{{ item.description }}</p>
-
+        <div class="card-body px-4 text-center">
+          <p class="card-text pt-2">
+           {{ item.description }}<i class="fa-solid fa-info-circle text-info"></i>
+          </p>
+          <a [href]="item.app_link"
+             class="btn btn-outline-info fw-bold w-100 rounded-pill shadow-sm mt-3"
+             target="_blank">
+           لينك التطبيق
+          </a>
         </div>
       </div>
     </div>

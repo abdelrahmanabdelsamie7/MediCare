@@ -1,7 +1,27 @@
-.card-body{
+/* .card-body{
     direction: rtl;
-}
+} */
 .btn-outline-info.active {
   background-color: #17a2b8 !important; /* Use your color */
   color: white !important;
+}
+.card-top {
+  background-color:#f8f9fa ;
+  border-radius: 15px;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-top:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-top img {
+  transition: transform 0.3s ease;
+}
+
+.card-top:hover img {
+  transform: scale(1.1);
 }

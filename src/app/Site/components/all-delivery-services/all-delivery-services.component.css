@@ -1,1 +1,17 @@
 
+@keyframes moveCar {
+  0% {
+     transform: translateX(-10px);
+     }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.car-icon {
+  display: inline-block;
+  animation: moveCar 2s infinite ease-in-out;
+}

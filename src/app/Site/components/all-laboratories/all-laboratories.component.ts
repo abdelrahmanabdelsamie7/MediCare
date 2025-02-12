@@ -8,13 +8,13 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
-import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
     selector: 'app-all-laboratories',
     standalone: true,
-    imports: [RouterModule, FormsModule,ReactiveFormsModule],
+    imports: [RouterModule, FormsModule,ReactiveFormsModule,TranslateModule],
     templateUrl: './all-laboratories.component.html',
     styleUrl: './all-laboratories.component.css',
 })
@@ -91,6 +91,13 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
                    this.currentPage = data.data.current_page;
                 },
         });
+  }
+  showInMap(url: string) {
+    window.open(
+      url,
+      '_blank',
+      'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
+    );
   }
     loadChainsLaboratories() {
         this._SChainLaboratoriesService
