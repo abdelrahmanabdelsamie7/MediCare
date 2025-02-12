@@ -3,7 +3,8 @@
     "register": "انضم إلينا",
     "login": "دخول",
     "lang": "اللغه",
-    "booking": "مواعيد الحجز"
+    "booking": "مواعيد الحجز",
+    "home":"الصفحة الرئيسية"
   },
   "departments": {
     "medicalDepartments": "الأقسام الطبية"
