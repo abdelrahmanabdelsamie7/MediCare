@@ -3,7 +3,8 @@
     "register": "Register",
     "login": "Login",
     "lang": "Lang",
-    "booking": "Booking Appointments"
+    "booking": "Booking Appointments",
+    "home":"Home"
   },
   "departments": {
     "medicalDepartments": "Medical Departments"

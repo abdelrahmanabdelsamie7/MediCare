@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgStyle } from '@angular/common';
 import { Component, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLinkActive, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,11 +7,12 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-site-navbar',
   standalone: true,
-  imports: [RouterModule, TranslateModule],
+  imports: [RouterModule, TranslateModule,NgStyle],
   templateUrl: './site-navbar.component.html',
   styleUrl: './site-navbar.component.css',
 })
 export class SiteNavbarComponent implements OnInit {
+  isRtl: boolean = false;
   selectedLang: string = 'English';
   selectedIcon: string = './americanFlag.png';
   isAuth: boolean = false;
@@ -20,6 +21,7 @@ export class SiteNavbarComponent implements OnInit {
     this.loadLanguage();
   }
   ngOnInit(): void {
+  this.checkLanguageDirection();
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('userToken')) {
         this.isAuth = true;
@@ -34,17 +36,18 @@ export class SiteNavbarComponent implements OnInit {
   }
 
   private updateLanguage(lang: string) {
-    if (lang === 'en') {
-      this.selectedLang = 'English';
-      this.selectedIcon = './americanFlag.png';
-    } else if (lang === 'ar') {
-      this.selectedLang = 'العربية';
-      this.selectedIcon = './egyptFlag.png';
-    }
+    this._STranslateService.currentLang$.subscribe((lang) => {
+      this.isRtl = lang === 'ar';
+      this.selectedLang = lang === 'ar' ? 'العربية' : 'English';
+      this.selectedIcon = lang === 'ar' ? './egyptFlag.png' : './americanFlag.png';
+    });
   }
 
   private loadLanguage() {
     const lang = localStorage.getItem('lang') || 'ar';
     this.updateLanguage(lang);
+  }
+  checkLanguageDirection(): void {
+    this.isRtl = localStorage.getItem('lang') === 'ar';
   }
 }
