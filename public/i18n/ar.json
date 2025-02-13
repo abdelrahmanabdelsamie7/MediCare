@@ -305,7 +305,9 @@
     "fromDay": "من يوم",
     "toDay": "إلى يوم",
     "dateFormat": "يوم/شهر/سنة",
-    "details": "التفاصيل"
+    "details": "التفاصيل",
+    "logout": "تسجيل الخروج",
+    "haveNotifications": "لديك إشعار "
   },
   "doctor": {
     "doctors": "الاطباء",

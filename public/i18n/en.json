@@ -303,7 +303,10 @@
     "fromDay": "From Day",
     "toDay": "To Day",
     "dateFormat": "mm/dd/yyyy",
-    "details": "Details"
+    "details": "Details",
+    "logout": "Log Out",
+    "haveNotifications": "Have Notificatio"
+
   },
   "doctor": {
     "doctors": "Doctors",
