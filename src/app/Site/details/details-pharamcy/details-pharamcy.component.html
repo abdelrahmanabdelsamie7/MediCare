@@ -55,7 +55,7 @@
               [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)" (click)="setRating(i + 1)">
             </i>
           </div>
-          <button class="btn btn-info text-light rounded-3 btn-sm" (click)="toggleReviewInput()">
+          <button class="btn btn-info text-light rounded-3 btn-sm" [disabled]="!isAuth" (click)="toggleReviewInput()">
             إضافة مراجعة
           </button>
         </div>

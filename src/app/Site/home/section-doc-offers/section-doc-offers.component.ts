@@ -32,14 +32,18 @@ export class SectionDocOffersComponent implements OnInit {
   DocOffers: IOfferGroup[] = [];
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private _SOfferGroupService: SOfferGroupService) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+  ngOnInit() {
     this.responsiveOptions = [
       {
         breakpoint: '1400px',
         numVisible: 2,
+        numScroll: 1,
       },
       {
         breakpoint: '1199px',
         numVisible: 3,
+        numScroll: 1,
       },
       {
         breakpoint: '767px',
@@ -52,8 +56,6 @@ export class SectionDocOffersComponent implements OnInit {
         numScroll: 1,
       },
     ];
-  }
-  ngOnInit() {
     this.loadOfferGroups();
   }
   loadOfferGroups() {
@@ -62,13 +64,12 @@ export class SectionDocOffersComponent implements OnInit {
         if (data && data.data && Array.isArray(data.data)) {
           this.DocOffers = data.data;
         } else {
-          this.DocOffers = []; 
+          this.DocOffers = [];
         }
       },
       error: () => {
-        this.DocOffers = []; 
+        this.DocOffers = [];
       }
     });
   }
-
 }

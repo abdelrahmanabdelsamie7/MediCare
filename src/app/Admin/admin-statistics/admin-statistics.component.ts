@@ -13,12 +13,15 @@ import { Subject, takeUntil } from 'rxjs';
 export class AdminStatisticsComponent implements OnInit, OnDestroy {
   departmentsCount: number = 0;
   doctorsCount: number = 0;
+  usersCount: number = 0;
   doctorBlogsCount: number = 0;
   chainPharamciesCount: number = 0;
   chainLaboratoriesCount: number = 0;
   hospitalsCount: number = 0;
   pahramaciesCount: number = 0;
   laboratoriesCount: number = 0;
+  clinicsCount: number = 0;
+  offersCount: number = 0;
   careCentersCount: number = 0;
   private destroy$ = new Subject<void>();
   constructor(private _SAdminService: SAdminService) {}
@@ -41,6 +44,9 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy {
           this.pahramaciesCount = data.data.pharmaciesCount;
           this.laboratoriesCount = data.data.laboratoriesCount;
           this.careCentersCount = data.data.careCentersCount;
+          this.usersCount = data.data.usersCount;
+          this.offersCount = data.data.offersCount;
+          this.clinicsCount = data.data.clinicsCount;
         },
       });
   }

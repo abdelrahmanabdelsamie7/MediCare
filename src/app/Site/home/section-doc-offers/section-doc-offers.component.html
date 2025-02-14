@@ -4,7 +4,7 @@
   </div>
   <div class="container my-4">
     @defer(when isBrowser) {
-    <p-carousel id="docOffers-carousel" class="py-5" [value]="DocOffers" [numVisible]="3"
+    <p-carousel id="docOffers-carousel" class="py-5" [value]="DocOffers" [numVisible]="3" [circular]="true"
       [responsiveOptions]="responsiveOptions">
       <ng-template let-docOffer pTemplate="item">
         <a routerLink="/all/doctor-offers/{{docOffer.id}}">

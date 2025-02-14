@@ -20,7 +20,7 @@ export class ListDoctorsComponent implements OnInit, OnDestroy {
   constructor(
     private _SDoctorservice: SDoctorService,
     private _MessageService: MessageService
-  ) {}
+  ) { }
   ngOnInit() {
     this.getDoctors();
   }

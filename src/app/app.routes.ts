@@ -13,6 +13,8 @@ import { DoctorLoginComponent } from './Doctor/shared/doctor-login/doctor-login.
 import { LoginComponent } from './Site/auth/google-auth/google-auth.component';
 import { AllItemsComponent } from './Site/components/all-items/all-items.component';
 import { PaymentComponent } from './Site/components/payment/payment.component';
+import { authInterceptor } from './Core/interceptors/auth.interceptor';
+import { userGuard } from './Core/guards/user.guard';
 export const routes: Routes = [
   // ======================== Public Routes ========================
   {
@@ -50,6 +52,7 @@ export const routes: Routes = [
     path: 'user-profile',
     component: UserProfileComponent,
     title: 'MediCare | User Profile',
+    canActivate: [userGuard]
   },
 
   // ======================== Lazy-Loaded Listings ========================

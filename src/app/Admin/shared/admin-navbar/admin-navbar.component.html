@@ -1,80 +1,122 @@
 <!-- ======= Header ======= -->
-<header id="header" class="header fixed-top d-flex align-items-center">
+<header
+  id="header"
+  class="header fixed-top d-flex align-items-center">
   <div class="d-flex align-items-center justify-content-between">
-    <a routerLink="/admin-mediCare-1245" class="logo d-flex align-items-center">
+    <a
+      routerLink="/admin-mediCare-1245"
+      class="logo d-flex align-items-center">
       <span class="d-none d-lg-block">MediCare Admin </span>
     </a>
-    <i class="bi bi-list toggle-sidebar-btn" (click)="toggleSidebar()"></i>
+    <i
+      class="bi bi-list toggle-sidebar-btn"
+      (click)="toggleSidebar()"></i>
   </div>
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
       <!-- Select Language -->
       <li class="nav-item dropdown text-center mx-2">
-        <a class="nav-link dropdown-toggle d-flex align-items-center gap-1 fw-bold text-info" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ selectedIcon }}" width="20px" height="20px">
+
+        <a
+          class="nav-link dropdown-toggle d-flex align-items-center gap-1 fw-bold text-info"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img
+            src="{{ selectedIcon }}"
+            width="20px"
+            height="20px">
           <span>{{ selectedLang }}</span>
         </a>
+
         <ul class="dropdown-menu dropdown-menu-end shadow-sm rounded-3">
           <li>
-            <a class="dropdown-item d-flex align-items-center gap-1 lang-item" (click)="change('en')">
-              <img src="./americanFlag.png" alt="" width="20px" height="20px"> <span>English</span>
+            <a
+              class="dropdown-item d-flex align-items-center gap-1 lang-item"
+              (click)="change('en')"><img
+                src="./americanFlag.png"
+                alt
+                width="20px"
+                height="20px"><span>English</span>
             </a>
           </li>
           <li>
-            <a class="dropdown-item d-flex align-items-center gap-1 lang-item" (click)="change('ar')">
-              <img src="./egyptFlag.png" alt="" width="20px" height="20px"> <span>العربية</span>
+            <a
+              class="dropdown-item d-flex align-items-center gap-1 lang-item"
+              (click)="change('ar')"><img
+                src="./egyptFlag.png"
+                alt
+                width="20px"
+                height="20px"><span>العربية</span>
             </a>
           </li>
         </ul>
       </li>
       <!-- Add Clinic To Doctor -->
       <li class="nav-item dropdown">
-        <a class="nav-link nav-icon" title="Clinic Doctor" data-bs-toggle="dropdown">
+
+        <a
+          class="nav-link nav-icon"
+          title="Clinic Doctor"
+          data-bs-toggle="dropdown">
           <i class="fa-solid fa-house-chimney-medical"></i>
         </a>
+
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow doctors">
           <li class="doctor-item">
             <a routerLink="doctor-clinics"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">
                 {{'adminPanel.clinics' | translate}}
-              </span></a>
+              </span>
+            </a>
           </li>
           <li>
             <hr class="dropdown-divider">
           </li>
           <li class="doctor-item">
             <a routerLink="add-doctor-clinic"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">
-                {{'adminPanel.clinic_add' | translate}}</span></a>
+                {{'adminPanel.clinic_add' | translate}}</span>
+            </a>
           </li>
         </ul>
       </li>
-      <!-- Add Doctor  -->
+      <!-- Add Doctor -->
       <li class="nav-item dropdown">
-        <a class="nav-link nav-icon" title="Doctor" data-bs-toggle="dropdown">
+
+        <a
+          class="nav-link nav-icon"
+          title="Doctor"
+          data-bs-toggle="dropdown">
           <i class="fas fa-user-md"></i>
         </a>
+
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow doctors">
           <li class="doctor-item">
             <a routerLink="doctors"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">
                 {{'adminPanel.doctors' | translate}}
-              </span></a>
+              </span>
+            </a>
           </li>
           <li>
             <hr class="dropdown-divider">
           </li>
           <li class="doctor-item">
-            <a routerLink="add_doctor"><span
-                class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">{{'adminPanel.doctor_add' |
-                translate}}</span></a>
+            <a routerLink="add_doctor"><span class="badge fs-6 d-inline-block mx-auto rounded-pill bg-info p-2">{{'adminPanel.doctor_add' |
+                translate}}</span>
+            </a>
           </li>
         </ul>
       </li>
       <!-- Admin Profile -->
       <li class="nav-item dropdown pe-3">
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+
+        <a
+          class="nav-link nav-profile d-flex align-items-center pe-0"
+          href="#"
+          data-bs-toggle="dropdown">
           <span class="d-none d-md-block dropdown-toggle ps-2">{{ Admin.name }}</span>
           <i class="fa fa-user fs-5 d-md-none"></i>
         </a>
+
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
             <h6>{{ Admin.name }}</h6>
@@ -84,28 +126,48 @@
             <hr class="dropdown-divider">
           </li>
           <li>
-            <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>{{ 'adminPanel.logout' | translate }}</span>
+            <button
+              class="dropdown-item d-flex align-items-center"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><i class="bi bi-box-arrow-right"></i><span>{{ 'adminPanel.logout' | translate }}</span>
             </button>
           </li>
-
         </ul>
       </li>
     </ul>
   </nav>
-</header><!-- End Header -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</header>
+<!-- End Header -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <h3 class="head-title" style="direction:rtl">انت علي وشك المغادرة ..</h3>
-        <img src="./sad.png" alt="" class="img-fluid">
+        <h3
+          class="head-title"
+          style="direction:rtl">انت علي وشك المغادرة ..</h3>
+        <img
+          src="./sad.png"
+          alt
+          class="img-fluid">
       </div>
       <div class="modal-footer border border-0 d-flex justify-content-center align-items-center">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">سأبقي</button>
-        <button type="button" class="btn btn-info text-light" (click)="logOut()">تسجيل الخروج</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal">
+          سأبقي
+        </button>
+        <button
+          type="button"
+          class="btn btn-info text-light"
+          (click)="logOut()">
+          تسجيل الخروج
+        </button>
       </div>
     </div>
   </div>

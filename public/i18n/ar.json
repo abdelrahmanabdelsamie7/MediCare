@@ -136,6 +136,7 @@
     "hospitals": "المستشفيات",
     "hospitals_today": "المستشفيات | اليوم",
     "clinics": "العيادات الطبية",
+    "clinics_today": "العيادات الطبية| اليوم",
     "clinic_add": "إضافة عيادة طبية",
     "clinic_edit": "تعديل بيانات العيادة الطبية",
     "add_clinic_image": "إضافة صورة لعيادة الطبيب",
@@ -144,6 +145,8 @@
     "pharmacies_today": "الصيدليات | اليوم",
     "laboratories": "المعامل",
     "laboratories_today": "المعامل | اليوم",
+    "users_today": "المستخدمين | اليوم",
+    "offers_today": " عروض الأطباء | اليوم",
     "care_centers": "مراكز الرعاية",
     "care_centers_today": "مراكز الرعاية | اليوم",
     "doctor_blogs_today": "مدونات الأطباء | اليوم",
@@ -160,6 +163,7 @@
     "department_tips_add": "إضافة نصيحة للقسم",
     "department_tips_edit": "تعديل نصيحة للقسم",
     "hospital_list": "قائمة المستشفيات",
+    "users_list": "قائمة المستخدمين",
     "hospital_add": "إضافة مستشفى",
     "hospital": "المستشفى",
     "hospital_edit": "تعديل المستشفى",
@@ -270,7 +274,8 @@
     "discount": "الخصم",
     "offer_period": "فترة العرض",
     "offer_active": "العرض مفعل",
-    "offer_inactive": "العرض غير مفعل"
+    "offer_inactive": "العرض غير مفعل" ,
+    "user_title":"اسم المستخدم"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",

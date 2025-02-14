@@ -6,7 +6,9 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/departments">{{ 'adminPanel.departments_today' | translate }}</a>
+              <a routerLink="/admin-mediCare-1245/departments">
+                {{ 'adminPanel.departments_today' | translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -24,7 +26,9 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/doctors">{{ 'adminPanel.doctors_today' | translate }}</a>
+              <a routerLink="/admin-mediCare-1245/doctors">
+                {{ 'adminPanel.doctors_today' | translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -37,12 +41,34 @@
           </div>
         </div>
       </div>
+      <!-- users Count -->
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a routerLink="/admin-mediCare-1245/all-users">
+                {{ 'adminPanel.users_today' | translate }}
+              </a>
+            </h5>
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div class="ps-3">
+                <h6>{{ usersCount }}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Pharmacies Count -->
       <div class="col-xxl-4 col-md-6">
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/pharmacies">{{ 'adminPanel.pharmacies_today' | translate }}</a>
+              <a routerLink="/admin-mediCare-1245/pharmacies">
+                {{ 'adminPanel.pharmacies_today' | translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -60,7 +86,9 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/laboratories">{{ 'adminPanel.laboratories_today' | translate }}</a>
+              <a routerLink="/admin-mediCare-1245/laboratories">
+                {{ 'adminPanel.laboratories_today' | translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -78,7 +106,9 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/care_centers">{{ 'adminPanel.care_centers_today' | translate }}</a>
+              <a routerLink="/admin-mediCare-1245/care_centers">
+                {{ 'adminPanel.care_centers_today' | translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -96,7 +126,9 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/hospitals">{{ 'adminPanel.hospitals_today' | translate }}</a>
+              <a routerLink="/admin-mediCare-1245/hospitals">
+                {{ 'adminPanel.hospitals_today' | translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -114,8 +146,10 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/chain_pharmacies">{{ 'adminPanel.chain_pharmacies_today' | translate
-                }}</a>
+              <a routerLink="/admin-mediCare-1245/chain_pharmacies">
+                {{ 'adminPanel.chain_pharmacies_today' | translate
+                }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -133,8 +167,10 @@
         <div class="card info-card">
           <div class="card-body">
             <h5 class="card-title">
-              <a routerLink="/admin-mediCare-1245/chain_laboratories">{{ 'adminPanel.chain_laboratories_today' |
-                translate }}</a>
+              <a routerLink="/admin-mediCare-1245/chain_laboratories">
+                {{ 'adminPanel.chain_laboratories_today' |
+                translate }}
+              </a>
             </h5>
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -158,6 +194,41 @@
                 <i class="fa-solid fa-blog fs-3"></i>
               </div>
               <h6 class="mb-0">{{ doctorBlogsCount }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Doctor Offers Count -->
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ 'adminPanel.offers_today' |
+              translate }}</h5>
+            <div class="d-flex align-items-center gap-3">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <img
+                  src="./gift.png"
+                  wifth="40px"
+                  height="40px">
+              </div>
+              <h6 class="mb-0">{{ offersCount }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Doctor clinics Count -->
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card">
+          <div class="card-body">
+            <a routerLink="/admin-mediCare-1245/doctor-clinics">
+              <h5 class="card-title">{{ 'adminPanel.clinics_today' |
+              translate }}</h5>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-house-chimney-medical"></i>
+              </div>
+              <h6 class="mb-0">{{ clinicsCount }}</h6>
             </div>
           </div>
         </div>

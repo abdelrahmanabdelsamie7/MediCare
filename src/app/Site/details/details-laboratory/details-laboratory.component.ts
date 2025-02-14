@@ -22,6 +22,7 @@ import { SLaboratoryService } from '../../../Core/services/s-laboratory.service'
 })
 export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
   id: string = '';
+  isAuth: boolean = false;
   stars = [1, 2, 3, 4, 5];
   showReviewInput: boolean = false;
   ratesOfLaboratory: any[] = [];
@@ -61,6 +62,9 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
     return new Array(rating);
   }
   ngOnInit() {
+    if (localStorage.getItem('userToken')) {
+      this.isAuth = true;
+    }
     this.loadLaboratoryData();
   }
   loadLaboratoryData() {

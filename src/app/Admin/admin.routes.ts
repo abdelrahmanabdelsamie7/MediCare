@@ -63,6 +63,7 @@ import { ListOfferGroupsComponent } from './offer-group/list-offer-groups/list-o
 import { AddOfferGroupComponent } from './offer-group/add-offer-group/add-offer-group.component';
 import { ShowOfferGroupComponent } from './offer-group/show-offer-group/show-offer-group.component';
 import { EditOfferGroupComponent } from './offer-group/edit-offer-group/edit-offer-group.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -295,6 +296,12 @@ export const ADMIN_ROUTES: Routes = [
         path: 'edit_doctor/:id',
         component: EditDoctorComponent,
         title: 'Admin Panel | Edit Doctor',
+      },
+      // ======================== Users ========================
+      {
+        path: 'all-users',
+        component: AllUsersComponent,
+        title: 'Admin Panel | Users',
       },
       // ======================== Doctors Clinic ========================
       {

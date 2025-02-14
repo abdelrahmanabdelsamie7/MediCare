@@ -141,6 +141,8 @@
     "edit_clinic_image": "Edit Clinic Image",
     "pharmacies": "Pharmacies",
     "pharmacies_today": "Pharmacies | Today",
+    "users_today": "Users | Today",
+    "offers_today": "Doctor Offers | Today",
     "laboratories": "Laboratories",
     "laboratories_today": "Laboratories | Today",
     "care_centers": "Care Centers",
@@ -151,6 +153,7 @@
     "chain_laboratories": "Chain Laboratories",
     "chain_laboratories_today": "Chain Laboratories | Today",
     "department_list": "List Departments",
+    "users_list": "All Users",
     "department_add": "Add Department",
     "department_edit": "Edit Department",
     "department": "Department",
@@ -268,7 +271,8 @@
     "discount": "Discount",
     "offer_period": "Offer Period",
     "offer_active": "Offer is Active",
-    "offer_inactive": "Offer is Inactive"
+    "offer_inactive": "Offer is Inactive" ,
+    "user_title" : "User Name"
   },
   "doctorPanel": {
     "dashboard": "Dashboard",
