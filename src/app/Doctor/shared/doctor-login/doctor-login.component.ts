@@ -24,7 +24,7 @@ export class DoctorLoginComponent {
     private _SDoctorService: SDoctorService,
     private messageService: MessageService,
     private _Router: Router
-  ) {}
+  ) { }
   doctorLoginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [

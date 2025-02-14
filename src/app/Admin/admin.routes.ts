@@ -59,6 +59,10 @@ import { EditDepartmentTipComponent } from './departmentTips/edit-department-tip
 import { AdminStatisticsComponent } from './admin-statistics/admin-statistics.component';
 import { AddDoctorClinicImageComponent } from './doctor-clinic-image/add-doctor-clinic-image/add-doctor-clinic-image.component';
 import { EditDoctorClinicImageComponent } from './doctor-clinic-image/edit-doctor-clinic-image/edit-doctor-clinic-image.component';
+import { ListOfferGroupsComponent } from './offer-group/list-offer-groups/list-offer-groups.component';
+import { AddOfferGroupComponent } from './offer-group/add-offer-group/add-offer-group.component';
+import { ShowOfferGroupComponent } from './offer-group/show-offer-group/show-offer-group.component';
+import { EditOfferGroupComponent } from './offer-group/edit-offer-group/edit-offer-group.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -375,6 +379,27 @@ export const ADMIN_ROUTES: Routes = [
         path: 'edit_DeliveryService/:id',
         component: EditDeliveryServiceComponent,
         title: 'Admin Panel | Edit Delivery Service',
+      },
+      // ======================== Offer Group ========================
+      {
+        path: 'offer-groups',
+        component: ListOfferGroupsComponent,
+        title: 'Admin Panel | Offer Groups',
+      },
+      {
+        path: 'add-offer-group',
+        component: AddOfferGroupComponent,
+        title: 'Admin Panel | Add Offer Group',
+      },
+      {
+        path: 'show-offer-group/:id',
+        component: ShowOfferGroupComponent,
+        title: 'Admin Panel | Show Offer Group',
+      },
+      {
+        path: 'edit-offer-group/:id',
+        component: EditOfferGroupComponent,
+        title: 'Admin Panel | Edit Offer Group',
       },
     ],
   },

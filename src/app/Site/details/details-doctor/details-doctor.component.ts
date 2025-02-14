@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
@@ -17,7 +17,13 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-details-doctor',
   standalone: true,
-  imports: [CommonModule, TimeFormatPipe, Toast, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    TimeFormatPipe,
+    Toast,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
   templateUrl: './details-doctor.component.html',
   styleUrl: './details-doctor.component.css',
   providers: [MessageService, DatePipe],
@@ -28,6 +34,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
   appointmentDates: any[] = [];
   DoctorClinics: IDoctorClinic[] = [];
   Doctor: IDoctor = {} as IDoctor;
+  isAuth: boolean = false;
   appointmentReserveInfo: IDoctorAppointment = {} as IDoctorAppointment;
   private destroy$ = new Subject<void>();
   constructor(
@@ -63,7 +70,11 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
     this._SAuthService.getUserAccount().subscribe({
       next: (data) => {
         this.userData = data;
+        this.isAuth = true;
       },
+      error:(err)=>{
+        console.log(err);
+      }
     });
   }
   loadDoctorData() {

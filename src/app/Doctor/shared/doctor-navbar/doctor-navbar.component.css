@@ -38,21 +38,3 @@
 .notifications .dropdown-item:hover {
   background-color: #f8f9fa;
 }
-.modal {
-  display: block;
-  background: rgba(0, 0, 0, 0.5); /* لتحسين الخلفية */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1050;
-}
-.modal-dialog {
-  margin-top: 10vh;
-}
-.modal-content {
-  background-color: white;
-  border-radius: 5px;
-  padding: 20px;
-}

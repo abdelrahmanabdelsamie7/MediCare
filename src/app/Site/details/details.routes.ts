@@ -8,6 +8,7 @@ import { DetailsHospitalComponent } from './details-hospital/details-hospital.co
 import { DetailsCarecenterComponent } from './details-carecenter/details-carecenter.component';
 import { DetailsPharamcyComponent } from './details-pharamcy/details-pharamcy.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { DetailsDoctorOfferComponent } from './details-doctor-offer/details-doctor-offer.component';
 
 
 export const DETAILS_ROUTES: Routes = [
@@ -21,7 +22,8 @@ export const DETAILS_ROUTES: Routes = [
       { path: 'doctor/:id', component: DetailsDoctorComponent, title: 'MediCare | Doctor' },
       { path: 'hospital/:id', component: DetailsHospitalComponent, title: 'MediCare | Hospital' },
       { path: 'care-center/:id', component: DetailsCarecenterComponent, title: 'MediCare | Care Center' },
-      { path: 'doctor-blogs', component: BlogsComponent, title: 'MediCare | Doctor Blogs' }
+      { path: 'doctor-blogs', component: BlogsComponent, title: 'MediCare | Doctor Blogs' },
+      { path: 'doctor-offer/:id', component: DetailsDoctorOfferComponent, title: 'MediCare | Doctor Offer' }
     ]
   }
 ];

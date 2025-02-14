@@ -4,7 +4,7 @@
     "login": "دخول",
     "lang": "اللغه",
     "booking": "مواعيد الحجز",
-    "home":"الصفحة الرئيسية"
+    "home": "الصفحة الرئيسية"
   },
   "departments": {
     "medicalDepartments": "الأقسام الطبية"
@@ -259,7 +259,18 @@
     "infoAboutDoctor": "معلومات عن الطبيب",
     "birthdate": "تاريخ الميلاد",
     "password": "كلمة المرور",
-    "email": "البريد الإلكتروني"
+    "email": "البريد الإلكتروني",
+    "offer_groups": "فئات العروض",
+    "offer_groups_list": "قائمة فئات العروض",
+    "offer_groups_add": "إضافة فئة عروض",
+    "offer_groups_edit": "تعديل فئة عروض",
+    "info_about_offer": "معلومات عن العرض",
+    "details": "التفاصيل",
+    "price_before_discount": "السعر قبل الخصم",
+    "discount": "الخصم",
+    "offer_period": "فترة العرض",
+    "offer_active": "العرض مفعل",
+    "offer_inactive": "العرض غير مفعل"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",

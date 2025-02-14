@@ -61,7 +61,6 @@ export class SectionDepartmentsComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           this.Departments= data.data.data;
-          console.log(data);
         },
       });
   }

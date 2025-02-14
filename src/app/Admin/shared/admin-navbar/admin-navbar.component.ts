@@ -88,7 +88,6 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
     this._STranslateService.changeLang(lang);
     this.updateLanguage(lang);
   }
-
   private updateLanguage(lang: string) {
     if (lang === 'en') {
       this.selectedLang = 'English';
@@ -98,7 +97,6 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
       this.selectedIcon = 'egyptFlag.png';
     }
   }
-
   private loadLanguage() {
     const lang = localStorage.getItem('lang') || 'ar';
     this.updateLanguage(lang);

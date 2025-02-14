@@ -13,6 +13,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { SOfferGroupService } from '../../../Core/services/s-offer-group.service';
+import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
 
 @Component({
   selector: 'app-edit-doctor-offer',
@@ -24,12 +26,14 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class EditDoctorOfferComponent implements OnInit, OnDestroy {
   id: string = '';
+  offerGroups:IOfferGroup[]=[] ; 
   DoctorOffer: IDoctorOffer = {} as IDoctorOffer;
   private destroy$ = new Subject<void>();
   constructor(
     private _SDoctorOfferService: SDoctorOfferService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
+    private _SOfferGroupService:SOfferGroupService , 
     private _Location: Location
   ) {}
   editDoctorOfferForm = new FormGroup({
@@ -53,6 +57,9 @@ export class EditDoctorOfferComponent implements OnInit, OnDestroy {
     doctor_id: new FormControl(localStorage.getItem('doctorId'), [
       Validators.required,
     ]),
+    offer_group_id: new FormControl('', [
+      Validators.required,
+    ]),
   });
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
@@ -61,13 +68,21 @@ export class EditDoctorOfferComponent implements OnInit, OnDestroy {
       },
     });
     this.loadDoctorOfferData();
+    this.loadOfferGroup();
+  }
+  loadOfferGroup() {
+    this._SOfferGroupService.getOfferGroups().subscribe({
+      next: (data: any) => {
+        this.offerGroups = data.data;
+      }
+    })
   }
   loadDoctorOfferData() {
     this._SDoctorOfferService
       .showDoctorOffer(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (data: any) => {
+        next: (data: any) => {    
           this.DoctorOffer = data.data;
           this.editDoctorOfferForm.patchValue({
             title: this.DoctorOffer.title,
@@ -77,6 +92,7 @@ export class EditDoctorOfferComponent implements OnInit, OnDestroy {
             discount: this.DoctorOffer.discount,
             from_day: this.DoctorOffer.from_day,
             to_day: this.DoctorOffer.to_day,
+            offer_group_id : this.DoctorOffer.offer_group_id
           });
         },
       });

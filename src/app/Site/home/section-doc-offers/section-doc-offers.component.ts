@@ -1,6 +1,7 @@
 import {
   Component,
   Inject,
+  OnInit,
   PLATFORM_ID,
   ViewEncapsulation,
 } from '@angular/core';
@@ -9,6 +10,8 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
+import { SOfferGroupService } from '../../../Core/services/s-offer-group.service';
 @Component({
   selector: 'app-section-doc-offers',
   standalone: true,
@@ -23,37 +26,11 @@ import { RouterModule } from '@angular/router';
   styleUrl: './section-doc-offers.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class SectionDocOffersComponent {
+export class SectionDocOffersComponent implements OnInit {
   responsiveOptions: any[] | undefined;
   isBrowser: boolean = false;
-  DocOffers = [
-    {
-      id: 1,
-      imageUrl: './offers/eye.jpg',
-      title: 'تصحيح النظر',
-    },
-    {
-      id: 2,
-      imageUrl: './offers/scan.jpeg',
-      title: 'تنظيف البشرة',
-    },
-    {
-      id: 3,
-      imageUrl: './offers/teeth2.jpg',
-      title: 'تنظيف الأسنان',
-    },
-    {
-      id: 4,
-      imageUrl: './offers/scan2.jpg',
-      title: 'تقشير الوجه',
-    },
-    {
-      id: 5,
-      imageUrl: './offers/teeth3.jpg',
-      title: 'تركيب التقويم المعدني',
-    },
-  ];
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  DocOffers: IOfferGroup[] = [];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private _SOfferGroupService: SOfferGroupService) {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.responsiveOptions = [
       {
@@ -76,4 +53,22 @@ export class SectionDocOffersComponent {
       },
     ];
   }
+  ngOnInit() {
+    this.loadOfferGroups();
+  }
+  loadOfferGroups() {
+    this._SOfferGroupService.getOfferGroups().subscribe({
+      next: (data: any) => {
+        if (data && data.data && Array.isArray(data.data)) {
+          this.DocOffers = data.data;
+        } else {
+          this.DocOffers = []; 
+        }
+      },
+      error: () => {
+        this.DocOffers = []; 
+      }
+    });
+  }
+
 }

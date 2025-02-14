@@ -10,7 +10,7 @@
     <!--Start Department -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#department-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-layout-text-sidebar"></i><span>{{ 'adminPanel.departments' | translate }}</span><i
+        <i class="fa-solid fa-house-medical"></i><span>{{ 'adminPanel.departments' | translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="department-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -48,7 +48,7 @@
     <!-- Start Hospital -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#hospital-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-hospital"></i><span>{{ 'adminPanel.hospitals' | translate}}</span><i
+  <i class="bi bi-hospital"></i><span>{{ 'adminPanel.hospitals' | translate}}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="hospital-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -72,7 +72,7 @@
     <!-- Start Care Center -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#carecenter-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-cassette-fill"></i><span>{{ 'adminPanel.care_centers' |translate }}</span><i
+        <i class="fa-solid fa-hands-helping"></i><span>{{ 'adminPanel.care_centers' |translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="carecenter-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -96,7 +96,7 @@
     <!-- Start Chain Of Pharmacies -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#chainPharmacies-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-collection"></i><span>{{ 'adminPanel.chain_pharmacies' |translate }}</span><i
+        <i class="fa-solid fa-prescription-bottle"></i><span>{{ 'adminPanel.chain_pharmacies' |translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="chainPharmacies-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -115,7 +115,7 @@
     <!-- Start Pharmacies -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#pharmacies-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-collection"></i><span>{{ 'adminPanel.pharmacies' |translate }}</span><i
+        <i class="fa-solid fa-prescription-bottle-medical"></i><span>{{ 'adminPanel.pharmacies' |translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="pharmacies-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -134,7 +134,7 @@
     <!-- Start Chain Of Laboratories -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#chainLaboratories-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-collection"></i><span>{{ 'adminPanel.chain_laboratories' |translate }}</span><i
+        <i class="fa-solid fa-flask"></i> <span>{{ 'adminPanel.chain_laboratories' |translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="chainLaboratories-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -153,7 +153,7 @@
     <!-- Start Laboratories -->
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#Laboratories-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-droplet-half"></i><span>{{ 'adminPanel.laboratories' |translate }}</span><i
+      <i class="fa-solid fa-vials"></i><span>{{ 'adminPanel.laboratories' |translate }}</span><i
           class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="Laboratories-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -208,6 +208,25 @@
         <li>
           <a routerLink="add_DeliveryService">
             <i class="bi bi-circle"></i><span>{{ 'adminPanel.delivery_services_add' |translate }}</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Start Offer Groups -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#offerGroups-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-collection"></i><span>{{ 'adminPanel.offer_groups' |translate }}</span><i
+          class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="offerGroups-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a routerLink="offer-groups">
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.offer_groups_list' |translate }}</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="add-offer-group">
+            <i class="bi bi-circle"></i><span>{{ 'adminPanel.offer_groups_add' |translate }}</span>
           </a>
         </li>
       </ul>

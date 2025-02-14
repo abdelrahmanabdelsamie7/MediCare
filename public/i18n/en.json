@@ -4,7 +4,7 @@
     "login": "Login",
     "lang": "Lang",
     "booking": "Booking Appointments",
-    "home":"Home"
+    "home": "Home"
   },
   "departments": {
     "medicalDepartments": "Medical Departments"
@@ -257,7 +257,18 @@
     "infoAboutDoctor": "Info About Doctor",
     "birthdate": "Birthdate",
     "password": "Password",
-    "email": "Email"
+    "email": "Email",
+    "offer_groups": "Offer Categories",
+    "offer_groups_list": "List of Offer Categories",
+    "offer_groups_add": "Add Offer Category",
+    "offer_groups_edit": "Edit Offer Category",
+    "info_about_offer": "Information About Offer",
+    "details": "Details",
+    "price_before_discount": "Price Before Discount",
+    "discount": "Discount",
+    "offer_period": "Offer Period",
+    "offer_active": "Offer is Active",
+    "offer_inactive": "Offer is Inactive"
   },
   "doctorPanel": {
     "dashboard": "Dashboard",
@@ -307,7 +318,6 @@
     "details": "Details",
     "logout": "Log Out",
     "haveNotifications": "Have Notificatio"
-
   },
   "doctor": {
     "doctors": "Doctors",

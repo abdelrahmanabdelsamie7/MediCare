@@ -2,22 +2,23 @@
   <div class="container text-center">
     <h3 class="head-title">عروض الأطباء</h3>
   </div>
-
   <div class="container my-4">
     @defer(when isBrowser) {
-    <p-carousel id="docOffers-carousel" class="py-5" [value]="DocOffers" [numVisible]="4"
+    <p-carousel id="docOffers-carousel" class="py-5" [value]="DocOffers" [numVisible]="3"
       [responsiveOptions]="responsiveOptions">
       <ng-template let-docOffer pTemplate="item">
-        <div class="docOffer-item shadow-sm p-6 border border-0 rounded-border m-2">
-          <div class="info">
-            <h6>25%</h6>
-            <h6>OFF</h6>
+        <a routerLink="/all/doctor-offers/{{docOffer.id}}">
+          <div class="docOffer-item shadow-sm p-6 border border-0 rounded-border m-2">
+            <div class="info">
+              <h6>25%</h6>
+              <h6>OFF</h6>
+            </div>
+            <div class="relative mx-auto">
+              <img [src]="docOffer.image" class="w-100 rounded-border" lazy="loading" />
+            </div>
+            <h5 class="title">{{ docOffer.title }}</h5>
           </div>
-          <div class="relative mx-auto">
-            <img [src]="docOffer.imageUrl" class="w-100 rounded-border" />
-          </div>
-          <h5 class="title">{{ docOffer.title }}</h5>
-        </div>
+        </a>
       </ng-template>
     </p-carousel>
     }

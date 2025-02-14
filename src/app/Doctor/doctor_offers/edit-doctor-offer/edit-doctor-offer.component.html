@@ -60,11 +60,25 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <label for="details" class="form-label">{{ 'doctorPanel.details' | translate }}</label>
                 <textarea type="text" formControlName="details"
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.details.touched && editDoctorOfferForm.controls.details.errors) }"
                   class="form-control" id="details"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label for="offer_group_id" class="form-label">{{ 'adminPanel.offer_groups' | translate }}</label>
+                <select formControlName="offer_group_id"
+                  [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.offer_group_id.touched && editDoctorOfferForm.controls.offer_group_id.errors) }"
+                  class="form-control" id="offer_group_id">
+                  @for (item of offerGroups; track $index) {
+                    @if(DoctorOffer.offer_group_id == item.id){
+                      <option selected disabled>{{ item.title }}</option>
+                    }@else{
+                      <option [value]="item.id">{{ item.title }}</option>
+                    }
+                  }
+                </select>
               </div>
             </div>
             <div class="text-center">

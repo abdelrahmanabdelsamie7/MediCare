@@ -125,17 +125,23 @@
               </div>
               <div class="modal-body">
                 <h5 class="title">معلومات الحجز : </h5>
+                @if (isAuth) {
                 <div class="info-user">
                   <h6>اسم المستخدم : {{ userData.name }} </h6>
                   <h6>رقم محمول :{{ userData.phone }} </h6>
                   <h6> العنوان : {{ userData.address }}</h6>
                 </div>
+                }@else {
+                <div class="alert alert-warning text-center">
+                  <h3 class="fs-5">برجاء التسجيل الدخول للحجز</h3>
+                  <a routerLink="/Register" class="btn btn-outline-warning">سجل الآن</a>
+                </div>
+                }
                 <div class="info-appointment">
                   <h6> يبدأ الكشف في ميعاد : {{ appointmentReserveInfo.start_at | timeFormat}}</h6>
                   <h6>
                     @for (item of Doctor.clinics; track $index) {
                     @if (item.id === appointmentReserveInfo.clinic_id) {
-
                     <h6 (click)="showInMap(item.locationUrl)" class="clinicLocation"> العيادة : {{ item.title }}
                       <i class="fa-solid fa-location-dot text-info"></i>
                     </h6>
@@ -145,9 +151,8 @@
                   <h6></h6>
                 </div>
               </div>
-
               <div class="modal-footer">
-                <button type="button" class="btn btn-info text-light fs-6"
+                <button type="button" class="btn btn-info text-light fs-6" [disabled]="!isAuth"
                   (click)="reserveAppointment(appointmentReserveInfo)" data-bs-dismiss="modal">احجز</button>
                 <button type="button" class="btn btn-secondary fs-6" data-bs-dismiss="modal">إلغاء</button>
               </div>

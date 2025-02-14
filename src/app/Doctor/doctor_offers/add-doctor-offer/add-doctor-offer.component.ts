@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SDoctorOfferService } from '../../../Core/services/s-doctor-offer.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { SOfferGroupService } from '../../../Core/services/s-offer-group.service';
+import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
 
 @Component({
   selector: 'app-add-doctor-offer',
@@ -19,9 +21,11 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-doctor-offer.component.css',
   providers: [MessageService],
 })
-export class AddDoctorOfferComponent {
+export class AddDoctorOfferComponent implements OnInit{
+  offerGroups :IOfferGroup[]=[] ;
   constructor(
     private _SDoctorOfferService: SDoctorOfferService,
+    private _SOfferGroupService:SOfferGroupService , 
     private messageService: MessageService
   ) {}
   addDoctorOfferForm = new FormGroup({
@@ -45,7 +49,20 @@ export class AddDoctorOfferComponent {
     doctor_id: new FormControl(localStorage.getItem('doctorId'), [
       Validators.required,
     ]),
+    offer_group_id: new FormControl('', [
+      Validators.required,
+    ]),
   });
+  ngOnInit() {
+    this.loadOfferGroup();
+   }
+  loadOfferGroup(){
+    this._SOfferGroupService.getOfferGroups().subscribe({
+      next:(data:any)=>{
+        this.offerGroups = data.data ; 
+      }
+    })
+  }
   addDoctorOffer(addDoctorOfferForm: FormGroup) {
     this._SDoctorOfferService
       .addDoctorOffer(addDoctorOfferForm.value)

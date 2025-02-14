@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import {
   Component,
   inject,
@@ -19,7 +20,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-doctor-navbar',
   standalone: true,
-  imports: [CommonModule, TimeFormatPipe, RouterModule],
+  imports: [CommonModule, TimeFormatPipe, RouterModule, TranslateModule],
   templateUrl: './doctor-navbar.component.html',
   styleUrls: ['./doctor-navbar.component.css'],
 })
@@ -43,12 +44,10 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
   ) {
     this.loadLanguage();
   }
-
   ngOnInit() {
     this.loadDoctorData();
     this.loadNotifications();
   }
-
   loadDoctorData() {
     this._SDoctorService
       .doctorAccount()
@@ -60,13 +59,11 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
         },
       });
   }
-
   loadNotifications() {
     const doctorId = localStorage.getItem('doctorId');
     if (doctorId) {
       this._SDoctorService.getDoctorNotifications(doctorId).subscribe({
         next: (data) => {
-          console.log(data.data);
           if (data.success) {
             const newNotifications = data.data.filter((n: any) => !n.read_at);
             if (newNotifications.length > this.unreadCount) {
@@ -80,23 +77,22 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
       });
     }
   }
-
   playNotificationSound() {
-    this.audio.play().catch((error) => {
-      console.error('Failed to play audio:', error);
-    });
+    setTimeout(() => {
+      this.audio
+        .play()
+        .catch((error) => console.error('Error playing sound:', error));
+    }, 1000);
   }
   makeNotificationReaded(notificationId: string) {
     this._SDoctorService.markNotificationAsRead(notificationId).subscribe({
       next: (data) => {
-        console.log(data);
       },
     });
   }
   showModal(id: string) {
-    console.log(id);
-  }
 
+  }
   ngAfterViewInit(): void {
     this.attachToggleEvent();
   }
@@ -133,7 +129,6 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
     this._STranslateService.changeLang(lang);
     this.updateLanguage(lang);
   }
-
   private updateLanguage(lang: string) {
     if (lang === 'en') {
       this.selectedLang = 'English';
@@ -143,7 +138,6 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
       this.selectedIcon = 'egyptFlag.png';
     }
   }
-
   private loadLanguage() {
     const lang = localStorage.getItem('lang') || 'ar';
     this.updateLanguage(lang);

@@ -13,5 +13,6 @@ export interface IDoctorOffer {
   is_active: boolean;
   doctor_id: string;
   doctor: IDoctor;
+  offer_group_id: string;
   images: IDoctorOfferImage[];
 }

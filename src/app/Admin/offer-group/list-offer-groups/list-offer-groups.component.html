@@ -1,0 +1,41 @@
+<!-- Start List All OfferGroups -->
+<div class="pagetitle">
+  <h1>{{ 'adminPanel.offer_groups_list' | translate }}</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">{{ 'adminPanel.tables' | translate }}</li>
+      <li class="breadcrumb-item active">{{ 'adminPanel.data' | translate }}</li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <p-toast />
+  <div class="col-lg-12">
+    <div class="card shadow p-4">
+      <table class="table table-light table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{{ 'adminPanel.title' | translate }}</th>
+            <th colspan="3">{{ 'adminPanel.actions' | translate }}</th>
+          </tr>
+        </thead>
+        @for (item of OfferGroups; track $index) {
+        <tbody>
+          <tr>
+            <td>{{ $index +1 }}</td>
+            <td>{{ item.title }}</td>
+            <td><a routerLink="/admin-mediCare-1245/show-offer-group/{{ item.id }}" title="Show"><i
+                  class="bi bi-eye text-primary"></i></a></td>
+            <td><a routerLink="/admin-mediCare-1245/edit-offer-group/{{ item.id }}" title="Edit"><i
+                  class="bi bi-pen text-warning"></i></a></td>
+            <td><a (click)="deleteOfferGroups(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
+            </td>
+          </tr>
+        </tbody>
+        }
+      </table>
+    </div>
+  </div>
+</div>
+<!-- End List All OfferGroups  -->

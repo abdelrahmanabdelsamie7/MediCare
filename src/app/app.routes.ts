@@ -89,6 +89,14 @@ export const routes: Routes = [
           ).then((m) => m.UserReservationsComponent),
         title: 'MediCare | User Reservations',
       },
+      {
+        path: 'doctor-offers/:id',
+        loadComponent: () =>
+          import(
+            './Site/components/all-offers/all-offers.component'
+          ).then((m) => m.AllOffersComponent),
+        title: 'MediCare | Doctor Offers',
+      },
     ],
   },
 
