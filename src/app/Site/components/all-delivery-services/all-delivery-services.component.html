@@ -9,15 +9,22 @@
         </div>
         <div class="card-body px-4 text-center">
           <p class="card-text pt-2">
-           {{ item.description }}<i class="fa-solid fa-info-circle text-info"></i>
+            {{ item.description }}<i class="fa-solid fa-info-circle text-info"></i>
           </p>
-          <a [href]="item.app_link"
-             class="btn btn-outline-info fw-bold w-100 rounded-pill shadow-sm mt-3"
-             target="_blank">
-           لينك التطبيق
+          <a [href]="item.app_link" class="btn btn-outline-info fw-bold w-100 rounded-pill shadow-sm mt-3"
+            target="_blank">
+            لينك التطبيق
           </a>
         </div>
       </div>
+    </div>
+    }@empty {
+    <div class="not-found">
+      <img src="./empty.png" alt="" class="img-not-found" />
+      <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+      <h6 class="head-not-found2">
+        الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+      </h6>
     </div>
     }
   </div>

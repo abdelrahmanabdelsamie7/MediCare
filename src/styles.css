@@ -58,3 +58,24 @@ section {
     text-align: center;
   }
 }
+.not-found {
+  margin-bottom: 40px;
+}
+.img-not-found {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  height: 190px;
+}
+.head-not-found {
+  text-align: center;
+  margin: 10px 0px;
+  color: var(--third-color);
+  font-family: var(--arabic-font);
+}
+.head-not-found2 {
+  text-align: center;
+  margin-top: 5px;
+  color: var(--third-color);
+  font-family: var(--arabic-font);
+}

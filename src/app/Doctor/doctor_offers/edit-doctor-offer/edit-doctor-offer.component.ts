@@ -26,16 +26,16 @@ import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
 })
 export class EditDoctorOfferComponent implements OnInit, OnDestroy {
   id: string = '';
-  offerGroups:IOfferGroup[]=[] ; 
+  offerGroups: IOfferGroup[] = [];
   DoctorOffer: IDoctorOffer = {} as IDoctorOffer;
   private destroy$ = new Subject<void>();
   constructor(
     private _SDoctorOfferService: SDoctorOfferService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _SOfferGroupService:SOfferGroupService , 
+    private _SOfferGroupService: SOfferGroupService,
     private _Location: Location
-  ) {}
+  ) { }
   editDoctorOfferForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -52,8 +52,8 @@ export class EditDoctorOfferComponent implements OnInit, OnDestroy {
     ]),
     price_before_discount: new FormControl(0, [Validators.required]),
     discount: new FormControl(0, [Validators.required]),
-    from_day: new FormControl<Date | null>(null, [Validators.required]),
-    to_day: new FormControl<Date | null>(null, [Validators.required]),
+    from_day: new FormControl<string | null>(null, [Validators.required]),
+    to_day: new FormControl<string | null>(null, [Validators.required]),
     doctor_id: new FormControl(localStorage.getItem('doctorId'), [
       Validators.required,
     ]),
@@ -82,7 +82,7 @@ export class EditDoctorOfferComponent implements OnInit, OnDestroy {
       .showDoctorOffer(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (data: any) => {    
+        next: (data: any) => {
           this.DoctorOffer = data.data;
           this.editDoctorOfferForm.patchValue({
             title: this.DoctorOffer.title,
@@ -92,7 +92,7 @@ export class EditDoctorOfferComponent implements OnInit, OnDestroy {
             discount: this.DoctorOffer.discount,
             from_day: this.DoctorOffer.from_day,
             to_day: this.DoctorOffer.to_day,
-            offer_group_id : this.DoctorOffer.offer_group_id
+            offer_group_id: this.DoctorOffer.offer_group_id
           });
         },
       });

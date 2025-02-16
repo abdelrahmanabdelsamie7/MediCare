@@ -1,0 +1,269 @@
+.container {
+  direction: rtl;
+  font-family: var(--arabic-font);
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 1200px;
+}
+
+/* Start Gallery Images Of Offer */
+.image-gallery {
+  text-align: center;
+  position: relative;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.thumbnail-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+  opacity: 1;
+  border: 2px solid var(--main-color);
+}
+
+.discount-ratio {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--main-color);
+  background-clip: padding-box;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* End Gallery Images Of Offer */
+/* Start Offer Info  */
+.offer-data,
+.offer-time,
+.offer-details,
+.app-later,
+.offer-info,
+.doctor-info,
+.image-gallery,
+.carousel,
+.offer-address {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 16px;
+}
+
+/* Start Offer Data Class */
+.offer-data .offer-title {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--arabic-font);
+  padding: 10px 0px;
+}
+
+.offer-data .offer-title-price {
+  font-size: 14px;
+  font-family: var(--arabic-font);
+  padding: 10px 0px;
+}
+
+.offer-data .price-before-dis {
+  font-size: 18px;
+  text-decoration: line-through;
+  color: rgb(185, 185, 185);
+}
+
+.offer-data .price-after-dis {
+  font-size: 18px;
+  color: var(--main-color);
+}
+
+/* End Offer Data Class */
+/* Start Offer Time Class */
+.offer-time h5 {
+  padding: 3px 0px;
+  font-size: 15px;
+  text-align: center;
+  font-family: var(--arabic-font);
+  color: var(--second-color);
+}
+
+.offer-time h5 span {
+  color: var(--main-color);
+}
+
+.offer-time h5 i {
+  color: var(--main-color);
+  font-size: 20px;
+}
+
+/* Start Offer Time Class */
+/* Start Offer Deatails Class */
+.offer-details .offer-details-title,
+.offer-info .offer-info-title {
+  padding-top: 15px;
+  font-size: 22px;
+  font-family: var(--arabic-font);
+  font-weight: 700;
+}
+
+.offer-details .terms-text,
+.offer-info .terms-text {
+  white-space: pre-line;
+  font-size: 14px;
+  padding: 5px;
+  color: var(--second-color);
+  font-family: var(--arabic-font);
+  line-height: 21px;
+}
+
+/* Start Appointment Item */
+.appointment-item {
+  border-top: 5px solid var(--main-color);
+  border-bottom: 5px solid var(--main-color);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  max-width: 300px;
+  height: 150px;
+  padding: 3px 0px;
+  text-align: center;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.appointment-item::-webkit-scrollbar {
+  height: 1px;
+}
+
+.appointment-item::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.appointment-item::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.appointment-item::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.44);
+}
+
+.appointment-item .appointment-day {
+  position: relative;
+  color: var(--main-color);
+  font-size: 20px;
+  padding: 2px 0px;
+  font-weight: 750;
+  width: fit-content;
+  margin: 1px auto 7px auto;
+}
+
+.appointment-time {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 6px auto;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.appointment-item .appointment-day::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  top: 100%;
+  background-color: var(--third-color);
+}
+
+.valid-appointment {
+  color: var(--second-color);
+  font-weight: 700;
+}
+
+.in-valid-appointment {
+  text-decoration: line-through;
+  color: var(--third-color);
+  border: none;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--main-color) !important;
+  border-radius: 7px;
+}
+
+/* Head Of Appointment Later */
+.app-later .appLater {
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: var(--arabic-font);
+  color: var(--third-color);
+  text-align: center;
+}
+
+/* Doctor Info */
+.doctor-info .doc-imgae {
+  width: 100px;
+  height: 100px;
+}
+
+.doctor-info .doctor-name a {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--arabic-font);
+  color: var(--main-color) !important;
+  transition: all 1s;
+}
+
+.doctor-info .doctor-name:hover {
+  color: var(--second-color);
+}
+
+.doctor-info .doctor-title {
+  font-size: 18px;
+  font-family: 500;
+  font-family: var(--arabic-font);
+  color: var(--second-color);
+}
+
+.offer-address .offer-address-title {
+  padding-top: 15px;
+  font-size: 22px;
+  font-family: var(--arabic-font);
+  font-weight: 700;
+}
+
+.offer-address .location {
+  font-size: 18;
+  font-weight: 500;
+  color: var(--second-color);
+}
+
+.offer-address .location button {
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}

@@ -1,5 +1,6 @@
 import { IDoctor } from './i-doctor';
 import { IDoctorOfferImage } from './i-doctor-offer-image';
+import { IOfferGroup } from './i-offer-group';
 
 export interface IDoctorOffer {
   id: string;
@@ -8,11 +9,12 @@ export interface IDoctorOffer {
   details: string;
   price_before_discount: number;
   discount: number;
-  from_day: Date;
-  to_day: Date;
+  from_day: string;
+  to_day: string;
   is_active: boolean;
   doctor_id: string;
   doctor: IDoctor;
   offer_group_id: string;
+  offer_group: IOfferGroup;
   images: IDoctorOfferImage[];
 }

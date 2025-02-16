@@ -1,1 +1,102 @@
-<h5 class="text-center my-5">كملي انت بقي يا مياده ربنا معاكي بقي </h5>
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-7 my-sm-3 my-md-0">
+      <div class="image-gallery">
+        <span class="discount-ratio">{{ DoctorOffer.discount }}%</span>
+        <img [src]="selectedImage" alt="Main Image" class="main-image" />
+        <div class="thumbnail-container">
+          @for (img of DoctorOfferImages; track $index) {
+          <img [src]="img.image" alt="Thumbnail" class="thumbnail" [class.active]="img.image === selectedImage"
+            (click)="changeImage(img.image)" />
+          }
+        </div>
+      </div>
+      <div class="doctor-info">
+        <div class="d-flex align-items-center">
+          <img [src]="Doctor.image" alt="Doctor Image" class="doc-imgae img-fluid rounded-circle">
+          <div class="px-3">
+            <h5 class="doctor-name"> <a routerLink="/details/doctor/{{ Doctor.id }}">{{ Doctor.gender == 'male' ?
+                'دكتور' : 'دكتورة' }} {{
+                Doctor.fName }} {{ Doctor.lName }}</a>
+            </h5>
+            <h5 class="doctor-title">{{ Doctor.title }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="offer-info">
+        <h3 class="offer-info-title">لمعلوماتك : </h3>
+        <h6 class="terms-text">{{ DoctorOffer.info_about_offer }}</h6>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="offer-data">
+        <h2 class="offer-title">{{ DoctorOffer.title }}</h2>
+        <h6 class="offer-title-price">سعر {{ DoctorOffer.title }}</h6>
+        <div class="d-flex justify-content-around">
+          <h5 class="price-before-dis">{{ DoctorOffer.price_before_discount | currency:'EGP' }}</h5>
+          <h5 class="price-after-dis">{{ DoctorOffer.price_before_discount | discount: DoctorOffer.discount | currency:
+            'EGP' }}</h5>
+        </div>
+      </div>
+      <div class="offer-time">
+        <h5>
+          <i class="fa-regular fa-clock"></i>
+          من يوم <span>{{ getFormattedDate(DoctorOffer.from_day) }}</span> إلي يوم
+          <span>{{
+            getFormattedDate(DoctorOffer.to_day) }}</span>
+        </h5>
+      </div>
+      <!-- Start Appointments -->
+      @if(appointmentDates.length > 0){
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let date of appointmentDates; let i = index" class="carousel-item" [class.active]="i === 0">
+            <div class="appointment-item mx-auto">
+              <h5 class="appointment-day">
+                {{ getFormattedDate(date.date) }}
+              </h5>
+              <div *ngFor="let item of date.appointments">
+                <button class="appointment-time btn" title="احجز {{ item.start_at | timeFormat}}"
+                  [ngClass]="item.is_booked ? 'in-valid-appointment' : 'valid-appointment'" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" [disabled]="item.is_booked">
+                  {{ item.start_at
+                  |timeFormat }} - {{
+                  item.end_at | timeFormat
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+      }@else {
+      <img src="./empty.png" alt="" class="img-fluid d-block mx-auto">
+      }
+      <div class="offer-details">
+        <h3 class="offer-details-title">التفاصيل : </h3>
+        <h6 class="terms-text">{{ DoctorOffer.details }}</h6>
+      </div>
+      <div class="app-later">
+        <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
+      </div>
+      <div class="offer-address">
+        <h2 class="offer-address-title">العنوان : </h2>
+        @for (item of DoctorClinics; track $index) {
+        <h5 class="location">
+          <button (click)="showInMap(item.locationUrl)">
+            <i class="fa-solid fa-location-dot btn fs-6 text-info"></i></button>
+          {{ item.title }} ({{ item.address }})
+        </h5>
+        }
+      </div>
+    </div>
+  </div>
+</div>

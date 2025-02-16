@@ -3,37 +3,22 @@
     <div class="col-md-12">
       <div class="d-flex justify-content-start align-items-start flex-column">
         <div class="my-3" role="group" aria-label="Tabs">
-          <button
-            type="button"
-            class="btn text-light me-3"
-            [ngClass]="{
+          <button type="button" class="btn text-light me-3" [ngClass]="{
               'btn-info': activeTab === 'doctors',
               'btn-secondary': activeTab !== 'doctors'
-            }"
-            (click)="setActiveTab('doctors')"
-          >
+            }" (click)="setActiveTab('doctors')">
             {{ "doctor.doctors" | translate }}
           </button>
-          <button
-            type="button"
-            class="btn text-light me-3"
-            [ngClass]="{
+          <button type="button" class="btn text-light me-3" [ngClass]="{
               'btn-info': activeTab === 'hospitals',
               'btn-secondary': activeTab !== 'hospitals'
-            }"
-            (click)="setActiveTab('hospitals')"
-          >
+            }" (click)="setActiveTab('hospitals')">
             {{ "doctor.hospitals" | translate }}
           </button>
-          <button
-            type="button"
-            class="btn text-light me-3"
-            [ngClass]="{
+          <button type="button" class="btn text-light me-3" [ngClass]="{
               'btn-info': activeTab === 'care_centers',
               'btn-secondary': activeTab !== 'care_centers'
-            }"
-            (click)="setActiveTab('care_centers')"
-          >
+            }" (click)="setActiveTab('care_centers')">
             {{ "doctor.careCenters" | translate }}
           </button>
         </div>
@@ -46,57 +31,58 @@
   <div *ngIf="activeTab === 'doctors'">
     <div class="row">
       @for (item of Doctors; track $index) {
-        <div class="col-md-6 col-lg-4">
-          <div class="card text-center shadow-lg border-0 overflow-hidden" >
+      <div class="col-md-6 col-lg-4">
+        <div class="card text-center shadow-lg border-0 overflow-hidden">
+          <!-- الجزء العلوي -->
+          <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+            <i class="fas fa-user-md fa-3x"></i>
+            <h4 class="fw-bold mt-2">{{ item.fName }} {{ item.lName }}</h4>
+            <p class="mb-2">{{ item.title }}</p>
+          </div>
 
-            <!-- الجزء العلوي -->
-            <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
-              <i class="fas fa-user-md fa-3x"></i>
-              <h4 class="fw-bold mt-2">{{ item.fName }} {{ item.lName }}</h4>
-              <p class="mb-2">{{ item.title }}</p>
-            </div>
+          <!-- الصورة -->
+          <div class="position-relative p-3 text-center">
+            <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+              style="width: 100px; height: 100px; margin-top: -50px" alt="Doctor Image" />
+          </div>
 
-            <!-- الصورة -->
-            <div class="position-relative p-3 text-center">
-              <img [src]="item.image"
-                   class="rounded-circle border border-4 border-light shadow"
-                   style="width: 100px; height: 100px; margin-top: -50px;"
-                   alt="Doctor Image" />
+          <!-- التفاصيل -->
+          <div class="card-body text-start px-4">
+            <div class="d-flex justify-content-between align-content-center">
+              <p class="fw-bold">
+                <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
+              </p>
+              <p class="fw-bold">
+                <i class="fa-solid fa-money-bill text-info"></i>
+                {{ item.app_price }} EGP
+              </p>
             </div>
-
-            <!-- التفاصيل -->
-            <div class="card-body text-start px-4">
-             <div class="d-flex justify-content-between align-content-center">
-              <p class="fw-bold"><i class="fa-solid fa-phone text-info"></i> {{ item.phone }}</p>
-              <p class="fw-bold"><i class="fa-solid fa-money-bill text-info"></i> {{ item.app_price }} EGP</p>
-             </div>
-              <a routerLink="/details/doctor/{{ item.id }}"
-                 class="btn btn-info text-white fw-bold w-100 rounded-pill shadow-sm mt-3">
-                {{ "depDetails.BtnInfo" | translate }}
-              </a>
-            </div>
+            <a routerLink="/details/doctor/{{ item.id }}"
+              class="btn btn-info text-white fw-bold w-100 rounded-pill shadow-sm mt-3">
+              {{ "depDetails.BtnInfo" | translate }}
+            </a>
           </div>
         </div>
+      </div>
+      }@empty {
+      <div class="not-found">
+        <img src="./empty.png" alt="" class="img-not-found" />
+        <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+        <h6 class="head-not-found2">
+          الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+        </h6>
+      </div>
       }
     </div>
     <!-- Pagination for doctors -->
     <div class="d-flex justify-content-center align-items-center">
-      <button
-        (click)="prevDoctorPage()"
-        class="btn btn-outline-info"
-        [disabled]="currentDoctorPage === 1"
-      >
+      <button (click)="prevDoctorPage()" class="btn btn-outline-info" [disabled]="currentDoctorPage === 1">
         {{ "depDetails.lastPage" | translate }}
       </button>
-      <span class="px-3"
-        >{{ "depDetails.page" | translate }} {{ currentDoctorPage }}
-        {{ "depDetails.of" | translate }} {{ totalDoctorPages }}</span
-      >
-      <button
-        (click)="nextDoctorPage()"
-        class="btn btn-outline-info"
-        [disabled]="currentDoctorPage === totalDoctorPages"
-      >
+      <span class="px-3">{{ "depDetails.page" | translate }} {{ currentDoctorPage }}
+        {{ "depDetails.of" | translate }} {{ totalDoctorPages }}</span>
+      <button (click)="nextDoctorPage()" class="btn btn-outline-info"
+        [disabled]="currentDoctorPage === totalDoctorPages">
         {{ "depDetails.nextPage" | translate }}
       </button>
     </div>
@@ -105,57 +91,62 @@
   <div *ngIf="activeTab === 'hospitals'">
     <div class="row">
       @for (item of Hospitals; track $index) {
-        <div class="col-md-6 col-lg-4">
-          <div class="card text-center shadow-lg border-0 overflow-hidden">
+      <div class="col-md-6 col-lg-4">
+        <div class="card text-center shadow-lg border-0 overflow-hidden">
+          <!-- الجزء العلوي -->
+          <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+            <i class="fas fa-hospital fa-3x"></i>
+            <h4 class="fw-bold mt-2">{{ item.title }}</h4>
+            <p class="mb-2">{{ item.service }}</p>
+          </div>
 
-            <!-- الجزء العلوي -->
-            <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
-              <i class="fas fa-hospital fa-3x"></i>
-              <h4 class="fw-bold mt-2">{{ item.title }}</h4>
-              <p class="mb-2">{{ item.service }}</p>
+          <!-- الصورة -->
+          <div class="position-relative p-3 text-center">
+            <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+              style="width: 100px; height: 100px; margin-top: -50px" alt="Hospital Image" />
+          </div>
+
+          <!-- التفاصيل -->
+          <div class="card-body text-start px-4">
+            <div class="d-flex justify-content-between align-content-center">
+              <p class="fw-bold">
+                <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
+              </p>
+              <p class="fw-bold">
+                <i class="fa-solid fa-money-bill text-info"></i>
+                {{ item.pivot.app_price }} EGP
+              </p>
             </div>
-
-            <!-- الصورة -->
-            <div class="position-relative p-3 text-center">
-              <img [src]="item.image"
-                   class="rounded-circle border border-4 border-light shadow"
-                   style="width: 100px; height: 100px; margin-top: -50px;"
-                   alt="Hospital Image" />
-            </div>
-
-            <!-- التفاصيل -->
-            <div class="card-body text-start px-4">
-             <div class="d-flex justify-content-between align-content-center">
-              <p class="fw-bold"><i class="fa-solid fa-phone text-info"></i> {{ item.phone }}</p>
-              <p class="fw-bold"><i class="fa-solid fa-money-bill text-info"></i> {{item.pivot.app_price }} EGP</p>
-             </div>
-             <p class="fw-bold text-center"><i class="fa-regular fa-hospital text-info"></i> {{item.address }} </p>
-             <a (click)="showInMap(item.locationUrl)" class="btn btn-info text-white fw-bold w-100 rounded-pill " title="Location">
+            <p class="fw-bold text-center">
+              <i class="fa-regular fa-hospital text-info"></i>
+              {{ item.address }}
+            </p>
+            <a (click)="showInMap(item.locationUrl)" class="btn btn-info text-white fw-bold w-100 rounded-pill"
+              title="Location">
               <i class="bi bi-geo-alt text-light"></i>
             </a>
-            </div>
           </div>
         </div>
+      </div>
+      }@empty {
+      <div class="not-found">
+        <img src="./empty.png" alt="" class="img-not-found" />
+        <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+        <h6 class="head-not-found2">
+          الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+        </h6>
+      </div>
       }
     </div>
     <!-- Pagination for hospitals -->
     <div class="d-flex justify-content-center align-items-center">
-      <button
-        (click)="prevHospitalPage()"
-        class="btn btn-outline-info"
-        [disabled]="currentHospitalPage === 1"
-      >
+      <button (click)="prevHospitalPage()" class="btn btn-outline-info" [disabled]="currentHospitalPage === 1">
         {{ "depDetails.lastPage" | translate }}
       </button>
-      <span class="px-3"
-        >{{ "depDetails.page" | translate }} {{ currentHospitalPage }}
-        {{ "depDetails.of" | translate }} {{ totalHospitalPages }}</span
-      >
-      <button
-        (click)="nextHospitalPage()"
-        class="btn btn-outline-info"
-        [disabled]="currentHospitalPage === totalHospitalPages"
-      >
+      <span class="px-3">{{ "depDetails.page" | translate }} {{ currentHospitalPage }}
+        {{ "depDetails.of" | translate }} {{ totalHospitalPages }}</span>
+      <button (click)="nextHospitalPage()" class="btn btn-outline-info"
+        [disabled]="currentHospitalPage === totalHospitalPages">
         {{ "depDetails.nextPage" | translate }}
       </button>
     </div>
@@ -164,59 +155,63 @@
   <div *ngIf="activeTab === 'care_centers'">
     <div class="row">
       @for (item of CareCenters; track $index) {
-        <div class="col-md-6 col-lg-4">
-          <div class="card text-center shadow-lg border-0 overflow-hidden">
+      <div class="col-md-6 col-lg-4">
+        <div class="card text-center shadow-lg border-0 overflow-hidden">
+          <!-- الجزء العلوي -->
+          <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+            <i class="fas fa-clinic-medical fa-3x"></i>
+            <h4 class="fw-bold mt-2">{{ item.title }}</h4>
+            <p class="mb-2">{{ item.service }}</p>
+          </div>
 
-            <!-- الجزء العلوي -->
-            <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
-              <i class="fas fa-clinic-medical fa-3x"></i>
-              <h4 class="fw-bold mt-2">{{ item.title }}</h4>
-              <p class="mb-2">{{ item.service }}</p>
+          <!-- الصورة -->
+          <div class="position-relative p-3 text-center">
+            <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+              style="width: 100px; height: 100px; margin-top: -50px" alt="Center Image" />
+          </div>
+
+          <!-- التفاصيل -->
+          <div class="card-body text-start px-4">
+            <div class="d-flex justify-content-between align-content-center">
+              <p class="fw-bold">
+                <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
+              </p>
+              <p class="fw-bold">
+                <i class="fa-solid fa-money-bill text-info"></i>
+                {{ item.pivot.app_price }} EGP
+              </p>
             </div>
-
-            <!-- الصورة -->
-            <div class="position-relative p-3 text-center">
-              <img [src]="item.image"
-                   class="rounded-circle border border-4 border-light shadow"
-                   style="width: 100px; height: 100px; margin-top: -50px;"
-                   alt="Center Image" />
-            </div>
-
-            <!-- التفاصيل -->
-            <div class="card-body text-start px-4">
-              <div class="d-flex justify-content-between align-content-center">
-                <p class="fw-bold"><i class="fa-solid fa-phone text-info"></i> {{ item.phone }}</p>
-                <p class="fw-bold"><i class="fa-solid fa-money-bill text-info"></i> {{ item.pivot.app_price }} EGP</p>
-              </div>
-              <p class="fw-bold text-center"><i class="fa-solid fa-house-chimney-medical text-info"></i> {{ item.address }} </p>
-              <a (click)="showInMap(item.locationUrl)" class="btn btn-info text-white fw-bold w-100 rounded-pill " title="Location">
-                <i class="bi bi-geo-alt text-light"></i>
-              </a>
-            </div>
-
+            <p class="fw-bold text-center">
+              <i class="fa-solid fa-house-chimney-medical text-info"></i>
+              {{ item.address }}
+            </p>
+            <a (click)="showInMap(item.locationUrl)" class="btn btn-info text-white fw-bold w-100 rounded-pill"
+              title="Location">
+              <i class="bi bi-geo-alt text-light"></i>
+            </a>
           </div>
         </div>
+      </div>
 
+      }@empty {
+      <div class="not-found">
+        <img src="./empty.png" alt="" class="img-not-found" />
+        <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+        <h6 class="head-not-found2">
+          الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+        </h6>
+      </div>
       }
     </div>
     <!-- Pagination for care_centers -->
     <div class="d-flex justify-content-center align-items-center">
-      <button
-        (click)="prevCareCenterPage()"
-        class="btn btn-outline-info"
-        [disabled]="currentCareCenterPage === 1"
-      >
+      <button (click)="prevCareCenterPage()" class="btn btn-outline-info" [disabled]="currentCareCenterPage === 1">
         {{ "depDetails.lastPage" | translate }}
       </button>
-      <span class="px-3"
-        >{{ "depDetails.page" | translate }} {{ currentCareCenterPage }}
-        {{ "depDetails.of" | translate }} {{ totalCareCenterPages }}</span
-      >
-      <button
-        (click)="nextCareCenterPage()"
-        class="btn btn-outline-info"
-        [disabled]="currentCareCenterPage === totalCareCenterPages"
-      >
+      <span class="px-3">{{ "depDetails.page" | translate }} {{ currentCareCenterPage }}
+        {{ "depDetails.of" | translate }} {{ totalCareCenterPages }}</span>
+      <button (click)="nextCareCenterPage()" class="btn btn-outline-info"
+        [disabled]="currentCareCenterPage === totalCareCenterPages">
         {{ "depDetails.nextPage" | translate }}
       </button>
     </div>

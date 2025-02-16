@@ -1,36 +1,49 @@
 <div class="container my-5">
-    <div class="row" dir="rtl">
-        @for (item of OffersOfGroup; track $index) {
-        <div class="col-md-6 col-lg-4 my-2">
-            <div class="card-top text-center shadow-lg border-0 overflow-hidden">
-                <!-- الجزء العلوي -->
-                <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
-                    <img src="./gift.png" width="50px" height="50px" class="img-fluid">
-                    <h4 class="fw-bold mt-2">{{item.title}}</h4>
-                    <p class="mb-2">{{ item.info_about_offer }}</p>
-                </div>
-                <!-- الصورة -->
-                <div class="position-relative p-3 text-center">
-                    <img [src]="OfferGroup.image" class="rounded-circle border border-4 border-light shadow"
-                        style="width: 100px; height: 100px; margin-top: -50px;" alt="Offer Image" />
-                </div>
-                <!-- التفاصيل -->
-                <div class="card-body px-4">
-                    <div class="d-flex justify-content-between align-content-center">
-                        <span class="del-price">{{ item.price_before_discount | currency: 'EGP' }}</span>
-                        <span class="discount-price">{{ item.price_before_discount | discount: item.discount | currency:
-                            'EGP' }}</span>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-content-center">
-                        <a routerLink="/details/doctor-offer/{{ item.id }}"
-                            class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1 mx-auto d-block">
-                            عرض التفاصيل
-                        </a>
-              
-                    </div>
-                </div>
-            </div>
+  <div class="row" dir="rtl">
+    @for (item of OffersOfGroup; track $index) {
+    <div class="col-md-6 col-lg-4 my-2">
+      <div class="card-top text-center shadow-lg border-0 overflow-hidden">
+        <!-- الجزء العلوي -->
+        <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+          <img src="./gift.png" width="50px" height="50px" class="img-fluid" />
+          <h4 class="fw-bold mt-2">{{ item.title }}</h4>
+          <!-- <p class="mb-2">{{ item.info_about_offer }}</p> -->
         </div>
-        }
+        <!-- الصورة -->
+        <div class="position-relative p-3 text-center">
+          <img [src]="OfferGroup.image" class="rounded-circle border border-4 border-light shadow"
+            style="width: 100px; height: 100px; margin-top: -50px" alt="Offer Image" />
+        </div>
+        <!-- التفاصيل -->
+        <div class="card-body px-4">
+          <div class="d-flex justify-content-between align-content-center">
+            <span class="del-price">{{
+              item.price_before_discount | currency : "EGP"
+              }}</span>
+            <span class="discount-price">{{
+              item.price_before_discount
+              | discount : item.discount
+              | currency : "EGP"
+              }}</span>
+          </div>
+
+          <div class="d-flex justify-content-between align-content-center">
+            <a routerLink="/details/doctor-offer/{{ item.id }}"
+              class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1 mx-auto d-block">
+              عرض التفاصيل
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+    }@empty {
+    <div class="not-found">
+      <img src="./empty.png" alt="" class="img-not-found" />
+      <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+      <h6 class="head-not-found2">
+        الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+      </h6>
+    </div>
+    }
+  </div>
+</div>

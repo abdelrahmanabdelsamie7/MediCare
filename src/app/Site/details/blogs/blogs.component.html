@@ -1,6 +1,7 @@
 <div class="container">
   <div class="blogs-container mt-4">
-    <h2 class="my-4 text-secondary fw-bold">{{ 'adviceSec.blog' | translate }} <span class="fw-bolder text-info">MediCare</span></h2>
+    <h2 class="my-4 text-secondary fw-bold">{{ 'adviceSec.blog' | translate }} <span
+        class="fw-bolder text-info">MediCare</span></h2>
     @for (item of DoctorBlogs; track $index) {
     <div class="blog-card p-4 my-3 border border-0 rounded">
       <div class="d-flex align-items-center mb-4">
@@ -16,6 +17,14 @@
       <h4 class="fw-bold mb-2 text-info">{{ item.title }}</h4>
       <p class="fs-5" style="color: var(--third-color);">{{ item.content }}</p>
       <p class="text-muted mb-1 text-start">{{ item.created_at | date:'d MMMM YYYY' }}</p>
+    </div>
+    }@empty {
+    <div class="not-found">
+      <img src="./empty.png" alt="" class="img-not-found" />
+      <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+      <h6 class="head-not-found2">
+        الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+      </h6>
     </div>
     }
   </div>

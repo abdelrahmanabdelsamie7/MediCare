@@ -4,7 +4,7 @@
 }
 
 .card-top {
-  background-color:#f8f9fa ;
+  background-color: #f8f9fa;
   border-radius: 15px;
   max-width: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -35,3 +35,4 @@
   color: var(--main-color);
   font-weight: bold;
 }
+
