@@ -9,15 +9,37 @@
   "departments": {
     "medicalDepartments": "Medical Departments"
   },
+  "docOffers":{
+    "DoctorsOffers":"Doctors offers"
+  },
   "Pharmacies": {
     "contentPharm": ", we offer an innovative solution that brings together all the pharmacies in Sohag governorate on one platform. Now you can reach the nearest pharmacy and learn about its services quickly and easily, because your health is always our priority",
     "Pharmacies": "Pharmacies",
-    "explorePharmacies": "Explore Pharmacies"
+    "explorePharmacies": "Explore Pharmacies",
+    "pharmaciesChain":"Pharmacies Chain",
+    "search":"Search",
+    "city":"City",
+    "area":"Area",
+    "delivery":"Delivery",
+    "insurance":"Insurence",
+    "all":"All",
+    "available":"Yes",
+    "notAvailable":"No",
+    "rating":"Rating"
   },
   "laboratories": {
     "contentLabor": ", we have provided you with a comprehensive guide to all medical laboratories in Sohag governorate. Now you can know the nearest lab, its service details, and working hours easily. Your health deserves the best, and we are here to make it easier for you",
     "laboratories": "Laboratories",
-    "exploreLaboratories": "Explore Laboratories"
+    "exploreLaboratories": "Explore Laboratories",
+    "laboratoriesChain":"Laboratories Chain",
+    "insurance":"Insurence",
+    "all":"All",
+    "available":"Yes",
+    "notAvailable":"No",
+    "rating":"Rating",
+    "search":"Search",
+    "city":"City",
+    "area":"Area"
   },
   "deliveryServices": {
     "contentDeli": " patient transport services are provided where our professional drivers transport patients to and from medical facilities with comfort and safety. Whether you need to visit the doctor or undergo tests, we are here to meet your needs in the best possible way",
@@ -334,5 +356,14 @@
     "lastPage": "Last Page",
     "page": "Page",
     "of": "of"
-  }
+  },
+  "docOffer":{
+    "secDiscount":"Get Discount",
+    "discount": "OFF",
+ "BtnDetails":"More Details",
+ "offerInfo":"Information",
+ "details":"Details",
+ "address":"Address",
+ "Booking":"Booking in advance and entry is first come first served"
+}
 }

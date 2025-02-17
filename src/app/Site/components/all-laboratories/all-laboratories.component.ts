@@ -9,16 +9,19 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 
 
 @Component({
     selector: 'app-all-laboratories',
     standalone: true,
-    imports: [RouterModule, FormsModule,ReactiveFormsModule,TranslateModule],
+    imports: [RouterModule, FormsModule,ReactiveFormsModule,TranslateModule,NgStyle],
     templateUrl: './all-laboratories.component.html',
     styleUrl: './all-laboratories.component.css',
 })
 export class AllLaboratoriesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
     activeTab: string = 'Laboratories';
     ChainsLaboratories: IChainLaboratories[] = [];
     Laboratories: ILaboratory[] = [];
@@ -30,6 +33,7 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
     constructor(
         private _SChainLaboratoriesService: SChainLaboratoriesService,
         private _SLaboratoryService: SLaboratoryService,
+        private _STranslateService:STranslateService,
           private router: Router,
           private fb: FormBuilder,
     ) {
@@ -45,6 +49,7 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.loadChainsLaboratories();
         this.loadLaboratories();
+        this.checkLanguageDirection();
     }
    private loadLaboratories(page: number = 1) {
      let params = new HttpParams()
@@ -153,5 +158,16 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
    handleAreaChange(event:Event){
       const value = (event.target as HTMLInputElement).value;
        this.filterForm.patchValue({area:value})
+    }
+    checkLanguageDirection(): void {
+      this._STranslateService.currentLang$.subscribe({
+        next:(lang)=>{
+          if(lang==='ar'){
+            this.isRtl=true
+          }else{
+            this.isRtl=false
+          }
+        }
+      })
     }
 }

@@ -1,15 +1,15 @@
-<div class="container mt-2" dir="rtl">
+<div class="container mt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <form (ngSubmit)="handleSubmit($event)" class="card p-3">
     <div class="d-flex  align-items-center mb-2 gap-3">
       <div class="dropdown">
         <button class="btn btn-info text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
           data-bs-toggle="dropdown" aria-expanded="false">
-          سلسلة الصيدليات
+          {{"Pharmacies.pharmaciesChain"|translate}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
             <button class="dropdown-item" (click)="loadPharmaciesByChain('all')">
-              الكل
+              {{"Pharmacies.all"|translate }}
             </button>
           </li>
           @for (item of ChainsPharmacies; track $index) {
@@ -24,36 +24,36 @@
       <input type="text" class="form-control" style="width: 40%;" placeholder="ابحث عن صيدلية..."
         [(ngModel)]="searchQuery" name="search" />
       <button class="btn btn-info text-light" type="submit">
-        بحث
+        {{"Pharmacies.search"|translate}}
       </button>
     </div>
     <div class="row align-items-center gap-3">
       <div class="col-auto">
-        <label class="form-label">المحافظه</label>
+        <label class="form-label">{{"Pharmacies.city"|translate }}</label>
         <input type="text" class="form-control" name="city" (input)="handleCityChange($event)" />
       </div>
       <div class="col-auto">
-        <label class="form-label">المنطقة</label>
+        <label class="form-label">{{"Pharmacies.area"|translate }}</label>
         <input type="text" class="form-control" name="area" (input)="handleAreaChange($event)" />
       </div>
       <div class="col-auto">
-        <label class="form-label">توصيل</label>
+        <label class="form-label">{{"Pharmacies.delivery"|translate }}</label>
         <select class="form-select" name="deliveryOption" (change)="handleDeliveryOptionChange($event)">
-          <option value="all">الكل</option>
-          <option value="1">نعم</option>
-          <option value="0">لا</option>
+          <option value="all">{{"Pharmacies.all"|translate }}</option>
+          <option value="1">{{"Pharmacies.available"|translate }}</option>
+          <option value="0">{{"Pharmacies.notAvailable"|translate }}</option>
         </select>
       </div>
       <div class="col-auto">
-        <label class="form-label">تأمين</label>
+        <label class="form-label">{{"Pharmacies.insurance"| translate}}</label>
         <select class="form-select" (change)="handleInsuranceChange($event)" name="insurance">
-          <option value="all">الكل</option>
-          <option value="1">نعم</option>
-          <option value="0">لا</option>
+          <option value="all">{{"Pharmacies.all"|translate }}</option>
+          <option value="1">{{"Pharmacies.available"|translate }}</option>
+          <option value="0">{{"Pharmacies.notAvailable"|translate }}</option>
         </select>
       </div>
       <div class="col-auto">
-        <label class="form-label">أقل تقييم</label>
+        <label class="form-label">{{"Pharmacies.rating"|translate }}</label>
         <input type="number" min="0" max="5" class="form-control" name="minRate"
           (change)="handleMinRateChange($event)" />
       </div>
@@ -78,6 +78,18 @@
         <div class="position-relative p-3 text-center">
           <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
             style="width: 100px; height: 100px; margin-top: -50px;" alt="pharmacy Image" />
+            @if (item.insurence ===1) {
+              <p class="insurence pb-2 m-0">
+                {{"Pharmacies.insurance"| translate}}
+                            <i class="bi bi-shield-check"></i>
+                          </p>
+            }
+            @if (item.deliveryOption ===1) {
+              <p class="delivery m-0 pb-2">
+                {{"Pharmacies.delivery"| translate}}
+                <i class="fa-solid fa-motorcycle fs-4"></i>
+                          </p>
+            }
         </div>
 
         <!-- التفاصيل -->

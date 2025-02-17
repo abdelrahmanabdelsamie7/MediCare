@@ -6,11 +6,12 @@ import { SOfferGroupService } from '../../../Core/services/s-offer-group.service
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DiscountPipe } from '../../../Core/pipes/discount.pipe';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-offers',
   standalone: true,
-  imports: [RouterModule , DiscountPipe , CommonModule],
+  imports: [RouterModule , DiscountPipe , CommonModule ,TranslateModule],
   templateUrl: './all-offers.component.html',
   styleUrl: './all-offers.component.css'
 })

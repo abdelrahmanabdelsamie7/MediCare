@@ -1,6 +1,6 @@
 import { isPlatformBrowser, NgStyle } from '@angular/common';
 import { Component, inject, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { RouterLinkActive, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { STranslateService } from '../../../Core/services/s-translate.service';
 
@@ -48,6 +48,14 @@ export class SiteNavbarComponent implements OnInit {
     this.updateLanguage(lang);
   }
   checkLanguageDirection(): void {
-    this.isRtl = localStorage.getItem('lang') === 'ar';
+    this._STranslateService.currentLang$.subscribe({
+      next:(lang)=>{
+        if(lang==='ar'){
+          this.isRtl=true
+        }else{
+          this.isRtl=false
+        }
+      }
+    })
   }
 }

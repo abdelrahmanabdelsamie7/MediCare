@@ -8,16 +8,18 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgClass } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-all-pharmacies',
   standalone: true,
-  imports: [RouterModule, FormsModule ,TranslateModule],
+  imports: [RouterModule, FormsModule ,TranslateModule,NgClass,NgStyle],
   templateUrl: './all-pharmacies.component.html',
   styleUrl: './all-pharmacies.component.css',
 })
 export class AllPharmaciesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   activeTab: string = 'Pharmacies';
   ChainsPharmacies: IChainPharmacies[] = [];
   Pharmacies: IPharmacy[] = [];
@@ -35,12 +37,14 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
   constructor(
     private _SPharmacyService: SPharmacyService,
     private _SChainPharmaciesService: SChainPharmaciesService,
+    private _STranslateService:STranslateService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadChainsPharmacies();
     this.loadPharmacies();
+    this.checkLanguageDirection()
   }
 
   private loadPharmacies(page: number = 1) {
@@ -154,11 +158,13 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
   handleDeliveryOptionChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.deliveryOptionFilter = selectElement.value;
+    this.search();
   }
 
   handleInsuranceChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.insuranceFilter = selectElement.value;
+    this.search();
   }
 
   handleMinRateChange(event: Event) {
@@ -176,7 +182,17 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     const inputElement = event.target as HTMLInputElement;
     this.areaFilter = inputElement.value;
   }
-
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next:(lang)=>{
+        if(lang==='ar'){
+          this.isRtl=true
+        }else{
+          this.isRtl=false
+        }
+      }
+    })
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

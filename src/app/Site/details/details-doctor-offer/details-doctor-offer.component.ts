@@ -9,17 +9,19 @@ import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
 import { CommonModule, DatePipe } from '@angular/common';
 import { DiscountPipe } from '../../../Core/pipes/discount.pipe';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-details-doctor-offer',
   standalone: true,
-  imports: [CommonModule, DiscountPipe, RouterModule, TimeFormatPipe],
+  imports: [CommonModule, DiscountPipe, RouterModule, TimeFormatPipe, TranslateModule],
   templateUrl: './details-doctor-offer.component.html',
   styleUrl: './details-doctor-offer.component.css',
   providers: [DatePipe]
 })
 export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   id: string = '';
   selectedImage: string = "";
   DoctorOffer: IDoctorOffer = {} as IDoctorOffer;
@@ -34,10 +36,12 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
     private _SDoctorOfferService: SDoctorOfferService,
     private _ActivatedRoute: ActivatedRoute,
     private datePipe: DatePipe,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private _STranslateService :STranslateService
   ) {
   }
   ngOnInit() {
+   this.checkLanguageDirection()
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -95,6 +99,17 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
       '_blank',
       'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
     );
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next:(lang)=>{
+        if(lang==='ar'){
+          this.isRtl=true
+        }else{
+          this.isRtl=false
+        }
+      }
+    })
   }
   ngOnDestroy(): void {
     this.destroy$.next();

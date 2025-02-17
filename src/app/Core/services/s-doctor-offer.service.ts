@@ -13,20 +13,20 @@ export class SDoctorOfferService {
   getDoctorOffers(): Observable<IDoctorOffer[]> {
     return this._HttpClient.get<IDoctorOffer[]>(
       `${environment.baseUrl}/Doctor_Offers`,
-      
+
     );
   }
   addDoctorOffer(doctorOffer: IDoctorOffer): Observable<IDoctorOffer> {
     return this._HttpClient.post<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers`,
       doctorOffer,
-      
+
     );
   }
   showDoctorOffer(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.get<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
-      
+
     );
   }
   editDoctorOffer(
@@ -36,13 +36,13 @@ export class SDoctorOfferService {
     return this._HttpClient.put<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
       doctorOffer,
-      
+
     );
   }
   deleteDoctorOffer(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.delete<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offers/${id}`,
-      
+
     );
   }
 
@@ -52,13 +52,13 @@ export class SDoctorOfferService {
     return this._HttpClient.post<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images`,
       doctorOfferImage,
-      
+
     );
   }
   showDoctorOfferImage(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.get<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images/${id}`,
-      
+
     );
   }
   editDoctorOfferImage(
@@ -68,13 +68,13 @@ export class SDoctorOfferService {
     return this._HttpClient.put<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images/${id}`,
       doctorOfferImage,
-      
+
     );
   }
   deleteDoctorOfferImage(id: string): Observable<IDoctorOffer> {
     return this._HttpClient.delete<IDoctorOffer>(
       `${environment.baseUrl}/Doctor_Offer_Images/${id}`,
-      
+
     );
   }
 }

@@ -12,6 +12,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
 import { SOfferGroupService } from '../../../Core/services/s-offer-group.service';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-section-doc-offers',
   standalone: true,
@@ -21,6 +22,7 @@ import { SOfferGroupService } from '../../../Core/services/s-offer-group.service
     TagModule,
     CommonModule,
     RouterModule,
+    TranslateModule
   ],
   templateUrl: './section-doc-offers.component.html',
   styleUrl: './section-doc-offers.component.css',
