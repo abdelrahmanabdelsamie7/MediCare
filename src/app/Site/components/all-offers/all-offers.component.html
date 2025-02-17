@@ -4,9 +4,12 @@
     <div class="col-md-6 col-lg-4 my-2">
       <div class="card-top text-center shadow-lg border-0 overflow-hidden">
         <!-- الجزء العلوي -->
-        <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+        <div class="card-header bg-info text-white py-4 position-relative" style="border-bottom-left-radius: 50px">
           <img src="./gift.png" width="50px" height="50px" class="img-fluid" />
           <h4 class="fw-bold mt-2">{{ item.title }}</h4>
+          <div class="discount-overlay">
+            {{ item.discount }}% {{"docOffer.discount"|translate}}
+          </div>
           <!-- <p class="mb-2">{{ item.info_about_offer }}</p> -->
         </div>
         <!-- الصورة -->
@@ -30,7 +33,7 @@
           <div class="d-flex justify-content-between align-content-center">
             <a routerLink="/details/doctor-offer/{{ item.id }}"
               class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1 mx-auto d-block">
-              عرض التفاصيل
+              {{"docOffer.BtnDetails"|translate}}
             </a>
           </div>
         </div>

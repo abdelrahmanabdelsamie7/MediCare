@@ -9,9 +9,12 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 
 
 @Component({
+<<<<<<< HEAD
   selector: 'app-all-laboratories',
   standalone: true,
   imports: [RouterModule, FormsModule, ReactiveFormsModule, TranslateModule],
@@ -50,6 +53,49 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
     let params = new HttpParams()
       .set('page', page);
     const formValues = this.filterForm.value;
+=======
+    selector: 'app-all-laboratories',
+    standalone: true,
+    imports: [RouterModule, FormsModule,ReactiveFormsModule,TranslateModule,NgStyle],
+    templateUrl: './all-laboratories.component.html',
+    styleUrl: './all-laboratories.component.css',
+})
+export class AllLaboratoriesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
+    activeTab: string = 'Laboratories';
+    ChainsLaboratories: IChainLaboratories[] = [];
+    Laboratories: ILaboratory[] = [];
+    currentPage: number = 1;
+    totalPages: number = 1;
+    filterForm: FormGroup;
+      private destroy$ = new Subject<void>();
+    selectedChainId: string | undefined;
+    constructor(
+        private _SChainLaboratoriesService: SChainLaboratoriesService,
+        private _SLaboratoryService: SLaboratoryService,
+        private _STranslateService:STranslateService,
+          private router: Router,
+          private fb: FormBuilder,
+    ) {
+         this.filterForm = this.fb.group({
+                search: [''],
+                chain_laboratory_id: ['all'],
+                insurance: ['all'],
+                minRate: [null],
+                city: ['all'],
+                area: ['all']
+            });
+     }
+    ngOnInit() {
+        this.loadChainsLaboratories();
+        this.loadLaboratories();
+        this.checkLanguageDirection();
+    }
+   private loadLaboratories(page: number = 1) {
+     let params = new HttpParams()
+         .set('page', page);
+     const formValues = this.filterForm.value;
+>>>>>>> 68de1d1d6722f97d9b8bc79cbf51c2c96954c8a1
 
     if (formValues.search) {
       params = params.set('search', formValues.search);
@@ -153,4 +199,26 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
     const value = (event.target as HTMLInputElement).value;
     this.filterForm.patchValue({ area: value })
   }
+<<<<<<< HEAD
+=======
+  handleCityChange(event:Event){
+        const value = (event.target as HTMLInputElement).value;
+      this.filterForm.patchValue({city:value})
+}
+   handleAreaChange(event:Event){
+      const value = (event.target as HTMLInputElement).value;
+       this.filterForm.patchValue({area:value})
+    }
+    checkLanguageDirection(): void {
+      this._STranslateService.currentLang$.subscribe({
+        next:(lang)=>{
+          if(lang==='ar'){
+            this.isRtl=true
+          }else{
+            this.isRtl=false
+          }
+        }
+      })
+    }
+>>>>>>> 68de1d1d6722f97d9b8bc79cbf51c2c96954c8a1
 }

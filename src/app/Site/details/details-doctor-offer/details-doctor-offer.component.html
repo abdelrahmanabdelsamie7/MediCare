@@ -23,8 +23,8 @@
           </div>
         </div>
       </div>
-      <div class="offer-info">
-        <h3 class="offer-info-title">لمعلوماتك : </h3>
+      <div class="offer-info"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+        <h3 class="offer-info-title">{{"docOffer.offerInfo"|translate}} </h3>
         <h6 class="terms-text">{{ DoctorOffer.info_about_offer }}</h6>
       </div>
     </div>
@@ -80,15 +80,15 @@
       }@else {
       <img src="./empty.png" alt="" class="img-fluid d-block mx-auto">
       }
-      <div class="offer-details">
-        <h3 class="offer-details-title">التفاصيل : </h3>
+      <div class="offer-details"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+        <h3 class="offer-details-title">{{"docOffer.details"|translate}} </h3>
         <h6 class="terms-text">{{ DoctorOffer.details }}</h6>
       </div>
       <div class="app-later">
-        <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
+        <h5 class="appLater">{{"docOffer.Booking"|translate}}</h5>
       </div>
-      <div class="offer-address">
-        <h2 class="offer-address-title">العنوان : </h2>
+      <div class="offer-address"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+        <h2 class="offer-address-title">{{"docOffer.address"|translate}} </h2>
         @for (item of DoctorClinics; track $index) {
         <h5 class="location">
           <button (click)="showInMap(item.locationUrl)">

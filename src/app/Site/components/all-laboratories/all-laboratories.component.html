@@ -1,15 +1,15 @@
-<div class="container mt-2" dir="rtl">
+<div class="container mt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <form [formGroup]="filterForm" (ngSubmit)="handleSubmit()" class="card p-3">
     <div class="d-flex align-items-center mb-2 gap-3">
       <div class="dropdown">
         <button class="btn btn-info text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
           data-bs-toggle="dropdown" aria-expanded="false">
-          سلسة المعامل
+          {{"laboratories.laboratoriesChain"|translate}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
             <button class="dropdown-item" (click)="loadLaboratoriesByChain('all')">
-              All Chains
+              {{"laboratories.all"| translate}}
             </button>
           </li>
           @for (item of ChainsLaboratories; track $index) {
@@ -23,27 +23,27 @@
       </div>
       <input type="text" class="form-control" style="width: 40%" placeholder="ابحث عن معمل..."
         formControlName="search" />
-      <button class="btn btn-info text-light" type="submit">بحث</button>
+      <button class="btn btn-info text-light" type="submit">{{"laboratories.search"|translate}}</button>
     </div>
     <div class="row align-items-center gap-3">
       <div class="col-md-6 col-lg-3">
-        <label class="form-label">المدينة</label>
+        <label class="form-label">{{"laboratories.city" |translate }}</label>
         <input type="text" class="form-control" formControlName="city" (input)="handleCityChange($event)" />
       </div>
       <div class="col-md-6 col-lg-3">
-        <label class="form-label">المنطقة</label>
+        <label class="form-label">{{"laboratories.area"|translate }}</label>
         <input type="text" class="form-control" formControlName="area" (input)="handleAreaChange($event)" />
       </div>
       <div class="col-md-6 col-lg-2">
-        <label class="form-label">تأمين</label>
+        <label class="form-label"> {{"laboratories.insurance"| translate}}</label>
         <select class="form-select" formControlName="insurance" (change)="handleInsuranceChange($event)">
-          <option value="all">الكل</option>
-          <option value="1">نعم</option>
-          <option value="0">لا</option>
+          <option value="all"> {{"laboratories.all"| translate}}</option>
+          <option value="1"> {{"laboratories.available"| translate}}</option>
+          <option value="0">{{"laboratories.notAvailable"|translate }}</option>
         </select>
       </div>
       <div class="col-md-6 col-lg-2">
-        <label class="form-label">أقل تقييم</label>
+        <label class="form-label">{{"laboratories.rating"|translate }}</label>
         <input type="number" min="0" max="5" class="form-control" formControlName="minRate"
           (change)="handleMinRateChange($event)" />
       </div>
@@ -57,7 +57,13 @@
     <div class="col-md-6 col-lg-4">
       <div class="card card-top text-center shadow-lg border-0 overflow-hidden">
         <!-- الجزء العلوي -->
-        <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+        <div class="card-header position-relative bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+          @if (item.insurence === 1) {
+            <p class="insurence pb-2 m-0">
+              {{"laboratories.insurance"| translate}}
+                          <i class="bi bi-shield-check"></i>
+                        </p>
+          }
           <i class="fa-solid fa-flask-vial fa-3x"></i>
           <h4 class="fw-bold mt-2">{{ item.title }}</h4>
           <p class="mb-2">{{ item.service }}</p>
@@ -124,6 +130,15 @@
 
         <!-- التفاصيل -->
         <div class="card-body px-4">
+          <div class="d-flex justify-content-around align-content-center">
+            @if (item.insurence === 1) {
+              <p class="insurence pb-2 m-0">
+                {{"laboratories.insurance"| translate}}
+                            <i class="bi bi-shield-check"></i>
+                          </p>
+            }
+
+          </div>
           <div class="d-flex justify-content-between align-content-center">
             <p class="fw-bold">
               <i class="fa-solid fa-map-marker-alt text-info"></i>
