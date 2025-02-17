@@ -73,8 +73,6 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
-
           this.Laboratory = data.data;
           this.ratesOfLaboratory = data.data.users;
         },

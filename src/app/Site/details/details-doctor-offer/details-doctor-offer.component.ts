@@ -52,11 +52,9 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.DoctorOffer = data.data;
           this.DoctorOfferImages = this.DoctorOffer.images;
           this.appointmentDates = data.data.appointmentsGroupedByDate;
-          console.log(this.appointmentDates);
           if (data.data.appointmentsGroupedByDate) {
             this.appointmentDates = Object.keys(
               data.data.appointmentsGroupedByDate

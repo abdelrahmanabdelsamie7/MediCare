@@ -31,9 +31,7 @@ export class SectionAiComponent {
   uploadProgress: number = 0;
   showResult: boolean = false; // Controls when to show the result card
   recommendedDepartments: any[] = [];
-
-  constructor(private geminiService: SAiService ,private router: Router) {}
-
+  constructor(private geminiService: SAiService, private router: Router) { }
   // Handles file selection
   onFileSelected(event: any) {
     const file = event.target.files[0] as File;
@@ -60,7 +58,6 @@ export class SectionAiComponent {
       reader.readAsDataURL(file);
     }
   }
-
   // Clears the selected file and preview
   clearFile() {
     this.selectedFile = null;
@@ -72,9 +69,8 @@ export class SectionAiComponent {
       fileInput.value = ''; // Reset the file input
     }
   }
-
   // Handles the analysis process
-    analyzeContent() {
+  analyzeContent() {
     if (!this.symptomsText && !this.selectedFile) {
       this.errorMessage = 'يرجى إدخال الأعراض أو تحميل صورة للتحليل.';
       this.showResult = false; // Hide result card if no input
@@ -90,22 +86,21 @@ export class SectionAiComponent {
       .subscribe(
         (response: IAi) => {
           this.apiResponse = response; // Set the API response
-            this.geminiService
-              .searchDepartments(response.recommendedSpecialization)
-              .subscribe(
-                (departments) => {
-                    this.recommendedDepartments = departments;
-                    console.log('Departments from API:', departments);
-                  this.loading = false;
-                  this.showResult = true;
-                },
-                (error) => {
-                  this.loading = false;
-                  this.errorMessage = `فشل جلب التخصصات المقترحة من الخادم. يرجى المحاولة مرة أخرى.`;
-                   this.showResult = true;
-                  console.error('Department Search Error:', error);
-                }
-             );
+          this.geminiService
+            .searchDepartments(response.recommendedSpecialization)
+            .subscribe(
+              (departments) => {
+                this.recommendedDepartments = departments;
+                this.loading = false;
+                this.showResult = true;
+              },
+              (error) => {
+                this.loading = false;
+                this.errorMessage = `فشل جلب التخصصات المقترحة من الخادم. يرجى المحاولة مرة أخرى.`;
+                this.showResult = true;
+                console.error('Department Search Error:', error);
+              }
+            );
         },
         (error: any) => {
           this.loading = false;
@@ -124,7 +119,5 @@ export class SectionAiComponent {
   handleDepartmentSelection(departmentId: string) {
     // Handle the selection of a department here
     this.router.navigate(['/details/department', departmentId]);
-     console.log(`Selected department ID: ${departmentId}`);
-
   }
 }

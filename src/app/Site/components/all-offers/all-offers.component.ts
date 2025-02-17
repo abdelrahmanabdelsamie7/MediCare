@@ -37,7 +37,6 @@ export class AllOffersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.OfferGroup = data.data;
           this.OffersOfGroup = this.OfferGroup.doctor_offers;
         },

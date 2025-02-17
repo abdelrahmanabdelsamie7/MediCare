@@ -38,7 +38,6 @@ export class UserReservationsComponent implements OnInit {
   getAllReservations() {
     this._SReservationService.getUserReservations().subscribe({
       next: (data) => {
-        console.log(data);
         this.reservations = data.data;
       },
     });
@@ -46,7 +45,6 @@ export class UserReservationsComponent implements OnInit {
   confirmReservation(reservationId: string) {
     this._SReservationService.confirmReservation(reservationId).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
@@ -61,7 +59,6 @@ export class UserReservationsComponent implements OnInit {
   cancelReservation(reservationId: string) {
     this._SReservationService.cancelReservation(reservationId).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',

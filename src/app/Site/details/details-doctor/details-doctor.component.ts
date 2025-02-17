@@ -72,7 +72,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
         this.userData = data;
         this.isAuth = true;
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
       }
     });
@@ -85,7 +85,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           this.Doctor = data.data;
           this.DoctorClinics = this.Doctor.clinics;
-          console.log(data);
+
           if (data.data.appointmentsGroupedByDate) {
             this.appointmentDates = Object.keys(
               data.data.appointmentsGroupedByDate
@@ -113,7 +113,6 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
     };
     this._SReservationService.userReserveDoctor(reservationInfo).subscribe({
       next: (data) => {
-        console.log(data);
         this._MessageService.add({
           severity: 'success',
           summary: 'تم بنجاح',

@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-details-department',
   standalone: true,
-  imports: [RouterModule, CommonModule ,TranslateModule],
+  imports: [RouterModule, CommonModule, TranslateModule],
   templateUrl: './details-department.component.html',
   styleUrl: './details-department.component.css',
 })
@@ -25,7 +25,7 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
   constructor(
     private _SDepartmentService: SDepartmentService,
     private _ActivatedRoute: ActivatedRoute
-  ) {}
+  ) { }
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
       next: (params: any) => {
@@ -126,7 +126,7 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy(): void {
-      this.destroy$.next() ;
-      this.destroy$.complete() ;
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
