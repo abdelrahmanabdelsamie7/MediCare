@@ -17,7 +17,6 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { authInterceptor } from './Core/interceptors/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GoogleAuthInterceptor } from './Core/interceptors/google-auth.interceptor';
 import { CacheInterceptor } from './Core/interceptors/cache.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -34,11 +33,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: GoogleAuthInterceptor,
-      multi: true,
-    },
     importProvidersFrom([TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

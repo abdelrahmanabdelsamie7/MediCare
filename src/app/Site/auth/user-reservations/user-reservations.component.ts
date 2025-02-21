@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SReservationService } from '../../../Core/services/s-reservation.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { PaymentComponent } from '../../components/payment/payment.component';
 @Component({
-  selector: 'app-user-reservations',
   standalone: true,
-  imports: [CommonModule, TimeFormatPipe, Toast],
+  selector: 'app-user-reservations',
+  imports: [CommonModule, TimeFormatPipe, Toast,PaymentComponent],
   templateUrl: './user-reservations.component.html',
   styleUrl: './user-reservations.component.css',
   providers: [DatePipe, MessageService],
 })
 export class UserReservationsComponent implements OnInit {
+  @ViewChild(PaymentComponent) paymentModal!: PaymentComponent;
   reservations: any[] = [];
-
   constructor(
     private _SReservationService: SReservationService,
     private datePipe: DatePipe,
@@ -24,6 +25,12 @@ export class UserReservationsComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getAllReservations();
+  }
+  ngAfterViewInit(): void {
+    // Listen for payment success from the PaymentComponent
+    if (this.paymentModal) {
+      this.paymentModal.paymentSuccess.subscribe(() => this.reloadComponent());
+    }
   }
   getFormattedDate(date: string): string {
     const formattedDate = this.datePipe.transform(date, 'EEEE d MMM');
@@ -70,4 +77,14 @@ export class UserReservationsComponent implements OnInit {
       },
     });
   }
+  // Open the payment modal
+  openPaymentModal(id: number, price: number) {
+    if (this.paymentModal) {
+      this.paymentModal.showModal(id, price);
+    }
+  }
+  reloadComponent(): void {
+    this.getAllReservations();
+  }
+
 }
