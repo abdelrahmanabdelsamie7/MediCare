@@ -9,39 +9,37 @@
   "departments": {
     "medicalDepartments": "الأقسام الطبية"
   },
-  "docOffers":{
-    "DoctorsOffers":"عروض الأطباء"
+  "docOffers": {
+    "DoctorsOffers": "عروض الأطباء"
   },
   "Pharmacies": {
     "contentPharm": "، بنقدملك حل مبتكر يجمع كل الصيدليات في محافظة سوهاج في منصة واحدة. دلوقتي تقدر توصل لأقرب صيدلية وتتعرف على خدماتها بسرعة وسهولة، لأن صحتك دايمًا أولويتنا.",
     "Pharmacies": "الصيدليات",
     "explorePharmacies": " أستكشف الصيدليات ",
-    "pharmaciesChain":"سلسلة الصيدليات",
-    "search":"ابحث",
-    "city":"المحافظه",
-    "area":"المنطقة",
-    "delivery":"توصيل",
-    "insurance":"تأمين",
-    "all":"الكل",
-    "available":"نعم",
-    "notAvailable":"لا",
-    "rating":"تقييم"
-
+    "pharmaciesChain": "سلسلة الصيدليات",
+    "search": "ابحث",
+    "city": "المحافظه",
+    "area": "المنطقة",
+    "delivery": "توصيل",
+    "insurance": "تأمين",
+    "all": "الكل",
+    "available": "نعم",
+    "notAvailable": "لا",
+    "rating": "تقييم"
   },
   "laboratories": {
     "contentLabor": "، وفرنا لك دليل شامل لكل المعامل الطبية في محافظة سوهاج. دلوقتي تقدر تعرف أقرب معمل، تفاصيل خدماته، وأوقات العمل بسهولة. صحتك تستحق الأفضل، واحنا هنا علشان نسهلها عليك.",
     "laboratories": "المعامل",
     "exploreLaboratories": "استكشف المعامل",
-    "insurance":"تأمين",
-    "all":"الكل",
-    "available":"نعم",
-    "notAvailable":"لا",
-    "rating":"تقييم",
-    "laboratoriesChain":"سلسلة المعامل",
-    "search":"ابحث",
-    "city":"المحافظه",
-    "area":"المنطقة"
-
+    "insurance": "تأمين",
+    "all": "الكل",
+    "available": "نعم",
+    "notAvailable": "لا",
+    "rating": "تقييم",
+    "laboratoriesChain": "سلسلة المعامل",
+    "search": "ابحث",
+    "city": "المحافظه",
+    "area": "المنطقة"
   },
   "deliveryServices": {
     "contentDeli": "خدمة توصيل المرضى حيث يقوم سائقونا المحترفون بنقل المرضى من وإلى المرافق الطبية بكل راحة وأمان. سواء كنت بحاجة إلى زيارة الطبيب أو إجراء الفحوصات، نحن هنا لتلبية احتياجاتك بأفضل طريقة ممكنة.",
@@ -254,7 +252,7 @@
     "deliveryOptionAvailable": "خيار التوصيل متاح",
     "deliveryOptionNotAvailable": "خيار التوصيل غير متاح",
     "insuranceAvailable": "التأمين متاح",
-    "insurenceNotAvaliable": "التأمين غير متاح",
+    "insuranceNotAvailable": "التأمين غير متاح",
     "area": "المنطقة",
     "city": "المدينة",
     "whatsappLink": "لينك الواتس اب",
@@ -298,8 +296,8 @@
     "discount": "الخصم",
     "offer_period": "فترة العرض",
     "offer_active": "العرض مفعل",
-    "offer_inactive": "العرض غير مفعل" ,
-    "user_title":"اسم المستخدم"
+    "offer_inactive": "العرض غير مفعل",
+    "user_title": "اسم المستخدم"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",
@@ -362,13 +360,28 @@
     "page": "الصفحة",
     "of": "من"
   },
-  "docOffer":{
-    "secDiscount":"احصل على خصم",
+  "docOffer": {
+    "secDiscount": "احصل على خصم",
     "discount": "خصم",
- "BtnDetails":"عرض التفاصيل",
- "offerInfo":"لمعلوماتك",
- "details":"التفاصيل",
- "address":"العنوان",
- "Booking":"الحجز مسبقاً والدخول بأسبقية الحضور"
+    "BtnDetails": "عرض التفاصيل",
+    "offerInfo": "لمعلوماتك",
+    "details": "التفاصيل",
+    "address": "العنوان",
+    "Booking": "الحجز مسبقاً والدخول بأسبقية الحضور"
+  },
+  "STATISTICS": {
+    "DEPARTMENTS": "الأقسام",
+    "DOCTORS": "الأطباء",
+    "USERS": "المستخدمون",
+    "CLINICS": "العيادات",
+    "OFFERS": "العروض",
+    "DOCTOR_BLOGS": "مدونات الأطباء",
+    "HOSPITALS": "المستشفيات",
+    "CARE_CENTERS": "مراكز الرعاية",
+    "CHAIN_PHARMACIES": "سلاسل الصيدليات",
+    "CHAIN_LABORATORIES": "سلاسل المختبرات",
+    "PHARMACIES": "الصيدليات",
+    "LABORATORIES": "المختبرات",
+    "COUNT": "عدد الإحصائيات"
   }
 }

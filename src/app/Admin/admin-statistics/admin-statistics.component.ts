@@ -1,7 +1,7 @@
 import { SAdminService } from './../../Core/services/s-admin.service';
 import { Component, OnDestroy, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Chart } from 'chart.js/auto';
 
@@ -29,7 +29,11 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
   offersCount = 0;
   private destroy$ = new Subject<void>();
   private isViewInitialized = false;
-  constructor(private _SAdminService: SAdminService) { }
+  constructor(private _SAdminService: SAdminService, private translate: TranslateService) {
+    this.translate.onLangChange.subscribe(() => {
+      this.renderChart();
+    });
+  }
   ngOnInit() {
     this.getCounts();
   }
@@ -66,50 +70,52 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
     if (this.chart) {
       this.chart.destroy();
     }
-    this.chart = new Chart(this.chartRef.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: [
-          'Departments', 'Doctors', 'Users', 'Clinics', 'Offers',
-          'Doctor Blogs', 'Hospitals', 'Care Centers',
-          'Chain Pharmacies', 'Chain Laboratories', 'Pharmacies', 'Laboratories'
-        ],
-        datasets: [{
-          label: 'Statistics Count',
-          data: [
-            this.departmentsCount, this.doctorsCount, this.usersCount,
-            this.clinicsCount, this.offersCount, this.doctorBlogsCount,
-            this.hospitalsCount, this.careCentersCount,
-            this.chainPharmaciesCount, this.chainLaboratoriesCount,
-            this.pharmaciesCount, this.laboratoriesCount
+    this.translate.get([
+      'STATISTICS.DEPARTMENTS', 'STATISTICS.DOCTORS', 'STATISTICS.USERS',
+      'STATISTICS.CLINICS', 'STATISTICS.OFFERS', 'STATISTICS.DOCTOR_BLOGS',
+      'STATISTICS.HOSPITALS', 'STATISTICS.CARE_CENTERS', 'STATISTICS.CHAIN_PHARMACIES',
+      'STATISTICS.CHAIN_LABORATORIES', 'STATISTICS.PHARMACIES', 'STATISTICS.LABORATORIES',
+      'STATISTICS.COUNT'
+    ]).subscribe(translations => {
+      this.chart = new Chart(this.chartRef.nativeElement, {
+        type: 'bar',
+        data: {
+          labels: [
+            translations['STATISTICS.DEPARTMENTS'], translations['STATISTICS.DOCTORS'],
+            translations['STATISTICS.USERS'], translations['STATISTICS.CLINICS'],
+            translations['STATISTICS.OFFERS'], translations['STATISTICS.DOCTOR_BLOGS'],
+            translations['STATISTICS.HOSPITALS'], translations['STATISTICS.CARE_CENTERS'],
+            translations['STATISTICS.CHAIN_PHARMACIES'], translations['STATISTICS.CHAIN_LABORATORIES'],
+            translations['STATISTICS.PHARMACIES'], translations['STATISTICS.LABORATORIES']
           ],
-          backgroundColor: [
-            '#007bff', // Blue - Departments
-            '#ffffff', // White - Doctors
-            '#28a745', // Green - Users
-            '#6f42c1', // Purple - Clinics
-            '#fd7e14', // Orange - Offers
-            '#17a2b8', // Cyan - Doctor Blogs
-            '#dc3545', // Red - Hospitals
-            '#ffc107', // Yellow - Care Centers
-            '#20c997', // Light Green - Chain Pharmacies
-            '#795548', // Brown - Chain Laboratories
-            '#155724', // Dark Green - Pharmacies
-            '#343a40'  // Black - Laboratories
-          ],
-          borderColor: '#000',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true
+          datasets: [{
+            label: translations['STATISTICS.COUNT'],
+            data: [
+              this.departmentsCount, this.doctorsCount, this.usersCount,
+              this.clinicsCount, this.offersCount, this.doctorBlogsCount,
+              this.hospitalsCount, this.careCentersCount,
+              this.chainPharmaciesCount, this.chainLaboratoriesCount,
+              this.pharmaciesCount, this.laboratoriesCount
+            ],
+            backgroundColor: [
+              '#007bff', '#ffffff', '#28a745', '#6f42c1',
+              '#fd7e14', '#17a2b8', '#dc3545', '#ffc107',
+              '#20c997', '#795548', '#155724', '#343a40'
+            ],
+            borderColor: '#000',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
         }
-      }
+      });
     });
   }
   ngOnDestroy() {

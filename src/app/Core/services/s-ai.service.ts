@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { from, map, Observable } from 'rxjs';
 import { IAi } from '../interfaces/i-ai';
-import { HttpParams,HttpClient } from '@angular/common/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({

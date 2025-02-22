@@ -14,12 +14,12 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-all-pharmacies',
   standalone: true,
-  imports: [RouterModule, FormsModule ,TranslateModule,NgClass,NgStyle],
+  imports: [RouterModule, FormsModule, TranslateModule, NgClass, NgStyle],
   templateUrl: './all-pharmacies.component.html',
   styleUrl: './all-pharmacies.component.css',
 })
 export class AllPharmaciesComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false
+  isRtl: boolean = false
   activeTab: string = 'Pharmacies';
   ChainsPharmacies: IChainPharmacies[] = [];
   Pharmacies: IPharmacy[] = [];
@@ -37,9 +37,9 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
   constructor(
     private _SPharmacyService: SPharmacyService,
     private _SChainPharmaciesService: SChainPharmaciesService,
-    private _STranslateService:STranslateService,
+    private _STranslateService: STranslateService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadChainsPharmacies();
@@ -60,7 +60,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
       params = params.set('deliveryOption', this.deliveryOptionFilter);
     }
     if (this.insuranceFilter !== 'all') {
-      params = params.set('insurance', this.insuranceFilter);
+      params = params.set('insurence', this.insuranceFilter);
     }
     if (this.minRateFilter) {
       params = params.set('min_rate', this.minRateFilter);
@@ -184,11 +184,11 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
   }
   checkLanguageDirection(): void {
     this._STranslateService.currentLang$.subscribe({
-      next:(lang)=>{
-        if(lang==='ar'){
-          this.isRtl=true
-        }else{
-          this.isRtl=false
+      next: (lang) => {
+        if (lang === 'ar') {
+          this.isRtl = true
+        } else {
+          this.isRtl = false
         }
       }
     })

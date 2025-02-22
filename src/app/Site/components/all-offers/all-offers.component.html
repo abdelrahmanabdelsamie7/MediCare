@@ -14,9 +14,10 @@
         </div>
         <!-- الصورة -->
         <div class="position-relative p-3 text-center">
-          <img [src]="OfferGroup.image" class="rounded-circle border border-4 border-light shadow"
+          <img [src]="item.images[0]?.image" class="rounded-circle border border-4 border-light shadow"
             style="width: 100px; height: 100px; margin-top: -50px" alt="Offer Image" />
         </div>
+
         <!-- التفاصيل -->
         <div class="card-body px-4">
           <div class="d-flex justify-content-between align-content-center">

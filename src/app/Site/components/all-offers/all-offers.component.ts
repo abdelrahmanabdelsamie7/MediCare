@@ -11,13 +11,14 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-all-offers',
   standalone: true,
-  imports: [RouterModule , DiscountPipe , CommonModule ,TranslateModule],
+  imports: [RouterModule, DiscountPipe, CommonModule, TranslateModule],
   templateUrl: './all-offers.component.html',
   styleUrl: './all-offers.component.css'
 })
 export class AllOffersComponent implements OnInit, OnDestroy {
   id: string = '';
-  OffersOfGroup: IDoctorOffer[] = [];
+  OffersOfGroup: any[] = [];
+  imageOfOffer: string = ' ';
   private destroy$ = new Subject<void>();
   OfferGroup: IOfferGroup = {} as IOfferGroup;
   constructor(
@@ -40,6 +41,8 @@ export class AllOffersComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           this.OfferGroup = data.data;
           this.OffersOfGroup = this.OfferGroup.doctor_offers;
+          console.log('hamada', this.OffersOfGroup)
+          // this.imageOfOffer = this.OffersOfGroup.images[0];
         },
       });
   }
