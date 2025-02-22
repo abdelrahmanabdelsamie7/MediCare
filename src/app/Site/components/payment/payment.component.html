@@ -1,11 +1,35 @@
-<p-toast></p-toast> <!-- Add this to your template to display toast messages -->
+<p-toast position="top-center"></p-toast>
+<p-dialog [(visible)]="paymentDialogVisible" [modal]="true"
+          [closable]="true" [draggable]="false" [resizable]="false"
+          [style]="{ 'width': '500px' }" [contentStyle]="{ 'border-radius': '15px' }">
+  <div class="p-4">
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-center mb-4">
+      <h3 class="mb-0 me-2">{{ 'payment.secure_payment' | translate }}</h3>
+      <i class="pi pi-lock text-primary"></i>
+    </div>
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
-    <div class="card-body text-center">
-      <h2 class="card-title mb-3">Payment</h2>
-      <div id="card-element" class="form-control p-3"></div>
-      <button class="btn btn-outline-info w-100 mt-3" (click)="handlePayment(1000)">Pay $10</button>
+    <!-- Reservation Price Display -->
+    <div class="bg-light p-3 rounded text-center mb-4">
+      <h4 class="mb-0">{{ 'payment.reservation_price' | translate }} {{ amount | currency:'EGP' }} </h4>
+    </div>
+
+    <!-- Stripe Card Element -->
+    <div id="card-element" class="p-3 border rounded mb-3"></div>
+    <div id="card-errors" class="text-danger small mb-3" role="alert"></div>
+
+    <!-- Pay Button -->
+    <button  class="btn btn-outline-info w-100 py-2" (click)="handlePayment()" [disabled]="processingPayment">
+      <span *ngIf="!processingPayment">{{ 'payment.confirm_payment' | translate }}</span>
+      <span *ngIf="processingPayment">
+        {{ 'payment.processing' | translate }} <i class="pi pi-spinner pi-spin"></i>
+      </span>
+    </button>
+
+    <!-- Security Info -->
+    <div class="d-flex align-items-center justify-content-center mt-4 text-muted small">
+      <i class="pi pi-shield me-2"></i>
+      <span>Secure 256-bit SSL encryption</span>
     </div>
   </div>
-</div>
+</p-dialog>

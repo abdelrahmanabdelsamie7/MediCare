@@ -1,7 +1,8 @@
-<!-- Satrt Navbar Site  -->
+<!-- Start Navbar -->
 <app-site-navbar></app-site-navbar>
 
-<div class="container my-5 " dir="rtl">
+<!-- Main Container -->
+<div class="container my-5" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <!-- Card: Upload and Analyze -->
@@ -10,36 +11,43 @@
           <h5>{{ 'ai.titleOfSection' | translate }}</h5>
         </div>
         <div class="card-body">
-          <!-- File Input -->
+          <!-- File Upload Section -->
           <div class="mb-4">
-            <label for="fileInput" class="form-label ">{{ 'ai.chooseFile' | translate }}</label>
-            <input type="file" class="form-control " id="fileInput" accept="image/*"
-              (change)="onFileSelected($event)" />
+            <label for="fileInput" class="form-label">{{ 'ai.chooseFile' | translate }}</label>
+            <input type="file" class="form-control" id="fileInput" accept="image/*" (change)="onFileSelected($event)" />
+
+            <!-- File Preview -->
             <div *ngIf="previewUrl" class="mt-3 text-center">
-              <img [src]="previewUrl" class="img-thumbnail" style="max-height: 200px;" alt="معاينة الصورة" />
+              <button class="btn btn-danger btn-sm mt-2" (click)="clearFile()">
+                {{ 'ai.removeFile' | translate }}
+              </button>
+              <img [src]="previewUrl" class="img-thumbnail" style="max-height: 200px;" alt="{{ 'ai.imageAnalysisResult' | translate }}" />
             </div>
-            <!-- File Upload Progress -->
+
+            <!-- Upload Progress -->
             <div *ngIf="isUploading" class="mt-3">
               <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated  bg-info" role="progressbar"
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
                   [style.width]="uploadProgress + '%'">
                   {{ uploadProgress }}%
                 </div>
               </div>
             </div>
           </div>
+
           <!-- Symptoms Input -->
           <div class="mb-4">
-            <label for="symptomsInput" class="form-label">{{ 'ai.describeSymptoms' | translate}}</label>
+            <label for="symptomsInput" class="form-label">{{ 'ai.describeSymptoms' | translate }}</label>
             <textarea id="symptomsInput" class="form-control" rows="4" [(ngModel)]="symptomsText"
-              placeholder="{{ 'ai.enterSymptoms' |translate }}"></textarea>
+              placeholder="{{ 'ai.enterSymptoms' | translate }}"></textarea>
           </div>
+
           <!-- Analyze Button -->
           <div class="text-center">
-            <button class="btn btn-info w-50 text-light" (click)="analyzeContent()" [disabled]="loading">
+            <button class="btn btn-info w-50 text-light" (click)="analyzeContent()" [disabled]="loading || (!symptomsText && !selectedFile)">
               <span *ngIf="!loading">{{ 'ai.imageAnalysis' | translate }}</span>
               <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"></span>
-              <span *ngIf="loading">جاري التحليل...</span>
+              <span *ngIf="loading">{{ 'ai.analyzing' | translate }}</span>
             </button>
           </div>
         </div>
@@ -49,35 +57,82 @@
       <div class="row" *ngIf="showResult && (selectedFile || symptomsText) && apiResponse">
         <div class="col-12">
           <div class="card mt-4 border-0 animate__animated animate__fadeIn">
-            <div class="card-header  bg-info text-white text-center py-4">
-              <h5 class="mb-0">نتيجة التحليل</h5>
+            <div class="card-header bg-info text-white text-center py-4">
+              <h5 class="mb-0">{{ 'ai.analysisResult' | translate }}</h5>
             </div>
-            <div class="card-body p-4">
-              <!-- Dynamic Display of Results -->
-              <div class="mb-3">
-                <h5 class="fw-bold">تحليل الصورة:</h5>
+
+            <!-- Download PDF Button -->
+            <div class="text-center mt-3">
+              <button class="btn btn-success" (click)="generatePDF()">
+                {{ 'ai.downloadPDF' | translate }}
+              </button>
+            </div>
+
+            <div id="analysisResult" class="card-body p-4">
+              <!-- Image Analysis Result -->
+              <div class="mb-3" *ngIf="selectedFile">
+                <h5 class="fw-bold">{{ 'ai.imageAnalysisResult' | translate }}</h5>
                 <p class="mb-0">
-                  {{ apiResponse.imageAnalysis || "لا يوجد تحليل للصورة" }}
+                  {{ apiResponse.imageAnalysis || ('ai.noImageAnalysis' | translate) }}
                 </p>
               </div>
+
+              <!-- Diagnosis and Specialization -->
+              <div class="mb-3" *ngIf="apiResponse.diagnosis">
+                <h5 class="fw-bold">{{ 'ai.diagnosis' | translate }}</h5>
+                <p class="mb-0">{{ apiResponse.diagnosis }}</p>
+              </div>
+              <div class="mb-3" *ngIf="apiResponse.message">
+                <h5 class="fw-bold">الثقة</h5>
+                <p class="mb-0">{{ apiResponse.message }}</p>
+              </div>
+
               <div class="mb-3">
-                <h5 class="fw-bold">التخصص الطبي المقترح:</h5>
+                <h5 class="fw-bold">{{ 'ai.recommendedSpecialization' | translate }}</h5>
                 <p class="mb-0">
-                  {{ apiResponse.recommendedSpecialization || "غير محدد" }}
+                  {{ apiResponse.recommendedSpecialization || ('ai.notSpecified' | translate) }}
                 </p>
               </div>
+
+              <!-- Medicare Recommendations -->
               <div class="mb-3" *ngIf="recommendedDepartments.length > 0">
-                <h5 class="fw-bold">التخصصات المقترحة من Medicare:</h5>
+                <h5 class="fw-bold">{{ 'ai.medicareRecommendations' | translate }}</h5>
                 <div class="d-flex flex-wrap gap-2">
                   <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info"
                     (click)="handleDepartmentSelection(department.id)">
-                    {{department.title}}
+                    {{ department.title }}
                   </button>
                 </div>
               </div>
+
+              <!-- Advice Section -->
               <div class="mb-3">
-                <h5 class="fw-bold">النصائح:</h5>
-                <p class="mb-0">{{ apiResponse.advice || "لا توجد نصائح" }}</p>
+                <h5 class="fw-bold">{{ 'ai.advice' | translate }}</h5>
+                <p class="mb-0">{{ apiResponse.advice || ('ai.noAdvice' | translate) }}</p>
+              </div>
+
+              <!-- Confidence Level -->
+              <div class="mb-3" *ngIf="apiResponse.confidence_score">
+                <h5 class="fw-bold">{{ 'ai.confidenceLevel' | translate }}</h5>
+                <p class="mb-0">{{ apiResponse.confidence_score }}%</p>
+              </div>
+
+              <!-- Suggested Medications -->
+              <div class="mb-3" *ngIf="apiResponse.suggested_medications?.length">
+                <h5 class="fw-bold">{{ 'ai.suggestedMedications' | translate }}</h5>
+                <ul class="list-group">
+                  <li *ngFor="let medication of apiResponse.suggested_medications" class="list-group-item">
+                    <strong>{{ 'ai.medicationName' | translate }}</strong> {{ medication.name }}<br>
+                    <strong>{{ 'ai.medicationDosage' | translate }}</strong> {{ medication.dosage }}<br>
+                    <strong>{{ 'ai.medicationNotes' | translate }}</strong> {{ medication.notes }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Medication Warning -->
+              <div class="mb-3 text-danger" *ngIf="apiResponse.medication_warning">
+                <h5 class="fw-bold">{{ 'ai.medicationWarning' | translate }}</h5>
+                <p class="mb-0">{{ apiResponse.medication_warning }}</p>
               </div>
             </div>
           </div>
@@ -86,10 +141,11 @@
 
       <!-- Alert: Error Message -->
       <div *ngIf="errorMessage" class="alert alert-danger mt-4 text-center">
-        {{ errorMessage }}
+        {{ 'ai.errorMessage' | translate }}
       </div>
     </div>
   </div>
 </div>
-<!-- Start Footer Site -->
+
+<!-- Start Footer -->
 <app-site-footer></app-site-footer>

@@ -1,5 +1,4 @@
 import { GoogleAuthService, GoogleButtonConfig } from './../../../Core/google-auth.service';
-// src/app/components/login/login.component.ts
 import { Component, AfterViewInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -21,16 +20,10 @@ buttonConfig: GoogleButtonConfig = {
   logo_alignment: 'left'
 };
 
-constructor(private GoogleAuthService:GoogleAuthService) {}
 ngAfterViewInit() {
-  this.authService.initializeButton('google-signin-button', this.buttonConfig);
   this.authService.loadGoogleOAuthScript();
+    setTimeout(() => {
+      this.authService.initializeButton('google-signin-button', this.buttonConfig);
+    }, 100);
 }
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('userToken');
-  }
-
-  logout() {
-    this.authService.logout();
-  }
-}
+ }

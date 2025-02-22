@@ -1,6 +1,15 @@
-:host {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  margin: auto;
+/* payment.component.css */
+/* Stripe Card Element Styling */
+#card-element {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#card-element.StripeElement--focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+/* Error Message Styling */
+#card-errors {
+  min-height: 1.5rem;
 }

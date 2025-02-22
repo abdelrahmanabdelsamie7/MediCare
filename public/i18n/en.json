@@ -68,8 +68,35 @@
     "chooseFile": "Choose a file (optional)",
     "describeSymptoms": "Describe the symptoms",
     "enterSymptoms": "Enter the symptoms here ..",
-    "imageAnalysis": "Image and symptom analysis"
+    "imageAnalysis": "Image and symptom analysis",
+    "removeFile": "Remove File",
+    "analyzing": "Analyzing...",
+    "analysisResult": "Analysis Result",
+    "downloadPDF": "📄 Download result as PDF",
+    "imageAnalysisResult": "Image Analysis Results:",
+    "noImageAnalysis": "No image analysis available",
+    "diagnosis": "Medical Diagnosis:",
+    "recommendedSpecialization": "Recommended Specialization:",
+    "notSpecified": "Not specified",
+    "medicareRecommendations": "Recommended Medicare Specializations:",
+    "advice": "Medical Advice:",
+    "noAdvice": "No recommendations available",
+    "confidenceLevel": "Confidence Level in Analysis:",
+    "medicationWarning": "Medication Warning:",
+    "trustLevel": "Trust Level:",
+    "suggestedMedications": "Suggested Medications:",
+    "medicationName": "Medication Name:",
+    "medicationDosage": "Dosage:",
+    "medicationNotes": "Additional Notes:",
+    "errorMessage": "An error occurred, please try again."
+
   },
+  "payment":{
+  "secure_payment": "Secure Payment",
+  "reservation_price": "Reservation Price:",
+  "confirm_payment": "Confirm Payment",
+  "processing": "Processing"
+},
   "adviceSec": {
     "contentAdv": "Advice from a doctor",
     "search": "Search",

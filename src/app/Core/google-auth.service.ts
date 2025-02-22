@@ -92,7 +92,5 @@ export class GoogleAuthService {
   logout() {
     localStorage.removeItem('userToken');
     localStorage.removeItem('user');
-    // Optional: Add Google sign-out if needed
-    // window.google?.accounts.id.disableAutoSelect();
   }
 }

@@ -1,3 +1,4 @@
+<app-payment #paymentModal></app-payment>
 <div class="container my-5">
   <h2 class="head-title my-4 text-info text-center">مواعيدك المحجوزة</h2>
   <p-toast />
@@ -10,14 +11,12 @@
           <img src="{{reservation.doctor.image}}" class="img-fluid rounded-5" alt="Doctor Image">
         </div>
 
-
         <div class="col-md-8">
           <div class="card-body px-md-5">
             <h5 class="card-title mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
               {{reservation.doctor.lName}}</h5>
-            <p class="card-text mb-2"><strong>العيادة:</strong> {{reservation.clinic.title}} -
-              {{reservation.clinic.address}}</p>
-            <p class="card-text mb-2"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day)}}،
+            <p class="card-text mb-2"><strong>العيادة:</strong> {{reservation.clinic.title}} - {{reservation.clinic.address}}</p>
+            <p class="card-text mb-2"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day) }},
               <strong>من الساعة</strong> {{reservation.appointment.start_at | timeFormat}} <strong>إلى</strong>
               {{reservation.appointment.end_at | timeFormat}}
             </p>
@@ -30,23 +29,17 @@
                 {{reservation.status}}
               </span>
             </p>
-            <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3"
-              role="alert">
+            <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3" role="alert">
               تم تأكيد الحجز بنجاح.
             </div>
-
-
             <div *ngIf="reservation.status !== 'confirmed'">
-
               <div class="d-flex flex-column flex-md-row mt-3">
-                <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
-                  (click)="confirmReservation(reservation.id)">تأكيد
-                  الحجز</button>
-                <button class="btn btn-danger mb-2 mb-md-0" (click)="cancelReservation(reservation.id)">إلغاء
-                  الحجز</button>
+                <button class="btn btn-info text-light mb-2 mb-md-0 mx-2" (click)="confirmReservation(reservation.id)">تأكيد الحجز</button>
+                <button class="btn btn-danger mb-2 mb-md-0 " (click)="cancelReservation(reservation.id)">إلغاء الحجز</button>
+               <button  class="btn btn-success text-light mb-2 mb-md-0 mx-2" (click)="openPaymentModal(reservation.id, reservation.doctor.app_price)">
+                  Pay Now
+                </button>
               </div>
-
-
             </div>
           </div>
         </div>

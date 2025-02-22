@@ -7,6 +7,9 @@ import { SiteFooterComponent } from '../../shared/site-footer/site-footer.compon
 import { IAi } from '../../../Core/interfaces/i-ai';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-section-ai',
   standalone: true,
@@ -15,7 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     SiteNavbarComponent,
     SiteFooterComponent,
-    TranslateModule
+    TranslateModule,
+
   ],
   templateUrl: './section-ai.component.html',
   styleUrl: './section-ai.component.css',
@@ -28,10 +32,18 @@ export class SectionAiComponent {
   errorMessage: string | null = null;
   symptomsText: string = '';
   isUploading: boolean = false;
+  isRtl: boolean = false;
   uploadProgress: number = 0;
   showResult: boolean = false; // Controls when to show the result card
   recommendedDepartments: any[] = [];
-  constructor(private geminiService: SAiService, private router: Router) { }
+
+  constructor(private geminiService: SAiService, private router: Router,private _STranslateService:STranslateService,) { }
+
+ngOnInit(): void {
+  //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+  //Add 'implements OnInit' to the class.
+  this.checkLanguageDirection();
+}
   // Handles file selection
   onFileSelected(event: any) {
     const file = event.target.files[0] as File;
@@ -58,6 +70,7 @@ export class SectionAiComponent {
       reader.readAsDataURL(file);
     }
   }
+
   // Clears the selected file and preview
   clearFile() {
     this.selectedFile = null;
@@ -69,6 +82,7 @@ export class SectionAiComponent {
       fileInput.value = ''; // Reset the file input
     }
   }
+
   // Handles the analysis process
   analyzeContent() {
     if (!this.symptomsText && !this.selectedFile) {
@@ -104,10 +118,11 @@ export class SectionAiComponent {
         },
         (error: any) => {
           this.loading = false;
-          if (error.response) {
-            this.errorMessage = `فشل طلب API مع الرمز: ${error.response.status}. يرجى المحاولة مرة أخرى.`;
-          } else if (error.request) {
-            this.errorMessage = 'فشل طلب API. تعذر الوصول إلى الخادم.';
+          if (error.error) {
+            // Handle Laravel API errors
+            this.errorMessage = error.error.error || 'فشل تحليل البيانات. يرجى المحاولة مرة أخرى.';
+          } else if (error.status) {
+            this.errorMessage = `فشل طلب API مع الرمز: ${error.status}. يرجى المحاولة مرة أخرى.`;
           } else {
             this.errorMessage = `فشل طلب API مع الخطأ: ${error.message}. يرجى المحاولة مرة أخرى.`;
           }
@@ -116,8 +131,46 @@ export class SectionAiComponent {
         }
       );
   }
+
   handleDepartmentSelection(departmentId: string) {
     // Handle the selection of a department here
     this.router.navigate(['/details/department', departmentId]);
   }
-}
+
+  generatePDF() {
+    const content: HTMLElement | null = document.getElementById('analysisResult');
+    if (!content) return;
+
+    html2canvas(content, {
+      scale:5,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#ffffff',
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+
+      const imgWidth = 190;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight, '', 'FAST');
+
+      pdf.save('analysis_result.pdf');
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next:(lang)=>{
+        if(lang==='ar'){
+          this.isRtl=true
+        }else{
+          this.isRtl=false
+        }
+      }
+    })
+  }
+  }
