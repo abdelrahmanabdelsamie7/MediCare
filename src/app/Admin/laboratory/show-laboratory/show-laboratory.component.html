@@ -20,14 +20,14 @@
               class="bi bi-geo-alt text-warning"></i></a></h5>
         <hr>
         @if (Laboratory.insurence == 1 ) {
-        <h5>{{ 'adminPanel.insurenceOption'|translate }} : {{ 'adminPanel.insurenceAvaliable'|translate }}</h5>
+        <h5>{{ 'adminPanel.insurenceOption'|translate }} : {{ 'adminPanel.insuranceAvailable'|translate }}</h5>
         }@else {
         <h5>{{ 'adminPanel.insurenceOption'|translate }} : {{ 'adminPanel.insurenceNotAvaliable'|translate }}</h5>
         }
         <hr>
-        <h5>{{ 'adminPanel.startAt'|translate }} {{ Laboratory.start_at |timeFormat}}</h5>
+        <h5>{{ 'adminPanel.startAt'|translate }} {{ Laboratory.start_at }}</h5>
         <hr>
-        <h5>{{ 'adminPanel.endAt'|translate }} {{ Laboratory.end_at |timeFormat}}</h5>
+        <h5>{{ 'adminPanel.endAt'|translate }} {{ Laboratory.end_at}}</h5>
       </div>
     </div>
   </div>

@@ -5,11 +5,10 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
-import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 @Component({
   selector: 'app-show-hospital',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule, TimeFormatPipe],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './show-hospital.component.html',
   styleUrl: './show-hospital.component.css',
 })
