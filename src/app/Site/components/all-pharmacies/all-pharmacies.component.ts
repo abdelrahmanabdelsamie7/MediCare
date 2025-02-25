@@ -26,7 +26,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
   searchQuery: string = '';
   selectedChainId: string = 'all';
   deliveryOptionFilter: string = 'all';
-  insuranceFilter: string = 'all';
+  insurenceFilter: string = 'all';
   minRateFilter: number | null = null;
   cityFilter: string = 'all';
   areaFilter: string = 'all';
@@ -59,8 +59,8 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     if (this.deliveryOptionFilter !== 'all') {
       params = params.set('deliveryOption', this.deliveryOptionFilter);
     }
-    if (this.insuranceFilter !== 'all') {
-      params = params.set('insurence', this.insuranceFilter);
+    if (this.insurenceFilter !== 'all') {
+      params = params.set('insurence', this.insurenceFilter);
     }
     if (this.minRateFilter) {
       params = params.set('min_rate', this.minRateFilter);
@@ -146,7 +146,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     this.searchQuery = formData.get('search')?.toString() || '';
     this.deliveryOptionFilter =
       formData.get('deliveryOption')?.toString() || 'all';
-    this.insuranceFilter = formData.get('insurance')?.toString() || 'all';
+    this.insurenceFilter = formData.get('insurence')?.toString() || 'all';
     this.cityFilter = formData.get('city')?.toString() || 'all';
     this.areaFilter = formData.get('area')?.toString() || 'all';
     const minRate = formData.get('minRate');
@@ -161,9 +161,9 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     this.search();
   }
 
-  handleInsuranceChange(event: Event) {
+  handleInsurenceChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.insuranceFilter = selectElement.value;
+    this.insurenceFilter = selectElement.value;
     this.search();
   }
 

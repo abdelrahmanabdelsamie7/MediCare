@@ -37,19 +37,19 @@ export class SAuthService {
     );
   }
   // Admin Else Get All Of Users
-  getAllUsers() :  Observable<IUser[]>{
+  getAllUsers(): Observable<IUser[]> {
     return this._HttpClient.get<IUser[]>(
       `${environment.baseUrl}/allusers`
     );
   }
   // Admin Else Get Specific User Info
-  getUserById(id:string) :  Observable<IUser>{
+  getUserById(id: string): Observable<IUser> {
     return this._HttpClient.get<IUser>(
       `${environment.baseUrl}/allusers/${id}`
     );
   }
   // Admin Else Delete Specific User
-  removeUser(id:string) :  Observable<IUser>{
+  removeUser(id: string): Observable<IUser> {
     return this._HttpClient.delete<IUser>(
       `${environment.baseUrl}/allusers/${id}`
     );

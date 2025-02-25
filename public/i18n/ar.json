@@ -90,13 +90,12 @@
     "medicationNotes": "ملاحظات إضافية:",
     "errorMessage": "حدث خطأ أثناء العملية، يرجى إعادة المحاولة."
   },
-  "payment":{
+  "payment": {
     "secure_payment": "دفع آمن",
     "reservation_price": "سعر الحجز:",
     "confirm_payment": "تأكيد الدفع",
     "processing": "جاري المعالجة"
   },
-
   "adviceSec": {
     "contentAdv": "نصيحة من دكتور",
     "search": "ابحث",
@@ -194,7 +193,7 @@
     "pharmacies_today": "الصيدليات | اليوم",
     "laboratories": "المعامل",
     "laboratories_today": "المعامل | اليوم",
-    "users_today": "المستخدمين | اليوم",
+    "users": "المستخدمين",
     "offers_today": " عروض الأطباء | اليوم",
     "care_centers": "مراكز الرعاية",
     "care_centers_today": "مراكز الرعاية | اليوم",
@@ -277,7 +276,7 @@
     "endAt": "ينتهي في",
     "branches": "أفرع",
     "deliveryOptionAvailable": "خيار التوصيل متاح",
-    "deliveryOptionNotAvailable": "خيار التوصيل غير متاح",
+    "deliveryOptionNotAvaliable": "خيار التوصيل غير متاح",
     "insuranceAvailable": "التأمين متاح",
     "insuranceNotAvailable": "التأمين غير متاح",
     "area": "المنطقة",

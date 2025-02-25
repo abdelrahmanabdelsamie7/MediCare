@@ -45,8 +45,8 @@
         </select>
       </div>
       <div class="col-auto">
-        <label class="form-label">{{"Pharmacies.insurance"| translate}}</label>
-        <select class="form-select" (change)="handleInsuranceChange($event)" name="insurance">
+        <label class="form-label">{{"Pharmacies.insurence"| translate}}</label>
+        <select class="form-select" (change)="handleInsurenceChange($event)" name="insurence">
           <option value="all">{{"Pharmacies.all"|translate }}</option>
           <option value="1">{{"Pharmacies.available"|translate }}</option>
           <option value="0">{{"Pharmacies.notAvailable"|translate }}</option>
@@ -80,7 +80,7 @@
             style="width: 100px; height: 100px; margin-top: -50px;" alt="pharmacy Image" />
             @if (item.insurence ===1) {
               <p class="insurence pb-2 m-0">
-                {{"Pharmacies.insurance"| translate}}
+                {{"Pharmacies.insurence"| translate}}
                             <i class="bi bi-shield-check"></i>
                           </p>
             }

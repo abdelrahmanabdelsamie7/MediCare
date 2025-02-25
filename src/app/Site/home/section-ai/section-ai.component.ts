@@ -70,7 +70,6 @@ ngOnInit(): void {
       reader.readAsDataURL(file);
     }
   }
-
   // Clears the selected file and preview
   clearFile() {
     this.selectedFile = null;
@@ -82,7 +81,6 @@ ngOnInit(): void {
       fileInput.value = ''; // Reset the file input
     }
   }
-
   // Handles the analysis process
   analyzeContent() {
     if (!this.symptomsText && !this.selectedFile) {
@@ -131,12 +129,10 @@ ngOnInit(): void {
         }
       );
   }
-
   handleDepartmentSelection(departmentId: string) {
     // Handle the selection of a department here
     this.router.navigate(['/details/department', departmentId]);
   }
-
   generatePDF() {
     const content: HTMLElement | null = document.getElementById('analysisResult');
     if (!content) return;

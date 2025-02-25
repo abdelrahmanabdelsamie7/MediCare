@@ -1,5 +1,5 @@
 <div class="container mt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-  <form [formGroup]="filterForm" (ngSubmit)="handleSubmit()" class="card p-3">
+  <form (ngSubmit)="handleSubmit($event)" class="card p-3">
     <div class="d-flex align-items-center mb-2 gap-3">
       <div class="dropdown">
         <button class="btn btn-info text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -21,78 +21,73 @@
           }
         </ul>
       </div>
-      <input type="text" class="form-control" style="width: 40%" placeholder="ابحث عن معمل..."
-        formControlName="search" />
+      <input type="text" class="form-control" style="width: 40%" placeholder="ابحث عن معمل..." [(ngModel)]="searchQuery"
+        name="search" />
       <button class="btn btn-info text-light" type="submit">{{"laboratories.search"|translate}}</button>
     </div>
     <div class="row align-items-center gap-3">
-      <div class="col-md-6 col-lg-3">
+      <div class="col-auto">
         <label class="form-label">{{"laboratories.city" |translate }}</label>
-        <input type="text" class="form-control" formControlName="city" (input)="handleCityChange($event)" />
+        <input type="text" class="form-control" name="city" (input)="handleCityChange($event)" />
       </div>
-      <div class="col-md-6 col-lg-3">
+      <div class="col-auto">
         <label class="form-label">{{"laboratories.area"|translate }}</label>
-        <input type="text" class="form-control" formControlName="area" (input)="handleAreaChange($event)" />
+        <input type="text" class="form-control" name="area" (input)="handleAreaChange($event)" />
       </div>
-      <div class="col-md-6 col-lg-2">
-        <label class="form-label"> {{"laboratories.insurance"| translate}}</label>
-        <select class="form-select" formControlName="insurance" (change)="handleInsuranceChange($event)">
+      <div class="col-auto">
+        <label class="form-label"> {{"laboratories.insurence"| translate}}</label>
+        <select class="form-select" (change)="handleInsurenceChange($event)" name="insurence">
           <option value="all"> {{"laboratories.all"| translate}}</option>
           <option value="1"> {{"laboratories.available"| translate}}</option>
           <option value="0">{{"laboratories.notAvailable"|translate }}</option>
         </select>
       </div>
-      <div class="col-md-6 col-lg-2">
+      <div class="col-auto">
         <label class="form-label">{{"laboratories.rating"|translate }}</label>
-        <input type="number" min="0" max="5" class="form-control" formControlName="minRate"
+        <input type="number" min="0" max="5" class="form-control" name="minRate"
           (change)="handleMinRateChange($event)" />
       </div>
     </div>
   </form>
 </div>
+
 <div class="container my-5">
-  @if (activeTab === 'LaboratoriesOfChain') {
   <div class="row" dir="rtl">
     @for (item of Laboratories; track $index) {
-    <div class="col-md-6 col-lg-4">
-      <div class="card card-top text-center shadow-lg border-0 overflow-hidden">
+    <div class="col-md-6 col-lg-4 my-2">
+      <div class="card-top text-center shadow-lg border-0 overflow-hidden">
         <!-- الجزء العلوي -->
-        <div class="card-header position-relative bg-info text-white py-4" style="border-bottom-left-radius: 50px">
-          @if (item.insurence === 1) {
-            <p class="insurence pb-2 m-0">
-              {{"laboratories.insurance"| translate}}
-                          <i class="bi bi-shield-check"></i>
-                        </p>
+        <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
+          <i class="fas fa-flask fa-3x"></i>
+          <h4 class="fw-bold mt-2">{{item.title}}</h4>
+          <p class="mb-2">{{ item.service }}</p>
+        </div>
+
+        <!-- الصورة -->
+        <div class="position-relative p-3 text-center">
+          <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+            style="width: 100px; height: 100px; margin-top: -50px;" alt="Laboratory Image" />
+          @if (item.insurence ===1) {
+          <p class="insurence pb-2 m-0">
+            {{"laboratories.insurence"| translate}}
+            <i class="bi bi-shield-check"></i>
+          </p>
           }
-          <i class="fa-solid fa-flask-vial fa-3x"></i>
-          <h4 class="fw-bold mt-2">{{ item.title }}</h4>
-          <p class="mb-2">{{ item.service }}</p>
-        </div>
-
-        <!-- الصورة -->
-        <div class="position-relative p-3 text-center">
-          <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
-            style="width: 100px; height: 100px; margin-top: -50px" alt="Laboratory Image" />
         </div>
 
         <!-- التفاصيل -->
         <div class="card-body px-4">
           <div class="d-flex justify-content-between align-content-center">
-            <p class="fw-bold">
-              <i class="fa-solid fa-map-marker-alt text-info"></i>
-              {{ item.area }} - {{ item.city }}
-            </p>
-            <p class="fw-bold">
-              {{ item.phone }} <i class="fa-solid fa-phone text-info"></i>
-            </p>
+            <p class="fw-bold"><i class="fa-solid fa-map-marker-alt text-info"></i> {{ item.area }} - {{item.city}}</p>
+            <p class="fw-bold"> {{ item.phone }} <i class="fa-solid fa-phone text-info"></i></p>
           </div>
           <div class="d-flex justify-content-between align-content-center">
-            <a a routerLink="/details/laboratory/{{ item.id }}"
+            <a routerLink="/details/laboratory/{{ item.id }}"
               class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1 mx-2">
               {{ "depDetails.BtnInfo" | translate }}
             </a>
             <a (click)="showInMap(item.locationUrl)"
-              class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1" title="Location">
+              class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1 " title="Location">
               <i class="bi bi-geo-alt text-light"></i>
             </a>
           </div>
@@ -109,83 +104,20 @@
     </div>
     }
   </div>
-  }
-  @if (activeTab === 'Laboratories') {
-  <div class="row" dir="rtl">
-    @for (item of Laboratories; track $index) {
-    <div class="col-md-6 col-lg-4">
-      <div class="card card-top text-center shadow-lg border-0 overflow-hidden">
-        <!-- الجزء العلوي -->
-        <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
-          <i class="fa-solid fa-flask-vial fa-3x"></i>
-          <h4 class="fw-bold mt-2">{{ item.title }}</h4>
-          <p class="mb-2">{{ item.service }}</p>
-        </div>
-
-        <!-- الصورة -->
-        <div class="position-relative p-3 text-center">
-          <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
-            style="width: 100px; height: 100px; margin-top: -50px" alt="Laboratory Image" />
-        </div>
-
-        <!-- التفاصيل -->
-        <div class="card-body px-4">
-          <div class="d-flex justify-content-around align-content-center">
-            @if (item.insurence === 1) {
-              <p class="insurence pb-2 m-0">
-                {{"laboratories.insurance"| translate}}
-                            <i class="bi bi-shield-check"></i>
-                          </p>
-            }
-
-          </div>
-          <div class="d-flex justify-content-between align-content-center">
-            <p class="fw-bold">
-              <i class="fa-solid fa-map-marker-alt text-info"></i>
-              {{ item.area }} - {{ item.city }}
-            </p>
-            <p class="fw-bold">
-              {{ item.phone }} <i class="fa-solid fa-phone text-info"></i>
-            </p>
-          </div>
-          <div class="d-flex justify-content-between align-content-center">
-            <a a routerLink="/details/laboratory/{{ item.id }}"
-              class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1 mx-2">
-              {{ "depDetails.BtnInfo" | translate }}
-            </a>
-            <a (click)="showInMap(item.locationUrl)"
-              class="btn btn-info text-white fw-bold w-50 rounded-pill shadow-sm mt-1" title="Location">
-              <i class="bi bi-geo-alt text-light"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    }@empty {
-    <div class="not-found">
-      <img src="./empty.png" alt="" class="img-not-found" />
-      <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
-      <h6 class="head-not-found2">
-        الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
-      </h6>
-    </div>
-    }
-  </div>
-  }
   <div class="d-flex justify-content-center mt-4">
     <button class="btn btn-outline-info mx-1" (click)="handlePageChange(currentPage - 1)"
       [disabled]="currentPage === 1">
-      {{ "depDetails.lastPage" | translate }}
+      {{"depDetails.lastPage"|translate}}
     </button>
     @for (page of [].constructor(totalPages); track $index) {
     <button class="btn btn-outline-info mx-1" (click)="handlePageChange($index + 1)"
       [class.active]="$index + 1 === currentPage">
-      {{ $index + 1 }}
+      {{$index + 1}}
     </button>
     }
     <button class="btn btn-outline-info mx-1" (click)="handlePageChange(currentPage + 1)"
       [disabled]="currentPage === totalPages || totalPages === 0">
-      {{ "depDetails.nextPage" | translate }}
+      {{"depDetails.nextPage"|translate}}
     </button>
   </div>
 </div>

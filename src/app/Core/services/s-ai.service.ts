@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { IAi } from '../interfaces/i-ai';
-<<<<<<< HEAD
-import { HttpParams, HttpClient } from '@angular/common/http';
-=======
->>>>>>> 76c91adccd332047fc9ca5293a369f5ae072ec8f
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({

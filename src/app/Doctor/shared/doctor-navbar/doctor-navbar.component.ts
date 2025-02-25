@@ -65,6 +65,8 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
       this._SDoctorService.getDoctorNotifications(doctorId).subscribe({
         next: (data) => {
           if (data.success) {
+            console.log(data);
+
             const newNotifications = data.data.filter((n: any) => !n.read_at);
             if (newNotifications.length > this.unreadCount) {
               this.playNotificationSound();
