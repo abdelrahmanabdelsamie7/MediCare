@@ -10,7 +10,7 @@ import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 @Component({
   selector: 'app-show-care-center',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule, TimeFormatPipe],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './show-care-center.component.html',
   styleUrl: './show-care-center.component.css',
 })

@@ -10,7 +10,7 @@ import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 @Component({
   selector: 'app-show-laboratory',
   standalone: true,
-  imports: [CommonModule, TranslateModule, TimeFormatPipe],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './show-laboratory.component.html',
   styleUrl: './show-laboratory.component.css',
 })
