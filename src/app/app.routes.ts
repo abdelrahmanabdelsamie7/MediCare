@@ -14,6 +14,7 @@ import { LoginComponent } from './Site/auth/google-auth/google-auth.component';
 import { AllItemsComponent } from './Site/components/all-items/all-items.component';
 import { authInterceptor } from './Core/interceptors/auth.interceptor';
 import { userGuard } from './Core/guards/user.guard';
+import { TreeComponent } from './Site/auth/tree/tree.component';
 export const routes: Routes = [
   // ======================== Public Routes ========================
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -48,6 +49,12 @@ export const routes: Routes = [
     path: 'user-profile',
     component: UserProfileComponent,
     title: 'MediCare | User Profile',
+    canActivate: [userGuard]
+  },
+  {
+    path: 'user-points/:points',
+    component: TreeComponent,
+    title: 'MediCare | User Points',
     canActivate: [userGuard]
   },
 

@@ -16,7 +16,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <button class="nav-link" (click)="logout()" class="text-danger btn" >تسجيل
+                <button class="nav-link" (click)="logout()" class="text-danger btn">تسجيل
                   الخروج</button>
               </li>
             </ul>
@@ -50,6 +50,10 @@
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">تم التسجيل في وقت : </div>
                 <div class="col-lg-9 col-md-8">{{ userData.created_at | date:'short' }}</div>
+              </div>
+              <div class="row">
+                <button class="btn btn-outline-info" routerLink="/user-points/{{ userData.points }}">عدد النقاط {{
+                  userData.points }}</button>
               </div>
 
             </div>

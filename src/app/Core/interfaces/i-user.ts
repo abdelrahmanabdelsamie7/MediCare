@@ -7,5 +7,6 @@ export interface IUser {
   address: string;
   password: string;
   role: string;
+  points:number;
   created_at: Date;
 }

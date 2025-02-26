@@ -1,1 +1,14 @@
-canvas {background:#ecf0f1;display:block}
+
+/* جعل الـ canvas يأخذ 100% من حجم الـ container */
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block; /* علشان نتجنب أي مسافات زائدة */
+}
+
+/* جعل الـ container يأخذ 100% من حجم الشاشة */
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* علشان نتجنب ظهور scrollbars */
+}
