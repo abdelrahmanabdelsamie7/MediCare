@@ -89,14 +89,13 @@
     "medicationDosage": "Dosage:",
     "medicationNotes": "Additional Notes:",
     "errorMessage": "An error occurred, please try again."
-
   },
-  "payment":{
-  "secure_payment": "Secure Payment",
-  "reservation_price": "Reservation Price:",
-  "confirm_payment": "Confirm Payment",
-  "processing": "Processing"
-},
+  "payment": {
+    "secure_payment": "Secure Payment",
+    "reservation_price": "Reservation Price:",
+    "confirm_payment": "Confirm Payment",
+    "processing": "Processing"
+  },
   "adviceSec": {
     "contentAdv": "Advice from a doctor",
     "search": "Search",
@@ -132,7 +131,7 @@
     "passwordErrorMor": "Must contain 6 or more numbers",
     "passwordErrorLes": "Must contain 10 numbers or less",
     "confirmPassError": "Confirm password is incorrect",
-    "RegistrationPro": "Registration is in progress.."
+    "RegistrationPro": "Registration in progress .. , please verify your email."
   },
   "login": {
     "WelcomeBack": "...Welcome back",
@@ -280,7 +279,7 @@
     "area": "Area",
     "city": "City",
     "whatsappLink": "whatsapp Link",
-     "facebookLink":"facebook Link",
+    "facebookLink": "facebook Link",
     "deliveryOption": "Delivery Option",
     "insurenceOption": "Insurence Option",
     "appLink": "App Link",

@@ -15,6 +15,7 @@ import { AllItemsComponent } from './Site/components/all-items/all-items.compone
 import { authInterceptor } from './Core/interceptors/auth.interceptor';
 import { userGuard } from './Core/guards/user.guard';
 import { TreeComponent } from './Site/auth/tree/tree.component';
+import { CheckGmailComponent } from './Site/auth/check-gmail/check-gmail.component';
 export const routes: Routes = [
   // ======================== Public Routes ========================
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,6 +29,11 @@ export const routes: Routes = [
     path: 'Register',
     component: SiteRegisterComponent,
     title: 'MediCare | انضم إالينا',
+  },
+  {
+    path: 'check-gmail',
+    component: CheckGmailComponent,
+    title: 'MediCare | تأكيد بريدك الإلكتروني',
   },
   {
     path: 'admin-login',

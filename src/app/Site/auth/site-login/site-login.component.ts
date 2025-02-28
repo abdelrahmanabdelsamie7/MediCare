@@ -16,14 +16,14 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-site-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, RouterLink, LoginComponent,NgStyle ,TranslateModule],
+  imports: [ReactiveFormsModule, NgClass, RouterLink, LoginComponent, NgStyle, TranslateModule],
   templateUrl: './site-login.component.html',
   styleUrl: './site-login.component.css',
 })
 export class SiteLoginComponent {
   private readonly _SAuthService = inject(SAuthService);
   private readonly _Router = inject(Router);
-  public _translateService= inject(STranslateService);
+  public _translateService = inject(STranslateService);
   msgErr: string = '';
   isRtl: boolean = false;
   msgSuccess: boolean = false;
@@ -50,7 +50,11 @@ export class SiteLoginComponent {
           this.isLoading = false;
         },
         error: (err: HttpErrorResponse) => {
-          this.msgErr = 'تاكد من صحة بريدك الالكتروني او كلمة المرور ! ';
+          if (err.error.error == 'Invalid credentials') {
+            this.msgErr = 'تاكد من صحة بريدك الالكتروني او كلمة المرور ! ';
+          } else {
+            this.msgErr = 'يرجى التأكد من بريدك الإلكتروني لتسجيل الدخول بنجاح .. ';
+          }
           this.isLoading = false;
         },
       });

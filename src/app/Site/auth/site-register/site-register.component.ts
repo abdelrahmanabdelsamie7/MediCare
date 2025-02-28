@@ -62,10 +62,10 @@ export class SiteRegisterComponent  {
       this.isLoading = true;
       this._SAuthService.setRegisterForm(this.registerForm.value).subscribe({
         next: (res: any) => {
-          localStorage.setItem('userId', res.user.id);
+          // localStorage.setItem('userId', res.user.id);
           this.msgSuccess = true;
           setTimeout(() => {
-            this._Router.navigate(['/Login']);
+            this._Router.navigate(['/check-gmail']);
           }, 1000);
 
           this.isLoading = false;

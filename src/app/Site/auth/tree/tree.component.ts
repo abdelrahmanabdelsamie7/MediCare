@@ -42,7 +42,7 @@ interface Apple {
 })
 export class TreeComponent {
   points: number = 0;
-  maxApples: number = 30; // أقصى عدد تفاحات
+  maxApples: number = 500; // أقصى عدد تفاحات
 
   @ViewChild('canvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>;
 

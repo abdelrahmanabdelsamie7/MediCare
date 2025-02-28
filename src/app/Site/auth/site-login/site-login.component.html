@@ -3,7 +3,8 @@
     <h3 class="text-center mb-4 text-secondary fw-bolder">{{"login.WelcomeBack"|translate}}</h3>
     <div class="row">
       <div class="col-md-8 order-2 order-lg-1">
-        <h4 class="text-info pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">{{"login.login"|translate}} </h4>
+        <h4 class="text-info pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">{{"login.login"|translate}}
+        </h4>
         <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -14,10 +15,10 @@
             @if (loginForm.get('email')?.errors &&(loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ) {
             <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (loginForm.get('email')?.getError('required') ) {
-                <p class="m-0">{{"login.emailErrorReq"|translate}}</p>
+              <p class="m-0">{{"login.emailErrorReq"|translate}}</p>
               }
               @if (loginForm.get('email')?.getError('email')) {
-                <p class="m-0">{{"login.emailErrorVal"|translate}}</p>
+              <p class="m-0">{{"login.emailErrorVal"|translate}}</p>
               }
             </div>
             }
@@ -33,11 +34,11 @@
             loginForm.get('password')?.dirty)) {
             <div class="alert alert-danger text-center w-50 mx-auto rounded-4">
               @if (loginForm.get('password')?.getError('required') ) {
-                <p class="m-0">{{"login.passwordErrorReq"|translate}}</p>
+              <p class="m-0">{{"login.passwordErrorReq"|translate}}</p>
               }@else if (loginForm.get('password')?.getError('minlength')) {
-                <p class="m-0">{{"login.passwordErrorMor"|translate}}</p>
+              <p class="m-0">{{"login.passwordErrorMor"|translate}}</p>
               }@else if (loginForm.get('password')?.getError('maxlength')) {
-                <p class="m-0">{{"login.passwordErrorLes"|translate}}</p>
+              <p class="m-0">{{"login.passwordErrorLes"|translate}}</p>
               }
 
             </div>
@@ -45,18 +46,21 @@
             <label for="floatingPasswordd">{{"login.password"|translate}}</label>
           </div>
 
-          <button [disabled]="loginForm.invalid" type="submit" class="btn btn-info text-white w-100">{{"login.loginBtn"|translate}}
+          <button [disabled]="loginForm.invalid" type="submit"
+            class="btn btn-info text-white w-100">{{"login.loginBtn"|translate}}
             @if (isLoading) {
             <span><i class="fas fa-spin fa-spinner"></i></span>
             }</button>
           @if(msgErr){
-          <p class="alert alert-danger w-75 m-auto mt-3 ">{{msgErr}}</p>
+          <p class="alert alert-danger w-75 m-auto mt-3 text-center" style="direction:rtl">{{msgErr}}</p>
           }
           @if(msgSuccess){
-          <p class="alert alert-info text-center w-50 m-auto mt-3 ">{{"login.done"|translate}}</p>
+          <p class="alert alert-info text-center w-50 m-auto mt-3 text-center" style="direction:rtl">
+            {{"login.done"|translate}}</p>
           }
         </form>
-        <p class="text-center mt-3">{{"login.donAccount"|translate}}<a class="text-info" routerLink="/Register"> {{"login.CreateAccNow"|translate}}</a>
+        <p class="text-center mt-3">{{"login.donAccount"|translate}}<a class="text-info" routerLink="/Register">
+            {{"login.CreateAccNow"|translate}}</a>
         </p>
         <div class="d-flex justify-content-center">
           <app-login></app-login>

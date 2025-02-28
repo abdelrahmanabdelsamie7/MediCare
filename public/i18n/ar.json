@@ -131,7 +131,7 @@
     "passwordErrorMor": "يجب أن تحتوي على 6 أرقام أو أكثر",
     "passwordErrorLes": "يجب أن تحتوي على 10 أرقام أو أقل",
     "confirmPassError": "تأكيد كلمة المرور غير صحيح",
-    "RegistrationPro": "جاري التسجيل.."
+    "RegistrationPro": "جاري التسجيل، يرجى التأكد من بريدك الإلكتروني.."
   },
   "login": {
     "WelcomeBack": " مرحبا بعودتك...",

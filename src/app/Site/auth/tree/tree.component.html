@@ -1,5 +1,17 @@
 <app-site-navbar></app-site-navbar>
-<div class="container col-md-8">
-  <canvas #canvas></canvas>
+
+<div class="container">
+  <h5 class="points-text">
+    عدد النقاط الخاصة بك: {{ points }}
+  </h5>
+
+  <div class="marquee-container">
+    <span class="marquee-text">كل 10 نقاط ب 5 جنيه خصم علي الكشف</span>
+  </div>
+
+  <div class="canvas-wrapper">
+    <canvas #canvas></canvas>
+  </div>
 </div>
+
 <app-site-footer></app-site-footer>

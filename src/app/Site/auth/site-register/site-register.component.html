@@ -1,12 +1,14 @@
 <section class="pt-3">
   <div class="container">
-    <h3 class="text-center my-4 text-secondary fw-bolder"> {{"register.welcome" |translate}}<span class="text-info fw-bolder"> MediCare</span></h3>
+    <h3 class="text-center my-4 text-secondary fw-bolder"> {{"register.welcome" |translate}}<span
+        class="text-info fw-bolder"> MediCare</span></h3>
     <div class="row">
       <div class="col-md-8">
-        <h4 class="text-secondary pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">{{"register.register"|translate}} <span class="text-info">{{"register.now"|translate}}</span></h4>
+        <h4 class="text-secondary pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">
+          {{"register.register"|translate}} <span class="text-info">{{"register.now"|translate}}</span></h4>
         <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-          <div class="form-floating mb-3" >
-            <input [ngClass] ="{
+          <div class="form-floating mb-3">
+            <input [ngClass]="{
               'is-valid': !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty) ,
               'is-invalid': registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
             }" type="text" class="form-control" id="floatingInput" placeholder="Name" formControlName="name">
@@ -41,7 +43,7 @@
               }
             </div>
             }
-            <label  for="floatingEmail">{{"register.email"|translate}}</label>
+            <label for="floatingEmail">{{"register.email"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -76,7 +78,7 @@
 
             </div>
             }
-            <label  for="floatingaddress"> {{"register.address"|translate}}</label>
+            <label for="floatingaddress"> {{"register.address"|translate}}</label>
           </div>
           <div class="form-floating mb-3">
             <input [ngClass]="{
@@ -126,7 +128,8 @@
               placeholder="password_confirmation" formControlName="password_confirmation">
             @if (registerForm.getError('mismatch') && (registerForm.get('password_confirmation')?.touched ||
             registerForm.get('password_confirmation')?.dirty)) {
-            <p class="m-0 alert alert-danger text-center w-50 mx-auto rounded-4">{{"register.confirmPassError"|translate}}</p>
+            <p class="m-0 alert alert-danger text-center w-50 mx-auto rounded-4">
+              {{"register.confirmPassError"|translate}}</p>
             }
             <label for="floatingpassword_confirmation">{{"register.confirmPass"|translate}}</label>
           </div>
@@ -144,12 +147,13 @@
           <p class="alert alert-info text-center w-50 m-auto mt-3 ">{{"register.RegistrationPro"|translate}}</p>
           }
         </form>
-        <p class="text-center mt-3">{{"register.doAccount" | translate}}<a class="text-info" routerLink="/Login">{{"register.login"|translate}}</a></p>
+        <p class="text-center mt-3">{{"register.doAccount" | translate}}<a class="text-info"
+            routerLink="/Login">{{"register.login"|translate}}</a></p>
 
-          <div class="d-flex justify-content-center">
-            <app-login></app-login>
-          </div>
+        <div class="d-flex justify-content-center">
+          <app-login></app-login>
         </div>
+      </div>
 
       <div class="col-md-4">
         <div class="d-flex align-content-center h-100">
