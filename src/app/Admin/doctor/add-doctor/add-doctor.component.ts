@@ -14,6 +14,7 @@ import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor',
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddDoctorComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Departments: IDepartment[] = [];
   private destroy$ = new Subject<void>();
   addDoctorForm = new FormGroup({
@@ -87,10 +89,12 @@ export class AddDoctorComponent implements OnInit, OnDestroy {
   constructor(
     private _SDoctorService: SDoctorService,
     private _SDepartmentService: SDepartmentService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService:STranslateService
   ) {}
   ngOnInit() {
     this.loadDepartments();
+    this.checkLanguageDirection();
   }
   loadDepartments() {
     this._SDepartmentService
@@ -118,6 +122,12 @@ export class AddDoctorComponent implements OnInit, OnDestroy {
           summary: 'error',
           detail: err.error.message,
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

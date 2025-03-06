@@ -14,6 +14,7 @@ import { CommonModule, Location } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-edit-hospital',
   standalone: true,
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditHospitalComponent implements OnDestroy, OnInit {
+  isRtl:boolean=false;
   id: string = '';
   hospital: IHospital = {} as IHospital;
   private destroy$ = new Subject<void>();
@@ -30,7 +32,8 @@ export class EditHospitalComponent implements OnDestroy, OnInit {
     private _SHospitalService: SHospitalService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+      private _STranslateService: STranslateService
   ) {}
   editHospitalForm = new FormGroup({
     title: new FormControl('', [
@@ -53,6 +56,7 @@ export class EditHospitalComponent implements OnDestroy, OnInit {
     ]),
   });
   ngOnInit() {
+    this.checkLanguageDirection();
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -102,6 +106,12 @@ export class EditHospitalComponent implements OnDestroy, OnInit {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

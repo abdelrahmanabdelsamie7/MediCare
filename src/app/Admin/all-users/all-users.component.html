@@ -1,5 +1,5 @@
 <!-- Start List All users -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}" >
   <h1>{{ 'adminPanel.users_list' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">

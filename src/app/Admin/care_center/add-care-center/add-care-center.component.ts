@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SCareCenterService } from '../../../Core/services/s-care-center.service';
 import { MessageService } from 'primeng/api';
 import {
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { Toast } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-care-center',
   standalone: true,
@@ -19,11 +20,16 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-care-center.component.css',
   providers: [MessageService],
 })
-export class AddCareCenterComponent {
+export class AddCareCenterComponent implements OnInit {
+  isRtl:boolean=false;
   constructor(
     private _SCareCenterService: SCareCenterService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService: STranslateService
   ) {}
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
   // Form Of Adding Care Center
   addCareCenterForm = new FormGroup({
     title: new FormControl('', [
@@ -71,6 +77,13 @@ export class AddCareCenterComponent {
           summary: 'Success',
           detail: `${err.error.message}`,
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

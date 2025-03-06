@@ -1,5 +1,5 @@
 <!-- Start Add New Laboratory -->
-<div class="pagetitle">
+<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.laboratories_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -14,7 +14,7 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="addLaboratoryForm" (ngSubmit)="addLaboratory(addLaboratoryForm)">
+          <form class="row" [formGroup]="addLaboratoryForm" (ngSubmit)="addLaboratory(addLaboratoryForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-4">
                 <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
@@ -68,7 +68,7 @@
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.insurence.touched && addLaboratoryForm.controls.insurence.errors) }"
                   id="insurence" class="form-control">
                   <option value="1">{{ 'adminPanel.insuranceAvailable' | translate }}</option>
-                  <option value="0">{{ 'adminPanel.insurenceNotAvaliable' | translate }}</option>
+                  <option value="0">{{ 'adminPanel.insuranceNotAvailable' | translate }}</option>
                 </select>
               </div>
               <div class="col-md-4">
@@ -93,12 +93,12 @@
                   class="form-control" class="form-control" id="end_at">
               </div>
               <div class="col-md-4">
-                <label for="chain_laboratory_id" class="form-label">Belong To Chain Of Pharmacies</label>
+                <label for="chain_laboratory_id" class="form-label">{{"adminPanel.belongToChainLab"|translate}}</label>
                 <select name="chain_laboratory_id" formControlName="chain_laboratory_id" [ngClass]="{
                                             'is-invalid': (addLaboratoryForm.controls.chain_laboratory_id.touched &&
                                             addLaboratoryForm.controls.chain_laboratory_id.errors)
                                           }" id="chain_laboratory_id" class="form-control">
-                  <option value="">Not Belong To Chain</option>
+                  <option value="">{{"adminPanel.notBelongToChainLab"|translate }}</option>
                   <option *ngFor="let item of ChainsLaboratories" [value]="item.id">
                     {{ item.title }}
                   </option>

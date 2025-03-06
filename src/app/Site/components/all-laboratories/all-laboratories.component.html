@@ -35,7 +35,7 @@
         <input type="text" class="form-control" name="area" (input)="handleAreaChange($event)" />
       </div>
       <div class="col-auto">
-        <label class="form-label"> {{"laboratories.insurence"| translate}}</label>
+        <label class="form-label"> {{"laboratories.insurance"| translate}}</label>
         <select class="form-select" (change)="handleInsurenceChange($event)" name="insurence">
           <option value="all"> {{"laboratories.all"| translate}}</option>
           <option value="1"> {{"laboratories.available"| translate}}</option>
@@ -68,8 +68,8 @@
           <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
             style="width: 100px; height: 100px; margin-top: -50px;" alt="Laboratory Image" />
           @if (item.insurence ===1) {
-          <p class="insurence pb-2 m-0">
-            {{"laboratories.insurence"| translate}}
+          <p class="insurence pb-2 m-0 text-info">
+            {{"laboratories.insurance"| translate}}
             <i class="bi bi-shield-check"></i>
           </p>
           }
@@ -97,9 +97,9 @@
     }@empty {
     <div class="not-found">
       <img src="./empty.png" alt="" class="img-not-found" />
-      <h3 class="head-not-found">عفواً، لم نتمكن من العثور على هذه الصفحة.</h3>
+      <h3 class="head-not-found">{{"notFound.notFoundPage"|translate }}</h3>
       <h6 class="head-not-found2">
-        الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها.
+        {{"notFound.notFoundPage2"|translate }}
       </h6>
     </div>
     }

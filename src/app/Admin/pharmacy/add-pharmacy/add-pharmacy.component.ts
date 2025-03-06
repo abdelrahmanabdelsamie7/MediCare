@@ -14,6 +14,7 @@ import { CustomValidators } from 'ng2-validation';
 import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmacies.service';
 import { IChainPharmacies } from '../../../Core/interfaces/i-chain-pharmacies';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-pharmacy',
   standalone: true,
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddPharmacyComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   ChainsPharmacies: IChainPharmacies[] = [];
   private destroy$ = new Subject<void>();
   addPharmacyForm = new FormGroup({
@@ -65,10 +67,12 @@ export class AddPharmacyComponent implements OnInit, OnDestroy {
   constructor(
     private _SPharmacyService: SPharmacyService,
     private _SChainPharmaciesService: SChainPharmaciesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this.loadChainPharmacies();
+      this.checkLanguageDirection();
   }
   loadChainPharmacies() {
     this._SChainPharmaciesService
@@ -96,6 +100,13 @@ export class AddPharmacyComponent implements OnInit, OnDestroy {
           summary: 'error',
           detail: err.error.message,
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

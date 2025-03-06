@@ -13,6 +13,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-delivery-service',
@@ -27,8 +28,10 @@ export class EditDeliveryServiceComponent implements OnInit, OnDestroy {
     private _SDeliveryService: SDeliveryService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
+  isRtl:boolean=false;
   id: string = '';
   deliveryService: IDelivery = {} as IDelivery;
   private destroy$ = new Subject<void>();
@@ -56,6 +59,7 @@ export class EditDeliveryServiceComponent implements OnInit, OnDestroy {
       },
     });
     this.loadDeliveryServiceData();
+    this.checkLanguageDirection();
   }
   loadDeliveryServiceData() {
     this._SDeliveryService
@@ -99,6 +103,13 @@ export class EditDeliveryServiceComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

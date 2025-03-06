@@ -1,5 +1,5 @@
 <!-- Start Of Editing Department -->
-<div class="pagetitle">
+<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.department_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -14,7 +14,7 @@
       <p-toast></p-toast>
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editDepartmentForm" (ngSubmit)="editDepartment(editDepartmentForm)">
+          <form class="row" [formGroup]="editDepartmentForm" (ngSubmit)="editDepartment(editDepartmentForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="col-12">
               <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="title" [ngClass]="{

@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SOfferGroupService } from '../../../Core/services/s-offer-group.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-offer-group',
@@ -14,10 +15,12 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-offer-group.component.css',
   providers:[MessageService]
 })
-export class AddOfferGroupComponent {
+export class AddOfferGroupComponent implements OnInit {
+  isRtl:boolean=false;
 constructor(
     private SOfferGroupService:SOfferGroupService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   addOfferGroupForm = new FormGroup({
     title: new FormControl('', [
@@ -50,5 +53,15 @@ constructor(
           });
         },
       });
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

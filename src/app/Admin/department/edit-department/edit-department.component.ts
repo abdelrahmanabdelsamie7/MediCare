@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-edit-department',
   standalone: true,
@@ -22,6 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditDepartmentComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   id: string = '';
   department: IDepartment = {} as IDepartment;
   private destroy$ = new Subject<void>();
@@ -45,9 +47,11 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
     private _SDepartmentService: SDepartmentService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+      private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
+      this.checkLanguageDirection();
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -97,6 +101,13 @@ export class EditDepartmentComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

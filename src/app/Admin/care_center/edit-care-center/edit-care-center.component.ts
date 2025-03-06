@@ -13,6 +13,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-edit-care-center',
   standalone: true,
@@ -22,12 +23,14 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditCareCenterComponent implements OnInit {
+  isRtl:boolean=false
   id: string = '';
   careCenter: ICareCenter = {} as ICareCenter;
   constructor(
     private _SCareCenterService: SCareCenterService,
     private messageService: MessageService,
-    private _ActivatedRoute: ActivatedRoute
+    private _ActivatedRoute: ActivatedRoute,
+     private _STranslateService: STranslateService
   ) {}
   // Form Of Editing Care Center
   editCareCenterForm = new FormGroup({
@@ -60,6 +63,7 @@ export class EditCareCenterComponent implements OnInit {
     ]),
   });
   ngOnInit() {
+    this.checkLanguageDirection();
     // Getting Id Of Care Center
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -108,5 +112,12 @@ export class EditCareCenterComponent implements OnInit {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

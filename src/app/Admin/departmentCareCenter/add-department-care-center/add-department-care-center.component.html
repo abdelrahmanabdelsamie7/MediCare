@@ -1,5 +1,5 @@
 <!-- Start Add New Department To CareCenter -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.addDepartmentToCareCenter' | translate }} </h1>
   <nav>
     <ol class="breadcrumb">
@@ -15,7 +15,7 @@
       <div class="card p-4">
         <div class="card-body">
           <form class="row" [formGroup]="addDepartmentCareCenterForm"
-            (ngSubmit)="addDepartmentCareCenter(addDepartmentCareCenterForm)">
+            (ngSubmit)="addDepartmentCareCenter(addDepartmentCareCenterForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="department">{{ 'adminPanel.selectDepartment' | translate }}</label>

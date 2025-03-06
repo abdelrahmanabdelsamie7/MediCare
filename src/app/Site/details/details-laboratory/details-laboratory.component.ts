@@ -7,20 +7,24 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-details-laboratory',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast,TranslateModule,NgStyle
+  ],
   templateUrl: './details-laboratory.component.html',
   styleUrl: './details-laboratory.component.css',
   providers: [MessageService],
 })
 export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false
   id: string = '';
   isAuth: boolean = false;
   stars = [1, 2, 3, 4, 5];
@@ -39,7 +43,8 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
   constructor(
     private _SLaboratoryService: SLaboratoryService,
     private _ActivatedRoute: ActivatedRoute,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+     private _STranslateService: STranslateService
   ) {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -66,6 +71,7 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
       this.isAuth = true;
     }
     this.loadLaboratoryData();
+    this.checkLanguageDirection();
   }
   loadLaboratoryData() {
     this._SLaboratoryService
@@ -108,6 +114,13 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
           detail: messageDetail,
           styleClass: 'rtl-message',
         });
+      },
+    });
+  }
+   checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

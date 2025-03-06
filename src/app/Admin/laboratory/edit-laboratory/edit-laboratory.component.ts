@@ -16,6 +16,7 @@ import {
 } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-laboratory',
@@ -26,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditLaboratoryComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   private destroy$ = new Subject<void>();
   Laboratory: ILaboratory = {} as ILaboratory;
@@ -35,7 +37,8 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
     private SChainLaboratoriesService: SChainLaboratoriesService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService: STranslateService
   ) {}
   editLaboratoryForm = new FormGroup({
     title: new FormControl('', [
@@ -83,6 +86,7 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
     });
     this.loadLaboratoryData();
     this.loadChainsLaboratories();
+    this.checkLanguageDirection();
   }
   loadLaboratoryData() {
     this._SLaboratoryService.showLaboratory(this.id).subscribe({
@@ -138,6 +142,13 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpParams } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-list-laboratories',
@@ -18,16 +19,19 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class ListLaboratoriesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   currentPage: number = 1;
   lastPage: number = 1;
   Laboratories: ILaboratory[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SLaboratoryService: SLaboratoryService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this.getLaboratories(this.currentPage);
+    this.checkLanguageDirection();
   }
   getLaboratories(page: number) {
     const params = new HttpParams().set('page', page.toString());
@@ -70,6 +74,13 @@ export class ListLaboratoriesComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

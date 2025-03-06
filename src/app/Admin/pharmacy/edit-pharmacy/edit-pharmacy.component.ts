@@ -16,6 +16,7 @@ import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmaci
 import { Subject, takeUntil } from 'rxjs';
 import { IChainPharmacies } from '../../../Core/interfaces/i-chain-pharmacies';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-edit-pharmacy',
   standalone: true,
@@ -25,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditPharmacyComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   private destroy$ = new Subject<void>();
   Pharmacy: IPharmacy = {} as IPharmacy;
@@ -34,7 +36,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
     private SChainPharmaciesService: SChainPharmaciesService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   editPharmacyForm = new FormGroup({
     title: new FormControl('', [
@@ -82,6 +85,7 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
     });
     this.loadPharmacyData();
     this.loadChainsPharmacies();
+    this.checkLanguageDirection();
   }
   loadPharmacyData() {
     this._SPharmacyService.showPharmacy(this.id).subscribe({
@@ -138,6 +142,13 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+    checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

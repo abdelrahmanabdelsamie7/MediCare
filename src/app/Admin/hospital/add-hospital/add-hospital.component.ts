@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { CustomValidators } from 'ng2-validation';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-hospital',
   standalone: true,
@@ -19,11 +20,16 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-hospital.component.css',
   providers: [MessageService],
 })
-export class AddHospitalComponent {
+export class AddHospitalComponent implements OnInit{
+  isRtl:boolean=false
   constructor(
     private _SHospitalService: SHospitalService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
   addHospitalForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -70,6 +76,12 @@ export class AddHospitalComponent {
           summary: 'error',
           detail: `${err.error.message}`,
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

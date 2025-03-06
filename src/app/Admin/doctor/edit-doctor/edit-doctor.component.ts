@@ -16,6 +16,7 @@ import { Toast } from 'primeng/toast';
 import { ActivatedRoute } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-doctor',
@@ -26,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditDoctorComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   private destroy$ = new Subject<void>();
   Doctor: IDoctor = {} as IDoctor;
@@ -35,7 +37,8 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
     private _SDepartmentService: SDepartmentService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService :STranslateService
   ) {}
   editDoctorForm = new FormGroup({
     fName: new FormControl('', [
@@ -96,6 +99,7 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
     });
     this.loadDoctorData();
     this.loadDepartments();
+    this.checkLanguageDirection();
   }
   loadDoctorData() {
     this._SDoctorService.showDoctor(this.id).subscribe({
@@ -149,6 +153,12 @@ export class EditDoctorComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

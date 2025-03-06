@@ -6,24 +6,29 @@ import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-list-delivery-service',
   standalone: true,
-  imports: [Toast, RouterModule, TranslateModule],
+  imports: [Toast, RouterModule, TranslateModule, NgStyle],
   templateUrl: './list-delivery-service.component.html',
   styleUrl: './list-delivery-service.component.css',
   providers: [MessageService],
 })
 export class ListDeliveryServiceComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   DeliveryServices: IDelivery[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SDeliveryService: SDeliveryService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit() {
     this.getDeliveryServices();
+    this.checkLanguageDirection();
   }
   getDeliveryServices() {
     this._SDeliveryService
@@ -62,6 +67,13 @@ export class ListDeliveryServiceComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

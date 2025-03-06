@@ -8,16 +8,18 @@ import { SOfferGroupService } from '../../../Core/services/s-offer-group.service
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-offer-group',
   standalone: true,
   imports: [ReactiveFormsModule , CommonModule , Toast , TranslateModule],
   templateUrl: './edit-offer-group.component.html',
-  styleUrl: './edit-offer-group.component.css' , 
+  styleUrl: './edit-offer-group.component.css' ,
   providers: [MessageService]
 })
 export class EditOfferGroupComponent  implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   private destroy$ = new Subject<void>();
   OfferGroup: IOfferGroup = {} as IOfferGroup;
@@ -36,7 +38,8 @@ export class EditOfferGroupComponent  implements OnInit, OnDestroy {
     private _SOfferGroupService: SOfferGroupService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService: STranslateService
   ) { }
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
@@ -45,6 +48,7 @@ export class EditOfferGroupComponent  implements OnInit, OnDestroy {
       },
     });
     this.loadOfferGroupData();
+    this.checkLanguageDirection();
   }
   loadOfferGroupData() {
     this._SOfferGroupService
@@ -87,6 +91,13 @@ export class EditOfferGroupComponent  implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

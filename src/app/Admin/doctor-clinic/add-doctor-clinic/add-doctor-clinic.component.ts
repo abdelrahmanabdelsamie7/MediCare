@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SDoctorClinicService } from '../../../Core/services/s-doctor-clinic.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -11,6 +11,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { CustomValidators } from 'ng2-validation';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor-clinic',
@@ -20,11 +21,13 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-doctor-clinic.component.css',
   providers: [MessageService],
 })
-export class AddDoctorClinicComponent {
+export class AddDoctorClinicComponent implements OnInit {
+  isRtl:boolean=false;
   isLoading: boolean = false;
   constructor(
     private _SDoctorClinicService: SDoctorClinicService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   addDoctorClinicForm = new FormGroup({
     title: new FormControl('', [
@@ -76,5 +79,14 @@ export class AddDoctorClinicComponent {
           },
         });
     }
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

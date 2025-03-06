@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { IDelivery } from '../../../Core/interfaces/i-delivery';
 import { Subject, takeUntil } from 'rxjs';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-delivery-services',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './all-delivery-services.component.html',
   styleUrl: './all-delivery-services.component.css',
 })

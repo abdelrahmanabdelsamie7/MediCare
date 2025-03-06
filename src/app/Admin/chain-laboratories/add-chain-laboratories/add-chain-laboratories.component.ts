@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-chain-laboratories',
@@ -19,10 +20,12 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-chain-laboratories.component.css',
   providers: [MessageService],
 })
-export class AddChainLaboratoriesComponent {
+export class AddChainLaboratoriesComponent implements OnInit {
+  isRtl:boolean=false;
   constructor(
     private _SChainLaboratoriesService: SChainLaboratoriesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   addChainLaboratoriesForm = new FormGroup({
     title: new FormControl('', [
@@ -51,5 +54,15 @@ export class AddChainLaboratoriesComponent {
           });
         },
       });
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

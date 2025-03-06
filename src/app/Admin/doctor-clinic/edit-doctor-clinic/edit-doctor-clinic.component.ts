@@ -14,6 +14,7 @@ import {
 } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-doctor-clinic',
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditDoctorClinicComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   isLoading: boolean = false;
   DoctorClinic: IDoctorClinic = {} as IDoctorClinic;
@@ -32,7 +34,8 @@ export class EditDoctorClinicComponent implements OnInit, OnDestroy {
     private _SDoctorClinicService: SDoctorClinicService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   editDoctorClinicForm = new FormGroup({
     title: new FormControl('', [
@@ -66,6 +69,7 @@ export class EditDoctorClinicComponent implements OnInit, OnDestroy {
       },
     });
     this.loadDoctorClinicData();
+    this.checkLanguageDirection();
   }
   loadDoctorClinicData() {
     this._SDoctorClinicService
@@ -112,6 +116,12 @@ export class EditDoctorClinicComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

@@ -6,6 +6,7 @@ import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-show-pharmacy',
   standalone: true,
@@ -14,13 +15,15 @@ import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
   styleUrl: './show-pharmacy.component.css',
 })
 export class ShowPharmacyComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   pharmacy: IPharmacy = {} as IPharmacy;
   private destroy$ = new Subject<void>();
   constructor(
     private _SPharmacyService: SPharmacyService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
@@ -29,6 +32,7 @@ export class ShowPharmacyComponent implements OnInit, OnDestroy {
       },
     });
     this.loadPharmacyData();
+    this.checkLanguageDirection();
   }
   loadPharmacyData() {
     this._SPharmacyService
@@ -49,6 +53,13 @@ export class ShowPharmacyComponent implements OnInit, OnDestroy {
       '_blank',
       'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
     );
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

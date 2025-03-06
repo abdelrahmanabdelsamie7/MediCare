@@ -1,5 +1,5 @@
 <!-- Start Add New Chain Laboratories -->
-<div class="pagetitle">
+<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.chain_laboratories_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -15,7 +15,7 @@
       <div class="card p-4">
         <div class="card-body">
           <form class="row" [formGroup]="addChainLaboratoriesForm"
-            (ngSubmit)="addChainLaboratories(addChainLaboratoriesForm)">
+            (ngSubmit)="addChainLaboratories(addChainLaboratoriesForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="col-12">
               <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="title"

@@ -11,26 +11,26 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="card pharmacy-info border-0 shadow-sm p-4 h-100">
+      <div class="card pharmacy-info border-0 shadow-sm p-4 h-100" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         @if(pharmacy.insurence ===1){
-        <span class="insurence">التأمين الصحي : متاح</span>
+        <span class="insurence">{{"details.insurance"|translate}}</span>
         }
         <h2 class="head-title my-3 fs-3 text-center">
           {{ pharmacy.title }}
         </h2>
-        <p><strong>الخدمات:</strong> {{ pharmacy.service }}</p>
-        <p><strong>رقم المحمول:</strong> {{ pharmacy.phone }}</p>
+        <p><strong>{{"details.service"|translate}}:</strong> {{ pharmacy.service }}</p>
+        <p><strong>{{"details.phone"|translate}}:</strong> {{ pharmacy.phone }}</p>
         <p>
-          <strong>العنوان:</strong> {{ pharmacy.area }} - {{ pharmacy.city }}
+          <strong>{{"details.address"|translate}}:</strong> {{ pharmacy.area }} - {{ pharmacy.city }}
         </p>
         <p>
-          <strong>مواعيد العمل:</strong>
-          {{ pharmacy.start_at | date : "short" }} إلي
+          <strong>{{"details.workingApp"|translate}}:</strong>
+          {{ pharmacy.start_at | date : "short" }} {{"details.to"|translate}}
           {{ pharmacy.end_at | date : "short" }}
         </p>
         <p class="delivery-status">
           <strong>
-            خدمة التوصيل
+            {{'details.deliveryService'|translate}}
             <i
               class="bi bi-bicycle fs-2"
               [ngClass]="
@@ -42,7 +42,7 @@
           {{ pharmacy.deliveryOption === 1 ? "متاح" : "غير متاح" }}
         </p>
         <p>
-          <strong>التقييم</strong>:
+          <strong>{{"details.rating"|translate}}</strong>:
           <ng-container *ngFor="let star of getStarArray(); let i = index">
             <i class="fa-solid fa-star text-warning me-1"></i>
           </ng-container>

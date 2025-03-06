@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SSpeicalizationService } from '../../../Core/services/s-speicalization.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
@@ -10,6 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-specialization',
   standalone: true,
@@ -18,10 +19,12 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-specialization.component.css',
   providers: [MessageService],
 })
-export class AddSpecializationComponent {
+export class AddSpecializationComponent implements OnInit {
+  isRtl:boolean=false;
   constructor(
     private _SSpeicalizationService: SSpeicalizationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   // Form For Adding Specialization
   addSpecializationForm = new FormGroup({
@@ -51,5 +54,15 @@ export class AddSpecializationComponent {
           });
         },
       });
+  }
+  ngOnInit(): void {
+    this. checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

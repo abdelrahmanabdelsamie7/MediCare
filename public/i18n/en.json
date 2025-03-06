@@ -179,11 +179,13 @@
     "doctors": "Doctors",
     "doctor_edit": "Update Doctor Info",
     "doctors_list": "List Of Doctors",
+    "doctor_add": "Add a doctor",
     "doctors_today": "Doctors | Today",
     "hospitals": "Hospitals",
     "hospitals_today": "Hospitals | Today",
     "clinics": "Clinics",
     "clinics_today": "Clinics | Today",
+    "clinic_add": "Add a medical clinic",
     "clinic_edit": "Edit Clinic Doctor",
     "add_clinic_image": "Add Image To Clinic Doctor",
     "edit_clinic_image": "Edit Clinic Image",
@@ -225,11 +227,14 @@
     "pharmacies_list": "Pharmacies List",
     "pharmacies_add": "Add Pharmacy",
     "pharmacies_edit": "Edit Pharmacy",
+    "belongToChainLab":"Belong To Chain Of Laboratories",
+    "notBelongToChainLab":"Not Belong To Chain",
     "chain_laboratories_list": "Chain of Laboratories List",
     "chain_laboratories_add": "Add Chain of Laboratories",
     "chain_laboratories_edit": "Edit Chain of Laboratories",
     "laboratories_list": "Laboratories List",
     "laboratories_add": "Add Laboratory",
+    "laboratories_edit":"Edit Laboratory",
     "specializations_list": "Specializations List",
     "specializations": "Specializations",
     "specializations_add": "Add Specialization",
@@ -407,5 +412,19 @@
     "PHARMACIES": "Pharmacies",
     "LABORATORIES": "Laboratories",
     "COUNT": "Statistics Count"
+  },
+  "details":{
+    "insurance":"Insurance: available",
+    "service":"Services",
+    "phone":"Phone",
+    "address":"Address",
+    "workingApp":"Working Appointments",
+    "rating": "Rating",
+    "to":"To",
+    "deliveryService":"Delivery service"
+  },
+  "notFound":{
+    "notFoundPage":".Sorry, we could not find this page",
+    "notFoundPage2":".The page you are looking for is temporarily unavailable or has been removed"
   }
 }

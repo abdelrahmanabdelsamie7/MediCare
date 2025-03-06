@@ -6,24 +6,29 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-list-offer-groups',
   standalone: true,
-  imports: [Toast , TranslateModule,RouterModule],
+  imports: [Toast , TranslateModule,RouterModule,NgStyle],
   templateUrl: './list-offer-groups.component.html',
   styleUrl: './list-offer-groups.component.css' ,
   providers:[MessageService]
 })
 export class ListOfferGroupsComponent implements OnInit , OnDestroy{
+  isRtl:boolean=false;
 OfferGroups: IOfferGroup[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SOfferGroupService: SOfferGroupService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this.getOfferGroups();
+    this.checkLanguageDirection();
   }
   getOfferGroups() {
     this._SOfferGroupService
@@ -62,6 +67,13 @@ OfferGroups: IOfferGroup[] = [];
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

@@ -1,10 +1,10 @@
 <!-- Start Editing Laboratory -->
-<div class="pagetitle">
-  <h1>Edit Laboratory</h1>
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+  <h1>{{'adminPanel.laboratories_edit'|translate}}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/admin-mediCare-1245">{{'adminPanel.dashboard'| translate}}</a></li>
+      <li class="breadcrumb-item">{{'adminPanel.edit'|translate}}</li>
     </ol>
   </nav>
 </div>
@@ -14,7 +14,7 @@
       <p-toast />
     <div class="card p-4">
       <div class="card-body">
-        <form class="row" [formGroup]="editLaboratoryForm" (ngSubmit)="editLaboratory(editLaboratoryForm)">
+        <form class="row" [formGroup]="editLaboratoryForm" (ngSubmit)="editLaboratory(editLaboratoryForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
           <div class="row">
             <div class="col-md-4">
               <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
@@ -93,12 +93,12 @@
                 class="form-control" class="form-control" id="end_at">
             </div>
             <div class="col-md-4">
-              <label for="chain_laboratory_id" class="form-label">Belong To Chain Of Pharmacies</label>
+              <label for="chain_laboratory_id" class="form-label">{{'adminPanel.belongToChainLab'| translate}}</label>
               <select name="chain_laboratory_id" formControlName="chain_laboratory_id" [ngClass]="{
                                                 'is-invalid': (editLaboratoryForm.controls.chain_laboratory_id.touched &&
                                                 editLaboratoryForm.controls.chain_laboratory_id.errors)
                                               }" id="chain_laboratory_id" class="form-control">
-                <option value="">Not Belong To Chain</option>
+                <option value="">{{'adminPanel.notBelongToChainLab'| translate}}</option>
                 <option *ngFor="let item of ChainsLaboratories" [value]="item.id">
                   {{ item.title }}
                 </option>

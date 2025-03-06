@@ -1,5 +1,5 @@
 <!-- Start Add New ClinicToDoctor -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.add_clinic_to_doctor' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -14,7 +14,7 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="addClinicToDoctorForm" (ngSubmit)="addClinicToDoctor(addClinicToDoctorForm)">
+          <form class="row" [formGroup]="addClinicToDoctorForm" (ngSubmit)="addClinicToDoctor(addClinicToDoctorForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="doctor_id" class="form-label">{{ 'adminPanel.selectDoctor' | translate }}</label>

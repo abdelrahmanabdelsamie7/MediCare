@@ -5,28 +5,32 @@ import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 import { HttpParams } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-list-pharmacies',
   standalone: true,
-  imports: [RouterModule, Toast, CommonModule, TranslateModule],
+  imports: [RouterModule, Toast, CommonModule, TranslateModule,NgStyle],
   templateUrl: './list-pharmacies.component.html',
   styleUrl: './list-pharmacies.component.css',
   providers: [MessageService],
 })
 export class ListPharmaciesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   currentPage: number = 1;
   lastPage: number = 1;
   Pharmacies: IPharmacy[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SPharmacyService: SPharmacyService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit() {
     this.getPharmacies(this.currentPage);
+    this.checkLanguageDirection();
   }
   getPharmacies(page: number) {
     const params = new HttpParams().set('page', page.toString());
@@ -69,6 +73,13 @@ export class ListPharmaciesComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+    checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

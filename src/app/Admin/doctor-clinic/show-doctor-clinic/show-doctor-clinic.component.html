@@ -13,11 +13,13 @@
       </div>
     </ng-template>
   </p-carousel>
+<div [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <a routerLink="/admin-mediCare-1245/add-doctor-clinic-image" class="btn btn-info text-light d-inline-block ms-auto">
     {{'adminPanel.addNewImageToClinic' | translate }}
   </a>
+</div>
   <!-- Offer Details -->
-  <div class="card border-0 shadow p-4 mt-3" style="direction:rtl">
+  <div class="card border-0 shadow p-4 mt-3" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
     <h5>{{ 'adminPanel.title' | translate }} : {{ DoctorClinic.title }}</h5>
     <hr>
     <h5>{{ 'adminPanel.description' | translate }} : {{ DoctorClinic.description }}</h5>

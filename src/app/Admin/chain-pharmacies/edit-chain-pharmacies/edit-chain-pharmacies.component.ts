@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Toast } from 'primeng/toast';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-edit-chain-pharmacies',
   standalone: true,
@@ -22,6 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditChainPharmaciesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   id: string = '';
   private destroy$ = new Subject<void>();
   chainPharmacies: IChainPharmacies = {} as IChainPharmacies;
@@ -36,7 +38,8 @@ export class EditChainPharmaciesComponent implements OnInit, OnDestroy {
     private _SChainPharmaciesService: SChainPharmaciesService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+     private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
@@ -45,6 +48,7 @@ export class EditChainPharmaciesComponent implements OnInit, OnDestroy {
       },
     });
     this.loadChainPharmaciesData();
+    this.checkLanguageDirection();
   }
   loadChainPharmaciesData() {
     this._SChainPharmaciesService
@@ -86,6 +90,13 @@ export class EditChainPharmaciesComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

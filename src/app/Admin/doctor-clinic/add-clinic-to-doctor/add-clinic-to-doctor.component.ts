@@ -14,6 +14,7 @@ import { Toast } from 'primeng/toast';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-clinic-to-doctor',
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddClinicToDoctorComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   DoctorClinics: IDoctorClinic[] = [];
   Doctors: IDoctor[] = [];
   isLoading: boolean = false;
@@ -36,11 +38,13 @@ export class AddClinicToDoctorComponent implements OnInit, OnDestroy {
     private _SDoctorClinicService: SDoctorClinicService,
     private _SDoctorService: SDoctorService,
     private messageService: MessageService,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit(): void {
     this.loadDoctorClinic();
     this.loadDoctors();
+    this.checkLanguageDirection();
   }
   loadDoctorClinic() {
     this._SDoctorClinicService
@@ -92,6 +96,12 @@ export class AddClinicToDoctorComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

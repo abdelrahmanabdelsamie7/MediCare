@@ -13,15 +13,18 @@ import {
 } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-details-pharamcy',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast,TranslateModule],
   templateUrl: './details-pharamcy.component.html',
   styleUrl: './details-pharamcy.component.css',
   providers: [MessageService],
 })
 export class DetailsPharamcyComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   isAuth: boolean = false;
   stars = [1, 2, 3, 4, 5];
@@ -40,7 +43,8 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
   constructor(
     private _SPharmacyService: SPharmacyService,
     private _ActivatedRoute: ActivatedRoute,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService: STranslateService
   ) {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -67,6 +71,7 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
       this.isAuth = true;
     }
     this.loadPharmacyData();
+    this.checkLanguageDirection();
   }
   loadPharmacyData() {
     this._SPharmacyService
@@ -109,6 +114,13 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
           detail: messageDetail,
           styleClass: 'rtl-message',
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

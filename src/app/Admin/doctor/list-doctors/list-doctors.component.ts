@@ -6,23 +6,28 @@ import { Subject, takeUntil } from 'rxjs';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-list-doctors',
   standalone: true,
-  imports: [RouterModule, Toast, TranslateModule],
+  imports: [RouterModule, Toast, TranslateModule,NgStyle],
   templateUrl: './list-doctors.component.html',
   styleUrl: './list-doctors.component.css',
   providers: [MessageService],
 })
 export class ListDoctorsComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Doctors: IDoctor[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SDoctorservice: SDoctorService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService :STranslateService
   ) { }
   ngOnInit() {
     this.getDoctors();
+    this.checkLanguageDirection();
   }
   getDoctors() {
     this._SDoctorservice
@@ -58,6 +63,12 @@ export class ListDoctorsComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

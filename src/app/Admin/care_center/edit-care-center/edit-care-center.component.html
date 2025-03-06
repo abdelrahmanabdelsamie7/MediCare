@@ -1,5 +1,5 @@
 <!-- Start Editing Care Center -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.care_center_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -14,7 +14,7 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editCareCenterForm" (ngSubmit)="editCareCenter(editCareCenterForm)">
+          <form class="row" [formGroup]="editCareCenterForm" (ngSubmit)="editCareCenter(editCareCenterForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>

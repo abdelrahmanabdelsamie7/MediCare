@@ -6,24 +6,29 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-list-chain-pharmacies',
   standalone: true,
-  imports: [Toast, RouterModule , TranslateModule],
+  imports: [Toast, RouterModule , TranslateModule, NgStyle],
   templateUrl: './list-chain-pharmacies.component.html',
   styleUrl: './list-chain-pharmacies.component.css',
   providers: [MessageService],
 })
 export class ListChainPharmaciesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   ChainPharmacies: IChainPharmacies[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SChainPharmaciesService: SChainPharmaciesService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit() {
     this.getChainPharmacies();
+    this.checkLanguageDirection();
   }
   getChainPharmacies() {
     this._SChainPharmaciesService
@@ -63,6 +68,14 @@ export class ListChainPharmaciesComponent implements OnInit, OnDestroy {
         },
       });
   }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
+  }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();

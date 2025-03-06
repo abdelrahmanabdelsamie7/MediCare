@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-md-8 ">
-      <div class="card border border-0 shadow p-4">
+      <div class="card border border-0 shadow p-4" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ pharmacy.title}}</span></h3>
         <hr>
         <h5>{{ 'adminPanel.service' | translate }} : <span>{{ pharmacy.service }}</span></h5>
@@ -28,7 +28,7 @@
         @if (pharmacy.insurence == 1 ) {
         <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceAvailable' | translate }}</h5>
         }@else {
-        <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insurenceNotAvaliable' | translate }}</h5>
+        <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceNotAvailable' | translate }}</h5>
         }
         <hr>
         <h5>{{ 'adminPanel.startAt' | translate }} {{ pharmacy.start_at }}</h5>

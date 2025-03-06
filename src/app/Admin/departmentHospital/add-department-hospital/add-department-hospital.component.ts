@@ -14,6 +14,7 @@ import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
 import { IHospital } from '../../../Core/interfaces/ihospital';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-department-hospital',
   standalone: true,
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Departments: IDepartment[] = [];
   Hospitals: IHospital[] = [];
   private destroy$ = new Subject<void>();
@@ -40,11 +42,13 @@ export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
   constructor(
     private _SHospitalService: SHospitalService,
     private _SDepartmentService: SDepartmentService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this.getDepartments();
     this.getHospitals();
+    this.checkLanguageDirection();
   }
   getDepartments() {
     this._SDepartmentService
@@ -93,6 +97,13 @@ export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

@@ -228,11 +228,14 @@
     "pharmacies_list": "قائمة الصيدليات",
     "pharmacies_add": "إضافة صيدلية",
     "pharmacies_edit": "تعديل بيانات الصيدلية",
+    "belongToChainLab":"تابعة لسلسلة المختبرات",
+    "notBelongToChainLab":"لا تنتمي إلى السلسلة",
     "chain_laboratories_list": "قائمة سلاسل المختبرات",
     "chain_laboratories_add": "إضافة سلسلة مختبرات",
     "chain_laboratories_edit": "تعديل سلسلة مختبرات",
     "laboratories_list": "قائمة المختبرات",
     "laboratories_add": "إضافة مختبر",
+    "laboratories_edit":"تعديل بيانات المختبر",
     "specializations": "التخصصات الطبية",
     "specializations_list": "قائمة التخصصات",
     "specializations_add": "إضافة تخصص",
@@ -410,5 +413,19 @@
     "PHARMACIES": "الصيدليات",
     "LABORATORIES": "المختبرات",
     "COUNT": "عدد الإحصائيات"
+  },
+  "details":{
+    "insurance":"التأمين الصحي : متاح",
+    "service":"الخدمات",
+    "phone":"رقم المحمول",
+    "address":"العنوان",
+    "workingApp":"مواعيد العمل",
+    "rating": "التقييم",
+    "to":"الي",
+    "deliveryService":"خدمة التوصيل"
+  },
+  "notFound":{
+    "notFoundPage":"عفواً، لم نتمكن من العثور على هذه الصفحة.",
+    "notFoundPage2":"الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها."
   }
 }

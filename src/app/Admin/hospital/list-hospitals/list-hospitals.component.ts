@@ -6,22 +6,27 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-list-hospitals',
   standalone: true,
-  imports: [Toast, RouterModule, TranslateModule],
+  imports: [Toast, RouterModule, TranslateModule, CommonModule],
   templateUrl: './list-hospitals.component.html',
   styleUrl: './list-hospitals.component.css',
   providers: [MessageService],
 })
 export class ListHospitalsComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Hospitals: IHospital[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SHospitalService: SHospitalService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
+    this.checkLanguageDirection();
     this.getHospitals();
   }
   getHospitals() {
@@ -60,6 +65,12 @@ export class ListHospitalsComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+   checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SDeliveryService } from '../../../Core/services/s-delivery.service';
 import { MessageService } from 'primeng/api';
 import {
@@ -10,6 +10,7 @@ import {
 import { Toast } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-delivery-service',
@@ -19,10 +20,12 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-delivery-service.component.css',
   providers: [MessageService],
 })
-export class AddDeliveryServiceComponent {
+export class AddDeliveryServiceComponent implements OnInit{
+  isRtl:boolean=false;
   constructor(
     private _SDeliveryService: SDeliveryService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   addDeliveryServiceForm = new FormGroup({
     name: new FormControl('', [
@@ -61,5 +64,15 @@ export class AddDeliveryServiceComponent {
           });
         },
       });
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

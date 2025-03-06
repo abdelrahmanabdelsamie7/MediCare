@@ -14,6 +14,7 @@ import { MessageService } from 'primeng/api';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { SDepartmentTipsService } from '../../../Core/services/s-department-tips.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-department-tip',
@@ -30,6 +31,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddDepartmentTipComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Departments: IDepartment[] = [];
   addDepartmentTipForm = new FormGroup({
     question: new FormControl('', [
@@ -43,10 +45,12 @@ export class AddDepartmentTipComponent implements OnInit, OnDestroy {
   constructor(
     private _SDepartmentService: SDepartmentService,
     private _SDepartmentTipsService: SDepartmentTipsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this.getDepartments();
+    this.checkLanguageDirection();
   }
   getDepartments() {
     this._SDepartmentService
@@ -79,6 +83,13 @@ export class AddDepartmentTipComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

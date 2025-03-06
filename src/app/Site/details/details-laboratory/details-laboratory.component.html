@@ -6,22 +6,22 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="card Laboratory-info border-0 shadow-sm p-4 h-100">
+      <div class="card Laboratory-info border-0 shadow-sm p-4 h-100" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         @if(Laboratory.insurence ===1){
-        <span class="insurence">التأمين الصحي : متاح</span>
+        <span class="insurence">{{"details.insurance"|translate}}</span>
         }
         <h2 class="head-title my-3 fs-3 text-center">
           {{ Laboratory.title }}
         </h2>
-        <p><strong>الخدمات:</strong> {{ Laboratory.service }}</p>
-        <p><strong>رقم المحمول:</strong> {{ Laboratory.phone }}</p>
-        <p><strong>العنوان:</strong> {{ Laboratory.area }} - {{ Laboratory.city }}</p>
+        <p><strong>{{"details.service"|translate}}:</strong> {{ Laboratory.service }}</p>
+        <p><strong>{{"details.phone"|translate}}:</strong> {{ Laboratory.phone }}</p>
+        <p><strong>{{"details.address"|translate}}:</strong> {{ Laboratory.area }} - {{ Laboratory.city }}</p>
         <p>
-          <strong>مواعيد العمل:</strong>
-          {{ Laboratory.start_at | date: "short" }} إلي
+          <strong>{{"details.workingApp"|translate}}:</strong>
+          {{ Laboratory.start_at | date: "short" }} {{"details.to"|translate}}
           {{ Laboratory.end_at | date: "short" }}
         </p>
-        <p><strong>التقييم</strong>:
+        <p><strong>{{"details.rating"|translate}}</strong>:
           <ng-container *ngFor="let star of getStarArray(); let i = index">
             <i class="fa-solid fa-star text-warning me-1"></i>
           </ng-container>

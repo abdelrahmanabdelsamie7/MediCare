@@ -1,5 +1,5 @@
 <!-- Start Add New delivery service -->
-<div class="pagetitle">
+<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.delivery_services_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -16,7 +16,7 @@
       <div class="card p-4">
         <div class="card-body">
           <form class="row" [formGroup]="editDeliveryServiceForm"
-            (ngSubmit)=" editDeliveryService( editDeliveryServiceForm)">
+            (ngSubmit)=" editDeliveryService( editDeliveryServiceForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="col-12">
               <label for="name" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="name"

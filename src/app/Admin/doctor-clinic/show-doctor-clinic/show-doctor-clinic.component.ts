@@ -12,6 +12,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { MessageService } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-show-doctor-clinic',
   standalone: true,
@@ -31,6 +32,7 @@ import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
   providers: [MessageService],
 })
 export class ShowDoctorClinicComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   responsiveOptions: any[] | undefined;
   DoctorClinic: IDoctorClinic = {} as IDoctorClinic;
@@ -40,7 +42,8 @@ export class ShowDoctorClinicComponent implements OnInit, OnDestroy {
     private _SDoctorClinicService: SDoctorClinicService,
     private _ActivatedRoute: ActivatedRoute,
     private _MessageService: MessageService,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {
     this.responsiveOptions = [
       {
@@ -72,6 +75,7 @@ export class ShowDoctorClinicComponent implements OnInit, OnDestroy {
       },
     });
     this.loadDoctorClinicData();
+    this.checkLanguageDirection();
   }
   loadDoctorClinicData() {
     this._SDoctorClinicService
@@ -106,6 +110,12 @@ export class ShowDoctorClinicComponent implements OnInit, OnDestroy {
           summary: 'Success',
           detail: 'Doctor Clinic Image Delelted Successfully',
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

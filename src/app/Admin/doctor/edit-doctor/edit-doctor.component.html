@@ -1,5 +1,5 @@
 <!-- Satrt Editing Doctor Info -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.doctor_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -15,7 +15,7 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editDoctorForm" (ngSubmit)="editDoctor(editDoctorForm)">
+          <form class="row" [formGroup]="editDoctorForm" (ngSubmit)="editDoctor(editDoctorForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <!-- FirstName -->
               <div class="col-md-6">

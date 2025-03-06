@@ -6,23 +6,28 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-list-specializations',
   standalone: true,
-  imports: [Toast, RouterModule, TranslateModule],
+  imports: [Toast, RouterModule, TranslateModule,NgStyle],
   templateUrl: './list-specializations.component.html',
   styleUrl: './list-specializations.component.css',
   providers: [MessageService],
 })
 export class ListSpecializationsComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Specializations: ISpecialization[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SSpeicalizationService: SSpeicalizationService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit() {
     this.getSpecializations();
+    this.checkLanguageDirection();
   }
   getSpecializations() {
     this._SSpeicalizationService
@@ -61,6 +66,13 @@ export class ListSpecializationsComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+   checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

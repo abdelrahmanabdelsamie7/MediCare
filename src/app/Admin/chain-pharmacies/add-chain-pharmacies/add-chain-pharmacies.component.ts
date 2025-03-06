@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-chain-pharmacies',
   standalone: true,
@@ -19,9 +20,11 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddChainPharmaciesComponent {
+  isRtl:boolean=false
   constructor(
     private _SChainPharmaciesService: SChainPharmaciesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService: STranslateService
   ) {}
   addChainPharmaciesForm = new FormGroup({
     title: new FormControl('', [
@@ -50,5 +53,14 @@ export class AddChainPharmaciesComponent {
           });
         },
       });
+  }  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

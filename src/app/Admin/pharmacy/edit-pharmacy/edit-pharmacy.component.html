@@ -1,5 +1,5 @@
 <!-- Start Editing Pharmacy -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.pharmacies_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -14,7 +14,7 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editPharmacyForm" (ngSubmit)="editPharmacy(editPharmacyForm)">
+          <form class="row" [formGroup]="editPharmacyForm" (ngSubmit)="editPharmacy(editPharmacyForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-4">
                 <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
@@ -68,7 +68,7 @@
                   [ngClass]="{'is-invalid':(editPharmacyForm.controls.deliveryOption.touched && editPharmacyForm.controls.deliveryOption.errors) }"
                   id="deliveryOption" class="form-control">
                   <option value="1">{{ 'adminPanel.deliveryOptionAvailable' | translate }}</option>
-                  <option value="0">{{ 'adminPanel.deliveryOptionNotAvailable' | translate }}</option>
+                  <option value="0">{{ 'adminPanel.deliveryOptionNotAvaliable' | translate }}</option>
                 </select>
               </div>
               <div class="col-md-4">

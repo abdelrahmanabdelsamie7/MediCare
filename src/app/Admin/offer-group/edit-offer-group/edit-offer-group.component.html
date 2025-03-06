@@ -1,5 +1,5 @@
 <!-- Start Of Editing Offer Group -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
     <h1>{{ 'adminPanel.offer_groups_edit' | translate }}</h1>
     <nav>
         <ol class="breadcrumb">
@@ -15,7 +15,7 @@
             <p-toast></p-toast>
             <div class="card p-4">
                 <div class="card-body">
-                    <form class="row" [formGroup]="editOfferGroupForm" (ngSubmit)="editOfferGroup(editOfferGroupForm)">
+                    <form class="row" [formGroup]="editOfferGroupForm" (ngSubmit)="editOfferGroup(editOfferGroupForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
                         <div class="col-md-6">
                             <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
                             <input type="text" formControlName="title" [ngClass]="{

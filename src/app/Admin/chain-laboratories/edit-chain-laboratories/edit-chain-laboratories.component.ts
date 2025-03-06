@@ -13,6 +13,7 @@ import { SChainLaboratoriesService } from '../../../Core/services/s-chain-labora
 import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-chain-laboratories',
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class EditChainLaboratoriesComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   id: string = '';
   private destroy$ = new Subject<void>();
   ChainLaboratories: IChainLaboratories = {} as IChainLaboratories;
@@ -37,9 +39,11 @@ export class EditChainLaboratoriesComponent implements OnInit, OnDestroy {
     private _SChainLaboratoriesService: SChainLaboratoriesService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
+    this.checkLanguageDirection();
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -87,6 +91,13 @@ export class EditChainLaboratoriesComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-specialization-doctor',
   standalone: true,
@@ -23,13 +24,15 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddSpecializationDoctorComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   Specializations: ISpecialization[] = [];
   Doctors: IDoctor[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SSpeicalizationService: SSpeicalizationService,
     private _SDoctorService: SDoctorService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   addSpecializationDoctorForm = new FormGroup({
     doctor_id: new FormControl('', Validators.required),
@@ -38,6 +41,7 @@ export class AddSpecializationDoctorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getSpecializations();
     this.getDoctors();
+    this.checkLanguageDirection();
   }
   getSpecializations() {
     this._SSpeicalizationService
@@ -86,6 +90,13 @@ export class AddSpecializationDoctorComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

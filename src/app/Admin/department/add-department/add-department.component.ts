@@ -10,6 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-department',
   standalone: true,
@@ -18,11 +19,16 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-department.component.css',
   providers: [MessageService],
 })
-export class AddDepartmentComponent {
+export class AddDepartmentComponent implements OnInit {
+  isRtl:boolean=false
   constructor(
     private _SDepartmentService: SDepartmentService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService: STranslateService
   ) {}
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
   addDepartmentForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -56,6 +62,13 @@ export class AddDepartmentComponent {
           summary: 'error',
           detail: `${err.error.message}`,
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

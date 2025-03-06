@@ -14,6 +14,7 @@ import { SLaboratoryService } from '../../../Core/services/s-laboratory.service'
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { MessageService } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-laboratory',
   standalone: true,
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddLaboratoryComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false
   ChainsLaboratories: IChainLaboratories[] = [];
   private destroy$ = new Subject<void>();
   addLaboratoryForm = new FormGroup({
@@ -64,10 +66,12 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
   constructor(
     private _SLaboratoryService: SLaboratoryService,
     private _SChainLaboratoriesService: SChainLaboratoriesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+     private _STranslateService: STranslateService
   ) {}
   ngOnInit() {
     this.loadChainLaboratories();
+    this.checkLanguageDirection();
   }
   loadChainLaboratories() {
     this._SChainLaboratoriesService
@@ -96,6 +100,13 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
           summary: 'error',
           detail: err.error.message,
         });
+      },
+    });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }

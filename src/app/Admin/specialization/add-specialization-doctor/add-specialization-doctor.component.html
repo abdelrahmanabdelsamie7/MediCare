@@ -1,5 +1,5 @@
 <!-- Start Add Specialization To Doctor -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.addSpecializationToDoctor' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -16,7 +16,7 @@
       <div class="card p-4">
         <div class="card-body">
           <form class="row" [formGroup]="addSpecializationDoctorForm"
-            (ngSubmit)="addSpecializationDoctor(addSpecializationDoctorForm)">
+            (ngSubmit)="addSpecializationDoctor(addSpecializationDoctorForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="col-md-6">
               <label for="doctor_id" class="form-label">{{ 'adminPanel.selectDoctor' | translate }}</label>
               <select class="form-control mb-2" formControlName="doctor_id"
