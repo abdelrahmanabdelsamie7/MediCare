@@ -1,7 +1,7 @@
 <section id="hero">
   <div class="container">
     <div class="row gx-2">
-      <div class="col-xl-7">
+      <div class="col-lg-7">
         <!-- using defer to prevent dublication of hero carousel in SSR -->
         @defer(when isBrowser) {
         <p-carousel class="hero-carousel" [value]="Images" [numVisible]="1" [numScroll]="1" [circular]="false"
@@ -21,7 +21,7 @@
         </div>
         }
       </div>
-      <div class="col-xl-5 d-flex flex-column justify-content-center align-items-center">
+      <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center">
         <div>
           <div class="shadow p-2 my-2">
             <div class="row">
@@ -29,10 +29,12 @@
                 <div>
                   <h4 class=" h5 text-info fw-bolder ">{{"ai.quesAi"|translate}}</h4>
                   <p class="fw-bolder text-muted">{{"ai.contentAi"|translate}}</p>
-                  <button class="btn btn-outline-info d-block mx-auto" routerLink="/ask-ai">{{"ai.search"|translate}}</button>
+                  <button class="btn btn-outline-info d-block mx-auto"
+                    routerLink="/ask-ai">{{"ai.search"|translate}}</button>
                 </div>
               </div>
-              <div class="col-md-5 order-1 order-lg-2 "><img src="ai.png" height="200px" class="w-100" alt="ask_Ai">
+              <div class="col-md-5 order-1 order-lg-2 "><img src="./images/ai.png" height="200px" class="w-100"
+                  alt="ask_Ai">
               </div>
             </div>
           </div>
@@ -41,10 +43,12 @@
               <div class="col-md-5 order-2 order-lg-1 d-flex justify-content-center align-items-center">
                 <div>
                   <h4 class="text-info fw-bold fs-4">{{"adviceSec.contentAdv"|translate}} MediCare</h4>
-                  <button class="btn btn-outline-info d-block mx-auto" routerLink="/details/doctor-blogs">{{"adviceSec.search"|translate}}</button>
+                  <button class="btn btn-outline-info d-block mx-auto"
+                    routerLink="/details/doctor-blogs">{{"adviceSec.search"|translate}}</button>
                 </div>
               </div>
-              <div class="col-md-6 order-1 order-lg-2 "><img src="blog.svg" height="190px" class="w-100" alt="blog">
+              <div class="col-md-6 order-1 order-lg-2 "><img src="./images/blog.svg" height="190px" class="w-100"
+                  alt="blog">
               </div>
             </div>
           </div>

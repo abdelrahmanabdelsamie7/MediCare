@@ -9,7 +9,7 @@ import { PaymentComponent } from '../../components/payment/payment.component';
 @Component({
   standalone: true,
   selector: 'app-user-reservations',
-  imports: [CommonModule, TimeFormatPipe, Toast,PaymentComponent],
+  imports: [CommonModule, TimeFormatPipe, Toast, PaymentComponent],
   templateUrl: './user-reservations.component.html',
   styleUrl: './user-reservations.component.css',
   providers: [DatePipe, MessageService],
@@ -17,12 +17,13 @@ import { PaymentComponent } from '../../components/payment/payment.component';
 export class UserReservationsComponent implements OnInit {
   @ViewChild(PaymentComponent) paymentModal!: PaymentComponent;
   reservations: any[] = [];
+  final_price: number = 0;
   constructor(
     private _SReservationService: SReservationService,
     private datePipe: DatePipe,
     private translate: TranslateService,
     private messageService: MessageService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.getAllReservations();
   }
@@ -45,6 +46,7 @@ export class UserReservationsComponent implements OnInit {
   getAllReservations() {
     this._SReservationService.getUserReservations().subscribe({
       next: (data) => {
+        console.log(data);
         this.reservations = data.data;
       },
     });

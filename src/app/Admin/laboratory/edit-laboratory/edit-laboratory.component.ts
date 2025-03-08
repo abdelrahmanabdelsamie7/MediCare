@@ -27,7 +27,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
   providers: [MessageService],
 })
 export class EditLaboratoryComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false;
+  isRtl: boolean = false;
   id: string = '';
   private destroy$ = new Subject<void>();
   Laboratory: ILaboratory = {} as ILaboratory;
@@ -39,15 +39,13 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
     private _ActivatedRoute: ActivatedRoute,
     private _Location: Location,
     private _STranslateService: STranslateService
-  ) {}
+  ) { }
   editLaboratoryForm = new FormGroup({
     title: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),
     ]),
     service: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
     ]),
     image: new FormControl('', [
@@ -55,28 +53,23 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
       Validators.maxLength(2048),
     ]),
     phone: new FormControl('', [
-      Validators.required,
       Validators.minLength(8),
       Validators.maxLength(15),
     ]),
-    city: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    area: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    city: new FormControl('', [ Validators.minLength(3)]),
+    area: new FormControl('', [ Validators.minLength(3)]),
     locationUrl: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       CustomValidators.url,
     ]),
     whatsappLink: new FormControl('', [
-      Validators.required,
       Validators.minLength(3),
       CustomValidators.url,
     ]),
-    insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl(this.Laboratory.start_at, [
-      CustomValidators.date,
-    ]),
-    end_at: new FormControl(this.Laboratory.end_at, [CustomValidators.date]),
-    chain_laboratory_id: new FormControl('', []),
+    insurence: new FormControl(1, []),
+    start_at: new FormControl(this.Laboratory.start_at, [Validators.pattern(/^([01]\d|2[0-3]):([0-5]\d)$/)]),
+    end_at: new FormControl(this.Laboratory.end_at, [Validators.pattern(/^([01]\d|2[0-3]):([0-5]\d)$/)]),
+    chain_laboratory_id: new FormControl('')
   });
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
@@ -102,8 +95,6 @@ export class EditLaboratoryComponent implements OnInit, OnDestroy {
           locationUrl: this.Laboratory.locationUrl,
           whatsappLink: this.Laboratory.whatsappLink,
           insurence: this.Laboratory.insurence,
-          start_at: this.Laboratory.start_at,
-          end_at: this.Laboratory.end_at,
           chain_laboratory_id: this.Laboratory.chain_laboratory_id,
         });
       },

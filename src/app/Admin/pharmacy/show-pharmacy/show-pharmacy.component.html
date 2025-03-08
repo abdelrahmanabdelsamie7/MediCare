@@ -31,9 +31,9 @@
         <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceNotAvailable' | translate }}</h5>
         }
         <hr>
-        <h5>{{ 'adminPanel.startAt' | translate }} {{ pharmacy.start_at }}</h5>
+        <h5>{{ 'adminPanel.startAt' | translate }} {{ pharmacy.start_at  |timeFormat}}</h5>
         <hr>
-        <h5>{{ 'adminPanel.endAt' | translate }} {{ pharmacy.end_at}}</h5>
+        <h5>{{ 'adminPanel.endAt' | translate }} {{ pharmacy.end_at |timeFormat}}</h5>
       </div>
     </div>
   </div>

@@ -227,14 +227,14 @@
     "pharmacies_list": "Pharmacies List",
     "pharmacies_add": "Add Pharmacy",
     "pharmacies_edit": "Edit Pharmacy",
-    "belongToChainLab":"Belong To Chain Of Laboratories",
-    "notBelongToChainLab":"Not Belong To Chain",
+    "belongToChainLab": "Belong To Chain Of Laboratories",
+    "notBelongToChainLab": "Not Belong To Chain",
     "chain_laboratories_list": "Chain of Laboratories List",
     "chain_laboratories_add": "Add Chain of Laboratories",
     "chain_laboratories_edit": "Edit Chain of Laboratories",
     "laboratories_list": "Laboratories List",
     "laboratories_add": "Add Laboratory",
-    "laboratories_edit":"Edit Laboratory",
+    "laboratories_edit": "Edit Laboratory",
     "specializations_list": "Specializations List",
     "specializations": "Specializations",
     "specializations_add": "Add Specialization",
@@ -326,7 +326,9 @@
     "offer_period": "Offer Period",
     "offer_active": "Offer is Active",
     "offer_inactive": "Offer is Inactive",
-    "user_title": "User Name"
+    "user_title": "User Name",
+    "insurenceNotAvaliable": "Insurence Not Avaliable",
+    "deliveryOptionNotAvailable": "Delivery Option Not Available"
   },
   "doctorPanel": {
     "dashboard": "Dashboard",
@@ -413,18 +415,18 @@
     "LABORATORIES": "Laboratories",
     "COUNT": "Statistics Count"
   },
-  "details":{
-    "insurance":"Insurance: available",
-    "service":"Services",
-    "phone":"Phone",
-    "address":"Address",
-    "workingApp":"Working Appointments",
+  "details": {
+    "insurance": "Insurance: available",
+    "service": "Services",
+    "phone": "Phone",
+    "address": "Address",
+    "workingApp": "Working Appointments",
     "rating": "Rating",
-    "to":"To",
-    "deliveryService":"Delivery service"
+    "to": "To",
+    "deliveryService": "Delivery service"
   },
-  "notFound":{
-    "notFoundPage":".Sorry, we could not find this page",
-    "notFoundPage2":".The page you are looking for is temporarily unavailable or has been removed"
+  "notFound": {
+    "notFoundPage": ".Sorry, we could not find this page",
+    "notFoundPage2": ".The page you are looking for is temporarily unavailable or has been removed"
   }
 }

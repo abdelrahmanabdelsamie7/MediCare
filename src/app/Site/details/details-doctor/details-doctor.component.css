@@ -159,3 +159,21 @@
   font-size: 13px;
   color: rgb(102, 102, 102);
 }
+/* images Of Clinic */
+.image-gallery {
+  text-align: center;
+  position: relative;
+}
+.thumbnail-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+}
+.thumbnail {
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -2,7 +2,8 @@
   <div class="row align-items-center">
     <div class="col-md-4">
       <div class="card border-0 shadow-sm">
-        <img [src]="Laboratory.image" alt="{{ Laboratory.title }}" class="img-fluid rounded" />
+        <img [src]="Laboratory.image ? Laboratory.image : './images/laboratory.gif'" alt="{{ Laboratory.title }}"
+          class="img-fluid rounded" />
       </div>
     </div>
     <div class="col-md-8">
@@ -18,8 +19,8 @@
         <p><strong>{{"details.address"|translate}}:</strong> {{ Laboratory.area }} - {{ Laboratory.city }}</p>
         <p>
           <strong>{{"details.workingApp"|translate}}:</strong>
-          {{ Laboratory.start_at | date: "short" }} {{"details.to"|translate}}
-          {{ Laboratory.end_at | date: "short" }}
+          {{ Laboratory.start_at |timeFormat }} {{"details.to"|translate}}
+          {{ Laboratory.end_at |timeFormat }}
         </p>
         <p><strong>{{"details.rating"|translate}}</strong>:
           <ng-container *ngFor="let star of getStarArray(); let i = index">
@@ -44,7 +45,8 @@
               [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)" (click)="setRating(i + 1)">
             </i>
           </div>
-          <button class="btn btn-info text-light rounded-3 btn-sm" [disabled]="!isAuth" (click)="toggleReviewInput()">إضافة مراجعة</button>
+          <button class="btn btn-info text-light rounded-3 btn-sm" [disabled]="!isAuth"
+            (click)="toggleReviewInput()">إضافة مراجعة</button>
         </div>
         <div *ngIf="showReviewInput" class="review-section mt-3">
           <form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm)">

@@ -10,7 +10,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-show-pharmacy',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, TimeFormatPipe],
   templateUrl: './show-pharmacy.component.html',
   styleUrl: './show-pharmacy.component.css',
 })

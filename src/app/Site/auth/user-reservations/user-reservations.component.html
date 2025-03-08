@@ -15,12 +15,21 @@
           <div class="card-body px-md-5">
             <h5 class="card-title mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
               {{reservation.doctor.lName}}</h5>
-            <p class="card-text mb-2"><strong>العيادة:</strong> {{reservation.clinic.title}} - {{reservation.clinic.address}}</p>
+            <p class="card-text mb-2"><strong>العيادة:</strong> {{reservation.clinic.title}} -
+              {{reservation.clinic.address}}</p>
             <p class="card-text mb-2"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day) }},
               <strong>من الساعة</strong> {{reservation.appointment.start_at | timeFormat}} <strong>إلى</strong>
               {{reservation.appointment.end_at | timeFormat}}
             </p>
-            <p class="card-text mb-2"><strong>السعر:</strong> {{reservation.doctor.app_price | currency:'EGP'}}</p>
+            <p class="card-text mb-2"><strong>السعر:</strong>
+              @if(reservation.final_price > 0){
+              {{reservation.final_price| currency:'EGP'}}
+              <span class="text-muted ps-2" style="text-decoration:line-through">
+                {{reservation.doctor.app_price | currency:'EGP'}}</span>
+              }@else {
+              {{reservation.doctor.app_price | currency:'EGP'}}
+              }
+            </p>
             <p class="card-text mb-2"><strong>الحالة:</strong>
               <span [ngClass]="{
             'badge bg-warning': reservation.status !== 'confirmed',
@@ -29,15 +38,19 @@
                 {{reservation.status}}
               </span>
             </p>
-            <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3" role="alert">
+            <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3"
+              role="alert">
               تم تأكيد الحجز بنجاح.
             </div>
             <div *ngIf="reservation.status !== 'confirmed'">
               <div class="d-flex flex-column flex-md-row mt-3">
-                <button class="btn btn-info text-light mb-2 mb-md-0 mx-2" (click)="confirmReservation(reservation.id)">تأكيد الحجز</button>
-                <button class="btn btn-danger mb-2 mb-md-0 " (click)="cancelReservation(reservation.id)">إلغاء الحجز</button>
-               <button  class="btn btn-success text-light mb-2 mb-md-0 mx-2" (click)="openPaymentModal(reservation.id, reservation.doctor.app_price)">
-                  Pay Now
+                <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
+                  (click)="confirmReservation(reservation.id)">تأكيد الحجز</button>
+                <button class="btn btn-outline-danger mb-2 mb-md-0 " (click)="cancelReservation(reservation.id)">إلغاء
+                  الحجز</button>
+                <button class="btn btn-outline-info mb-2 mb-md-0 mx-2"
+                  (click)="openPaymentModal(reservation.id, reservation.doctor.app_price)">
+                  ادفع اللآن
                 </button>
               </div>
             </div>

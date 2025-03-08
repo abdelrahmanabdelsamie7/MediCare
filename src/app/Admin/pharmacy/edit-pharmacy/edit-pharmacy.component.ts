@@ -26,7 +26,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
   providers: [MessageService],
 })
 export class EditPharmacyComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false;
+  isRtl: boolean = false;
   id: string = '';
   private destroy$ = new Subject<void>();
   Pharmacy: IPharmacy = {} as IPharmacy;
@@ -37,8 +37,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
     private _Location: Location,
-    private _STranslateService:STranslateService
-  ) {}
+    private _STranslateService: STranslateService
+  ) { }
   editPharmacyForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -73,8 +73,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
     ]),
     deliveryOption: new FormControl(1, [Validators.required]),
     insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl(this.Pharmacy.start_at, [CustomValidators.date]),
-    end_at: new FormControl(this.Pharmacy.end_at, [CustomValidators.date]),
+    start_at: new FormControl(this.Pharmacy.start_at, []),
+    end_at: new FormControl(this.Pharmacy.end_at, []),
     chain_pharmacy_id: new FormControl('', []),
   });
   ngOnInit() {
@@ -102,8 +102,8 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
           whatsappLink: this.Pharmacy.whatsappLink,
           deliveryOption: this.Pharmacy.deliveryOption,
           insurence: this.Pharmacy.insurence,
-          start_at: this.Pharmacy.start_at,
-          end_at: this.Pharmacy.end_at,
+          // start_at: this.Pharmacy.start_at,
+          // end_at: this.Pharmacy.end_at,
           chain_pharmacy_id: this.Pharmacy.chain_pharmacy_id,
         });
       },
@@ -143,7 +143,7 @@ export class EditPharmacyComponent implements OnInit, OnDestroy {
   back() {
     this._Location.back();
   }
-    checkLanguageDirection(): void {
+  checkLanguageDirection(): void {
     this._STranslateService.currentLang$.subscribe({
       next: (lang) => {
         this.isRtl = lang === 'ar';

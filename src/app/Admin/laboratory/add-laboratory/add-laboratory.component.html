@@ -1,5 +1,5 @@
 <!-- Start Add New Laboratory -->
-<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.laboratories_add' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -14,7 +14,8 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="addLaboratoryForm" (ngSubmit)="addLaboratory(addLaboratoryForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <form class="row" [formGroup]="addLaboratoryForm" (ngSubmit)="addLaboratory(addLaboratoryForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-4">
                 <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
@@ -82,13 +83,13 @@
 
               <div class="col-md-4">
                 <label for="start_at" class="form-label">{{ 'adminPanel.startAt' | translate }}</label>
-                <input type="datetime-local" formControlName="start_at"
+                <input type="time" formControlName="start_at"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.start_at.touched && addLaboratoryForm.controls.start_at.errors) }"
                   class="form-control" class="form-control" id="start_at">
               </div>
               <div class="col-md-4">
                 <label for="end_at" class="form-label">{{ 'adminPanel.endAt' | translate }}</label>
-                <input type="datetime-local" formControlName="end_at"
+                <input type="time" formControlName="end_at"
                   [ngClass]="{'is-invalid':(addLaboratoryForm.controls.end_at.touched && addLaboratoryForm.controls.end_at.errors) }"
                   class="form-control" class="form-control" id="end_at">
               </div>

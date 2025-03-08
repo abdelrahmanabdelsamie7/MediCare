@@ -14,11 +14,11 @@ import { ActivatedRoute } from '@angular/router';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { STranslateService } from '../../../Core/services/s-translate.service';
+import { TimeFormatPipe } from "../../../Core/pipes/time-format.pipe";
 @Component({
   selector: 'app-details-laboratory',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast,TranslateModule,NgStyle
-  ],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule, NgStyle, TimeFormatPipe],
   templateUrl: './details-laboratory.component.html',
   styleUrl: './details-laboratory.component.css',
   providers: [MessageService],

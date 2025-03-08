@@ -84,8 +84,8 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           this.Doctor = data.data;
+          console.log(this.Doctor);
           this.DoctorClinics = this.Doctor.clinics;
-
           if (data.data.appointmentsGroupedByDate) {
             this.appointmentDates = Object.keys(
               data.data.appointmentsGroupedByDate
@@ -93,7 +93,6 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
               date,
               appointments: data.data.appointmentsGroupedByDate[date],
             }));
-            console.log('Appointment Dates:', this.appointmentDates);
           } else {
             console.log('No appointments data available.');
           }
@@ -113,6 +112,8 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
     };
     this._SReservationService.userReserveDoctor(reservationInfo).subscribe({
       next: (data) => {
+        console.log(data);
+
         this._MessageService.add({
           severity: 'success',
           summary: 'تم بنجاح',

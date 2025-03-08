@@ -90,13 +90,13 @@
               </div>
               <div class="col-md-4">
                 <label for="start_at" class="form-label">{{ 'adminPanel.startAt' | translate }}</label>
-                <input type="datetime-local" formControlName="start_at"
+                <input type="time" formControlName="start_at" step="60"
                   [ngClass]="{'is-invalid':(editPharmacyForm.controls.start_at.touched && editPharmacyForm.controls.start_at.errors) }"
-                  class="form-control" class="form-control" id="start_at">
-              </div>
+                  class="form-control" id="start_at">
+                </div>
               <div class="col-md-4">
                 <label for="end_at" class="form-label">{{ 'adminPanel.endAt' | translate }}</label>
-                <input type="datetime-local" formControlName="end_at"
+                <input type="time" formControlName="end_at"
                   [ngClass]="{'is-invalid':(editPharmacyForm.controls.end_at.touched && editPharmacyForm.controls.end_at.errors) }"
                   class="form-control" class="form-control" id="end_at">
               </div>

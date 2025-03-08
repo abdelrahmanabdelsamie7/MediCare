@@ -14,7 +14,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 export class SiteNavbarComponent implements OnInit {
   isRtl: boolean = false;
   selectedLang: string = 'English';
-  selectedIcon: string = './americanFlag.png';
+  selectedIcon: string = './images/americanFlag.png';
   isAuth: boolean = false;
   private readonly _STranslateService = inject(STranslateService);
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -39,7 +39,7 @@ export class SiteNavbarComponent implements OnInit {
     this._STranslateService.currentLang$.subscribe((lang) => {
       this.isRtl = lang === 'ar';
       this.selectedLang = lang === 'ar' ? 'العربية' : 'English';
-      this.selectedIcon = lang === 'ar' ? './egyptFlag.png' : './americanFlag.png';
+      this.selectedIcon = lang === 'ar' ? './images/egyptFlag.png' : './images/americanFlag.png';
     });
   }
 

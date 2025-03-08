@@ -26,7 +26,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 })
 export class DoctorNavbarComponent implements OnInit, OnDestroy {
   selectedLang: string = 'English';
-  selectedIcon: string = 'americanFlag.png';
+  selectedIcon: string = './images/americanFlag.png';
   doctor: IDoctor = {} as IDoctor;
   notifications: any[] = [];
   unreadCount: number = 0;
@@ -134,10 +134,10 @@ export class DoctorNavbarComponent implements OnInit, OnDestroy {
   private updateLanguage(lang: string) {
     if (lang === 'en') {
       this.selectedLang = 'English';
-      this.selectedIcon = 'americanFlag.png';
+      this.selectedIcon = './images/americanFlag.png';
     } else if (lang === 'ar') {
       this.selectedLang = 'العربية';
-      this.selectedIcon = 'egyptFlag.png';
+      this.selectedIcon = './images/egyptFlag.png';
     }
   }
   private loadLanguage() {

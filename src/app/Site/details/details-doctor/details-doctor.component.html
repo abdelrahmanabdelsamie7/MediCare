@@ -17,9 +17,10 @@
                 <p class="my-2 fs-5">
                   {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }} متخصص في
                   @for (item of Doctor.specializations; track $index) {
-                  <a href="" class="text-info fw-bold"> <span style="text-decoration: underline;" class="ps-1">{{
-                      item.title }}
-                      ،</span> </a>
+                  <a href="" class="text-info fw-bold"> <span style="text-decoration: underline ; padding-left: .5em">
+                      {{item.title }}
+
+                    </span> </a>
                   }
                 </p>
               </div>
@@ -51,6 +52,15 @@
         <div class="col-lg-12">
           <div class="card border border-0 shadow p-4">
             <h5><i class="fa-regular fa-image text-light bg-info p-2 rounded-5"></i> العيادة :</h5>
+            <div class="image-gallery">
+              <div class="thumbnail-container">
+                @for (clinic of Doctor.clinics; track $index) {
+                @for (image of clinic.images; track $index) {
+                <img [src]="image.image" alt="Thumbnail" class="thumbnail" />
+                }
+                }
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -87,7 +97,8 @@
         <!-- Start Appointments -->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-            <div *ngFor="let date of appointmentDates; let i = index" class="carousel-item" [class.active]="i === 0">
+            @for (date of appointmentDates; track $index) {
+            <div class="carousel-item" [class.active]="$index === 0">
               <div class="appointment-item mx-auto">
                 <h5 class="appointment-day">
                   {{ getFormattedDate(date.date) }}
@@ -101,10 +112,13 @@
                     item.end_at | timeFormat
                     }}
                   </button>
-
                 </div>
               </div>
             </div>
+            }@empty {
+            <span class="text-muted text-center">لا يوجد مواعيد متاحه </span>
+            }
+
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
             data-bs-slide="prev">

@@ -24,7 +24,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
   providers: [MessageService],
 })
 export class AddLaboratoryComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false
+  isRtl: boolean = false
   ChainsLaboratories: IChainLaboratories[] = [];
   private destroy$ = new Subject<void>();
   addLaboratoryForm = new FormGroup({
@@ -59,16 +59,16 @@ export class AddLaboratoryComponent implements OnInit, OnDestroy {
       CustomValidators.url,
     ]),
     insurence: new FormControl(1, [Validators.required]),
-    start_at: new FormControl('', [ CustomValidators.date]),
-    end_at: new FormControl('', [ CustomValidators.date]),
+    start_at: new FormControl('', ),
+    end_at: new FormControl('', ),
     chain_laboratory_id: new FormControl('', []),
   });
   constructor(
     private _SLaboratoryService: SLaboratoryService,
     private _SChainLaboratoriesService: SChainLaboratoriesService,
     private messageService: MessageService,
-     private _STranslateService: STranslateService
-  ) {}
+    private _STranslateService: STranslateService
+  ) { }
   ngOnInit() {
     this.loadChainLaboratories();
     this.checkLanguageDirection();

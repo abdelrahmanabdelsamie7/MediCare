@@ -43,7 +43,7 @@
   },
   "deliveryServices": {
     "contentDeli": "خدمة توصيل المرضى حيث يقوم سائقونا المحترفون بنقل المرضى من وإلى المرافق الطبية بكل راحة وأمان. سواء كنت بحاجة إلى زيارة الطبيب أو إجراء الفحوصات، نحن هنا لتلبية احتياجاتك بأفضل طريقة ممكنة.",
-    "delivery": "التوصيل",
+    "delivery": "وصلني",
     "deliveryServices": "خدمات التوصيل"
   },
   "application": {
@@ -228,14 +228,14 @@
     "pharmacies_list": "قائمة الصيدليات",
     "pharmacies_add": "إضافة صيدلية",
     "pharmacies_edit": "تعديل بيانات الصيدلية",
-    "belongToChainLab":"تابعة لسلسلة المختبرات",
-    "notBelongToChainLab":"لا تنتمي إلى السلسلة",
+    "belongToChainLab": "تابعة لسلسلة المختبرات",
+    "notBelongToChainLab": "لا تنتمي إلى السلسلة",
     "chain_laboratories_list": "قائمة سلاسل المختبرات",
     "chain_laboratories_add": "إضافة سلسلة مختبرات",
     "chain_laboratories_edit": "تعديل سلسلة مختبرات",
     "laboratories_list": "قائمة المختبرات",
     "laboratories_add": "إضافة مختبر",
-    "laboratories_edit":"تعديل بيانات المختبر",
+    "laboratories_edit": "تعديل بيانات المختبر",
     "specializations": "التخصصات الطبية",
     "specializations_list": "قائمة التخصصات",
     "specializations_add": "إضافة تخصص",
@@ -327,7 +327,9 @@
     "offer_period": "فترة العرض",
     "offer_active": "العرض مفعل",
     "offer_inactive": "العرض غير مفعل",
-    "user_title": "اسم المستخدم"
+    "user_title": "اسم المستخدم",
+    "insurenceNotAvaliable": "التأمين غير متاح",
+    "deliveryOptionNotAvailable": "خدمة التوصيل غير متاحة"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",
@@ -414,18 +416,18 @@
     "LABORATORIES": "المختبرات",
     "COUNT": "عدد الإحصائيات"
   },
-  "details":{
-    "insurance":"التأمين الصحي : متاح",
-    "service":"الخدمات",
-    "phone":"رقم المحمول",
-    "address":"العنوان",
-    "workingApp":"مواعيد العمل",
+  "details": {
+    "insurance": "التأمين الصحي : متاح",
+    "service": "الخدمات",
+    "phone": "رقم المحمول",
+    "address": "العنوان",
+    "workingApp": "مواعيد العمل",
     "rating": "التقييم",
-    "to":"الي",
-    "deliveryService":"خدمة التوصيل"
+    "to": "الي",
+    "deliveryService": "خدمة التوصيل"
   },
-  "notFound":{
-    "notFoundPage":"عفواً، لم نتمكن من العثور على هذه الصفحة.",
-    "notFoundPage2":"الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها."
+  "notFound": {
+    "notFoundPage": "عفواً، لم نتمكن من العثور على هذه الصفحة.",
+    "notFoundPage2": "الصفحة التي تبحث عنها غير متاحة مؤقتا أو تمت إزالتها."
   }
 }

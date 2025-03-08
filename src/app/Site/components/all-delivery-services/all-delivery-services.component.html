@@ -5,7 +5,7 @@
       <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
         <div class="card-header bg-info text-white text-center py-4" style="border-bottom-right-radius: 50px;">
           <i class="fa-solid fa-truck-fast fa-3x car-icon"></i>
-          <h5 class="fw-bold mt-2">{{ item.name }}</h5>
+          <h5 class="fw-bold mt-2" style="direction:rtl">{{ item.name }}</h5>
         </div>
         <div class="card-body px-4 text-center">
           <p class="card-text pt-2">
@@ -20,7 +20,7 @@
     </div>
     }@empty {
     <div class="not-found">
-      <img src="./empty.png" alt="" class="img-not-found" />
+      <img src="./images/empty.png" alt="" class="img-not-found" />
       <h3 class="head-not-found">{{"notFound.notFoundPage"|translate }}</h3>
       <h6 class="head-not-found2">
         {{"notFound.notFoundPage2"|translate }}

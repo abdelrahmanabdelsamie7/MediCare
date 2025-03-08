@@ -8,13 +8,13 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-all-pharmacies',
   standalone: true,
-  imports: [RouterModule, FormsModule, TranslateModule, NgClass, NgStyle],
+  imports: [RouterModule, FormsModule, TranslateModule, NgStyle],
   templateUrl: './all-pharmacies.component.html',
   styleUrl: './all-pharmacies.component.css',
 })

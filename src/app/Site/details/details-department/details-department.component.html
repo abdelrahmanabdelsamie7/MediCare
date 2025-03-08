@@ -66,7 +66,7 @@
       </div>
       }@empty {
       <div class="not-found">
-        <img src="./empty.png" alt="" class="img-not-found" />
+        <img src="./images/empty.png" alt="" class="img-not-found" />
         <h3 class="head-not-found">{{"notFound.notFoundPage"|translate }}</h3>
         <h6 class="head-not-found2">
           {{"notFound.notFoundPage2"|translate }}
@@ -102,7 +102,7 @@
 
           <!-- الصورة -->
           <div class="position-relative p-3 text-center">
-            <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+            <img [src]="item.image ? item.image : './images/hospital.gif'" class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Hospital Image" />
           </div>
 
@@ -130,7 +130,7 @@
       </div>
       }@empty {
       <div class="not-found">
-        <img src="./empty.png" alt="" class="img-not-found" />
+        <img src="./images/empty.png" alt="" class="img-not-found" />
         <h3 class="head-not-found">{{"notFound.notFoundPage"|translate }}</h3>
         <h6 class="head-not-found2">
           {{"notFound.notFoundPage2"|translate }}
@@ -166,7 +166,7 @@
 
           <!-- الصورة -->
           <div class="position-relative p-3 text-center">
-            <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+            <img [src]="item.image ? item.image : './images/carecenter.gif'" class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Center Image" />
           </div>
 
@@ -195,7 +195,7 @@
 
       }@empty {
       <div class="not-found">
-        <img src="./empty.png" alt="" class="img-not-found" />
+        <img src="./images/empty.png" alt="" class="img-not-found" />
         <h3 class="head-not-found">{{"notFound.notFoundPage"|translate }}</h3>
         <h6 class="head-not-found2">
           {{"notFound.notFoundPage2"|translate }}

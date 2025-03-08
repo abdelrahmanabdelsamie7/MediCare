@@ -15,10 +15,11 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
 import { STranslateService } from '../../../Core/services/s-translate.service';
+import { TimeFormatPipe } from "../../../Core/pipes/time-format.pipe";
 @Component({
   selector: 'app-details-pharamcy',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast,TranslateModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Toast, TranslateModule, TimeFormatPipe],
   templateUrl: './details-pharamcy.component.html',
   styleUrl: './details-pharamcy.component.css',
   providers: [MessageService],

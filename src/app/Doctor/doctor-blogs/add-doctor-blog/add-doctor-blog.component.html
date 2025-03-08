@@ -25,9 +25,9 @@
               </div>
               <div class="col-md-6">
                 <label for="content" class="form-label">{{ 'doctorPanel.content' | translate }}</label>
-                <input type="text" formControlName="content"
+                <textarea formControlName="content"
                   [ngClass]="{'is-invalid':(addDoctorBlogForm.controls.content.touched && addDoctorBlogForm.controls.content.errors) }"
-                  class="form-control" id="content">
+                  class="form-control" id="content"></textarea>
               </div>
             </div>
             <div class="text-center">
