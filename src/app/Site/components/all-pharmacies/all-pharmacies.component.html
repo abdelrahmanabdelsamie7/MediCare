@@ -79,6 +79,7 @@
           <img [src]="item.image ? item.image : './images/pharmacy.gif'"
             class="rounded-circle border border-4 border-light shadow"
             style="width: 100px; height: 100px; margin-top: -50px;" alt="pharmacy Image" />
+<<<<<<< HEAD
           @if (item.insurence ===1) {
           <p class="insurence pb-2 m-0">
             {{"Pharmacies.insurance"| translate}}
@@ -91,6 +92,20 @@
             <i class="fa-solid fa-motorcycle fs-4"></i>
           </p>
           }
+=======
+            @if (item.insurence ===1) {
+              <p class="insurence pb-2 m-0">
+                {{"Pharmacies.insurance"| translate}}
+                            <i class="bi bi-shield-check"></i>
+                          </p>
+            }
+            @if (item.deliveryOption ===1) {
+              <p class="delivery m-0 pb-2">
+                {{"Pharmacies.delivery"| translate}}
+                <i class="fa-solid fa-motorcycle fs-4"></i>
+                          </p>
+            }
+>>>>>>> 93a1d6ac091280318b6f01a6880551ff99acc2d6
         </div>
 
         <!-- التفاصيل -->
