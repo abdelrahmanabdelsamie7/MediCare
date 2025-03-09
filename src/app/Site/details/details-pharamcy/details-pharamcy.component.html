@@ -1,138 +1,135 @@
 <div class="container py-4">
   <p-toast />
   <div class="row align-items-center">
-    <div class="col-md-4">
-      <div class="card border-0 shadow-sm">
-        <img
-          [src]="pharmacy.image"
-          alt="{{ pharmacy.title }}"
-          class="img-fluid rounded"
-        />
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="card pharmacy-info border-0 shadow-sm p-4 h-100" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-        @if(pharmacy.insurence ===1){
-        <span class="insurence">{{"details.insurance"|translate}}</span>
-        }
-        <h2 class="head-title my-3 fs-3 text-center">
-          {{ pharmacy.title }}
-        </h2>
-        <p><strong>{{"details.service"|translate}}:</strong> {{ pharmacy.service }}</p>
-        <p><strong>{{"details.phone"|translate}}:</strong> {{ pharmacy.phone }}</p>
-        <p>
-          <strong>{{"details.address"|translate}}:</strong> {{ pharmacy.area }} - {{ pharmacy.city }}
-        </p>
-        <p>
-          <strong>{{"details.workingApp"|translate}}:</strong>
-          {{ pharmacy.start_at | date : "short" }} {{"details.to"|translate}}
-          {{ pharmacy.end_at | date : "short" }}
-        </p>
-        <p class="delivery-status">
-          <strong>
-            {{'details.deliveryService'|translate}}
-            <i
-              class="bi bi-bicycle fs-2"
-              [ngClass]="
-                pharmacy.deliveryOption === 1 ? 'text-success' : 'text-danger'
-              "
-            ></i>
-            :
-          </strong>
-          {{ pharmacy.deliveryOption === 1 ? "متاح" : "غير متاح" }}
-        </p>
-        <p>
-          <strong>{{"details.rating"|translate}}</strong>:
-          <ng-container *ngFor="let star of getStarArray(); let i = index">
-            <i class="fa-solid fa-star text-warning me-1"></i>
-          </ng-container>
-        </p>
-        <div class="d-flex gap-3 my-3">
-          <a
-            (click)="showInMap(pharmacy.locationUrl)"
-            class="text-primary"
-            title="View Location"
-          >
-            <i class="fas fa-map-marker-alt fa-lg"></i>
-          </a>
-          <a
-            [href]="pharmacy.whatsappLink"
-            target="_blank"
-            class="text-success"
-            title="Contact on WhatsApp"
-          >
-            <i class="fab fa-whatsapp fa-lg"></i>
-          </a>
-          <a href="tel:{{ pharmacy.phone }}" class="text-info" title="Call Now">
-            <i class="fas fa-phone-alt fa-lg"></i>
-          </a>
+    <div class="col-md-8 mx-auto">
+      <div class="card pharmacy-card shadow-lg text-center border-0 overflow-hidden">
+        <!-- الجزء العلوي  -->
+        <div class="card-header bg-info text-white py-4 position-relative">
+          <i class="fas fa-prescription-bottle-medical fa-3x"></i>
+          <h4 class="fw-bold mb-4">{{ pharmacy.title }}</h4>
+
+
         </div>
-        <!-- Start Rating  -->
-        <div class="rating-container d-flex align-items-center gap-3">
-          <div>
-            <i
-              *ngFor="let star of stars; let i = index"
-              class="fa-solid fa-star"
-              [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)"
-              (click)="setRating(i + 1)"
-            >
-            </i>
+
+        <!-- صورة الصيدلية -->
+        <div class="pharmacy-image">
+          <img [src]="pharmacy.image" class="rounded-circle border border-3 border-white shadow"
+            style="width: 100px; height: 100px; margin-top: -50px;" alt="Pharmacy Image">
+        </div>
+
+        <!-- معلومات الصيدلية -->
+        <div class="card-body">
+          <p class="mb-2">{{ pharmacy.service }}</p>
+          <p><i class="fas fa-phone text-info "></i> {{ pharmacy.phone }}</p>
+          <p><i class="fas fa-map-marker-alt text-danger"></i> {{ pharmacy.area }} - {{ pharmacy.city }}</p>
+          <p>
+            <i class="fa-solid fa-clock"></i>
+            {{ pharmacy.start_at | date : "short" }} {{"details.to"|translate}}
+            {{ pharmacy.end_at | date : "short" }}
+          </p>
+
+
+          <div class="d-flex justify-content-around my-3">
+            @if (pharmacy.deliveryOption ===1) {
+              <p class="delivery m-0 pb-2">
+                <i class="fa-solid fa-motorcycle fs-4"></i>
+                {{"Pharmacies.delivery"| translate}}
+                          </p>
+            }
+            @if (pharmacy.insurence ===1) {
+              <p class="insurence pb-2 m-0">
+                {{"Pharmacies.insurance"| translate}}
+                            <i class="bi bi-shield-check"></i>
+                          </p>
+            }
+
           </div>
-          <button
-            class="btn btn-info text-light rounded-3 btn-sm"
-            [disabled]="!isAuth"
-            (click)="toggleReviewInput()"
-          >
-            إضافة مراجعة
-          </button>
+          <div class="d-flex gap-3  justify-content-center">
+            <a
+              (click)="showInMap(pharmacy.locationUrl)"
+              class="text-primary"
+              title="View Location"
+            >
+              <i class="fas fa-map-marker-alt fa-lg fs-3"></i>
+            </a>
+            <a
+              [href]="pharmacy.whatsappLink"
+              target="_blank"
+              class="text-success"
+              title="Contact on WhatsApp"
+            >
+              <i class="fab fa-whatsapp fa-lg fs-3"></i>
+            </a>
+            <a href="tel:{{ pharmacy.phone }}" class="text-info" title="Call Now">
+              <i class="fas fa-phone-alt fa-lg fs-3"></i>
+            </a>
+          </div>
         </div>
-        <div *ngIf="showReviewInput" class="review-section mt-3">
-          <form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm)">
-            <textarea
-              formControlName="review"
-              class="form-control mb-2"
-              rows="4"
-              placeholder="اكتب مراجعتك هنا..."
-            ></textarea>
-            <button type="submit" class="btn btn-info btn-sm">
-              إرسال المراجعة
+
+        <!--  التقييمات  -->
+        <div class="rating-container " [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+         <p class="mt-3"> <strong>{{"details.rating"|translate}}</strong>:</p>
+          <ng-container *ngFor="let star of getStarArray()">
+            <i class="fa-solid fa-star text-warning"></i>
+          </ng-container>
+        </div>
+
+        <!-- إضافة مراجعة -->
+
+        <div class="d-flex justify-content-center">
+          <div class="review-section p-3">
+            <button class="btn btn-outline-info w-100" (click)="toggleReviewInput()">
+              <i class="fas fa-pencil-alt"></i> إضافة مراجعة
             </button>
-          </form>
+
+            <div *ngIf="showReviewInput" class="mt-3">
+              <form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm)">
+                <div class="d-flex justify-content-center mb-2">
+                  <ng-container *ngFor="let star of stars; let i = index">
+                    <i class="fa-solid fa-star rating-star"
+                      [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)"
+                      (click)="setRating(i + 1)">
+                    </i>
+                  </ng-container>
+                </div>
+
+                <textarea formControlName="review" class="form-control mb-2" rows="3"
+                  placeholder="اكتب مراجعتك هنا..."></textarea>
+                <button type="submit" class="btn btn-info text-white w-100">إرسال المراجعة</button>
+              </form>
+            </div>
+          </div>
         </div>
-        <!-- End Rating -->
+
+        <!--  عرض التقييمات -->
+        <div class="ratings-container p-3">
+          <h6 class="fw-bold">:تقييمات {{ pharmacy.title }}</h6>
+          <div *ngFor="let rating of ratesOfPharmacy" class="rating-card p-2 border rounded mb-2">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <i
+                *ngFor="
+                  let star of [].constructor(rating.pivot.rating_value);
+                  let i = index
+                "
+                class="fa-solid fa-star text-warning me-1"
+              ></i>
+              <span *ngIf="rating.pivot.rating_value < 5">
+                <i
+                  *ngFor="let star of [].constructor(5 - rating.pivot.rating_value)"
+                  class="fa-solid fa-star text-muted"
+                ></i>
+              </span>
+            </div>
+            <p class="m-0"><strong> مراجعة:</strong> {{ rating.pivot.review }}</p>
+            <p class="text-muted small">
+              <i class="fa-solid fa-user"></i> {{ rating.name }}
+            </p>
+            <p class="text-muted small"><i class="fa-solid fa-clock"></i> {{ rating.pivot.created_at | date : "short" }}</p>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-  <!-- عرض التقييمات الصيدلية -->
-  <div class="ratings-container mt-4">
-    <h5 class="mb-3">تقييمات {{ pharmacy.title }}:</h5>
-    <div
-      *ngFor="let rating of ratesOfPharmacy"
-      class="rating-card p-3 mb-2 border rounded"
-    >
-      <div class="d-flex align-items-center mb-2">
-        <i
-          *ngFor="
-            let star of [].constructor(rating.pivot.rating_value);
-            let i = index
-          "
-          class="fa-solid fa-star text-warning me-1"
-        ></i>
-        <span *ngIf="rating.pivot.rating_value < 5">
-          <i
-            *ngFor="let star of [].constructor(5 - rating.pivot.rating_value)"
-            class="fa-solid fa-star text-muted"
-          ></i>
-        </span>
-      </div>
-      <p class="m-0"><strong>مراجعة:</strong> {{ rating.pivot.review }}</p>
-      <p class="text-muted" style="font-size: 14px">
-        <small>{{ rating.name }}</small>
-      </p>
-      <p class="text-muted m-0 small">
-        <i class="fa-solid fa-clock me-1"></i>
-        تم التقييم بتاريخ: {{ rating.pivot.created_at | date : "short" }}
-      </p>
-    </div>
-  </div>
+
 </div>
