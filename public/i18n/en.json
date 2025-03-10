@@ -133,6 +133,15 @@
     "confirmPassError": "Confirm password is incorrect",
     "RegistrationPro": "Registration in progress .. , please verify your email."
   },
+  "checkGmail": {
+    "title": "With Medicare <br> To Ensure Your Safety...",
+    "sentTo": "Verification email sent to",
+    "openGmail": "Open Gmail",
+    "resend": "Resend Verification Email",
+    "noEmail": "Please register first",
+    "error": "An error occurred while resending the email. Please try again",
+    "imageAlt": "Check Gmail Image"
+  },
   "login": {
     "WelcomeBack": "...Welcome back",
     "login": ":Login",
@@ -146,8 +155,24 @@
     "passwordErrorLes": "Must contain 10 numbers or less",
     "donAccount": "Don't have an account?",
     "CreateAccNow": "Create an account now",
-    "done": "...Done successfully"
+    "done": "...Done successfully",
+    "forgotPassword": "Forgot your password?",
+    "resetNow": "Reset it now"
   },
+  "forgotPassword": {
+    "title": "Reset Your Password",
+    "reset": "Reset Password",
+    "submit": "Send Reset Link"
+  },
+    "resetPassword": {
+      "title": "Set New Password",
+      "reset": "Reset Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Reset Password",
+      "passwordErrorMin": "Password must be at least 8 characters.",
+      "confirmErrorReq": "Please confirm your password."
+    },
   "appointmentDays": {
     "Saturday": "Saturday",
     "Sunday": "Sunday",

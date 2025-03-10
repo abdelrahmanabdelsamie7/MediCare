@@ -9,4 +9,6 @@ export interface IUser {
   role: string;
   points:number;
   created_at: Date;
+  google_id: any;
+  avatar: any;
 }

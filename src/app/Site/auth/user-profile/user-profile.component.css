@@ -1,3 +1,111 @@
 .container {
   direction: rtl;
 }
+/* Card Styling */
+.modern-card {
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Header */
+.bg-info {
+  background: #17a2b8; /* Info color for الملف الشخصي */
+}
+
+/* Tabs */
+.modern-tab {
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 500;
+  background: #f1f3f5;
+  color: #495057;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.modern-tab:hover,
+.modern-tab.active {
+  background-color: #1dc2d9; /* Lighter info shade on hover/active */
+  color: white !important;
+}
+
+/* Avatar */
+.avatar-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #17a2b8; /* Info border */
+}
+
+.avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #17a2b8; /* Info color for initial */
+  font-weight: bold;
+}
+
+/* Profile Details */
+.profile-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: #17a2b8; /* Info color for labels */
+}
+
+.value {
+  color: #212529;
+}
+
+/* Input and Button */
+.modern-input {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  padding: 12px;
+  transition: border-color 0.3s;
+}
+
+.modern-input:focus {
+  border-color: #17a2b8; /* Info color on focus */
+  box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+}
+
+.modern-btn {
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.modern-btn:hover {
+  background-color: #1dc2d9; /* Lighter info shade on hover */
+  transform: scale(1.05);
+}
+
+/* Spacing */
+.profile-section {
+  min-height: 70vh;
+}

@@ -9,6 +9,7 @@ import { NO_CACHE } from '../interceptors/cache.interceptor';
   providedIn: 'root',
 })
 export class SAuthService {
+  private tempEmail: string = ''; // Temporary storage for email
   private readonly _HttpClient = inject(HttpClient);
   setRegisterForm(data: IUser): Observable<IUser> {
     return this._HttpClient.post<IUser>(
@@ -53,5 +54,49 @@ export class SAuthService {
     return this._HttpClient.delete<IUser>(
       `${environment.baseUrl}/allusers/${id}`
     );
+  }
+  // New methods for Forgot Password and Reset Password
+  forgotPassword(email: string): Observable<any> {
+    return this._HttpClient.post<any>(
+      `${environment.baseUrl}/user/password/forgot`,
+      { email }
+    );
+  }
+
+  resetPassword(email: string, token: string, password: string, passwordConfirmation: string): Observable<any> {
+    return this._HttpClient.post<any>(
+      `${environment.baseUrl}/user/password/reset`,
+      {
+        email,
+        token,
+        password,
+        password_confirmation: passwordConfirmation
+      }
+    );
+  }
+  resendVerification(email: string): Observable<any> {
+    return this._HttpClient.post<any>(
+      `${environment.baseUrl}/user/resend-email`,
+      { email }
+    );
+  }
+  deleteAccount(password?: string): Observable<any> {
+    const body = password ? { password } : {};
+    return this._HttpClient.delete<any>(
+      `${environment.baseUrl}/user/account`,
+      {body}
+    );
+  }
+  // New methods for email state
+  setTempEmail(email: string): void {
+    this.tempEmail = email;
+  }
+
+  getTempEmail(): string {
+    return this.tempEmail;
+  }
+
+  clearTempEmail(): void {
+    this.tempEmail = '';
   }
 }

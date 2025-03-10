@@ -12,10 +12,11 @@ import { AdminLoginComponent } from './Admin/shared/admin-login/admin-login.comp
 import { DoctorLoginComponent } from './Doctor/shared/doctor-login/doctor-login.component';
 import { LoginComponent } from './Site/auth/google-auth/google-auth.component';
 import { AllItemsComponent } from './Site/components/all-items/all-items.component';
-import { authInterceptor } from './Core/interceptors/auth.interceptor';
 import { userGuard } from './Core/guards/user.guard';
 import { TreeComponent } from './Site/auth/tree/tree.component';
 import { CheckGmailComponent } from './Site/auth/check-gmail/check-gmail.component';
+import { ForgotPasswordComponent } from './Site/auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './Site/auth/reset-password/reset-password.component';
 export const routes: Routes = [
   // ======================== Public Routes ========================
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -35,6 +36,8 @@ export const routes: Routes = [
     component: CheckGmailComponent,
     title: 'MediCare | تأكيد بريدك الإلكتروني',
   },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   {
     path: 'admin-login',
     component: AdminLoginComponent,
