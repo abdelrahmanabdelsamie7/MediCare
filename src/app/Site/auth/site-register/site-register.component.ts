@@ -65,6 +65,8 @@ export class SiteRegisterComponent  {
           // localStorage.setItem('userId', res.user.id);
           this.msgSuccess = true;
           setTimeout(() => {
+            // Store email in service and redirect
+          this._SAuthService.setTempEmail(this.registerForm.value.email);
             this._Router.navigate(['/check-gmail']);
           }, 1000);
 

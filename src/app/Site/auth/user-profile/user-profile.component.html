@@ -1,69 +1,102 @@
 <app-site-navbar></app-site-navbar>
 
-<div class="container col-md-6">
-  <section class="section profile">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card shadow">
-          <div class="card-body pt-3">
-            <ul class="nav nav-tabs nav-tabs-bordered">
+<div class="container my-5">
+  <section class="profile-section">
+    <div class="row justify-content-center" style="direction: rtl;">
+      <div class="col-lg-8 col-md-10">
+        <div class="card border-0 shadow-lg modern-card">
+          <!-- Profile Header -->
+          <div class="card-header bg-info text-white text-center py-4 rounded-top">
+            <h3 class="mb-0 fw-bold">الملف الشخصي</h3>
+          </div>
+          <div class="card-body p-4">
+            <!-- Tabs -->
+            <ul class="nav nav-pills justify-content-center mb-4 gap-2" role="tablist">
               <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">عرض
-                  البيانات</button>
+                <button class="nav-link active modern-tab" data-bs-toggle="pill" data-bs-target="#profile-overview" role="tab">عرض البيانات</button>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-warning" routerLink="/edit_userData/{{ userData.id }}">تعديل
-                </a>
+                <a class="nav-link modern-tab text-warning" routerLink="/edit_userData/{{ userData.id }}">تعديل</a>
               </li>
               <li class="nav-item">
-                <button class="nav-link" (click)="logout()" class="text-danger btn">تسجيل
-                  الخروج</button>
+                <button class="nav-link modern-tab" (click)="logout()">تسجيل الخروج</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link modern-tab text-danger" data-bs-toggle="pill" data-bs-target="#delete-account" role="tab">حذف الحساب</button>
               </li>
             </ul>
-            <div class="tab-pane fade show active profile-overview" id="profile-overview">
-              <h5 class="card-title">معلومات عن المستخدم</h5>
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">الأسم :</div>
-                <div class="col-lg-9 col-md-8">{{ userData.name }}</div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">رقم المحمول :</div>
-                <div class="col-lg-9 col-md-8">{{ userData.phone }}</div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">العنوان : </div>
-                <div class="col-lg-9 col-md-8">{{ userData.address }}</div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">تاريخ الميلاد : </div>
-                <div class="col-lg-9 col-md-8">{{ userData.birth_date }}</div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">الإيميل : </div>
-                <div class="col-lg-9 col-md-8">{{ userData.email }}</div>
-              </div>
-              <hr />
-              <div class="row">
-                <div class="col-lg-3 col-md-4 label">تم التسجيل في وقت : </div>
-                <div class="col-lg-9 col-md-8">{{ userData.created_at | date:'short' }}</div>
-              </div>
-              <div class="row">
-                <button class="btn btn-outline-info" routerLink="/user-points/{{ userData.points }}">عدد النقاط {{
-                  userData.points }}</button>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+              <!-- Profile Overview -->
+              <div class="tab-pane fade show active" id="profile-overview" role="tabpanel">
+                <div class="text-center mb-4">
+                  @if (isOAuthUser && userData.avatar) {
+                    <img [src]="userData.avatar" alt="صورة المستخدم" class="rounded-circle shadow-sm avatar-img">
+                  }
+                  <h4 class="mt-3 fw-semibold">{{ userData.name }}</h4>
+                </div>
+                <div class="profile-details">
+                  <div class="detail-item">
+                    <span class="label">رقم المحمول:</span>
+                    <span class="value">{{ userData.phone || 'غير متوفر' }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">العنوان:</span>
+                    <span class="value">{{ userData.address || 'غير متوفر' }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">تاريخ الميلاد:</span>
+                    <span class="value">{{ userData.birth_date || 'غير متوفر' }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">الإيميل:</span>
+                    <span class="value">{{ userData.email }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">تاريخ التسجيل:</span>
+                    <span class="value">{{ userData.created_at | date:'medium' }}</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="label">النقاط:</span>
+                    <span class="value">
+                      <button class="btn btn-outline-info btn-sm" routerLink="/user-points/{{ userData.points }}">{{ userData.points || 0 }}</button>
+                    </span>
+                  </div>
+                </div>
               </div>
 
+              <!-- Delete Account -->
+              <div class="tab-pane fade" id="delete-account" role="tabpanel">
+                <h5 class="fw-bold text-center mb-3">حذف الحساب</h5>
+                <p class="text-danger text-center">تحذير: هذا الإجراء لا يمكن التراجع عنه. سيتم حذف حسابك وبياناتك نهائياً.</p>
+                @if (!isOAuthUser) {
+                  <div class="mb-4">
+                    <label for="deletePassword" class="form-label">كلمة المرور الحالية:</label>
+                    <input type="password" id="deletePassword" [(ngModel)]="password" class="form-control modern-input" placeholder="أدخل كلمة المرور" required>
+                  </div>
+                }
+                <div class="text-center">
+                  <button class="btn btn-danger modern-btn" (click)="deleteAccount()" [disabled]="isLoading || (!isOAuthUser && !password)">
+                    حذف الحساب نهائياً
+                    @if (isLoading) {
+                      <span><i class="fas fa-spin fa-spinner"></i></span>
+                    }
+                  </button>
+                </div>
+                @if (msgSuccess) {
+                  <p class="alert alert-success mt-3">{{msgSuccess}}</p>
+                }
+                @if (msgErr) {
+                  <p class="alert alert-danger mt-3">{{msgErr}}</p>
+                }
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
 </div>
-
 
 <app-site-footer></app-site-footer>
