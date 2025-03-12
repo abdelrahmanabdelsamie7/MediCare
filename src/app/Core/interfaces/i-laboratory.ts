@@ -13,4 +13,5 @@ export interface ILaboratory {
   end_at: Date;
   avg_rate: number;
   chain_laboratory_id: string;
+  created_at: string;
 }

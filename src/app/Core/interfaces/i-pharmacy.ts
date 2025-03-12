@@ -14,4 +14,5 @@ export interface IPharmacy {
   avg_rate: number;
   end_at: Date;
   chain_pharmacy_id: string;
+  created_at: string;
 }

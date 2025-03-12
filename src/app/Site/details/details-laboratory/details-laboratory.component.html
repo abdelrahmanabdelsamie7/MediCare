@@ -1,83 +1,140 @@
-<div class="container py-4"> <p-toast />
-  <div class="row align-items-center">
-    <div class="col-md-4">
-      <div class="card border-0 shadow-sm">
-        <img [src]="Laboratory.image ? Laboratory.image : './images/laboratory.gif'" alt="{{ Laboratory.title }}"
-          class="img-fluid rounded" />
+<div class="container py-4">
+  <p-toast />
+  <div class="row my-2">
+    <div class="col-md-4 order-2 order-md-1">
+      <div class="card card-info border border-0 shadow">
+        <div class="card-header bg-info py-3 d-flex justify-content-start align-items-center">
+          <h3>
+            <i class="fa-solid fa-location-pin"></i>
+            {{ Laboratory.area }} - {{ Laboratory.city }}
+          </h3>
+        </div>
+        <button class="btn btn-outline-info my-3 mx-auto d-block rounded-3"
+          (click)="showInMap(Laboratory.locationUrl)">خريطة الوصول
+          <i class="fa-solid fa-map-location-dot"></i></button>
+        <div class="more-info">
+          <p class="Laboratory-phone">
+            <a href="tel:{{ Laboratory.phone }}"><i class="fa-solid fa-phone-flip text-info"></i></a>
+            {{ Laboratory.phone }}
+          </p>
+          <p class="Laboratory-whatsapp">
+            <a href="{{ Laboratory.whatsappLink }}"><i class="fa-brands fa-whatsapp text-success"></i>
+
+            </a>
+            الواتساب لتواصل
+          </p>
+          <p class="Laboratory-whatsapp">
+            تمت الإضافة بتاريخ : {{ Laboratory.created_at | date:'yyyy-MM-dd'}}
+          </p>
+        </div>
       </div>
     </div>
-    <div class="col-md-8">
-      <div class="card Laboratory-info border-0 shadow-sm p-4 h-100" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-        @if(Laboratory.insurence ===1){
-        <span class="insurence">{{"details.insurance"|translate}}</span>
-        }
-        <h2 class="head-title my-3 fs-3 text-center">
-          {{ Laboratory.title }}
-        </h2>
-        <p><strong>{{"details.service"|translate}}:</strong> {{ Laboratory.service }}</p>
-        <p><strong>{{"details.phone"|translate}}:</strong> {{ Laboratory.phone }}</p>
-        <p><strong>{{"details.address"|translate}}:</strong> {{ Laboratory.area }} - {{ Laboratory.city }}</p>
-        <p>
-          <strong>{{"details.workingApp"|translate}}:</strong>
-          {{ Laboratory.start_at |timeFormat }} {{"details.to"|translate}}
-          {{ Laboratory.end_at |timeFormat }}
-        </p>
-        <p><strong>{{"details.rating"|translate}}</strong>:
-          <ng-container *ngFor="let star of getStarArray(); let i = index">
-            <i class="fa-solid fa-star text-warning me-1"></i>
-          </ng-container>
-        </p>
-        <div class="d-flex gap-3 my-3">
-          <a (click)="showInMap(Laboratory.locationUrl)" class="text-primary" title="View Location">
-            <i class="fas fa-map-marker-alt fa-lg"></i>
-          </a>
-          <a [href]="Laboratory.whatsappLink" target="_blank" class="text-success" title="Contact on WhatsApp">
-            <i class="fab fa-whatsapp fa-lg"></i>
-          </a>
-          <a href="tel:{{ Laboratory.phone }}" class="text-info" title="Call Now">
-            <i class="fas fa-phone-alt fa-lg"></i>
-          </a>
+    <div class="col-md-8 order-1 order-md-2">
+      <div class="card Laboratory-card shadow-lg border-0">
+        <div class="Laboratory-image">
+          <img [src]="Laboratory.image ? Laboratory.image : './images/laboratory.gif'"
+            class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
+            alt="Laboratory Image">
         </div>
-        <!-- Start Rating  -->
-        <div class="rating-container d-flex align-items-center gap-3">
-          <div>
-            <i *ngFor="let star of stars; let i = index" class="fa-solid fa-star"
-              [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)" (click)="setRating(i + 1)">
-            </i>
+        <div class="card-body">
+          <h3 class="text-center fw-bold">{{ Laboratory.title }}</h3>
+          <p class="Laboratory-service"> <span class="fw-bold">
+              يوجد في المعمل
+            </span> : {{ Laboratory.service }}</p>
+          <p class="Laboratory-date">
+            <span class="fw-bold">مواعيد العمل : </span>
+            <i class="fa-solid fa-clock text-info"></i>
+            {{ Laboratory.start_at | timeFormat }} {{"details.to" | translate}}
+            {{ Laboratory.end_at | timeFormat}}
+          </p>
+          <div class="d-flex justify-content-center">
+            <p class="Laboratory-insurence">
+              <!-- <span class="fw-bold"> خدمة التأمين : </span> -->
+              @if (Laboratory.insurence === 1) {
+              <span class="insurence m-0 pb-1">
+                <i class="bi bi-shield-check fs-6"></i>
+                {{"Pharmacies.insurance" | translate}}
+              </span>
+              }@else{
+              <span class="notAvaliableinsurence m-0 pb-1">
+                <i class="fa-solid fa-xmark fs-6"></i>
+                التأمين غير متاح
+              </span>
+              }
+            </p>
           </div>
-          <button class="btn btn-info text-light rounded-3 btn-sm" [disabled]="!isAuth"
-            (click)="toggleReviewInput()">إضافة مراجعة</button>
         </div>
-        <div *ngIf="showReviewInput" class="review-section mt-3">
-          <form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm)">
-            <textarea formControlName="review" class="form-control mb-2" rows="4"
-              placeholder="اكتب مراجعتك هنا..."></textarea>
-            <button type="submit" class="btn btn-info btn-sm">إرسال المراجعة</button>
-          </form>
-        </div>
-        <!-- End Rating -->
       </div>
     </div>
   </div>
-  <!-- عرض التقييمات المعمل -->
-  <div class="ratings-container mt-4">
-    <h5 class="mb-3">تقييمات {{ Laboratory.title }}:</h5>
-    <div *ngFor="let rating of ratesOfLaboratory" class="rating-card p-3 mb-2 border rounded">
-      <div class="d-flex align-items-center mb-2">
-        <i *ngFor="let star of [].constructor(rating.pivot.rating_value); let i = index"
-          class="fa-solid fa-star text-warning me-1"></i>
-        <span *ngIf="rating.pivot.rating_value < 5">
-          <i *ngFor="let star of [].constructor(5 - rating.pivot.rating_value)" class="fa-solid fa-star text-muted"></i>
-        </span>
+  <div class="row">
+    <div class="col-md-4 order-2 order-md-1">
+      <div class="card card-rating border border-0 shadow">
+        <div class="card-header bg-info py-2 d-flex justify-content-start align-items-center rating-container">
+          <p class="ratings m-0">{{"details.rating" | translate}} :</p>
+          <div class="stars ms-2">
+            <ng-container *ngFor="let star of getStarArray()">
+              <i class="fa-solid fa-star text-warning"></i>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- عرض التقييمات -->
+        <div class="ratings-container p-3">
+          <h3 class="fw-bold">تقييمات {{ Laboratory.title }} </h3>
+          <div *ngFor="let rating of ratesOfLaboratory" class="rating-card p-2 shadow-sm rounded-3 my-2">
+            <div class="d-flex align-items-center justify-content-center mb-2">
+              <i *ngFor="let star of [].constructor(rating.pivot.rating_value); let i = index"
+                class="fa-solid fa-star text-warning me-1"></i>
+              <span *ngIf="rating.pivot.rating_value < 5">
+                <i *ngFor="let star of [].constructor(5 - rating.pivot.rating_value)"
+                  class="fa-solid fa-star text-muted"></i>
+              </span>
+            </div>
+            <p class="my-1"><strong>مراجعة :</strong> {{ rating.pivot.review }}</p>
+
+            <p class="text-muted small p-0 my-1" style="font-size: 12px;">
+              <i class="fa-solid fa-user"></i> {{ rating.name }}
+            </p>
+            <p class="text-muted small my-1"><i class="fa-solid fa-clock"></i> {{ rating.pivot.created_at | date :
+              "short" }}
+            </p>
+          </div>
+        </div>
       </div>
-      <p class="m-0">
-        <strong>مراجعة:</strong> {{ rating.pivot.review }}
-      </p>
-      <p class="text-muted" style="font-size:14px;"><small>{{ rating.name }}</small></p>
-      <p class="text-muted m-0 small">
-        <i class="fa-solid fa-clock me-1"></i>
-        تم التقييم بتاريخ: {{ rating.pivot.created_at | date: 'short' }}
-      </p>
+    </div>
+    <div class="col-md-8 order-1 order-md-2">
+      <div class="card card-rating border border-0 shadow">
+        <div class="card-header text-info py-3 d-flex justify-content-start align-items-center">
+          <h3>
+            قم بتقييم المعمل الآن :
+          </h3>
+        </div>
+        <!-- إضافة مراجعة -->
+        <div class="d-flex justify-content-start">
+          <div class="review-section p-3">
+            <button class="btn btn-outline-info w-100" (click)="toggleReviewInput()">
+              <i class="fas fa-pencil-alt"></i> إضافة مراجعة
+            </button>
+
+            <div *ngIf="showReviewInput" class="mt-3">
+              <form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm)">
+                <div class="d-flex justify-content-center mb-2">
+                  <ng-container *ngFor="let star of stars; let i = index">
+                    <i class="fa-solid fa-star rating-star"
+                      [class.filled]="i < (reviewForm.get('rating_value')?.value || 0)" (click)="setRating(i + 1)">
+                    </i>
+                  </ng-container>
+                </div>
+
+                <textarea formControlName="review" class="form-control mb-2" rows="3"
+                  placeholder="اكتب مراجعتك هنا..."></textarea>
+                <button type="submit" class="btn btn-info text-white w-100">إرسال المراجعة</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

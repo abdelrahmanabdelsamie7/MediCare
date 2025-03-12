@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CommonModule, NgStyle } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +18,7 @@ import { TimeFormatPipe } from "../../../Core/pipes/time-format.pipe";
 @Component({
   selector: 'app-details-laboratory',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule, NgStyle, TimeFormatPipe],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule, TimeFormatPipe],
   templateUrl: './details-laboratory.component.html',
   styleUrl: './details-laboratory.component.css',
   providers: [MessageService],
@@ -44,7 +44,7 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
     private _SLaboratoryService: SLaboratoryService,
     private _ActivatedRoute: ActivatedRoute,
     private _MessageService: MessageService,
-     private _STranslateService: STranslateService
+    private _STranslateService: STranslateService
   ) {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -117,7 +117,7 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
       },
     });
   }
-   checkLanguageDirection(): void {
+  checkLanguageDirection(): void {
     this._STranslateService.currentLang$.subscribe({
       next: (lang) => {
         this.isRtl = lang === 'ar';

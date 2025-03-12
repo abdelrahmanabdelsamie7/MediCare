@@ -25,7 +25,7 @@ import { TimeFormatPipe } from "../../../Core/pipes/time-format.pipe";
   providers: [MessageService],
 })
 export class DetailsPharamcyComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false;
+  isRtl: boolean = false;
   id: string = '';
   isAuth: boolean = false;
   stars = [1, 2, 3, 4, 5];

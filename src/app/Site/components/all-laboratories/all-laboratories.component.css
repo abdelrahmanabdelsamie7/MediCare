@@ -1,11 +1,12 @@
 .btn-outline-info.active {
-  background-color: #17a2b8 !important; /* Use your color */
+  background-color: #17a2b8 !important;
+  /* Use your color */
   color: white !important;
 }
+
 .card-top {
-  background-color:#f8f9fa ;
+  background-color: #f8f9fa;
   border-radius: 15px;
-  max-width: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -22,12 +23,13 @@
 .card-top:hover img {
   transform: scale(1.1);
 }
+
 .insurence {
   position: absolute;
   top: 10px;
   right: 10px;
   background-clip: padding-box;
-  color:#fff;
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
   padding: 5px 15px;
