@@ -17,6 +17,15 @@ import { TreeComponent } from './Site/auth/tree/tree.component';
 import { CheckGmailComponent } from './Site/auth/check-gmail/check-gmail.component';
 import { ForgotPasswordComponent } from './Site/auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Site/auth/reset-password/reset-password.component';
+import { PharmacyResolver } from './Core/resolvers/pharmacy-resolver.service';
+import { ChainPharmaciesResolver } from './Core/resolvers/chain-pharmacies-resolver.service';
+import { UserProfileResolver } from './Core/resolvers/user-profile-resolver.service';
+import { LaboratoryResolver } from './Core/resolvers/laboratory-resolver.service';
+import { ChainLaboratoriesResolver } from './Core/resolvers/chain-laboratories-resolver.service';
+import { PrescriptionAnalyzerComponent } from './Site/components/prescription-analyzer/prescription-analyzer.component';
+import { MedicineDetailsComponent } from './Site/components/medicine-details/medicine-details.component';
+import { AiFeaturesComponent } from './Site/home/ai-features/ai-features.component';
+import { LaboratoryTestAnalyzerComponent } from './Site/components/laboratory-test-analyzer/laboratory-test-analyzer.component';
 export const routes: Routes = [
   // ======================== Public Routes ========================
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -58,7 +67,10 @@ export const routes: Routes = [
     path: 'user-profile',
     component: UserProfileComponent,
     title: 'MediCare | User Profile',
-    canActivate: [userGuard]
+    canActivate: [userGuard],
+    resolve: {
+      user: UserProfileResolver,
+    },
   },
   {
     path: 'user-points/:points',
@@ -78,6 +90,10 @@ export const routes: Routes = [
           import(
             './Site/components/all-pharmacies/all-pharmacies.component'
           ).then((m) => m.AllPharmaciesComponent),
+          resolve: {
+            pharmacies: PharmacyResolver,
+            chainPharmacies: ChainPharmaciesResolver,
+          },
         title: 'MediCare | Pharmacies',
       },
       {
@@ -86,6 +102,10 @@ export const routes: Routes = [
           import(
             './Site/components/all-laboratories/all-laboratories.component'
           ).then((m) => m.AllLaboratoriesComponent),
+          resolve: {
+            laboratories: LaboratoryResolver,
+            chainLaboratories: ChainLaboratoriesResolver,
+          },
         title: 'MediCare | Laboratories',
       },
       {
@@ -123,6 +143,22 @@ export const routes: Routes = [
   },
   // ======================== AI Section ========================
   { path: 'ask-ai', component: SectionAiComponent, title: 'MediCare | Ask AI' },
+  {path:'ai-features',component:AiFeaturesComponent,title:'MediCare | AI Features'},
+  {
+    path: 'prescription-analyzer',
+    component: PrescriptionAnalyzerComponent,
+    title: 'تحليل الوصفة الطبية' 
+  },
+  {
+    path: 'medicine-details/:name',
+    component: MedicineDetailsComponent,
+    title: 'تفاصيل الدواء'
+  },
+  {
+    path:'laboratory-test-analyzer',
+    component:LaboratoryTestAnalyzerComponent,
+    title:'تحليل الفحص الطبي'
+  },
 
   // ======================== Lazy-Loaded Admin Routes ========================
   {

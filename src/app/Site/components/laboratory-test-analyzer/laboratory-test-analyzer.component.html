@@ -1,0 +1,97 @@
+<!-- Start Navbar -->
+<app-site-navbar></app-site-navbar>
+
+<!-- Main Container -->
+<div class="container">
+  <div class="modern-container" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
+    <div class="content-wrapper">
+      <!-- Upload Card -->
+      <div class="upload-card" [class.drag-over]="isDragging"
+           (dragover)="onDragOver($event)"
+           (dragleave)="onDragLeave($event)"
+           (drop)="onDrop($event)">
+        <div class="card-header">
+          <h2>{{ 'labTest.title' | translate }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="upload-area" *ngIf="!previewUrl">
+            <label for="fileInput" class="upload-label">
+              <span>{{ 'labTest.dragDrop' | translate }}</span>
+              <input type="file" id="fileInput" accept="image/*,application/pdf" (change)="onFileSelected($event)" [disabled]="loading" hidden>
+            </label>
+          </div>
+
+          <!-- Preview and Progress -->
+          <div class="preview-section" *ngIf="previewUrl">
+            <img [src]="previewUrl" class="preview-img" alt="{{ 'labTest.previewAlt' | translate }}">
+            <button class="clear-btn" (click)="clearFile()" [disabled]="loading">
+              <i class="bi bi-x"></i>
+            </button>
+            <div class="progress-bar" *ngIf="isUploading">
+              <div class="progress-fill" [style.width]="uploadProgress + '%'"></div>
+            </div>
+          </div>
+
+          <!-- Analyze Button -->
+          <button class="analyze-btn" (click)="analyzeLabTest()" [disabled]="loading || !selectedFile">
+            <span *ngIf="!loading">{{ 'labTest.analyze' | translate }}</span>
+            <span *ngIf="loading" class="spinner"></span>
+            <span *ngIf="loading">{{ 'labTest.analyzing' | translate }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result Card -->
+      <div class="result-card" *ngIf="showResult && analysisResult">
+        <div class="result-header">
+          <h3>{{ 'labTest.resultTitle' | translate }}</h3>
+          <button class="pdf-btn" (click)="generatePDF()">
+            <i class="bi bi-file-earmark-pdf"></i>
+            {{ 'labTest.downloadPDF' | translate }}
+          </button>
+        </div>
+        <div id="analysisResult" class="result-body">
+          <!-- Test Results -->
+          <div class="section" *ngIf="analysisResult.testResults?.length">
+            <h4>{{ 'labTest.testResults' | translate }}</h4>
+            <div class="medication-list">
+              <div class="medication-item" *ngFor="let result of analysisResult.testResults">
+                <p><span class="label">{{ 'labTest.testName' | translate }}</span> {{ result.name }}</p>
+                <p><span class="label">{{ 'labTest.value' | translate }}</span> {{ result.value }} {{ result.unit }}</p>
+                <p><span class="label">{{ 'labTest.status' | translate }}</span> {{ result.status | translate }}</p>
+                <p><span class="label">{{ 'labTest.notes' | translate }}</span> {{ result.notes }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interpretation -->
+          <div class="section">
+            <h4>{{ 'labTest.interpretation' | translate }}</h4>
+            <p>{{ analysisResult.interpretation || ('labTest.notAvailable' | translate) }}</p>
+          </div>
+
+          <!-- Recommendations -->
+          <div class="section">
+            <h4>{{ 'labTest.recommendations' | translate }}</h4>
+            <p>{{ analysisResult.recommendations || ('labTest.notAvailable' | translate) }}</p>
+          </div>
+
+          <!-- Warning -->
+          <div class="section warning">
+            <h4>{{ 'labTest.warning' | translate }}</h4>
+            <p>{{ analysisResult.warning }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="errorMessage">
+        <i class="bi bi-exclamation-circle"></i>
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Footer -->
+<app-site-footer></app-site-footer>

@@ -1,0 +1,106 @@
+<!-- Start Navbar -->
+<app-site-navbar></app-site-navbar>
+
+<!-- Main Container -->
+ <div class="container">
+<div class="modern-container" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
+  <div class="content-wrapper">
+    <!-- Upload Card -->
+    <div class="upload-card" [class.drag-over]="isDragging"
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave($event)"
+         (drop)="onDrop($event)">
+      <div class="card-header">
+        <h2>{{ 'prescription.title' | translate }}</h2>
+      </div>
+      <div class="card-body">
+        <div class="upload-area" *ngIf="!previewUrl">
+          <label for="fileInput" class="upload-label">
+            <span>{{ 'prescription.dragDrop' | translate }}</span>
+            <input type="file" id="fileInput" accept="image/*" (change)="onFileSelected($event)" [disabled]="loading" hidden>
+          </label>
+        </div>
+
+        <!-- Preview and Progress -->
+        <div class="preview-section" *ngIf="previewUrl">
+          <img [src]="previewUrl" class="preview-img" alt="{{ 'prescription.previewAlt' | translate }}">
+          <button class="clear-btn" (click)="clearFile()" [disabled]="loading">
+            <i class="bi bi-x"></i>
+          </button>
+          <div class="progress-bar" *ngIf="isUploading">
+            <div class="progress-fill" [style.width]="uploadProgress + '%'"></div>
+          </div>
+        </div>
+
+        <!-- Analyze Button -->
+        <button class="analyze-btn" (click)="analyzePrescription()" [disabled]="loading || !selectedFile">
+          <span *ngIf="!loading">{{ 'prescription.analyze' | translate }}</span>
+          <span *ngIf="loading" class="spinner"></span>
+          <span *ngIf="loading">{{ 'prescription.analyzing' | translate }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Result Card -->
+    <div class="result-card" *ngIf="showResult && analysisResult">
+      <div class="result-header">
+        <h3>{{ 'prescription.resultTitle' | translate }}</h3>
+        <button class="pdf-btn" (click)="generatePDF()">
+          <i class="bi bi-file-earmark-pdf"></i>
+          {{ 'prescription.downloadPDF' | translate }}
+        </button>
+      </div>
+      <div id="analysisResult" class="result-body">
+        <!-- Medications -->
+        <div class="section" *ngIf="analysisResult.medications?.length">
+          <h4>{{ 'prescription.medications' | translate }}</h4>
+          <div class="medication-list">
+            <div class="medication-item" *ngFor="let med of analysisResult.medications">
+              <p><span class="label">{{ 'prescription.medicationName' | translate }}</span> {{ med.name }}</p>
+              <p><span class="label">{{ 'prescription.dosage' | translate }}</span> {{ med.dosage || ('prescription.notAvailable' | translate) }}</p>
+              <p><span class="label">{{ 'prescription.frequency' | translate }}</span> {{ med.frequency || ('prescription.notAvailable' | translate) }}</p>
+              <p><span class="label">{{ 'prescription.duration' | translate }}</span> {{ med.duration || ('prescription.notAvailable' | translate) }}</p>
+              <button class="details-btn" [routerLink]="['/medicine-details', med.name]">
+                {{ 'prescription.detailsButton' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prescription Details -->
+        <div class="section">
+          <h4>{{ 'prescription.details' | translate }}</h4>
+          <div *ngIf="analysisResult.prescriptionDetails">
+            <p *ngIf="analysisResult.prescriptionDetails.doctorName">
+              <span class="label">{{ 'prescription.doctorName' | translate }}</span> {{ analysisResult.prescriptionDetails.doctorName }}
+            </p>
+            <p *ngIf="analysisResult.prescriptionDetails.date">
+              <span class="label">{{ 'prescription.date' | translate }}</span> {{ analysisResult.prescriptionDetails.date }}
+            </p>
+            <p *ngIf="analysisResult.prescriptionDetails.patientName">
+              <span class="label">{{ 'prescription.patientName' | translate }}</span> {{ analysisResult.prescriptionDetails.patientName }}
+            </p>
+            <p *ngIf="!analysisResult.prescriptionDetails.doctorName && !analysisResult.prescriptionDetails.date && !analysisResult.prescriptionDetails.patientName">
+              {{ 'prescription.notAvailable' | translate }}
+            </p>
+          </div>
+          <p *ngIf="!analysisResult.prescriptionDetails">{{ 'prescription.notAvailable' | translate }}</p>
+        </div>
+        <!-- Warning -->
+        <div class="section warning">
+          <h4>{{ 'prescription.warning' | translate }}</h4>
+          <p>{{ analysisResult.warning }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="errorMessage">
+      <i class="bi bi-exclamation-circle"></i>
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>
+</div>
+<!-- Start Footer -->
+<app-site-footer></app-site-footer>

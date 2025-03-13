@@ -2,147 +2,136 @@
 <app-site-navbar></app-site-navbar>
 
 <!-- Main Container -->
-<div class="container my-5" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <!-- Card: Upload and Analyze -->
-      <div class="card shadow-sm">
-        <div class="card-header bg-info text-white text-center">
-          <h5>{{ 'ai.titleOfSection' | translate }}</h5>
-        </div>
-        <div class="card-body">
-          <!-- File Upload Section -->
-          <div class="mb-4">
-            <label for="fileInput" class="form-label">{{ 'ai.chooseFile' | translate }}</label>
-            <input type="file" class="form-control" id="fileInput" accept="image/*" (change)="onFileSelected($event)" />
+<div class="details-container" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
+  <div class="content-wrapper">
+    <!-- Card: Upload and Analyze -->
+    <div class="details-card">
+      <div class="details-header">
+        <h2>{{ 'ai.titleOfSection' | translate }}</h2>
+      </div>
+      <div class="details-body">
+        <!-- File Upload Section -->
+        <div class="mb-4">
+          <label for="fileInput" class="form-label">{{ 'ai.chooseFile' | translate }}</label>
+          <input type="file" class="form-control" id="fileInput" accept="image/*" (change)="onFileSelected($event)" />
 
-            <!-- File Preview -->
-            <div *ngIf="previewUrl" class="mt-3 text-center">
-              <button class="btn btn-danger btn-sm mt-2" (click)="clearFile()">
-                {{ 'ai.removeFile' | translate }}
-              </button>
-              <img [src]="previewUrl" class="img-thumbnail" style="max-height: 200px;" alt="{{ 'ai.imageAnalysisResult' | translate }}" />
-            </div>
+          <!-- File Preview -->
+          <div *ngIf="previewUrl" class="mt-3 text-center">
+            <img [src]="previewUrl" class="img-thumbnail" style="max-height: 200px;" [alt]="'ai.imageAnalysisResult' | translate" />
+            <button class="btn btn-danger btn-sm mt-2" (click)="clearFile()">
+              {{ 'ai.removeFile' | translate }}
+            </button>
+          </div>
 
-            <!-- Upload Progress -->
-            <div *ngIf="isUploading" class="mt-3">
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
-                  [style.width]="uploadProgress + '%'">
-                  {{ uploadProgress }}%
-                </div>
+          <!-- Upload Progress -->
+          <div *ngIf="isUploading" class="mt-3">
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+                [style.width]="uploadProgress + '%'" [attr.aria-valuenow]="uploadProgress" aria-valuemin="0" aria-valuemax="100">
+                {{ uploadProgress }}%
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Symptoms Input -->
-          <div class="mb-4">
-            <label for="symptomsInput" class="form-label">{{ 'ai.describeSymptoms' | translate }}</label>
-            <textarea id="symptomsInput" class="form-control" rows="4" [(ngModel)]="symptomsText"
-              placeholder="{{ 'ai.enterSymptoms' | translate }}"></textarea>
-          </div>
+        <!-- Symptoms Input -->
+        <div class="mb-4">
+          <label for="symptomsInput" class="form-label">{{ 'ai.describeSymptoms' | translate }}</label>
+          <textarea id="symptomsInput" class="form-control" rows="4" [(ngModel)]="symptomsText"
+            [placeholder]="'ai.enterSymptoms' | translate"></textarea>
+        </div>
 
-          <!-- Analyze Button -->
-          <div class="text-center">
-            <button class="btn btn-info w-50 text-light" (click)="analyzeContent()" [disabled]="loading || (!symptomsText && !selectedFile)">
-              <span *ngIf="!loading">{{ 'ai.imageAnalysis' | translate }}</span>
-              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"></span>
-              <span *ngIf="loading">{{ 'ai.analyzing' | translate }}</span>
+        <!-- Analyze Button -->
+        <div class="text-center">
+          <button class="btn btn-info w-50 text-light" (click)="analyzeContent()" [disabled]="loading || (!symptomsText && !selectedFile)">
+            <span *ngIf="!loading">{{ 'ai.imageAnalysis' | translate }}</span>
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span *ngIf="loading"> {{ 'ai.analyzing' | translate }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Analysis Result -->
+    <div class="details-card mt-4" *ngIf="showResult && (selectedFile || symptomsText) && apiResponse" id="analysisResult">
+      <div class="details-header">
+        <h2>{{ 'ai.analysisResult' | translate }}</h2>
+        <button class="btn btn-success" (click)="generatePDF()">
+          <i class="bi bi-download"></i> {{ 'ai.downloadPDF' | translate }}
+        </button>
+      </div>
+      <div class="details-body">
+        <!-- Image Analysis Result -->
+        <div class="section" *ngIf="selectedFile">
+          <h4>{{ 'ai.imageAnalysisResult' | translate }}</h4>
+          <p>{{ apiResponse.imageAnalysis || ('ai.noImageAnalysis' | translate) }}</p>
+        </div>
+
+        <!-- Diagnosis -->
+        <div class="section" *ngIf="apiResponse.diagnosis">
+          <h4>{{ 'ai.diagnosis' | translate }}</h4>
+          <p>{{ apiResponse.diagnosis }}</p>
+        </div>
+
+        <!-- Confidence Message -->
+        <div class="section" *ngIf="apiResponse.message">
+          <h4>{{ (isRtl ? 'الثقة' : 'Confidence') }}</h4>
+          <p>{{ apiResponse.message }}</p>
+        </div>
+
+        <!-- Recommended Specialization -->
+        <div class="section">
+          <h4>{{ 'ai.recommendedSpecialization' | translate }}</h4>
+          <p>{{ apiResponse.recommendedSpecialization || ('ai.notSpecified' | translate) }}</p>
+        </div>
+
+        <!-- Medicare Recommendations -->
+        <div class="section" *ngIf="recommendedDepartments.length > 0">
+          <h4>{{ 'ai.medicareRecommendations' | translate }}</h4>
+          <div class="d-flex flex-wrap gap-2">
+            <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info"
+              (click)="handleDepartmentSelection(department.id)">
+              {{ department.title }}
             </button>
           </div>
         </div>
-      </div>
 
-      <!-- Card: Analysis Result -->
-      <div class="row" *ngIf="showResult && (selectedFile || symptomsText) && apiResponse">
-        <div class="col-12">
-          <div class="card mt-4 border-0 animate__animated animate__fadeIn">
-            <div class="card-header bg-info text-white text-center py-4">
-              <h5 class="mb-0">{{ 'ai.analysisResult' | translate }}</h5>
-            </div>
+        <!-- Advice -->
+        <div class="section">
+          <h4>{{ 'ai.advice' | translate }}</h4>
+          <p>{{ apiResponse.advice || ('ai.noAdvice' | translate) }}</p>
+        </div>
 
-            <!-- Download PDF Button -->
-            <div class="text-center mt-3">
-              <button class="btn btn-success" (click)="generatePDF()">
-                {{ 'ai.downloadPDF' | translate }}
-              </button>
-            </div>
+        <!-- Confidence Level -->
+        <div class="section" *ngIf="apiResponse.confidence_score">
+          <h4>{{ 'ai.confidenceLevel' | translate }}</h4>
+          <p>{{ apiResponse.confidence_score }}%</p>
+        </div>
 
-            <div id="analysisResult" class="card-body p-4">
-              <!-- Image Analysis Result -->
-              <div class="mb-3" *ngIf="selectedFile">
-                <h5 class="fw-bold">{{ 'ai.imageAnalysisResult' | translate }}</h5>
-                <p class="mb-0">
-                  {{ apiResponse.imageAnalysis || ('ai.noImageAnalysis' | translate) }}
-                </p>
-              </div>
+        <!-- Suggested Medications -->
+        <div class="section" *ngIf="apiResponse.suggested_medications?.length">
+          <h4>{{ 'ai.suggestedMedications' | translate }}</h4>
+          <ul class="list-group">
+            <li *ngFor="let medication of apiResponse.suggested_medications" class="list-group-item">
+              <strong>{{ 'ai.medicationName' | translate }}</strong> {{ medication.name }}<br>
+              <strong>{{ 'ai.medicationDosage' | translate }}</strong> {{ medication.dosage }}<br>
+              <strong>{{ 'ai.medicationNotes' | translate }}</strong> {{ medication.notes }}
+            </li>
+          </ul>
+        </div>
 
-              <!-- Diagnosis and Specialization -->
-              <div class="mb-3" *ngIf="apiResponse.diagnosis">
-                <h5 class="fw-bold">{{ 'ai.diagnosis' | translate }}</h5>
-                <p class="mb-0">{{ apiResponse.diagnosis }}</p>
-              </div>
-              <div class="mb-3" *ngIf="apiResponse.message">
-                <h5 class="fw-bold">الثقة</h5>
-                <p class="mb-0">{{ apiResponse.message }}</p>
-              </div>
-
-              <div class="mb-3">
-                <h5 class="fw-bold">{{ 'ai.recommendedSpecialization' | translate }}</h5>
-                <p class="mb-0">
-                  {{ apiResponse.recommendedSpecialization || ('ai.notSpecified' | translate) }}
-                </p>
-              </div>
-
-              <!-- Medicare Recommendations -->
-              <div class="mb-3" *ngIf="recommendedDepartments.length > 0">
-                <h5 class="fw-bold">{{ 'ai.medicareRecommendations' | translate }}</h5>
-                <div class="d-flex flex-wrap gap-2">
-                  <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info"
-                    (click)="handleDepartmentSelection(department.id)">
-                    {{ department.title }}
-                  </button>
-                </div>
-              </div>
-
-              <!-- Advice Section -->
-              <div class="mb-3">
-                <h5 class="fw-bold">{{ 'ai.advice' | translate }}</h5>
-                <p class="mb-0">{{ apiResponse.advice || ('ai.noAdvice' | translate) }}</p>
-              </div>
-
-              <!-- Confidence Level -->
-              <div class="mb-3" *ngIf="apiResponse.confidence_score">
-                <h5 class="fw-bold">{{ 'ai.confidenceLevel' | translate }}</h5>
-                <p class="mb-0">{{ apiResponse.confidence_score }}%</p>
-              </div>
-
-              <!-- Suggested Medications -->
-              <div class="mb-3" *ngIf="apiResponse.suggested_medications?.length">
-                <h5 class="fw-bold">{{ 'ai.suggestedMedications' | translate }}</h5>
-                <ul class="list-group">
-                  <li *ngFor="let medication of apiResponse.suggested_medications" class="list-group-item">
-                    <strong>{{ 'ai.medicationName' | translate }}</strong> {{ medication.name }}<br>
-                    <strong>{{ 'ai.medicationDosage' | translate }}</strong> {{ medication.dosage }}<br>
-                    <strong>{{ 'ai.medicationNotes' | translate }}</strong> {{ medication.notes }}
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Medication Warning -->
-              <div class="mb-3 text-danger" *ngIf="apiResponse.medication_warning">
-                <h5 class="fw-bold">{{ 'ai.medicationWarning' | translate }}</h5>
-                <p class="mb-0">{{ apiResponse.medication_warning }}</p>
-              </div>
-            </div>
-          </div>
+        <!-- Medication Warning -->
+        <div class="section text-danger" *ngIf="apiResponse.medication_warning">
+          <h4>{{ 'ai.medicationWarning' | translate }}</h4>
+          <p>{{ apiResponse.medication_warning }}</p>
         </div>
       </div>
+    </div>
 
-      <!-- Alert: Error Message -->
-      <div *ngIf="errorMessage" class="alert alert-danger mt-4 text-center">
-        {{ 'ai.errorMessage' | translate }}
-      </div>
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="errorMessage && !loading">
+      <span class="material-icons">error</span>
+      {{ errorMessage }}
     </div>
   </div>
 </div>

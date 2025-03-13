@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
 import { SChainPharmaciesService } from '../../../Core/services/s-chain-pharmacies.service';
-import { Subject, takeUntil } from 'rxjs';
 import { IChainPharmacies } from '../../../Core/interfaces/i-chain-pharmacies';
 import { IPharmacy } from '../../../Core/interfaces/i-pharmacy';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,10 +16,10 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
   standalone: true,
   imports: [RouterModule, FormsModule, TranslateModule, NgStyle],
   templateUrl: './all-pharmacies.component.html',
-  styleUrl: './all-pharmacies.component.css',
+  styleUrls: ['./all-pharmacies.component.css'],
 })
 export class AllPharmaciesComponent implements OnInit, OnDestroy {
-  isRtl: boolean = false
+  isRtl: boolean = false;
   activeTab: string = 'Pharmacies';
   ChainsPharmacies: IChainPharmacies[] = [];
   Pharmacies: IPharmacy[] = [];
@@ -38,39 +38,32 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     private _SPharmacyService: SPharmacyService,
     private _SChainPharmaciesService: SChainPharmaciesService,
     private _STranslateService: STranslateService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.loadChainsPharmacies();
-    this.loadPharmacies();
-    this.checkLanguageDirection()
+    // Load resolved data
+    this.route.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+      this.Pharmacies = data['pharmacies'].data.data;
+      this.totalPages = data['pharmacies'].data.last_page;
+      this.currentPage = data['pharmacies'].data.current_page;
+      this.ChainsPharmacies = data['chainPharmacies'].data;
+    });
+
+    this.checkLanguageDirection();
   }
 
   private loadPharmacies(page: number = 1) {
     let params = new HttpParams().set('page', page);
 
-    if (this.searchQuery) {
-      params = params.set('search', this.searchQuery);
-    }
-    if (this.selectedChainId !== 'all') {
-      params = params.set('chain_pharmacy_id', this.selectedChainId);
-    }
-    if (this.deliveryOptionFilter !== 'all') {
-      params = params.set('deliveryOption', this.deliveryOptionFilter);
-    }
-    if (this.insurenceFilter !== 'all') {
-      params = params.set('insurence', this.insurenceFilter);
-    }
-    if (this.minRateFilter) {
-      params = params.set('min_rate', this.minRateFilter);
-    }
-    if (this.cityFilter !== 'all') {
-      params = params.set('city', this.cityFilter);
-    }
-    if (this.areaFilter !== 'all') {
-      params = params.set('area', this.areaFilter);
-    }
+    if (this.searchQuery) params = params.set('search', this.searchQuery);
+    if (this.selectedChainId !== 'all') params = params.set('chain_pharmacy_id', this.selectedChainId);
+    if (this.deliveryOptionFilter !== 'all') params = params.set('deliveryOption', this.deliveryOptionFilter);
+    if (this.insurenceFilter !== 'all') params = params.set('insurence', this.insurenceFilter);
+    if (this.minRateFilter) params = params.set('min_rate', this.minRateFilter);
+    if (this.cityFilter !== 'all') params = params.set('city', this.cityFilter);
+    if (this.areaFilter !== 'all') params = params.set('area', this.areaFilter);
 
     const paramsObject = params
       .keys()
@@ -79,29 +72,14 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
         return obj;
       }, {});
 
-    this.router.navigate([], {
-      queryParams: paramsObject,
-    });
-
-    this._SPharmacyService
-      .getPharmacies(params)
+    this.router.navigate([], { queryParams: paramsObject });
+    this._SPharmacyService.getPharmacies(params)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
           this.Pharmacies = data.data.data;
           this.totalPages = data.data.last_page;
           this.currentPage = data.data.current_page;
-        },
-      });
-  }
-
-  loadChainsPharmacies() {
-    this._SChainPharmaciesService
-      .getChainPharmacies()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: any) => {
-          this.ChainsPharmacies = data.data;
         },
       });
   }
@@ -112,6 +90,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
       'location=yes,height=570,width=765,scrollbars=yes,status=yes,top=50,left=300'
     );
   }
+
   loadPharmaciesByChain(chainId: string) {
     this.selectedChainId = chainId;
     this.currentPage = 1;
@@ -121,7 +100,6 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
       this.setActiveTab('Pharmacies');
       return;
     }
-
     this.setActiveTab('PharmaciesOfChain');
   }
 
@@ -144,8 +122,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     this.searchQuery = formData.get('search')?.toString() || '';
-    this.deliveryOptionFilter =
-      formData.get('deliveryOption')?.toString() || 'all';
+    this.deliveryOptionFilter = formData.get('deliveryOption')?.toString() || 'all';
     this.insurenceFilter = formData.get('insurence')?.toString() || 'all';
     this.cityFilter = formData.get('city')?.toString() || 'all';
     this.areaFilter = formData.get('area')?.toString() || 'all';
@@ -169,8 +146,7 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
 
   handleMinRateChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
-    this.minRateFilter =
-      inputElement.value === '' ? null : Number(inputElement.value);
+    this.minRateFilter = inputElement.value === '' ? null : Number(inputElement.value);
   }
 
   handleCityChange(event: Event) {
@@ -182,16 +158,13 @@ export class AllPharmaciesComponent implements OnInit, OnDestroy {
     const inputElement = event.target as HTMLInputElement;
     this.areaFilter = inputElement.value;
   }
+
   checkLanguageDirection(): void {
     this._STranslateService.currentLang$.subscribe({
       next: (lang) => {
-        if (lang === 'ar') {
-          this.isRtl = true
-        } else {
-          this.isRtl = false
-        }
-      }
-    })
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

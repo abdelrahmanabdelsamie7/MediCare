@@ -1,0 +1,61 @@
+<!-- Start Navbar -->
+<app-site-navbar></app-site-navbar>
+
+<!-- Main Container -->
+<div class="details-container" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
+  <div class="content-wrapper">
+    <!-- Details Card -->
+    <div class="details-card">
+      <div class="details-header">
+        <h2>{{ medicineName || ('medicine.title' | translate) }}</h2>
+        <button class="back-btn" (click)="goBack()">
+          <i class="bi bi-arrow-right"></i>
+          {{ 'medicine.back' | translate }}
+        </button>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading" *ngIf="loading">
+        <span class="spinner"></span>
+        {{ 'medicine.loading' | translate }}
+      </div>
+
+      <!-- Medicine Details -->
+      <div class="details-body" *ngIf="medicineDetails && !loading">
+        <div class="section">
+          <h4>{{ 'medicine.indications' | translate }}</h4>
+          <p>{{ medicineDetails.indications || ('medicine.notAvailable' | translate) }}</p>
+        </div>
+        <div class="section">
+          <h4>{{ 'medicine.dosageInstructions' | translate }}</h4>
+          <p>{{ medicineDetails.dosageInstructions || ('medicine.notAvailable' | translate) }}</p>
+        </div>
+        <div class="section">
+          <h4>{{ 'medicine.sideEffects' | translate }}</h4>
+          <p>{{ medicineDetails.sideEffects || ('medicine.notAvailable' | translate) }}</p>
+        </div>
+        <div class="section">
+          <h4>{{ 'medicine.precautions' | translate }}</h4>
+          <p>{{ medicineDetails.precautions || ('medicine.notAvailable' | translate) }}</p>
+        </div>
+        <div class="section">
+          <h4>{{ 'medicine.additionalInformation' | translate }}</h4>
+          <p>{{ medicineDetails.additionalInformation || ('medicine.notAvailable' | translate) }}</p>
+        </div>
+        <div class="section disclaimer">
+          <h4>{{ 'medicine.disclaimer' | translate }}</h4>
+          <p>{{ medicineDetails.disclaimer || ('medicine.notAvailable' | translate) }}</p>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="errorMessage && !loading">
+        <span class="material-icons">error</span>
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Footer -->
+<app-site-footer></app-site-footer>

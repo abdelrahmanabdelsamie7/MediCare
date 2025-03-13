@@ -4,20 +4,19 @@ import { ILaboratory } from '../../../Core/interfaces/i-laboratory';
 import { Subject, takeUntil } from 'rxjs';
 import { SChainLaboratoriesService } from '../../../Core/services/s-chain-laboratories.service';
 import { SLaboratoryService } from '../../../Core/services/s-laboratory.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router'; // Add ActivatedRoute
 import { FormsModule } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { STranslateService } from '../../../Core/services/s-translate.service';
-import { NgStyle, NgClass } from '@angular/common';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-all-laboratories',
   standalone: true,
   imports: [RouterModule, FormsModule, TranslateModule, NgStyle],
   templateUrl: './all-laboratories.component.html',
-  styleUrl: './all-laboratories.component.css',
+  styleUrls: ['./all-laboratories.component.css'],
 })
 export class AllLaboratoriesComponent implements OnInit, OnDestroy {
   isRtl: boolean = false;
@@ -38,36 +37,31 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
     private _SChainLaboratoriesService: SChainLaboratoriesService,
     private _SLaboratoryService: SLaboratoryService,
     private _STranslateService: STranslateService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute // Add this
+  ) {}
 
   ngOnInit(): void {
-    this.loadChainsLaboratories();
-    this.loadLaboratories();
+    // Load resolved data
+    this.route.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+      this.Laboratories = data['laboratories'].data.data;
+      this.totalPages = data['laboratories'].data.last_page;
+      this.currentPage = data['laboratories'].data.current_page;
+      this.ChainsLaboratories = data['chainLaboratories'].data;
+    });
+
     this.checkLanguageDirection();
   }
 
   private loadLaboratories(page: number = 1) {
     let params = new HttpParams().set('page', page);
 
-    if (this.searchQuery) {
-      params = params.set('search', this.searchQuery);
-    }
-    if (this.selectedChainId !== 'all') {
-      params = params.set('chain_laboratory_id', this.selectedChainId);
-    }
-    if (this.insurenceFilter !== 'all') {
-      params = params.set('insurence', this.insurenceFilter);
-    }
-    if (this.minRateFilter) {
-      params = params.set('min_rate', this.minRateFilter);
-    }
-    if (this.cityFilter !== 'all') {
-      params = params.set('city', this.cityFilter);
-    }
-    if (this.areaFilter !== 'all') {
-      params = params.set('area', this.areaFilter);
-    }
+    if (this.searchQuery) params = params.set('search', this.searchQuery);
+    if (this.selectedChainId !== 'all') params = params.set('chain_laboratory_id', this.selectedChainId);
+    if (this.insurenceFilter !== 'all') params = params.set('insurence', this.insurenceFilter);
+    if (this.minRateFilter) params = params.set('min_rate', this.minRateFilter);
+    if (this.cityFilter !== 'all') params = params.set('city', this.cityFilter);
+    if (this.areaFilter !== 'all') params = params.set('area', this.areaFilter);
 
     const paramsObject = params
       .keys()
@@ -76,29 +70,16 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
         return obj;
       }, {});
 
-    this.router.navigate([], {
-      queryParams: paramsObject,
-    });
+    this.router.navigate([], { queryParams: paramsObject });
 
-    this._SLaboratoryService
-      .getLaboratories(params)
+    // Call service directly for subsequent updates
+    this._SLaboratoryService.getLaboratories(params)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
           this.Laboratories = data.data.data;
           this.totalPages = data.data.last_page;
           this.currentPage = data.data.current_page;
-        },
-      });
-  }
-
-  loadChainsLaboratories() {
-    this._SChainLaboratoriesService
-      .getChainLaboratories()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: any) => {
-          this.ChainsLaboratories = data.data;
         },
       });
   }
@@ -120,7 +101,6 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
       this.setActiveTab('Laboratories');
       return;
     }
-
     this.setActiveTab('LaboratoriesOfChain');
   }
 
@@ -160,8 +140,7 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
 
   handleMinRateChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
-    this.minRateFilter =
-      inputElement.value === '' ? null : Number(inputElement.value);
+    this.minRateFilter = inputElement.value === '' ? null : Number(inputElement.value);
   }
 
   handleCityChange(event: Event) {

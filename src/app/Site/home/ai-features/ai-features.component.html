@@ -1,0 +1,33 @@
+<div class="container-fluid py-5">
+  <!-- AI Features Section -->
+  <section class="ai-features-section py-5" [attr.dir]="direction">
+    <div class="container">
+      <h2 class="text-center mb-5">{{ 'ai-features.title' | translate }}</h2>
+      <div class="row g-4">
+
+        <!-- Feature Cards -->
+        <div class="col-md-4" *ngFor="let feature of features">
+          <div class="card ai-feature-card">
+            <div class="card-img-top position-relative">
+              <img [src]="feature.image" class="img-fluid feature-image" [alt]="feature.alt">
+              <div class="icon-overlay"><i class="{{ feature.icon }}"></i></div>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">
+                <i class="{{ feature.iconClass }} me-2"></i>
+                {{ feature.title | translate }}
+              </h5>
+              <p class="card-text">
+                {{ feature.description | translate }}
+              </p>
+              <a [routerLink]="feature.link" class="btn btn-info">
+                <i class="fas fa-arrow-circle-right me-2"></i> {{ 'ai-features.startNow' | translate }}
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

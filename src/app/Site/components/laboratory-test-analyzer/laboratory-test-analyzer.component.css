@@ -1,0 +1,262 @@
+.modern-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #edf5f6 0%, #f5f6f7 100%);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Upload Card */
+.upload-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.upload-card:hover {
+  transform: translateY(-5px);
+}
+
+.upload-card.drag-over {
+  border: 3px dashed #00acc1;
+}
+
+.card-header {
+  background: linear-gradient(90deg, #00acc1 0%, #26c6da 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 30px;
+  text-align: center;
+}
+
+.upload-area {
+  border: 2px dashed #b0bec5;
+  border-radius: 15px;
+  padding: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-area:hover {
+  background: #f5f7fa;
+}
+
+.upload-label span {
+  font-size: 18px;
+  color: #546e7a;
+}
+
+/* Preview Section */
+.preview-section {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.preview-img {
+  max-height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.clear-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ef5350;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clear-btn:hover {
+  background: #d32f2f;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #eceff1;
+  border-radius: 4px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00acc1 0%, #26c6da 100%);
+  transition: width 0.3s ease;
+}
+
+/* Analyze Button */
+.analyze-btn {
+  background: linear-gradient(90deg, #00acc1 0%, #26c6da 100%);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  margin-top: 12px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+/* Result Card */
+.result-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  overflow: hidden;
+  animation: slideIn 0.5s ease;
+}
+
+.result-header {
+  background: linear-gradient(90deg, #26c6da 0%, #4dd0e1 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.pdf-btn {
+  background: #fff;
+  color: #00acc1;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.pdf-btn:hover {
+  background: #00acc1;
+  color: white;
+}
+
+.result-body {
+  padding: 30px;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.section h4 {
+  color: #00acc1;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.medication-list {
+  display: grid;
+  gap: 15px;
+}
+
+.medication-item {
+  background: #f5f7fa;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.medication-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.medication-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #455a64;
+}
+
+.label {
+  font-weight: 600;
+  color: #263238;
+}
+
+.warning p {
+  color: #ef5350;
+  font-style: italic;
+}
+
+/* Error Message */
+.error-message {
+  background: #ffebee;
+  color: #d32f2f;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

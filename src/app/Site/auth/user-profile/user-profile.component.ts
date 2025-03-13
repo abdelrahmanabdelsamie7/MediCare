@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { SAuthService } from '../../../Core/services/s-auth.service';
 import { IUser } from '../../../Core/interfaces/i-user';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SiteNavbarComponent } from '../../shared/site-navbar/site-navbar.component';
 import { SiteFooterComponent } from '../../shared/site-footer/site-footer.component';
 import { CommonModule } from '@angular/common';
@@ -26,6 +26,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   private readonly _SAuthService = inject(SAuthService);
   private readonly _Router = inject(Router);
+  private readonly _ActivatedRoute = inject(ActivatedRoute);
   userData: IUser = {} as IUser;
   password: string = '';
   msgSuccess: string = '';
@@ -34,26 +35,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   isOAuthUser: boolean = false;
 
   ngOnInit(): void {
-    this.loadUserData();
+    this._ActivatedRoute.data.subscribe((data) => {
+      this.userData = data['user'];
+      localStorage.setItem('userId', this.userData.id);
+      this.isOAuthUser = !!this.userData.google_id;
+    });
   }
-
-  loadUserData() {
-    this._SAuthService
-      .getUserAccount()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: IUser) => {
-          this.userData = data;
-          console.log(this.userData);
-          localStorage.setItem('userId', this.userData.id);
-          this.isOAuthUser = !!this.userData.google_id; // Check for OAuth via google_id
-        },
-        error: (err: any) => {
-          console.log(err);
-        },
-      });
-  }
-
   logout() {
     localStorage.removeItem('userId');
     localStorage.removeItem('userToken');
@@ -73,7 +60,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     const passwordParam = this.isOAuthUser ? undefined : this.password;
     this._SAuthService.deleteAccount(passwordParam).subscribe({
       next: (res: { message: string; }) => {
-        this.msgSuccess = res.message; // "Account deleted successfully" from backend
+        this.msgSuccess = res.message; 
         this.isLoading = false;
         localStorage.removeItem('userId');
         localStorage.removeItem('userToken');

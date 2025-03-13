@@ -7,8 +7,13 @@ import { isPlatformBrowser } from '@angular/common';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const loaderService = inject(SLoadingService);
   const platformId = inject(PLATFORM_ID);
+  
+  const skipLoading = req.headers.has('Skip-Loading');
+  if (!skipLoading) {
+    loaderService.showLoader();
+  }
 
-  // Only access localStorage if the app is running on the browser
+  let modifiedReq = req;
   let tokens: string[] = [];
   if (isPlatformBrowser(platformId)) {
     tokens = [
@@ -17,8 +22,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       localStorage.getItem('userToken') || '',
     ];
   }
-  loaderService.showLoader();
-  let modifiedReq = req;
   const validToken = tokens.find((token) => token);
   if (validToken) {
     modifiedReq = req.clone({
@@ -30,12 +33,15 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(modifiedReq).pipe(
     catchError((error) => {
       console.error('Error in request:', error);
-      loaderService.hideLoader();
+      if (!skipLoading) {
+        loaderService.hideLoader();
+      }
       return throwError(() => error);
     }),
-
     finalize(() => {
-      loaderService.hideLoader();
+      if (!skipLoading) {
+        loaderService.hideLoader();
+      }
     })
   );
 };
