@@ -1,6 +1,6 @@
 
 .ai-features-section {
-  background: linear-gradient(135deg, #e3f2fd, #f8fbff);
+  /* background: linear-gradient(135deg, #e3f2fd, #f8fbff); */
   padding: 60px 0;
 }
 
@@ -65,13 +65,9 @@
 }
 
 .btn-info {
-  background-color: #17a2b8;
   color: white;
 }
 
-.btn-info:hover {
-  background-color: #138496;
-}
 
 /* ضبط الاتجاه في وضع RTL */
 [dir="rtl"] .card-body {

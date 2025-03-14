@@ -90,15 +90,13 @@
     "medicationNotes": "ملاحظات إضافية:",
     "errorMessage": "حدث خطأ أثناء العملية، يرجى إعادة المحاولة."
   },
-  "ai-features":{
-    "title":"خدمات الذكاء الاصطناعي",
+  "ai-features": {
+    "title": "خدمات الذكاء الاصطناعي",
     "startNow": "ابدأ الآن",
     "symptoms_analysis_title": "تحليل الأعراض",
     "symptoms_analysis_description": "قم بوصف أعراضك أو رفع صورة للحصول على تشخيص دقيق واقتراحات علاجية.",
-
     "prescription_analysis_title": "تحليل الوصفات الطبية",
     "prescription_analysis_description": "ارفع صورة وصفة طبية للحصول على تفاصيل الأدوية والجرعات والتحذيرات.",
-
     "laboratory_test_analysis_title": "تحليل الفحوصات المختبرية",
     "laboratory_test_analysis_description": "ارفع نتائج الفحوصات المختبرية للحصول على تقارير صحية شاملة."
   },
@@ -130,22 +128,22 @@
     "confidence": "مستوى الثقة",
     "warning": "تحذير",
     "notAvailable": "غير متوفر"
-    },
-      "medicine": {
-        "title": "تفاصيل الدواء",
-        "back": "العودة إلى الوصفة",
-        "loading": "جاري تحميل التفاصيل...",
-        "noNameProvided": "لم يتم توفير اسم الدواء.",
-        "fetchFailed": "فشل جلب تفاصيل الدواء. حاول مرة أخرى.",
-        "indications": "دواعي الاستعمال",
-        "dosageInstructions": "تعليمات الجرعة",
-        "sideEffects": "الآثار الجانبية",
-        "precautions": "الاحتياطات",
-        "additionalInformation": "معلومات إضافية",
-        "disclaimer": "تنبيه",
-        "notAvailable": "غير متوفر"
-      },
-"labTest": {
+  },
+  "medicine": {
+    "title": "تفاصيل الدواء",
+    "back": "العودة إلى الوصفة",
+    "loading": "جاري تحميل التفاصيل...",
+    "noNameProvided": "لم يتم توفير اسم الدواء.",
+    "fetchFailed": "فشل جلب تفاصيل الدواء. حاول مرة أخرى.",
+    "indications": "دواعي الاستعمال",
+    "dosageInstructions": "تعليمات الجرعة",
+    "sideEffects": "الآثار الجانبية",
+    "precautions": "الاحتياطات",
+    "additionalInformation": "معلومات إضافية",
+    "disclaimer": "تنبيه",
+    "notAvailable": "غير متوفر"
+  },
+  "labTest": {
     "title": "تحليل الفحوصات المختبرية",
     "dragDrop": "اسحب وأفلت صورة أو ملف PDF للفحص المختبري هنا أو انقر للتحديد",
     "previewAlt": "معاينة الفحص المختبري",
@@ -172,7 +170,7 @@
     "processing": "جاري المعالجة"
   },
   "adviceSec": {
-    "contentAdv": "نصيحة من دكتور",
+    "contentAdv": "ماذا يقول الأطباء عن صحتك؟ نصائح حصرية من دكاترة",
     "search": "ابحث",
     "blog": "مدونات",
     "nextPage": "الصفحة التالية",
@@ -208,15 +206,15 @@
     "confirmPassError": "تأكيد كلمة المرور غير صحيح",
     "RegistrationPro": "جاري التسجيل، يرجى التأكد من بريدك الإلكتروني.."
   },
-    "checkGmail": {
-      "title": "مع Medicare <br> ومن أجل ضمان حمايتك ..",
-      "sentTo": "تم إرسال بريد التحقق إلى",
-      "openGmail": "افتح بريد Gmail",
-      "resend": "إعادة إرسال بريد التحقق",
-      "noEmail": "يرجى التسجيل أولاً",
-      "error": "حدث خطأ أثناء إعادة إرسال البريد. حاول مرة أخرى",
-      "imageAlt": "صورة التحقق من Gmail"
-    },
+  "checkGmail": {
+    "title": "مع Medicare <br> ومن أجل ضمان حمايتك ..",
+    "sentTo": "تم إرسال بريد التحقق إلى",
+    "openGmail": "افتح بريد Gmail",
+    "resend": "إعادة إرسال بريد التحقق",
+    "noEmail": "يرجى التسجيل أولاً",
+    "error": "حدث خطأ أثناء إعادة إرسال البريد. حاول مرة أخرى",
+    "imageAlt": "صورة التحقق من Gmail"
+  },
   "login": {
     "WelcomeBack": " مرحبا بعودتك...",
     "login": "قم بتسجيل الدخول:",
@@ -234,11 +232,10 @@
     "forgotPassword": "نسيت كلمة المرور؟",
     "resetNow": "إعادة تعيينها الآن"
   },
-
-    "forgotPassword": {
-      "title": "إعادة تعيين كلمة المرور",
-      "reset": "إعادة تعيين كلمة المرور",
-      "submit": "إرسال رابط الإعادة"
+  "forgotPassword": {
+    "title": "إعادة تعيين كلمة المرور",
+    "reset": "إعادة تعيين كلمة المرور",
+    "submit": "إرسال رابط الإعادة"
   },
   "resetPassword": {
     "title": "تعيين كلمة مرور جديدة",

@@ -35,7 +35,7 @@ section {
   position: relative;
   margin: 20px 0px;
   width: fit-content;
-  margin: 0 auto;
+  margin: 4px auto;
 }
 .head-title::before {
   content: "";
