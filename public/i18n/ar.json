@@ -476,7 +476,15 @@
     "dateFormat": "يوم/شهر/سنة",
     "details": "التفاصيل",
     "logout": "تسجيل الخروج",
-    "haveNotifications": "لديك إشعار "
+    "haveNotifications": "لديك إشعار ",
+    "addImageOff":"أضف صورة جديدة للعرض",
+    "offerInformation":"معلومات العرض",
+    "durationDate":"الفترة",
+    "from":"من",
+    "to":"إلى",
+    "image":"الصورة",
+    "selectOffer":"حدد العرض",
+    "editImageOff":"تعديل صورة العرض"
   },
   "doctor": {
     "doctors": "الاطباء",

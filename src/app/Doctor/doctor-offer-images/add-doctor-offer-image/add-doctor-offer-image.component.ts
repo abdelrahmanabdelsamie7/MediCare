@@ -11,16 +11,19 @@ import { CommonModule, Location } from '@angular/common';
 import { Toast } from 'primeng/toast';
 import { IDoctorOffer } from '../../../Core/interfaces/i-doctor-offer';
 import { Subject, takeUntil } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor-offer-image',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast,TranslateModule],
   templateUrl: './add-doctor-offer-image.component.html',
   styleUrl: './add-doctor-offer-image.component.css',
   providers: [MessageService],
 })
 export class AddDoctorOfferImageComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false;
   DoctorOffers: IDoctorOffer[] = [];
   private destroy$ = new Subject<void>();
   addDoctorOfferImageForm = new FormGroup({
@@ -34,9 +37,11 @@ export class AddDoctorOfferImageComponent implements OnInit, OnDestroy {
   constructor(
     private _SDoctorOfferService: SDoctorOfferService,
     private messageService: MessageService,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit(): void {
+    this.checkLanguageDirection();
     this.loadDoctorOffers();
   }
   loadDoctorOffers() {
@@ -72,6 +77,12 @@ export class AddDoctorOfferImageComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

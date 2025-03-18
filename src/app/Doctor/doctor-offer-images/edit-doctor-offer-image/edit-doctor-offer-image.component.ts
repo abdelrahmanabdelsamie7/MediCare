@@ -13,16 +13,19 @@ import {
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { IDoctorOffer } from '../../../Core/interfaces/i-doctor-offer';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-doctor-offer-image',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, Toast],
+  imports: [ReactiveFormsModule, CommonModule, Toast,TranslateModule],
   templateUrl: './edit-doctor-offer-image.component.html',
   styleUrl: './edit-doctor-offer-image.component.css',
   providers: [MessageService],
 })
 export class EditDoctorOfferImageComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false;
   id: string = '';
   DoctorOfferImage: IDoctorOfferImage = {} as IDoctorOfferImage;
   DoctorOffers: IDoctorOffer[] = [];
@@ -31,7 +34,8 @@ export class EditDoctorOfferImageComponent implements OnInit, OnDestroy {
     private _SDoctorOfferService: SDoctorOfferService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   editDoctorOfferImageForm = new FormGroup({
     image: new FormControl('', [
@@ -42,6 +46,7 @@ export class EditDoctorOfferImageComponent implements OnInit, OnDestroy {
     doctor_offer_id: new FormControl('', [Validators.required]),
   });
   ngOnInit() {
+    this.checkLanguageDirection();
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -98,6 +103,12 @@ export class EditDoctorOfferImageComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

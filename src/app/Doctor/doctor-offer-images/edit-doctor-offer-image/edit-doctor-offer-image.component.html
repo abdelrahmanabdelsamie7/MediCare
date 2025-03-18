@@ -1,10 +1,10 @@
 <!-- Start Edit DoctorOfferImage -->
-<div class="pagetitle">
-  <h1>Edit Offer Image</h1>
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+  <h1>{{'doctorPanel.editImageOff'|translate}}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">Dashboard</a></li>
-      <li class="breadcrumb-item">Edit</li>
+      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">{{'doctorPanel.dashboard'|translate}}</a></li>
+      <li class="breadcrumb-item">{{'doctorPanel.edit'|translate}}</li>
     </ol>
   </nav>
 </div>
@@ -15,16 +15,16 @@
       <div class="card p-4">
         <div class="card-body">
           <form class="row" [formGroup]="editDoctorOfferImageForm"
-            (ngSubmit)="editDoctorOfferImage(editDoctorOfferImageForm)">
+            (ngSubmit)="editDoctorOfferImage(editDoctorOfferImageForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
-                <label for="image" class="form-label">image</label>
+                <label for="image" class="form-label">{{ 'doctorPanel.image' | translate }}</label>
                 <input type="text" formControlName="image"
                   [ngClass]="{'is-invalid':(editDoctorOfferImageForm.controls.image.touched && editDoctorOfferImageForm.controls.image.errors) }"
                   class="form-control" id="image">
               </div>
               <div class="col-md-6">
-                <label for="doctor_offer_id" class="form-label">Select Offer</label>
+                <label for="doctor_offer_id" class="form-label">{{ 'doctorPanel.selectOffer' | translate }}</label>
                 <select formControlName="doctor_offer_id"
                   [ngClass]="{'is-invalid':(editDoctorOfferImageForm.controls.doctor_offer_id.touched && editDoctorOfferImageForm.controls.doctor_offer_id.errors) }"
                   class="form-control" id="doctor_offer_id">
@@ -40,7 +40,7 @@
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary my-2"
-                [disabled]="editDoctorOfferImageForm.invalid">Submit</button>
+                [disabled]="editDoctorOfferImageForm.invalid">{{'doctorPanel.submit'|translate}}</button>
             </div>
           </form>
         </div>

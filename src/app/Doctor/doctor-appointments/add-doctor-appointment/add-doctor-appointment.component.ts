@@ -13,6 +13,7 @@ import { SDoctorService } from '../../../Core/services/s-doctor.service';
 import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor-appointment',
@@ -23,6 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddDoctorAppointmentComponent implements OnInit, OnDestroy {
+  isRtl:boolean=false;
   DoctorClinics: IDoctorClinic[] = [];
   addDoctorAppointmentForm = new FormGroup({
     day: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -38,9 +40,11 @@ export class AddDoctorAppointmentComponent implements OnInit, OnDestroy {
   constructor(
     private _SDoctorAppiontmentService: SDoctorAppiontmentService,
     private messageService: MessageService,
-    private _SDoctorService: SDoctorService
+    private _SDoctorService: SDoctorService,
+    private _STranslateService: STranslateService
   ) {}
   ngOnInit(): void {
+    this.checkLanguageDirection();
     this.loadDoctorClinics();
   }
   loadDoctorClinics() {
@@ -74,6 +78,12 @@ export class AddDoctorAppointmentComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

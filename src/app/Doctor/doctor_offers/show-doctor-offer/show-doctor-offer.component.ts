@@ -12,6 +12,8 @@ import { TagModule } from 'primeng/tag';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { IDoctorOfferImage } from '../../../Core/interfaces/i-doctor-offer-image';
+import { STranslateService } from '../../../Core/services/s-translate.service';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-show-doctor-offer',
   standalone: true,
@@ -23,6 +25,7 @@ import { IDoctorOfferImage } from '../../../Core/interfaces/i-doctor-offer-image
     TagModule,
     RouterModule,
     Toast,
+    TranslateModule
   ],
   templateUrl: './show-doctor-offer.component.html',
   styleUrl: './show-doctor-offer.component.css',
@@ -30,6 +33,7 @@ import { IDoctorOfferImage } from '../../../Core/interfaces/i-doctor-offer-image
   providers: [MessageService],
 })
 export class ShowDoctorOfferComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false;
   id: string = '';
   DoctorOffer: IDoctorOffer = {} as IDoctorOffer;
   DoctorOfferImages: IDoctorOfferImage[] = [];
@@ -40,7 +44,8 @@ export class ShowDoctorOfferComponent implements OnInit, OnDestroy {
     private _SDoctorOfferService: SDoctorOfferService,
     private _ActivatedRoute: ActivatedRoute,
     private _Location: Location,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _STranslateService: STranslateService
   ) {
     this.responsiveOptions = [
       {
@@ -66,6 +71,7 @@ export class ShowDoctorOfferComponent implements OnInit, OnDestroy {
     ];
   }
   ngOnInit() {
+    this.checkLanguageDirection();
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -101,6 +107,12 @@ export class ShowDoctorOfferComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy(): void {
     this.destroy$.next();

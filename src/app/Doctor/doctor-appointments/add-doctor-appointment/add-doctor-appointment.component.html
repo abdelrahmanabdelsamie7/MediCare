@@ -1,5 +1,5 @@
 <!-- Start Add New Doctor Appointment -->
-<div class="pagetitle">
+<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'doctorPanel.addNewAppointment' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -16,7 +16,7 @@
       <div class="card p-4">
         <div class="card-body">
           <form class="row" [formGroup]="addDoctorAppointmentForm"
-            (ngSubmit)="addDoctorAppointment(addDoctorAppointmentForm)">
+            (ngSubmit)="addDoctorAppointment(addDoctorAppointmentForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="day">{{ 'doctorPanel.selectDay' | translate }}:</label>

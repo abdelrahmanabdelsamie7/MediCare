@@ -1,5 +1,5 @@
 <!-- Start Add New Doctor Offer -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'doctorPanel.addDoctorOffer' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -15,7 +15,7 @@
       <p-toast />
       <div class="card p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="addDoctorOfferForm" (ngSubmit)="addDoctorOffer(addDoctorOfferForm)">
+          <form class="row" [formGroup]="addDoctorOfferForm" (ngSubmit)="addDoctorOffer(addDoctorOfferForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="title" class="form-label">{{ 'doctorPanel.title' | translate }}</label>

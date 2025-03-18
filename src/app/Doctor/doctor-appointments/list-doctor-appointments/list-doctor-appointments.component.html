@@ -1,5 +1,5 @@
 <!-- Start List All Doctor Appointments -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'doctorPanel.listAppointments' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">

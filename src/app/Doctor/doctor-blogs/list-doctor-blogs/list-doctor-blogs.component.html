@@ -1,5 +1,5 @@
 <!-- Start List All Doctor Blogs -->
-<div class="pagetitle">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'doctorPanel.listBlogs' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -8,7 +8,7 @@
     </ol>
   </nav>
 </div>
-<div class="row">
+<div class="row"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <p-toast />
   @for (item of DoctorBlogs; track $index) {
   <div class="col-md-6 mb-4">

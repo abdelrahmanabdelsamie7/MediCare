@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { SOfferGroupService } from '../../../Core/services/s-offer-group.service';
 import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor-offer',
@@ -22,11 +23,13 @@ import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
   providers: [MessageService],
 })
 export class AddDoctorOfferComponent implements OnInit{
+  isRtl: boolean = false;
   offerGroups :IOfferGroup[]=[] ;
   constructor(
     private _SDoctorOfferService: SDoctorOfferService,
-    private _SOfferGroupService:SOfferGroupService , 
-    private messageService: MessageService
+    private _SOfferGroupService:SOfferGroupService ,
+    private messageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   addDoctorOfferForm = new FormGroup({
     title: new FormControl('', [
@@ -54,12 +57,13 @@ export class AddDoctorOfferComponent implements OnInit{
     ]),
   });
   ngOnInit() {
+    this.checkLanguageDirection();
     this.loadOfferGroup();
    }
   loadOfferGroup(){
     this._SOfferGroupService.getOfferGroups().subscribe({
       next:(data:any)=>{
-        this.offerGroups = data.data ; 
+        this.offerGroups = data.data ;
       }
     })
   }
@@ -83,5 +87,12 @@ export class AddDoctorOfferComponent implements OnInit{
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
 }

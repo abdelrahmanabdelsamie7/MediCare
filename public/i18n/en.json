@@ -479,7 +479,15 @@
     "dateFormat": "mm/dd/yyyy",
     "details": "Details",
     "logout": "Log Out",
-    "haveNotifications": "Have Notificatio"
+    "haveNotifications": "Have Notification",
+    "addImageOff":"Add New Image To Offer",
+    "offerInformation":"Offer Information",
+    "durationDate":"Duration Date",
+    "from":"From",
+    "to":"To",
+    "image":"Image",
+    "selectOffer":"Select Offer",
+    "editImageOff":"Edit Image To Offer"
   },
   "doctor": {
     "doctors": "Doctors",

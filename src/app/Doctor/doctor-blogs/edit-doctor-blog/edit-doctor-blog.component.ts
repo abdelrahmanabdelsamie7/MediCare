@@ -13,6 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Toast } from 'primeng/toast';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-doctor-blog',
@@ -23,6 +24,7 @@ import { Toast } from 'primeng/toast';
   providers: [MessageService],
 })
 export class EditDoctorBlogComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false;
   id: string = '';
   DoctorBlog: IDoctorBlog = {} as IDoctorBlog;
   private destroy$ = new Subject<void>();
@@ -30,7 +32,8 @@ export class EditDoctorBlogComponent implements OnInit, OnDestroy {
     private _SDoctorBlogService: SDoctorBlogService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   editDoctorBlogForm = new FormGroup({
     title: new FormControl('', [
@@ -47,6 +50,7 @@ export class EditDoctorBlogComponent implements OnInit, OnDestroy {
     ]),
   });
   ngOnInit() {
+    this.checkLanguageDirection()
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -92,6 +96,12 @@ export class EditDoctorBlogComponent implements OnInit, OnDestroy {
   }
   back() {
     this._Location.back();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   ngOnDestroy() {
     this.destroy$.next();

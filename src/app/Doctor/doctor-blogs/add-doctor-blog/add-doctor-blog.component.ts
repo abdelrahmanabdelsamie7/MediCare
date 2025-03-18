@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,6 +10,7 @@ import { Toast } from 'primeng/toast';
 import { SDoctorBlogService } from '../../../Core/services/s-doctor-blog.service';
 import { MessageService } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor-blog',
@@ -19,10 +20,12 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './add-doctor-blog.component.css',
   providers: [MessageService],
 })
-export class AddDoctorBlogComponent {
+export class AddDoctorBlogComponent implements OnInit {
+  isRtl: boolean = false;
   constructor(
     private _SDoctorBlogService: SDoctorBlogService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _STranslateService:STranslateService
   ) {}
   addDoctorBlogForm = new FormGroup({
     title: new FormControl('', [
@@ -54,6 +57,15 @@ export class AddDoctorBlogComponent {
           summary: 'error',
           detail: `${err.error.message}`,
         });
+      },
+    });
+  }
+  ngOnInit(): void {
+    this.checkLanguageDirection();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
       },
     });
   }
