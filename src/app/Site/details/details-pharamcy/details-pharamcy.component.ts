@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { IPharmacy } from '../../../Core/interfaces/i-pharmacy';
 import { Subject, takeUntil } from 'rxjs';
 import { SPharmacyService } from '../../../Core/services/s-pharmacy.service';
@@ -32,6 +32,7 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
   showReviewInput: boolean = false;
   ratesOfPharmacy: any[] = [];
   pharmacy: IPharmacy = {} as IPharmacy;
+  isFetching = signal<boolean>(false);
   private destroy$ = new Subject<void>();
   reviewForm = new FormGroup({
     rating_value: new FormControl(0, [Validators.required, Validators.min(1)]),
@@ -75,14 +76,20 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
     this.checkLanguageDirection();
   }
   loadPharmacyData() {
+    this.isFetching.set(true);
     this._SPharmacyService
       .showPharmacy(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.isFetching.set(false);
           this.pharmacy = data.data;
           this.ratesOfPharmacy = data.data.users;
         },
+        error: (err) => {
+          this.isFetching.set(false);
+          console.error('Error loading pharmacy data:', err);
+        }
       });
   }
   showInMap(url: string) {

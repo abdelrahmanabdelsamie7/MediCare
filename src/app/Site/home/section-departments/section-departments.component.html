@@ -1,9 +1,9 @@
 <section id="departments">
-  <div class="container text-center">
+  <div class="container text-center" data-aos="fade-up" data-aos-duration="1000">
     <h3 class="head-title">{{"departments.medicalDepartments"| translate}}</h3>
   </div>
 
-  <div class="container mt-4">
+  <div class="container mt-4" data-aos="fade-up" data-aos-duration="1000">
     <p-carousel id="department-carousel" class="py-5" [value]="Departments" [numVisible]="4" [circular]="true"
       [responsiveOptions]="responsiveOptions">
       <ng-template let-department pTemplate="item">

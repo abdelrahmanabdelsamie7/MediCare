@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { ILaboratory } from '../../../Core/interfaces/i-laboratory';
 import { Subject, takeUntil } from 'rxjs';
 import {
@@ -31,6 +31,7 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
   showReviewInput: boolean = false;
   ratesOfLaboratory: any[] = [];
   Laboratory: ILaboratory = {} as ILaboratory;
+  isFetching = signal<boolean>(false);
   private destroy$ = new Subject<void>();
   reviewForm = new FormGroup({
     rating_value: new FormControl(0, [Validators.required, Validators.min(1)]),
@@ -74,14 +75,20 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
     this.checkLanguageDirection();
   }
   loadLaboratoryData() {
+    this.isFetching.set(true);
     this._SLaboratoryService
       .showLaboratory(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.isFetching.set(false);
           this.Laboratory = data.data;
           this.ratesOfLaboratory = data.data.users;
         },
+        error: (err) => {
+          this.isFetching.set(false);
+          console.error('Error loading laboratory data:', err);
+        }
       });
   }
   showInMap(url: string) {

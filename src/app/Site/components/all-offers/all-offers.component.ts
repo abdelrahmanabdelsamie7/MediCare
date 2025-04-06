@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { IDoctorOffer } from '../../../Core/interfaces/i-doctor-offer';
 import { Subject, takeUntil } from 'rxjs';
 import { IOfferGroup } from '../../../Core/interfaces/i-offer-group';
@@ -19,6 +19,7 @@ export class AllOffersComponent implements OnInit, OnDestroy {
   id: string = '';
   OffersOfGroup: any[] = [];
   imageOfOffer: string = ' ';
+  isFetching = signal<boolean>(false);
   private destroy$ = new Subject<void>();
   OfferGroup: IOfferGroup = {} as IOfferGroup;
   constructor(
@@ -34,16 +35,22 @@ export class AllOffersComponent implements OnInit, OnDestroy {
     this.loadOfferGroups();
   }
   loadOfferGroups() {
+    this.isFetching.set(true);
     this._SOfferGroupService
       .showOfferGroup(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.isFetching.set(false);
           this.OfferGroup = data.data;
           this.OffersOfGroup = this.OfferGroup.doctor_offers;
           console.log('hamada', this.OffersOfGroup)
           // this.imageOfOffer = this.OffersOfGroup.images[0];
         },
+        error: (err) => {
+          this.isFetching.set(false);
+          console.error('Error loading offer groups:', err);
+        }
       });
   }
   ngOnDestroy() {

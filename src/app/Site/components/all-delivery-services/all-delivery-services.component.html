@@ -1,7 +1,16 @@
 <div class="container my-5 py-4">
+  @if (isFetching()) {
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  } @else {
   <div class="row py-2">
     @for (item of deliveryServices; track $index) {
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1000">
       <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
         <div class="card-header bg-info text-white text-center py-4" style="border-bottom-right-radius: 50px;">
           <i class="fa-solid fa-truck-fast fa-3x car-icon"></i>
@@ -28,4 +37,5 @@
     </div>
     }
   </div>
+  }
 </div>

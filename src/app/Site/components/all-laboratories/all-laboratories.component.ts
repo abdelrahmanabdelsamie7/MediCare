@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { IChainLaboratories } from '../../../Core/interfaces/i-chain-laboratories';
 import { ILaboratory } from '../../../Core/interfaces/i-laboratory';
 import { Subject, takeUntil } from 'rxjs';
@@ -31,6 +31,7 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
   areaFilter: string = 'all';
   currentPage: number = 1;
   totalPages: number = 1;
+  isFetching = signal<boolean>(false);
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -39,7 +40,7 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
     private _STranslateService: STranslateService,
     private router: Router,
     private route: ActivatedRoute // Add this
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Load resolved data
@@ -54,6 +55,7 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
   }
 
   private loadLaboratories(page: number = 1) {
+    this.isFetching.set(true);
     let params = new HttpParams().set('page', page);
 
     if (this.searchQuery) params = params.set('search', this.searchQuery);
@@ -77,10 +79,15 @@ export class AllLaboratoriesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.isFetching.set(false);
           this.Laboratories = data.data.data;
           this.totalPages = data.data.last_page;
           this.currentPage = data.data.current_page;
         },
+        error: (err) => {
+          this.isFetching.set(false);
+          console.error('Error loading laboratories:', err);
+        }
       });
   }
 

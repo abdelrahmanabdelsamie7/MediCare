@@ -1,7 +1,6 @@
 <p-toast position="top-center"></p-toast>
-<p-dialog [(visible)]="paymentDialogVisible" [modal]="true"
-          [closable]="true" [draggable]="false" [resizable]="false"
-          [style]="{ 'width': '500px' }" [contentStyle]="{ 'border-radius': '15px' }">
+<p-dialog [(visible)]="paymentDialogVisible" [modal]="true" [closable]="true" [draggable]="false" [resizable]="false"
+  [style]="{ 'width': '500px' }" [contentStyle]="{ 'border-radius': '15px' }">
   <div class="p-4">
     <!-- Header -->
     <div class="d-flex align-items-center justify-content-center mb-4">
@@ -19,7 +18,7 @@
     <div id="card-errors" class="text-danger small mb-3" role="alert"></div>
 
     <!-- Pay Button -->
-    <button  class="btn btn-outline-info w-100 py-2" (click)="handlePayment()" [disabled]="processingPayment">
+    <button class="btn btn-outline-info w-100 py-2" (click)="handlePayment()" [disabled]="processingPayment">
       <span *ngIf="!processingPayment">{{ 'payment.confirm_payment' | translate }}</span>
       <span *ngIf="processingPayment">
         {{ 'payment.processing' | translate }} <i class="pi pi-spinner pi-spin"></i>

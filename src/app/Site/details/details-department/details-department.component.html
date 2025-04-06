@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<div class="container mt-2" data-aos="fade-up" data-aos-duration="1000">
   <div class="row">
     <div class="col-md-12">
       <div class="d-flex justify-content-start align-items-start flex-column">
@@ -27,9 +27,16 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" data-aos="fade-up" data-aos-duration="1000">
   <div *ngIf="activeTab === 'doctors'">
     <div class="row">
+      @if (isFetching()) {
+      <div class="col-12 text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      } @else {
       @for (item of Doctors; track $index) {
       <div class="col-md-6 col-lg-4">
         <div class="card text-center shadow-lg border-0 overflow-hidden">
@@ -73,6 +80,7 @@
         </h6>
       </div>
       }
+      }
     </div>
     <!-- Pagination for doctors -->
     <div class="d-flex justify-content-center align-items-center">
@@ -90,6 +98,13 @@
 
   <div *ngIf="activeTab === 'hospitals'">
     <div class="row">
+      @if (isFetching()) {
+      <div class="col-12 text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      } @else {
       @for (item of Hospitals; track $index) {
       <div class="col-md-6 col-lg-4">
         <div class="card text-center shadow-lg border-0 overflow-hidden">
@@ -102,7 +117,8 @@
 
           <!-- الصورة -->
           <div class="position-relative p-3 text-center">
-            <img [src]="item.image ? item.image : './images/hospital.gif'" class="rounded-circle border border-4 border-light shadow"
+            <img [src]="item.image ? item.image : './images/hospital.gif'"
+              class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Hospital Image" />
           </div>
 
@@ -137,6 +153,7 @@
         </h6>
       </div>
       }
+      }
     </div>
     <!-- Pagination for hospitals -->
     <div class="d-flex justify-content-center align-items-center">
@@ -154,6 +171,13 @@
 
   <div *ngIf="activeTab === 'care_centers'">
     <div class="row">
+      @if (isFetching()) {
+      <div class="col-12 text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      } @else {
       @for (item of CareCenters; track $index) {
       <div class="col-md-6 col-lg-4">
         <div class="card text-center shadow-lg border-0 overflow-hidden">
@@ -166,7 +190,8 @@
 
           <!-- الصورة -->
           <div class="position-relative p-3 text-center">
-            <img [src]="item.image ? item.image : './images/carecenter.gif'" class="rounded-circle border border-4 border-light shadow"
+            <img [src]="item.image ? item.image : './images/carecenter.gif'"
+              class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Center Image" />
           </div>
 
@@ -192,7 +217,6 @@
           </div>
         </div>
       </div>
-
       }@empty {
       <div class="not-found">
         <img src="./images/empty.png" alt="" class="img-not-found" />
@@ -201,6 +225,7 @@
           {{"notFound.notFoundPage2"|translate }}
         </h6>
       </div>
+      }
       }
     </div>
     <!-- Pagination for care_centers -->
@@ -220,10 +245,10 @@
 
 <!-- Section for Tips -->
 <section id="tip" class="tip section">
-  <div class="container section-title text-end">
+  <div class="container section-title text-end" data-aos="fade-left" data-aos-duration="1000">
     <h4>اعرف اكثر عن تخصص {{ Department.title }}</h4>
   </div>
-  <div class="container my-3" style="direction: rtl">
+  <div class="container my-3" style="direction: rtl" data-aos="fade-up" data-aos-duration="1000">
     <div *ngFor="let item of Tips" class="row tip-item">
       <div class="col-lg-5 d-flex">
         <i class="bi bi-question-circle"></i>

@@ -7,7 +7,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-site-navbar',
   standalone: true,
-  imports: [RouterModule, TranslateModule,NgStyle],
+  imports: [RouterModule, TranslateModule, NgStyle],
   templateUrl: './site-navbar.component.html',
   styleUrl: './site-navbar.component.css',
 })
@@ -21,7 +21,7 @@ export class SiteNavbarComponent implements OnInit {
     this.loadLanguage();
   }
   ngOnInit(): void {
-  this.checkLanguageDirection();
+    this.checkLanguageDirection();
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('userToken')) {
         this.isAuth = true;
@@ -49,11 +49,11 @@ export class SiteNavbarComponent implements OnInit {
   }
   checkLanguageDirection(): void {
     this._STranslateService.currentLang$.subscribe({
-      next:(lang)=>{
-        if(lang==='ar'){
-          this.isRtl=true
-        }else{
-          this.isRtl=false
+      next: (lang) => {
+        if (lang === 'ar') {
+          this.isRtl = true
+        } else {
+          this.isRtl = false
         }
       }
     })

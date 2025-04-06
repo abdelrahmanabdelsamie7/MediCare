@@ -16,7 +16,6 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 import { STranslateService } from '../../../Core/services/s-translate.service';
-
 @Component({
   selector: 'app-doctor-navbar',
   standalone: true,

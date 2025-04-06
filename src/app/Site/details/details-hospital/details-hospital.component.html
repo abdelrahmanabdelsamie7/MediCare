@@ -1,1 +1,79 @@
-<p>details-hospital works!</p>
+<div class="container py-4">
+  <p-toast />
+  @if (isFetching()) {
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <div class="row" data-aos="fade-up" data-aos-duration="1000">
+    <div class="col-md-4">
+      <div class="card card-info border border-0 shadow">
+        <div class="card-header bg-info py-3 d-flex justify-content-start align-items-center">
+          <h3>
+            <i class="fa-solid fa-location-pin"></i>
+            {{ Hospital.area }} - {{ Hospital.city }}
+          </h3>
+        </div>
+        <button class="btn btn-outline-info my-3 mx-auto d-block rounded-3"
+          (click)="showInMap(Hospital.locationUrl)">خريطة الوصول
+          <i class="fa-solid fa-map-location-dot"></i></button>
+        <div class="more-info">
+          <p class="hospital-phone">
+            <a href="tel:{{ Hospital.phone }}"><i class="fa-solid fa-phone-flip text-info"></i></a>
+            {{ Hospital.phone }}
+          </p>
+          <p class="hospital-whatsapp">
+            <a href="{{ Hospital.whatsappLink }}"><i class="fa-brands fa-whatsapp text-success"></i></a>
+            الواتساب لتواصل
+          </p>
+          <p class="hospital-date">
+            <i class="fa-solid fa-clock text-info"></i>
+            {{ Hospital.start_at | timeFormat }} {{"details.to" | translate}}
+            {{ Hospital.end_at | timeFormat}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card hospital-card shadow-lg border-0">
+        <div class="hospital-image">
+          <img [src]="Hospital.image ? Hospital.image : './images/hospital.gif'"
+            class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
+            alt="Hospital Image">
+        </div>
+        <div class="card-body">
+          <h3 class="text-center fw-bold">{{ Hospital.title }}</h3>
+          <p class="hospital-service">
+            <span class="fw-bold">خدمات المستشفى : </span>
+            {{ Hospital.service }}
+          </p>
+          <p class="hospital-address">
+            <span class="fw-bold">العنوان : </span>
+            <i class="fa-solid fa-location-dot text-info"></i>
+            {{ Hospital.address }}
+          </p>
+          <div class="d-flex justify-content-center">
+            <p class="hospital-insurance px-2">
+              @if (Hospital.insurance === 1) {
+              <span class="insurance m-0 pb-1">
+                <i class="bi bi-shield-check fs-6"></i>
+                {{"Hospitals.insurance" | translate}}
+              </span>
+              }@else{
+              <span class="notAvaliableinsurance m-0 pb-1">
+                <i class="fa-solid fa-xmark fs-6"></i>
+                التأمين غير متاح
+              </span>
+              }
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

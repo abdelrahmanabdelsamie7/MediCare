@@ -6,10 +6,8 @@
   <div class="modern-container" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
     <div class="content-wrapper">
       <!-- Upload Card -->
-      <div class="upload-card" [class.drag-over]="isDragging"
-           (dragover)="onDragOver($event)"
-           (dragleave)="onDragLeave($event)"
-           (drop)="onDrop($event)">
+      <div class="upload-card" [class.drag-over]="isDragging" (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
         <div class="card-header">
           <h2>{{ 'labTest.title' | translate }}</h2>
         </div>
@@ -17,7 +15,8 @@
           <div class="upload-area" *ngIf="!previewUrl">
             <label for="fileInput" class="upload-label">
               <span>{{ 'labTest.dragDrop' | translate }}</span>
-              <input type="file" id="fileInput" accept="image/*,application/pdf" (change)="onFileSelected($event)" [disabled]="loading" hidden>
+              <input type="file" id="fileInput" accept="image/*,application/pdf" (change)="onFileSelected($event)"
+                [disabled]="loading" hidden>
             </label>
           </div>
 

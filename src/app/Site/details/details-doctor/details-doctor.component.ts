@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { IDoctor } from '../../../Core/interfaces/i-doctor';
 import { Subject, takeUntil } from 'rxjs';
 import { SDoctorService } from '../../../Core/services/s-doctor.service';
@@ -29,6 +29,7 @@ import { TranslateService } from '@ngx-translate/core';
   providers: [MessageService, DatePipe],
 })
 export class DetailsDoctorComponent implements OnInit, OnDestroy {
+  isFetching = signal<boolean>(false);
   id: string = '';
   userData: IUser = {} as IUser;
   appointmentDates: any[] = [];
@@ -78,25 +79,40 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
     });
   }
   loadDoctorData() {
+    this.isFetching.set(true);
     this._SDoctorService
       .showDoctor(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.isFetching.set(false);
           this.Doctor = data.data;
           console.log(this.Doctor);
           this.DoctorClinics = this.Doctor.clinics;
           if (data.data.appointmentsGroupedByDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
             this.appointmentDates = Object.keys(
               data.data.appointmentsGroupedByDate
-            ).map((date: string) => ({
-              date,
-              appointments: data.data.appointmentsGroupedByDate[date],
-            }));
+            )
+              .filter((date: string) => {
+                const appointmentDate = new Date(date);
+                appointmentDate.setHours(0, 0, 0, 0);
+                return appointmentDate >= today;
+              })
+              .map((date: string) => ({
+                date,
+                appointments: data.data.appointmentsGroupedByDate[date],
+              }));
           } else {
             console.log('No appointments data available.');
           }
         },
+        error: (err) => {
+          this.isFetching.set(false);
+          console.error('Error loading doctor data:', err);
+        }
       });
   }
   openModal(appointment: IDoctorAppointment) {

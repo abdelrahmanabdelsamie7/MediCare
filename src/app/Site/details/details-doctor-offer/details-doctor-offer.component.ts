@@ -21,7 +21,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
   providers: [DatePipe]
 })
 export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false
+  isRtl: boolean = false
   id: string = '';
   selectedImage: string = "";
   DoctorOffer: IDoctorOffer = {} as IDoctorOffer;
@@ -37,11 +37,11 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
     private _ActivatedRoute: ActivatedRoute,
     private datePipe: DatePipe,
     private translate: TranslateService,
-    private _STranslateService :STranslateService
+    private _STranslateService: STranslateService
   ) {
   }
   ngOnInit() {
-   this.checkLanguageDirection()
+    this.checkLanguageDirection()
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -60,13 +60,21 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
           this.DoctorOfferImages = this.DoctorOffer.images;
           this.appointmentDates = data.data.appointmentsGroupedByDate;
           if (data.data.appointmentsGroupedByDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
             this.appointmentDates = Object.keys(
               data.data.appointmentsGroupedByDate
-            ).map((date: string) => ({
-              date,
-              appointments: data.data.appointmentsGroupedByDate[date],
-            }));
-            console.log('Appointment Dates:', this.appointmentDates);
+            )
+              .filter((date: string) => {
+                const appointmentDate = new Date(date);
+                appointmentDate.setHours(0, 0, 0, 0);
+                return appointmentDate >= today;
+              })
+              .map((date: string) => ({
+                date,
+                appointments: data.data.appointmentsGroupedByDate[date],
+              }));
           } else {
             console.log('No appointments data available.');
           }
@@ -100,11 +108,11 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
   }
   checkLanguageDirection(): void {
     this._STranslateService.currentLang$.subscribe({
-      next:(lang)=>{
-        if(lang==='ar'){
-          this.isRtl=true
-        }else{
-          this.isRtl=false
+      next: (lang) => {
+        if (lang === 'ar') {
+          this.isRtl = true
+        } else {
+          this.isRtl = false
         }
       }
     })

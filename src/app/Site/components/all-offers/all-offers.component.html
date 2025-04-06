@@ -1,7 +1,16 @@
 <div class="container my-5">
+  @if (isFetching()) {
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  } @else {
   <div class="row" dir="rtl">
     @for (item of OffersOfGroup; track $index) {
-    <div class="col-md-6 col-lg-4 my-2">
+    <div class="col-md-6 col-lg-4 my-2" data-aos="fade-up" data-aos-duration="1000">
       <div class="card-top text-center shadow-lg border-0 overflow-hidden">
         <!-- الجزء العلوي -->
         <div class="card-header bg-info text-white py-4 position-relative" style="border-bottom-left-radius: 50px">
@@ -50,4 +59,5 @@
     </div>
     }
   </div>
+  }
 </div>

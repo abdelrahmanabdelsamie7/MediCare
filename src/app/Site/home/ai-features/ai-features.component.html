@@ -1,12 +1,12 @@
 <div class="container-fluid py-5">
   <!-- AI Features Section -->
   <section class="ai-features-section py-5" [attr.dir]="direction">
-    <div class="container">
+    <div class="container" data-aos="fade-up" data-aos-duration="1000">
       <h2 class="text-center mb-5 head-title">{{ 'ai-features.title' | translate }}</h2>
       <div class="row g-4">
 
         <!-- Feature Cards -->
-        <div class="col-md-4" *ngFor="let feature of features">
+        <div class="col-md-4" *ngFor="let feature of features" >
           <div class="card ai-feature-card">
             <div class="card-img-top position-relative">
               <img [src]="feature.image" class="img-fluid feature-image" [alt]="feature.alt">

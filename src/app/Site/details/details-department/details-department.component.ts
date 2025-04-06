@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SDepartmentService } from '../../../Core/services/s-department.service';
 import { IDepartment } from '../../../Core/interfaces/i-department';
@@ -14,6 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './details-department.component.css',
 })
 export class DetailsDepartmentComponent implements OnInit, OnDestroy {
+  isFetching = signal<boolean>(false);
   id: string = '';
   private destroy$ = new Subject<void>();
   activeTab: string = 'doctors';
@@ -27,6 +28,7 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
     private _ActivatedRoute: ActivatedRoute
   ) { }
   ngOnInit(): void {
+    this.isFetching.set(true);
     this._ActivatedRoute.paramMap.subscribe({
       next: (params: any) => {
         this.id = params.get('id');
@@ -52,6 +54,7 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.isFetching.set(false);
           this.Department = data.data.department;
           console.log(data);
 
