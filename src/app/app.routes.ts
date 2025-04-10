@@ -90,10 +90,10 @@ export const routes: Routes = [
           import(
             './Site/components/all-pharmacies/all-pharmacies.component'
           ).then((m) => m.AllPharmaciesComponent),
-          resolve: {
-            pharmacies: PharmacyResolver,
-            chainPharmacies: ChainPharmaciesResolver,
-          },
+        resolve: {
+          pharmacies: PharmacyResolver,
+          chainPharmacies: ChainPharmaciesResolver,
+        },
         title: 'MediCare | Pharmacies',
       },
       {
@@ -102,10 +102,10 @@ export const routes: Routes = [
           import(
             './Site/components/all-laboratories/all-laboratories.component'
           ).then((m) => m.AllLaboratoriesComponent),
-          resolve: {
-            laboratories: LaboratoryResolver,
-            chainLaboratories: ChainLaboratoriesResolver,
-          },
+        resolve: {
+          laboratories: LaboratoryResolver,
+          chainLaboratories: ChainLaboratoriesResolver,
+        },
         title: 'MediCare | Laboratories',
       },
       {
@@ -143,11 +143,11 @@ export const routes: Routes = [
   },
   // ======================== AI Section ========================
   { path: 'ask-ai', component: SectionAiComponent, title: 'MediCare | Ask AI' },
-  {path:'ai-features',component:AiFeaturesComponent,title:'MediCare | AI Features'},
+  { path: 'ai-features', component: AiFeaturesComponent, title: 'MediCare | AI Features' },
   {
     path: 'prescription-analyzer',
     component: PrescriptionAnalyzerComponent,
-    title: 'تحليل الوصفة الطبية' 
+    title: 'تحليل الوصفة الطبية'
   },
   {
     path: 'medicine-details/:name',
@@ -155,11 +155,17 @@ export const routes: Routes = [
     title: 'تفاصيل الدواء'
   },
   {
-    path:'laboratory-test-analyzer',
-    component:LaboratoryTestAnalyzerComponent,
-    title:'تحليل الفحص الطبي'
+    path: 'laboratory-test-analyzer',
+    component: LaboratoryTestAnalyzerComponent,
+    title: 'تحليل الفحص الطبي'
   },
 
+  // ======================== Lazy-Loaded Details Routes ========================
+  {
+    path: 'about-us',
+    loadChildren: () =>
+      import('./Site/about-us/about/about-us.routes').then((m) => m.DETAILS_ROUTES),
+  },
   // ======================== Lazy-Loaded Admin Routes ========================
   {
     path: 'admin-mediCare-1245',

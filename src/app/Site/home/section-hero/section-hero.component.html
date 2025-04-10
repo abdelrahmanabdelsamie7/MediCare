@@ -1,7 +1,7 @@
 <section id="hero">
-  <div class="container" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container" data-aos="fade-up" data-aos-duration="500">
     <div class="row gx-2">
-      <div class="col-lg-7">
+      <div class="col-lg-7" data-aos="fade-right" data-aos-duration="500">
         <!-- using defer to prevent dublication of hero carousel in SSR -->
         @defer(when isBrowser) {
         <p-carousel class="hero-carousel" [value]="Images" [numVisible]="1" [numScroll]="1" [circular]="false"
@@ -21,16 +21,17 @@
         </div>
         }
       </div>
-      <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center">
+      <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center" data-aos="fade-left"
+        data-aos-duration="500">
         <div>
-          <div class="shadow p-2 my-4">
+          <div class="shadow-sm p-2 my-4">
             <div class="row card-blog">
-              <div class="col-md-12"><img src="./images/blog.svg" height="200px" class="w-100" alt="blog">
+              <div class="col-md-12"><img src="./images/blogs.svg" height="200px" class="w-100" alt="blog">
               </div>
               <div class="col-md-12 my-3">
                 <div>
-                  <h4 class="text-info fs-5 text-center">{{"adviceSec.contentAdv"|translate}} <span
-                      class="fw-bold fs-4">MediCare</span> </h4>
+                  <h4 class="text-info fs-5 text-center" [innerHTML]="'adviceSec.contentAdv' | translate">
+                  </h4>
                   <button class="btn btn-outline-info d-block mx-auto fs-5 mt-2"
                     routerLink="/details/doctor-blogs">{{"adviceSec.search"|translate}}</button>
                 </div>

@@ -26,11 +26,11 @@
 }
 
 .upload-card.drag-over {
-  border: 3px dashed #00acc1;
+  border: 3px dashed #0dcaf0;
 }
 
 .card-header {
-  background: linear-gradient(90deg, #00acc1 0%, #26c6da 100%);
+  background: linear-gradient(90deg, #0dcaf0 0%, #26c6da 100%);
   color: white;
   padding: 20px;
   text-align: center;
@@ -107,13 +107,13 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #00acc1 0%, #26c6da 100%);
+  background: linear-gradient(90deg, #0dcaf0 0%, #26c6da 100%);
   transition: width 0.3s ease;
 }
 
 /* Analyze Button */
 .analyze-btn {
-  background: linear-gradient(90deg, #00acc1 0%, #26c6da 100%);
+  background: linear-gradient(90deg, #0dcaf0 0%, #26c6da 100%);
   color: white;
   border: none;
   padding: 12px 40px;
@@ -172,7 +172,7 @@
 
 .pdf-btn {
   background: #fff;
-  color: #00acc1;
+  color: #0dcaf0;
   border: none;
   padding: 8px 20px;
   border-radius: 20px;
@@ -185,7 +185,7 @@
 }
 
 .pdf-btn:hover {
-  background: #00acc1;
+  background: #0dcaf0;
   color: white;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .section h4 {
-  color: #00acc1;
+  color: #0dcaf0;
   font-size: 18px;
   margin-bottom: 15px;
   font-weight: 600;

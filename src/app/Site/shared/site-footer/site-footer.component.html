@@ -1,37 +1,60 @@
 <footer class="footer text-info border  border-info py-4">
   <div class="container">
     <div class="row text-center text-md-start">
-      <div class="col-md-4 text-center mb-4">
+      <div class="col-sm-6 col-xl-3 text-center mb-2 my-sm-2">
         <h5 class="fw-bold">MediCare</h5>
         <p>
           تطبيق الرعاية الطبية الأفضل
         </p>
-        <img src="./images/app.svg" class="w-25" alt="">
+        <img src="./images/medicare-app.svg" class="w-25" alt="">
+        <!-- <div class="d-flex justify-content-center my-2 social-icons">
+          <a href="#" target="_blank" class="text-decoration-none me-2">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a href="#" target="_blank" class="text-decoration-none">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="#" target="_blank" class="text-decoration-none">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div> -->
       </div>
-      <div class="col-md-4 text-center mb-4">
-        <h5 class="fw-bold">معلومات</h5>
+      <div class="col-sm-6 col-xl-3 text-center mb-2 my-sm-2">
+        <h5 class="fw-bold" style="direction:rtl">تحتاج للمساعدة ؟</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-info text-decoration-none">من نحن</a></li>
-          <li><a href="#" class="text-info text-decoration-none">خدماتنا</a></li>
-          <li><a href="#" class="text-info text-decoration-none">اتصل بنا</a></li>
+          <li><a routerLink="/about-us/contact">تواصل معانا</a></li>
         </ul>
       </div>
-      <div class="col-md-4 text-center mb-4">
-        <h5 class="fw-bold">تواصل معنا</h5>
+      <div class="col-sm-6 col-xl-3 text-center mb-2 my-sm-2">
+        <h5 class="fw-bold">ابحث عن</h5>
         <ul class="list-unstyled">
           <li class="mb-2">
-            <i class="fas fa-map-marker-alt me-2"></i> Lorem ipsum dolor sit amet consectetur.
+            <a href="#departments"> الأقسام الطبية</a>
           </li>
           <li class="mb-2">
-            <i class="fas fa-envelope me-2 "></i> hellocom
+            <a routerLink="/all/pharmacies">الصيدليات</a>
           </li>
           <li>
-            <i class="fas fa-phone me-2"></i> 01124052354
+            <a routerLink="/all/laboratories">المعامل</a>
+          </li>
+          <li>
+            <a routerLink="/all/deliveryServices">خدمات التوصيل</a>
           </li>
         </ul>
       </div>
+      <div class="col-sm-6 col-xl-3 text-center mb-2 my-sm-2">
+        <h5 class="fw-bold" style="direction:rtl">معلومات عن Medicare</h5>
+        <ul class="list-unstyled">
+          <li><a routerLink="/about-us/">من نحن</a></li>
+          <li><a routerLink="/about-us/our-mentor">مُشرفنا</a></li>
+          <li><a routerLink="/about-us/our-team"> فريق Medicare</a></li>
+          <li><a routerLink="/about-us/our-ai-services">خدماتنا لذكاء الاصطناعي</a></li>
+          <li><a routerLink="/about-us/our-blogs">مدونتنا</a></li>>
+        </ul>
+      </div>
+
     </div>
     <hr class="border-info">
-    <p class="text-center mb-0">جميع الحقوق محفوظة &copy; 2024 <span class="fw-bolder">MediCare</span></p>
+    <p class="text-center mb-0">جميع الحقوق محفوظة &copy; 2025 <span class="fw-bolder">MediCare</span></p>
   </div>
 </footer>

@@ -1,0 +1,21 @@
+.card-blog-tips{
+  background-color: #fbfbfb;
+  padding: 15px;
+}
+.card-blog-tips h2{
+  font-size: 32px;
+  font-weight: 800;
+  padding: 12px 0px;
+  color: var(--main-color);
+  font-family:  var(--arabic-font)
+}
+
+.card-blog-tips p{
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--second-color);
+  font-family: var(--arabic-font)
+}
+.read-more-link{
+  color: var(--main-color);
+}

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" data-aos="fade-up" data-aos-duration="1000">
   <div class="row my-4">
-    <div class="col-md-7 my-sm-3 my-md-0">
+    <div class="col-md-7 my-sm-3 my-md-0" data-aos="fade-left" data-aos-duration="1000">
       <div class="image-gallery">
         <span class="discount-ratio">{{ DoctorOffer.discount }}%</span>
         <img [src]="selectedImage" alt="Main Image" class="main-image" />
@@ -28,7 +28,7 @@
         <h6 class="terms-text">{{ DoctorOffer.info_about_offer }}</h6>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" data-aos="fade-right" data-aos-duration="1000">
       <div class="offer-data">
         <h2 class="offer-title">{{ DoctorOffer.title }}</h2>
         <h6 class="offer-title-price">سعر {{ DoctorOffer.title }}</h6>

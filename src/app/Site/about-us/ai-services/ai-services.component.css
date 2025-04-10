@@ -1,0 +1,25 @@
+.card-ai-services {
+  background-color: #fbfbfb;
+  padding: 15px;
+}
+
+.card-ai-services h2 {
+  font-size: 32px;
+  font-weight: 800;
+  padding: 12px 0px;
+  color: var(--main-color);
+  font-family: var(--arabic-font);
+  direction: rtl;
+}
+
+.card-ai-services p {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--second-color);
+  font-family: var(--arabic-font)
+}
+
+.card-ai-services p a {
+  font-weight: 700;
+  color: var(--main-color);
+}

@@ -1,0 +1,46 @@
+.card-team {
+  background-color: #fbfbfb;
+  padding: 15px;
+}
+
+.card-team h2 {
+  font-size: 32px;
+  font-weight: 800;
+  padding: 12px 0px;
+  color: var(--main-color);
+  font-family: var(--arabic-font)
+}
+
+.card-team p {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--second-color);
+  font-family: var(--arabic-font)
+}
+
+.member {
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.member img {
+  width: 100%;
+  height: 320px;
+  border-radius: 10px;
+}
+
+.card-team .member h3 {
+  padding-top: 5px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--main-color);
+  font-family: var(--arabic-font);
+}
+
+.card-team .member p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--second-color);
+  font-family: var(--arabic-font);
+}

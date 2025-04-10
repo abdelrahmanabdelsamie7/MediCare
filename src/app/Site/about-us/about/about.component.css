@@ -1,0 +1,13 @@
+.container .col-md-3 .nav {
+  border-radius: 15px;
+  background-color: #fbfbfb;
+}
+.container .col-md-3 .nav a{
+  color: var(--second-color);
+  font-size: 20px;
+  font-weight: 600;
+}
+.container .col-md-3 .nav .active {
+  background-color: var(--main-color);
+  color: #ffff !important;
+}

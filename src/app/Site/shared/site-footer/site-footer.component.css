@@ -1,3 +1,71 @@
 p {
   direction: rtl;
 }
+li a {
+  font-size: 1.2rem;
+}
+footer h5{
+  font-size: 22px;
+  font-weight: bold;
+}
+footer .container .row p {
+  font-size: 18px;
+  font-weight: 450;
+  color: var(--third-color);
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+ul li a {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 450;
+  color: var(--third-color);
+  padding: 7px 0px !important;
+  transition: all 0.3s ease-in-out;
+  direction: rtl !important;
+}
+ul li a:hover{
+  color: var(--main-color);
+  text-decoration: none;
+}
+ul li a span{
+  color: var(--main-color);
+  font-weight: bold;
+}
+.social-icons{
+  margin-top: 10px;
+}
+.social-icons a i{
+  padding: 8px;
+  font-size: 28px;
+  scale: .9;
+  transition: all .5s ease-in-out;
+}
+
+.social-icons a i.fa-facebook{
+  color: #1877F2;
+}
+.social-icons a i.fa-whatsapp{
+  color: #25D366;
+}
+.social-icons a i.fa-x-twitter{
+  color: #000000 ;
+}
+.social-icons a i:hover{
+  scale: 1.2;
+}
+@media screen and (max-width: 576px) {
+  .col-xl-3{
+    width: 50%;
+  }
+  footer .container .row p , ul li a {
+    font-size: 16px;
+  }
+  footer h5{
+    font-size: 18px;
+  }
+  .social-icons a i{
+    padding: 5px;
+    font-size: 20px;
+  }
+}

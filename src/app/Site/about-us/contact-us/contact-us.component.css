@@ -1,0 +1,38 @@
+
+.container{
+  background-color: #fbfbfb;
+  padding: 20px;
+}
+.section-header h3 {
+  font-size: 32px;
+  font-weight: 800;
+  padding: 12px 0px;
+  color: var(--main-color);
+  font-family: var(--arabic-font);
+  direction: rtl;
+}
+.section-header p {
+  color: var(--second-color);
+  font-size: 16px;
+  font-weight: 400;
+}
+.form-group label {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--third-color);
+}
+.form-group label span{
+  color: red;
+}
+.btn {
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 550;
+  transition: all .5s;
+}
+.btn:hover {
+  background-color: #fff;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
