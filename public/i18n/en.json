@@ -66,11 +66,19 @@
   "footer": {
     "medicareApp": "The Best Medical Care App",
     "information": "Information",
-    "whoAre": "Who We Are",
-    "ourService": "Our Services",
-    "contactMed": "Contact Us",
-    "contactUs": "Get in Touch",
-    "copyright": "All rights reserved © 2025 MediCare"
+    "whoAre": "About Us",
+    "NeedHelp?":"?Need help",
+    "search":"Search For",
+      "medicalDepartments": "Medical Departments",
+      "Pharmacies": "Pharmacies",
+      "laboratories": "Laboratories",
+      "deliveryServices": "Delivery Services",
+      "OurSupervisor": "Our Supervisor",
+      "team": "Team Medicare",
+      "OurAIServices": "Our AI Services",
+      "OurBlog": "Our Blog",
+    "contactUs": "Contact Us",
+    "copyright": "All rights reserved © 2025 "
   },
   "ai": {
     "quesAi": "Got a medical question",

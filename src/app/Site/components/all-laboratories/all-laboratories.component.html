@@ -1,5 +1,5 @@
 <div class="container mt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-  <form (ngSubmit)="handleSubmit($event)" class="card p-3">
+  <form (ngSubmit)="handleSubmit($event)" class="card  bg-dark-el border border-info border-1 p-3">
     <div class="d-flex align-items-center mb-2 gap-3">
       <div class="dropdown">
         <button class="btn btn-info text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -27,15 +27,15 @@
     </div>
     <div class="row align-items-center gap-3">
       <div class="col-auto">
-        <label class="form-label">{{"laboratories.city" |translate }}</label>
+        <label class="form-label dark-text">{{"laboratories.city" |translate }}</label>
         <input type="text" class="form-control" name="city" (input)="handleCityChange($event)" />
       </div>
       <div class="col-auto">
-        <label class="form-label">{{"laboratories.area"|translate }}</label>
+        <label class="form-label dark-text">{{"laboratories.area"|translate }}</label>
         <input type="text" class="form-control" name="area" (input)="handleAreaChange($event)" />
       </div>
       <div class="col-auto">
-        <label class="form-label"> {{"laboratories.insurance"| translate}}</label>
+        <label class="form-label dark-text"> {{"laboratories.insurance"| translate}}</label>
         <select class="form-select" (change)="handleInsurenceChange($event)" name="insurence">
           <option value="all"> {{"laboratories.all"| translate}}</option>
           <option value="1"> {{"laboratories.available"| translate}}</option>
@@ -43,7 +43,7 @@
         </select>
       </div>
       <div class="col-auto">
-        <label class="form-label">{{"laboratories.rating"|translate }}</label>
+        <label class="form-label dark-text">{{"laboratories.rating"|translate }}</label>
         <input type="number" min="0" max="5" class="form-control" name="minRate"
           (change)="handleMinRateChange($event)" />
       </div>
@@ -63,7 +63,7 @@
     <div class="row" dir="rtl">
       @for (item of Laboratories; track $index) {
       <div class="col-md-6 col-lg-4 my-2" data-aos="fade-up" data-aos-duration="1000">
-        <div class="card-top text-center shadow-lg border-0 overflow-hidden">
+        <div class="card-top text-center bg-dark-el shadow-lg border-0 overflow-hidden">
           <!-- الجزء العلوي -->
           <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
             <i class="fas fa-flask fa-3x"></i>
@@ -72,7 +72,7 @@
           </div>
 
           <!-- الصورة -->
-          <div class="position-relative p-3 text-center">
+          <div class="position-relative bg-dark-el p-3 text-center">
             <img [src]="item.image ? item.image : './images/laboratory.gif'"
               class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px;" alt="Laboratory Image" />

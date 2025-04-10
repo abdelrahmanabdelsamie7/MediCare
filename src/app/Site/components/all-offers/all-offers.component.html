@@ -11,7 +11,7 @@
   <div class="row" dir="rtl">
     @for (item of OffersOfGroup; track $index) {
     <div class="col-md-6 col-lg-4 my-2" data-aos="fade-up" data-aos-duration="1000">
-      <div class="card-top text-center shadow-lg border-0 overflow-hidden">
+      <div class="card-top bg-dark-el text-center shadow-lg border-0 overflow-hidden">
         <!-- الجزء العلوي -->
         <div class="card-header bg-info text-white py-4 position-relative" style="border-bottom-left-radius: 50px">
           <img src="./images/gift.png" width="50px" height="50px" class="img-fluid" />
@@ -30,7 +30,7 @@
         <!-- التفاصيل -->
         <div class="card-body px-4">
           <div class="d-flex justify-content-between align-content-center">
-            <span class="del-price">{{
+            <span class="del-price dark-text">{{
               item.price_before_discount | currency : "EGP"
               }}</span>
             <span class="discount-price">{{

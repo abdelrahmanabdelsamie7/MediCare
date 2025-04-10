@@ -1,6 +1,6 @@
 <section id="departments">
   <div class="container text-center" data-aos="fade-up" data-aos-duration="1000">
-    <h3 class="head-title">{{"departments.medicalDepartments"| translate}}</h3>
+    <h3 class="head-title dark-text">{{"departments.medicalDepartments"| translate}}</h3>
   </div>
 
   <div class="container mt-4" data-aos="fade-up" data-aos-duration="1000">
@@ -11,7 +11,7 @@
           <div class="relative mx-auto " routerLink="/details/department/{{ department.id }}">
             <img [src]="department.icon" class=" d-block mx-auto rounded-border" />
           </div>
-          <h5 class="title">{{ department.title }}</h5>
+          <h5 class="title dark-text">{{ department.title }}</h5>
         </div>
       </ng-template>
     </p-carousel>

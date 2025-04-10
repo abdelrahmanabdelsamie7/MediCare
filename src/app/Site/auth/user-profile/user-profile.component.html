@@ -4,12 +4,12 @@
   <section class="profile-section">
     <div class="row justify-content-center" style="direction: rtl;">
       <div class="col-lg-8 col-md-10">
-        <div class="card border-0 shadow-lg modern-card">
+        <div class="card bg-dark-el border-0 shadow-lg modern-card">
           <!-- Profile Header -->
-          <div class="card-header bg-info text-white text-center py-4 rounded-top">
+          <div class="card-header  bg-info text-white text-center py-4 rounded-top">
             <h3 class="mb-0 fw-bold">الملف الشخصي</h3>
           </div>
-          <div class="card-body p-4">
+          <div class="card-body  bg-dark-el p-4">
             <!-- Tabs -->
             <ul class="nav nav-pills justify-content-center mb-4 gap-2" role="tablist">
               <li class="nav-item">
@@ -36,28 +36,28 @@
                   @if (isOAuthUser && userData.avatar) {
                   <img [src]="userData.avatar" alt="صورة المستخدم" class="rounded-circle shadow-sm avatar-img">
                   }
-                  <h4 class="mt-3 fw-semibold">{{ userData.name }}</h4>
+                  <h4 class="mt-3 fw-semibold dark-text">{{ userData.name }}</h4>
                 </div>
-                <div class="profile-details">
+                <div class="profile-details bg-dark-el">
                   <div class="detail-item">
                     <span class="label">رقم المحمول:</span>
-                    <span class="value">{{ userData.phone || 'غير متوفر' }}</span>
+                    <span class="value dark-text">{{ userData.phone || 'غير متوفر' }}</span>
                   </div>
                   <div class="detail-item">
                     <span class="label">العنوان:</span>
-                    <span class="value">{{ userData.address || 'غير متوفر' }}</span>
+                    <span class="value dark-text">{{ userData.address || 'غير متوفر' }}</span>
                   </div>
                   <div class="detail-item">
                     <span class="label">تاريخ الميلاد:</span>
-                    <span class="value">{{ userData.birth_date || 'غير متوفر' }}</span>
+                    <span class="value dark-text">{{ userData.birth_date || 'غير متوفر' }}</span>
                   </div>
                   <div class="detail-item">
                     <span class="label">الإيميل:</span>
-                    <span class="value">{{ userData.email }}</span>
+                    <span class="value dark-text">{{ userData.email }}</span>
                   </div>
                   <div class="detail-item">
                     <span class="label">تاريخ التسجيل:</span>
-                    <span class="value">{{ userData.created_at | date:'medium' }}</span>
+                    <span class="value dark-text">{{ userData.created_at | date:'medium' }}</span>
                   </div>
                   <div class="detail-item">
                     <span class="label">النقاط:</span>

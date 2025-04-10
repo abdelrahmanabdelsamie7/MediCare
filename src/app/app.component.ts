@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoaderComponent } from './Site/shared/loader/loader.component';;
+import { LoaderComponent } from './Site/shared/loader/loader.component';import { DarkModeToggleComponent } from './dark-mode-toggle/dark-mode-toggle.component';
+;
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoaderComponent],
+  imports: [RouterOutlet, LoaderComponent ,DarkModeToggleComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

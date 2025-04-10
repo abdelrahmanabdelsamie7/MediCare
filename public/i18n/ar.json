@@ -55,10 +55,18 @@
     "medicareApp": "تطبيق الرعاية الطبية الأفضل",
     "information": "معلومات",
     "whoAre": "من نحن",
-    "ourService": "خدماتنا",
-    "contactMed": "اتصل بنا",
+    "NeedHelp?":"تحتاج للمساعدة ؟",
+    "search":"ابحث عن",
+     "medicalDepartments": "الأقسام الطبية",
+     "Pharmacies": "الصيدليات",
+     "laboratories": "المعامل",
+     "deliveryServices": "خدمات التوصيل",
+     "OurSupervisor":"مُشرفنا",
+     "team":"فريق Medicare",
+     "OurAIServices":"خدماتنا لذكاء الاصطناعي",
+   "OurBlog":"مدونتنا",
     "contactUs": "تواصل معنا",
-    "copyright": "جميع الحقوق محفوظة © 2025 MediCare"
+    "copyright": "جميع الحقوق محفوظة © 2025 "
   },
   "ai": {
     "quesAi": "لديك سؤال طبي؟",

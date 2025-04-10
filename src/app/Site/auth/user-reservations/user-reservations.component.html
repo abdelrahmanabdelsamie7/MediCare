@@ -13,15 +13,15 @@
 
         <div class="col-md-8">
           <div class="card-body px-md-5">
-            <h5 class="card-title mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
+            <h5 class="card-title black-text mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
               {{reservation.doctor.lName}}</h5>
-            <p class="card-text mb-2"><strong>العيادة:</strong> {{reservation.clinic.title}} -
+            <p class="card-text mb-2 black-text"><strong>العيادة:</strong> {{reservation.clinic.title}} -
               {{reservation.clinic.address}}</p>
-            <p class="card-text mb-2"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day) }},
+            <p class="card-text mb-2 black-text"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day) }},
               <strong>من الساعة</strong> {{reservation.appointment.start_at | timeFormat}} <strong>إلى</strong>
               {{reservation.appointment.end_at | timeFormat}}
             </p>
-            <p class="card-text mb-2"><strong>السعر:</strong>
+            <p class="card-text mb-2 black-text"><strong>السعر:</strong>
               @if(reservation.final_price > 0){
               {{reservation.final_price| currency:'EGP'}}
               <span class="text-muted ps-2" style="text-decoration:line-through">
@@ -30,7 +30,7 @@
               {{reservation.doctor.app_price | currency:'EGP'}}
               }
             </p>
-            <p class="card-text mb-2"><strong>الحالة:</strong>
+            <p class="card-text mb-2 black-text"><strong>الحالة:</strong>
               <span [ngClass]="{
             'badge bg-warning': reservation.status !== 'confirmed',
             'badge bg-success': reservation.status === 'confirmed'

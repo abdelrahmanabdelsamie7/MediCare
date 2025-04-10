@@ -13,17 +13,17 @@
     <div class="col-lg-8 col-md-12">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card border border-0 shadow p-4">
+          <div class="card bg-dark-el border border-0 shadow p-4">
             <div class="d-flex align-items-center mb-4 doctor-info">
               <img [src]="Doctor.image" alt="Doctor Image" class="rounded-circle img-thumbnail"
                 style="width: 130px; height: 130px; object-fit: cover;">
               <div class="mx-2">
-                <h5 class="fw-bold mb-0">
+                <h5 class="fw-bold mb-0 dark-text">
                   {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }}
                   {{ Doctor.fName }} {{ Doctor.lName }}
                 </h5>
-                <p class="mb-1 mt-3 fs-6 fw-bold">{{ Doctor.title }}</p>
-                <p class="my-2 fs-5">
+                <p class="mb-1 mt-3 fs-6 fw-bold dark-text">{{ Doctor.title }}</p>
+                <p class="my-2 fs-5 dark-text">
                   {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }} متخصص في
                   @for (item of Doctor.specializations; track $index) {
                   <a href="" class="text-info fw-bold"> <span style="text-decoration: underline ; padding-left: .1em">
@@ -49,18 +49,18 @@
           </div>
         </div>
         <div class="col-lg-12">
-          <div class="card border border-0 shadow p-4">
-            <h5><i class="fa-solid fa-circle-info text-light bg-info p-2 rounded-5"></i> معلومات عن
+          <div class="card border bg-dark-el border-0 shadow p-4">
+            <h5 class="dark-text"><i class="fa-solid fa-circle-info text-light bg-info p-2 rounded-5"></i> معلومات عن
               {{ Doctor.gender == 'male' ? 'الدكتور' : 'الدكتورة' }}
             </h5>
-            <p class="my-2 px-4">
+            <p class="my-2 px-4 dark-text">
               {{ Doctor.infoAboutDoctor }}
             </p>
           </div>
         </div>
         <div class="col-lg-12">
-          <div class="card border border-0 shadow p-4">
-            <h5><i class="fa-regular fa-image text-light bg-info p-2 rounded-5"></i> العيادة :</h5>
+          <div class="card border bg-dark-el border-0 shadow p-4">
+            <h5 class="dark-text"><i class="fa-regular fa-image text-light bg-info p-2 rounded-5"></i> العيادة :</h5>
             <div class="image-gallery">
               <div class="thumbnail-container">
                 @for (clinic of Doctor.clinics; track $index) {
@@ -75,14 +75,14 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-12">
-      <div class="card border border-0 shadow text-center">
-        <h2 class="appointmentHead">معلومات الحجز</h2>
-        <p class="text-muted mb-0">احجـــز</p>
-        <h5 class="text-secondary">كشف طبي</h5>
+      <div class="card border bg-dark-el border-0 shadow text-center">
+        <h2 class="appointmentHead dark-text">معلومات الحجز</h2>
+        <p class="text-muted mb-0 dark-text">احجـــز</p>
+        <h5 class="text-secondary dark-text">كشف طبي</h5>
         <hr>
         <div class="d-flex justify-content-between mt-2 px-5 appPrice">
-          <h5><i class="fa-solid fa-money-bill text-info fs-4"></i> <br> الكشف : {{ Doctor.app_price }}</h5>
-          <h5>
+          <h5 class="dark-text"><i class="fa-solid fa-money-bill text-info fs-4"></i> <br> الكشف : {{ Doctor.app_price }}</h5>
+          <h5 class="dark-text">
             @if(Doctor.homeOption ===1){
             <i class="fa-solid fa-house-user text-info fs-4"></i> <br> يدعم الزيارة المنزلية
             }@else {
@@ -92,7 +92,7 @@
         </div>
         <hr>
         @for (item of Doctor.clinics; track $index) {
-        <h5 class="location">
+        <h5 class="location dark-text">
           <button (click)="showInMap(item.locationUrl)"><i
               class="fa-solid fa-location-dot btn fs-6 text-info"></i></button>
           {{ item.title }} ({{ item.address }})
@@ -100,7 +100,7 @@
         }
         <hr>
         <div class="container">
-          <h5 class="text-center fw-bold">اخـتــــــــار ميعاد الــحــجــز</h5>
+          <h5 class="text-center fw-bold dark-text">اخـتــــــــار ميعاد الــحــجــز</h5>
         </div>
         <hr>
         <!-- Start Appointments -->
@@ -112,8 +112,8 @@
                 <h5 class="appointment-day">
                   {{ getFormattedDate(date.date) }}
                 </h5>
-                <div *ngFor="let item of date.appointments">
-                  <button class="appointment-time btn" title="احجز {{ item.start_at | timeFormat}}"
+                <div class="bg-dark-el" *ngFor="let item of date.appointments">
+                  <button class="appointment-time btn dark-text" title="احجز {{ item.start_at | timeFormat}}"
                     [ngClass]="item.is_booked ? 'in-valid-appointment' : 'valid-appointment'" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" (click)="openModal(item)" [disabled]="item.is_booked">
                     {{ item.start_at
@@ -125,7 +125,7 @@
               </div>
             </div>
             }@empty {
-            <span class="text-muted text-center">لا يوجد مواعيد متاحه </span>
+            <span class="text-muted text-center dark-text">لا يوجد مواعيد متاحه </span>
             }
 
           </div>
@@ -140,19 +140,19 @@
         </div>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">احجز الآن مع د. {{ Doctor.fName }} {{ Doctor.lName }}
+          <div class="modal-dialog ">
+            <div class="modal-content  bg-dark-el">
+              <div class="modal-header bg-dark-el">
+                <h5 class="modal-title " id="exampleModalLabel">احجز الآن مع د. {{ Doctor.fName }} {{ Doctor.lName }}
                 </h5>
               </div>
               <div class="modal-body">
-                <h5 class="title">معلومات الحجز : </h5>
+                <h5 class="title dark-text ">معلومات الحجز : </h5>
                 @if (isAuth) {
                 <div class="info-user">
-                  <h6>اسم المستخدم : {{ userData.name }} </h6>
-                  <h6>رقم محمول :{{ userData.phone }} </h6>
-                  <h6> العنوان : {{ userData.address }}</h6>
+                  <h6 class="dark-text">اسم المستخدم : {{ userData.name }} </h6>
+                  <h6 class="dark-text">رقم محمول :{{ userData.phone }} </h6>
+                  <h6 class="dark-text"> العنوان : {{ userData.address }}</h6>
                 </div>
                 }@else {
                 <div class="alert alert-warning text-center">
@@ -161,11 +161,11 @@
                 </div>
                 }
                 <div class="info-appointment">
-                  <h6> يبدأ الكشف في ميعاد : {{ appointmentReserveInfo.start_at | timeFormat}}</h6>
+                  <h6 class="dark-text"> يبدأ الكشف في ميعاد : {{ appointmentReserveInfo.start_at | timeFormat}}</h6>
                   <h6>
                     @for (item of Doctor.clinics; track $index) {
                     @if (item.id === appointmentReserveInfo.clinic_id) {
-                    <h6 (click)="showInMap(item.locationUrl)" class="clinicLocation"> العيادة : {{ item.title }}
+                    <h6 (click)="showInMap(item.locationUrl)" class="clinicLocation dark-text"> العيادة : {{ item.title }}
                       <i class="fa-solid fa-location-dot text-info"></i>
                     </h6>
                     }
@@ -184,11 +184,11 @@
         </div>
         <hr>
         <!-- End Appointments -->
-        <h5 class="appLater">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
+        <h5 class="appLater dark-text">الحجز مسبقا و الدخول بأسبقية الحضور</h5>
         <hr>
         <div class="reserve-section">
           <h2><i class="bi bi-pencil-square"></i></h2>
-          <h5 class="reserveOnline">احجز أونلاين، ادفع في العيادة!<br> الدكتور يشترط الحجز المسبق!</h5>
+          <h5 class="reserveOnline dark-text">احجز أونلاين، ادفع في العيادة!<br> الدكتور يشترط الحجز المسبق!</h5>
         </div>
       </div>
     </div>

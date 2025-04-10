@@ -11,13 +11,13 @@
   <div class="row py-2">
     @for (item of deliveryServices; track $index) {
     <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1000">
-      <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="card border-0 bg-dark-el shadow-lg rounded-4 overflow-hidden">
         <div class="card-header bg-info text-white text-center py-4" style="border-bottom-right-radius: 50px;">
           <i class="fa-solid fa-truck-fast fa-3x car-icon"></i>
           <h5 class="fw-bold mt-2" style="direction:rtl">{{ item.name }}</h5>
         </div>
-        <div class="card-body px-4 text-center">
-          <p class="card-text pt-2">
+        <div class="card-body bg-dark-el px-4 text-center">
+          <p class="card-text pt-2 dark-text">
             {{ item.description }}<i class="fa-solid fa-info-circle text-info"></i>
           </p>
           <a [href]="item.app_link" class="btn btn-outline-info fw-bold w-100 rounded-pill shadow-sm mt-3"

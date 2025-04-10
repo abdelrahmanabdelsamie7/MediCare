@@ -1,9 +1,9 @@
 <div class="container">
   <div class="blogs-container mt-4">
-    <h2 class="my-4 text-secondary fw-bold" data-aos="fade-left" data-aos-duration="500">{{ 'adviceSec.blog' |
+    <h2 class="my-4 text-secondary dark-text fw-bold" data-aos="fade-left" data-aos-duration="500">{{ 'adviceSec.blog' |
       translate }} <span class="fw-bolder text-info">MediCare</span></h2>
     @for (item of DoctorBlogs; track $index) {
-    <div class="blog-card p-4 my-3 border border-0 rounded" data-aos="fade-up" data-aos-duration="500">
+    <div class="blog-card bg-dark-el p-4 my-3 border border-0 rounded" data-aos="fade-up" data-aos-duration="500">
       <div class="d-flex align-items-center mb-4">
         <a routerLink="/details/doctor/{{ item.doctor.id }}">
           <img [src]="item.doctor.image" alt="Doctor Image" class="rounded-circle"
@@ -11,11 +11,11 @@
         </a>
         <div class="mx-2">
           <h5 class="fw-bold mb-0"> د . {{ item.doctor.fName }} {{ item.doctor.lName }}</h5>
-          <p class="mb-0 text-muted">{{ item.doctor.title }}</p>
+          <p class="mb-0 text-muted dark-text">{{ item.doctor.title }}</p>
         </div>
       </div>
       <h4 class="fw-bold mb-2 text-info">{{ item.title }}</h4>
-      <p class="fs-5" style="color: var(--third-color);">{{ item.content }}</p>
+      <p class="fs-5 dark-text" style="color: var(--third-color);">{{ item.content }}</p>
       <p class="text-muted mb-1 text-start">{{ item.created_at | date:'d MMMM YYYY' }}</p>
     </div>
     }@empty {

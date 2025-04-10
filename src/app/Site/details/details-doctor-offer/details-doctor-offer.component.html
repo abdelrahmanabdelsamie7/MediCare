@@ -19,19 +19,19 @@
                 'دكتور' : 'دكتورة' }} {{
                 Doctor.fName }} {{ Doctor.lName }}</a>
             </h5>
-            <h5 class="doctor-title">{{ Doctor.title }}</h5>
+            <h5 class="doctor-title dark-text">{{ Doctor.title }}</h5>
           </div>
         </div>
       </div>
       <div class="offer-info" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         <h3 class="offer-info-title">{{"docOffer.offerInfo"|translate}} </h3>
-        <h6 class="terms-text">{{ DoctorOffer.info_about_offer }}</h6>
+        <h6 class="terms-text dark-text">{{ DoctorOffer.info_about_offer }}</h6>
       </div>
     </div>
     <div class="col-md-5" data-aos="fade-right" data-aos-duration="1000">
       <div class="offer-data">
-        <h2 class="offer-title">{{ DoctorOffer.title }}</h2>
-        <h6 class="offer-title-price">سعر {{ DoctorOffer.title }}</h6>
+        <h2 class="offer-title dark-text">{{ DoctorOffer.title }}</h2>
+        <h6 class="offer-title-price ">سعر {{ DoctorOffer.title }}</h6>
         <div class="d-flex justify-content-around">
           <h5 class="price-before-dis">{{ DoctorOffer.price_before_discount | currency:'EGP' }}</h5>
           <h5 class="price-after-dis">{{ DoctorOffer.price_before_discount | discount: DoctorOffer.discount | currency:
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="offer-time">
-        <h5>
+        <h5 class="dark-text">
           <i class="fa-regular fa-clock"></i>
           من يوم <span>{{ getFormattedDate(DoctorOffer.from_day) }}</span> إلي يوم
           <span>{{
@@ -52,11 +52,11 @@
         <div class="carousel-inner">
           <div *ngFor="let date of appointmentDates; let i = index" class="carousel-item" [class.active]="i === 0">
             <div class="appointment-item mx-auto">
-              <h5 class="appointment-day">
+              <h5 class="appointment-day dark-text">
                 {{ getFormattedDate(date.date) }}
               </h5>
               <div *ngFor="let item of date.appointments">
-                <button class="appointment-time btn" title="احجز {{ item.start_at | timeFormat}}"
+                <button class="appointment-time btn dark-text" title="احجز {{ item.start_at | timeFormat}}"
                   [ngClass]="item.is_booked ? 'in-valid-appointment' : 'valid-appointment'" data-bs-toggle="modal"
                   data-bs-target="#exampleModal" [disabled]="item.is_booked">
                   {{ item.start_at
@@ -81,16 +81,16 @@
       <img src="./images/empty.png" alt="" class="img-fluid d-block mx-auto">
       }
       <div class="offer-details" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-        <h3 class="offer-details-title">{{"docOffer.details"|translate}} </h3>
-        <h6 class="terms-text">{{ DoctorOffer.details }}</h6>
+        <h3 class="offer-details-title dark-text">{{"docOffer.details"|translate}} </h3>
+        <h6 class="terms-text dark-text">{{ DoctorOffer.details }}</h6>
       </div>
       <div class="app-later">
-        <h5 class="appLater">{{"docOffer.Booking"|translate}}</h5>
+        <h5 class="appLater dark-text">{{"docOffer.Booking"|translate}}</h5>
       </div>
       <div class="offer-address" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-        <h2 class="offer-address-title">{{"docOffer.address"|translate}} </h2>
+        <h2 class="offer-address-title dark-text">{{"docOffer.address"|translate}} </h2>
         @for (item of DoctorClinics; track $index) {
-        <h5 class="location fs-6">
+        <h5 class="location fs-6 dark-text">
           <button (click)="showInMap(item.locationUrl)">
             <i class="fa-solid fa-location-dot btn text-info"></i></button>
           {{ item.title }} ({{ item.address }})

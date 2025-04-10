@@ -12,10 +12,15 @@
   --third-color: #6c757d;
   --second-color: #52515e;
   --main-color: #0dcaf0;
+  --background-color: #fff;
+  --text-color:#52515e;
   --arabic-font:"Cairo", sans-serif;
 }
 body {
   font-family: var(--arabic-font) !important;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: 0.3s ease-in-out;
 }
 .bi {
   font-size: 22px;
@@ -78,4 +83,34 @@ section {
   margin-top: 5px;
   color: var(--third-color);
   font-family: var(--arabic-font);
+}
+.dark-mode {
+  --background-color: #423f3f ;
+  --text-color: #fff;
+}
+
+body.dark-mode app-site-footer li a ,body.dark-mode app-site-footer p {
+
+  color: #fafafa !important;
+}
+body.dark-mode app-site-footer li a:hover{
+  color: var(--main-color) !important;
+}
+body.dark-mode .dark-text {
+  color: #fafafa !important;
+}
+body.dark-mode .head-title::before{
+  background-color:#fafafa ;
+}
+
+body.dark-mode .ai-feature-card {
+  background: #423f3f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .bg-dark-el{
+background-color: #423f3f !important;
+
+}
+body.dark-mode .black-text{
+  color:#423f3f !important;
 }

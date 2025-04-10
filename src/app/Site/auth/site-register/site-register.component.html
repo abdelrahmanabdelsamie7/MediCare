@@ -1,17 +1,17 @@
 <section class="pt-3">
   <div class="container">
-    <h3 class="text-center my-4 text-secondary fw-bolder" data-aos="fade-down" data-aos-duration="1000">
+    <h3 class="text-center my-4 text-secondary fw-bolder dark-text" data-aos="fade-down" data-aos-duration="1000">
       {{"register.welcome" |translate}}<span class="text-info fw-bolder"> MediCare</span></h3>
     <div class="row">
       <div class="col-md-8" data-aos="fade-left" data-aos-duration="1000">
-        <h4 class="text-secondary pb-1" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">
+        <h4 class="text-secondary pb-1 dark-text" [ngClass]="{'text-right': isRtl, 'text-left': !isRtl}">
           {{"register.register"|translate}} <span class="text-info">{{"register.now"|translate}}</span></h4>
         <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
           <div class="form-floating mb-3">
             <input [ngClass]="{
               'is-valid': !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty) ,
               'is-invalid': registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
-            }" type="text" class="form-control" id="floatingInput" placeholder="Name" formControlName="name">
+            }"  type="text" class="form-control" id="floatingInput" placeholder="Name" formControlName="name">
             @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched ||
             registerForm.get('name')?.dirty)) {
             <div class="alert alert-danger text-center rounded-4 w-50 mx-auto">

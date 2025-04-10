@@ -2,7 +2,7 @@
   <!-- AI Features Section -->
   <section class="ai-features-section py-5" [attr.dir]="direction">
     <div class="container" data-aos="fade-up" data-aos-duration="1000">
-      <h2 class="text-center mb-5 head-title">{{ 'ai-features.title' | translate }}</h2>
+      <h2 class="text-center mb-5 head-title dark-text">{{ 'ai-features.title' | translate }}</h2>
       <div class="row g-4">
 
         <!-- Feature Cards -->
@@ -13,11 +13,11 @@
               <div class="icon-overlay"><i class="{{ feature.icon }}"></i></div>
             </div>
             <div class="card-body text-center">
-              <h5 class="card-title">
+              <h5 class="card-title dark-text">
                 <i class="{{ feature.iconClass }} me-2"></i>
                 {{ feature.title | translate }}
               </h5>
-              <p class="card-text">
+              <p class="card-text dark-text">
                 {{ feature.description | translate }}
               </p>
               <a [routerLink]="feature.link" class="btn btn-info">

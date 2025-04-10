@@ -1,6 +1,6 @@
 <section id="DocOffers">
   <div class="container text-center" data-aos="fade-up" data-aos-duration="1000">
-    <h3 class="head-title">{{"docOffers.DoctorsOffers"|translate}}</h3>
+    <h3 class="head-title dark-text">{{"docOffers.DoctorsOffers"|translate}}</h3>
   </div>
   <div class="container my-4">
     @defer(when isBrowser) {
@@ -16,7 +16,7 @@
             <div class="relative mx-auto">
               <img [src]="docOffer.image" class="w-100 rounded-border" lazy="loading" />
             </div>
-            <h5 class="title">{{ docOffer.title }}</h5>
+            <h5 class="title dark-text">{{ docOffer.title }}</h5>
           </div>
         </a>
       </ng-template>

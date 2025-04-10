@@ -39,27 +39,27 @@
       } @else {
       @for (item of Doctors; track $index) {
       <div class="col-md-6 col-lg-4">
-        <div class="card text-center shadow-lg border-0 overflow-hidden">
+        <div class="card text-center bg-dark-el shadow-lg border-0 overflow-hidden">
           <!-- الجزء العلوي -->
-          <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+          <div class="card-header  bg-info text-white py-4" style="border-bottom-left-radius: 50px">
             <i class="fas fa-user-md fa-3x"></i>
             <h4 class="fw-bold mt-2">{{ item.fName }} {{ item.lName }}</h4>
             <p class="mb-2">{{ item.title }}</p>
           </div>
 
           <!-- الصورة -->
-          <div class="position-relative p-3 text-center">
+          <div class="position-relative bg-dark-el p-3 text-center">
             <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Doctor Image" />
           </div>
 
           <!-- التفاصيل -->
-          <div class="card-body text-start px-4">
+          <div class="card-body bg-dark-el text-start px-4">
             <div class="d-flex justify-content-between align-content-center">
-              <p class="fw-bold">
+              <p class="fw-bold dark-text">
                 <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
               </p>
-              <p class="fw-bold">
+              <p class="fw-bold dark-text">
                 <i class="fa-solid fa-money-bill text-info"></i>
                 {{ item.app_price }} EGP
               </p>
@@ -107,7 +107,7 @@
       } @else {
       @for (item of Hospitals; track $index) {
       <div class="col-md-6 col-lg-4">
-        <div class="card text-center shadow-lg border-0 overflow-hidden">
+        <div class="card text-center bg-dark-el shadow-lg border-0 overflow-hidden">
           <!-- الجزء العلوي -->
           <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
             <i class="fas fa-hospital fa-3x"></i>
@@ -116,7 +116,7 @@
           </div>
 
           <!-- الصورة -->
-          <div class="position-relative p-3 text-center">
+          <div class="position-relative bg-dark-el p-3 text-center">
             <img [src]="item.image ? item.image : './images/hospital.gif'"
               class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Hospital Image" />
@@ -125,15 +125,15 @@
           <!-- التفاصيل -->
           <div class="card-body text-start px-4">
             <div class="d-flex justify-content-between align-content-center">
-              <p class="fw-bold">
+              <p class="fw-bold dark-text">
                 <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
               </p>
-              <p class="fw-bold">
+              <p class="fw-bold dark-text">
                 <i class="fa-solid fa-money-bill text-info"></i>
                 {{ item.pivot.app_price }} EGP
               </p>
             </div>
-            <p class="fw-bold text-center">
+            <p class="fw-bold text-center dark-text">
               <i class="fa-regular fa-hospital text-info"></i>
               {{ item.address }}
             </p>
@@ -180,7 +180,7 @@
       } @else {
       @for (item of CareCenters; track $index) {
       <div class="col-md-6 col-lg-4">
-        <div class="card text-center shadow-lg border-0 overflow-hidden">
+        <div class="card text-center bg-dark-el shadow-lg border-0 overflow-hidden">
           <!-- الجزء العلوي -->
           <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
             <i class="fas fa-clinic-medical fa-3x"></i>
@@ -189,7 +189,7 @@
           </div>
 
           <!-- الصورة -->
-          <div class="position-relative p-3 text-center">
+          <div class="position-relative bg-dark-el p-3 text-center">
             <img [src]="item.image ? item.image : './images/carecenter.gif'"
               class="rounded-circle border border-4 border-light shadow"
               style="width: 100px; height: 100px; margin-top: -50px" alt="Center Image" />
@@ -198,15 +198,15 @@
           <!-- التفاصيل -->
           <div class="card-body text-start px-4">
             <div class="d-flex justify-content-between align-content-center">
-              <p class="fw-bold">
+              <p class="fw-bold dark-text">
                 <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
               </p>
-              <p class="fw-bold">
+              <p class="fw-bold dark-text">
                 <i class="fa-solid fa-money-bill text-info"></i>
                 {{ item.pivot.app_price }} EGP
               </p>
             </div>
-            <p class="fw-bold text-center">
+            <p class="fw-bold text-center dark-text">
               <i class="fa-solid fa-house-chimney-medical text-info"></i>
               {{ item.address }}
             </p>
@@ -252,10 +252,10 @@
     <div *ngFor="let item of Tips" class="row tip-item">
       <div class="col-lg-5 d-flex">
         <i class="bi bi-question-circle"></i>
-        <h4>{{ item.question }}</h4>
+        <h4 class="dark-text">{{ item.question }}</h4>
       </div>
       <div class="col-lg-7">
-        <p>{{ item.answer }}</p>
+        <p class="dark-text">{{ item.answer }}</p>
       </div>
     </div>
   </div>

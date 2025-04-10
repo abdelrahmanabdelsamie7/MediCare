@@ -11,9 +11,9 @@
   } @else {
   <div class="row my-2" data-aos="fade-up" data-aos-duration="1000">
     <div class="col-md-4 order-2 order-md-1">
-      <div class="card card-info border border-0 shadow">
+      <div class="card bg-dark-el card-info border border-0 shadow">
         <div class="card-header bg-info py-3 d-flex justify-content-start align-items-center">
-          <h3>
+          <h3 class="dark-text">
             <i class="fa-solid fa-location-pin"></i>
             {{ Laboratory.area }} - {{ Laboratory.city }}
           </h3>
@@ -22,36 +22,36 @@
           (click)="showInMap(Laboratory.locationUrl)">خريطة الوصول
           <i class="fa-solid fa-map-location-dot"></i></button>
         <div class="more-info">
-          <p class="Laboratory-phone">
+          <p class="Laboratory-phone dark-text">
             <a href="tel:{{ Laboratory.phone }}"><i class="fa-solid fa-phone-flip text-info"></i></a>
             {{ Laboratory.phone }}
           </p>
-          <p class="Laboratory-whatsapp">
+          <p class="Laboratory-whatsapp dark-text">
             <a href="{{ Laboratory.whatsappLink }}"><i class="fa-brands fa-whatsapp text-success"></i>
 
             </a>
             الواتساب لتواصل
           </p>
-          <p class="Laboratory-whatsapp">
+          <p class="Laboratory-whatsapp dark-text">
             تمت الإضافة بتاريخ : {{ Laboratory.created_at | date:'yyyy-MM-dd'}}
           </p>
         </div>
       </div>
     </div>
     <div class="col-md-8 order-1 order-md-2">
-      <div class="card Laboratory-card shadow-lg border-0">
+      <div class="card bg-dark-el Laboratory-card shadow-lg border-0">
         <div class="Laboratory-image">
           <img [src]="Laboratory.image ? Laboratory.image : './images/laboratory.gif'"
             class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
             alt="Laboratory Image">
         </div>
         <div class="card-body">
-          <h3 class="text-center fw-bold">{{ Laboratory.title }}</h3>
-          <p class="Laboratory-service"> <span class="fw-bold">
+          <h3 class="text-center fw-bold dark-text">{{ Laboratory.title }}</h3>
+          <p class="Laboratory-service dark-text"> <span class="fw-bold">
               يوجد في المعمل
             </span> : {{ Laboratory.service }}</p>
-          <p class="Laboratory-date">
-            <span class="fw-bold">مواعيد العمل : </span>
+          <p class="Laboratory-date dark-text">
+            <span class="fw-bold dark-text">مواعيد العمل : </span>
             <i class="fa-solid fa-clock text-info"></i>
             {{ Laboratory.start_at | timeFormat }} {{"details.to" | translate}}
             {{ Laboratory.end_at | timeFormat}}
@@ -78,9 +78,9 @@
   </div>
   <div class="row" data-aos="fade-up" data-aos-duration="1000">
     <div class="col-md-4 order-2 order-md-1">
-      <div class="card card-rating border border-0 shadow">
-        <div class="card-header bg-info py-2 d-flex justify-content-start align-items-center rating-container">
-          <p class="ratings m-0">{{"details.rating" | translate}} :</p>
+      <div class="card bg-dark-el card-rating border border-0 shadow">
+        <div class="card-header bg-info py-2 d-flex justify-content-start align-items-center rating-container" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <p class="ratings m-0" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}" >{{"details.rating" | translate}} :</p>
           <div class="stars ms-2">
             <ng-container *ngFor="let star of getStarArray()">
               <i class="fa-solid fa-star text-warning"></i>
@@ -90,8 +90,8 @@
 
         <!-- عرض التقييمات -->
         <div class="ratings-container p-3">
-          <h3 class="fw-bold">تقييمات {{ Laboratory.title }} </h3>
-          <div *ngFor="let rating of ratesOfLaboratory" class="rating-card p-2 shadow-sm rounded-3 my-2">
+          <h3 class="fw-bold dark-text">تقييمات {{ Laboratory.title }} </h3>
+          <div *ngFor="let rating of ratesOfLaboratory" class="rating-card p-2 bg-dark-el dark-text shadow-sm rounded-3 my-2">
             <div class="d-flex align-items-center justify-content-center mb-2">
               <i *ngFor="let star of [].constructor(rating.pivot.rating_value); let i = index"
                 class="fa-solid fa-star text-warning me-1"></i>
@@ -102,10 +102,10 @@
             </div>
             <p class="my-1"><strong>مراجعة :</strong> {{ rating.pivot.review }}</p>
 
-            <p class="text-muted small p-0 my-1" style="font-size: 12px;">
+            <p class="text-muted small dark-text p-0 my-1" style="font-size: 12px;">
               <i class="fa-solid fa-user"></i> {{ rating.name }}
             </p>
-            <p class="text-muted small my-1"><i class="fa-solid fa-clock"></i> {{ rating.pivot.created_at | date :
+            <p class="text-muted dark-text small my-1"><i class="fa-solid fa-clock"></i> {{ rating.pivot.created_at | date :
               "short" }}
             </p>
           </div>
@@ -113,9 +113,9 @@
       </div>
     </div>
     <div class="col-md-8 order-1 order-md-2">
-      <div class="card card-rating border border-0 shadow">
-        <div class="card-header text-info py-3 d-flex justify-content-start align-items-center">
-          <h3>
+      <div class="card bg-dark-el card-rating border border-0 shadow">
+        <div class="card-header bg-dark-el text-info py-3 d-flex justify-content-start align-items-center">
+          <h3 class="dark-text">
             قم بتقييم المعمل الآن :
           </h3>
         </div>
