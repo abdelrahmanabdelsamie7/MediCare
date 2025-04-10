@@ -115,3 +115,9 @@
 }
 
 
+@media screen and (max-width: 576px) {
+  .details-header h2{
+    font-size: 1.2rem !important;
+  }
+
+}

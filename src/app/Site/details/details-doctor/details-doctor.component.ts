@@ -55,7 +55,9 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.loadDoctorData();
-    this.getUserData();
+    if (localStorage.getItem('userToken')) {
+      this.getUserData();
+    }
   }
   getFormattedDate(date: string): string {
     const formattedDate = this.datePipe.transform(date, 'EEEE d MMM');
@@ -72,9 +74,6 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
       next: (data) => {
         this.userData = data;
         this.isAuth = true;
-      },
-      error: (err) => {
-        console.log(err);
       }
     });
   }
@@ -87,7 +86,6 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           this.isFetching.set(false);
           this.Doctor = data.data;
-          console.log(this.Doctor);
           this.DoctorClinics = this.Doctor.clinics;
           if (data.data.appointmentsGroupedByDate) {
             const today = new Date();
@@ -106,7 +104,7 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
                 appointments: data.data.appointmentsGroupedByDate[date],
               }));
           } else {
-            console.log('No appointments data available.');
+            console.warn('No appointments data available.');
           }
         },
         error: (err) => {
@@ -128,8 +126,6 @@ export class DetailsDoctorComponent implements OnInit, OnDestroy {
     };
     this._SReservationService.userReserveDoctor(reservationInfo).subscribe({
       next: (data) => {
-        console.log(data);
-
         this._MessageService.add({
           severity: 'success',
           summary: 'تم بنجاح',

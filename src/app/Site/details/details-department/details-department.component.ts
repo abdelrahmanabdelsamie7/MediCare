@@ -56,8 +56,6 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           this.isFetching.set(false);
           this.Department = data.data.department;
-          console.log(data);
-
           if (this.activeTab === 'doctors') {
             this.Doctors = data.data.doctors.data;
             this.currentDoctorPage = data.data.doctors.current_page;

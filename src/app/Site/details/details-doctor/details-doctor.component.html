@@ -18,15 +18,16 @@
               <img [src]="Doctor.image" alt="Doctor Image" class="rounded-circle img-thumbnail"
                 style="width: 130px; height: 130px; object-fit: cover;">
               <div class="mx-2">
-                <h5 class="fw-bold mb-0 dark-text">
+                <h5 class="fw-bold mb-0 dark-text name">
                   {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }}
                   {{ Doctor.fName }} {{ Doctor.lName }}
                 </h5>
-                <p class="mb-1 mt-3 fs-6 fw-bold dark-text">{{ Doctor.title }}</p>
-                <p class="my-2 fs-5 dark-text">
+                <p class="mb-1 mt-3 fs-6 fw-bold dark-text title">{{ Doctor.title }}</p>
+                <p class="my-2 fs-5 fs-sm-6 dark-text">
                   {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }} متخصص في
                   @for (item of Doctor.specializations; track $index) {
-                  <a href="" class="text-info fw-bold"> <span style="text-decoration: underline ; padding-left: .1em">
+                  <a href="" class="text-info  specialization"> <span
+                      style="text-decoration: underline ; padding-left: .1em">
                       {{item.title }}
                     </span> </a>
                   @if (!$last) { <span class="text-info fs-5">،</span> }
@@ -81,7 +82,8 @@
         <h5 class="text-secondary dark-text">كشف طبي</h5>
         <hr>
         <div class="d-flex justify-content-between mt-2 px-5 appPrice">
-          <h5 class="dark-text"><i class="fa-solid fa-money-bill text-info fs-4"></i> <br> الكشف : {{ Doctor.app_price }}</h5>
+          <h5 class="dark-text"><i class="fa-solid fa-money-bill text-info fs-4"></i> <br> الكشف : {{ Doctor.app_price
+            }}</h5>
           <h5 class="dark-text">
             @if(Doctor.homeOption ===1){
             <i class="fa-solid fa-house-user text-info fs-4"></i> <br> يدعم الزيارة المنزلية
@@ -165,7 +167,8 @@
                   <h6>
                     @for (item of Doctor.clinics; track $index) {
                     @if (item.id === appointmentReserveInfo.clinic_id) {
-                    <h6 (click)="showInMap(item.locationUrl)" class="clinicLocation dark-text"> العيادة : {{ item.title }}
+                    <h6 (click)="showInMap(item.locationUrl)" class="clinicLocation dark-text"> العيادة : {{ item.title
+                      }}
                       <i class="fa-solid fa-location-dot text-info"></i>
                     </h6>
                     }

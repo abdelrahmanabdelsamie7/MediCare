@@ -76,7 +76,7 @@ export class DetailsDoctorOfferComponent implements OnInit, OnDestroy {
                 appointments: data.data.appointmentsGroupedByDate[date],
               }));
           } else {
-            console.log('No appointments data available.');
+            console.warn('No appointments data available.');
           }
           this.offerGroup = this.DoctorOffer.offer_group;
           this.Doctor = this.DoctorOffer.doctor;

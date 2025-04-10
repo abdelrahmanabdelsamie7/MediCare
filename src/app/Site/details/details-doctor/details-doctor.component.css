@@ -2,10 +2,12 @@
   direction: rtl;
   padding-top: 10px;
 }
+
 .doctor-info img {
   border: 3px solid var(--main-color);
   border: 3px solid #ddd;
 }
+
 .card {
   background-color: #ffffff;
   border-radius: 10px;
@@ -13,12 +15,15 @@
   transition: box-shadow 0.3s ease;
   overflow: hidden;
 }
+
 .card:hover {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
+
 .card p {
   margin-bottom: 10px;
 }
+
 .appointmentHead {
   background-color: var(--main-color);
   color: #fff;
@@ -26,19 +31,23 @@
   border-radius: 12px;
   padding: 5px;
 }
+
 .appPrice h5 {
   font-size: 16px;
   color: var(--third-color);
 }
+
 .location {
   font-size: 14px;
   color: var(--second-color);
 }
+
 .location button {
   outline: none;
   border: none;
   background-color: transparent;
 }
+
 /* Start Appointment Item */
 .appointment-item {
   border-top: 5px solid var(--main-color);
@@ -51,19 +60,24 @@
   overflow-x: auto;
   white-space: nowrap;
 }
+
 .appointment-item::-webkit-scrollbar {
   height: 1px;
 }
+
 .appointment-item::-webkit-scrollbar-track {
   border-radius: 2px;
 }
+
 .appointment-item::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 }
+
 .appointment-item::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.44);
 }
+
 .appointment-item .appointment-day {
   position: relative;
   color: var(--main-color);
@@ -73,6 +87,7 @@
   width: fit-content;
   margin: 1px auto 7px auto;
 }
+
 .appointment-time {
   cursor: pointer;
   padding: 5px;
@@ -81,6 +96,7 @@
   width: fit-content;
   background-color: rgba(0, 0, 0, 0.03);
 }
+
 .appointment-item .appointment-day::before {
   content: "";
   position: absolute;
@@ -89,20 +105,24 @@
   top: 100%;
   background-color: var(--third-color);
 }
+
 .valid-appointment {
   color: var(--second-color);
   font-weight: 700;
 }
+
 .in-valid-appointment {
   text-decoration: line-through;
   color: var(--third-color);
   border: none;
 }
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: var(--main-color) !important;
   border-radius: 7px;
 }
+
 /* End Appointment Item */
 /* Start Modal Reservation */
 .modal-title {
@@ -110,24 +130,30 @@
   font-weight: bold;
   font-size: 22px;
 }
+
 .modal-body {
   text-align: start;
 }
+
 .modal-body .title {
   text-align: center;
   font-size: 22px;
   font-weight: 500;
   color: var(--second-color);
 }
+
 .modal-body .info-user,
 .info-appointment {
-  padding: 5px 25px 5px 25px; /* t r  b l */
+  padding: 5px 25px 5px 25px;
+  /* t r  b l */
   color: var(--second-color);
 }
+
 .modal-body .info-appointment .clinicLocation {
   color: var(--second-color);
   cursor: pointer;
 }
+
 .modal-footer {
   display: flex;
   justify-content: start;
@@ -139,6 +165,7 @@
   font-size: 14px;
   color: var(--third-color);
 }
+
 .reserve-section {
   display: flex;
   -webkit-box-pack: center;
@@ -147,11 +174,13 @@
   align-items: center;
   padding: 8px 0px 10px;
 }
+
 .reserve-section h2 i {
   font-size: 30px;
   margin-left: 14px;
   color: var(--main-color);
 }
+
 .reserve-section h5 {
   display: flex;
   flex-direction: column;
@@ -159,21 +188,48 @@
   font-size: 13px;
   color: rgb(102, 102, 102);
 }
+
 /* images Of Clinic */
 .image-gallery {
   text-align: center;
   position: relative;
 }
+
 .thumbnail-container {
   margin-top: 10px;
   display: flex;
   justify-content: start;
   gap: 10px;
 }
+
 .thumbnail {
   width: 150px;
   height: 120px;
   object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.specialization {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media screen and (max-width:576px) {
+  .doctor-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .specialization {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .title , .name{
+    padding-top: 5px;
+    font-size: 22px;
+    text-align: center;
+  }
 }

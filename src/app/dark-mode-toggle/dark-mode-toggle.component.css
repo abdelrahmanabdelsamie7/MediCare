@@ -6,7 +6,7 @@
   height: 50px;
   border-radius: 10px;
   border: none;
-  background: #222;
+  background: color-mix(in srgb, rgb(33, 33, 33) 40%, transparent 60%);
   color: #fff;
   font-size: 20px;
   cursor: pointer;
@@ -15,7 +15,7 @@
 }
 
 .btn-toggle:hover {
-  background-color: #222;
+  background-color: #4d4d4d;
 }
 .fas.fa-sun {
   color: #ffc107;

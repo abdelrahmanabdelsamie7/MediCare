@@ -41,3 +41,11 @@ img.rounded-circle {
 .text-info {
   color: #17a2b8;
 }
+@media screen and (max-width: 576px) {
+  .blogs-container h4 {
+  font-size: 1.2rem !important;
+}
+  .blog-card .content{
+    font-size: 16px !important;
+  }
+}

@@ -44,8 +44,6 @@ export class AllOffersComponent implements OnInit, OnDestroy {
           this.isFetching.set(false);
           this.OfferGroup = data.data;
           this.OffersOfGroup = this.OfferGroup.doctor_offers;
-          console.log('hamada', this.OffersOfGroup)
-          // this.imageOfOffer = this.OffersOfGroup.images[0];
         },
         error: (err) => {
           this.isFetching.set(false);

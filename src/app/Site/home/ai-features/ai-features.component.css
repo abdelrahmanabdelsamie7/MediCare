@@ -73,3 +73,8 @@
 [dir="rtl"] .card-body {
   text-align: center;
 }
+@media screen and (max-width: 576px) {
+  .head-title{
+    font-size: 1.5rem !important;
+  }
+}
