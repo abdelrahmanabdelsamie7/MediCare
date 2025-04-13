@@ -10,17 +10,17 @@
                 <!-- <span class="d-none d-lg-block">MediCare</span> -->
               </a>
             </div>
-            <div class="card mb-0">
+            <div class="card bg-dark-el mb-0">
               <div class="card-body">
                 <div class="p-0">
                   <h5 class="card-title text-center pb-0 fs-4 fw-bold">Welcome Back Admin</h5>
-                  <p class="text-center small">Enter your Email & password to login</p>
+                  <p class="text-center dark-text small">Enter your Email & password to login</p>
                   <img src="./images/U1.png" height="120px" class="img-fluid">
                 </div>
                 <form class="row gy-2 gx-3 needs-validation" [formGroup]="adminLoginForm"
                   (ngSubmit)="adminLogin(adminLoginForm)">
                   <div class="col-12">
-                    <label for="email" class="form-label">email</label>
+                    <label for="email" class="form-label dark-text">email</label>
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend"></span>
                       <input type="email" formControlName="email"
@@ -30,7 +30,7 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label dark-text">Password</label>
                     <input type="password" formControlName="password"
                       [ngClass]="{'is-invalid':(adminLoginForm.controls.password.touched && adminLoginForm.controls.password.errors) }"
                       name="password" class="form-control" id="password" required>

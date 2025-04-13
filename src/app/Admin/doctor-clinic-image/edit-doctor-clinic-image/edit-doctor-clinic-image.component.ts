@@ -14,6 +14,7 @@ import { Toast } from 'primeng/toast';
 import { CommonModule, Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-edit-doctor-clinic-image',
@@ -25,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class EditDoctorClinicImageComponent implements OnInit, OnDestroy {
   id: string = '';
+  isRtl: boolean = false;
   isLoading: boolean = false;
   DoctorClinicImage: IDoctorClinicImage = {} as IDoctorClinicImage;
   DoctorClinics: IDoctorClinic[] = [];
@@ -33,7 +35,8 @@ export class EditDoctorClinicImageComponent implements OnInit, OnDestroy {
     private _SDoctorClinicService: SDoctorClinicService,
     private messageService: MessageService,
     private _ActivatedRoute: ActivatedRoute,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   editDoctorClinicImageForm = new FormGroup({
     image: new FormControl('', [
@@ -44,6 +47,7 @@ export class EditDoctorClinicImageComponent implements OnInit, OnDestroy {
     clinic_id: new FormControl('', [Validators.required]),
   });
   ngOnInit() {
+    this.checkLanguageDirection();
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
@@ -65,6 +69,12 @@ export class EditDoctorClinicImageComponent implements OnInit, OnDestroy {
           });
         },
       });
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   loadDoctorClinics() {
     this._SDoctorClinicService

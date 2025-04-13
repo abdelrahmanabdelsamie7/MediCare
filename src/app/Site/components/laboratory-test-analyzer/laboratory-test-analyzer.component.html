@@ -6,7 +6,7 @@
   <div class="modern-container" [attr.dir]="isRtl ? 'rtl' : 'ltr'">
     <div class="content-wrapper">
       <!-- Upload Card -->
-      <div class="upload-card" [class.drag-over]="isDragging" (dragover)="onDragOver($event)"
+      <div class="upload-card bg-dark-el" [class.drag-over]="isDragging" (dragover)="onDragOver($event)"
         (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
         <div class="card-header">
           <h2>{{ 'labTest.title' | translate }}</h2>
@@ -14,7 +14,7 @@
         <div class="card-body">
           <div class="upload-area" *ngIf="!previewUrl">
             <label for="fileInput" class="upload-label">
-              <span>{{ 'labTest.dragDrop' | translate }}</span>
+              <span class="info-text">{{ 'labTest.dragDrop' | translate }}</span>
               <input type="file" id="fileInput" accept="image/*,application/pdf" (change)="onFileSelected($event)"
                 [disabled]="loading" hidden>
             </label>
@@ -41,7 +41,7 @@
       </div>
 
       <!-- Result Card -->
-      <div class="result-card" *ngIf="showResult && analysisResult">
+      <div class="result-card bg-dark-el" *ngIf="showResult && analysisResult">
         <div class="result-header">
           <h3>{{ 'labTest.resultTitle' | translate }}</h3>
           <button class="pdf-btn" (click)="generatePDF()">
@@ -52,27 +52,27 @@
         <div id="analysisResult" class="result-body">
           <!-- Test Results -->
           <div class="section" *ngIf="analysisResult.testResults?.length">
-            <h4>{{ 'labTest.testResults' | translate }}</h4>
+            <h4 class="info-text">{{ 'labTest.testResults' | translate }}</h4>
             <div class="medication-list">
-              <div class="medication-item" *ngFor="let result of analysisResult.testResults">
-                <p><span class="label">{{ 'labTest.testName' | translate }}</span> {{ result.name }}</p>
-                <p><span class="label">{{ 'labTest.value' | translate }}</span> {{ result.value }} {{ result.unit }}</p>
-                <p><span class="label">{{ 'labTest.status' | translate }}</span> {{ result.status | translate }}</p>
-                <p><span class="label">{{ 'labTest.notes' | translate }}</span> {{ result.notes }}</p>
+              <div class="medication-item bg-dark-el" *ngFor="let result of analysisResult.testResults">
+                <p class="dark-text"><span class="label info-text">{{ 'labTest.testName' | translate }}</span> {{ result.name }}</p>
+                <p class="dark-text"><span class="label info-text">{{ 'labTest.value' | translate }}</span> {{ result.value }} {{ result.unit }}</p>
+                <p class="dark-text"><span class="label info-text">{{ 'labTest.status' | translate }}</span> {{ result.status | translate }}</p>
+                <p class="dark-text"><span class="label info-text">{{ 'labTest.notes' | translate }}</span> {{ result.notes }}</p>
               </div>
             </div>
           </div>
 
           <!-- Interpretation -->
           <div class="section">
-            <h4>{{ 'labTest.interpretation' | translate }}</h4>
-            <p>{{ analysisResult.interpretation || ('labTest.notAvailable' | translate) }}</p>
+            <h4 class="info-text">{{ 'labTest.interpretation' | translate }}</h4>
+            <p class="dark-text">{{ analysisResult.interpretation || ('labTest.notAvailable' | translate) }}</p>
           </div>
 
           <!-- Recommendations -->
           <div class="section">
-            <h4>{{ 'labTest.recommendations' | translate }}</h4>
-            <p>{{ analysisResult.recommendations || ('labTest.notAvailable' | translate) }}</p>
+            <h4 class="info-text">{{ 'labTest.recommendations' | translate }}</h4>
+            <p class="dark-text">{{ analysisResult.recommendations || ('labTest.notAvailable' | translate) }}</p>
           </div>
 
           <!-- Warning -->

@@ -2,12 +2,12 @@
 <div class="container ">
   <div class="row my-4">
     <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-      <div class="card border border-0 shadow p-5">
+      <div class="card bg-dark-el border border-0 shadow p-5">
         <img [src]="Laboratory.image" class="w-100" alt="Laboratory Image">
       </div>
     </div>
     <div class="col-md-8 ">
-      <div class="card border border-0 shadow p-4"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+      <div class="card border bg-dark-el dark-text border-0 shadow p-4"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         <h3 class="fs-4">{{ 'adminPanel.title'|translate }} : <span>{{ Laboratory.title}}</span></h3>
         <hr>
         <h5>{{ 'adminPanel.service'|translate }} : <span>{{ Laboratory.service }}</span></h5>

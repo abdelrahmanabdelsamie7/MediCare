@@ -2,15 +2,15 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div class="card border border-0 shadow p-5">
+      <div class="card bg-dark-el dark-text border border-0 shadow p-5">
         <img [src]="department.icon" class="w-100" alt="Department Icon">
       </div>
     </div>
     <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
-      <div class="card border border-0 shadow p-4">
-        <h3>{{ 'adminPanel.title' | translate }} : <span>{{ department.title}}</span></h3>
+      <div class="card bg-dark-el info-text border border-0 shadow p-4">
+        <h3>{{ 'adminPanel.title' | translate }} : <span class="dark-text">{{ department.title}}</span></h3>
         <hr>
-        <h5>{{ 'adminPanel.description' | translate }} : <span>{{ department.description }}</span></h5>
+        <h5>{{ 'adminPanel.description' | translate }} : <span class="dark-text">{{ department.description }}</span></h5>
       </div>
     </div>
     <div class="d-inline-block">

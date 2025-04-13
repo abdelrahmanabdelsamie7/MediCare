@@ -103,7 +103,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
               '#20c997', '#795548', '#155724', '#343a40'
             ],
             borderColor: '#000',
-            borderWidth: 1
+            borderWidth: 1,
           }]
         },
         options: {
@@ -111,7 +111,15 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
           maintainAspectRatio: false,
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: true,
+              ticks: {
+                color: '#0dcaf0' // لون النص على المحور Y مثلاً أحمر
+              }
+            },
+            x: {
+              ticks: {
+                color: '#0dcaf0' // لون النص على المحور X مثلاً أزرق
+              }
             }
           }
         }

@@ -1,16 +1,16 @@
 <!-- Start Specialization Show -->
 <div class="container col-md-6 ">
-  <h5 class="text-center fw-bold my-4 head-title"> {{ Specialization.title }}</h5>
+  <h5 class="text-center fw-bold my-4 head-title dark-text"> {{ Specialization.title }}</h5>
 </div>
 <div class="container">
   <div class="row">
     @for (item of doctorsOfSpecialization; track $index) {
     <div class="col-md-4">
-      <div class="card shadow p-3 border border-0">
+      <div class="card bg-dark-el shadow p-3 border border-0">
         <div class="card-image">
           <img [src]="item.image" alt="Image Of Doctor" class="w-50 d-block mx-auto rounded-circle">
         </div>
-        <div class="card-body py-3 text-center">
+        <div class="card-body bg-dark-el dark-text py-3 text-center">
           <h6>{{ item.fName }} {{ item.lName }}</h6>
           <hr />
           <h6>{{'adminPanel.title' | translate}} : {{ item.title }}</h6>

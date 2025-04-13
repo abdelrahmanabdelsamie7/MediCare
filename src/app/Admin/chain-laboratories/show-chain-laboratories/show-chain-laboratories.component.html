@@ -1,13 +1,13 @@
 <!-- Start Chain Laboratories Show -->
 <div class="container col-md-6 ">
-  <h5 class="text-center fw-bold my-4 head-title">{{ 'adminPanel.branches' | translate}} {{ ChainLaboratories.title }}
+  <h5 class="text-center fw-bold my-4 head-title dark-text">{{ 'adminPanel.branches' | translate}} {{ ChainLaboratories.title }}
   </h5>
 </div>
 <div class="container">
   <div class="row">
     @for (item of LaboratoriesOfChain; track $index) {
     <div class="col-md-4">
-      <div class="card shadow p-3 border border-0" style="direction:  rtl;">
+      <div class="card bg-dark-el dark-text shadow p-3 border border-0" style="direction:  rtl;">
         <div class="card-image">
           <img [src]="item.image" alt="Image Of Laboratory" class="w-100">
         </div>

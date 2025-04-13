@@ -1,6 +1,6 @@
 <!-- Start Offer Groups Show -->
 <div class="container col-md-6">
-    <h5 class="text-center fw-bold my-4 head-title">
+    <h5 class="text-center fw-bold my-4 head-title dark-text">
         {{ 'adminPanel.offer_groups' | translate }} {{ OfferGroup.title }}
     </h5>
 </div>
@@ -8,11 +8,11 @@
     <div class="row">
         @for (offer of OffersOfGroup; track $index) {
         <div class="col-md-4">
-            <div class="card shadow p-3 border border-0">
+            <div class="card bg-dark-el shadow p-3 border border-0">
                 <div class="card-image">
                     <img [src]="OfferGroup.image" alt="Offer Group Image" class="w-100">
                 </div>
-                <div class="card-body py-3 text-center">
+                <div class="card-body bg-dark-el dark-text py-3 text-center">
                     <h6>{{ 'adminPanel.title' | translate }} : {{ offer.title }}</h6>
                     <hr />
                     <h6>{{ 'adminPanel.info_about_offer' | translate }} : {{ offer.info_about_offer }}</h6>

@@ -3,7 +3,7 @@
   <p-carousel class="py-5" [value]="DoctorClinicImages" [numVisible]="3" [circular]="true"
     [responsiveOptions]="responsiveOptions">
     <ng-template let-image pTemplate="item">
-      <div class="border shadow-sm m-2 carousel">
+      <div class="border bg-dark-el shadow-sm m-2 carousel">
         <img [src]="image.image" height="280px" class="d-block mx-auto" />
         <div class="icons">
           <a routerLink="/admin-mediCare-1245/edit-doctor-clinic-image/{{ image.id }}" title="Edit"><i
@@ -19,7 +19,7 @@
   </a>
 </div>
   <!-- Offer Details -->
-  <div class="card border-0 shadow p-4 mt-3" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+  <div class="card bg-dark-el dark-text border-0 shadow p-4 mt-3" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
     <h5>{{ 'adminPanel.title' | translate }} : {{ DoctorClinic.title }}</h5>
     <hr>
     <h5>{{ 'adminPanel.description' | translate }} : {{ DoctorClinic.description }}</h5>
@@ -36,7 +36,7 @@
   </div>
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
-    <button (click)="back()" class="btn btn-outline-primary">
+    <button (click)="back()" class="btn btn-outline-info">
       <i class="bi bi-arrow-left"></i> {{ 'adminPanel.back' | translate }}
     </button>
   </div>

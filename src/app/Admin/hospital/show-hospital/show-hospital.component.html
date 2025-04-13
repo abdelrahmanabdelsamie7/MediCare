@@ -2,12 +2,12 @@
 <div class="container ">
   <div class="row my-4">
     <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-      <div class="card border border-0 shadow p-5">
+      <div class="card bg-dark-el border border-0 shadow p-5">
         <img [src]="hospital.image ? hospital.image : './images/hospital.gif'" class="w-100" alt="hospital Image">
       </div>
     </div>
     <div class="col-md-8 ">
-      <div class="card border border-0 shadow p-4">
+      <div class="card bg-dark-el dark-text border border-0 shadow p-4">
         <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ hospital.title}}</span></h3>
         <hr>
         <h5>{{ 'adminPanel.service' | translate }} : <span>{{ hospital.service }}</span></h5>
@@ -25,7 +25,7 @@
   <div class="row">
     @for (item of departmentsOfHospital; track $index) {
     <div class="col-md-4">
-      <div class="card departmentHospital shadow p-3 text-center">
+      <div class="card bg-dark-el dark-text departmentHospital shadow p-3 text-center">
         <a class="btn btn-light btn-update"
           routerLink="/admin-mediCare-1245/edit_department_hospital/{{ item.pivot.department_id }}/{{ item.pivot.hospital_id }}"><i
             class="bi bi-pen"></i></a>

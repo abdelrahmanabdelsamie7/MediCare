@@ -12,6 +12,7 @@ import { Toast } from 'primeng/toast';
 import { SDoctorClinicService } from '../../../Core/services/s-doctor-clinic.service';
 import { MessageService } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { STranslateService } from '../../../Core/services/s-translate.service';
 
 @Component({
   selector: 'app-add-doctor-clinic-image',
@@ -22,6 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
   providers: [MessageService],
 })
 export class AddDoctorClinicImageComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false;
   DoctorClinics: IDoctorClinic[] = [];
   isLoading: boolean = false;
   private destroy$ = new Subject<void>();
@@ -36,10 +38,18 @@ export class AddDoctorClinicImageComponent implements OnInit, OnDestroy {
   constructor(
     private _SDoctorClinicService: SDoctorClinicService,
     private messageService: MessageService,
-    private _Location: Location
+    private _Location: Location,
+    private _STranslateService:STranslateService
   ) {}
   ngOnInit(): void {
+    this.checkLanguageDirection();
     this.loadDoctorClinic();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   loadDoctorClinic() {
     this._SDoctorClinicService

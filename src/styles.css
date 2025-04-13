@@ -114,3 +114,10 @@ background-color: #423f3f !important;
 body.dark-mode .black-text{
   color:#423f3f !important;
 }
+body.dark-mode .info-text{
+  color:#0dcaf0 !important;
+}
+body.dark-mode th,body.dark-mode td , body.dark-mode tr {
+  background-color: #423f3f !important;
+  color:#fafafa ;
+}

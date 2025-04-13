@@ -5,14 +5,14 @@
 <div class="details-container bg-dark-el" [attr.dir]="isRtl ? 'rtl' : 'ltr'" data-aos="fade-up" data-aos-duration="1000">
   <div class="content-wrapper">
     <!-- Card: Upload and Analyze -->
-    <div class="details-card">
+    <div class="details-card bg-dark-el">
       <div class="details-header">
         <h2>{{ 'ai.titleOfSection' | translate }}</h2>
       </div>
       <div class="details-body">
         <!-- File Upload Section -->
         <div class="mb-4">
-          <label for="fileInput" class="form-label">{{ 'ai.chooseFile' | translate }}</label>
+          <label for="fileInput" class="form-label dark-text">{{ 'ai.chooseFile' | translate }}</label>
           <input type="file" class="form-control" id="fileInput" accept="image/*" (change)="onFileSelected($event)" />
 
           <!-- File Preview -->
@@ -36,7 +36,7 @@
 
         <!-- Symptoms Input -->
         <div class="mb-4">
-          <label for="symptomsInput" class="form-label">{{ 'ai.describeSymptoms' | translate }}</label>
+          <label for="symptomsInput" class="form-label dark-text">{{ 'ai.describeSymptoms' | translate }}</label>
           <textarea id="symptomsInput" class="form-control" rows="4" [(ngModel)]="symptomsText"
             [placeholder]="'ai.enterSymptoms' | translate"></textarea>
         </div>
@@ -53,7 +53,7 @@
     </div>
 
     <!-- Card: Analysis Result -->
-    <div class="details-card mt-4" *ngIf="showResult && (selectedFile || symptomsText) && apiResponse" id="analysisResult">
+    <div class="details-card bg-dark-el mt-4" *ngIf="showResult && (selectedFile || symptomsText) && apiResponse" id="analysisResult">
       <div class="details-header">
         <h2>{{ 'ai.analysisResult' | translate }}</h2>
         <button class="btn btn-success" (click)="generatePDF()">
@@ -63,31 +63,31 @@
       <div class="details-body">
         <!-- Image Analysis Result -->
         <div class="section" *ngIf="selectedFile">
-          <h4>{{ 'ai.imageAnalysisResult' | translate }}</h4>
-          <p>{{ apiResponse.imageAnalysis || ('ai.noImageAnalysis' | translate) }}</p>
+          <h4 class="dark-text">{{ 'ai.imageAnalysisResult' | translate }}</h4>
+          <p class="dark-text">{{ apiResponse.imageAnalysis || ('ai.noImageAnalysis' | translate) }}</p>
         </div>
 
         <!-- Diagnosis -->
         <div class="section" *ngIf="apiResponse.diagnosis">
-          <h4>{{ 'ai.diagnosis' | translate }}</h4>
-          <p>{{ apiResponse.diagnosis }}</p>
+          <h4 class="info-text">{{ 'ai.diagnosis' | translate }}</h4>
+          <p class="dark-text">{{ apiResponse.diagnosis }}</p>
         </div>
 
         <!-- Confidence Message -->
         <div class="section" *ngIf="apiResponse.message">
-          <h4>{{ (isRtl ? 'الثقة' : 'Confidence') }}</h4>
-          <p>{{ apiResponse.message }}</p>
+          <h4 class="info-text">{{ (isRtl ? 'الثقة' : 'Confidence') }}</h4>
+          <p class="dark-text">{{ apiResponse.message }}</p>
         </div>
 
         <!-- Recommended Specialization -->
         <div class="section">
-          <h4>{{ 'ai.recommendedSpecialization' | translate }}</h4>
-          <p>{{ apiResponse.recommendedSpecialization || ('ai.notSpecified' | translate) }}</p>
+          <h4 class="info-text">{{ 'ai.recommendedSpecialization' | translate }}</h4>
+          <p class="dark-text">{{ apiResponse.recommendedSpecialization || ('ai.notSpecified' | translate) }}</p>
         </div>
 
         <!-- Medicare Recommendations -->
         <div class="section" *ngIf="recommendedDepartments.length > 0">
-          <h4>{{ 'ai.medicareRecommendations' | translate }}</h4>
+          <h4 class="info-text">{{ 'ai.medicareRecommendations' | translate }}</h4>
           <div class="d-flex flex-wrap gap-2">
             <button *ngFor="let department of recommendedDepartments" class="btn btn-outline-info"
               (click)="handleDepartmentSelection(department.id)">
@@ -98,26 +98,26 @@
 
         <!-- Advice -->
         <div class="section">
-          <h4>{{ 'ai.advice' | translate }}</h4>
-          <p>{{ apiResponse.advice || ('ai.noAdvice' | translate) }}</p>
+          <h4 class="info-text">{{ 'ai.advice' | translate }}</h4>
+          <p class="dark-text">{{ apiResponse.advice || ('ai.noAdvice' | translate) }}</p>
         </div>
 
         <!-- Confidence Level -->
         <div class="section" *ngIf="apiResponse.confidence_score">
-          <h4>{{ 'ai.confidenceLevel' | translate }}</h4>
-          <p>{{ apiResponse.confidence_score }}%</p>
+          <h4 class="info-text">{{ 'ai.confidenceLevel' | translate }}</h4>
+          <p class="dark-text">{{ apiResponse.confidence_score }}%</p>
         </div>
 
         <!-- Suggested Medications -->
         <div class="section" *ngIf="apiResponse.suggested_medications?.length">
-          <h4>{{ 'ai.suggestedMedications' | translate }}</h4>
-          <ul class="list-group">
-            <li *ngFor="let medication of apiResponse.suggested_medications" class="list-group-item">
-              <strong>{{ 'ai.medicationName' | translate }}</strong> {{ medication.name }}<br>
-              <strong>{{ 'ai.medicationDosage' | translate }}</strong> {{ medication.dosage }}<br>
-              <strong>{{ 'ai.medicationNotes' | translate }}</strong> {{ medication.notes }}
-            </li>
-          </ul>
+          <h4 class="info-text">{{ 'ai.suggestedMedications' | translate }}</h4>
+            <ul class="list-group">
+              <li *ngFor="let medication of apiResponse.suggested_medications" class="list-group-item bg-dark-el dark-text">
+                <strong>{{ 'ai.medicationName' | translate }}</strong> {{ medication.name }}<br>
+                <strong>{{ 'ai.medicationDosage' | translate }}</strong> {{ medication.dosage }}<br>
+                <strong>{{ 'ai.medicationNotes' | translate }}</strong> {{ medication.notes }}
+              </li>
+            </ul>
         </div>
 
         <!-- Medication Warning -->
