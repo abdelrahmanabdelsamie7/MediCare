@@ -21,22 +21,22 @@
 </a>
 </div>
   <!-- Offer Details -->
-  <div class="card border-0 shadow p-4 mt-3" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+  <div class="card bg-dark-el border-0 shadow p-4 mt-3" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
     <div class="doctor-info">
       <img [src]="Doctor.image" alt="Doctor Image" />
       <div>
-        <h5>د/ {{ Doctor.fName }} {{ Doctor.lName }}</h5>
-        <p class="text-muted m-0">{{ Doctor.phone }}</p>
+        <h5 class="dark-text ">د/ {{ Doctor.fName }} {{ Doctor.lName }}</h5>
+        <p class="text-muted m-0 dark-text ">{{ Doctor.phone }}</p>
       </div>
     </div>
     <hr>
-    <h3>{{'doctorPanel.title' | translate}}: <span>{{ DoctorOffer.title }}</span></h3>
+    <h3 class="info-text">{{'doctorPanel.title' | translate}}: <span class="dark-text">{{ DoctorOffer.title }}</span></h3>
     <hr>
-    <h5>{{'doctorPanel.offerInformation' | translate}}:<span>{{ DoctorOffer.info_about_offer }}</span></h5>
+    <h5 class="info-text">{{'doctorPanel.offerInformation' | translate}}:<span class="dark-text">{{ DoctorOffer.info_about_offer }}</span></h5>
     <hr>
-    <h5>{{'doctorPanel.details' | translate}}:{{ DoctorOffer.details }}</h5>
+    <h5 class="dark-text">{{'doctorPanel.details' | translate}}:{{ DoctorOffer.details }}</h5>
     <hr>
-    <h5>{{'doctorPanel.durationDate'| translate}}: {{'doctorPanel.from' | translate}} {{ DoctorOffer.from_day }} {{'doctorPanel.to' | translate}} {{ DoctorOffer.to_day }}</h5>
+    <h5 class="dark-text">{{'doctorPanel.durationDate'| translate}}: {{'doctorPanel.from' | translate}} {{ DoctorOffer.from_day }} {{'doctorPanel.to' | translate}} {{ DoctorOffer.to_day }}</h5>
     <hr>
     <h5>
       <span class="del-price">{{ DoctorOffer.price_before_discount | currency: 'EGP' }}</span>
@@ -46,7 +46,7 @@
   </div>
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
-    <button (click)="back()" class="btn btn-outline-primary">
+    <button (click)="back()" class="btn btn-outline-info">
       <i class="bi bi-arrow-left"></i> Back
     </button>
   </div>

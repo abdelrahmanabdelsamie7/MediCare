@@ -4,7 +4,7 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item">{{ 'doctorPanel.tables' | translate }}</li>
-      <li class="breadcrumb-item active">{{ 'doctorPanel.data' | translate }}</li>
+      <li class="breadcrumb-item active dark-text">{{ 'doctorPanel.data' | translate }}</li>
     </ol>
   </nav>
 </div>
@@ -12,7 +12,7 @@
   <p-toast />
   @for (item of DoctorBlogs; track $index) {
   <div class="col-md-6 mb-4">
-    <div class="card border border-0 shadow p-3">
+    <div class="card bg-dark-el dark-text border border-0 shadow p-3">
       <div class="index">
         <span>{{ $index+1 }}</span>
       </div>
@@ -20,7 +20,7 @@
         <h3 class="fw-bold fs-3">
           {{ item.title}}
         </h3>
-        <p class="text-muted">
+        <p class="text-muted dark-text">
           {{ item.content }}
         </p>
         <div class="icons">
