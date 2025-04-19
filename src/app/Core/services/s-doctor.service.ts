@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment.development';
   providedIn: 'root',
 })
 export class SDoctorService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
   getDoctors(): Observable<IDoctor[]> {
     return this._HttpClient.get<IDoctor[]>(`${environment.baseUrl}/Doctors`);
   }
@@ -44,6 +44,9 @@ export class SDoctorService {
     return this._HttpClient.get<IDoctor>(
       `${environment.baseUrl}/doctor/getaccount`
     );
+  }
+  getStatisticsInfo(): Observable<any> {
+    return this._HttpClient.get<any>(`${environment.baseUrl}/doctor-statistics`);
   }
   getDoctorNotifications(doctorId: string): Observable<any> {
     return this._HttpClient.get<any>(

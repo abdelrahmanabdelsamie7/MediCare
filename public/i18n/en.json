@@ -41,17 +41,15 @@
     "city": "City",
     "area": "Area"
   },
-  "ai-features":{
+  "ai-features": {
     "title": "Our AI-Powered Services",
     "startNow": "Start Now",
     "symptoms_analysis_title": "Symptoms Analysis",
-  "symptoms_analysis_description": "Describe your symptoms and get accurate diagnosis ,treatment suggestions.",
-
-  "prescription_analysis_title": "Prescription Analysis",
-  "prescription_analysis_description": "Upload a prescription image to get details about medications, dosages, and warnings.",
-
-  "laboratory_test_analysis_title": "Laboratory Test Analysis",
-  "laboratory_test_analysis_description": "Upload your lab test results to receive comprehensive health reports."
+    "symptoms_analysis_description": "Describe your symptoms and get accurate diagnosis ,treatment suggestions.",
+    "prescription_analysis_title": "Prescription Analysis",
+    "prescription_analysis_description": "Upload a prescription image to get details about medications, dosages, and warnings.",
+    "laboratory_test_analysis_title": "Laboratory Test Analysis",
+    "laboratory_test_analysis_description": "Upload your lab test results to receive comprehensive health reports."
   },
   "deliveryServices": {
     "contentDeli": " patient transport services are provided where our professional drivers transport patients to and from medical facilities with comfort and safety. Whether you need to visit the doctor or undergo tests, we are here to meet your needs in the best possible way",
@@ -67,16 +65,16 @@
     "medicareApp": "The Best Medical Care App",
     "information": "Information",
     "whoAre": "About Us",
-    "NeedHelp?":"?Need help",
-    "search":"Search For",
-      "medicalDepartments": "Medical Departments",
-      "Pharmacies": "Pharmacies",
-      "laboratories": "Laboratories",
-      "deliveryServices": "Delivery Services",
-      "OurSupervisor": "Our Supervisor",
-      "team": "Team Medicare",
-      "OurAIServices": "Our AI Services",
-      "OurBlog": "Our Blog",
+    "NeedHelp?": "?Need help",
+    "search": "Search For",
+    "medicalDepartments": "Medical Departments",
+    "Pharmacies": "Pharmacies",
+    "laboratories": "Laboratories",
+    "deliveryServices": "Delivery Services",
+    "OurSupervisor": "Our Supervisor",
+    "team": "Team Medicare",
+    "OurAIServices": "Our AI Services",
+    "OurBlog": "Our Blog",
     "contactUs": "Contact Us",
     "copyright": "All rights reserved © 2025 "
   },
@@ -110,7 +108,7 @@
     "medicationNotes": "Additional Notes:",
     "errorMessage": "An error occurred, please try again."
   },
- "prescription": {
+  "prescription": {
     "title": "Prescription Analyzer",
     "dragDrop": "Drag & Drop or Click to Upload Prescription",
     "chooseFile": "Choose Prescription Image",
@@ -154,26 +152,25 @@
     "disclaimer": "Disclaimer",
     "notAvailable": "Not Available"
   },
-
-"labTest": {
-      "title": "Laboratory Test Analyzer",
-      "dragDrop": "Drag & Drop your lab test image or PDF here or click to select",
-      "previewAlt": "Lab Test Preview",
-      "analyze": "Analyze",
-      "analyzing": "Analyzing...",
-      "resultTitle": "Analysis Results",
-      "downloadPDF": "Download PDF",
-      "testResults": "Test Results",
-      "testName": "Test Name:",
-      "value": "Value:",
-      "status": "Status:",
-      "notes": "Notes:",
-      "interpretation": "Interpretation",
-      "recommendations": "Recommendations",
-      "warning": "Warning",
-      "notAvailable": "Not Available",
-      "noFileSelected": "Please select a file to analyze.",
-      "analysisFailed": "Failed to analyze lab test. Please try again later."
+  "labTest": {
+    "title": "Laboratory Test Analyzer",
+    "dragDrop": "Drag & Drop your lab test image or PDF here or click to select",
+    "previewAlt": "Lab Test Preview",
+    "analyze": "Analyze",
+    "analyzing": "Analyzing...",
+    "resultTitle": "Analysis Results",
+    "downloadPDF": "Download PDF",
+    "testResults": "Test Results",
+    "testName": "Test Name:",
+    "value": "Value:",
+    "status": "Status:",
+    "notes": "Notes:",
+    "interpretation": "Interpretation",
+    "recommendations": "Recommendations",
+    "warning": "Warning",
+    "notAvailable": "Not Available",
+    "noFileSelected": "Please select a file to analyze.",
+    "analysisFailed": "Failed to analyze lab test. Please try again later."
   },
   "payment": {
     "secure_payment": "Secure Payment",
@@ -249,15 +246,15 @@
     "reset": "Reset Password",
     "submit": "Send Reset Link"
   },
-    "resetPassword": {
-      "title": "Set New Password",
-      "reset": "Reset Password",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "submit": "Reset Password",
-      "passwordErrorMin": "Password must be at least 8 characters.",
-      "confirmErrorReq": "Please confirm your password."
-    },
+  "resetPassword": {
+    "title": "Set New Password",
+    "reset": "Reset Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Reset Password",
+    "passwordErrorMin": "Password must be at least 8 characters.",
+    "confirmErrorReq": "Please confirm your password."
+  },
   "appointmentDays": {
     "Saturday": "Saturday",
     "Sunday": "Sunday",
@@ -438,7 +435,8 @@
     "offer_inactive": "Offer is Inactive",
     "user_title": "User Name",
     "insurenceNotAvaliable": "Insurence Not Avaliable",
-    "deliveryOptionNotAvailable": "Delivery Option Not Available"
+    "deliveryOptionNotAvailable": "Delivery Option Not Available",
+    "contactUs": "List Of Contact Us Data"
   },
   "doctorPanel": {
     "dashboard": "Dashboard",
@@ -488,14 +486,14 @@
     "details": "Details",
     "logout": "Log Out",
     "haveNotifications": "Have Notification",
-    "addImageOff":"Add New Image To Offer",
-    "offerInformation":"Offer Information",
-    "durationDate":"Duration Date",
-    "from":"From",
-    "to":"To",
-    "image":"Image",
-    "selectOffer":"Select Offer",
-    "editImageOff":"Edit Image To Offer"
+    "addImageOff": "Add New Image To Offer",
+    "offerInformation": "Offer Information",
+    "durationDate": "Duration Date",
+    "from": "From",
+    "to": "To",
+    "image": "Image",
+    "selectOffer": "Select Offer",
+    "editImageOff": "Edit Image To Offer"
   },
   "doctor": {
     "doctors": "Doctors",
@@ -531,7 +529,11 @@
     "CHAIN_LABORATORIES": "Laboratory Chains",
     "PHARMACIES": "Pharmacies",
     "LABORATORIES": "Laboratories",
-    "COUNT": "Statistics Count"
+    "COUNT": "Statistics Count",
+    "CONTACT": "Contact Us",
+    "Blogs": "Blogs",
+    "Appointments": "Avaliable Appointment",
+    "Reservations": "Users Reservations"
   },
   "details": {
     "insurance": "Insurance: available",

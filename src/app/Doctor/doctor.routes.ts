@@ -16,6 +16,7 @@ import { ShowDoctorAppointmentComponent } from './doctor-appointments/show-docto
 import { doctorGuard } from '../Core/guards/doctor.guard';
 import { UserReservationComponent } from './users-reservations/user-reservation/user-reservation.component';
 import { AllReservationsComponent } from './users-reservations/all-reservations/all-reservations.component';
+import { DoctorStatisticsComponent } from './doctor-statistics/doctor-statistics.component';
 
 export const DOCTOR_ROUTES: Routes = [
   {
@@ -24,6 +25,8 @@ export const DOCTOR_ROUTES: Routes = [
     canActivate: [doctorGuard],
     title: 'Doctor Panel',
     children: [
+      { path: '', redirectTo: 'doctor-statistics', pathMatch: 'full' },
+      { path: 'doctor-statistics', component: DoctorStatisticsComponent, title: 'Doctor Panel | Statistics' },
       // ======================== Doctor Offers ========================
       {
         path: 'doctor-offers',

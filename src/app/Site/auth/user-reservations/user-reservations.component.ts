@@ -46,7 +46,6 @@ export class UserReservationsComponent implements OnInit {
   getAllReservations() {
     this._SReservationService.getUserReservations().subscribe({
       next: (data) => {
-        console.log(data);
         this.reservations = data.data;
       },
     });
@@ -88,5 +87,4 @@ export class UserReservationsComponent implements OnInit {
   reloadComponent(): void {
     this.getAllReservations();
   }
-
 }

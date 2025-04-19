@@ -179,7 +179,7 @@ export class PrescriptionAnalyzerComponent implements OnInit {
       pdf.save('prescription_analysis.pdf');
     });
   }
-checkLanguageDirection(): void {
+  checkLanguageDirection(): void {
     this.translateService.onLangChange.subscribe((event) => {
       this.isRtl = event.lang === 'ar';
     });

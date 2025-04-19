@@ -30,7 +30,7 @@ export class MedicineDetailsComponent implements OnInit {
     private router: Router,
     private prescriptionService: PrescriptionService,
     private translateService: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.checkLanguageDirection();
@@ -61,6 +61,10 @@ export class MedicineDetailsComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/prescription-analyzer']);
+  }
+
+  isArray(value: any): boolean {
+    return Array.isArray(value);
   }
 
   checkLanguageDirection(): void {

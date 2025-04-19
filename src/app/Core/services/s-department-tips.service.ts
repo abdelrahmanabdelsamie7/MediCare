@@ -12,7 +12,6 @@ export class SDepartmentTipsService {
   public departmentTips = new BehaviorSubject<IDepartmentTips[]>([]);
   public items$ = this.departmentTips.asObservable();
   constructor(private _HttpClient: HttpClient) {}
-
   getDepartmentTips(): Observable<IDepartmentTips[]> {
     return this._HttpClient
       .get<IDepartmentTips[]>(`${environment.baseUrl}/Tips`)

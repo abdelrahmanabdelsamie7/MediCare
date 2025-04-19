@@ -1,19 +1,52 @@
 .head-title::before {
   background-color: var(--main-color);
 }
+
 .container {
   direction: rtl;
 }
-.disabled-card {
-  opacity: 0.6;
-  pointer-events: none;
+
+.doctor-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
 
-.disabled-card .card-body {
-  background-color: #f8f9fa;
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.disabled-card .alert {
-  display: block;
-  margin-top: 10px;
+.card-header {
+  border-bottom-left-radius: 50px;
+}
+
+.doctor-image {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 15px;
+  box-shadow: 0 7px 4px rgba(0, 0, 0, .03);
+}
+
+.doctor-image img {
+  transform: scale(1.1);
+  object-fit: contain;
+  width: 100%;
+}
+
+.card-body {
+  padding-top: 87px;
+  direction: rtl;
+}
+
+.card-body p {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--arabic-font);
+  padding: 4px 0px;
 }

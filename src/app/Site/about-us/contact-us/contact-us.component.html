@@ -1,5 +1,6 @@
 <div class="container bg-dark-el" data-aos="fade-up" data-aos-delay="500">
-  <form>
+  <p-toast />
+  <form [formGroup]="addContactData" (ngSubmit)="addContact(addContactData)">
     <div class="section-header">
       <h3>تواصل معانا</h3>
       <p class="dark-text">نحن سعداء لتلقي استفساراتكم واقتراحاتكم ..</p>
@@ -7,19 +8,25 @@
     <div class="row gy-3">
       <div class="col-md-6 form-group">
         <label for="name" class="dark-text">الأسم بالكامل <span>*</span></label>
-        <input type="text" name="name" class="form-control" formControlName="name" id="name" required>
+        <input type="text" name="name" class="form-control"
+          [ngClass]="{'is-invalid': addContactData.controls.name.touched && addContactData.controls.name.invalid}"
+          formControlName="name" id="name" required>
       </div>
       <div class="col-md-6 form-group">
         <label for="email" class="dark-text">البريد الإلكتروني <span>*</span></label>
-        <input type="email" name="email" class="form-control" formControlName="email" id="email">
+        <input type="email" name="email" class="form-control"
+          [ngClass]="{'is-invalid': addContactData.controls.email.touched && addContactData.controls.email.invalid}"
+          formControlName="email" id="email">
       </div>
       <div class="col-12 form-group">
-        <label for="comment" class="dark-text">تعليقك <span>*</span></label>
-        <textarea class="form-control" formControlName="message" name="comment" id="comment" rows="5"
+        <label for="message" class="dark-text">تعليقك <span>*</span></label>
+        <textarea class="form-control"
+          [ngClass]="{'is-invalid': addContactData.controls.message.touched && addContactData.controls.message.invalid}"
+          formControlName="message" name="message" id="message" rows="5"
           placeholder="فضلاً، اكتب أفكارك وملاحظاتك هنا..." required=""></textarea>
       </div>
       <div class="col-12 text-center">
-        <button type="submit" class="btn">أرسل تعليقك</button>
+        <button type="submit" class="btn" [disabled]="addContactData.invalid">أرسل تعليقك</button>
       </div>
     </div>
   </form>

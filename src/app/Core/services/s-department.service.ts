@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment.development';
   providedIn: 'root',
 })
 export class SDepartmentService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
   getDepartments(page: number = 1): Observable<IDepartment[]> {
     return this._HttpClient.get<IDepartment[]>(
       `${environment.baseUrl}/Departments`

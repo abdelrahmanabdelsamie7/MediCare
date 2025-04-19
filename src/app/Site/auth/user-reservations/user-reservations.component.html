@@ -1,62 +1,72 @@
 <app-payment #paymentModal></app-payment>
 <div class="container my-5">
-  <h2 class="head-title my-4 text-info text-center">مواعيدك المحجوزة</h2>
+  <h2 class="head-title my-4 text-info text-center dark-text">مواعيدك المحجوزة</h2>
   <p-toast />
   <div class="row">
-    <div class="col-12 mb-4" *ngFor="let reservation of reservations">
-      <div class="d-flex flex-column flex-md-row shadow-sm rounded-3 border p-3 mb-3"
-        [ngClass]="{'disabled-card': reservation.status === 'confirmed'}">
-
-        <div class="col-md-4 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
-          <img src="{{reservation.doctor.image}}" class="img-fluid rounded-5" alt="Doctor Image">
+    @for (reservation of reservations; track $index) {
+    <div class="col-md-6 order-1 order-md-2">
+      <div class="card bg-dark-el doctor-card shadow border-0">
+        <div class="doctor-image">
+          <img src="{{reservation.doctor.image}}" class="rounded-circle border border-3 border-info shadow"
+            style="width: 100px; height: 100px;" alt="doctor Image">
         </div>
-
-        <div class="col-md-8">
-          <div class="card-body px-md-5">
-            <h5 class="card-title black-text mb-3">{{reservation.doctor.title}} {{reservation.doctor.fName}}
-              {{reservation.doctor.lName}}</h5>
-            <p class="card-text mb-2 black-text"><strong>العيادة:</strong> {{reservation.clinic.title}} -
-              {{reservation.clinic.address}}</p>
-            <p class="card-text mb-2 black-text"><strong>اليوم:</strong> {{ getFormattedDate(reservation.appointment.day) }},
-              <strong>من الساعة</strong> {{reservation.appointment.start_at | timeFormat}} <strong>إلى</strong>
-              {{reservation.appointment.end_at | timeFormat}}
-            </p>
-            <p class="card-text mb-2 black-text"><strong>السعر:</strong>
-              @if(reservation.final_price > 0){
-              {{reservation.final_price| currency:'EGP'}}
-              <span class="text-muted ps-2" style="text-decoration:line-through">
-                {{reservation.doctor.app_price | currency:'EGP'}}</span>
+        <div class="card-body">
+          <h3 class="text-center fs-5 fw-bold dark-text">{{reservation.doctor.title}} {{reservation.doctor.fName}}
+            {{reservation.doctor.lName}}</h3>
+          <p class="doctor-service dark-text"> <strong>العيادة:</strong> {{reservation.clinic.title}} -
+            {{reservation.clinic.address}}
+          </p>
+          <p class="doctor-date dark-text">
+            <strong>اليوم:</strong> {{
+            getFormattedDate(reservation.appointment.day) }},
+            <strong>من الساعة</strong> {{reservation.appointment.start_at | timeFormat}} <strong>إلى</strong>
+            {{reservation.appointment.end_at | timeFormat}}
+          </p>
+          <p class="card-text mb-2 dark-text"><strong>السعر:</strong>
+            @if(reservation.final_price > 0){
+            {{reservation.final_price| currency:'EGP'}}
+            <span class="text-muted ps-2 dark-text" style="text-decoration:line-through">
+              {{reservation.doctor.app_price | currency:'EGP'}}</span>
+            }@else {
+            {{reservation.doctor.app_price | currency:'EGP'}}
+            }
+          </p>
+          <p class="card-text mb-2 dark-text"><strong>الحالة:</strong>
+            <span class="px-1 mx-2 rounded-4" [ngClass]="{
+                              'badge bg-warning': reservation.status !== 'confirmed',
+                              'badge bg-success': reservation.status === 'confirmed'
+                            }">
+              @if (reservation.status == 'pending') {
+              قيد الانتظار
               }@else {
-              {{reservation.doctor.app_price | currency:'EGP'}}
+              تم تأكيد الحجز
               }
-            </p>
-            <p class="card-text mb-2 black-text"><strong>الحالة:</strong>
-              <span [ngClass]="{
-            'badge bg-warning': reservation.status !== 'confirmed',
-            'badge bg-success': reservation.status === 'confirmed'
-          }">
-                {{reservation.status}}
-              </span>
-            </p>
-            <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3"
-              role="alert">
-              تم تأكيد الحجز بنجاح.
-            </div>
-            <div *ngIf="reservation.status !== 'confirmed'">
-              <div class="d-flex flex-column flex-md-row mt-3">
-                <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
-                  (click)="confirmReservation(reservation.id)">تأكيد الحجز</button>
-                <button class="btn btn-outline-danger mb-2 mb-md-0 " (click)="cancelReservation(reservation.id)">إلغاء
-                  الحجز</button>
-                <button class="btn btn-outline-info mb-2 mb-md-0 mx-2"
-                  (click)="openPaymentModal(reservation.id, reservation.doctor.app_price)">
-                  ادفع اللآن
-                </button>
-              </div>
+            </span>
+          </p>
+          <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3"
+            role="alert">
+            تم تأكيد الحجز بنجاح.
+          </div>
+          <div *ngIf="reservation.status !== 'confirmed'">
+            <div class="d-flex flex-column flex-md-row mt-3">
+              <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
+                (click)="confirmReservation(reservation.id)">تأكيد
+                الحجز</button>
+              <button class="btn btn-outline-danger mb-2 mb-md-0 " (click)="cancelReservation(reservation.id)">إلغاء
+                الحجز</button>
+              <button class="btn btn-outline-info mb-2 mb-md-0 mx-2"
+                (click)="openPaymentModal(reservation.id, reservation.doctor.app_price)">
+                ادفع اللآن
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    }
+    @empty {
+    <img src="./images/empty.svg" alt="لا توجد مواعيد محجوزة" title="لا توجد مواعيد محجوزة"
+      class="img-fluid mx-auto d-block my-5" style="width: 300px; height: 300px;">
+    }
   </div>
 </div>

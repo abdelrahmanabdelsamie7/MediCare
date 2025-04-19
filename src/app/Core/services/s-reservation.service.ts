@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment.development';
   providedIn: 'root',
 })
 export class SReservationService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
   userReserveDoctor(reserve: IReservation): Observable<IReservation> {
     return this._HttpClient.post<IReservation>(
       `${environment.baseUrl}/reservations`,
@@ -40,6 +40,24 @@ export class SReservationService {
   getDoctorReservationById(id: string): Observable<any> {
     return this._HttpClient.get<any>(
       `${environment.baseUrl}/doctor/reservations/${id}`
+    );
+  }
+  doctorConfirmReservation(id: string): Observable<any> {
+    return this._HttpClient.put<any>(
+      `${environment.baseUrl}/doctor/reservations/${id}/confirm`,
+      {}
+    );
+  }
+  doctorCancelReservation(id: string): Observable<any> {
+    return this._HttpClient.put<any>(
+      `${environment.baseUrl}/doctor/reservations/${id}/cancel`,
+      {}
+    );
+  }
+  doctorMakeReservationAsVisited(id: string): Observable<any> {
+    return this._HttpClient.put<any>(
+      `${environment.baseUrl}/doctor/reservations/${id}/make-as-visited`,
+      {}
     );
   }
 }

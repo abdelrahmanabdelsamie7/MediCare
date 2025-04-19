@@ -64,6 +64,8 @@ import { AddOfferGroupComponent } from './offer-group/add-offer-group/add-offer-
 import { ShowOfferGroupComponent } from './offer-group/show-offer-group/show-offer-group.component';
 import { EditOfferGroupComponent } from './offer-group/edit-offer-group/edit-offer-group.component';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { ListContactComponent } from './contact-us/list-contact/list-contact.component';
+import { ReplyContactComponent } from './contact-us/reply-contact/reply-contact.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -408,6 +410,18 @@ export const ADMIN_ROUTES: Routes = [
         component: EditOfferGroupComponent,
         title: 'Admin Panel | Edit Offer Group',
       },
+      // ======================== Contact Us  ========================
+      {
+        path: 'contact-us',
+        component: ListContactComponent,
+        title: 'Admin Panel | Contact Us',
+      },
+      {
+        path: 'reply-to-contact/:id',
+        component: ReplyContactComponent,
+        title: 'Admin Panel | Reply To Contact',
+      },
+
     ],
   },
 ];

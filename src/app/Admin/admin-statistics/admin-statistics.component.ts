@@ -17,6 +17,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
   chart!: Chart;
   departmentsCount = 0;
   doctorsCount = 0;
+  contactsCount = 0;
   usersCount = 0;
   doctorBlogsCount = 0;
   chainPharmaciesCount = 0;
@@ -58,6 +59,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
           this.laboratoriesCount = data.data.laboratoriesCount;
           this.careCentersCount = data.data.careCentersCount;
           this.clinicsCount = data.data.clinicsCount;
+          this.contactsCount = data.data.contactsCount;
           this.offersCount = data.data.offersCount;
           if (this.isViewInitialized) {
             this.renderChart();
@@ -74,7 +76,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
       'STATISTICS.DEPARTMENTS', 'STATISTICS.DOCTORS', 'STATISTICS.USERS',
       'STATISTICS.CLINICS', 'STATISTICS.OFFERS', 'STATISTICS.DOCTOR_BLOGS',
       'STATISTICS.HOSPITALS', 'STATISTICS.CARE_CENTERS', 'STATISTICS.CHAIN_PHARMACIES',
-      'STATISTICS.CHAIN_LABORATORIES', 'STATISTICS.PHARMACIES', 'STATISTICS.LABORATORIES',
+      'STATISTICS.CHAIN_LABORATORIES', 'STATISTICS.PHARMACIES', 'STATISTICS.LABORATORIES', 'STATISTICS.CONTACT',
       'STATISTICS.COUNT'
     ]).subscribe(translations => {
       this.chart = new Chart(this.chartRef.nativeElement, {
@@ -86,7 +88,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
             translations['STATISTICS.OFFERS'], translations['STATISTICS.DOCTOR_BLOGS'],
             translations['STATISTICS.HOSPITALS'], translations['STATISTICS.CARE_CENTERS'],
             translations['STATISTICS.CHAIN_PHARMACIES'], translations['STATISTICS.CHAIN_LABORATORIES'],
-            translations['STATISTICS.PHARMACIES'], translations['STATISTICS.LABORATORIES']
+            translations['STATISTICS.PHARMACIES'], translations['STATISTICS.LABORATORIES'], translations['STATISTICS.CONTACT']
           ],
           datasets: [{
             label: translations['STATISTICS.COUNT'],
@@ -95,12 +97,12 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
               this.clinicsCount, this.offersCount, this.doctorBlogsCount,
               this.hospitalsCount, this.careCentersCount,
               this.chainPharmaciesCount, this.chainLaboratoriesCount,
-              this.pharmaciesCount, this.laboratoriesCount
+              this.pharmaciesCount, this.laboratoriesCount , this.contactsCount
             ],
             backgroundColor: [
               '#007bff', '#ffffff', '#28a745', '#6f42c1',
               '#fd7e14', '#17a2b8', '#dc3545', '#ffc107',
-              '#20c997', '#795548', '#155724', '#343a40'
+              '#20c997', '#795548', '#155724', '#343a40', '#355720'
             ],
             borderColor: '#000',
             borderWidth: 1,

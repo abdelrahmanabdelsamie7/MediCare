@@ -55,16 +55,16 @@
     "medicareApp": "تطبيق الرعاية الطبية الأفضل",
     "information": "معلومات",
     "whoAre": "من نحن",
-    "NeedHelp?":"تحتاج للمساعدة ؟",
-    "search":"ابحث عن",
-     "medicalDepartments": "الأقسام الطبية",
-     "Pharmacies": "الصيدليات",
-     "laboratories": "المعامل",
-     "deliveryServices": "خدمات التوصيل",
-     "OurSupervisor":"مُشرفنا",
-     "team":"فريق Medicare",
-     "OurAIServices":"خدماتنا لذكاء الاصطناعي",
-   "OurBlog":"مدونتنا",
+    "NeedHelp?": "تحتاج للمساعدة ؟",
+    "search": "ابحث عن",
+    "medicalDepartments": "الأقسام الطبية",
+    "Pharmacies": "الصيدليات",
+    "laboratories": "المعامل",
+    "deliveryServices": "خدمات التوصيل",
+    "OurSupervisor": "مُشرفنا",
+    "team": "فريق Medicare",
+    "OurAIServices": "خدماتنا لذكاء الاصطناعي",
+    "OurBlog": "مدونتنا",
     "contactUs": "تواصل معنا",
     "copyright": "جميع الحقوق محفوظة © 2025 "
   },
@@ -435,7 +435,8 @@
     "offer_inactive": "العرض غير مفعل",
     "user_title": "اسم المستخدم",
     "insurenceNotAvaliable": "التأمين غير متاح",
-    "deliveryOptionNotAvailable": "خدمة التوصيل غير متاحة"
+    "deliveryOptionNotAvailable": "خدمة التوصيل غير متاحة",
+    "contactUs": "قائمة اتصل بنا"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",
@@ -528,7 +529,11 @@
     "CHAIN_LABORATORIES": "سلاسل المختبرات",
     "PHARMACIES": "الصيدليات",
     "LABORATORIES": "المختبرات",
-    "COUNT": "عدد الإحصائيات"
+    "COUNT": "عدد الإحصائيات",
+    "CONTACT": "عدد طلبات المراسلة",
+    "Blogs": "عدد المدونات",
+    "Appointments": "عدد المواعيد المتاحة",
+    "Reservations": "عدد الحجوزات"
   },
   "details": {
     "insurance": "التأمين الصحي : متاح",

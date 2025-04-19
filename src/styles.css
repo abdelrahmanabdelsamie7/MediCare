@@ -3,28 +3,33 @@
 /* Arabic Font Family  */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Qwitcher+Grypen:wght@400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
 :root {
   --third-color: #6c757d;
   --second-color: #52515e;
   --main-color: #0dcaf0;
   --background-color: #fff;
-  --text-color:#52515e;
-  --arabic-font:"Cairo", sans-serif;
+  --text-color: #52515e;
+  --arabic-font: "Cairo", sans-serif;
 }
+
 body {
   font-family: var(--arabic-font) !important;
   background-color: var(--background-color);
   color: var(--text-color);
   transition: 0.3s ease-in-out;
 }
+
 .bi {
   font-size: 22px;
 }
+
 a {
   cursor: pointer;
 }
@@ -32,6 +37,7 @@ a {
 section {
   padding: 40px 0px;
 }
+
 .head-title {
   font-family: var(--arabic-font);
   font-size: 28px;
@@ -41,21 +47,28 @@ section {
   margin: 20px 0px;
   width: fit-content;
   margin: 4px auto;
+
+  .head-title::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: 100%;
+    background-color: var(--second-color);
+  }
 }
-.head-title::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 5px;
-  top: 100%;
-  background-color: var(--second-color);
+
+table {
+  text-align: center !important;
 }
+
 @media screen and (max-width: 576px) {
   table {
     width: 100%;
     overflow-x: auto;
     display: block;
   }
+
   table tbody tr td i {
     font-size: 8px;
     display: block;
@@ -63,61 +76,76 @@ section {
     text-align: center;
   }
 }
+
 .not-found {
   margin-bottom: 40px;
 }
+
 .img-not-found {
   display: block;
   margin: 10px auto;
   width: 200px;
   height: 190px;
 }
+
 .head-not-found {
   text-align: center;
   margin: 10px 0px;
   color: var(--third-color);
   font-family: var(--arabic-font);
 }
+
 .head-not-found2 {
   text-align: center;
   margin-top: 5px;
   color: var(--third-color);
   font-family: var(--arabic-font);
 }
+
 .dark-mode {
-  --background-color: #423f3f ;
+  --background-color: #423f3f;
   --text-color: #fff;
 }
 
-body.dark-mode app-site-footer li a ,body.dark-mode app-site-footer p {
+body.dark-mode app-site-footer li a,
+body.dark-mode app-site-footer p {
 
   color: #fafafa !important;
 }
-body.dark-mode app-site-footer li a:hover{
+
+body.dark-mode app-site-footer li a:hover {
   color: var(--main-color) !important;
 }
+
 body.dark-mode .dark-text {
   color: #fafafa !important;
 }
-body.dark-mode .head-title::before{
-  background-color:#fafafa ;
+
+body.dark-mode .head-title::before {
+  background-color: #fafafa;
 }
 
 body.dark-mode .ai-feature-card {
   background: #423f3f;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-body.dark-mode .bg-dark-el{
-background-color: #423f3f !important;
+
+body.dark-mode .bg-dark-el {
+  background-color: #423f3f !important;
 
 }
-body.dark-mode .black-text{
-  color:#423f3f !important;
+
+body.dark-mode .black-text {
+  color: #423f3f !important;
 }
-body.dark-mode .info-text{
-  color:#0dcaf0 !important;
+
+body.dark-mode .info-text {
+  color: #0dcaf0 !important;
 }
-body.dark-mode th,body.dark-mode td , body.dark-mode tr {
+
+body.dark-mode th,
+body.dark-mode td,
+body.dark-mode tr {
   background-color: #423f3f !important;
-  color:#fafafa ;
+  color: #fafafa;
 }

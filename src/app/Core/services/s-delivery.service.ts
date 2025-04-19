@@ -11,11 +11,11 @@ export class SDeliveryService {
 
   constructor(private _HttpClient: HttpClient) { }
   getDeliveryServices(): Observable<IDelivery[]> {
-      return this._HttpClient.get<IDelivery[]>(
-        `${environment.baseUrl}/Delivery_Services`
-      );
-    }
-addDeliveryService(delivery: IDelivery): Observable<IDelivery> {
+    return this._HttpClient.get<IDelivery[]>(
+      `${environment.baseUrl}/Delivery_Services`
+    );
+  }
+  addDeliveryService(delivery: IDelivery): Observable<IDelivery> {
     return this._HttpClient.post<IDelivery>(
       `${environment.baseUrl}/Delivery_Services`,
       delivery,
