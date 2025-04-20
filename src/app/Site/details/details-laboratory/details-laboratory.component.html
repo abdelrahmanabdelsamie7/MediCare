@@ -72,6 +72,16 @@
               }
             </p>
           </div>
+          <div class="companies-wrapper dark-text mx-auto">
+            <div class="companies-grid">
+              @for(item of insuranceCompanies; track $index) {
+              <div class="company-item text-center">
+                <img src="{{ item.logo }}" width="45" height="45" class="rounded-circle mb-1" alt="">
+                <span class="d-block small-text">{{ item.name }}</span>
+              </div>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -79,8 +89,9 @@
   <div class="row" data-aos="fade-up" data-aos-duration="1000">
     <div class="col-md-4 order-2 order-md-1">
       <div class="card bg-dark-el card-rating border border-0 shadow">
-        <div class="card-header bg-info py-2 d-flex justify-content-start align-items-center rating-container" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-          <p class="ratings m-0" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}" >{{"details.rating" | translate}} :</p>
+        <div class="card-header bg-info py-2 d-flex justify-content-start align-items-center rating-container"
+          [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <p class="ratings m-0" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">{{"details.rating" | translate}} :</p>
           <div class="stars ms-2">
             <ng-container *ngFor="let star of getStarArray()">
               <i class="fa-solid fa-star text-warning"></i>
@@ -91,7 +102,8 @@
         <!-- عرض التقييمات -->
         <div class="ratings-container p-3">
           <h3 class="fw-bold dark-text">تقييمات {{ Laboratory.title }} </h3>
-          <div *ngFor="let rating of ratesOfLaboratory" class="rating-card p-2 bg-dark-el dark-text shadow-sm rounded-3 my-2">
+          <div *ngFor="let rating of ratesOfLaboratory"
+            class="rating-card p-2 bg-dark-el dark-text shadow-sm rounded-3 my-2">
             <div class="d-flex align-items-center justify-content-center mb-2">
               <i *ngFor="let star of [].constructor(rating.pivot.rating_value); let i = index"
                 class="fa-solid fa-star text-warning me-1"></i>
@@ -105,7 +117,8 @@
             <p class="text-muted small dark-text p-0 my-1" style="font-size: 12px;">
               <i class="fa-solid fa-user"></i> {{ rating.name }}
             </p>
-            <p class="text-muted dark-text small my-1"><i class="fa-solid fa-clock"></i> {{ rating.pivot.created_at | date :
+            <p class="text-muted dark-text small my-1"><i class="fa-solid fa-clock"></i> {{ rating.pivot.created_at |
+              date :
               "short" }}
             </p>
           </div>

@@ -1,31 +1,35 @@
 <!-- Start Hospital Show -->
-<div class="container ">
+<div class="container" data-aos="fade-down" data-aos-duration="1000" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <div class="row my-4">
-    <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-      <div class="card bg-dark-el border border-0 shadow p-5">
-        <img [src]="hospital.image ? hospital.image : './images/hospital.gif'" class="w-100" alt="hospital Image">
+    <div class="col-md-12">
+      <div class="card bg-dark-el item-card shadow border-0">
+        <div class="item-image">
+          <img [src]="hospital.image ? hospital.image : './images/hospital.gif'"
+            class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
+            alt="care center Image">
+        </div>
+        <div class="card-body pt-md-5">
+          <h3 class="text-center fs-5 fw-bold dark-text"><span>
+              {{hospital.title}}</span></h3>
+          <p class="item-service dark-text"> <span class="fw-bold">{{ 'adminPanel.service' | translate }}</span> : {{
+            hospital.service
+            }}</p>
+          <p class="item-service dark-text"> <span class="fw-bold">{{ 'adminPanel.phone' | translate }}</span> : {{
+            hospital.phone }}
+          </p>
+          <p> <span class="fw-bold">{{ 'adminPanel.locationInMap' | translate }}</span> : <a
+              (click)="showInMap(hospital.locationUrl)"><i class="bi bi-geo-alt text-warning"></i></a></p>
+          <p class="item-service dark-text"> <span class="fw-bold">{{ 'adminPanel.addedAt' | translate }}</span> : {{
+            hospital.created_at | date:'yy-mm-dd' }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="col-md-8 ">
-      <div class="card bg-dark-el dark-text border border-0 shadow p-4">
-        <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ hospital.title}}</span></h3>
-        <hr>
-        <h5>{{ 'adminPanel.service' | translate }} : <span>{{ hospital.service }}</span></h5>
-        <hr>
-        <h5>{{ 'adminPanel.phone' | translate }} : <a href="tel:{{ hospital.phone }}">{{ hospital.phone }}</a></h5>
-        <hr>
-        <h5>{{ 'adminPanel.address' | translate }} : {{ hospital.address }}</h5>
-        <hr>
-        <h5>{{ 'adminPanel.locationInMap' | translate }} : <a (click)="showInMap(hospital.locationUrl)"><i
-              class="bi bi-geo-alt text-warning"></i></a></h5>
-      </div>
-
     </div>
   </div>
-  <div class="row">
+  <div class="row" data-aos="fade-down" data-aos-duration="1000">
     @for (item of departmentsOfHospital; track $index) {
     <div class="col-md-4">
-      <div class="card bg-dark-el dark-text departmentHospital shadow p-3 text-center">
+      <div class="card bg-dark-el dark-text departmentHospital shadow p-3 text-center p-5">
         <a class="btn btn-light btn-update"
           routerLink="/admin-mediCare-1245/edit_department_hospital/{{ item.pivot.department_id }}/{{ item.pivot.hospital_id }}"><i
             class="bi bi-pen"></i></a>
@@ -41,8 +45,6 @@
     </div>
     }
   </div>
-  <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
-      class="bi bi-arrow-left fs-6"></i>
-    {{ 'adminPanel.back' | translate }}</button>
+
 </div>
 <!-- End Hospital Show -->

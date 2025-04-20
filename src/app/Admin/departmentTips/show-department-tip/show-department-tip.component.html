@@ -1,7 +1,6 @@
-<!-- Start DepartmentTip Show -->
-<div class="container mt-5">
+<!-- Start Department Tip Show -->
+<div class="container mt-5" data-aos="fade-down" data-aos-duration="1000">
   <div class="row">
-
     <div class="col-md-4 d-flex flex-column align-items-center">
       <div class="card bg-dark-el dark-text border border-0 shadow p-4 text-center">
         <img [src]="department.icon" class="w-50 mb-3 rounded-circle mx-auto d-block" alt="Department Icon">
@@ -9,8 +8,8 @@
         <p class="text-muted dark-text">{{department.description }}</p>
       </div>
     </div>
-
-    <div class="col-md-8 d-flex flex-column align-items-center justify-content-center">
+    <div [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}"
+      class="col-md-8 d-flex flex-column align-items-center justify-content-center">
       <div class="card border bg-dark-el info-text border-0 shadow p-4 w-100" style="direction : rtl">
         <h3 class="text-secondary info-text">{{ 'adminPanel.question' | translate }}:</h3>
         <p class="fs-5 fw-bold dark-text">{{ departmentTip.question }}</p>
@@ -20,12 +19,11 @@
       </div>
     </div>
   </div>
-
   <div class="text-center mt-4">
-    <button (click)="back()" class="btn btn-outline-primary d-flex align-items-center">
+    <button (click)="back()" class="btn btn-outline-info d-flex align-items-center">
       <i class="bi bi-arrow-left fs-6 me-2"></i>
       {{ 'adminPanel.back' | translate }}
     </button>
   </div>
 </div>
-<!-- End DepartmentTip Show -->
+<!-- End Department Tip Show -->

@@ -15,7 +15,8 @@
       <p-toast />
       <div class="card bg-dark-el dark-text p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editDoctorOfferForm" (ngSubmit)="editDoctorOffer(editDoctorOfferForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <form class="row" [formGroup]="editDoctorOfferForm" (ngSubmit)="editDoctorOffer(editDoctorOfferForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="title" class="form-label">{{ 'doctorPanel.title' | translate }}</label>
@@ -72,17 +73,17 @@
                   [ngClass]="{'is-invalid':(editDoctorOfferForm.controls.offer_group_id.touched && editDoctorOfferForm.controls.offer_group_id.errors) }"
                   class="form-control" id="offer_group_id">
                   @for (item of offerGroups; track $index) {
-                    @if(DoctorOffer.offer_group_id == item.id){
-                      <option selected disabled>{{ item.title }}</option>
-                    }@else{
-                      <option [value]="item.id">{{ item.title }}</option>
-                    }
+                  @if(DoctorOffer.offer_group_id == item.id){
+                  <option selected disabled>{{ item.title }}</option>
+                  }@else{
+                  <option [value]="item.id">{{ item.title }}</option>
+                  }
                   }
                 </select>
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editDoctorOfferForm.invalid">{{
+              <button type="submit" class="btn btn-info my-2" [disabled]="editDoctorOfferForm.invalid">{{
                 'doctorPanel.submit' |
                 translate }}</button>
             </div>

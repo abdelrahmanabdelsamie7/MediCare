@@ -15,7 +15,8 @@
             <p-toast></p-toast>
             <div class="card bg-dark-el dark-text p-4">
                 <div class="card-body">
-                    <form class="row" [formGroup]="editOfferGroupForm" (ngSubmit)="editOfferGroup(editOfferGroupForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+                    <form class="row" [formGroup]="editOfferGroupForm" (ngSubmit)="editOfferGroup(editOfferGroupForm)"
+                        [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
                         <div class="col-md-6">
                             <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
                             <input type="text" formControlName="title" [ngClass]="{
@@ -31,14 +32,14 @@
                                         }" class="form-control" id="image" />
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary my-2" [disabled]="editOfferGroupForm.invalid">
+                            <button type="submit" class="btn btn-info my-2" [disabled]="editOfferGroupForm.invalid">
                                 {{ 'adminPanel.submit' | translate }}
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
+            <button (click)="back()" class="btn btn-outline-info me-auto py-1 d-flex align-items-center d-block"> <i
                     class="bi bi-arrow-left fs-6"></i>
                 {{ 'adminPanel.back' | translate }}</button>
         </div>

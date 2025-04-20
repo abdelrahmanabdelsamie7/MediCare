@@ -8,7 +8,7 @@
     </ol>
   </nav>
 </div>
-<div class="row">
+<div class="row" data-aos="fade-down" data-aos-duration="1000">
   <p-toast />
   <div class="col-lg-12">
     <div class="card bg-dark-el shadow p-4">
@@ -26,7 +26,10 @@
             <td>{{ $index +1 }}</td>
             <td>{{ item.name }}</td>
             <td><a (click)="ShowSpecificContactData(item.id)" data-bs-toggle="modal" data-bs-target="#contactData"
-                title="Show"><i class="bi bi-eye text-primary"></i></a>
+                title="Show"><i class="bi bi-eye text-info"></i></a>
+            </td>
+            <td><a routerLink="/admin-mediCare-1245/reply-to-contact/{{ item.id }}" title="Reply"><i
+                  class="fa-solid fa-reply text-info"></i></a>
             </td>
             <td><a (click)="deleteContactData(item.id)" title="Delete"><i class="bi bi-trash text-danger"></i></a>
             </td>
@@ -39,17 +42,24 @@
 </div>
 <!-- End List All contactData  -->
 
-
 <div class="modal fade" id="contactData" tabindex="-1" aria-labelledby="contactDataLabel" aria-hidden="true">
   <div class="modal-dialog" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-    <div class="modal-content  bg-dark-el">
-      <div class="modal-header bg-dark-el">
-        <h3 class="modal-title dark-text" id="contactDataLabel">{{ 'adminPanel.contactUs' | translate }}</h3>
+    <div class="modal-content bg-dark-el dark-text">
+      <div class="modal-header">
+        <h3 class="modal-title fw-bold info-text" id="contactDataLabel">{{ 'adminPanel.contactUsDetails' | translate }}
+        </h3>
       </div>
       <div class="modal-body">
-        <h5 class="title dark-text ">الأسم : {{ specificContact().name }}</h5>
-        <h5 class="title dark-text ">الأسم : {{ specificContact().email }}</h5>
-        <h5 class="title dark-text ">الأسم : {{ specificContact().message }}</h5>
+        <h5 class="title "><span class="fw-bold info-text">{{ 'adminPanel.user_title' | translate }}</span> : {{
+          specificContact().name }}</h5>
+        <h5 class="title "><span class="fw-bold info-text">{{ 'adminPanel.email' | translate }} </span>: {{
+          specificContact().email }}</h5>
+        <h5 class="title "><span class="fw-bold info-text">{{ 'adminPanel.message' | translate }} </span>: {{
+          specificContact().message }}</h5>
+        @if(specificContact().reply) {
+        <h5 class="title "><span class="fw-bold info-text">{{ 'adminPanel.reply' | translate }} </span>:
+          {{ specificContact().reply }}</h5>
+        }
 
       </div>
       <div class="modal-footer">

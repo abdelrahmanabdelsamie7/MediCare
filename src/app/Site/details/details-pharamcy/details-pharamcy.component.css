@@ -149,3 +149,28 @@
   padding: 2px 0px;
 }
 }
+.companies-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.company-item {
+  width: 80px;
+  text-align: center;
+}
+
+.small-text {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

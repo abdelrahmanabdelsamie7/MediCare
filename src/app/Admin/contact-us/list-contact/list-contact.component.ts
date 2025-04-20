@@ -25,6 +25,7 @@ export class ListContactComponent implements OnInit, OnDestroy {
     name: '',
     email: '',
     message: '',
+    reply: '',
     created_at: ''
   });
   private destroy$ = new Subject<void>();

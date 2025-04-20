@@ -1,5 +1,5 @@
 <!-- Start Of Editing Department -->
-<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.department_edit' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -8,13 +8,14 @@
     </ol>
   </nav>
 </div>
-<section class="section">
+<section class="section" data-aos="fade-down" data-aos-duration="1000">
   <div class="row">
     <div class="col-lg-12">
       <p-toast></p-toast>
       <div class="card bg-dark-el dark-text p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editDepartmentForm" (ngSubmit)="editDepartment(editDepartmentForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <form class="row" [formGroup]="editDepartmentForm" (ngSubmit)="editDepartment(editDepartmentForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="col-12">
               <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
               <input type="text" formControlName="title" [ngClass]="{
@@ -38,7 +39,7 @@
                 }" class="form-control" id="icon" />
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editDepartmentForm.invalid">
+              <button type="submit" class="btn btn-info my-2" [disabled]="editDepartmentForm.invalid">
                 {{ 'adminPanel.submit' | translate }}
               </button>
             </div>
@@ -46,7 +47,7 @@
 
         </div>
       </div>
-      <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
+      <button (click)="back()" class="btn btn-outline-info me-auto py-1 d-flex align-items-center d-block"> <i
           class="bi bi-arrow-left fs-6"></i>
         {{ 'adminPanel.back' | translate }}</button>
     </div>

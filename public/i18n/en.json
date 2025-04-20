@@ -449,7 +449,11 @@
     "review_ratting_list_labs": "List Of Review Rating Of Laboratories",
     "user_info": "User Information",
     "id": "ID",
-    "role": "Role"
+    "role": "Role",
+    "message" : "Message" ,
+    "contactUsDetails" : "Contact Us Details",
+    "replyToContactUs" : "Reply To Contact Us",
+    "reply" : "Reply"
   },
   "doctorPanel": {
     "dashboard": "Dashboard",

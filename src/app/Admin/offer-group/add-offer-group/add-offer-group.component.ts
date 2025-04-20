@@ -10,18 +10,18 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-add-offer-group',
   standalone: true,
-  imports: [ReactiveFormsModule , CommonModule ,  Toast , TranslateModule],
+  imports: [ReactiveFormsModule, CommonModule, Toast, TranslateModule],
   templateUrl: './add-offer-group.component.html',
   styleUrl: './add-offer-group.component.css',
-  providers:[MessageService]
+  providers: [MessageService]
 })
 export class AddOfferGroupComponent implements OnInit {
-  isRtl:boolean=false;
-constructor(
-    private SOfferGroupService:SOfferGroupService,
+  isRtl: boolean = false;
+  constructor(
+    private SOfferGroupService: SOfferGroupService,
     private messageService: MessageService,
     private _STranslateService: STranslateService
-  ) {}
+  ) { }
   addOfferGroupForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,

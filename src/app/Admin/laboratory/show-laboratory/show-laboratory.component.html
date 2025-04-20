@@ -7,7 +7,8 @@
       </div>
     </div>
     <div class="col-md-8 ">
-      <div class="card border bg-dark-el dark-text border-0 shadow p-4"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+      <div class="card border bg-dark-el dark-text border-0 shadow p-4"
+        [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         <h3 class="fs-4">{{ 'adminPanel.title'|translate }} : <span>{{ Laboratory.title}}</span></h3>
         <hr>
         <h5>{{ 'adminPanel.service'|translate }} : <span>{{ Laboratory.service }}</span></h5>
@@ -31,7 +32,7 @@
       </div>
     </div>
   </div>
-  <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
+  <button (click)="back()" class="btn btn-outline-info me-auto py-1 d-flex align-items-center d-block"> <i
       class="bi bi-arrow-left fs-6"></i>
     {{ 'adminPanel.back'|translate }}</button>
 </div>

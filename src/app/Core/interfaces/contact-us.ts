@@ -3,5 +3,6 @@ export interface ContactUs {
   name: string;
   email: string;
   message: string;
+  reply: string;
   created_at: string;
 }

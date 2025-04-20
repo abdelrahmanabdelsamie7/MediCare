@@ -1,9 +1,10 @@
 <!-- Start Edit Doctor Blog -->
-<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'doctorPanel.editBlog' | translate}}</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">{{ 'doctorPanel.dashboard' | translate}}</a></li>
+      <li class="breadcrumb-item"><a routerLink="/doctor-mediCare-1245">{{ 'doctorPanel.dashboard' | translate}}</a>
+      </li>
       <li class="breadcrumb-item dark-text">{{ 'doctorPanel.edit' | translate}}</li>
     </ol>
   </nav>
@@ -14,7 +15,8 @@
       <p-toast />
       <div class="card bg-dark-el dark-text p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editDoctorBlogForm" (ngSubmit)="editDoctorBlog(editDoctorBlogForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <form class="row" [formGroup]="editDoctorBlogForm" (ngSubmit)="editDoctorBlog(editDoctorBlogForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="title" class="form-label">{{ 'doctorPanel.title' | translate}}</label>
@@ -30,7 +32,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editDoctorBlogForm.invalid">{{
+              <button type="submit" class="btn btn-info my-2" [disabled]="editDoctorBlogForm.invalid">{{
                 'doctorPanel.submit' | translate}}</button>
             </div>
           </form>

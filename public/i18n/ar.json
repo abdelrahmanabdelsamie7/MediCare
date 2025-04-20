@@ -449,7 +449,11 @@
     "review_ratting_list_labs": "قائمة تقييمات المراجعة المعامل",
     "user_info": "معلومات المستخدم",
     "id": "الرقم التعريفي",
-    "role": "الدور"
+    "role": "الدور",
+    "message": "التعليق",
+    "contactUsDetails": "تفاصيل تعليق المستخدم",
+    "replyToContactUs": "رد على تعليق المستخدم",
+    "reply": "الرد"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",

@@ -15,7 +15,8 @@
       <div class="card bg-dark-el dark-text p-4">
         <div class="card-body">
           <form class="row" [formGroup]="editDoctorOfferImageForm"
-            (ngSubmit)="editDoctorOfferImage(editDoctorOfferImageForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+            (ngSubmit)="editDoctorOfferImage(editDoctorOfferImageForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="image" class="form-label">{{ 'doctorPanel.image' | translate }}</label>
@@ -39,7 +40,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2"
+              <button type="submit" class="btn btn-info my-2"
                 [disabled]="editDoctorOfferImageForm.invalid">{{'doctorPanel.submit'|translate}}</button>
             </div>
           </form>
@@ -49,7 +50,7 @@
   </div>
   <!-- Back Button -->
   <div class="d-inline-block mt-3">
-    <button (click)="back()" class="btn btn-outline-primary">
+    <button (click)="back()" class="btn btn-outline-info">
       <i class="bi bi-arrow-left"></i> Back
     </button>
   </div>

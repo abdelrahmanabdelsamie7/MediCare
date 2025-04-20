@@ -8,13 +8,14 @@
     </ol>
   </nav>
 </div>
-<section class="section">
+<section class="section" data-aos="fade-down" data-aos-duration="1000">
   <div class="row">
     <div class="col-lg-12">
       <p-toast />
       <div class="card bg-dark-el dark-text p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="editPharmacyForm" (ngSubmit)="editPharmacy(editPharmacyForm)" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <form class="row" [formGroup]="editPharmacyForm" (ngSubmit)="editPharmacy(editPharmacyForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-4">
                 <label for="title" class="form-label">{{ 'adminPanel.title' | translate }}</label>
@@ -93,7 +94,7 @@
                 <input type="time" formControlName="start_at" step="60"
                   [ngClass]="{'is-invalid':(editPharmacyForm.controls.start_at.touched && editPharmacyForm.controls.start_at.errors) }"
                   class="form-control" id="start_at">
-                </div>
+              </div>
               <div class="col-md-4">
                 <label for="end_at" class="form-label">{{ 'adminPanel.endAt' | translate }}</label>
                 <input type="time" formControlName="end_at"
@@ -117,7 +118,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="editPharmacyForm.invalid">{{
+              <button type="submit" class="btn btn-info my-2" [disabled]="editPharmacyForm.invalid">{{
                 'adminPanel.submit' | translate }}</button>
             </div>
           </form>

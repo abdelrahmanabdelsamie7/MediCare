@@ -8,5 +8,6 @@ export interface IHospital {
   phone: string;
   address: string;
   locationUrl: string;
+  created_at: string;
   pivot: IDepartmentHospital;
 }

@@ -31,6 +31,7 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
   stars = [1, 2, 3, 4, 5];
   showReviewInput: boolean = false;
   ratesOfPharmacy: any[] = [];
+  insuranceCompanies: any[] = [];
   pharmacy: IPharmacy = {} as IPharmacy;
   isFetching = signal<boolean>(false);
   private destroy$ = new Subject<void>();
@@ -84,7 +85,9 @@ export class DetailsPharamcyComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           this.isFetching.set(false);
           this.pharmacy = data.data;
+          console.log(this.pharmacy);
           this.ratesOfPharmacy = data.data.users;
+          this.insuranceCompanies = data.data.insurance_companies;
         },
         error: (err) => {
           this.isFetching.set(false);

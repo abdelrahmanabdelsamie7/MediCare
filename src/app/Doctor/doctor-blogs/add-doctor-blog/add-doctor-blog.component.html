@@ -1,5 +1,5 @@
 <!-- Start Add New Doctor Blog -->
-<div class="pagetitle"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'doctorPanel.addBlog' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -15,7 +15,8 @@
       <p-toast />
       <div class="card bg-dark-el dark-text p-4">
         <div class="card-body">
-          <form class="row" [formGroup]="addDoctorBlogForm" (ngSubmit)="addDoctorBlog(addDoctorBlogForm)"  [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <form class="row" [formGroup]="addDoctorBlogForm" (ngSubmit)="addDoctorBlog(addDoctorBlogForm)"
+            [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
             <div class="row">
               <div class="col-md-6">
                 <label for="title" class="form-label">{{ 'doctorPanel.title' | translate }}</label>
@@ -31,7 +32,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary my-2" [disabled]="addDoctorBlogForm.invalid">{{
+              <button type="submit" class="btn btn-info my-2" [disabled]="addDoctorBlogForm.invalid">{{
                 'doctorPanel.submit' | translate }}</button>
             </div>
           </form>

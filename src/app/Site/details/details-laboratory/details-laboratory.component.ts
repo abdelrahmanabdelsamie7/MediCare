@@ -30,6 +30,7 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
   stars = [1, 2, 3, 4, 5];
   showReviewInput: boolean = false;
   ratesOfLaboratory: any[] = [];
+  insuranceCompanies: any[] = [];
   Laboratory: ILaboratory = {} as ILaboratory;
   isFetching = signal<boolean>(false);
   private destroy$ = new Subject<void>();
@@ -84,6 +85,7 @@ export class DetailsLaboratoryComponent implements OnInit, OnDestroy {
           this.isFetching.set(false);
           this.Laboratory = data.data;
           this.ratesOfLaboratory = data.data.users;
+          this.insuranceCompanies = data.data.insurance_companies;
         },
         error: (err) => {
           this.isFetching.set(false);

@@ -83,7 +83,6 @@ export class ShowDoctorClinicComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.DoctorClinic = data.data;
           this.DoctorClinicImages = this.DoctorClinic.images;
         },

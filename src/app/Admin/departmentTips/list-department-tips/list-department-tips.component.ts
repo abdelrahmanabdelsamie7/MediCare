@@ -11,20 +11,20 @@ import { NgStyle } from '@angular/common';
 @Component({
   selector: 'app-list-department-tips',
   standalone: true,
-  imports: [Toast, RouterModule, TranslateModule,NgStyle],
+  imports: [Toast, RouterModule, TranslateModule, NgStyle],
   templateUrl: './list-department-tips.component.html',
   styleUrl: './list-department-tips.component.css',
   providers: [MessageService],
 })
 export class ListDepartmentTipsComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false;
+  isRtl: boolean = false;
   DepartmentTips: IDepartmentTips[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SDepartmentTipsService: SDepartmentTipsService,
     private _MessageService: MessageService,
-     private _STranslateService:STranslateService
-  ) {}
+    private _STranslateService: STranslateService
+  ) { }
   ngOnInit() {
     this.checkLanguageDirection();
     this.getDepartmentTips();
@@ -42,7 +42,7 @@ export class ListDepartmentTipsComponent implements OnInit, OnDestroy {
         next: (data) => {
           this.DepartmentTips = data;
         },
-        error: (err) => {},
+        error: (err) => { },
       });
   }
   deleteDepartmentTip(id: string) {
@@ -69,9 +69,9 @@ export class ListDepartmentTipsComponent implements OnInit, OnDestroy {
         },
       });
   }
-
   checkLanguageDirection(): void {
-    this._STranslateService.currentLang$.subscribe({ next: (lang) => {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
         this.isRtl = lang === 'ar';
       },
     });

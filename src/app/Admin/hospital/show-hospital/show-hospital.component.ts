@@ -6,6 +6,7 @@ import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { TimeFormatPipe } from "../../../Core/pipes/time-format.pipe";
+import { STranslateService } from '../../../Core/services/s-translate.service';
 @Component({
   selector: 'app-show-hospital',
   standalone: true,
@@ -15,21 +16,31 @@ import { TimeFormatPipe } from "../../../Core/pipes/time-format.pipe";
 })
 export class ShowHospitalComponent implements OnInit, OnDestroy {
   id: string = '';
+  isRtl: boolean = false;
   hospital: IHospital = {} as IHospital;
   departmentsOfHospital: any[] = [];
   private destroy$ = new Subject<void>();
   constructor(
     private _SHospitalService: SHospitalService,
     private _ActivatedRoute: ActivatedRoute,
+    private _STranslateService: STranslateService,
     private _Location: Location
-  ) {}
+  ) { }
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
         this.id = `${x.get('id')}`;
       },
     });
+    this.checkLanguageDirection();
     this.loadHospitalData();
+  }
+  checkLanguageDirection(): void {
+    this._STranslateService.currentLang$.subscribe({
+      next: (lang) => {
+        this.isRtl = lang === 'ar';
+      },
+    });
   }
   loadHospitalData() {
     this._SHospitalService
