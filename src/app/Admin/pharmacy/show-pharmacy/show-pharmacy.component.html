@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row my-3">
     <div class="col-md-12">
-      <div class="card bg-dark-el item-card shadow-lg border-0">
+      <div class="card bg-dark-el item-card shadow-lg border-0" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
         <div class="item-image">
           <img [src]="pharmacy.image ? pharmacy.image : './images/pharmacy.gif'"
             class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
@@ -78,22 +78,30 @@
 </div>
 <div class="row">
   <div class="col-lg-6">
-    <div class="d-flex">
-      <ol>
+    <div class="card bg-dark-el dark-text shadow-lg pt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}" >
+      <h5 class="mb-3 text-info">
+        <i class="fa-solid fa-building-shield me-2"></i>
+        {{"adminPanel.insurance_companies" | translate}}
+      </h5>
+
+      <ol class="list-group list-group-numbered">
         @for (item of InsuracneCompaniesPharmacy(); track $index) {
-        <li class="d-flex align-items-center justify-content-between text-info fs-6 mb-2">
-          <div>
-            <i class="fa-solid fa-shield-check"></i>
-            {{ item.name }}
-            <img [src]="item.logo" width="50" height="50" alt="Insurance Company Logo">
+        <li class="list-group-item d-flex justify-content-between align-items-center bg-light border rounded mb-2 shadow-sm">
+
+          <div class="d-flex align-items-center gap-3">
+            <i class="fa-solid fa-shield-check text-success fs-5"></i>
+            <span class="fw-bold text-dark">{{ item.name }}</span>
+            <img [src]="item.logo" width="50" height="50" alt="Logo" class="rounded-circle border border-info">
           </div>
-          <button class="btn btn-danger btn-sm" (click)="removeInsuranceCompanyFromPharmacy(item.pivot.id)">
-            <i class="fa-solid fa-trash"></i> Remove
+
+          <button class="btn btn-outline-danger btn-sm" (click)="removeInsuranceCompanyFromPharmacy(item.pivot.id)">
+            <i class="fa-solid fa-trash"></i>
           </button>
         </li>
-        }
+      }
       </ol>
     </div>
+
   </div>
   <div class="col-lg-6">
     <p-toast />

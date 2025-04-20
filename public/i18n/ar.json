@@ -333,6 +333,7 @@
     "chain_pharmacies_edit": "تعديل سلسلة صيدليات",
     "pharmacies_list": "قائمة الصيدليات",
     "pharmacies_add": "إضافة صيدلية",
+    "insurance_companies":"شركات التأمين المرتبطة بالصيدلية",
     "pharmacies_edit": "تعديل بيانات الصيدلية",
     "belongToChainLab": "تابعة لسلسلة المختبرات",
     "notBelongToChainLab": "لا تنتمي إلى السلسلة",
