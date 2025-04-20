@@ -1,44 +1,125 @@
-<!-- Start pharmacy Show -->
-<div class="container ">
-  <div class="row my-4">
-    <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-      <div class="card bg-dark-el border border-0 shadow p-5">
-        <img [src]="pharmacy.image" class="w-100" alt="pharmacy Image">
-      </div>
-    </div>
-    <div class="col-md-8 ">
-      <div class="card bg-dark-el dark-text border border-0 shadow p-4" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
-        <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ pharmacy.title}}</span></h3>
-        <hr>
-        <h5>{{ 'adminPanel.service' | translate }} : <span>{{ pharmacy.service }}</span></h5>
-        <hr>
-        <h5>{{ 'adminPanel.phone' | translate }} : {{ pharmacy.phone }}</h5>
-        <hr>
-        <h5>{{ 'adminPanel.address' | translate }} : {{ pharmacy.area }} - {{ pharmacy.city }}</h5>
-        <hr>
-        <h5>{{ 'adminPanel.locationInMap' | translate }} : <a (click)="showInMap(pharmacy.locationUrl)"><i
-              class="bi bi-geo-alt text-warning"></i></a></h5>
-        <hr>
-        @if (pharmacy.deliveryOption == 1 ) {
-        <h5>{{ 'adminPanel.deliveryOption' | translate }} : {{ 'adminPanel.deliveryOptionAvailable' | translate }}</h5>
-        }@else {
-        <h5>{{ 'adminPanel.deliveryOption' | translate }} : {{ 'adminPanel.deliveryOptionNotAvailable' | translate }}</h5>
-        }
-        <hr />
-        @if (pharmacy.insurence == 1 ) {
-        <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceAvailable' | translate }}</h5>
-        }@else {
-        <h5>{{ 'adminPanel.insurenceOption' | translate }} : {{ 'adminPanel.insuranceNotAvailable' | translate }}</h5>
-        }
-        <hr>
-        <h5>{{ 'adminPanel.startAt' | translate }} {{ pharmacy.start_at  |timeFormat}}</h5>
-        <hr>
-        <h5>{{ 'adminPanel.endAt' | translate }} {{ pharmacy.end_at |timeFormat}}</h5>
+<!-- Start item Show -->
+<div class="container">
+  <div class="row my-3">
+    <div class="col-md-12">
+      <div class="card bg-dark-el item-card shadow-lg border-0">
+        <div class="item-image">
+          <img [src]="pharmacy.image ? pharmacy.image : './images/pharmacy.gif'"
+            class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
+            alt="Pharmacy Image">
+        </div>
+        <div class="card-body">
+          <h3 class="text-center fw-bold dark-text">{{ pharmacy.title }}</h3>
+          <p class="item-service dark-text"> <span class="fw-bold">
+              يوجد في الصيدلية
+            </span> : {{ pharmacy.service }}</p>
+          <p class="item-date dark-text">
+            <span class="fw-bold dark-text">مواعيد العمل : </span>
+            <i class="fa-solid fa-clock text-info"></i>
+            {{ pharmacy.start_at | timeFormat }} {{"details.to" | translate}}
+            {{ pharmacy.end_at | timeFormat}}
+          </p>
+          <div class="more-info">
+            <p class="pharmacy-phone dark-text">
+              <a href="tel:{{ pharmacy.phone }}"><i class="fa-solid fa-phone-flip text-info"></i></a>
+              {{ pharmacy.phone }}
+            </p>
+            <p class="pharmacy-whatsapp dark-text">
+              <a href="{{ pharmacy.whatsappLink }}"><i class="fa-brands fa-whatsapp text-success"></i>
+              </a>
+              الواتساب لتواصل
+            </p>
+            <h3 class="dark-text fs-5">
+              <i class=" fa-solid fa-location-pin"></i>
+              {{ pharmacy.area }} - {{ pharmacy.city }}
+            </h3>
+            <button class="btn btn-outline-info my-3 d-block rounded-3" (click)="showInMap(pharmacy.locationUrl)">خريطة
+              الوصول
+              <i class="fa-solid fa-map-location-dot"></i></button>
+            <p class="pharmacy-whatsapp dark-text">
+              تمت الإضافة بتاريخ : {{ pharmacy.created_at | date:'yyyy-MM-dd'}}
+            </p>
+          </div>
+          <div class="d-flex justify-content-center updated">
+            <p class="item-delivery px-2">
+              <!-- <span class="fw-bold"> خدمة التوصيل : </span> -->
+              @if (pharmacy.deliveryOption === 1) {
+              <span class="delivery m-0 pb-1">
+                <i class="fa-solid fa-motorcycle fs-6"></i>
+                {{"Pharmacies.delivery" | translate}}
+              </span>
+              }@else{
+              <span class="notAvaliabledelivery m-0 pb-1">
+                <i class="fa-solid fa-motorcycle fs-6"></i>
+                التوصيل غير متاحة
+              </span>
+              }
+            </p>
+            <p class="item-insurence">
+              <!-- <span class="fw-bold"> خدمة التأمين : </span> -->
+              @if (pharmacy.insurence === 1) {
+              <span class="insurence m-0 pb-1">
+                <i class="bi bi-shield-check fs-6"></i>
+                {{"Pharmacies.insurance" | translate}}
+              </span>
+              }@else{
+              <span class="notAvaliableinsurence m-0 pb-1">
+                <i class="fa-solid fa-xmark fs-6"></i>
+                التأمين غير متاح
+              </span>
+              }
+            </p>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
-  <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
-      class="bi bi-arrow-left fs-6"></i>
-    {{ 'adminPanel.back' | translate }}</button>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="d-flex">
+      <ol>
+        @for (item of InsuracneCompaniesPharmacy(); track $index) {
+        <li class="d-flex align-items-center justify-content-between text-info fs-6 mb-2">
+          <div>
+            <i class="fa-solid fa-shield-check"></i>
+            {{ item.name }}
+            <img [src]="item.logo" width="50" height="50" alt="Insurance Company Logo">
+          </div>
+          <button class="btn btn-danger btn-sm" (click)="removeInsuranceCompanyFromPharmacy(item.pivot.id)">
+            <i class="fa-solid fa-trash"></i> Remove
+          </button>
+        </li>
+        }
+      </ol>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <p-toast />
+    <div class="card bg-dark-el dark-text shadow-lg ">
+      <div class="card-body">
+        <form class="row" [formGroup]="addInsuranceCompanyToPharmcyForm"
+          (ngSubmit)="addInsuranceCompanyToPharmcy(addInsuranceCompanyToPharmcyForm)"
+          [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="InsuracneCompany">{{ 'adminPanel.insurance-companies' | translate }}</label>
+              <select name="InsuracneCompany" formControlName="insurance_company_id" id="InsuracneCompany"
+                class="form-control mb-1">
+                @for (item of InsuracneCompanies; track $index) {
+                <option value="{{ item.id }}">{{ item.name }}</option>
+                }
+              </select>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary my-1" [disabled]="addInsuranceCompanyToPharmcyForm.invalid">{{
+              'adminPanel.submit' | translate }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- End pharmacy Show -->

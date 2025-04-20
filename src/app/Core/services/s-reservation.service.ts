@@ -57,7 +57,7 @@ export class SReservationService {
   doctorMakeReservationAsVisited(id: string): Observable<any> {
     return this._HttpClient.put<any>(
       `${environment.baseUrl}/doctor/reservations/${id}/make-as-visited`,
-      {}
+      {}, { headers: { Authorization: 'Bearer ' + localStorage.getItem('doctorToken') } }
     );
   }
 }

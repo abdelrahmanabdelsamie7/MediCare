@@ -55,7 +55,7 @@ export class DoctorStatisticsComponent {
     }
     this.translate.get([
       'STATISTICS.Blogs', 'STATISTICS.CLINICS', 'STATISTICS.OFFERS',
-      'STATISTICS.Appointments', 'STATISTICS.Reservations'
+      'STATISTICS.Appointments', 'STATISTICS.Reservations', 'STATISTICS.COUNT'
     ]).subscribe(translations => {
       this.chart = new Chart(this.chartRef.nativeElement, {
         type: 'bar',
@@ -71,7 +71,7 @@ export class DoctorStatisticsComponent {
               this.appointmentsCount, this.reservationsCount
             ],
             backgroundColor: [
-              '#007bff', '#ffffff', '#28a745', '#6f42c1',
+              '#007bff', '#ff54ff', '#28a745', '#6f42c1',
               '#fd7e14'
             ],
             borderColor: '#000',

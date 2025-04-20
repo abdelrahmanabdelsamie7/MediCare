@@ -8,6 +8,7 @@
       <p><strong>رقم الحجز:</strong> {{ id }}</p>
       <p><strong>حالة الحجز:</strong> <span class="badge bg-info text-dark">{{ statusInfo }}</span></p>
       <p><strong>تاريخ الإنشاء:</strong> {{ appointment.day }}</p>
+      <p><strong>سعر الكشف النهائي :</strong> {{ finalPrice | currency:'EGP' }}</p>
     </div>
   </div>
   <div class="row">

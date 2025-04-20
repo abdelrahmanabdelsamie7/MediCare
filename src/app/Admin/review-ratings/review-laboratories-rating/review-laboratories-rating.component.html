@@ -1,0 +1,38 @@
+<!-- Start List All Laboratories Rattings -->
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+  <h1>{{ 'adminPanel.review_ratting_list_labs' | translate }}</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">{{ 'adminPanel.tables' | translate }}</li>
+      <li class="breadcrumb-item active dark-text">{{ 'adminPanel.data' | translate }}</li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <p-toast />
+  <div class="col-lg-12">
+    <div class="card bg-dark-el dark-text shadow p-4">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>{{ 'adminPanel.title' | translate }}</th>
+            <th>{{ 'adminPanel.actions' | translate }}</th>
+          </tr>
+        </thead>
+        @for (item of LaboratoriesRatings(); track $index) {
+        <tbody>
+          <tr>
+            <td>{{ $index +1 }}</td>
+            <td>{{ item.review }}</td>
+            <td><a (click)="deleteRatingOfLaboratory(item.id)" title="Delete"><i
+                  class="bi bi-trash text-danger"></i></a>
+            </td>
+          </tr>
+        </tbody>
+        }
+      </table>
+    </div>
+  </div>
+</div>
+<!-- End List All Laboratories Rattings  -->

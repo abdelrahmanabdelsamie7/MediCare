@@ -6,25 +6,25 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { TranslateModule } from '@ngx-translate/core';
 import { STranslateService } from '../../Core/services/s-translate.service';
-import { NgStyle } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-all-users',
   standalone: true,
-  imports: [Toast, TranslateModule,NgStyle],
+  imports: [Toast, TranslateModule, NgStyle, CommonModule],
   templateUrl: './all-users.component.html',
   styleUrl: './all-users.component.css',
   providers: [MessageService]
 })
 export class AllUsersComponent implements OnInit, OnDestroy {
   Users: IUser[] = [];
-  isRtl:boolean=false;
-  User: IUser = { } as IUser;
+  isRtl: boolean = false;
+  User: IUser = {} as IUser;
   private destroy$ = new Subject<void>();
   constructor(
     private _SAuthService: SAuthService,
     private _MessageService: MessageService,
-    private _STranslateService:STranslateService
+    private _STranslateService: STranslateService
   ) { }
   ngOnInit() {
     this.getUsers();
@@ -36,7 +36,6 @@ export class AllUsersComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
           this.Users = data.data;
         },
         error: (err) => {
@@ -44,14 +43,13 @@ export class AllUsersComponent implements OnInit, OnDestroy {
         },
       });
   }
-  getUserInfo(id:string){
+  getUserInfo(id: string) {
     this._SAuthService
       .getUserById(id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          console.log(data);
-          this.User = data.data ;
+          this.User = data.data;
         },
         error: (err) => {
           console.error(err);

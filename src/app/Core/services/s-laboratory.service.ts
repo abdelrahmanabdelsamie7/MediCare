@@ -8,12 +8,12 @@ import { IUserLaboratroy } from '../interfaces/i-user-laboratory';
   providedIn: 'root',
 })
 export class SLaboratoryService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
   getLaboratories(params?: HttpParams): Observable<any> {
     return this._HttpClient.get<any>(
-        `${environment.baseUrl}/Laboratories`, { params }
+      `${environment.baseUrl}/Laboratories`, { params }
     );
-   }
+  }
   addLaboratory(laboratory: ILaboratory): Observable<ILaboratory> {
     return this._HttpClient.post<ILaboratory>(
       `${environment.baseUrl}/Laboratories`,
@@ -42,6 +42,16 @@ export class SLaboratoryService {
     return this._HttpClient.post<IUserLaboratroy>(
       `${environment.baseUrl}/User_Laboratory`,
       rateValue
+    );
+  }
+  allRatesLaboratory(): Observable<IUserLaboratroy> {
+    return this._HttpClient.get<IUserLaboratroy>(
+      `${environment.baseUrl}/User_Laboratory`
+    );
+  }
+  adminDeleteRateLaboratory(id: string): Observable<IUserLaboratroy> {
+    return this._HttpClient.delete<IUserLaboratroy>(
+      `${environment.baseUrl}/User_Laboratory/${id}`
     );
   }
 }

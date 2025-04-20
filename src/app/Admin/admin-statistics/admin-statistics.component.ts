@@ -21,6 +21,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
   usersCount = 0;
   doctorBlogsCount = 0;
   chainPharmaciesCount = 0;
+  InsuranceCompaniesCount = 0;
   chainLaboratoriesCount = 0;
   hospitalsCount = 0;
   pharmaciesCount = 0;
@@ -47,7 +48,6 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
-          console.log(data);
           this.departmentsCount = data.data.departmentsCount;
           this.doctorsCount = data.data.doctorsCount;
           this.usersCount = data.data.usersCount;
@@ -61,6 +61,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
           this.clinicsCount = data.data.clinicsCount;
           this.contactsCount = data.data.contactsCount;
           this.offersCount = data.data.offersCount;
+          this.InsuranceCompaniesCount = data.data.InsuranceCompaniesCount;
           if (this.isViewInitialized) {
             this.renderChart();
           }
@@ -77,7 +78,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
       'STATISTICS.CLINICS', 'STATISTICS.OFFERS', 'STATISTICS.DOCTOR_BLOGS',
       'STATISTICS.HOSPITALS', 'STATISTICS.CARE_CENTERS', 'STATISTICS.CHAIN_PHARMACIES',
       'STATISTICS.CHAIN_LABORATORIES', 'STATISTICS.PHARMACIES', 'STATISTICS.LABORATORIES', 'STATISTICS.CONTACT',
-      'STATISTICS.COUNT'
+      'STATISTICS.COUNT', 'STATISTICS.INSURANCE_COMPANIES'
     ]).subscribe(translations => {
       this.chart = new Chart(this.chartRef.nativeElement, {
         type: 'bar',
@@ -88,7 +89,7 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
             translations['STATISTICS.OFFERS'], translations['STATISTICS.DOCTOR_BLOGS'],
             translations['STATISTICS.HOSPITALS'], translations['STATISTICS.CARE_CENTERS'],
             translations['STATISTICS.CHAIN_PHARMACIES'], translations['STATISTICS.CHAIN_LABORATORIES'],
-            translations['STATISTICS.PHARMACIES'], translations['STATISTICS.LABORATORIES'], translations['STATISTICS.CONTACT']
+            translations['STATISTICS.PHARMACIES'], translations['STATISTICS.LABORATORIES'], translations['STATISTICS.CONTACT'], translations['STATISTICS.INSURANCE_COMPANIES']
           ],
           datasets: [{
             label: translations['STATISTICS.COUNT'],
@@ -97,12 +98,23 @@ export class AdminStatisticsComponent implements OnInit, OnDestroy, AfterViewIni
               this.clinicsCount, this.offersCount, this.doctorBlogsCount,
               this.hospitalsCount, this.careCentersCount,
               this.chainPharmaciesCount, this.chainLaboratoriesCount,
-              this.pharmaciesCount, this.laboratoriesCount , this.contactsCount
+              this.pharmaciesCount, this.laboratoriesCount, this.contactsCount, this.InsuranceCompaniesCount
             ],
             backgroundColor: [
-              '#007bff', '#ffffff', '#28a745', '#6f42c1',
-              '#fd7e14', '#17a2b8', '#dc3545', '#ffc107',
-              '#20c997', '#795548', '#155724', '#343a40', '#355720'
+              '#354f23', // أحمر فاقع
+              '#3cb44b', // أخضر زاهي
+              '#ffe119', // أصفر
+              '#4363d8', // أزرق قوي
+              '#f58231', // برتقالي واضح
+              '#911eb4', // بنفسجي غامق
+              '#46f0f0', // سماوي فاقع
+              '#f032e6', // وردي
+              '#bcf60c', // أخضر فسفوري
+              '#fabebe', // وردي فاتح
+              '#008080', // أخضر مزرق
+              '#e6beff', // بنفسجي فاتح
+              '#9a6324', // بني
+              '#fffac8'  // أصفر باهت
             ],
             borderColor: '#000',
             borderWidth: 1,

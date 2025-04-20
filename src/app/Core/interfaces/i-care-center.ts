@@ -9,4 +9,5 @@ export interface ICareCenter {
   address: string;
   locationUrl: string;
   pivot: IDepartmentCareCenter;
+  created_at: string
 }

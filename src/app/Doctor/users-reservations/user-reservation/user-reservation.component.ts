@@ -7,11 +7,12 @@ import { IDoctorClinic } from '../../../Core/interfaces/i-doctor-clinic';
 import { IUser } from '../../../Core/interfaces/i-user';
 import { AgePipe } from '../../../Core/pipes/age.pipe';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-reservation',
   standalone: true,
-  imports: [AgePipe, TimeFormatPipe],
+  imports: [AgePipe, TimeFormatPipe, CommonModule],
   templateUrl: './user-reservation.component.html',
   styleUrl: './user-reservation.component.css',
 })
@@ -21,11 +22,12 @@ export class UserReservationComponent implements OnInit, OnDestroy {
   clinic: IDoctorClinic = {} as IDoctorClinic;
   user: IUser = {} as IUser;
   statusInfo: string = ' ';
+  finalPrice: number = 0;
   private destroy$ = new Subject<void>();
   constructor(
     private _SReservationService: SReservationService,
     private _ActivatedRoute: ActivatedRoute
-  ) {}
+  ) { }
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -40,6 +42,7 @@ export class UserReservationComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          this.finalPrice = data.data.final_price;
           this.appointment = data.data.appointment;
           this.clinic = data.data.clinic;
           this.user = data.data.user;

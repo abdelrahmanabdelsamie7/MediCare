@@ -24,7 +24,7 @@ import { STranslateService } from '../../../Core/services/s-translate.service';
   providers: [MessageService],
 })
 export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
-  isRtl:boolean=false;
+  isRtl: boolean = false;
   Departments: IDepartment[] = [];
   Hospitals: IHospital[] = [];
   private destroy$ = new Subject<void>();
@@ -43,8 +43,8 @@ export class AddDepartmentHospitalComponent implements OnInit, OnDestroy {
     private _SHospitalService: SHospitalService,
     private _SDepartmentService: SDepartmentService,
     private messageService: MessageService,
-     private _STranslateService: STranslateService
-  ) {}
+    private _STranslateService: STranslateService
+  ) { }
   ngOnInit() {
     this.getDepartments();
     this.getHospitals();

@@ -1,33 +1,38 @@
 <!-- Start Care Center Show -->
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-      <div class="card bg-dark-el border border-0 shadow p-5">
-        <img [src]="careCenter.image ? careCenter.image : './images/carecenter.gif'" class="w-100"
-          alt="Care Center Image">
+  <div class="row my-4">
+    <div class="col-md-12">
+      <div class="card text-center bg-dark-el item-card shadow border-0">
+        <div class="item-image">
+          <img [src]="careCenter.image ? careCenter.image : './images/carecenter.gif'"
+            class="rounded-circle border border-3 border-info shadow" style="width: 100px; height: 100px;"
+            alt="care center Image">
+        </div>
+        <div class="card-body">
+          <h3 class="text-center fs-5 fw-bold dark-text"><span>
+              {{careCenter.title}}</span></h3>
+          <p class="item-service dark-text"> <span class="fw-bold">{{ 'adminPanel.service' | translate }}</span> : {{
+            careCenter.service
+            }}</p>
+          <p class="item-service dark-text"> <span class="fw-bold">{{ 'adminPanel.phone' | translate }}</span> : {{
+            careCenter.phone }}
+          </p>
+          <p> <span class="fw-bold">{{ 'adminPanel.locationInMap' | translate }}</span> : <a
+              (click)="showInMap(careCenter.locationUrl)"><i class="bi bi-geo-alt text-warning"></i></a></p>
+          <p class="item-service dark-text"> <span class="fw-bold">{{ 'adminPanel.addedAt' | translate }}</span> : {{
+            careCenter.created_at | date:'short' }}
+          </p>
+        </div>
       </div>
     </div>
-    <div class="col-md-8 ">
-      <div class="card border bg-dark-el dark-text border-0 shadow p-4">
-        <h3 class="fs-4">{{ 'adminPanel.title' | translate }} : <span>{{ careCenter.title}}</span></h3>
-        <hr>
-        <h5>{{ 'adminPanel.service' | translate }} : <span>{{ careCenter.service }}</span></h5>
-        <hr>
-        <h5>{{ 'adminPanel.phone' | translate }} : {{ careCenter.phone }}</h5>
-        <hr>
-        <h5>{{ 'adminPanel.address' | translate }} : {{ careCenter.address }}</h5>
-        <hr>
-        <h5>{{ 'adminPanel.locationInMap' | translate }} : <a (click)="showInMap(careCenter.locationUrl)"><i
-              class="bi bi-geo-alt text-warning"></i></a></h5>
-      </div>
-    </div>
+
   </div>
 </div>
 <div class="container">
   <div class="row">
     @for (item of departmentsOfCareCenter; track $index) {
     <div class="col-md-4">
-      <div class="card bg-dark-el dark-text departmentCareCenter shadow p-3 text-center">
+      <div class="card bg-dark-el dark-text departmentCareCenter shadow p-3 text-center shadow p-4">
         <a class="btn btn-light btn-update"
           routerLink="/admin-mediCare-1245/edit_department_care_center/{{ item.pivot.department_id }}/{{ item.pivot.care_center_id }}"><i
             class="bi bi-pen"></i></a>
@@ -43,10 +48,6 @@
     </div>
     }
   </div>
-  <div class="d-inline-block">
-    <button (click)="back()" class="btn btn-outline-primary me-auto py-1 d-flex align-items-center d-block"> <i
-        class="bi bi-arrow-left fs-6"></i>
-      {{ 'adminPanel.back' | translate }}</button>
-  </div>
+
 </div>
 <!-- End Care Center Show -->

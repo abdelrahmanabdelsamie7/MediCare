@@ -66,6 +66,11 @@ import { EditOfferGroupComponent } from './offer-group/edit-offer-group/edit-off
 import { AllUsersComponent } from './all-users/all-users.component';
 import { ListContactComponent } from './contact-us/list-contact/list-contact.component';
 import { ReplyContactComponent } from './contact-us/reply-contact/reply-contact.component';
+import { ListInsuranceCompaniesComponent } from './insurance-company/list-insurance-companies/list-insurance-companies.component';
+import { AddInsuranceCompanyComponent } from './insurance-company/add-insurance-company/add-insurance-company.component';
+import { EditInsuranceCompanyComponent } from './insurance-company/edit-insurance-company/edit-insurance-company.component';
+import { ReviewPharmaciesRatingComponent } from './review-ratings/review-pharmacies-rating/review-pharmacies-rating.component';
+import { ReviewLaboratoriesRatingComponent } from './review-ratings/review-laboratories-rating/review-laboratories-rating.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -341,7 +346,7 @@ export const ADMIN_ROUTES: Routes = [
         component: EditDoctorClinicImageComponent,
         title: 'Admin Panel | Edit Iamge Of Clinic ',
       },
-      // ======================== Specializations ========================
+      // ======================== Specializations =======================
       {
         path: 'specializations',
         component: ListSpecializationsComponent,
@@ -368,7 +373,7 @@ export const ADMIN_ROUTES: Routes = [
         title: 'Admin Panel | Add Specialization To Doctor',
       },
 
-      // ======================== Delivery Services ========================
+      // ======================== Delivery Services ====================
       {
         path: 'DeliveryServices',
         component: ListDeliveryServiceComponent,
@@ -421,6 +426,34 @@ export const ADMIN_ROUTES: Routes = [
         component: ReplyContactComponent,
         title: 'Admin Panel | Reply To Contact',
       },
+      // ======================== Insurance Companies ==================
+      {
+        path: 'insurance-companies',
+        component: ListInsuranceCompaniesComponent,
+        title: 'Admin Panel | Insurance Companies',
+      },
+      {
+        path: 'add-insurance-company',
+        component: AddInsuranceCompanyComponent,
+        title: 'Admin Panel | Add Insurance Company',
+      },
+      {
+        path: 'edit-insurance-company/:id',
+        component: EditInsuranceCompanyComponent,
+        title: 'Admin Panel | Edit Insurance Company',
+      },
+      // ======================== Review Ratings  ==================
+      {
+        path: 'review-pharmacies-rating',
+        component: ReviewPharmaciesRatingComponent,
+        title: 'Admin Panel | Review Pharmacies Rating',
+      },
+      {
+        path: 'review-laboratories-rating',
+        component: ReviewLaboratoriesRatingComponent,
+        title: 'Admin Panel | Review Laboratories Rating',
+      },
+
 
     ],
   },

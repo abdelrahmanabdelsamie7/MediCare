@@ -436,7 +436,20 @@
     "user_title": "اسم المستخدم",
     "insurenceNotAvaliable": "التأمين غير متاح",
     "deliveryOptionNotAvailable": "خدمة التوصيل غير متاحة",
-    "contactUs": "قائمة اتصل بنا"
+    "contactUs": "قائمة اتصل بنا",
+    "insurance-companies-list": "قائمة شركات التأمين",
+    "insurance-companies": "شركات التأمين",
+    "insurance-companies-add": "إضافة شركة تأمين",
+    "insurance-companies-add-pharmacy": "إضافة شركة تأمين الي صيدلية",
+    "insurance-companies-add-laboratory": "إضافة شركة تأمين الي مختبر",
+    "insurance-company-edit": "تعديل شركة تأمين",
+    "logo": "الشعار",
+    "review_ratting": "تقييم المراجعة",
+    "review_ratting_list_pharmcies": "قائمة تقييمات المراجعة الصيدليات",
+    "review_ratting_list_labs": "قائمة تقييمات المراجعة المعامل",
+    "user_info": "معلومات المستخدم",
+    "id": "الرقم التعريفي",
+    "role": "الدور"
   },
   "doctorPanel": {
     "dashboard": "وحدة التحكم",
@@ -533,7 +546,8 @@
     "CONTACT": "عدد طلبات المراسلة",
     "Blogs": "عدد المدونات",
     "Appointments": "عدد المواعيد المتاحة",
-    "Reservations": "عدد الحجوزات"
+    "Reservations": "عدد الحجوزات",
+    "INSURANCE_COMPANIES": "عدد شركات التأمين"
   },
   "details": {
     "insurance": "التأمين الصحي : متاح",

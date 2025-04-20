@@ -8,7 +8,7 @@ import { IUserPharmacy } from '../interfaces/i-user-pharmacy';
   providedIn: 'root',
 })
 export class SPharmacyService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
   getPharmacies(params?: HttpParams): Observable<any> {
     return this._HttpClient.get<any>(
       `${environment.baseUrl}/Pharmacies`, { params }
@@ -47,6 +47,16 @@ export class SPharmacyService {
   ratesOfPharmacy(): Observable<IUserPharmacy> {
     return this._HttpClient.get<IUserPharmacy>(
       `${environment.baseUrl}/User_Pharmacy`
+    );
+  }
+  allRatesPharmacy(): Observable<IUserPharmacy> {
+      return this._HttpClient.get<IUserPharmacy>(
+        `${environment.baseUrl}/User_Pharmacy`
+      );
+    }
+  adminDeleteRatePharmacy(id: string): Observable<IUserPharmacy> {
+    return this._HttpClient.delete<IUserPharmacy>(
+      `${environment.baseUrl}/User_Pharmacy/${id}`
     );
   }
 }

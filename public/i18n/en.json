@@ -436,7 +436,20 @@
     "user_title": "User Name",
     "insurenceNotAvaliable": "Insurence Not Avaliable",
     "deliveryOptionNotAvailable": "Delivery Option Not Available",
-    "contactUs": "List Of Contact Us Data"
+    "contactUs": "List Of Contact Us Data",
+    "insurance-companies-list": "List Insurance Companies",
+    "insurance-companies": "Insurance Companies",
+    "insurance-companies-add": "Add Insurance Company",
+    "insurance-companies-add-pharmacy": "Add Insurance Company To Pharmacy",
+    "insurance-companies-add-laboratory": "Add Insurance Company To Laboratory",
+    "insurance-company-edit": "Edit Insurance Company",
+    "logo": "Logo",
+    "review_ratting": "Review Rating",
+    "review_ratting_list_pharmcies": "List Of Review Rating Of Pharmacies",
+    "review_ratting_list_labs": "List Of Review Rating Of Laboratories",
+    "user_info": "User Information",
+    "id": "ID",
+    "role": "Role"
   },
   "doctorPanel": {
     "dashboard": "Dashboard",
@@ -533,7 +546,8 @@
     "CONTACT": "Contact Us",
     "Blogs": "Blogs",
     "Appointments": "Avaliable Appointment",
-    "Reservations": "Users Reservations"
+    "Reservations": "Users Reservations",
+    "INSURANCE_COMPANIES": "Insurance Companies"
   },
   "details": {
     "insurance": "Insurance: available",

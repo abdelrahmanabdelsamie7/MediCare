@@ -1,34 +1,61 @@
-.table-container {
-  margin: 30px auto;
-  max-width: 90%;
-}
-.table th {
-  background-color: var(--third-color);
-  color: white;
-  text-align: center;
-  font-size: 14px;
-}
-.table td {
-  text-align: center;
-  vertical-align: middle;
-}
-.bg-success {
-  background-color: rgb(46, 97, 46);
-}
-.bg-warning {
-  background-color: rgb(199, 199, 46);
+.head-title::before {
+  background-color: var(--main-color);
 }
 
-.table-responsive::-webkit-scrollbar {
-  height: 15px;
+.container {
+  direction: rtl;
 }
-.table-responsive::-webkit-scrollbar-track {
-  border-radius: 2px;
+
+.doctor-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
-.table-responsive::-webkit-scrollbar-thumb {
-  background: var(--third-color);
-  border-radius: 4px;
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
-.table-responsive::-webkit-scrollbar-thumb:hover {
-  background: rgba(179, 178, 178, 0.44);
+
+.card-header {
+  border-bottom-left-radius: 50px;
+}
+
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+
+.doctor-service,
+.doctor-date,
+.card-text {
+  margin: 0;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.alert {
+  font-size: 1rem;
+}
+
+button, a {
+  flex: 1;
+  text-align: center;
+}
+
+.card-body{
+  padding-top: 20px !important;
+}
+.card-body p {
+  padding: 5px 0px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--arabic-font);
 }

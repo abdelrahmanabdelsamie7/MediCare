@@ -1,5 +1,5 @@
 <!-- Start List All users -->
-<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}" >
+<div class="pagetitle" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <h1>{{ 'adminPanel.users_list' | translate }}</h1>
   <nav>
     <ol class="breadcrumb">
@@ -25,7 +25,9 @@
           <tr>
             <td>{{ $index +1 }}</td>
             <td>{{ item.name}}</td>
-            <td><button data-bs-toggle="modal" class="btn btn-outline-info border border-0" (click)="getUserInfo(item.id)" data-bs-target="#userInfo" title="show"><i class="fa-solid fa-eye"></i></button>
+            <td><button data-bs-toggle="modal" class="btn btn-outline-info border border-0"
+                (click)="getUserInfo(item.id)" data-bs-target="#userInfo" title="show"><i
+                  class="fa-solid fa-eye"></i></button>
             </td>
             <td><a (click)="removeUser(item.id)" title="remove"><i class="bi bi-trash text-danger"></i></a></td>
           </tr>
@@ -36,25 +38,34 @@
   </div>
 </div>
 <!-- End List All users  -->
-<!-- Modal -->
+
+
+<!-- Modal User -->
 <div class="modal fade" id="userInfo" tabindex="-1" aria-labelledby="userInfo" aria-hidden="true">
   <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="text-center fw-bold" id="userInfoLabel">User Information</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong style="color:var(--main-color)" >ID:</strong> <span> {{ User.id  }} </span></p>
-          <p><strong style="color:var(--main-color)" >Name:</strong> <span> {{ User.name  }} </span></p>
-          <p><strong style="color:var(--main-color)" >Email:</strong> <span> {{ User.email  }} </span></p>
-          <p><strong style="color:var(--main-color)" >Phone:</strong> <span> {{ User.phone  }} </span></p>
-          <p><strong style="color:var(--main-color)" >Role:</strong> <span> {{ User.role  }} </span></p>
-          <p><strong style="color:var(--main-color)" >Added At:</strong> <span> {{ User.created_at  }} </span></p>
-        </div>
-        <div class="modal-footer d-flex justify-content-center align-items-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+    <div class="modal-content bg-dark-el dark-text" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+      <div class="modal-header">
+        <h5 class="text-center fw-bold" id="userInfoLabel">{{ 'adminPanel.user_info' | translate }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <p><strong style="color:var(--main-color)">{{ 'adminPanel.id' | translate }}:</strong> <span> {{ User.id }}
+          </span></p>
+        <p><strong style="color:var(--main-color)">{{ 'adminPanel.user_title' | translate }}:</strong> <span> {{
+            User.name }}
+          </span></p>
+        <p><strong style="color:var(--main-color)">{{ 'adminPanel.email' | translate }}:</strong> <span> {{ User.email
+            }} </span></p>
+        <p><strong style="color:var(--main-color)">{{ 'adminPanel.phone' | translate }}:</strong> <span> {{
+            User.phone }} </span></p>
+        <p><strong style="color:var(--main-color)">{{ 'adminPanel.role' | translate }}:</strong> <span> {{
+            User.role }} </span></p>
+        <p><strong style="color:var(--main-color)">{{ 'adminPanel.addedAt' | translate }}:</strong> <span> {{
+            User.created_at | date:'yyyy-MM-dd'}} </span></p>
+      </div>
+      <div class="modal-footer d-flex justify-content-center align-items-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

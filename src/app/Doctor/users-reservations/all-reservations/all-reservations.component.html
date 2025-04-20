@@ -1,42 +1,101 @@
-<div class="container table-container">
-  <h2 class="text-center mb-4 head-title fs-4 dark-text">📋 قائمة الحجوزات</h2>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover table-secondary">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>اسم المريض</th>
-          <th>البريد الإلكتروني</th>
-          <th>رقم الهاتف</th>
-          <th>العنوان</th>
-          <th>حالة الحجز</th>
-          <th>تاريخ الموعد</th>
-          <th>الوقت</th>
-          <th>اسم العيادة</th>
-          <th>التحكم</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of allReservations; track $index) {
-        <tr>
-          <td>{{ item.id }}</td>
-          <td>{{ item.user.name }}</td>
-          <td>{{ item.user.email }}</td>
-          <td>{{ item.user.phone }}</td>
-          <td>{{ item.user.address }}</td>
-          <td><span class="badge"
-              [ngStyle]="{ 'background-color': item.status == 'confirmed' ? 'rgb(46, 97, 46)' : 'rgb(199, 199, 46)' }">{{
-              item.status }}</span></td>
-          <td>{{ item.appointment.day }}</td>
-          <td>{{ item.appointment.start_at | timeFormat }} - {{ item.appointment.end_at | timeFormat }}</td>
-          <td>عيادة الدكتور عبدالرحمن</td>
-          <td>
-            <button class="btn btn-success btn-sm btn-custom" [disabled]="item.status == 'confirmed'">✔ تأكيد</button>
-            <button class="btn btn-danger btn-sm btn-custom" [disabled]="item.status == 'confirmed'">❌ إلغاء</button>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+<div class="container my-5">
+  <h2 class="head-title text-info text-center dark-text my-3">المواعيد المحجوزة</h2>
+  <p-toast />
+  <div class="row">
+    @if (isFetching()) {
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+    } @else {
+    @for (reservation of allReservations; track $index) {
+    <div class="col-md-6">
+      <div class="card bg-dark-el doctor-card shadow border-0">
+        <div class="card-body">
+          <!-- بيانات المستخدم -->
+          <p class="doctor-service dark-text"><strong>اسم المستخدم:</strong> {{ reservation.user.name }}</p>
+          <p class="doctor-service dark-text"><strong>رقم المحمول:</strong> {{ reservation.user.phone }}</p>
+          <p class="doctor-service dark-text"><strong>عنوان المستخدم:</strong> {{ reservation.user.address }}</p>
+
+          <!-- بيانات العيادة -->
+          <p class="doctor-service dark-text">
+            <strong>العيادة:</strong> {{ reservation.clinic.title }} - {{ reservation.clinic.address }}
+          </p>
+
+          <!-- بيانات الموعد -->
+          <p class="doctor-date dark-text">
+            <strong>اليوم:</strong> {{ reservation.appointment.day }}
+            <strong>من الساعة:</strong> {{ reservation.appointment.start_at | timeFormat }}
+            <strong>إلى:</strong> {{ reservation.appointment.end_at | timeFormat }}
+          </p>
+
+          <!-- الحالة -->
+          <p class="card-text dark-text">
+            <strong>الحالة:</strong>
+            <span class="px-2 py-1 rounded-4 text-light" [ngClass]="{
+                'badge bg-warning': reservation.status === 'pending',
+                'badge bg-success': reservation.status === 'confirmed',
+                'badge bg-secondary': reservation.status === 'visited',
+                'badge bg-danger': reservation.status === 'canceled'
+              }">
+              @if (reservation.status === 'pending') {
+              قيد الانتظار
+              } @else if (reservation.status === 'confirmed') {
+              تم تأكيد الحجز
+              } @else if (reservation.status === 'visited') {
+              تمت الزيارة
+              } @else {
+              تم إلغاء الحجز
+              }
+            </span>
+          </p>
+
+          <!-- الأزرار حسب الحالة -->
+          <div class="mt-3">
+            @if (reservation.status === 'pending') {
+            <div class="d-flex gap-2">
+              <button class="btn btn-info text-light flex-grow-1" (click)="confirmReservation(reservation.id)">
+                تأكيد الحجز
+              </button>
+              <button class="btn btn-outline-danger flex-grow-1" (click)="cancelReservation(reservation.id)">
+                إلغاء الحجز
+              </button>
+            </div>
+            }
+            @else if (reservation.status === 'confirmed') {
+            <div class="alert alert-success text-center fw-bold mt-3" role="alert">
+              تم تأكيد الحجز بنجاح.
+            </div>
+            <button class="btn btn-info d-block text-light" (click)="makeReservationAsVisited(reservation.id)">
+              تمت الزيارة
+            </button>
+            }
+            @else if (reservation.status === 'canceled') {
+            <a class="btn btn-info text-light d-block"
+              [routerLink]="'/doctor-mediCare-1245/user-reservation/' + reservation.id">
+              عرض التفاصيل
+            </a>
+            }
+            @else if (reservation.status === 'visited') {
+            <div class="alert alert-secondary text-center fw-bold" role="alert">
+              تمت الزيارة بالفعل.
+            </div>
+            }
+          </div>
+
+        </div>
+      </div>
+    </div>
+    }@empty {
+    <div class="text-center">
+      <img src="./images/empty.svg" alt="لا توجد مواعيد محجوزة" title="لا توجد مواعيد محجوزة" class="img-fluid my-5"
+        style="width: 300px; height: 300px;">
+      <p class="dark-text">لا توجد مواعيد محجوزة</p>
+    </div>
+    }
+    }
   </div>
 </div>

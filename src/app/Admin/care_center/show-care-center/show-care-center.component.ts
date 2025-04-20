@@ -4,7 +4,7 @@ import { SCareCenterService } from '../../../Core/services/s-care-center.service
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
 
 @Component({
@@ -15,6 +15,7 @@ import { TimeFormatPipe } from '../../../Core/pipes/time-format.pipe';
   styleUrl: './show-care-center.component.css',
 })
 export class ShowCareCenterComponent implements OnInit, OnDestroy {
+  isRtl: boolean = false;
   id: string = '';
   careCenter: ICareCenter = {} as ICareCenter;
   departmentsOfCareCenter: any[] = [];
@@ -22,8 +23,10 @@ export class ShowCareCenterComponent implements OnInit, OnDestroy {
   constructor(
     private _SCareCenterService: SCareCenterService,
     private _ActivatedRoute: ActivatedRoute,
+    private _TranslateService: TranslateService,
     private _Location: Location
-  ) {}
+  ) { }
+
   ngOnInit() {
     this._ActivatedRoute.paramMap.subscribe({
       next: (x) => {
@@ -38,6 +41,7 @@ export class ShowCareCenterComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
+          console.log(data);
           this.careCenter = data.data;
           this.departmentsOfCareCenter = data.data.departments;
         },
