@@ -109,7 +109,7 @@
           <div class="row">
             <div class="col-md-12 p-2">
               <label for="InsuracneCompany">{{ 'adminPanel.insurance-companies' | translate }}</label>
-              <select name="InsuracneCompany" multiple formControlName="insurance_company_id" id="InsuracneCompany"
+              <select name="InsuracneCompany" formControlName="insurance_company_id" id="InsuracneCompany"
                 class="form-control mb-1">
                 @for (item of InsuracneCompanies; track $index) {
                 <option value="{{ item.id }}">{{ item.name }}</option>

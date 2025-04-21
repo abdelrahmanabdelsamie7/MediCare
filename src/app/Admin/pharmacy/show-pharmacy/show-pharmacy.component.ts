@@ -77,7 +77,6 @@ export class ShowPharmacyComponent implements OnInit, OnDestroy {
       .addInsuranceCompanyToPharmacy(addInsuranceCompanyToPharmcyForm.value)
       .subscribe({
         next: (data: any) => {
-          console.log(data.data);
           // this.InsuracneCompaniesPharmacy.update((prev) => [
           //   ...prev,
           //   data.data,
