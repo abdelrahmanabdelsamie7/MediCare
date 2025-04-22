@@ -32,8 +32,58 @@
       </div>
     </div>
   </div>
-  <button (click)="back()" class="btn btn-outline-info me-auto py-1 d-flex align-items-center d-block"> <i
-      class="bi bi-arrow-left fs-6"></i>
-    {{ 'adminPanel.back'|translate }}</button>
 </div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card bg-dark-el dark-text shadow-lg pt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+      <h5 class="mb-3 text-info">
+        <i class="fa-solid fa-building-shield me-2"></i>
+        {{"adminPanel.insurance_companies_lab" | translate}}
+      </h5>
+      <ol class="list-group list-group-numbered">
+        @for (item of InsuracneCompaniesLaboratories(); track $index) {
+        <li class="list-group-item d-flex justify-content-between align-items-center  rounded mb-2 shadow-sm">
+          <div class="d-flex align-items-center gap-3">
+            <i class="fa-solid fa-shield-check text-success fs-5"></i>
+            <span class="fw-bold text-dark">{{ item.name }}</span>
+            <img [src]="item.logo" width="50" height="50" alt="Logo" class="rounded-circle border border-info">
+          </div>
+          <button class="btn btn-outline-danger btn-sm" (click)=" removeInsuranceCompanyFromLaboratory(item.pivot.id)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </li>
+        }
+      </ol>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <p-toast />
+    <div class="card bg-dark-el dark-text shadow-lg ">
+      <div class="card-body">
+        <form class="row" [formGroup]="addInsuranceCompanyToLaboratoryForm"
+          (ngSubmit)="addInsuranceCompanyToLaboratory(addInsuranceCompanyToLaboratoryForm)"
+          [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
+          <div class="row">
+            <div class="col-md-12 p-2">
+              <label for="InsuracneCompany">{{ 'adminPanel.insurance-companies' | translate }}</label>
+              <select name="InsuracneCompany" formControlName="insurance_company_id" id="InsuracneCompanies"
+                class="form-control mb-1">
+                @for (item of InsuracneCompanies; track $index) {
+                <option value="{{ item.id }}">{{ item.name }}</option>
+                }
+              </select>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-info my-1" [disabled]="addInsuranceCompanyToLaboratoryForm.invalid">{{
+              'adminPanel.submit' | translate }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  <button (click)="back()" class="btn btn-outline-info me-auto py-1 d-flex align-items-center d-block"> <i
+    class="bi bi-arrow-left fs-6"></i>
+  {{ 'adminPanel.back'|translate }}</button>
 <!-- End Laboratory Show -->

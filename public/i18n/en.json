@@ -308,6 +308,7 @@
     "chain_pharmacies": "Chain Pharmacies",
     "chain_pharmacies_today": "Chain Pharmacies | Today",
     "chain_laboratories": "Chain Laboratories",
+    "insurance_companies_lab":"Laboratory-linked insurance companies",
     "chain_laboratories_today": "Chain Laboratories | Today",
     "department_list": "List Departments",
     "users_list": "All Users",
