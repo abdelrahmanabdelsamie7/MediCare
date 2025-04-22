@@ -8,7 +8,7 @@ import { IAdmin } from '../interfaces/i-admin';
   providedIn: 'root',
 })
 export class SAdminService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
   adminLogin(admin: IAdmin): Observable<IAdmin> {
     return this._HttpClient.post<IAdmin>(
       `${environment.baseUrl}/admin/login`,
@@ -17,9 +17,9 @@ export class SAdminService {
   }
   adminAccount(): Observable<IAdmin> {
     return this._HttpClient
-      .get<IAdmin>('http://localhost:8000/api/admin/getaccount')
+      .get<IAdmin>(`${environment.baseUrl}/admin/getaccount`)
       .pipe(
-        tap((data) => {}),
+        tap((data) => { }),
         catchError((err) => {
           console.error('Error fetching data:', err); // تحقق من وجود أخطاء
           return throwError(() => err);
