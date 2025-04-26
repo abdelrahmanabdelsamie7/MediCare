@@ -87,6 +87,14 @@ export class SAuthService {
       {body}
     );
   }
+   // New method to update the user profile
+   updateProfile(payload: {
+    name: string;
+    phone: string;
+    birth_date: Date|string;
+  }): Observable<any> {
+    return this._HttpClient.post(`${environment.baseUrl}/user/profile`, payload);
+  }
   // New methods for email state
   setTempEmail(email: string): void {
     this.tempEmail = email;

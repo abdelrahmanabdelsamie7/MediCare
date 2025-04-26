@@ -43,23 +43,44 @@
               }
             </span>
           </p>
+          <p class="card-text mb-2 dark-text"><strong> الدفع:</strong>
+            <span class="px-1 mx-2 rounded-4" [ngClass]="{
+                              'badge bg-danger': reservation.payment_status !== 'succeeded',
+                              'badge bg-success': reservation.payment_status === 'succeeded'
+                            }">
+              @if (reservation.payment_status === 'succeeded') {
+              تم الدفع
+              }@else {
+              لم يتم الدفع
+              }
+            </span>
           <div *ngIf="reservation.status === 'confirmed'" class="alert alert-success text-center fw-bold mt-3"
             role="alert">
             تم تأكيد الحجز بنجاح.
           </div>
-          <div *ngIf="reservation.status !== 'confirmed'">
+          <div *ngIf="reservation.status !== 'confirmed'&& reservation.payment_status !== 'succeeded'">
             <div class="d-flex flex-column flex-md-row mt-3">
+
               <button class="btn btn-info text-light mb-2 mb-md-0 mx-2"
-                (click)="confirmReservation(reservation.id)">تأكيد
-                الحجز</button>
-              <button class="btn btn-outline-danger mb-2 mb-md-0 " (click)="cancelReservation(reservation.id)">إلغاء
-                الحجز</button>
-              <button class="btn btn-outline-info mb-2 mb-md-0 mx-2"
-                (click)="openPaymentModal(reservation.id, reservation.doctor.app_price)">
-                ادفع اللآن
+                      (click)="confirmReservation(reservation.id)">
+                تأكيد الحجز
               </button>
+
+              <button *ngIf="reservation.payment_status !== 'succeeded'"
+                      class="btn btn-outline-danger mb-2 mb-md-0"
+                      (click)="cancelReservation(reservation.id)">
+                إلغاء الحجز
+              </button>
+
+              <button *ngIf="reservation.payment_status !== 'succeeded'"
+                      class="btn btn-outline-info mb-2 mb-md-0 mx-2"
+                      (click)="openPaymentModal(reservation.id, reservation.final_price)">
+                ادفع الآن
+              </button>
+
             </div>
           </div>
+
         </div>
       </div>
     </div>
