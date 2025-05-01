@@ -5,15 +5,17 @@ import { SDepartmentService } from '../../../Core/services/s-department.service'
 import { IDepartment } from '../../../Core/interfaces/i-department';
 import { Subject, takeUntil } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details-department',
   standalone: true,
-  imports: [RouterModule, CommonModule, TranslateModule],
+  imports: [RouterModule, CommonModule, TranslateModule, FormsModule],
   templateUrl: './details-department.component.html',
   styleUrl: './details-department.component.css',
 })
 export class DetailsDepartmentComponent implements OnInit, OnDestroy {
+  doctorSearchTerm: string = '';
   isFetching = signal<boolean>(false);
   id: string = '';
   private destroy$ = new Subject<void>();
@@ -76,6 +78,14 @@ export class DetailsDepartmentComponent implements OnInit, OnDestroy {
         },
       });
   }
+filteredDoctors() {
+  if (!this.doctorSearchTerm.trim()) return this.Doctors;
+  const term = this.doctorSearchTerm.toLowerCase();
+  return this.Doctors.filter(doc =>
+    `${doc.fName} ${doc.lName}`.toLowerCase().includes(term)
+  );
+}
+
   showInMap(url: string) {
     window.open(
       url,
