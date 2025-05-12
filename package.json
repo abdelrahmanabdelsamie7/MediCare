@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:ssr": "ng build --configuration production && ng run medi-care:server:production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:MediCare": "node dist/medi-care/server/server.mjs"
+    "serve:ssr": "node --enable-source-maps dist/medi-care/server/server.mjs --host=0.0.0.0 --port=4000"
+
   },
   "private": true,
   "dependencies": {
@@ -20,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@angular/service-worker": "^18.2.13",
     "@angular/ssr": "^18.2.10",
     "@auth0/angular-jwt": "^5.2.0",
     "@bugsplat/ng-animated-counter": "^1.2.1",
