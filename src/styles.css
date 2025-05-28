@@ -57,6 +57,7 @@ section {
     background-color: var(--second-color);
   }
 }
+
 .head-title::before {
   content: "";
   position: absolute;
@@ -158,20 +159,24 @@ body.dark-mode tr {
   background-color: #423f3f !important;
   color: #fafafa;
 }
+
 .item-card {
   position: relative;
   background: #ffffff;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
 }
+
 .item-card:hover,
 .card-info:hover {
   transform: translateY(-5px);
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
 }
+
 .card-header {
   border-bottom-left-radius: 50px;
 }
+
 .item-image {
   position: absolute;
   top: -40px;
@@ -182,17 +187,20 @@ body.dark-mode tr {
   padding: 15px;
   box-shadow: 0 7px 4px rgba(0, 0, 0, .03);
 }
+
 .item-image img {
   transform: scale(1.1);
   object-fit: contain;
   width: 100%;
 }
+
 .card-info {
   background: #ffffff;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
   direction: rtl;
 }
+
 .card-info h3 {
   font-size: 18px;
   font-weight: 500;
@@ -200,16 +208,19 @@ body.dark-mode tr {
   font-family: var(--arabic-font);
   color: #fff;
 }
+
 .card-info .more-info {
   padding: 10px 30px;
 
 }
+
 .more-info p {
   font-size: 18px;
   font-weight: 500;
   padding: 3px;
   color: var(--second-color);
 }
+
 .insurence {
   background-clip: padding-box;
   color: var(--main-color);
@@ -219,6 +230,7 @@ body.dark-mode tr {
   border-radius: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 .delivery {
   background-clip: padding-box;
   color: var(--main-color);
@@ -228,6 +240,7 @@ body.dark-mode tr {
   border-radius: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 .notAvaliabledelivery,
 .notAvaliableinsurence {
   background-clip: padding-box;
@@ -238,17 +251,20 @@ body.dark-mode tr {
   border-radius: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
-.card-body{
+
+.card-body {
   padding-top: 45px;
 }
+
 @media screen and (max-width:576px) {
   .card-body p {
-  font-size: 15px;
-  font-weight: 400;
-  font-family: var(--arabic-font);
-  padding: 2px 0px;
-}
-.updated{
-  flex-direction: column;
-}
+    font-size: 15px;
+    font-weight: 400;
+    font-family: var(--arabic-font);
+    padding: 2px 0px;
+  }
+
+  .updated {
+    flex-direction: column;
+  }
 }

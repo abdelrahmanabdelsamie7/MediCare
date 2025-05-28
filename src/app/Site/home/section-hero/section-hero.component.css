@@ -5,7 +5,11 @@ img,
 .shadow {
   border-radius: 15px;
 }
-
+section h4.text{
+  font-size:27px ; 
+  font-weight:650 ; 
+  color :var(--main-color) !important;
+}
 .hero-carousel .p-carousel-indicator button {
   width: 13px;
   height: 13px;
