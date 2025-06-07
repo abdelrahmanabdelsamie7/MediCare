@@ -26,8 +26,7 @@
                 <p class="my-2 fs-5 fs-sm-6 dark-text">
                   {{ Doctor.gender == 'male' ? 'دكتور' : 'دكتورة' }} متخصص في
                   @for (item of Doctor.specializations; track $index) {
-                  <a href="" class="text-info  specialization"> <span
-                      style="text-decoration: underline ; padding-left: .1em">
+                  <a class="text-info"> <span style="padding-left: .1em">
                       {{item.title }}
                     </span> </a>
                   @if (!$last) { <span class="text-info fs-5">،</span> }
@@ -36,7 +35,7 @@
               </div>
 
             </div>
-            <div class="d-flex justify-content-start gap-3 mt-3">
+            <div class="d-flex justify-content-center gap-3 mt-1">
               <a (click)="showInMap(Doctor.facebookLink)" class="text-info" title="Contact on Facebook">
                 <i class="bi bi-facebook fa-lg"></i>
               </a>
@@ -51,7 +50,8 @@
         </div>
         <div class="col-lg-12">
           <div class="card border bg-dark-el border-0 shadow p-4">
-            <h5 class="dark-text"><i class="fa-solid fa-circle-info text-light bg-info p-2 rounded-5"></i> معلومات عن
+            <h5 class="dark-text" style="font-family: var(--arabic-font);"><i
+                class="fa-solid fa-circle-info text-light bg-info p-2 rounded-5"></i> معلومات عن
               {{ Doctor.gender == 'male' ? 'الدكتور' : 'الدكتورة' }}
             </h5>
             <p class="my-2 px-4 dark-text">
@@ -62,13 +62,17 @@
         <div class="col-lg-12">
           <div class="card border bg-dark-el border-0 shadow p-4">
             <h5 class="dark-text"><i class="fa-regular fa-image text-light bg-info p-2 rounded-5"></i> العيادة :</h5>
+
             <div class="image-gallery">
               <div class="thumbnail-container">
-                @for (clinic of Doctor.clinics; track $index) {
-                @for (image of clinic.images; track $index) {
-                <img [src]="image.image" alt="Thumbnail" class="thumbnail" />
-                }
-                }
+                <div class="row">
+                  @for (clinic of Doctor.clinics; track $index) {
+                  @for (image of clinic.images; track $index) {
+                  <div class="col-6 col-md-4 mb-2">
+                    <img [src]="image.image" alt="Thumbnail" class="thumbnail" />
+                  </div>
+                  } }
+                </div>
               </div>
             </div>
           </div>

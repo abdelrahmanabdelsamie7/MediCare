@@ -166,7 +166,7 @@
 
                 <textarea formControlName="review" class="form-control mb-2" rows="3"
                   placeholder="اكتب مراجعتك هنا..."></textarea>
-                <button type="submit" class="btn btn-info text-white w-100">إرسال المراجعة</button>
+                <button type="submit" [disabled]="!isAuth" class="btn btn-info text-white w-100">إرسال المراجعة</button>
               </form>
             </div>
           </div>

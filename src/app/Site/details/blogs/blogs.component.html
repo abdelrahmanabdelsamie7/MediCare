@@ -9,14 +9,16 @@
           <img [src]="item.doctor.image" alt="Doctor Image" class="rounded-circle"
             style="width: 100px; height: 100px; object-fit: cover;">
         </a>
-        <div class="mx-2">
-          <h5 class="fw-bold mb-0"> د . {{ item.doctor.fName }} {{ item.doctor.lName }}</h5>
-          <p class="mb-0 text-muted dark-text">{{ item.doctor.title }}</p>
+        <div class="mx-1">
+          <a routerLink="/details/doctor/{{ item.doctor.id }}">
+            <h5 class="fw-bold mb-0 doc-name"> د . {{ item.doctor.fName }} {{ item.doctor.lName }}</h5>
+          </a>
+          <p class="mb-0 text-muted dark-text doc-title">{{ item.doctor.title }}</p>
         </div>
       </div>
       <h4 class="fw-bold mb-2 text-info">{{ item.title }}</h4>
       <p class="fs-5 dark-text content" style="color: var(--third-color);">{{ item.content }}</p>
-      <p class="text-muted mb-1 text-start">{{ item.created_at | date:'d MMMM YYYY' }}</p>
+      <!-- <p class="text-muted mb-1 text-start">{{ item.created_at | date:'d MMMM YYYY' }}</p> -->
     </div>
     }@empty {
     <div class="not-found">

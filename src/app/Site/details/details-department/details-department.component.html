@@ -29,67 +29,62 @@
 
 <div class="container" data-aos="fade-up" data-aos-duration="1000">
   <div *ngIf="activeTab === 'doctors'">
-    <div class="input-group w-50 mx-auto mb-4">
+    <div class="input-group w-75 mx-auto mb-4">
       <span class="input-group-text bg-white border-end-0 border-2 border-info">
         <i class="fas fa-search text-muted"></i>
       </span>
-      <input
-        type="text"
-        dir="rtl"
-        [(ngModel)]="doctorSearchTerm"
-        class="form-control border-2 border-start-0 border-info"
-        placeholder="ابحث باسم الطبيب..."
-      />
+      <input type="text" dir="rtl" [(ngModel)]="doctorSearchTerm"
+        class="form-control border-2 border-start-0 border-info" placeholder="ابحث باسم الطبيب..." />
     </div>
 
     <!-- قائمة الأطباء -->
     <div class="row">
       @if (isFetching()) {
-        <div class="col-12 text-center">
-          <div class="spinner-border text-info" role="status">
-            <span class="visually-hidden">Loading...</span>
+      <div class="col-12 text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      } @else {
+      @for (item of filteredDoctors(); track $index) {
+      <div class="col-md-6 col-lg-4">
+        <div class="card text-center bg-dark-el shadow-lg border-0 overflow-hidden">
+          <!-- الجزء العلوي -->
+          <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
+            <i class="fas fa-user-md fa-3x"></i>
+            <h4 class="fw-bold mt-2">{{ item.fName }} {{ item.lName }}</h4>
+            <p class="mb-2">{{ item.title }}</p>
+          </div>
+          <!-- الصورة -->
+          <div class="position-relative bg-dark-el p-3 text-center">
+            <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
+              style="width: 100px; height: 100px; margin-top: -50px" alt="Doctor Image" />
+          </div>
+          <!-- التفاصيل -->
+          <div class="card-body bg-dark-el text-start px-4">
+            <div class="d-flex justify-content-between align-content-center">
+              <p class="fw-bold dark-text">
+                <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
+              </p>
+              <p class="fw-bold dark-text">
+                <i class="fa-solid fa-money-bill text-info"></i>
+                {{ item.app_price }} EGP
+              </p>
+            </div>
+            <a routerLink="/details/doctor/{{ item.id }}"
+              class="btn btn-info text-white fw-bold w-100 rounded-pill shadow-sm mt-3">
+              {{ "depDetails.BtnInfo" | translate }}
+            </a>
           </div>
         </div>
-      } @else {
-        @for (item of filteredDoctors(); track $index) {
-          <div class="col-md-6 col-lg-4">
-            <div class="card text-center bg-dark-el shadow-lg border-0 overflow-hidden">
-              <!-- الجزء العلوي -->
-              <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px">
-                <i class="fas fa-user-md fa-3x"></i>
-                <h4 class="fw-bold mt-2">{{ item.fName }} {{ item.lName }}</h4>
-                <p class="mb-2">{{ item.title }}</p>
-              </div>
-              <!-- الصورة -->
-              <div class="position-relative bg-dark-el p-3 text-center">
-                <img [src]="item.image" class="rounded-circle border border-4 border-light shadow"
-                  style="width: 100px; height: 100px; margin-top: -50px" alt="Doctor Image" />
-              </div>
-              <!-- التفاصيل -->
-              <div class="card-body bg-dark-el text-start px-4">
-                <div class="d-flex justify-content-between align-content-center">
-                  <p class="fw-bold dark-text">
-                    <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
-                  </p>
-                  <p class="fw-bold dark-text">
-                    <i class="fa-solid fa-money-bill text-info"></i>
-                    {{ item.app_price }} EGP
-                  </p>
-                </div>
-                <a routerLink="/details/doctor/{{ item.id }}"
-                  class="btn btn-info text-white fw-bold w-100 rounded-pill shadow-sm mt-3">
-                  {{ "depDetails.BtnInfo" | translate }}
-                </a>
-              </div>
-            </div>
-          </div>
-        } @empty {
-          <div class="not-found">
-            <img src="./images/empty.png" alt="" class="img-not-found" />
-            <h3 class="head-not-found">{{ "notFound.notFoundPage" | translate }}</h3>
-            <h6 class="head-not-found2">{{ "notFound.notFoundPage2" | translate }}</h6>
-          </div>
-        }
+      </div>
+      } @empty {
+      <div class="not-found">
+        <img src="./images/empty.png" alt="" class="img-not-found" />
+        <h3 class="head-not-found">{{ "notFound.notFoundPage" | translate }}</h3>
+        <h6 class="head-not-found2">{{ "notFound.notFoundPage2" | translate }}</h6>
+      </div>
+      }
       }
     </div>
 

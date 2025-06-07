@@ -1,51 +1,61 @@
 <div class="container mt-2" [ngStyle]="{'direction': isRtl ? 'rtl' : 'ltr'}">
   <form (ngSubmit)="handleSubmit($event)" class="card  bg-dark-el border border-info border-1 p-3">
-    <div class="d-flex align-items-center mb-2 gap-3">
-      <div class="dropdown">
-        <button class="btn btn-info text-light dropdown-toggle" type="button" id="dropdownMenuButton1"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          {{"laboratories.laboratoriesChain"|translate}}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <button class="dropdown-item" (click)="loadLaboratoriesByChain('all')">
-              {{"laboratories.all"| translate}}
+    <div class="form-group p-3">
+      <div class="row">
+        <div class="col-sm-6 my-1">
+          <div class="dropdown">
+            <button class="btn btn-info text-light dropdown-toggle w-100" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              {{"laboratories.laboratoriesChain"|translate}}
             </button>
-          </li>
-          @for (item of ChainsLaboratories; track $index) {
-          <li>
-            <button class="dropdown-item" (click)="loadLaboratoriesByChain(item.id)">
-              {{ item.title }}
-            </button>
-          </li>
-          }
-        </ul>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <button class="dropdown-item" (click)="loadLaboratoriesByChain('all')">
+                  {{"laboratories.all"| translate}}
+                </button>
+              </li>
+              @for (item of ChainsLaboratories; track $index) {
+              <li>
+                <button class="dropdown-item" (click)="loadLaboratoriesByChain(item.id)">
+                  {{ item.title }}
+                </button>
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 my-1">
+          <input type="text" class="form-control w-100" placeholder="ابحث عن معمل ..." [(ngModel)]="searchQuery"
+            name="search" />
+        </div>
       </div>
-      <input type="text" class="form-control" style="width: 40%" placeholder="ابحث عن معمل..." [(ngModel)]="searchQuery"
-        name="search" />
-      <button class="btn btn-info text-light" type="submit">{{"laboratories.search"|translate}}</button>
-    </div>
-    <div class="row align-items-center gap-3">
-      <div class="col-auto">
-        <label class="form-label dark-text">{{"laboratories.city" |translate }}</label>
-        <input type="text" class="form-control" name="city" (input)="handleCityChange($event)" />
+      <div class="row">
+        <div class="col-6 my-1">
+          <label class="form-label dark-text">{{"laboratories.city" |translate }}</label>
+          <input type="text" class="form-control" name="city" (input)="handleCityChange($event)" />
+        </div>
+        <div class="col-6 my-1">
+          <label class="form-label dark-text">{{"laboratories.area"|translate }}</label>
+          <input type="text" class="form-control" name="area" (input)="handleAreaChange($event)" />
+        </div>
       </div>
-      <div class="col-auto">
-        <label class="form-label dark-text">{{"laboratories.area"|translate }}</label>
-        <input type="text" class="form-control" name="area" (input)="handleAreaChange($event)" />
-      </div>
-      <div class="col-auto">
-        <label class="form-label dark-text"> {{"laboratories.insurance"| translate}}</label>
-        <select class="form-select" (change)="handleInsurenceChange($event)" name="insurence">
-          <option value="all"> {{"laboratories.all"| translate}}</option>
-          <option value="1"> {{"laboratories.available"| translate}}</option>
-          <option value="0">{{"laboratories.notAvailable"|translate }}</option>
-        </select>
-      </div>
-      <div class="col-auto">
-        <label class="form-label dark-text">{{"laboratories.rating"|translate }}</label>
-        <input type="number" min="0" max="5" class="form-control" name="minRate"
-          (change)="handleMinRateChange($event)" />
+      <div class="row ">
+        <div class="col-6 my-1">
+          <label class="form-label dark-text"> {{"laboratories.insurance"| translate}}</label>
+          <select class="form-select" (change)="handleInsurenceChange($event)" name="insurence">
+            <option value="all"> {{"laboratories.all"| translate}}</option>
+            <option value="1"> {{"laboratories.available"| translate}}</option>
+            <option value="0">{{"laboratories.notAvailable"|translate }}</option>
+          </select>
+        </div>
+        <div class="col-6 my-1">
+          <label class="form-label dark-text">{{"laboratories.rating"|translate }}</label>
+          <input type="number" min="0" max="5" class="form-control" name="minRate"
+            (change)="handleMinRateChange($event)" />
+        </div>
+        <div class="col-sm-2 my-1 mx-auto">
+          <button class="btn btn-info text-light w-100" type="submit">{{"laboratories.search"|translate}}</button>
+        </div>
       </div>
     </div>
   </form>
@@ -62,7 +72,7 @@
   <div class="container my-5">
     <div class="row" dir="rtl">
       @for (item of Laboratories; track $index) {
-      <div class="col-md-6 col-lg-4 my-2" data-aos="fade-up" data-aos-duration="1000">
+      <div class="col-md-6 col-xl-4 my-2" data-aos="fade-up" data-aos-duration="1000">
         <div class="card-top text-center bg-dark-el shadow-lg border-0 overflow-hidden">
           <!-- الجزء العلوي -->
           <div class="card-header bg-info text-white py-4" style="border-bottom-left-radius: 50px;">
@@ -86,10 +96,11 @@
 
           <!-- التفاصيل -->
           <div class="card-body px-4">
-            <div class="d-flex justify-content-between align-content-center">
-              <p class="fw-bold"><i class="fa-solid fa-map-marker-alt text-info"></i> {{ item.area }} - {{item.city}}
+            <div class="d-flex flex-column justify-content-between align-content-center">
+              <p class="fw-bold"><i class="fa-solid fa-map-marker-alt text-info"></i> {{ item.area }}
+                <!-- - {{item.city}} -->
               </p>
-              <p class="fw-bold"> {{ item.phone }} <i class="fa-solid fa-phone text-info"></i></p>
+              <p class="fw-bold"> {{ item.phone }} <i class="fa-solid fa-phone text-info px-2"></i></p>
             </div>
             <div class="d-flex justify-content-between align-content-center">
               <a routerLink="/details/laboratory/{{ item.id }}"

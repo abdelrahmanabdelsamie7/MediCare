@@ -58,3 +58,12 @@
  input[type="text"] {
   box-shadow:  none;
 }
+@media screen and (max-width:576px){
+  .input-group {
+    width:150px;
+  }
+  .btn-outline-info{
+    padding: 5px;
+    font-size:14px ;
+  }
+}

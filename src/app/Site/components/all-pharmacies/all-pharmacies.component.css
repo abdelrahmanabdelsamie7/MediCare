@@ -48,3 +48,13 @@
   border-radius: 20px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+@media screen and (max-width: 576px) {
+  .insurence , .delivery{
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+  .btn-outline-info{
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+}

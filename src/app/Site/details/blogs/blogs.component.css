@@ -21,7 +21,10 @@
 .blog-card p {
   margin-bottom: 10px;
 }
-
+.blog-card h5{
+  font-family: var(--arabic-font);
+  color: var(--main-color) !important;
+}
 .blog-card h4 {
   font-size: 1.25rem;
 }
@@ -37,7 +40,9 @@ img.rounded-circle {
 .ms-4 {
   margin-left: 20px;
 }
-
+.blog-card .content{
+  padding: 2px 8px;
+}
 .text-info {
   color: #17a2b8;
 }
@@ -47,5 +52,12 @@ img.rounded-circle {
 }
   .blog-card .content{
     font-size: 16px !important;
+    padding: 2px 4px;
+  }
+  .doc-name{
+    font-size: 18px;
+  }
+  .doc-title{
+    font-size: 12px;
   }
 }
