@@ -1,9 +1,25 @@
 nav .navbar-brand {
   color: var(--main-color);
-  font-size: 36px;
+  font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  letter-spacing: 7px;
 }
+.i-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dot-icon {
+  position: absolute;
+  top: 6px;
+  left: -2px;
+  font-size: 14px;
+  color: var(--second-color);
+  line-height: 1;
+}
+
+
 nav .nav-link {
   color: var(--main-color);
   font-size: 20px;
