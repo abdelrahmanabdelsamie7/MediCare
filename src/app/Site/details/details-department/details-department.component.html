@@ -208,8 +208,14 @@
                 <i class="fa-solid fa-phone text-info"></i> {{ item.phone }}
               </p>
               <p class="fw-bold dark-text">
-                <i class="fa-solid fa-money-bill text-info"></i>
-                {{ item.pivot.app_price }} EGP
+                @if(item.pivot.app_price == 0 ){
+                <i class="fa-solid fa-money-bill text-danger"></i>
+              <p class="text-adang">لم يتم تحديد السعر</p>
+              }@else {
+              <i class="fa-solid fa-money-bill text-info"></i>
+              {{ item.pivot.app_price }} EGP
+              }
+
               </p>
             </div>
             <p class="fw-bold text-center dark-text">

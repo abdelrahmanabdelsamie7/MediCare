@@ -17,8 +17,9 @@
           <h5 class="fw-bold mt-2" style="direction:rtl">{{ item.name }}</h5>
         </div>
         <div class="card-body bg-dark-el px-4 text-center">
-          <p class="card-text pt-2 dark-text">
-            {{ item.description }}<i class="fa-solid fa-info-circle text-info"></i>
+          <p class="card-text pt-2 dark-text" style="direction:rtl">
+            <i class="fa-solid fa-info-circle text-info px-1"></i>
+            {{ item.description }}
           </p>
           <a [href]="item.app_link" class="btn btn-outline-info fw-bold w-100 rounded-pill shadow-sm mt-3"
             target="_blank">

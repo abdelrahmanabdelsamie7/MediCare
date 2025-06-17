@@ -68,7 +68,7 @@
                 <div class="row">
                   @for (clinic of Doctor.clinics; track $index) {
                   @for (image of clinic.images; track $index) {
-                  <div class="col-6 col-md-4 mb-2">
+                  <div class="col-6 col-md-4 mx-md-3 ">
                     <img [src]="image.image" alt="Thumbnail" class="thumbnail" />
                   </div>
                   } }
