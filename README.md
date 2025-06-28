@@ -33,7 +33,7 @@
 | Payments       | Stripe |
 | Styling        | SCSS + Bootstrap |
 | Animations     | Angular Animations, GSAP |
-| AI Integration | REST APIs (Python/Laravel backend) |
+| AI Integration | REST APIs (Laravel backend) |
 
 ---
 
