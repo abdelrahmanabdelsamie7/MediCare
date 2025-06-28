@@ -1,27 +1,51 @@
-# MediCare
+## 🩺 MediCare - Healthcare Booking Platform
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+**MediCare** is a full-featured Angular 18 web application that connects patients with doctors, labs, and pharmacies — built with clean architecture, modern UI/UX, and advanced integrations.
 
-## Development server
+[Hero Screenshot](./images/ai.webp) 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+🚀 Live Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🧠 Backend API Repo: [MediCare API](https://github.com/abdelrahmanabdelsamie7/MediCareAPI)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧩 Features
 
-## Running unit tests
+- 👤 **Multi-role system**: Patients, Doctors, Admins
+- 🌍 **Multi-language support**: Arabic 🇪🇬 (RTL) + English 🇺🇸 (LTR)
+- 🤖 **AI-powered analysis**: Symptoms, Labs & Reports
+- 💳 **Stripe integration**: Online payments for clinics
+- 🔐 **Secure Auth**: JWT, Google Auth, Route Guards
+- 🚀 **SSR-ready** with standalone Angular modules
+- 🗓️ **Booking system** with calendar management
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🧪 Tech Stack
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+| Frontend       | Tools / Libs |
+|----------------|--------------|
+| Angular 18     | RxJS, Forms, Signals |
+| State Mgmt     | Signals & Services |
+| i18n           | ngx-translate |
+| Auth           | JWT, Google Auth |
+| Payments       | Stripe |
+| Styling        | SCSS + Bootstrap |
+| Animations     | Angular Animations, GSAP |
+| AI Integration | REST APIs (Python/Laravel backend) |
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📦 Installation
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/abdelrahmanabdelsamie7/MediCare.git
+cd MediCare
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the app
+ng serve
