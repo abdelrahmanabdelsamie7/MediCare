@@ -12,13 +12,13 @@ MediCare is not just a booking system. It’s a complete healthcare experience d
 
 ## 🚀 Key Features
 
-- 🔍 **AI Symptom Diagnosis** — Suggests medical conditions and departments based on written or image-based symptoms.
-- 💊 **Prescription Scanner** — Upload a prescription and get detailed insights on medications + nearest pharmacy suggestions.
-- 🧪 **Lab Report Analysis** — AI detects abnormal values from lab reports and provides insights.
-- 📅 **Doctor Dashboard** — Schedule appointments, publish blogs, offer discounts.
-- 🧑‍💼 **Admin Dashboard** — Manage system-wide data: doctors, users, reviews, offers, chains, support messages.
-- 🏆 **Daily Points System** — 10 points per visit = 5 EGP discount (up to 50 EGP).
-- 📱 **Flutter Mobile App** — Native cross-platform app for patients on the go.
+-  **AI Symptom Diagnosis** — Suggests medical conditions and departments based on written or image-based symptoms.
+-  **Prescription Scanner** — Upload a prescription and get detailed insights on medications + nearest pharmacy suggestions.
+-  **Lab Report Analysis** — AI detects abnormal values from lab reports and provides insights.
+-  **Doctor Dashboard** — Schedule appointments, publish blogs, offer discounts.
+-  **Admin Dashboard** — Manage system-wide data: doctors, users, reviews, offers, chains, support messages.
+-  **Daily Points System** — 10 points per visit = 5 EGP discount (up to 50 EGP).
+-  **Flutter Mobile App** — Native cross-platform app for patients on the go.
 
 ---
 
@@ -35,11 +35,6 @@ Total: **240+ API endpoints** across multiple modules.
 
 ---
 
-## 📸 Demo & Screenshots
-
-_(Add your hosted video, images, or link to full presentation here)_
-
----
 
 ## 👨‍💻 Team Members
 
